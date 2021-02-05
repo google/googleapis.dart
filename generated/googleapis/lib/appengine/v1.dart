@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -121,7 +120,6 @@ class AppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -140,7 +138,6 @@ class AppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -170,7 +167,6 @@ class AppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -189,7 +185,6 @@ class AppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Application.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -230,7 +225,6 @@ class AppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -255,7 +249,6 @@ class AppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -298,7 +291,6 @@ class AppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -320,7 +312,6 @@ class AppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -360,7 +351,6 @@ class AppsAuthorizedCertificatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -384,7 +374,6 @@ class AppsAuthorizedCertificatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AuthorizedCertificate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -419,7 +408,6 @@ class AppsAuthorizedCertificatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -445,7 +433,6 @@ class AppsAuthorizedCertificatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -488,7 +475,6 @@ class AppsAuthorizedCertificatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -517,7 +503,6 @@ class AppsAuthorizedCertificatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AuthorizedCertificate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -563,7 +548,6 @@ class AppsAuthorizedCertificatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -593,7 +577,6 @@ class AppsAuthorizedCertificatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListAuthorizedCertificatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -641,7 +624,6 @@ class AppsAuthorizedCertificatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -673,7 +655,6 @@ class AppsAuthorizedCertificatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AuthorizedCertificate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -717,7 +698,6 @@ class AppsAuthorizedDomainsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -744,7 +724,6 @@ class AppsAuthorizedDomainsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListAuthorizedDomainsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -802,7 +781,6 @@ class AppsDomainMappingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -829,7 +807,6 @@ class AppsDomainMappingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -865,7 +842,6 @@ class AppsDomainMappingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -890,7 +866,6 @@ class AppsDomainMappingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -923,7 +898,6 @@ class AppsDomainMappingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -948,7 +922,6 @@ class AppsDomainMappingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DomainMapping.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -985,7 +958,6 @@ class AppsDomainMappingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1012,7 +984,6 @@ class AppsDomainMappingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListDomainMappingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1057,7 +1028,6 @@ class AppsDomainMappingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1088,7 +1058,6 @@ class AppsDomainMappingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1142,7 +1111,6 @@ class AppsFirewallIngressRulesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1166,7 +1134,6 @@ class AppsFirewallIngressRulesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchUpdateIngressRulesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1200,7 +1167,6 @@ class AppsFirewallIngressRulesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1224,7 +1190,6 @@ class AppsFirewallIngressRulesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FirewallRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1258,7 +1223,6 @@ class AppsFirewallIngressRulesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1283,7 +1247,6 @@ class AppsFirewallIngressRulesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1316,7 +1279,6 @@ class AppsFirewallIngressRulesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1341,7 +1303,6 @@ class AppsFirewallIngressRulesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FirewallRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1383,7 +1344,6 @@ class AppsFirewallIngressRulesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1413,7 +1373,6 @@ class AppsFirewallIngressRulesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListIngressRulesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1453,7 +1412,6 @@ class AppsFirewallIngressRulesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1484,7 +1442,6 @@ class AppsFirewallIngressRulesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FirewallRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1523,7 +1480,6 @@ class AppsLocationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1548,7 +1504,6 @@ class AppsLocationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1587,7 +1542,6 @@ class AppsLocationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1615,7 +1569,6 @@ class AppsLocationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1657,7 +1610,6 @@ class AppsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1682,7 +1634,6 @@ class AppsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1729,7 +1680,6 @@ class AppsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1758,7 +1708,6 @@ class AppsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1801,7 +1750,6 @@ class AppsServicesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1826,7 +1774,6 @@ class AppsServicesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1859,7 +1806,6 @@ class AppsServicesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1884,7 +1830,6 @@ class AppsServicesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1920,7 +1865,6 @@ class AppsServicesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -1945,7 +1889,6 @@ class AppsServicesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListServicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2000,7 +1943,6 @@ class AppsServicesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2034,7 +1976,6 @@ class AppsServicesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2080,7 +2021,6 @@ class AppsServicesVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2109,7 +2049,6 @@ class AppsServicesVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2145,7 +2084,6 @@ class AppsServicesVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -2175,7 +2113,6 @@ class AppsServicesVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2223,7 +2160,6 @@ class AppsServicesVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -2256,7 +2192,6 @@ class AppsServicesVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2304,7 +2239,6 @@ class AppsServicesVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -2339,7 +2273,6 @@ class AppsServicesVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2415,7 +2348,6 @@ class AppsServicesVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2451,7 +2383,6 @@ class AppsServicesVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2507,7 +2438,6 @@ class AppsServicesVersionsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2546,7 +2476,6 @@ class AppsServicesVersionsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2597,7 +2526,6 @@ class AppsServicesVersionsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -2632,7 +2560,6 @@ class AppsServicesVersionsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2671,7 +2598,6 @@ class AppsServicesVersionsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -2706,7 +2632,6 @@ class AppsServicesVersionsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Instance.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2750,7 +2675,6 @@ class AppsServicesVersionsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (appsId == null) {
@@ -2787,7 +2711,6 @@ class AppsServicesVersionsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListInstancesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

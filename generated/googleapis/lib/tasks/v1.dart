@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -87,7 +86,6 @@ class TasklistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (tasklist == null) {
@@ -96,8 +94,6 @@ class TasklistsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
@@ -109,7 +105,7 @@ class TasklistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -137,7 +133,6 @@ class TasklistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (tasklist == null) {
@@ -157,7 +152,6 @@ class TasklistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -187,7 +181,6 @@ class TasklistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -206,7 +199,6 @@ class TasklistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -239,7 +231,6 @@ class TasklistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (maxResults != null) {
@@ -261,7 +252,6 @@ class TasklistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TaskLists.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -295,7 +285,6 @@ class TasklistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -318,7 +307,6 @@ class TasklistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -350,7 +338,6 @@ class TasklistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -373,7 +360,6 @@ class TasklistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -409,7 +395,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (tasklist == null) {
@@ -418,8 +403,6 @@ class TasksResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -432,7 +415,7 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -461,7 +444,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (tasklist == null) {
@@ -473,8 +455,6 @@ class TasksResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -488,7 +468,7 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -519,7 +499,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (tasklist == null) {
@@ -544,7 +523,6 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -585,7 +563,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -615,7 +592,6 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -688,7 +664,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (tasklist == null) {
@@ -739,7 +714,6 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Tasks.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -783,7 +757,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (tasklist == null) {
@@ -815,7 +788,6 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -852,7 +824,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -880,7 +851,6 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -915,7 +885,6 @@ class TasksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -943,7 +912,6 @@ class TasksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

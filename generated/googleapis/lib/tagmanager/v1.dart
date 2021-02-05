@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -127,7 +126,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -147,7 +145,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -173,7 +170,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -189,7 +185,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListAccountsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -226,7 +221,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -252,7 +246,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -308,7 +301,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -332,7 +324,6 @@ class AccountsContainersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -362,7 +353,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -374,8 +364,6 @@ class AccountsContainersResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -389,7 +377,7 @@ class AccountsContainersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -420,7 +408,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -445,7 +432,6 @@ class AccountsContainersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -474,7 +460,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -495,7 +480,6 @@ class AccountsContainersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListContainersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -535,7 +519,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -566,7 +549,6 @@ class AccountsContainersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -608,7 +590,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -637,7 +618,6 @@ class AccountsContainersEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -671,7 +651,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -687,8 +666,6 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
@@ -703,7 +680,7 @@ class AccountsContainersEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -737,7 +714,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -767,7 +743,6 @@ class AccountsContainersEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -800,7 +775,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -826,7 +800,6 @@ class AccountsContainersEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -869,7 +842,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -905,7 +877,6 @@ class AccountsContainersEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -951,7 +922,6 @@ class AccountsContainersFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -980,7 +950,6 @@ class AccountsContainersFoldersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1013,7 +982,6 @@ class AccountsContainersFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1029,8 +997,6 @@ class AccountsContainersFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
@@ -1045,7 +1011,7 @@ class AccountsContainersFoldersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1079,7 +1045,6 @@ class AccountsContainersFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1109,7 +1074,6 @@ class AccountsContainersFoldersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1141,7 +1105,6 @@ class AccountsContainersFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1167,7 +1130,6 @@ class AccountsContainersFoldersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListFoldersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1210,7 +1172,6 @@ class AccountsContainersFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1246,7 +1207,6 @@ class AccountsContainersFoldersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1288,7 +1248,6 @@ class AccountsContainersFoldersEntitiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1319,7 +1278,6 @@ class AccountsContainersFoldersEntitiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FolderEntities.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1372,7 +1330,6 @@ class AccountsContainersMoveFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1400,8 +1357,6 @@ class AccountsContainersMoveFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
@@ -1416,7 +1371,7 @@ class AccountsContainersMoveFoldersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 }
@@ -1460,7 +1415,6 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1493,7 +1447,6 @@ class AccountsContainersReauthorizeEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1536,7 +1489,6 @@ class AccountsContainersTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1565,7 +1517,6 @@ class AccountsContainersTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1598,7 +1549,6 @@ class AccountsContainersTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1614,8 +1564,6 @@ class AccountsContainersTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
@@ -1630,7 +1578,7 @@ class AccountsContainersTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1664,7 +1612,6 @@ class AccountsContainersTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1694,7 +1641,6 @@ class AccountsContainersTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1726,7 +1672,6 @@ class AccountsContainersTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1752,7 +1697,6 @@ class AccountsContainersTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1795,7 +1739,6 @@ class AccountsContainersTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1831,7 +1774,6 @@ class AccountsContainersTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1873,7 +1815,6 @@ class AccountsContainersTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1902,7 +1843,6 @@ class AccountsContainersTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1935,7 +1875,6 @@ class AccountsContainersTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1951,8 +1890,6 @@ class AccountsContainersTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
@@ -1967,7 +1904,7 @@ class AccountsContainersTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2001,7 +1938,6 @@ class AccountsContainersTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2031,7 +1967,6 @@ class AccountsContainersTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2063,7 +1998,6 @@ class AccountsContainersTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2089,7 +2023,6 @@ class AccountsContainersTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2132,7 +2065,6 @@ class AccountsContainersTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2168,7 +2100,6 @@ class AccountsContainersTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2210,7 +2141,6 @@ class AccountsContainersVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2239,7 +2169,6 @@ class AccountsContainersVariablesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2272,7 +2201,6 @@ class AccountsContainersVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2288,8 +2216,6 @@ class AccountsContainersVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
@@ -2304,7 +2230,7 @@ class AccountsContainersVariablesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2338,7 +2264,6 @@ class AccountsContainersVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2368,7 +2293,6 @@ class AccountsContainersVariablesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2400,7 +2324,6 @@ class AccountsContainersVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2426,7 +2349,6 @@ class AccountsContainersVariablesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListVariablesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2469,7 +2391,6 @@ class AccountsContainersVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2505,7 +2426,6 @@ class AccountsContainersVariablesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2547,7 +2467,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2576,7 +2495,6 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CreateContainerVersionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2610,7 +2528,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2626,8 +2543,6 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
@@ -2642,7 +2557,7 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2677,7 +2592,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2707,7 +2621,6 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2746,7 +2659,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2778,7 +2690,6 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListContainerVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2818,7 +2729,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2852,7 +2762,6 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PublishContainerVersionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2892,7 +2801,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2923,7 +2831,6 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2959,7 +2866,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -2990,7 +2896,6 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3033,7 +2938,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3069,7 +2973,6 @@ class AccountsContainersVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3109,7 +3012,6 @@ class AccountsPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3133,7 +3035,6 @@ class AccountsPermissionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UserAccess.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3165,7 +3066,6 @@ class AccountsPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -3177,8 +3077,6 @@ class AccountsPermissionsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3192,7 +3090,7 @@ class AccountsPermissionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3223,7 +3121,6 @@ class AccountsPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -3248,7 +3145,6 @@ class AccountsPermissionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UserAccess.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3279,7 +3175,6 @@ class AccountsPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -3300,7 +3195,6 @@ class AccountsPermissionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListAccountUsersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3336,7 +3230,6 @@ class AccountsPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3364,7 +3257,6 @@ class AccountsPermissionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UserAccess.fromJson(
         _response as core.Map<core.String, core.dynamic>);

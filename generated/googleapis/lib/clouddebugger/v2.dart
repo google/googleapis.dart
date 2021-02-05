@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -117,7 +116,6 @@ class ControllerDebuggeesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -136,7 +134,6 @@ class ControllerDebuggeesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RegisterDebuggeeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -200,7 +197,6 @@ class ControllerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (debuggeeId == null) {
@@ -230,7 +226,6 @@ class ControllerDebuggeesBreakpointsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListActiveBreakpointsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -273,7 +268,6 @@ class ControllerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -301,7 +295,6 @@ class ControllerDebuggeesBreakpointsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UpdateActiveBreakpointResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -358,7 +351,6 @@ class DebuggerDebuggeesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (clientVersion != null) {
@@ -383,7 +375,6 @@ class DebuggerDebuggeesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListDebuggeesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -427,7 +418,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (debuggeeId == null) {
@@ -455,7 +445,6 @@ class DebuggerDebuggeesBreakpointsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -491,7 +480,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (debuggeeId == null) {
@@ -519,7 +507,6 @@ class DebuggerDebuggeesBreakpointsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GetBreakpointResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -584,7 +571,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (debuggeeId == null) {
@@ -623,7 +609,6 @@ class DebuggerDebuggeesBreakpointsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListBreakpointsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -674,7 +659,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -704,7 +688,6 @@ class DebuggerDebuggeesBreakpointsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SetBreakpointResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -95,7 +94,6 @@ class AutnumResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (autnumId == null) {
@@ -114,7 +112,6 @@ class AutnumResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -151,7 +148,6 @@ class DomainResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (domainName == null) {
@@ -170,7 +166,6 @@ class DomainResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -208,7 +203,6 @@ class EntityResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (entityId == null) {
@@ -227,7 +221,6 @@ class EntityResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -269,7 +262,6 @@ class IpResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (ipId == null) {
@@ -294,7 +286,6 @@ class IpResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -333,7 +324,6 @@ class NameserverResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (nameserverId == null) {
@@ -352,7 +342,6 @@ class NameserverResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -388,7 +377,6 @@ class V1Resource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -404,7 +392,6 @@ class V1Resource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -434,7 +421,6 @@ class V1Resource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -450,7 +436,6 @@ class V1Resource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -477,7 +462,6 @@ class V1Resource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -493,7 +477,6 @@ class V1Resource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -522,7 +505,6 @@ class V1Resource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -538,7 +520,6 @@ class V1Resource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -567,7 +548,6 @@ class V1Resource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -583,7 +563,6 @@ class V1Resource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

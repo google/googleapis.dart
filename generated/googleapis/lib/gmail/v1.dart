@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -165,7 +164,6 @@ class UsersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -186,7 +184,6 @@ class UsersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -214,7 +211,6 @@ class UsersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -223,8 +219,6 @@ class UsersResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url =
         'gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/stop';
@@ -236,7 +230,7 @@ class UsersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -268,7 +262,6 @@ class UsersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -291,7 +284,6 @@ class UsersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return WatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -339,7 +331,6 @@ class UsersDraftsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -376,7 +367,6 @@ class UsersDraftsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Draft.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -409,7 +399,6 @@ class UsersDraftsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -421,8 +410,6 @@ class UsersDraftsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -436,7 +423,7 @@ class UsersDraftsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -482,7 +469,6 @@ class UsersDraftsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -510,7 +496,6 @@ class UsersDraftsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Draft.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -556,7 +541,6 @@ class UsersDraftsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -589,7 +573,6 @@ class UsersDraftsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListDraftsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -632,7 +615,6 @@ class UsersDraftsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -669,7 +651,6 @@ class UsersDraftsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -713,7 +694,6 @@ class UsersDraftsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -756,7 +736,6 @@ class UsersDraftsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Draft.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -821,7 +800,6 @@ class UsersHistoryResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -857,7 +835,6 @@ class UsersHistoryResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListHistoryResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -897,7 +874,6 @@ class UsersLabelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -921,7 +897,6 @@ class UsersLabelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -953,7 +928,6 @@ class UsersLabelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -965,8 +939,6 @@ class UsersLabelsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -980,7 +952,7 @@ class UsersLabelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1012,7 +984,6 @@ class UsersLabelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -1037,7 +1008,6 @@ class UsersLabelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1067,7 +1037,6 @@ class UsersLabelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -1088,7 +1057,6 @@ class UsersLabelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListLabelsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1125,7 +1093,6 @@ class UsersLabelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1153,7 +1120,6 @@ class UsersLabelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1189,7 +1155,6 @@ class UsersLabelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1217,7 +1182,6 @@ class UsersLabelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Label.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1260,7 +1224,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1273,8 +1236,6 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/batchDelete';
@@ -1286,7 +1247,7 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1316,7 +1277,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1329,8 +1289,6 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/batchModify';
@@ -1342,7 +1300,7 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1374,7 +1332,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -1386,8 +1343,6 @@ class UsersMessagesResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1401,7 +1356,7 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1453,7 +1408,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -1484,7 +1438,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1550,7 +1503,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1599,7 +1551,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1656,7 +1607,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1699,7 +1649,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1750,7 +1699,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -1786,7 +1734,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListMessagesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1823,7 +1770,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1852,7 +1798,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1894,7 +1839,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1931,7 +1875,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1964,7 +1907,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -1990,7 +1932,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2023,7 +1964,6 @@ class UsersMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2049,7 +1989,6 @@ class UsersMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2092,7 +2031,6 @@ class UsersMessagesAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2122,7 +2060,6 @@ class UsersMessagesAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return MessagePartBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2168,7 +2105,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2189,7 +2125,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AutoForwarding.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2220,7 +2155,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2241,7 +2175,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ImapSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2272,7 +2205,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2293,7 +2225,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LanguageSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2324,7 +2255,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2345,7 +2275,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PopSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2376,7 +2305,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2397,7 +2325,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VacationSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2435,7 +2362,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2459,7 +2385,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AutoForwarding.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2493,7 +2418,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2517,7 +2441,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ImapSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2557,7 +2480,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2581,7 +2503,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LanguageSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2615,7 +2536,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2639,7 +2559,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PopSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2673,7 +2592,6 @@ class UsersSettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2697,7 +2615,6 @@ class UsersSettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VacationSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2750,7 +2667,6 @@ class UsersSettingsDelegatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2774,7 +2690,6 @@ class UsersSettingsDelegatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Delegate.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2811,7 +2726,6 @@ class UsersSettingsDelegatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2823,8 +2737,6 @@ class UsersSettingsDelegatesResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2838,7 +2750,7 @@ class UsersSettingsDelegatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2875,7 +2787,6 @@ class UsersSettingsDelegatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2900,7 +2811,6 @@ class UsersSettingsDelegatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Delegate.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2933,7 +2843,6 @@ class UsersSettingsDelegatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -2954,7 +2863,6 @@ class UsersSettingsDelegatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListDelegatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2997,7 +2905,6 @@ class UsersSettingsFiltersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3021,7 +2928,6 @@ class UsersSettingsFiltersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3052,7 +2958,6 @@ class UsersSettingsFiltersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3064,8 +2969,6 @@ class UsersSettingsFiltersResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -3079,7 +2982,7 @@ class UsersSettingsFiltersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3111,7 +3014,6 @@ class UsersSettingsFiltersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3136,7 +3038,6 @@ class UsersSettingsFiltersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3166,7 +3067,6 @@ class UsersSettingsFiltersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3187,7 +3087,6 @@ class UsersSettingsFiltersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListFiltersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3234,7 +3133,6 @@ class UsersSettingsForwardingAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3258,7 +3156,6 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ForwardingAddress.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3294,7 +3191,6 @@ class UsersSettingsForwardingAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3306,8 +3202,6 @@ class UsersSettingsForwardingAddressesResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -3321,7 +3215,7 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3353,7 +3247,6 @@ class UsersSettingsForwardingAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3378,7 +3271,6 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ForwardingAddress.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3409,7 +3301,6 @@ class UsersSettingsForwardingAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3430,7 +3321,6 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListForwardingAddressesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3483,7 +3373,6 @@ class UsersSettingsSendAsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3507,7 +3396,6 @@ class UsersSettingsSendAsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3542,7 +3430,6 @@ class UsersSettingsSendAsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3554,8 +3441,6 @@ class UsersSettingsSendAsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -3569,7 +3454,7 @@ class UsersSettingsSendAsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3604,7 +3489,6 @@ class UsersSettingsSendAsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3629,7 +3513,6 @@ class UsersSettingsSendAsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3662,7 +3545,6 @@ class UsersSettingsSendAsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3683,7 +3565,6 @@ class UsersSettingsSendAsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListSendAsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3720,7 +3601,6 @@ class UsersSettingsSendAsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3748,7 +3628,6 @@ class UsersSettingsSendAsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3789,7 +3668,6 @@ class UsersSettingsSendAsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3817,7 +3695,6 @@ class UsersSettingsSendAsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SendAs.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3851,7 +3728,6 @@ class UsersSettingsSendAsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3863,8 +3739,6 @@ class UsersSettingsSendAsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -3879,7 +3753,7 @@ class UsersSettingsSendAsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 }
@@ -3920,7 +3794,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -3936,8 +3809,6 @@ class UsersSettingsSendAsSmimeInfoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
@@ -3952,7 +3823,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3988,7 +3859,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4018,7 +3888,6 @@ class UsersSettingsSendAsSmimeInfoResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SmimeInfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4057,7 +3926,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4086,7 +3954,6 @@ class UsersSettingsSendAsSmimeInfoResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SmimeInfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4120,7 +3987,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4146,7 +4012,6 @@ class UsersSettingsSendAsSmimeInfoResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListSmimeInfoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4182,7 +4047,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4197,8 +4061,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -4215,7 +4077,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 }
@@ -4253,7 +4115,6 @@ class UsersThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4265,8 +4126,6 @@ class UsersThreadsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -4280,7 +4139,7 @@ class UsersThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -4326,7 +4185,6 @@ class UsersThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4357,7 +4215,6 @@ class UsersThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4408,7 +4265,6 @@ class UsersThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4444,7 +4300,6 @@ class UsersThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListThreadsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4483,7 +4338,6 @@ class UsersThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4512,7 +4366,6 @@ class UsersThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4545,7 +4398,6 @@ class UsersThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4571,7 +4423,6 @@ class UsersThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4604,7 +4455,6 @@ class UsersThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -4630,7 +4480,6 @@ class UsersThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Thread.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

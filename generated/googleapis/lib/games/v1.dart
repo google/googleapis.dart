@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -124,7 +123,6 @@ class AchievementDefinitionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (language != null) {
@@ -149,7 +147,6 @@ class AchievementDefinitionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AchievementDefinitionsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -194,7 +191,6 @@ class AchievementsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (achievementId == null) {
@@ -222,7 +218,6 @@ class AchievementsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AchievementIncrementResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -276,7 +271,6 @@ class AchievementsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (playerId == null) {
@@ -309,7 +303,6 @@ class AchievementsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlayerAchievementListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -340,7 +333,6 @@ class AchievementsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (achievementId == null) {
@@ -361,7 +353,6 @@ class AchievementsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AchievementRevealResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -399,7 +390,6 @@ class AchievementsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (achievementId == null) {
@@ -424,7 +414,6 @@ class AchievementsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AchievementSetStepsAtLeastResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -454,7 +443,6 @@ class AchievementsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (achievementId == null) {
@@ -475,7 +463,6 @@ class AchievementsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AchievementUnlockResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -505,7 +492,6 @@ class AchievementsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -524,7 +510,6 @@ class AchievementsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AchievementUpdateMultipleResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -577,7 +562,6 @@ class ApplicationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (applicationId == null) {
@@ -603,7 +587,6 @@ class ApplicationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Application.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -641,7 +624,6 @@ class ApplicationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (applicationId != null) {
@@ -663,7 +645,6 @@ class ApplicationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return EndPoint.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -688,14 +669,11 @@ class ApplicationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'games/v1/applications/played';
 
@@ -706,7 +684,7 @@ class ApplicationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -737,7 +715,6 @@ class ApplicationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (applicationId == null) {
@@ -758,7 +735,6 @@ class ApplicationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ApplicationVerifyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -804,7 +780,6 @@ class EventsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (language != null) {
@@ -829,7 +804,6 @@ class EventsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlayerEventListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -868,7 +842,6 @@ class EventsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (language != null) {
@@ -893,7 +866,6 @@ class EventsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return EventDefinitionListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -928,7 +900,6 @@ class EventsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -950,7 +921,6 @@ class EventsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return EventUpdateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -990,7 +960,6 @@ class LeaderboardsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (leaderboardId == null) {
@@ -1013,7 +982,6 @@ class LeaderboardsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Leaderboard.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1052,7 +1020,6 @@ class LeaderboardsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (language != null) {
@@ -1077,7 +1044,6 @@ class LeaderboardsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LeaderboardListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1110,7 +1076,6 @@ class MetagameResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -1126,7 +1091,6 @@ class MetagameResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return MetagameConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1177,7 +1141,6 @@ class MetagameResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (playerId == null) {
@@ -1211,7 +1174,6 @@ class MetagameResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CategoryListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1255,7 +1217,6 @@ class PlayersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (playerId == null) {
@@ -1277,7 +1238,6 @@ class PlayersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Player.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1325,7 +1285,6 @@ class PlayersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (collection == null) {
@@ -1354,7 +1313,6 @@ class PlayersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlayerListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1394,7 +1352,6 @@ class RevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (clientRevision == null) {
@@ -1414,7 +1371,6 @@ class RevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RevisionCheckResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1495,7 +1451,6 @@ class ScoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (playerId == null) {
@@ -1537,7 +1492,6 @@ class ScoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlayerLeaderboardScoreListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1595,7 +1549,6 @@ class ScoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (leaderboardId == null) {
@@ -1633,7 +1586,6 @@ class ScoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LeaderboardScores.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1701,7 +1653,6 @@ class ScoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (leaderboardId == null) {
@@ -1745,7 +1696,6 @@ class ScoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LeaderboardScores.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1793,7 +1743,6 @@ class ScoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (leaderboardId == null) {
@@ -1824,7 +1773,6 @@ class ScoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlayerScoreResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1858,7 +1806,6 @@ class ScoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1880,7 +1827,6 @@ class ScoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlayerScoreListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1920,7 +1866,6 @@ class SnapshotsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (snapshotId == null) {
@@ -1942,7 +1887,6 @@ class SnapshotsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1985,7 +1929,6 @@ class SnapshotsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (playerId == null) {
@@ -2015,7 +1958,6 @@ class SnapshotsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SnapshotListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2056,7 +1998,6 @@ class SnapshotsExtendedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2080,7 +2021,6 @@ class SnapshotsExtendedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ResolveSnapshotHeadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2114,7 +2054,6 @@ class StatsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -2130,7 +2069,6 @@ class StatsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return StatsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

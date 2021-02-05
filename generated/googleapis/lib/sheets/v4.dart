@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -125,7 +124,6 @@ class SpreadsheetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -149,7 +147,6 @@ class SpreadsheetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchUpdateSpreadsheetResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -179,7 +176,6 @@ class SpreadsheetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -198,7 +194,6 @@ class SpreadsheetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Spreadsheet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -246,7 +241,6 @@ class SpreadsheetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (spreadsheetId == null) {
@@ -271,7 +265,6 @@ class SpreadsheetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Spreadsheet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -317,7 +310,6 @@ class SpreadsheetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -341,7 +333,6 @@ class SpreadsheetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Spreadsheet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -384,7 +375,6 @@ class SpreadsheetsDeveloperMetadataResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (spreadsheetId == null) {
@@ -409,7 +399,6 @@ class SpreadsheetsDeveloperMetadataResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DeveloperMetadata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -447,7 +436,6 @@ class SpreadsheetsDeveloperMetadataResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -471,7 +459,6 @@ class SpreadsheetsDeveloperMetadataResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SearchDeveloperMetadataResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -515,7 +502,6 @@ class SpreadsheetsSheetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -544,7 +530,6 @@ class SpreadsheetsSheetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SheetProperties.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -658,7 +643,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -704,7 +688,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppendValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -741,7 +724,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -765,7 +747,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchClearValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -803,7 +784,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -827,7 +807,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchClearValuesByDataFilterResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -907,7 +886,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (spreadsheetId == null) {
@@ -940,7 +918,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchGetValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -977,7 +954,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1001,7 +977,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchGetValuesByDataFilterResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1037,7 +1012,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1061,7 +1035,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchUpdateValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1097,7 +1070,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1121,7 +1093,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchUpdateValuesByDataFilterResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1161,7 +1132,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1190,7 +1160,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ClearValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1270,7 +1239,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (spreadsheetId == null) {
@@ -1304,7 +1272,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ValueRange.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1396,7 +1363,6 @@ class SpreadsheetsValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1438,7 +1404,6 @@ class SpreadsheetsValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UpdateValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

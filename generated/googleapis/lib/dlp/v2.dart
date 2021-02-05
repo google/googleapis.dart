@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -135,7 +134,6 @@ class InfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (filter != null) {
@@ -163,7 +161,6 @@ class InfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -225,7 +222,6 @@ class LocationsInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -254,7 +250,6 @@ class LocationsInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -327,7 +322,6 @@ class OrganizationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -351,7 +345,6 @@ class OrganizationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -389,7 +382,6 @@ class OrganizationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -408,7 +400,6 @@ class OrganizationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -446,7 +437,6 @@ class OrganizationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -465,7 +455,6 @@ class OrganizationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -532,7 +521,6 @@ class OrganizationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -565,7 +553,6 @@ class OrganizationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -606,7 +593,6 @@ class OrganizationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -628,7 +614,6 @@ class OrganizationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -685,7 +670,6 @@ class OrganizationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -709,7 +693,6 @@ class OrganizationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -746,7 +729,6 @@ class OrganizationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -765,7 +747,6 @@ class OrganizationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -802,7 +783,6 @@ class OrganizationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -821,7 +801,6 @@ class OrganizationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -887,7 +866,6 @@ class OrganizationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -920,7 +898,6 @@ class OrganizationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -959,7 +936,6 @@ class OrganizationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -981,7 +957,6 @@ class OrganizationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1057,7 +1032,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1081,7 +1055,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1119,7 +1092,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1138,7 +1110,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1176,7 +1147,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1195,7 +1165,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1262,7 +1231,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1295,7 +1263,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1336,7 +1303,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1358,7 +1324,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1453,7 +1418,6 @@ class OrganizationsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1491,7 +1455,6 @@ class OrganizationsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1548,7 +1511,6 @@ class OrganizationsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1572,7 +1534,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1609,7 +1570,6 @@ class OrganizationsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1628,7 +1588,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1665,7 +1624,6 @@ class OrganizationsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1684,7 +1642,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1750,7 +1707,6 @@ class OrganizationsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1783,7 +1739,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1822,7 +1777,6 @@ class OrganizationsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1844,7 +1798,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1897,7 +1850,6 @@ class OrganizationsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1921,7 +1873,6 @@ class OrganizationsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1956,7 +1907,6 @@ class OrganizationsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1975,7 +1925,6 @@ class OrganizationsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2010,7 +1959,6 @@ class OrganizationsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2029,7 +1977,6 @@ class OrganizationsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2110,7 +2057,6 @@ class OrganizationsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2146,7 +2092,6 @@ class OrganizationsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2184,7 +2129,6 @@ class OrganizationsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2206,7 +2150,6 @@ class OrganizationsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2263,7 +2206,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2287,7 +2229,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2325,7 +2266,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2344,7 +2284,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2381,7 +2320,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2400,7 +2338,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2468,7 +2405,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2501,7 +2437,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2542,7 +2477,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2564,7 +2498,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2621,7 +2554,6 @@ class OrganizationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2645,7 +2577,6 @@ class OrganizationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2682,7 +2613,6 @@ class OrganizationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2701,7 +2631,6 @@ class OrganizationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2737,7 +2666,6 @@ class OrganizationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2756,7 +2684,6 @@ class OrganizationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2824,7 +2751,6 @@ class OrganizationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2857,7 +2783,6 @@ class OrganizationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2897,7 +2822,6 @@ class OrganizationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2919,7 +2843,6 @@ class OrganizationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2994,7 +2917,6 @@ class ProjectsContentResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3018,7 +2940,6 @@ class ProjectsContentResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3068,7 +2989,6 @@ class ProjectsContentResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3092,7 +3012,6 @@ class ProjectsContentResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3139,7 +3058,6 @@ class ProjectsContentResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3163,7 +3081,6 @@ class ProjectsContentResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3221,7 +3138,6 @@ class ProjectsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3245,7 +3161,6 @@ class ProjectsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3282,7 +3197,6 @@ class ProjectsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3301,7 +3215,6 @@ class ProjectsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3338,7 +3251,6 @@ class ProjectsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3357,7 +3269,6 @@ class ProjectsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3424,7 +3335,6 @@ class ProjectsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3457,7 +3367,6 @@ class ProjectsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3497,7 +3406,6 @@ class ProjectsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3519,7 +3427,6 @@ class ProjectsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3563,7 +3470,6 @@ class ProjectsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3585,7 +3491,6 @@ class ProjectsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3634,7 +3539,6 @@ class ProjectsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3657,7 +3561,6 @@ class ProjectsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3693,7 +3596,6 @@ class ProjectsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3712,7 +3614,6 @@ class ProjectsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3746,7 +3647,6 @@ class ProjectsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3765,7 +3665,6 @@ class ProjectsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3853,7 +3752,6 @@ class ProjectsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3891,7 +3789,6 @@ class ProjectsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3947,7 +3844,6 @@ class ProjectsImageResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3971,7 +3867,6 @@ class ProjectsImageResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2RedactImageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4028,7 +3923,6 @@ class ProjectsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4052,7 +3946,6 @@ class ProjectsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4088,7 +3981,6 @@ class ProjectsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4107,7 +3999,6 @@ class ProjectsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4143,7 +4034,6 @@ class ProjectsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4162,7 +4052,6 @@ class ProjectsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4228,7 +4117,6 @@ class ProjectsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -4261,7 +4149,6 @@ class ProjectsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4299,7 +4186,6 @@ class ProjectsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4321,7 +4207,6 @@ class ProjectsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4366,7 +4251,6 @@ class ProjectsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4388,7 +4272,6 @@ class ProjectsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4434,7 +4317,6 @@ class ProjectsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4458,7 +4340,6 @@ class ProjectsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4492,7 +4373,6 @@ class ProjectsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4511,7 +4391,6 @@ class ProjectsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4545,7 +4424,6 @@ class ProjectsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4564,7 +4442,6 @@ class ProjectsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4645,7 +4522,6 @@ class ProjectsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -4681,7 +4557,6 @@ class ProjectsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4718,7 +4593,6 @@ class ProjectsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4740,7 +4614,6 @@ class ProjectsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4817,7 +4690,6 @@ class ProjectsLocationsContentResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4841,7 +4713,6 @@ class ProjectsLocationsContentResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4891,7 +4762,6 @@ class ProjectsLocationsContentResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4915,7 +4785,6 @@ class ProjectsLocationsContentResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4962,7 +4831,6 @@ class ProjectsLocationsContentResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4986,7 +4854,6 @@ class ProjectsLocationsContentResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5044,7 +4911,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5068,7 +4934,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5106,7 +4971,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5125,7 +4989,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5163,7 +5026,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5182,7 +5044,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5249,7 +5110,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5282,7 +5142,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5323,7 +5182,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5345,7 +5203,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5391,7 +5248,6 @@ class ProjectsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5413,7 +5269,6 @@ class ProjectsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5462,7 +5317,6 @@ class ProjectsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5485,7 +5339,6 @@ class ProjectsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5522,7 +5375,6 @@ class ProjectsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5541,7 +5393,6 @@ class ProjectsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5579,7 +5430,6 @@ class ProjectsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5601,7 +5451,6 @@ class ProjectsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5636,7 +5485,6 @@ class ProjectsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5655,7 +5503,6 @@ class ProjectsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5694,7 +5541,6 @@ class ProjectsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5718,7 +5564,6 @@ class ProjectsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2HybridInspectResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5806,7 +5651,6 @@ class ProjectsLocationsDlpJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5844,7 +5688,6 @@ class ProjectsLocationsDlpJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5901,7 +5744,6 @@ class ProjectsLocationsImageResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5925,7 +5767,6 @@ class ProjectsLocationsImageResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2RedactImageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5982,7 +5823,6 @@ class ProjectsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6006,7 +5846,6 @@ class ProjectsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6043,7 +5882,6 @@ class ProjectsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6062,7 +5900,6 @@ class ProjectsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6099,7 +5936,6 @@ class ProjectsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6118,7 +5954,6 @@ class ProjectsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6184,7 +6019,6 @@ class ProjectsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -6217,7 +6051,6 @@ class ProjectsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6256,7 +6089,6 @@ class ProjectsLocationsInspectTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6278,7 +6110,6 @@ class ProjectsLocationsInspectTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6324,7 +6155,6 @@ class ProjectsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6346,7 +6176,6 @@ class ProjectsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6392,7 +6221,6 @@ class ProjectsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6416,7 +6244,6 @@ class ProjectsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6451,7 +6278,6 @@ class ProjectsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6470,7 +6296,6 @@ class ProjectsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6505,7 +6330,6 @@ class ProjectsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6524,7 +6348,6 @@ class ProjectsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6563,7 +6386,6 @@ class ProjectsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6587,7 +6409,6 @@ class ProjectsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2HybridInspectResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6668,7 +6489,6 @@ class ProjectsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -6704,7 +6524,6 @@ class ProjectsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6742,7 +6561,6 @@ class ProjectsLocationsJobTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6764,7 +6582,6 @@ class ProjectsLocationsJobTriggersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6821,7 +6638,6 @@ class ProjectsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6845,7 +6661,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6883,7 +6698,6 @@ class ProjectsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6902,7 +6716,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6939,7 +6752,6 @@ class ProjectsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6958,7 +6770,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7026,7 +6837,6 @@ class ProjectsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -7059,7 +6869,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7100,7 +6909,6 @@ class ProjectsLocationsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -7122,7 +6930,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7179,7 +6986,6 @@ class ProjectsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -7203,7 +7009,6 @@ class ProjectsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7240,7 +7045,6 @@ class ProjectsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7259,7 +7063,6 @@ class ProjectsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7295,7 +7098,6 @@ class ProjectsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7314,7 +7116,6 @@ class ProjectsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7382,7 +7183,6 @@ class ProjectsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -7415,7 +7215,6 @@ class ProjectsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7455,7 +7254,6 @@ class ProjectsStoredInfoTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -7477,7 +7275,6 @@ class ProjectsStoredInfoTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);

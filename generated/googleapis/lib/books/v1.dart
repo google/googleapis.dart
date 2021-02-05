@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -130,7 +129,6 @@ class BookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -158,7 +156,6 @@ class BookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Bookshelf.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -190,7 +187,6 @@ class BookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -214,7 +210,6 @@ class BookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Bookshelves.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -266,7 +261,6 @@ class BookshelvesVolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (userId == null) {
@@ -304,7 +298,6 @@ class BookshelvesVolumesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -351,7 +344,6 @@ class CloudloadingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (driveDocumentId != null) {
@@ -379,7 +371,6 @@ class CloudloadingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BooksCloudloadingResource.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -409,7 +400,6 @@ class CloudloadingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -429,7 +419,6 @@ class CloudloadingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -458,7 +447,6 @@ class CloudloadingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -477,7 +465,6 @@ class CloudloadingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BooksCloudloadingResource.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -513,7 +500,6 @@ class DictionaryResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (cpksver == null) {
@@ -533,7 +519,6 @@ class DictionaryResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Metadata.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -568,7 +553,6 @@ class FamilysharingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (source != null) {
@@ -587,7 +571,6 @@ class FamilysharingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FamilyInfo.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -625,7 +608,6 @@ class FamilysharingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (docId != null) {
@@ -650,7 +632,6 @@ class FamilysharingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -688,7 +669,6 @@ class FamilysharingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (docId != null) {
@@ -713,7 +693,6 @@ class FamilysharingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -762,7 +741,6 @@ class LayersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -793,7 +771,6 @@ class LayersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Layersummary.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -836,7 +813,6 @@ class LayersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -869,7 +845,6 @@ class LayersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Layersummaries.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -938,7 +913,6 @@ class LayersAnnotationDataResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -990,7 +964,6 @@ class LayersAnnotationDataResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DictionaryAnnotationdata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1063,7 +1036,6 @@ class LayersAnnotationDataResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -1123,7 +1095,6 @@ class LayersAnnotationDataResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Annotationsdata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1173,7 +1144,6 @@ class LayersVolumeAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -1209,7 +1179,6 @@ class LayersVolumeAnnotationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumeannotation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1287,7 +1256,6 @@ class LayersVolumeAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -1352,7 +1320,6 @@ class LayersVolumeAnnotationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumeannotations.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1389,7 +1356,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (country != null) {
@@ -1408,7 +1374,6 @@ class MyconfigResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Usersettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1448,7 +1413,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (cpksver == null) {
@@ -1478,7 +1442,6 @@ class MyconfigResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DownloadAccesses.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1530,7 +1493,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (cpksver == null) {
@@ -1568,7 +1530,6 @@ class MyconfigResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return RequestAccessData.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1623,7 +1584,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (cpksver == null) {
@@ -1666,7 +1626,6 @@ class MyconfigResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1699,7 +1658,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1718,7 +1676,6 @@ class MyconfigResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Usersettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1771,7 +1728,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (annotationId == null) {
@@ -1794,7 +1750,6 @@ class MylibraryAnnotationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1836,7 +1791,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1869,7 +1823,6 @@ class MylibraryAnnotationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Annotation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1930,7 +1883,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (contentVersion != null) {
@@ -1976,7 +1928,6 @@ class MylibraryAnnotationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Annotations.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2009,7 +1960,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (layerIds == null || layerIds.isEmpty) {
@@ -2033,7 +1983,6 @@ class MylibraryAnnotationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AnnotationsSummary.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2069,7 +2018,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2095,7 +2043,6 @@ class MylibraryAnnotationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Annotation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2149,7 +2096,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (shelf == null) {
@@ -2180,7 +2126,6 @@ class MylibraryBookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2212,7 +2157,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (shelf == null) {
@@ -2236,7 +2180,6 @@ class MylibraryBookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2269,7 +2212,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (shelf == null) {
@@ -2292,7 +2234,6 @@ class MylibraryBookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Bookshelf.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2321,7 +2262,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (source != null) {
@@ -2340,7 +2280,6 @@ class MylibraryBookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Bookshelves.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2381,7 +2320,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (shelf == null) {
@@ -2413,7 +2351,6 @@ class MylibraryBookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2454,7 +2391,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (shelf == null) {
@@ -2485,7 +2421,6 @@ class MylibraryBookshelvesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2547,7 +2482,6 @@ class MylibraryBookshelvesVolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (shelf == null) {
@@ -2589,7 +2523,6 @@ class MylibraryBookshelvesVolumesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2632,7 +2565,6 @@ class MylibraryReadingpositionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -2658,7 +2590,6 @@ class MylibraryReadingpositionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ReadingPosition.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2716,7 +2647,6 @@ class MylibraryReadingpositionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -2757,7 +2687,6 @@ class MylibraryReadingpositionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2799,7 +2728,6 @@ class NotificationResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (notificationId == null) {
@@ -2825,7 +2753,6 @@ class NotificationResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Notification.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2862,7 +2789,6 @@ class OnboardingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (locale != null) {
@@ -2881,7 +2807,6 @@ class OnboardingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Category.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2929,7 +2854,6 @@ class OnboardingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (categoryId != null) {
@@ -2960,7 +2884,6 @@ class OnboardingResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volume2.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3008,7 +2931,6 @@ class PersonalizedstreamResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (locale != null) {
@@ -3033,7 +2955,6 @@ class PersonalizedstreamResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Discoveryclusters.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3090,7 +3011,6 @@ class PromoofferResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (androidId != null) {
@@ -3130,7 +3050,6 @@ class PromoofferResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3177,7 +3096,6 @@ class PromoofferResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (androidId != null) {
@@ -3214,7 +3132,6 @@ class PromoofferResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3258,7 +3175,6 @@ class PromoofferResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (androidId != null) {
@@ -3292,7 +3208,6 @@ class PromoofferResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Offers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3330,7 +3245,6 @@ class SeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (seriesId == null || seriesId.isEmpty) {
@@ -3350,7 +3264,6 @@ class SeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Series.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3392,7 +3305,6 @@ class SeriesMembershipResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (seriesId == null) {
@@ -3418,7 +3330,6 @@ class SeriesMembershipResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Seriesmembership.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3485,7 +3396,6 @@ class VolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -3524,7 +3434,6 @@ class VolumesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volume.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3627,7 +3536,6 @@ class VolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (q == null) {
@@ -3686,7 +3594,6 @@ class VolumesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3745,7 +3652,6 @@ class VolumesAssociatedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (volumeId == null) {
@@ -3778,7 +3684,6 @@ class VolumesAssociatedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3835,7 +3740,6 @@ class VolumesMybooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (acquireMethod != null) {
@@ -3872,7 +3776,6 @@ class VolumesMybooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3920,7 +3823,6 @@ class VolumesRecommendedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (locale != null) {
@@ -3945,7 +3847,6 @@ class VolumesRecommendedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3988,7 +3889,6 @@ class VolumesRecommendedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (rating == null) {
@@ -4018,7 +3918,6 @@ class VolumesRecommendedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BooksVolumesRecommendedRateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4074,7 +3973,6 @@ class VolumesUseruploadedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (locale != null) {
@@ -4108,7 +4006,6 @@ class VolumesUseruploadedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

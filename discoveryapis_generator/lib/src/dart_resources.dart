@@ -333,13 +333,6 @@ class DartResourceMethod {
         requestCode.writeln('    _uploadOptions =  uploadOptions;');
       }
     }
-    if (mediaDownload) {
-      params.writeln();
-      requestCode.writeln('    _downloadOptions = downloadOptions;');
-    } else if (returnType == null) {
-      params.writeln();
-      requestCode.writeln('    _downloadOptions = null;');
-    }
 
     final urlPatternCode = StringBuffer();
     final patternExpr = urlPattern.stringExpression(templateVars);
@@ -372,6 +365,12 @@ class DartResourceMethod {
     final responseVar =
         (returnType == null && !mediaDownload) ? '' : 'final _response = ';
 
+    final downloadOptions = mediaDownload
+        ? 'downloadOptions: downloadOptions,'
+        : returnType == null
+            ? 'downloadOptions: null,'
+            : '';
+
     requestCode.write('''
 
 $urlPatternCode
@@ -383,7 +382,7 @@ $urlPatternCode
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      $downloadOptions
     );
 ''');
 
@@ -392,8 +391,8 @@ $urlPatternCode
         returnType != null ? returnType.jsonDecode(data) : 'null';
     if (mediaDownload) {
       requestCode.write('''
-    if (_downloadOptions == null ||
-        _downloadOptions == ${imports.commons}.DownloadOptions.Metadata) {
+    if (downloadOptions == null ||
+        downloadOptions == ${imports.commons}.DownloadOptions.Metadata) {
       return $plainResponse;
     } else {
       return _response;
@@ -410,19 +409,16 @@ $urlPatternCode
     methodString.writeln('  $signature async {');
 
     final core = imports.core.ref();
-    // For null safe code need an explicit type since `var` will infer as
-    // non-nullable and we need nullable.
-    final downloadOptionsType =
-        generateNullSafeCode ? '${imports.commons}.DownloadOptions?' : 'var';
-    methodString.write('''
+    methodString.write(
+      '''
     ${core}String _url;
     final _queryParams = <${core}String, ${core}List<${core}String>>{};
     ${imports.commons}.Media$orNull _uploadMedia;
     ${imports.commons}.UploadOptions$orNull _uploadOptions;
-    $downloadOptionsType _downloadOptions = ${imports.commons}.DownloadOptions.Metadata;
     ${core}String$orNull _body;
 
-$params$requestCode''');
+$params$requestCode''',
+    );
 
     methodString.writeln('  }');
 

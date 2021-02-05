@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -110,7 +109,6 @@ class ProjectsLocationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -129,7 +127,6 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -168,7 +165,6 @@ class ProjectsLocationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -197,7 +193,6 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -258,7 +253,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -284,7 +278,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -328,7 +321,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -352,7 +344,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -388,7 +379,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -407,7 +397,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -439,7 +428,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -458,7 +446,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Dataset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -503,7 +490,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -529,7 +515,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -568,7 +553,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -594,7 +578,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListDatasetsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -635,7 +618,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -660,7 +642,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Dataset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -699,7 +680,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -723,7 +703,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -764,7 +743,6 @@ class ProjectsLocationsDatasetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -788,7 +766,6 @@ class ProjectsLocationsDatasetsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -841,7 +818,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -867,7 +843,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -906,7 +881,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -930,7 +904,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -971,7 +944,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -995,7 +967,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1044,7 +1015,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1071,7 +1041,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DicomStore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1116,7 +1085,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1140,7 +1108,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1172,7 +1139,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1191,7 +1157,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1232,7 +1197,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1254,7 +1218,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1285,7 +1248,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1304,7 +1266,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DicomStore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1350,7 +1311,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -1376,7 +1336,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1416,7 +1375,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1438,7 +1396,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1482,7 +1439,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1512,7 +1468,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListDicomStoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1553,7 +1508,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1578,7 +1532,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DicomStore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1626,7 +1579,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1651,7 +1603,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1697,7 +1648,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1722,7 +1672,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1768,7 +1717,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1793,7 +1741,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1832,7 +1779,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1856,7 +1802,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1906,7 +1851,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1934,7 +1878,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1975,7 +1918,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1999,7 +1941,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2056,7 +1997,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2081,7 +2021,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2128,7 +2067,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2153,7 +2091,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2199,7 +2136,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2224,7 +2160,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2271,7 +2206,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2296,7 +2230,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2342,7 +2275,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2367,7 +2299,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2417,7 +2348,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2445,7 +2375,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2505,7 +2434,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2530,7 +2458,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2577,7 +2504,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2602,7 +2528,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2648,7 +2573,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2673,7 +2597,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2720,7 +2643,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2745,7 +2667,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2804,7 +2725,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2829,7 +2749,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2880,7 +2799,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2905,7 +2823,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2955,7 +2872,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2980,7 +2896,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3029,7 +2944,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3054,7 +2968,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3111,7 +3024,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3136,7 +3048,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3186,7 +3097,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3211,7 +3121,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3259,7 +3168,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3286,7 +3194,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FhirStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3327,7 +3234,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3351,7 +3257,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3382,7 +3287,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3401,7 +3305,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3445,7 +3348,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3467,7 +3369,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3498,7 +3399,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3517,7 +3417,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FhirStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3562,7 +3461,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -3588,7 +3486,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3680,7 +3577,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3702,7 +3598,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3746,7 +3641,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3776,7 +3670,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListFhirStoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3817,7 +3710,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3842,7 +3734,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return FhirStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3881,7 +3772,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3905,7 +3795,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3946,7 +3835,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3970,7 +3858,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4061,7 +3948,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4100,7 +3986,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4138,7 +4023,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4157,7 +4041,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4202,7 +4085,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4223,7 +4105,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4282,7 +4163,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4310,7 +4190,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4352,7 +4231,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4371,7 +4249,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4432,7 +4309,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4454,7 +4330,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4526,7 +4401,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4557,7 +4431,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4607,7 +4480,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4629,7 +4501,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4678,7 +4549,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4697,7 +4567,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4777,7 +4646,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4801,7 +4669,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4888,7 +4755,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4917,7 +4783,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4974,7 +4839,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4996,7 +4860,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5040,7 +4903,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5059,7 +4921,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5107,7 +4968,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5134,7 +4994,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Hl7V2Store.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5167,7 +5026,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5186,7 +5044,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5217,7 +5074,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5236,7 +5092,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Hl7V2Store.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5282,7 +5137,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -5308,7 +5162,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5352,7 +5205,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5382,7 +5234,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListHl7V2StoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5423,7 +5274,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5448,7 +5298,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Hl7V2Store.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5488,7 +5337,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5512,7 +5360,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5553,7 +5400,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5577,7 +5423,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5627,7 +5472,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5650,7 +5494,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5681,7 +5524,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5700,7 +5542,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5743,7 +5584,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5765,7 +5605,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5809,7 +5648,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5833,7 +5671,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return IngestMessageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5916,7 +5753,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5951,7 +5787,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListMessagesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5999,7 +5834,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6024,7 +5858,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6074,7 +5907,6 @@ class ProjectsLocationsDatasetsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6096,7 +5928,6 @@ class ProjectsLocationsDatasetsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6130,7 +5961,6 @@ class ProjectsLocationsDatasetsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6149,7 +5979,6 @@ class ProjectsLocationsDatasetsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6198,7 +6027,6 @@ class ProjectsLocationsDatasetsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6227,7 +6055,6 @@ class ProjectsLocationsDatasetsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

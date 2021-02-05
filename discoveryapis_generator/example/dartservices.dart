@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -62,7 +61,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -78,7 +76,6 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AnalysisResults.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -102,7 +99,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (source != null) {
@@ -118,7 +114,6 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AnalysisResults.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -140,7 +135,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -156,7 +150,6 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CompileResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -180,7 +173,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (source != null) {
@@ -196,7 +188,6 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CompileResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -216,14 +207,11 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
-
-    _downloadOptions = null;
 
     _url = 'complete';
 
@@ -234,7 +222,7 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -257,7 +245,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (offset != null) {
@@ -266,8 +253,6 @@ class DartservicesApi {
     if (source != null) {
       _queryParams['source'] = [source];
     }
-
-    _downloadOptions = null;
 
     _url = 'complete';
 
@@ -278,7 +263,7 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -298,7 +283,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -314,7 +298,6 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DocumentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -341,7 +324,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (offset != null) {
@@ -360,7 +342,6 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DocumentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -399,7 +380,6 @@ class DartservicesApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (bucket == null) {
@@ -408,8 +388,6 @@ class DartservicesApi {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-
-    _downloadOptions = downloadOptions;
 
     _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -423,10 +401,10 @@ class DartservicesApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: downloadOptions,
     );
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions == null ||
+        downloadOptions == commons.DownloadOptions.Metadata) {
       return CompileResponse.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {

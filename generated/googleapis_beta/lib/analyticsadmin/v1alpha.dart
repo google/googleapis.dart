@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -116,7 +115,6 @@ class AccountSummariesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (pageSize != null) {
@@ -138,7 +136,6 @@ class AccountSummariesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -186,7 +183,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -205,7 +201,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -237,7 +232,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -256,7 +250,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -292,7 +285,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -311,7 +303,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -359,7 +350,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (pageSize != null) {
@@ -384,7 +374,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -424,7 +413,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -449,7 +437,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -481,7 +468,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -500,7 +486,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -548,7 +533,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -572,7 +556,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -614,7 +597,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -638,7 +620,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -674,7 +655,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -698,7 +678,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -736,7 +715,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -760,7 +738,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -798,7 +775,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -822,7 +798,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -864,7 +839,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -891,7 +865,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -922,7 +895,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -941,7 +913,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -972,7 +943,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -991,7 +961,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1034,7 +1003,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1061,7 +1029,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1095,7 +1062,6 @@ class AccountsUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1117,7 +1083,6 @@ class AccountsUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1166,7 +1131,6 @@ class PropertiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1185,7 +1149,6 @@ class PropertiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1224,7 +1187,6 @@ class PropertiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1243,7 +1205,6 @@ class PropertiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1275,7 +1236,6 @@ class PropertiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1294,7 +1254,6 @@ class PropertiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1353,7 +1312,6 @@ class PropertiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (filter != null) {
@@ -1381,7 +1339,6 @@ class PropertiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1421,7 +1378,6 @@ class PropertiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1446,7 +1402,6 @@ class PropertiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1494,7 +1449,6 @@ class PropertiesAndroidAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1518,7 +1472,6 @@ class PropertiesAndroidAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1552,7 +1505,6 @@ class PropertiesAndroidAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1571,7 +1523,6 @@ class PropertiesAndroidAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1605,7 +1556,6 @@ class PropertiesAndroidAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1624,7 +1574,6 @@ class PropertiesAndroidAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1673,7 +1622,6 @@ class PropertiesAndroidAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1700,7 +1648,6 @@ class PropertiesAndroidAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -1742,7 +1689,6 @@ class PropertiesAndroidAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1767,7 +1713,6 @@ class PropertiesAndroidAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1811,7 +1756,6 @@ class PropertiesFirebaseLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1835,7 +1779,6 @@ class PropertiesFirebaseLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1868,7 +1811,6 @@ class PropertiesFirebaseLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1887,7 +1829,6 @@ class PropertiesFirebaseLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1933,7 +1874,6 @@ class PropertiesFirebaseLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1960,7 +1900,6 @@ class PropertiesFirebaseLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1999,7 +1938,6 @@ class PropertiesFirebaseLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2024,7 +1962,6 @@ class PropertiesFirebaseLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2065,7 +2002,6 @@ class PropertiesGoogleAdsLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2089,7 +2025,6 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2120,7 +2055,6 @@ class PropertiesGoogleAdsLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2139,7 +2073,6 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2181,7 +2114,6 @@ class PropertiesGoogleAdsLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2208,7 +2140,6 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2249,7 +2180,6 @@ class PropertiesGoogleAdsLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2274,7 +2204,6 @@ class PropertiesGoogleAdsLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2322,7 +2251,6 @@ class PropertiesIosAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2346,7 +2274,6 @@ class PropertiesIosAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2379,7 +2306,6 @@ class PropertiesIosAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2398,7 +2324,6 @@ class PropertiesIosAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2431,7 +2356,6 @@ class PropertiesIosAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2450,7 +2374,6 @@ class PropertiesIosAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2497,7 +2420,6 @@ class PropertiesIosAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2524,7 +2446,6 @@ class PropertiesIosAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2565,7 +2486,6 @@ class PropertiesIosAppDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2590,7 +2510,6 @@ class PropertiesIosAppDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2639,7 +2558,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2663,7 +2581,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2705,7 +2622,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2729,7 +2645,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2765,7 +2680,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2789,7 +2703,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2827,7 +2740,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2851,7 +2763,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2889,7 +2800,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2913,7 +2823,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2955,7 +2864,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2982,7 +2890,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3013,7 +2920,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3032,7 +2938,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3063,7 +2968,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3082,7 +2986,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3125,7 +3028,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3152,7 +3054,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3186,7 +3087,6 @@ class PropertiesUserLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3208,7 +3108,6 @@ class PropertiesUserLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3250,7 +3149,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3274,7 +3172,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3307,7 +3204,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3326,7 +3222,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3359,7 +3254,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3378,7 +3272,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3416,7 +3309,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3435,7 +3327,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3472,7 +3363,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3491,7 +3381,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3537,7 +3426,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3564,7 +3452,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3605,7 +3492,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3630,7 +3516,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3676,7 +3561,6 @@ class PropertiesWebDataStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3701,7 +3585,6 @@ class PropertiesWebDataStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);

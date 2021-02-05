@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -133,7 +132,6 @@ class EditsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -159,7 +157,6 @@ class EditsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -189,7 +186,6 @@ class EditsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -201,8 +197,6 @@ class EditsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -216,7 +210,7 @@ class EditsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -247,7 +241,6 @@ class EditsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -272,7 +265,6 @@ class EditsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -304,7 +296,6 @@ class EditsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -328,7 +319,6 @@ class EditsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -360,7 +350,6 @@ class EditsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -386,7 +375,6 @@ class EditsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -431,7 +419,6 @@ class EditsApksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -460,7 +447,6 @@ class EditsApksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ApksAddExternallyHostedResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -493,7 +479,6 @@ class EditsApksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -519,7 +504,6 @@ class EditsApksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ApksListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -560,7 +544,6 @@ class EditsApksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -603,7 +586,6 @@ class EditsApksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Apk.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -641,7 +623,6 @@ class EditsBundlesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -667,7 +648,6 @@ class EditsBundlesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BundlesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -719,7 +699,6 @@ class EditsBundlesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -767,7 +746,6 @@ class EditsBundlesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Bundle.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -826,7 +804,6 @@ class EditsDeobfuscationfilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -884,7 +861,6 @@ class EditsDeobfuscationfilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DeobfuscationFilesUploadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -923,7 +899,6 @@ class EditsDetailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -949,7 +924,6 @@ class EditsDetailsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppDetails.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -985,7 +959,6 @@ class EditsDetailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1014,7 +987,6 @@ class EditsDetailsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppDetails.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1050,7 +1022,6 @@ class EditsDetailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1079,7 +1050,6 @@ class EditsDetailsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AppDetails.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1131,7 +1101,6 @@ class EditsExpansionfilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1166,7 +1135,6 @@ class EditsExpansionfilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ExpansionFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1217,7 +1185,6 @@ class EditsExpansionfilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1255,7 +1222,6 @@ class EditsExpansionfilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ExpansionFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1306,7 +1272,6 @@ class EditsExpansionfilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1344,7 +1309,6 @@ class EditsExpansionfilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ExpansionFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1397,7 +1361,6 @@ class EditsExpansionfilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1455,7 +1418,6 @@ class EditsExpansionfilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ExpansionFilesUploadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1513,7 +1475,6 @@ class EditsImagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1535,8 +1496,6 @@ class EditsImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
@@ -1555,7 +1514,7 @@ class EditsImagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1607,7 +1566,6 @@ class EditsImagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1642,7 +1600,6 @@ class EditsImagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ImagesDeleteAllResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1696,7 +1653,6 @@ class EditsImagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1731,7 +1687,6 @@ class EditsImagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ImagesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1791,7 +1746,6 @@ class EditsImagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1849,7 +1803,6 @@ class EditsImagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ImagesUploadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1890,7 +1843,6 @@ class EditsListingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1906,8 +1858,6 @@ class EditsListingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
         '/edits/' +
@@ -1922,7 +1872,7 @@ class EditsListingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1951,7 +1901,6 @@ class EditsListingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -1963,8 +1912,6 @@ class EditsListingsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1979,7 +1926,7 @@ class EditsListingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2014,7 +1961,6 @@ class EditsListingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2044,7 +1990,6 @@ class EditsListingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Listing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2076,7 +2021,6 @@ class EditsListingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2102,7 +2046,6 @@ class EditsListingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListingsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2142,7 +2085,6 @@ class EditsListingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2175,7 +2117,6 @@ class EditsListingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Listing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2214,7 +2155,6 @@ class EditsListingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2247,7 +2187,6 @@ class EditsListingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Listing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2288,7 +2227,6 @@ class EditsTestersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2318,7 +2256,6 @@ class EditsTestersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Testers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2356,7 +2293,6 @@ class EditsTestersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2389,7 +2325,6 @@ class EditsTestersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Testers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2427,7 +2362,6 @@ class EditsTestersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2460,7 +2394,6 @@ class EditsTestersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Testers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2501,7 +2434,6 @@ class EditsTracksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2531,7 +2463,6 @@ class EditsTracksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Track.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2563,7 +2494,6 @@ class EditsTracksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2589,7 +2519,6 @@ class EditsTracksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TracksListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2628,7 +2557,6 @@ class EditsTracksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2661,7 +2589,6 @@ class EditsTracksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Track.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2699,7 +2626,6 @@ class EditsTracksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2732,7 +2658,6 @@ class EditsTracksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Track.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2768,7 +2693,6 @@ class InappproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2780,8 +2704,6 @@ class InappproductsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2795,7 +2717,7 @@ class InappproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2826,7 +2748,6 @@ class InappproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2851,7 +2772,6 @@ class InappproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2890,7 +2810,6 @@ class InappproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2919,7 +2838,6 @@ class InappproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2958,7 +2876,6 @@ class InappproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -2988,7 +2905,6 @@ class InappproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return InappproductsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3030,7 +2946,6 @@ class InappproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3063,7 +2978,6 @@ class InappproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3105,7 +3019,6 @@ class InappproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3138,7 +3051,6 @@ class InappproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3189,7 +3101,6 @@ class InternalappsharingartifactsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3224,7 +3135,6 @@ class InternalappsharingartifactsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return InternalAppSharingArtifact.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3268,7 +3178,6 @@ class InternalappsharingartifactsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3303,7 +3212,6 @@ class InternalappsharingartifactsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return InternalAppSharingArtifact.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3349,7 +3257,6 @@ class OrdersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3365,8 +3272,6 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
         '/orders/' +
@@ -3380,7 +3285,7 @@ class OrdersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 }
@@ -3437,7 +3342,6 @@ class PurchasesProductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3456,8 +3360,6 @@ class PurchasesProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/products/' +
@@ -3473,7 +3375,7 @@ class PurchasesProductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3510,7 +3412,6 @@ class PurchasesProductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3540,7 +3441,6 @@ class PurchasesProductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ProductPurchase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3587,7 +3487,6 @@ class PurchasesSubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3606,8 +3505,6 @@ class PurchasesSubscriptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
         '/purchases/subscriptions/' +
@@ -3623,7 +3520,7 @@ class PurchasesSubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3660,7 +3557,6 @@ class PurchasesSubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3675,8 +3571,6 @@ class PurchasesSubscriptionsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3693,7 +3587,7 @@ class PurchasesSubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3734,7 +3628,6 @@ class PurchasesSubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3768,7 +3661,6 @@ class PurchasesSubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SubscriptionPurchasesDeferResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3808,7 +3700,6 @@ class PurchasesSubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3838,7 +3729,6 @@ class PurchasesSubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SubscriptionPurchase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3876,7 +3766,6 @@ class PurchasesSubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3891,8 +3780,6 @@ class PurchasesSubscriptionsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3909,7 +3796,7 @@ class PurchasesSubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3947,7 +3834,6 @@ class PurchasesSubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -3962,8 +3848,6 @@ class PurchasesSubscriptionsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3980,7 +3864,7 @@ class PurchasesSubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 }
@@ -4055,7 +3939,6 @@ class PurchasesVoidedpurchasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -4094,7 +3977,6 @@ class PurchasesVoidedpurchasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VoidedPurchasesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4136,7 +4018,6 @@ class ReviewsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -4164,7 +4045,6 @@ class ReviewsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Review.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4205,7 +4085,6 @@ class ReviewsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -4238,7 +4117,6 @@ class ReviewsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ReviewsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4274,7 +4152,6 @@ class ReviewsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4303,7 +4180,6 @@ class ReviewsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ReviewsReplyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4355,7 +4231,6 @@ class SystemapksVariantsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4384,7 +4259,6 @@ class SystemapksVariantsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Variant.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4423,7 +4297,6 @@ class SystemapksVariantsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -4438,8 +4311,6 @@ class SystemapksVariantsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = downloadOptions;
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -4456,10 +4327,10 @@ class SystemapksVariantsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: downloadOptions,
     );
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions == null ||
+        downloadOptions == commons.DownloadOptions.Metadata) {
       return null;
     } else {
       return _response;
@@ -4496,7 +4367,6 @@ class SystemapksVariantsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -4526,7 +4396,6 @@ class SystemapksVariantsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Variant.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4558,7 +4427,6 @@ class SystemapksVariantsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (packageName == null) {
@@ -4584,7 +4452,6 @@ class SystemapksVariantsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SystemApksListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

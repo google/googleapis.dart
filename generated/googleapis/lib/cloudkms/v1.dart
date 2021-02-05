@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -108,7 +107,6 @@ class ProjectsLocationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -127,7 +125,6 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -166,7 +163,6 @@ class ProjectsLocationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -195,7 +191,6 @@ class ProjectsLocationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -246,7 +241,6 @@ class ProjectsLocationsKeyRingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -272,7 +266,6 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -303,7 +296,6 @@ class ProjectsLocationsKeyRingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -322,7 +314,6 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -367,7 +358,6 @@ class ProjectsLocationsKeyRingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -393,7 +383,6 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -445,7 +434,6 @@ class ProjectsLocationsKeyRingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -477,7 +465,6 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListKeyRingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -517,7 +504,6 @@ class ProjectsLocationsKeyRingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -541,7 +527,6 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -582,7 +567,6 @@ class ProjectsLocationsKeyRingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -606,7 +590,6 @@ class ProjectsLocationsKeyRingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -666,7 +649,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -698,7 +680,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -735,7 +716,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -757,7 +737,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DecryptResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -796,7 +775,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -818,7 +796,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return EncryptResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -851,7 +828,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -870,7 +846,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -915,7 +890,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -941,7 +915,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1003,7 +976,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1039,7 +1011,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListCryptoKeysResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1078,7 +1049,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1103,7 +1073,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1142,7 +1111,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1166,7 +1134,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1207,7 +1174,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1231,7 +1197,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1268,7 +1233,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1292,7 +1256,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1337,7 +1300,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1361,7 +1323,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AsymmetricDecryptResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1399,7 +1360,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1423,7 +1383,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AsymmetricSignResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1462,7 +1421,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1486,7 +1444,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1527,7 +1484,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1549,7 +1505,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1581,7 +1536,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1600,7 +1554,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1634,7 +1587,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1654,7 +1606,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PublicKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1692,7 +1643,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1716,7 +1666,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1779,7 +1728,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1815,7 +1763,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListCryptoKeyVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1859,7 +1806,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1884,7 +1830,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1922,7 +1867,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1944,7 +1888,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1993,7 +1936,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2020,7 +1962,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2051,7 +1992,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2070,7 +2010,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2115,7 +2054,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -2141,7 +2079,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2194,7 +2131,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2227,7 +2163,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListImportJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2267,7 +2202,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2291,7 +2225,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2332,7 +2265,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2356,7 +2288,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

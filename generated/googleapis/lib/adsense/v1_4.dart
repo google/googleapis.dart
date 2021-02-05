@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -146,7 +145,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -168,7 +166,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -204,7 +201,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (maxResults != null) {
@@ -226,7 +222,6 @@ class AccountsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Accounts.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -267,7 +262,6 @@ class AccountsAdclientsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -296,7 +290,6 @@ class AccountsAdclientsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdCode.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -335,7 +328,6 @@ class AccountsAdclientsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -362,7 +354,6 @@ class AccountsAdclientsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -407,7 +398,6 @@ class AccountsAdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -437,7 +427,6 @@ class AccountsAdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -472,7 +461,6 @@ class AccountsAdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -503,7 +491,6 @@ class AccountsAdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdCode.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -548,7 +535,6 @@ class AccountsAdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -583,7 +569,6 @@ class AccountsAdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdUnits.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -635,7 +620,6 @@ class AccountsAdunitsCustomchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -672,7 +656,6 @@ class AccountsAdunitsCustomchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CustomChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -710,7 +693,6 @@ class AccountsAlertsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -722,8 +704,6 @@ class AccountsAlertsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -737,7 +717,7 @@ class AccountsAlertsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -770,7 +750,6 @@ class AccountsAlertsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -793,7 +772,6 @@ class AccountsAlertsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Alerts.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -839,7 +817,6 @@ class AccountsCustomchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -869,7 +846,6 @@ class AccountsCustomchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CustomChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -913,7 +889,6 @@ class AccountsCustomchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -945,7 +920,6 @@ class AccountsCustomchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CustomChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1001,7 +975,6 @@ class AccountsCustomchannelsAdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1041,7 +1014,6 @@ class AccountsCustomchannelsAdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdUnits.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1076,7 +1048,6 @@ class AccountsPaymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1096,7 +1067,6 @@ class AccountsPaymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Payments.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1201,7 +1171,6 @@ class AccountsReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1246,8 +1215,6 @@ class AccountsReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = downloadOptions;
-
     _url =
         'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports';
 
@@ -1258,10 +1225,10 @@ class AccountsReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: downloadOptions,
     );
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions == null ||
+        downloadOptions == commons.DownloadOptions.Metadata) {
       return AdsenseReportsGenerateResponse.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {
@@ -1317,7 +1284,6 @@ class AccountsReportsSavedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1351,7 +1317,6 @@ class AccountsReportsSavedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdsenseReportsGenerateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1391,7 +1356,6 @@ class AccountsReportsSavedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1418,7 +1382,6 @@ class AccountsReportsSavedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SavedReports.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1458,7 +1421,6 @@ class AccountsSavedadstylesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1483,7 +1445,6 @@ class AccountsSavedadstylesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SavedAdStyle.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1523,7 +1484,6 @@ class AccountsSavedadstylesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1550,7 +1510,6 @@ class AccountsSavedadstylesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SavedAdStyles.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1601,7 +1560,6 @@ class AccountsUrlchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (accountId == null) {
@@ -1633,7 +1591,6 @@ class AccountsUrlchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UrlChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1676,7 +1633,6 @@ class AdclientsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (maxResults != null) {
@@ -1698,7 +1654,6 @@ class AdclientsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1739,7 +1694,6 @@ class AdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -1764,7 +1718,6 @@ class AdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1796,7 +1749,6 @@ class AdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -1822,7 +1774,6 @@ class AdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdCode.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1864,7 +1815,6 @@ class AdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -1894,7 +1844,6 @@ class AdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdUnits.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1943,7 +1892,6 @@ class AdunitsCustomchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -1975,7 +1923,6 @@ class AdunitsCustomchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CustomChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2009,7 +1956,6 @@ class AlertsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (alertId == null) {
@@ -2018,8 +1964,6 @@ class AlertsResource {
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
@@ -2030,7 +1974,7 @@ class AlertsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2060,7 +2004,6 @@ class AlertsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (locale != null) {
@@ -2079,7 +2022,6 @@ class AlertsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Alerts.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2120,7 +2062,6 @@ class CustomchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -2145,7 +2086,6 @@ class CustomchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CustomChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2186,7 +2126,6 @@ class CustomchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -2213,7 +2152,6 @@ class CustomchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CustomChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2266,7 +2204,6 @@ class CustomchannelsAdunitsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -2301,7 +2238,6 @@ class CustomchannelsAdunitsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdUnits.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2343,7 +2279,6 @@ class MetadataDimensionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -2359,7 +2294,6 @@ class MetadataDimensionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Metadata.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2391,7 +2325,6 @@ class MetadataMetricsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -2407,7 +2340,6 @@ class MetadataMetricsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Metadata.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2439,7 +2371,6 @@ class PaymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -2455,7 +2386,6 @@ class PaymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Payments.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2559,7 +2489,6 @@ class ReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (startDate == null) {
@@ -2604,8 +2533,6 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = downloadOptions;
-
     _url = 'reports';
 
     final _response = await _requester.request(
@@ -2615,10 +2542,10 @@ class ReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: downloadOptions,
     );
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions == null ||
+        downloadOptions == commons.DownloadOptions.Metadata) {
       return AdsenseReportsGenerateResponse.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {
@@ -2670,7 +2597,6 @@ class ReportsSavedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (savedReportId == null) {
@@ -2698,7 +2624,6 @@ class ReportsSavedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AdsenseReportsGenerateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2735,7 +2660,6 @@ class ReportsSavedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (maxResults != null) {
@@ -2757,7 +2681,6 @@ class ReportsSavedResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SavedReports.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2793,7 +2716,6 @@ class SavedadstylesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (savedAdStyleId == null) {
@@ -2812,7 +2734,6 @@ class SavedadstylesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SavedAdStyle.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2849,7 +2770,6 @@ class SavedadstylesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (maxResults != null) {
@@ -2871,7 +2791,6 @@ class SavedadstylesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SavedAdStyles.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2917,7 +2836,6 @@ class UrlchannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (adClientId == null) {
@@ -2944,7 +2862,6 @@ class UrlchannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UrlChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);

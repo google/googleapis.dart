@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -192,7 +191,6 @@ class AbuseReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -215,7 +213,6 @@ class AbuseReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return AbuseReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -286,7 +283,6 @@ class ActivitiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -330,7 +326,6 @@ class ActivitiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ActivityListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -380,7 +375,6 @@ class CaptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -397,8 +391,6 @@ class CaptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/captions';
 
     await _requester.request(
@@ -408,7 +400,7 @@ class CaptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -463,7 +455,6 @@ class CaptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -485,8 +476,6 @@ class CaptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = downloadOptions;
-
     _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
@@ -496,10 +485,10 @@ class CaptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: downloadOptions,
     );
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
+    if (downloadOptions == null ||
+        downloadOptions == commons.DownloadOptions.Metadata) {
       return null;
     } else {
       return _response;
@@ -562,7 +551,6 @@ class CaptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -603,7 +591,6 @@ class CaptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Caption.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -656,7 +643,6 @@ class CaptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -689,7 +675,6 @@ class CaptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CaptionListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -752,7 +737,6 @@ class CaptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -793,7 +777,6 @@ class CaptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Caption.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -870,7 +853,6 @@ class ChannelBannersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -909,7 +891,6 @@ class ChannelBannersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ChannelBannerResource.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -955,7 +936,6 @@ class ChannelSectionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -969,8 +949,6 @@ class ChannelSectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/channelSections';
 
     await _requester.request(
@@ -980,7 +958,7 @@ class ChannelSectionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1044,7 +1022,6 @@ class ChannelSectionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1075,7 +1052,6 @@ class ChannelSectionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ChannelSection.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1138,7 +1114,6 @@ class ChannelSectionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -1173,7 +1148,6 @@ class ChannelSectionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ChannelSectionListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1221,7 +1195,6 @@ class ChannelSectionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1247,7 +1220,6 @@ class ChannelSectionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ChannelSection.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1336,7 +1308,6 @@ class ChannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -1386,7 +1357,6 @@ class ChannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ChannelListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1437,7 +1407,6 @@ class ChannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1463,7 +1432,6 @@ class ChannelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1503,7 +1471,6 @@ class CommentThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1526,7 +1493,6 @@ class CommentThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CommentThread.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1610,7 +1576,6 @@ class CommentThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -1662,7 +1627,6 @@ class CommentThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CommentThreadListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1698,7 +1662,6 @@ class CommentThreadsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1721,7 +1684,6 @@ class CommentThreadsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CommentThread.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1755,7 +1717,6 @@ class CommentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -1766,8 +1727,6 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/comments';
 
     await _requester.request(
@@ -1777,7 +1736,7 @@ class CommentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -1810,7 +1769,6 @@ class CommentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1833,7 +1791,6 @@ class CommentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1888,7 +1845,6 @@ class CommentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -1923,7 +1879,6 @@ class CommentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CommentListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1953,7 +1908,6 @@ class CommentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null || id.isEmpty) {
@@ -1964,8 +1918,6 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/comments/markAsSpam';
 
     await _requester.request(
@@ -1975,7 +1927,7 @@ class CommentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2018,7 +1970,6 @@ class CommentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null || id.isEmpty) {
@@ -2036,8 +1987,6 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/comments/setModerationStatus';
 
     await _requester.request(
@@ -2047,7 +1996,7 @@ class CommentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2081,7 +2030,6 @@ class CommentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2104,7 +2052,6 @@ class CommentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2144,7 +2091,6 @@ class I18nLanguagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -2167,7 +2113,6 @@ class I18nLanguagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return I18nLanguageListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2207,7 +2152,6 @@ class I18nRegionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -2230,7 +2174,6 @@ class I18nRegionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return I18nRegionListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2305,7 +2248,6 @@ class LiveBroadcastsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -2340,7 +2282,6 @@ class LiveBroadcastsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveBroadcast.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2398,7 +2339,6 @@ class LiveBroadcastsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -2417,8 +2357,6 @@ class LiveBroadcastsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/liveBroadcasts';
 
     await _requester.request(
@@ -2428,7 +2366,7 @@ class LiveBroadcastsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2493,7 +2431,6 @@ class LiveBroadcastsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2524,7 +2461,6 @@ class LiveBroadcastsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveBroadcast.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2621,7 +2557,6 @@ class LiveBroadcastsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -2667,7 +2602,6 @@ class LiveBroadcastsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveBroadcastListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2746,7 +2680,6 @@ class LiveBroadcastsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (broadcastStatus == null) {
@@ -2782,7 +2715,6 @@ class LiveBroadcastsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveBroadcast.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2857,7 +2789,6 @@ class LiveBroadcastsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2888,7 +2819,6 @@ class LiveBroadcastsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveBroadcast.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2922,7 +2852,6 @@ class LiveChatBansResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -2933,8 +2862,6 @@ class LiveChatBansResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/liveChat/bans';
 
     await _requester.request(
@@ -2944,7 +2871,7 @@ class LiveChatBansResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -2978,7 +2905,6 @@ class LiveChatBansResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3001,7 +2927,6 @@ class LiveChatBansResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveChatBan.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3035,7 +2960,6 @@ class LiveChatMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -3046,8 +2970,6 @@ class LiveChatMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/liveChat/messages';
 
     await _requester.request(
@@ -3057,7 +2979,7 @@ class LiveChatMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3090,7 +3012,6 @@ class LiveChatMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3113,7 +3034,6 @@ class LiveChatMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveChatMessage.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3167,7 +3087,6 @@ class LiveChatMessagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (liveChatId == null) {
@@ -3203,7 +3122,6 @@ class LiveChatMessagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveChatMessageListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3237,7 +3155,6 @@ class LiveChatModeratorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -3248,8 +3165,6 @@ class LiveChatModeratorsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/liveChat/moderators';
 
     await _requester.request(
@@ -3259,7 +3174,7 @@ class LiveChatModeratorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3293,7 +3208,6 @@ class LiveChatModeratorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3316,7 +3230,6 @@ class LiveChatModeratorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveChatModerator.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3362,7 +3275,6 @@ class LiveChatModeratorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (liveChatId == null) {
@@ -3392,7 +3304,6 @@ class LiveChatModeratorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveChatModeratorListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3456,7 +3367,6 @@ class LiveStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -3475,8 +3385,6 @@ class LiveStreamsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/liveStreams';
 
     await _requester.request(
@@ -3486,7 +3394,7 @@ class LiveStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -3551,7 +3459,6 @@ class LiveStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3582,7 +3489,6 @@ class LiveStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3663,7 +3569,6 @@ class LiveStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -3703,7 +3608,6 @@ class LiveStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveStreamListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3773,7 +3677,6 @@ class LiveStreamsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3804,7 +3707,6 @@ class LiveStreamsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return LiveStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3867,7 +3769,6 @@ class MembersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -3902,7 +3803,6 @@ class MembersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return MemberListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3940,7 +3840,6 @@ class MembershipsLevelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -3960,7 +3859,6 @@ class MembershipsLevelsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return MembershipsLevelListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4006,7 +3904,6 @@ class PlaylistItemsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -4020,8 +3917,6 @@ class PlaylistItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/playlistItems';
 
     await _requester.request(
@@ -4031,7 +3926,7 @@ class PlaylistItemsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -4076,7 +3971,6 @@ class PlaylistItemsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4102,7 +3996,6 @@ class PlaylistItemsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlaylistItem.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4170,7 +4063,6 @@ class PlaylistItemsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -4208,7 +4100,6 @@ class PlaylistItemsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlaylistItemListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4265,7 +4156,6 @@ class PlaylistItemsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4291,7 +4181,6 @@ class PlaylistItemsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlaylistItem.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4337,7 +4226,6 @@ class PlaylistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -4351,8 +4239,6 @@ class PlaylistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/playlists';
 
     await _requester.request(
@@ -4362,7 +4248,7 @@ class PlaylistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -4425,7 +4311,6 @@ class PlaylistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4456,7 +4341,6 @@ class PlaylistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Playlist.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4543,7 +4427,6 @@ class PlaylistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -4589,7 +4472,6 @@ class PlaylistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PlaylistListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4642,7 +4524,6 @@ class PlaylistsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4668,7 +4549,6 @@ class PlaylistsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Playlist.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4883,7 +4763,6 @@ class SearchResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -4993,7 +4872,6 @@ class SearchResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SearchListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5027,7 +4905,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -5038,8 +4915,6 @@ class SubscriptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/subscriptions';
 
     await _requester.request(
@@ -5049,7 +4924,7 @@ class SubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -5082,7 +4957,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5105,7 +4979,6 @@ class SubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Subscription.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5208,7 +5081,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -5263,7 +5135,6 @@ class SubscriptionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SubscriptionListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5313,7 +5184,6 @@ class SuperChatEventsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -5342,7 +5212,6 @@ class SuperChatEventsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SuperChatEventListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5381,7 +5250,6 @@ class TestsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5404,7 +5272,6 @@ class TestsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestItem.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5448,7 +5315,6 @@ class ThirdPartyLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (linkingToken == null) {
@@ -5466,8 +5332,6 @@ class ThirdPartyLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/thirdPartyLinks';
 
     await _requester.request(
@@ -5477,7 +5341,7 @@ class ThirdPartyLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -5510,7 +5374,6 @@ class ThirdPartyLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5533,7 +5396,6 @@ class ThirdPartyLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ThirdPartyLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5576,7 +5438,6 @@ class ThirdPartyLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -5602,7 +5463,6 @@ class ThirdPartyLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ThirdPartyLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5637,7 +5497,6 @@ class ThirdPartyLinksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5660,7 +5519,6 @@ class ThirdPartyLinksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ThirdPartyLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5719,7 +5577,6 @@ class ThumbnailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (videoId == null) {
@@ -5751,7 +5608,6 @@ class ThumbnailsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ThumbnailSetResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5792,7 +5648,6 @@ class VideoAbuseReportReasonsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -5815,7 +5670,6 @@ class VideoAbuseReportReasonsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VideoAbuseReportReasonListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5863,7 +5717,6 @@ class VideoCategoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -5892,7 +5745,6 @@ class VideoCategoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VideoCategoryListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5938,7 +5790,6 @@ class VideosResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -5952,8 +5803,6 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/videos';
 
     await _requester.request(
@@ -5963,7 +5812,7 @@ class VideosResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -6004,7 +5853,6 @@ class VideosResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null || id.isEmpty) {
@@ -6027,7 +5875,6 @@ class VideosResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VideoRatingListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6115,7 +5962,6 @@ class VideosResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6164,7 +6010,6 @@ class VideosResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Video.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6269,7 +6114,6 @@ class VideosResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (part == null || part.isEmpty) {
@@ -6325,7 +6169,6 @@ class VideosResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VideoListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6360,7 +6203,6 @@ class VideosResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (id == null) {
@@ -6375,8 +6217,6 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/videos/rate';
 
     await _requester.request(
@@ -6386,7 +6226,7 @@ class VideosResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -6424,7 +6264,6 @@ class VideosResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6437,8 +6276,6 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/videos/reportAbuse';
 
     await _requester.request(
@@ -6448,7 +6285,7 @@ class VideosResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -6507,7 +6344,6 @@ class VideosResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6533,7 +6369,6 @@ class VideosResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Video.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6589,7 +6424,6 @@ class WatermarksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6608,7 +6442,6 @@ class WatermarksResource {
 
     _uploadMedia = uploadMedia;
     _uploadOptions = uploadOptions;
-    _downloadOptions = null;
 
     if (_uploadMedia == null) {
       _url = 'youtube/v3/watermarks/set';
@@ -6625,7 +6458,7 @@ class WatermarksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -6663,7 +6496,6 @@ class WatermarksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (channelId == null) {
@@ -6677,8 +6509,6 @@ class WatermarksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _downloadOptions = null;
-
     _url = 'youtube/v3/watermarks/unset';
 
     await _requester.request(
@@ -6688,7 +6518,7 @@ class WatermarksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 }

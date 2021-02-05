@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -89,7 +88,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -108,7 +106,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return CreateAuthUriResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -138,7 +135,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -157,7 +153,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DeleteAccountResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -187,7 +182,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -206,7 +200,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return DownloadAccountResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -236,7 +229,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -255,7 +247,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return EmailLinkSigninResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -285,7 +276,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -304,7 +294,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GetAccountInfoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -334,7 +323,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -353,7 +341,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GetOobConfirmationCodeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -387,7 +374,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (delegatedProjectNumber != null) {
@@ -409,7 +395,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -436,7 +421,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -452,7 +436,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -479,7 +462,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -495,7 +477,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GetRecaptchaParamResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -525,7 +506,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -544,7 +524,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ResetPasswordResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -576,7 +555,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -595,7 +573,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -625,7 +602,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -644,7 +620,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SetAccountInfoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -675,7 +650,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -694,7 +668,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -724,7 +697,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -743,7 +715,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -773,7 +744,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -792,7 +762,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return SignupNewUserResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -822,7 +791,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -841,7 +809,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return UploadAccountResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -871,7 +838,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -890,7 +856,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VerifyAssertionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -920,7 +885,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -939,7 +903,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VerifyCustomTokenResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -969,7 +932,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -988,7 +950,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return VerifyPasswordResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1020,7 +981,6 @@ class RelyingpartyResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1039,7 +999,6 @@ class RelyingpartyResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

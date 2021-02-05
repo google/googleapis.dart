@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -66,14 +65,11 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'failing';
 
@@ -84,7 +80,7 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -107,7 +103,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -123,7 +118,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -151,7 +145,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -171,7 +164,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.Map).cast<core.String, core.Map>().map(
           (key, item) => core.MapEntry(
@@ -204,7 +196,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -226,7 +217,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.Map).cast<core.String, core.Map>().map(
           (key, item) => core.MapEntry(
@@ -259,7 +249,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -278,7 +267,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.Map).cast<core.String, core.int>().map(
           (key, item) => core.MapEntry(
@@ -313,7 +301,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -338,7 +325,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -369,7 +355,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -391,7 +376,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -425,7 +409,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -450,7 +433,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -478,7 +460,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -497,7 +478,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.List)
         .map<core.List<core.String>>((value) => (value as core.List)
@@ -530,7 +510,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -549,7 +528,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.List)
         .map<core.Map<core.String, core.List<core.String>>>(
@@ -583,7 +561,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -599,7 +576,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyMapResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -630,7 +606,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -649,7 +624,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.Map).cast<core.String, core.List>().map(
           (key, item) => core.MapEntry(
@@ -691,7 +665,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -710,7 +683,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.Map).cast<core.String, core.Map>().map(
           (key, item) => core.MapEntry(
@@ -747,7 +719,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -766,7 +737,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -791,7 +761,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -807,7 +776,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -832,7 +800,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
@@ -848,7 +815,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -871,14 +837,11 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
-
-    _downloadOptions = null;
 
     _url = 'noop';
 
@@ -889,7 +852,7 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
+      downloadOptions: null,
     );
   }
 
@@ -915,7 +878,6 @@ class ToyApi {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -934,7 +896,6 @@ class ToyApi {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return (_response as core.List)
         .map<core.String>((value) => value as core.String)
@@ -973,7 +934,6 @@ class ComputeResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -998,7 +958,6 @@ class ComputeResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResourceResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1037,7 +996,6 @@ class StorageResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -1062,7 +1020,6 @@ class StorageResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ToyResourceResponseFactory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1071,7 +1028,7 @@ class StorageResource {
 
 class NestedResponseFactory {
   static NestedResponse fromJson(core.Map _json) {
-    var message = NestedResponse();
+    final message = NestedResponse();
     if (_json.containsKey('nestedResult')) {
       message.nestedResult = _json['nestedResult'] as core.String;
     }
@@ -1079,7 +1036,7 @@ class NestedResponseFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(NestedResponse message) {
-    var _json = <core.String, core.dynamic>{};
+    final _json = <core.String, core.dynamic>{};
     if (message.nestedResult != null) {
       _json['nestedResult'] = message.nestedResult;
     }
@@ -1089,7 +1046,7 @@ class NestedResponseFactory {
 
 class ToyAgeRequestFactory {
   static ToyAgeRequest fromJson(core.Map _json) {
-    var message = ToyAgeRequest();
+    final message = ToyAgeRequest();
     if (_json.containsKey('age')) {
       message.age = _json['age'] as core.int;
     }
@@ -1097,7 +1054,7 @@ class ToyAgeRequestFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyAgeRequest message) {
-    var _json = <core.String, core.dynamic>{};
+    final _json = <core.String, core.dynamic>{};
     if (message.age != null) {
       _json['age'] = message.age;
     }
@@ -1107,7 +1064,7 @@ class ToyAgeRequestFactory {
 
 class ToyMapResponseFactory {
   static ToyMapResponse fromJson(core.Map _json) {
-    var message = ToyMapResponse();
+    final message = ToyMapResponse();
     if (_json.containsKey('mapResult')) {
       message.mapResult =
           (_json['mapResult'] as core.Map).cast<core.String, core.Map>().map(
@@ -1125,7 +1082,7 @@ class ToyMapResponseFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyMapResponse message) {
-    var _json = <core.String, core.dynamic>{};
+    final _json = <core.String, core.dynamic>{};
     if (message.mapResult != null) {
       _json['mapResult'] = message.mapResult.map((key, item) =>
           core.MapEntry(key, NestedResponseFactory.toJson(item)));
@@ -1139,7 +1096,7 @@ class ToyMapResponseFactory {
 
 class ToyRequestFactory {
   static ToyRequest fromJson(core.Map _json) {
-    var message = ToyRequest();
+    final message = ToyRequest();
     if (_json.containsKey('age')) {
       message.age = _json['age'] as core.int;
     }
@@ -1150,7 +1107,7 @@ class ToyRequestFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyRequest message) {
-    var _json = <core.String, core.dynamic>{};
+    final _json = <core.String, core.dynamic>{};
     if (message.age != null) {
       _json['age'] = message.age;
     }
@@ -1163,7 +1120,7 @@ class ToyRequestFactory {
 
 class ToyResourceResponseFactory {
   static ToyResourceResponse fromJson(core.Map _json) {
-    var message = ToyResourceResponse();
+    final message = ToyResourceResponse();
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;
     }
@@ -1172,7 +1129,7 @@ class ToyResourceResponseFactory {
 
   static core.Map<core.String, core.dynamic> toJson(
       ToyResourceResponse message) {
-    var _json = <core.String, core.dynamic>{};
+    final _json = <core.String, core.dynamic>{};
     if (message.result != null) {
       _json['result'] = message.result;
     }
@@ -1182,7 +1139,7 @@ class ToyResourceResponseFactory {
 
 class ToyResponseFactory {
   static ToyResponse fromJson(core.Map _json) {
-    var message = ToyResponse();
+    final message = ToyResponse();
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;
     }
@@ -1190,7 +1147,7 @@ class ToyResponseFactory {
   }
 
   static core.Map<core.String, core.dynamic> toJson(ToyResponse message) {
-    var _json = <core.String, core.dynamic>{};
+    final _json = <core.String, core.dynamic>{};
     if (message.result != null) {
       _json['result'] = message.result;
     }

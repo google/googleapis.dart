@@ -29,7 +29,7 @@ class ClientObjectType extends ObjectType {
     fromJsonString.writeln(
       'static $className fromJson(${imports.core.ref()}Map _json) {',
     );
-    fromJsonString.writeln('    var message = $className();');
+    fromJsonString.writeln('    final message = $className();');
     for (var property in properties) {
       // The super variant fromJson() will call this subclass constructor
       // and the variant discriminator is final.
@@ -51,7 +51,7 @@ class ClientObjectType extends ObjectType {
     toJsonString.writeln(
       'static $_coreMapJsonType toJson($className message) {',
     );
-    toJsonString.writeln('    var _json = $_coreMapJsonTypeArguments{};');
+    toJsonString.writeln('    final _json = $_coreMapJsonTypeArguments{};');
 
     for (var property in properties) {
       toJsonString.writeln('    if (message.${property.name} != null) {');

@@ -5,7 +5,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -14,6 +13,7 @@
 // ignore_for_file: unnecessary_string_interpolations
 // ignore_for_file: avoid_returning_null
 // ignore_for_file: cascade_invocations
+// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 

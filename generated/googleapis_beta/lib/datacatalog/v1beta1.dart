@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -112,7 +111,6 @@ class CatalogResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -131,7 +129,6 @@ class CatalogResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -185,7 +182,6 @@ class EntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (linkedResource != null) {
@@ -207,7 +203,6 @@ class EntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -289,7 +284,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -316,7 +310,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -358,7 +351,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -380,7 +372,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -416,7 +407,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -438,7 +428,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -485,7 +474,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -509,7 +497,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -549,7 +536,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -576,7 +562,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -623,7 +608,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -648,7 +632,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -694,7 +677,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -718,7 +700,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -761,7 +742,6 @@ class ProjectsLocationsEntryGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -785,7 +765,6 @@ class ProjectsLocationsEntryGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -844,7 +823,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -871,7 +849,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -910,7 +887,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -929,7 +905,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -961,7 +936,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -980,7 +954,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1027,7 +1000,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1051,7 +1023,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1098,7 +1069,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1128,7 +1098,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1182,7 +1151,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1207,7 +1175,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1251,7 +1218,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1275,7 +1241,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1327,7 +1292,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1350,7 +1314,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1383,7 +1346,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1402,7 +1364,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1444,7 +1405,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1470,7 +1430,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1513,7 +1472,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1538,7 +1496,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1590,7 +1547,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1613,7 +1569,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1646,7 +1601,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1665,7 +1619,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1707,7 +1660,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1733,7 +1685,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1776,7 +1727,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1801,7 +1751,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1855,7 +1804,6 @@ class ProjectsLocationsTagTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1882,7 +1830,6 @@ class ProjectsLocationsTagTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1925,7 +1872,6 @@ class ProjectsLocationsTagTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1947,7 +1893,6 @@ class ProjectsLocationsTagTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1979,7 +1924,6 @@ class ProjectsLocationsTagTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1998,7 +1942,6 @@ class ProjectsLocationsTagTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2045,7 +1988,6 @@ class ProjectsLocationsTagTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2069,7 +2011,6 @@ class ProjectsLocationsTagTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2119,7 +2060,6 @@ class ProjectsLocationsTagTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2144,7 +2084,6 @@ class ProjectsLocationsTagTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2190,7 +2129,6 @@ class ProjectsLocationsTagTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2214,7 +2152,6 @@ class ProjectsLocationsTagTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2257,7 +2194,6 @@ class ProjectsLocationsTagTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2281,7 +2217,6 @@ class ProjectsLocationsTagTemplatesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2341,7 +2276,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2368,7 +2302,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2412,7 +2345,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2434,7 +2366,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2485,7 +2416,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2510,7 +2440,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2551,7 +2480,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2574,7 +2502,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2622,7 +2549,6 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2645,7 +2571,6 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2690,7 +2615,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2714,7 +2638,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2750,7 +2673,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2769,7 +2691,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2809,7 +2730,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2836,7 +2756,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2868,7 +2787,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2887,7 +2805,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2924,7 +2841,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2948,7 +2864,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2986,7 +2901,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3010,7 +2924,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3051,7 +2964,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3078,7 +2990,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3120,7 +3031,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3145,7 +3055,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3182,7 +3091,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3206,7 +3114,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3243,7 +3150,6 @@ class ProjectsLocationsTaxonomiesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3267,7 +3173,6 @@ class ProjectsLocationsTaxonomiesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3310,7 +3215,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3334,7 +3238,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3369,7 +3272,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3388,7 +3290,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3419,7 +3320,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3438,7 +3338,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3475,7 +3374,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3499,7 +3397,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3539,7 +3436,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3566,7 +3462,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3611,7 +3506,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3636,7 +3530,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3673,7 +3566,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3697,7 +3589,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3734,7 +3625,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3758,7 +3648,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

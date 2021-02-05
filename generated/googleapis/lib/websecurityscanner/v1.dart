@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -109,7 +108,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -133,7 +131,6 @@ class ProjectsScanConfigsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ScanConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -166,7 +163,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -185,7 +181,6 @@ class ProjectsScanConfigsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -217,7 +212,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -236,7 +230,6 @@ class ProjectsScanConfigsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ScanConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -278,7 +271,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -305,7 +297,6 @@ class ProjectsScanConfigsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListScanConfigsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -348,7 +339,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -373,7 +363,6 @@ class ProjectsScanConfigsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ScanConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -409,7 +398,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -431,7 +419,6 @@ class ProjectsScanConfigsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -478,7 +465,6 @@ class ProjectsScanConfigsScanRunsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -497,7 +483,6 @@ class ProjectsScanConfigsScanRunsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -540,7 +525,6 @@ class ProjectsScanConfigsScanRunsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -566,7 +550,6 @@ class ProjectsScanConfigsScanRunsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListScanRunsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -605,7 +588,6 @@ class ProjectsScanConfigsScanRunsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -627,7 +609,6 @@ class ProjectsScanConfigsScanRunsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -677,7 +658,6 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -704,7 +684,6 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListCrawledUrlsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -746,7 +725,6 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -767,7 +745,6 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListFindingTypeStatsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -808,7 +785,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -827,7 +803,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Finding.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -874,7 +849,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -903,7 +877,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListFindingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

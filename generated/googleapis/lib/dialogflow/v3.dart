@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -154,7 +153,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -176,7 +174,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Agent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -209,7 +206,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -228,7 +224,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -264,7 +259,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -286,7 +280,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -319,7 +312,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -338,7 +330,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Agent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -377,7 +368,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -399,7 +389,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3AgentValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -439,7 +428,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -464,7 +452,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListAgentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -505,7 +492,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -530,7 +516,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Agent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -569,7 +554,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -591,7 +575,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -630,7 +613,6 @@ class ProjectsLocationsAgentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -652,7 +634,6 @@ class ProjectsLocationsAgentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3AgentValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -704,7 +685,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -731,7 +711,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3EntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -773,7 +752,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -795,7 +773,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -837,7 +814,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -859,7 +835,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3EntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -909,7 +884,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -939,7 +913,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListEntityTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -988,7 +961,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1016,7 +988,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3EntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1064,7 +1035,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1088,7 +1058,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1121,7 +1090,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1140,7 +1108,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1173,7 +1140,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1192,7 +1158,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1233,7 +1198,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1260,7 +1224,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1303,7 +1266,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1330,7 +1292,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1369,7 +1330,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1394,7 +1354,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1438,7 +1397,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1462,7 +1420,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1495,7 +1452,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1514,7 +1470,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1547,7 +1502,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1566,7 +1520,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1607,7 +1560,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1634,7 +1586,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListExperimentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1673,7 +1624,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1698,7 +1648,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1736,7 +1685,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1758,7 +1706,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1796,7 +1743,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1818,7 +1764,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1882,7 +1827,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1906,7 +1850,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3DetectIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1952,7 +1895,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1976,7 +1918,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3FulfillIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2020,7 +1961,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2044,7 +1984,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3MatchIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2093,7 +2032,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2117,7 +2055,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2152,7 +2089,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2171,7 +2107,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2206,7 +2141,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2225,7 +2159,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2269,7 +2202,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2296,7 +2228,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2337,7 +2268,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2362,7 +2292,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2422,7 +2351,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2447,7 +2375,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Flow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2488,7 +2415,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2510,7 +2436,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2553,7 +2478,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2575,7 +2499,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Flow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2614,7 +2537,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2636,7 +2558,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3FlowValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2686,7 +2607,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2714,7 +2634,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListFlowsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2763,7 +2682,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2791,7 +2709,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Flow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2829,7 +2746,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2851,7 +2767,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2890,7 +2805,6 @@ class ProjectsLocationsAgentsFlowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2912,7 +2826,6 @@ class ProjectsLocationsAgentsFlowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3FlowValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2967,7 +2880,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2992,7 +2904,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Page.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3033,7 +2944,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3055,7 +2965,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3100,7 +3009,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3122,7 +3030,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Page.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3175,7 +3082,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3203,7 +3109,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListPagesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3256,7 +3161,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3284,7 +3188,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Page.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3336,7 +3239,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3363,7 +3265,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3404,7 +3305,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3426,7 +3326,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3467,7 +3366,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3489,7 +3387,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3539,7 +3436,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3569,7 +3465,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3618,7 +3513,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3646,7 +3540,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3689,7 +3582,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3712,7 +3604,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3745,7 +3636,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3764,7 +3654,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3797,7 +3686,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3816,7 +3704,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Version.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3857,7 +3744,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3883,7 +3769,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3919,7 +3804,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3941,7 +3825,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3981,7 +3864,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4006,7 +3888,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Version.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4057,7 +3938,6 @@ class ProjectsLocationsAgentsIntentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4083,7 +3963,6 @@ class ProjectsLocationsAgentsIntentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Intent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4116,7 +3995,6 @@ class ProjectsLocationsAgentsIntentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4135,7 +4013,6 @@ class ProjectsLocationsAgentsIntentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4176,7 +4053,6 @@ class ProjectsLocationsAgentsIntentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4198,7 +4074,6 @@ class ProjectsLocationsAgentsIntentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Intent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4255,7 +4130,6 @@ class ProjectsLocationsAgentsIntentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -4287,7 +4161,6 @@ class ProjectsLocationsAgentsIntentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListIntentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4336,7 +4209,6 @@ class ProjectsLocationsAgentsIntentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4364,7 +4236,6 @@ class ProjectsLocationsAgentsIntentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Intent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4425,7 +4296,6 @@ class ProjectsLocationsAgentsSessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4449,7 +4319,6 @@ class ProjectsLocationsAgentsSessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3DetectIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4495,7 +4364,6 @@ class ProjectsLocationsAgentsSessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4519,7 +4387,6 @@ class ProjectsLocationsAgentsSessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3FulfillIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4563,7 +4430,6 @@ class ProjectsLocationsAgentsSessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4587,7 +4453,6 @@ class ProjectsLocationsAgentsSessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3MatchIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4636,7 +4501,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4660,7 +4524,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4695,7 +4558,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4714,7 +4576,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4749,7 +4610,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4768,7 +4628,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4812,7 +4671,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -4839,7 +4697,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4880,7 +4737,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4905,7 +4761,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4951,7 +4806,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4975,7 +4829,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5010,7 +4863,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5034,7 +4886,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5075,7 +4926,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (agent == null) {
@@ -5099,7 +4949,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3CalculateCoverageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5135,7 +4984,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5158,7 +5006,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3TestCase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5197,7 +5044,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5221,7 +5067,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5254,7 +5099,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5273,7 +5117,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3TestCase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5312,7 +5155,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5336,7 +5178,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5389,7 +5230,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5418,7 +5258,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListTestCasesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5459,7 +5298,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5484,7 +5322,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3TestCase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5523,7 +5360,6 @@ class ProjectsLocationsAgentsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5557,7 +5393,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5620,7 +5455,6 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5649,7 +5483,6 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListTestCaseResultsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5692,7 +5525,6 @@ class ProjectsLocationsAgentsWebhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5715,7 +5547,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Webhook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5756,7 +5587,6 @@ class ProjectsLocationsAgentsWebhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5778,7 +5608,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5811,7 +5640,6 @@ class ProjectsLocationsAgentsWebhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5830,7 +5658,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Webhook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5871,7 +5698,6 @@ class ProjectsLocationsAgentsWebhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5897,7 +5723,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListWebhooksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5938,7 +5763,6 @@ class ProjectsLocationsAgentsWebhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5963,7 +5787,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3Webhook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6011,7 +5834,6 @@ class ProjectsLocationsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6030,7 +5852,6 @@ class ProjectsLocationsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6065,7 +5886,6 @@ class ProjectsLocationsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6084,7 +5904,6 @@ class ProjectsLocationsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6133,7 +5952,6 @@ class ProjectsLocationsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6162,7 +5980,6 @@ class ProjectsLocationsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6204,7 +6021,6 @@ class ProjectsLocationsSecuritySettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6228,7 +6044,6 @@ class ProjectsLocationsSecuritySettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SecuritySettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6261,7 +6076,6 @@ class ProjectsLocationsSecuritySettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6280,7 +6094,6 @@ class ProjectsLocationsSecuritySettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6315,7 +6128,6 @@ class ProjectsLocationsSecuritySettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6334,7 +6146,6 @@ class ProjectsLocationsSecuritySettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SecuritySettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6374,7 +6185,6 @@ class ProjectsLocationsSecuritySettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -6401,7 +6211,6 @@ class ProjectsLocationsSecuritySettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3ListSecuritySettingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6441,7 +6250,6 @@ class ProjectsLocationsSecuritySettingsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6466,7 +6274,6 @@ class ProjectsLocationsSecuritySettingsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudDialogflowCxV3SecuritySettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6512,7 +6319,6 @@ class ProjectsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6531,7 +6337,6 @@ class ProjectsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6565,7 +6370,6 @@ class ProjectsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6584,7 +6388,6 @@ class ProjectsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6633,7 +6436,6 @@ class ProjectsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6662,7 +6464,6 @@ class ProjectsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -174,7 +173,6 @@ class HybridIssuersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -193,7 +191,6 @@ class HybridIssuersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -272,7 +269,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -294,7 +290,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -328,7 +323,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -347,7 +341,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -382,7 +375,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -401,7 +393,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Organization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -447,7 +438,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -469,7 +459,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1IngressConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -513,7 +502,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -537,7 +525,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1SyncAuthorization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -573,7 +560,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -592,7 +578,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -637,7 +622,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -661,7 +645,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1SyncAuthorization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -698,7 +681,6 @@ class OrganizationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -720,7 +702,6 @@ class OrganizationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Organization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -772,7 +753,6 @@ class OrganizationsAnalyticsDatastoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -796,7 +776,6 @@ class OrganizationsAnalyticsDatastoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Datastore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -829,7 +808,6 @@ class OrganizationsAnalyticsDatastoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -848,7 +826,6 @@ class OrganizationsAnalyticsDatastoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -881,7 +858,6 @@ class OrganizationsAnalyticsDatastoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -900,7 +876,6 @@ class OrganizationsAnalyticsDatastoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Datastore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -936,7 +911,6 @@ class OrganizationsAnalyticsDatastoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -960,7 +934,6 @@ class OrganizationsAnalyticsDatastoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -998,7 +971,6 @@ class OrganizationsAnalyticsDatastoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1022,7 +994,6 @@ class OrganizationsAnalyticsDatastoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1058,7 +1029,6 @@ class OrganizationsAnalyticsDatastoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1080,7 +1050,6 @@ class OrganizationsAnalyticsDatastoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Datastore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1136,7 +1105,6 @@ class OrganizationsApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1159,7 +1127,6 @@ class OrganizationsApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1213,7 +1180,6 @@ class OrganizationsApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1237,7 +1203,6 @@ class OrganizationsApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1278,7 +1243,6 @@ class OrganizationsApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1297,7 +1261,6 @@ class OrganizationsApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1334,7 +1297,6 @@ class OrganizationsApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1353,7 +1315,6 @@ class OrganizationsApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1411,7 +1372,6 @@ class OrganizationsApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1447,7 +1407,6 @@ class OrganizationsApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1489,7 +1448,6 @@ class OrganizationsApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1511,7 +1469,6 @@ class OrganizationsApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1552,7 +1509,6 @@ class OrganizationsApiproductsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1571,7 +1527,6 @@ class OrganizationsApiproductsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1605,7 +1560,6 @@ class OrganizationsApiproductsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1624,7 +1578,6 @@ class OrganizationsApiproductsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1656,7 +1609,6 @@ class OrganizationsApiproductsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1677,7 +1629,6 @@ class OrganizationsApiproductsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1720,7 +1671,6 @@ class OrganizationsApiproductsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1742,7 +1692,6 @@ class OrganizationsApiproductsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1820,7 +1769,6 @@ class OrganizationsApisResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1851,7 +1799,6 @@ class OrganizationsApisResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1886,7 +1833,6 @@ class OrganizationsApisResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1905,7 +1851,6 @@ class OrganizationsApisResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProxy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1937,7 +1882,6 @@ class OrganizationsApisResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1956,7 +1900,6 @@ class OrganizationsApisResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProxy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1999,7 +1942,6 @@ class OrganizationsApisResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2024,7 +1966,6 @@ class OrganizationsApisResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2063,7 +2004,6 @@ class OrganizationsApisDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2084,7 +2024,6 @@ class OrganizationsApisDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2127,7 +2066,6 @@ class OrganizationsApisKeyvaluemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2151,7 +2089,6 @@ class OrganizationsApisKeyvaluemapsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2184,7 +2121,6 @@ class OrganizationsApisKeyvaluemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2203,7 +2139,6 @@ class OrganizationsApisKeyvaluemapsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2249,7 +2184,6 @@ class OrganizationsApisRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2268,7 +2202,6 @@ class OrganizationsApisRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2314,7 +2247,6 @@ class OrganizationsApisRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2336,7 +2268,6 @@ class OrganizationsApisRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2382,7 +2313,6 @@ class OrganizationsApisRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2407,7 +2337,6 @@ class OrganizationsApisRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2448,7 +2377,6 @@ class OrganizationsApisRevisionsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2469,7 +2397,6 @@ class OrganizationsApisRevisionsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2507,7 +2434,6 @@ class OrganizationsAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2526,7 +2452,6 @@ class OrganizationsAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1App.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2592,7 +2517,6 @@ class OrganizationsAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2638,7 +2562,6 @@ class OrganizationsAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListAppsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2684,7 +2607,6 @@ class OrganizationsDatacollectorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2711,7 +2633,6 @@ class OrganizationsDatacollectorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DataCollector.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2743,7 +2664,6 @@ class OrganizationsDatacollectorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2762,7 +2682,6 @@ class OrganizationsDatacollectorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2794,7 +2713,6 @@ class OrganizationsDatacollectorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2813,7 +2731,6 @@ class OrganizationsDatacollectorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DataCollector.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2853,7 +2770,6 @@ class OrganizationsDatacollectorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2880,7 +2796,6 @@ class OrganizationsDatacollectorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2918,7 +2833,6 @@ class OrganizationsDatacollectorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2943,7 +2857,6 @@ class OrganizationsDatacollectorsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DataCollector.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2988,7 +2901,6 @@ class OrganizationsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3012,7 +2924,6 @@ class OrganizationsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3070,7 +2981,6 @@ class OrganizationsDevelopersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3094,7 +3004,6 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3134,7 +3043,6 @@ class OrganizationsDevelopersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3158,7 +3066,6 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3199,7 +3106,6 @@ class OrganizationsDevelopersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3218,7 +3124,6 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3258,7 +3163,6 @@ class OrganizationsDevelopersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3280,7 +3184,6 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3347,7 +3250,6 @@ class OrganizationsDevelopersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3386,7 +3288,6 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3431,7 +3332,6 @@ class OrganizationsDevelopersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3453,7 +3353,6 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3499,7 +3398,6 @@ class OrganizationsDevelopersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3521,7 +3419,6 @@ class OrganizationsDevelopersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3573,7 +3470,6 @@ class OrganizationsDevelopersAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3596,7 +3492,6 @@ class OrganizationsDevelopersAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3638,7 +3533,6 @@ class OrganizationsDevelopersAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3660,7 +3554,6 @@ class OrganizationsDevelopersAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3699,7 +3592,6 @@ class OrganizationsDevelopersAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3718,7 +3610,6 @@ class OrganizationsDevelopersAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3783,7 +3674,6 @@ class OrganizationsDevelopersAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -3808,7 +3698,6 @@ class OrganizationsDevelopersAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3854,7 +3743,6 @@ class OrganizationsDevelopersAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -3879,7 +3767,6 @@ class OrganizationsDevelopersAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3938,7 +3825,6 @@ class OrganizationsDevelopersAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -3969,7 +3855,6 @@ class OrganizationsDevelopersAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4017,7 +3902,6 @@ class OrganizationsDevelopersAppsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4039,7 +3923,6 @@ class OrganizationsDevelopersAppsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4080,7 +3963,6 @@ class OrganizationsDevelopersAppsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4099,7 +3981,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4133,7 +4014,6 @@ class OrganizationsDevelopersAppsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4152,7 +4032,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4186,7 +4065,6 @@ class OrganizationsDevelopersAppsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -4207,7 +4085,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4251,7 +4128,6 @@ class OrganizationsDevelopersAppsAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4273,7 +4149,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4333,7 +4208,6 @@ class OrganizationsDevelopersAppsKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4355,7 +4229,6 @@ class OrganizationsDevelopersAppsKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4397,7 +4270,6 @@ class OrganizationsDevelopersAppsKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4416,7 +4288,6 @@ class OrganizationsDevelopersAppsKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4451,7 +4322,6 @@ class OrganizationsDevelopersAppsKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4470,7 +4340,6 @@ class OrganizationsDevelopersAppsKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4513,7 +4382,6 @@ class OrganizationsDevelopersAppsKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4535,7 +4403,6 @@ class OrganizationsDevelopersAppsKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4583,7 +4450,6 @@ class OrganizationsDevelopersAppsKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4608,7 +4474,6 @@ class OrganizationsDevelopersAppsKeysResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4654,7 +4519,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4673,7 +4537,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4717,7 +4580,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4739,7 +4601,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4794,7 +4655,6 @@ class OrganizationsDevelopersAppsKeysCreateResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -4818,7 +4678,6 @@ class OrganizationsDevelopersAppsKeysCreateResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4859,7 +4718,6 @@ class OrganizationsDevelopersAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4878,7 +4736,6 @@ class OrganizationsDevelopersAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4912,7 +4769,6 @@ class OrganizationsDevelopersAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -4931,7 +4787,6 @@ class OrganizationsDevelopersAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4964,7 +4819,6 @@ class OrganizationsDevelopersAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -4985,7 +4839,6 @@ class OrganizationsDevelopersAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5029,7 +4882,6 @@ class OrganizationsDevelopersAttributesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5051,7 +4903,6 @@ class OrganizationsDevelopersAttributesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5100,7 +4951,6 @@ class OrganizationsEnvgroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5126,7 +4976,6 @@ class OrganizationsEnvgroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5158,7 +5007,6 @@ class OrganizationsEnvgroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5177,7 +5025,6 @@ class OrganizationsEnvgroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5209,7 +5056,6 @@ class OrganizationsEnvgroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5228,7 +5074,6 @@ class OrganizationsEnvgroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1EnvironmentGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5268,7 +5113,6 @@ class OrganizationsEnvgroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5294,7 +5138,6 @@ class OrganizationsEnvgroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5332,7 +5175,6 @@ class OrganizationsEnvgroupsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5357,7 +5199,6 @@ class OrganizationsEnvgroupsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5399,7 +5240,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5423,7 +5263,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5457,7 +5296,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5476,7 +5314,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5510,7 +5347,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5529,7 +5365,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5571,7 +5406,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -5598,7 +5432,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5674,7 +5507,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -5701,7 +5533,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5733,7 +5564,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5752,7 +5582,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5784,7 +5613,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5803,7 +5631,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5836,7 +5663,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5855,7 +5681,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DebugMask.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5889,7 +5714,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -5908,7 +5732,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1EnvironmentConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5955,7 +5778,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (resource == null) {
@@ -5981,7 +5803,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6023,7 +5844,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6047,7 +5867,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6082,7 +5901,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -6102,7 +5920,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Subscription.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6142,7 +5959,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6166,7 +5982,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6201,7 +6016,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6225,7 +6039,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6265,7 +6078,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6287,7 +6099,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6331,7 +6142,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6359,7 +6169,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DebugMask.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6399,7 +6208,6 @@ class OrganizationsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6421,7 +6229,6 @@ class OrganizationsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6482,7 +6289,6 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6504,7 +6310,6 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Schema.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6550,7 +6355,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -6574,7 +6378,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Export.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6610,7 +6413,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6629,7 +6431,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Export.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6662,7 +6463,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -6683,7 +6483,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListExportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6735,7 +6534,6 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -6756,7 +6554,6 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6836,7 +6633,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6862,7 +6658,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6897,7 +6692,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6917,7 +6711,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6969,7 +6762,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -6992,7 +6784,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7045,7 +6836,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -7072,7 +6862,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DebugSession.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7109,7 +6898,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7128,7 +6916,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7162,7 +6949,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7181,7 +6967,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DebugSession.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7224,7 +7009,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -7251,7 +7035,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7293,7 +7076,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7312,7 +7094,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7373,7 +7154,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7397,7 +7177,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7445,7 +7224,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7466,7 +7244,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7506,7 +7283,6 @@ class OrganizationsEnvironmentsCachesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7525,7 +7301,6 @@ class OrganizationsEnvironmentsCachesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7571,7 +7346,6 @@ class OrganizationsEnvironmentsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -7595,7 +7369,6 @@ class OrganizationsEnvironmentsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7639,7 +7412,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -7661,7 +7433,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1FlowHook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7694,7 +7465,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7713,7 +7483,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1FlowHook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7749,7 +7518,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7768,7 +7536,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1FlowHook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7822,7 +7589,6 @@ class OrganizationsEnvironmentsKeystoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -7848,7 +7614,6 @@ class OrganizationsEnvironmentsKeystoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Keystore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7881,7 +7646,6 @@ class OrganizationsEnvironmentsKeystoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7900,7 +7664,6 @@ class OrganizationsEnvironmentsKeystoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Keystore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7933,7 +7696,6 @@ class OrganizationsEnvironmentsKeystoresResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -7952,7 +7714,6 @@ class OrganizationsEnvironmentsKeystoresResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Keystore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8034,7 +7795,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -8072,7 +7832,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8107,7 +7866,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8126,7 +7884,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8160,7 +7917,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8179,7 +7935,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8213,7 +7968,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8232,7 +7986,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8266,7 +8019,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8286,7 +8038,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8334,7 +8085,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -8362,7 +8112,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8405,7 +8154,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -8429,7 +8177,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8462,7 +8209,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8481,7 +8227,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8589,7 +8334,6 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8653,7 +8397,6 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1OptimizedStats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8699,7 +8442,6 @@ class OrganizationsEnvironmentsQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -8722,7 +8464,6 @@ class OrganizationsEnvironmentsQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8757,7 +8498,6 @@ class OrganizationsEnvironmentsQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8776,7 +8516,6 @@ class OrganizationsEnvironmentsQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8815,7 +8554,6 @@ class OrganizationsEnvironmentsQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -8834,7 +8572,6 @@ class OrganizationsEnvironmentsQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8889,7 +8626,6 @@ class OrganizationsEnvironmentsQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -8927,7 +8663,6 @@ class OrganizationsEnvironmentsQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8970,7 +8705,6 @@ class OrganizationsEnvironmentsReferencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -8994,7 +8728,6 @@ class OrganizationsEnvironmentsReferencesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9029,7 +8762,6 @@ class OrganizationsEnvironmentsReferencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -9048,7 +8780,6 @@ class OrganizationsEnvironmentsReferencesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9081,7 +8812,6 @@ class OrganizationsEnvironmentsReferencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -9100,7 +8830,6 @@ class OrganizationsEnvironmentsReferencesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9139,7 +8868,6 @@ class OrganizationsEnvironmentsReferencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -9161,7 +8889,6 @@ class OrganizationsEnvironmentsReferencesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9215,7 +8942,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -9245,7 +8971,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ResourceFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9287,7 +9012,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -9317,7 +9041,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ResourceFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9359,7 +9082,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -9389,7 +9111,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9428,7 +9149,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -9452,7 +9172,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9492,7 +9211,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -9517,7 +9235,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9563,7 +9280,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -9596,7 +9312,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ResourceFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9650,7 +9365,6 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -9671,7 +9385,6 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9732,7 +9445,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -9755,7 +9467,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9790,7 +9501,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -9810,7 +9520,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9851,7 +9560,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -9871,7 +9579,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9981,7 +9688,6 @@ class OrganizationsEnvironmentsStatsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10045,7 +9751,6 @@ class OrganizationsEnvironmentsStatsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Stats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10092,7 +9797,6 @@ class OrganizationsEnvironmentsTargetserversResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -10119,7 +9823,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10155,7 +9858,6 @@ class OrganizationsEnvironmentsTargetserversResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10174,7 +9876,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10208,7 +9909,6 @@ class OrganizationsEnvironmentsTargetserversResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10227,7 +9927,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10267,7 +9966,6 @@ class OrganizationsEnvironmentsTargetserversResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -10289,7 +9987,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10335,7 +10032,6 @@ class OrganizationsHostQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -10359,7 +10055,6 @@ class OrganizationsHostQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10394,7 +10089,6 @@ class OrganizationsHostQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10413,7 +10107,6 @@ class OrganizationsHostQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10451,7 +10144,6 @@ class OrganizationsHostQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10470,7 +10162,6 @@ class OrganizationsHostQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10501,7 +10192,6 @@ class OrganizationsHostQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10520,7 +10210,6 @@ class OrganizationsHostQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1AsyncQueryResultView.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10578,7 +10267,6 @@ class OrganizationsHostQueriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -10620,7 +10308,6 @@ class OrganizationsHostQueriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10721,7 +10408,6 @@ class OrganizationsHostStatsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10782,7 +10468,6 @@ class OrganizationsHostStatsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Stats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10834,7 +10519,6 @@ class OrganizationsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -10857,7 +10541,6 @@ class OrganizationsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10892,7 +10575,6 @@ class OrganizationsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10911,7 +10593,6 @@ class OrganizationsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10945,7 +10626,6 @@ class OrganizationsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -10964,7 +10644,6 @@ class OrganizationsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1Instance.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11005,7 +10684,6 @@ class OrganizationsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -11031,7 +10709,6 @@ class OrganizationsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListInstancesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11067,7 +10744,6 @@ class OrganizationsInstancesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -11091,7 +10767,6 @@ class OrganizationsInstancesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11135,7 +10810,6 @@ class OrganizationsInstancesAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -11159,7 +10833,6 @@ class OrganizationsInstancesAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11195,7 +10868,6 @@ class OrganizationsInstancesAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -11214,7 +10886,6 @@ class OrganizationsInstancesAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11250,7 +10921,6 @@ class OrganizationsInstancesAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -11269,7 +10939,6 @@ class OrganizationsInstancesAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1InstanceAttachment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11311,7 +10980,6 @@ class OrganizationsInstancesAttachmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -11338,7 +11006,6 @@ class OrganizationsInstancesAttachmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11380,7 +11047,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -11404,7 +11070,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11438,7 +11103,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -11457,7 +11121,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1CanaryEvaluation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11504,7 +11167,6 @@ class OrganizationsInstancesNatAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -11526,7 +11188,6 @@ class OrganizationsInstancesNatAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11567,7 +11228,6 @@ class OrganizationsInstancesNatAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -11591,7 +11251,6 @@ class OrganizationsInstancesNatAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11628,7 +11287,6 @@ class OrganizationsInstancesNatAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -11647,7 +11305,6 @@ class OrganizationsInstancesNatAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11683,7 +11340,6 @@ class OrganizationsInstancesNatAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -11702,7 +11358,6 @@ class OrganizationsInstancesNatAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1NatAddress.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11743,7 +11398,6 @@ class OrganizationsInstancesNatAddressesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -11770,7 +11424,6 @@ class OrganizationsInstancesNatAddressesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11812,7 +11465,6 @@ class OrganizationsKeyvaluemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -11836,7 +11488,6 @@ class OrganizationsKeyvaluemapsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11868,7 +11519,6 @@ class OrganizationsKeyvaluemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -11887,7 +11537,6 @@ class OrganizationsKeyvaluemapsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11928,7 +11577,6 @@ class OrganizationsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -11947,7 +11595,6 @@ class OrganizationsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11996,7 +11643,6 @@ class OrganizationsOperationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12025,7 +11671,6 @@ class OrganizationsOperationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12121,7 +11766,6 @@ class OrganizationsOptimizedHostStatsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12182,7 +11826,6 @@ class OrganizationsOptimizedHostStatsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1OptimizedStats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12232,7 +11875,6 @@ class OrganizationsReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -12255,7 +11897,6 @@ class OrganizationsReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1CustomReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12287,7 +11928,6 @@ class OrganizationsReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12306,7 +11946,6 @@ class OrganizationsReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12338,7 +11977,6 @@ class OrganizationsReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12357,7 +11995,6 @@ class OrganizationsReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1CustomReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12392,7 +12029,6 @@ class OrganizationsReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -12415,7 +12051,6 @@ class OrganizationsReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12450,7 +12085,6 @@ class OrganizationsReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -12472,7 +12106,6 @@ class OrganizationsReportsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1CustomReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12532,7 +12165,6 @@ class OrganizationsSharedflowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -12562,7 +12194,6 @@ class OrganizationsSharedflowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12596,7 +12227,6 @@ class OrganizationsSharedflowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12615,7 +12245,6 @@ class OrganizationsSharedflowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1SharedFlow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12647,7 +12276,6 @@ class OrganizationsSharedflowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12666,7 +12294,6 @@ class OrganizationsSharedflowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1SharedFlow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12706,7 +12333,6 @@ class OrganizationsSharedflowsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -12733,7 +12359,6 @@ class OrganizationsSharedflowsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12773,7 +12398,6 @@ class OrganizationsSharedflowsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -12794,7 +12418,6 @@ class OrganizationsSharedflowsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12841,7 +12464,6 @@ class OrganizationsSharedflowsRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12860,7 +12482,6 @@ class OrganizationsSharedflowsRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12901,7 +12522,6 @@ class OrganizationsSharedflowsRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -12923,7 +12543,6 @@ class OrganizationsSharedflowsRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12970,7 +12589,6 @@ class OrganizationsSharedflowsRevisionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -12995,7 +12613,6 @@ class OrganizationsSharedflowsRevisionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13037,7 +12654,6 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -13058,7 +12674,6 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13109,7 +12724,6 @@ class OrganizationsSitesApicategoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -13133,7 +12747,6 @@ class OrganizationsSitesApicategoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13167,7 +12780,6 @@ class OrganizationsSitesApicategoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -13186,7 +12798,6 @@ class OrganizationsSitesApicategoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13220,7 +12831,6 @@ class OrganizationsSitesApicategoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -13239,7 +12849,6 @@ class OrganizationsSitesApicategoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13271,7 +12880,6 @@ class OrganizationsSitesApicategoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -13292,7 +12900,6 @@ class OrganizationsSitesApicategoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13329,7 +12936,6 @@ class OrganizationsSitesApicategoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -13351,7 +12957,6 @@ class OrganizationsSitesApicategoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudApigeeV1ApiCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13395,7 +13000,6 @@ class ProjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -13419,7 +13023,6 @@ class ProjectsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);

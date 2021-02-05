@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -100,7 +99,6 @@ class ProjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -121,7 +119,6 @@ class ProjectsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ProjectSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -170,7 +167,6 @@ class ProjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -191,7 +187,6 @@ class ProjectsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ProjectSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -242,7 +237,6 @@ class ProjectsHistoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -269,7 +263,6 @@ class ProjectsHistoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return History.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -305,7 +298,6 @@ class ProjectsHistoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -330,7 +322,6 @@ class ProjectsHistoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return History.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -379,7 +370,6 @@ class ProjectsHistoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -409,7 +399,6 @@ class ProjectsHistoriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListHistoriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -468,7 +457,6 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -500,7 +488,6 @@ class ProjectsHistoriesExecutionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -539,7 +526,6 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -569,7 +555,6 @@ class ProjectsHistoriesExecutionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -617,7 +602,6 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -649,7 +633,6 @@ class ProjectsHistoriesExecutionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListExecutionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -698,7 +681,6 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -734,7 +716,6 @@ class ProjectsHistoriesExecutionsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -779,7 +760,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -814,7 +794,6 @@ class ProjectsHistoriesExecutionsClustersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ScreenshotCluster.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -857,7 +836,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -888,7 +866,6 @@ class ProjectsHistoriesExecutionsClustersResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListScreenshotClustersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -938,7 +915,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -973,7 +949,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1022,7 +997,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -1059,7 +1033,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1124,7 +1097,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1148,7 +1120,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListStepAccessibilityClustersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1197,7 +1168,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1234,7 +1204,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1276,7 +1245,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -1311,7 +1279,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1352,7 +1319,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -1388,7 +1354,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PerfMetricsSummary.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1441,7 +1406,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -1478,7 +1442,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListStepsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1531,7 +1494,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1572,7 +1534,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1620,7 +1581,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1659,7 +1619,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1712,7 +1671,6 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1751,7 +1709,6 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PerfMetricsSummary.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1809,7 +1766,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1848,7 +1804,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PerfSampleSeries.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1893,7 +1848,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -1933,7 +1887,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return PerfSampleSeries.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1982,7 +1935,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -2021,7 +1973,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListPerfSampleSeriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2083,7 +2034,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2127,7 +2077,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return BatchCreatePerfSamplesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2186,7 +2135,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -2233,7 +2181,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListPerfSamplesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2288,7 +2235,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -2328,7 +2274,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return TestCase.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2381,7 +2326,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -2423,7 +2367,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListTestCasesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2484,7 +2427,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (projectId == null) {
@@ -2526,7 +2468,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return ListStepThumbnailsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

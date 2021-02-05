@@ -7,7 +7,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_expression_function_bodies
-// ignore_for_file: prefer_final_locals
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
@@ -146,7 +145,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -165,7 +163,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -221,7 +218,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -250,7 +246,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -291,7 +286,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -315,7 +309,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -370,7 +363,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -389,7 +381,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -446,7 +437,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -476,7 +466,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -519,7 +508,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -542,7 +530,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -585,7 +572,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -608,7 +594,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -651,7 +636,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -675,7 +659,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -747,7 +730,6 @@ class FoldersLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -766,7 +748,6 @@ class FoldersLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -822,7 +803,6 @@ class FoldersLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -851,7 +831,6 @@ class FoldersLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -892,7 +871,6 @@ class FoldersLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -916,7 +894,6 @@ class FoldersLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -969,7 +946,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -988,7 +964,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1045,7 +1020,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1075,7 +1049,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1118,7 +1091,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1141,7 +1113,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1184,7 +1155,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1207,7 +1177,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1250,7 +1219,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1274,7 +1242,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1348,7 +1315,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1367,7 +1333,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1423,7 +1388,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1452,7 +1416,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1493,7 +1456,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1517,7 +1479,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1571,7 +1532,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1590,7 +1550,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1647,7 +1606,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -1677,7 +1635,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1720,7 +1677,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1743,7 +1699,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1786,7 +1741,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1809,7 +1763,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1852,7 +1805,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -1876,7 +1828,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1948,7 +1899,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -1967,7 +1917,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2023,7 +1972,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2052,7 +2000,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2093,7 +2040,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2117,7 +2063,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2170,7 +2115,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (name == null) {
@@ -2189,7 +2133,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2246,7 +2189,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (parent == null) {
@@ -2276,7 +2218,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2319,7 +2260,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2342,7 +2282,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2385,7 +2324,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2408,7 +2346,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2451,7 +2388,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
     if (request != null) {
@@ -2475,7 +2411,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
