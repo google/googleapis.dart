@@ -102,8 +102,6 @@ class AccountsProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -124,8 +122,6 @@ class AccountsProductsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -174,8 +170,6 @@ class AccountsProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -199,8 +193,6 @@ class AccountsProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -240,8 +232,6 @@ class AccountsProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -266,8 +256,6 @@ class AccountsProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListProductsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -323,8 +311,6 @@ class AccountsProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -350,8 +336,6 @@ class AccountsProductsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

@@ -146,8 +146,6 @@ class ContactGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (groupFields != null) {
       _queryParams['groupFields'] = [groupFields];
@@ -168,8 +166,6 @@ class ContactGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchGetContactGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -197,8 +193,6 @@ class ContactGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -215,8 +209,6 @@ class ContactGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContactGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -251,8 +243,6 @@ class ContactGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -270,8 +260,6 @@ class ContactGroupsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -310,8 +298,6 @@ class ContactGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -332,8 +318,6 @@ class ContactGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContactGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -381,8 +365,6 @@ class ContactGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (groupFields != null) {
       _queryParams['groupFields'] = [groupFields];
@@ -406,8 +388,6 @@ class ContactGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListContactGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -442,8 +422,6 @@ class ContactGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -463,8 +441,6 @@ class ContactGroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContactGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -508,8 +484,6 @@ class ContactGroupsMembersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -531,8 +505,6 @@ class ContactGroupsMembersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ModifyContactGroupMembersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -572,8 +544,6 @@ class OtherContactsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -595,8 +565,6 @@ class OtherContactsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -653,8 +621,6 @@ class OtherContactsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -681,8 +647,6 @@ class OtherContactsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListOtherContactsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -738,8 +702,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -762,8 +724,6 @@ class PeopleResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -793,8 +753,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -811,8 +769,6 @@ class PeopleResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -856,8 +812,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -880,8 +834,6 @@ class PeopleResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DeleteContactPhotoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -937,8 +889,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -962,8 +912,6 @@ class PeopleResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1021,8 +969,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
@@ -1046,8 +992,6 @@ class PeopleResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GetPeopleResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1114,8 +1058,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (mergeSources != null) {
       _queryParams['mergeSources'] = mergeSources;
@@ -1148,8 +1090,6 @@ class PeopleResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListDirectoryPeopleResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1208,8 +1148,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (mergeSources != null) {
       _queryParams['mergeSources'] = mergeSources;
@@ -1239,8 +1177,6 @@ class PeopleResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SearchDirectoryPeopleResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1313,8 +1249,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1345,8 +1279,6 @@ class PeopleResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1377,8 +1309,6 @@ class PeopleResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1400,8 +1330,6 @@ class PeopleResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UpdateContactPhotoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1502,8 +1430,6 @@ class PeopleConnectionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -1544,8 +1470,6 @@ class PeopleConnectionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListConnectionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

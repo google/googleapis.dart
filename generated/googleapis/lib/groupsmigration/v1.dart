@@ -94,8 +94,6 @@ class ArchiveResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (groupId == null) {
       throw core.ArgumentError('Parameter groupId is required.');
@@ -104,10 +102,7 @@ class ArchiveResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-
-    _uploadOptions = commons.UploadOptions.Default;
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'groups/v1/groups/' +
           commons.Escaper.ecapeVariable('$groupId') +
           '/archive';
@@ -121,8 +116,8 @@ class ArchiveResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.Default,
     );
     return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

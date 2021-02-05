@@ -98,8 +98,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -114,8 +112,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -153,8 +149,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -174,8 +168,6 @@ class ProjectsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -218,8 +210,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -243,8 +233,6 @@ class ProjectsAttestorsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Attestor.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -275,8 +263,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -291,8 +277,6 @@ class ProjectsAttestorsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -323,8 +307,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -339,8 +321,6 @@ class ProjectsAttestorsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Attestor.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -382,8 +362,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -405,8 +383,6 @@ class ProjectsAttestorsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -447,8 +423,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -470,8 +444,6 @@ class ProjectsAttestorsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAttestorsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -508,8 +480,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -531,8 +501,6 @@ class ProjectsAttestorsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -570,8 +538,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -593,8 +559,6 @@ class ProjectsAttestorsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -629,8 +593,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -650,8 +612,6 @@ class ProjectsAttestorsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Attestor.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -685,8 +645,6 @@ class ProjectsAttestorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -708,8 +666,6 @@ class ProjectsAttestorsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ValidateAttestationOccurrenceResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -758,8 +714,6 @@ class ProjectsPolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -781,8 +735,6 @@ class ProjectsPolicyResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -818,8 +770,6 @@ class ProjectsPolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -841,8 +791,6 @@ class ProjectsPolicyResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return IamPolicy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -880,8 +828,6 @@ class ProjectsPolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -903,8 +849,6 @@ class ProjectsPolicyResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -940,8 +884,6 @@ class SystempolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -956,8 +898,6 @@ class SystempolicyResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

@@ -97,8 +97,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -113,8 +111,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -151,8 +147,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -177,8 +171,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -231,8 +223,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -252,8 +242,6 @@ class ProjectsLocationsQueuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -291,8 +279,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -307,8 +293,6 @@ class ProjectsLocationsQueuesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -338,8 +322,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -354,8 +336,6 @@ class ProjectsLocationsQueuesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -394,8 +374,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -417,8 +395,6 @@ class ProjectsLocationsQueuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -471,8 +447,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -496,8 +470,6 @@ class ProjectsLocationsQueuesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListQueuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -554,8 +526,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -578,8 +548,6 @@ class ProjectsLocationsQueuesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -616,8 +584,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -637,8 +603,6 @@ class ProjectsLocationsQueuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -675,8 +639,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -696,8 +658,6 @@ class ProjectsLocationsQueuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -737,8 +697,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -758,8 +716,6 @@ class ProjectsLocationsQueuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -799,8 +755,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -822,8 +776,6 @@ class ProjectsLocationsQueuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -862,8 +814,6 @@ class ProjectsLocationsQueuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -885,8 +835,6 @@ class ProjectsLocationsQueuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -931,8 +879,6 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -952,8 +898,6 @@ class ProjectsLocationsQueuesTasksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -986,8 +930,6 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1002,8 +944,6 @@ class ProjectsLocationsQueuesTasksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1053,8 +993,6 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1072,8 +1010,6 @@ class ProjectsLocationsQueuesTasksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1141,8 +1077,6 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1166,8 +1100,6 @@ class ProjectsLocationsQueuesTasksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListTasksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1214,8 +1146,6 @@ class ProjectsLocationsQueuesTasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1235,8 +1165,6 @@ class ProjectsLocationsQueuesTasksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

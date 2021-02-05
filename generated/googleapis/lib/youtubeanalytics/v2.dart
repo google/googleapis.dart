@@ -114,8 +114,6 @@ class GroupItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (id != null) {
       _queryParams['id'] = [id];
@@ -133,8 +131,6 @@ class GroupItemsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EmptyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -174,8 +170,6 @@ class GroupItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -195,8 +189,6 @@ class GroupItemsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GroupItem.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -236,8 +228,6 @@ class GroupItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (groupId != null) {
       _queryParams['groupId'] = [groupId];
@@ -255,8 +245,6 @@ class GroupItemsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListGroupItemsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -303,8 +291,6 @@ class GroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (id != null) {
       _queryParams['id'] = [id];
@@ -322,8 +308,6 @@ class GroupsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EmptyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -363,8 +347,6 @@ class GroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -384,8 +366,6 @@ class GroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -442,8 +422,6 @@ class GroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (id != null) {
       _queryParams['id'] = [id];
@@ -467,8 +445,6 @@ class GroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -510,8 +486,6 @@ class GroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -531,8 +505,6 @@ class GroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -635,8 +607,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (currency != null) {
       _queryParams['currency'] = [currency];
@@ -683,8 +653,6 @@ class ReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return QueryResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

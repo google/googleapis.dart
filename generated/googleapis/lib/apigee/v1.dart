@@ -171,8 +171,6 @@ class HybridIssuersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -187,8 +185,6 @@ class HybridIssuersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -265,8 +261,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -286,8 +280,6 @@ class OrganizationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -319,8 +311,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -335,8 +325,6 @@ class OrganizationsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -369,8 +357,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -385,8 +371,6 @@ class OrganizationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Organization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -430,8 +414,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -449,8 +431,6 @@ class OrganizationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1IngressConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -492,8 +472,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -515,8 +493,6 @@ class OrganizationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1SyncAuthorization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -550,8 +526,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -566,8 +540,6 @@ class OrganizationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -610,8 +582,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -633,8 +603,6 @@ class OrganizationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1SyncAuthorization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -669,8 +637,6 @@ class OrganizationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -690,8 +656,6 @@ class OrganizationsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Organization.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -741,8 +705,6 @@ class OrganizationsAnalyticsDatastoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -764,8 +726,6 @@ class OrganizationsAnalyticsDatastoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Datastore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -796,8 +756,6 @@ class OrganizationsAnalyticsDatastoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -812,8 +770,6 @@ class OrganizationsAnalyticsDatastoresResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -844,8 +800,6 @@ class OrganizationsAnalyticsDatastoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -860,8 +814,6 @@ class OrganizationsAnalyticsDatastoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Datastore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -895,8 +847,6 @@ class OrganizationsAnalyticsDatastoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -916,8 +866,6 @@ class OrganizationsAnalyticsDatastoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -953,8 +901,6 @@ class OrganizationsAnalyticsDatastoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -976,8 +922,6 @@ class OrganizationsAnalyticsDatastoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1011,8 +955,6 @@ class OrganizationsAnalyticsDatastoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1032,8 +974,6 @@ class OrganizationsAnalyticsDatastoresResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Datastore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1087,8 +1027,6 @@ class OrganizationsApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1109,8 +1047,6 @@ class OrganizationsApiproductsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1162,8 +1098,6 @@ class OrganizationsApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1185,8 +1119,6 @@ class OrganizationsApiproductsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1225,8 +1157,6 @@ class OrganizationsApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1241,8 +1171,6 @@ class OrganizationsApiproductsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1277,8 +1205,6 @@ class OrganizationsApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1293,8 +1219,6 @@ class OrganizationsApiproductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1350,8 +1274,6 @@ class OrganizationsApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1383,8 +1305,6 @@ class OrganizationsApiproductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1424,8 +1344,6 @@ class OrganizationsApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1445,8 +1363,6 @@ class OrganizationsApiproductsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1485,8 +1401,6 @@ class OrganizationsApiproductsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1501,8 +1415,6 @@ class OrganizationsApiproductsAttributesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1534,8 +1446,6 @@ class OrganizationsApiproductsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1550,8 +1460,6 @@ class OrganizationsApiproductsAttributesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1581,8 +1489,6 @@ class OrganizationsApiproductsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1599,8 +1505,6 @@ class OrganizationsApiproductsAttributesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1641,8 +1545,6 @@ class OrganizationsApiproductsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1662,8 +1564,6 @@ class OrganizationsApiproductsAttributesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1739,8 +1639,6 @@ class OrganizationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1769,8 +1667,6 @@ class OrganizationsApisResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1803,8 +1699,6 @@ class OrganizationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1819,8 +1713,6 @@ class OrganizationsApisResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProxy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1850,8 +1742,6 @@ class OrganizationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1866,8 +1756,6 @@ class OrganizationsApisResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProxy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1908,8 +1796,6 @@ class OrganizationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1930,8 +1816,6 @@ class OrganizationsApisResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1968,8 +1852,6 @@ class OrganizationsApisDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1986,8 +1868,6 @@ class OrganizationsApisDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2028,8 +1908,6 @@ class OrganizationsApisKeyvaluemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2051,8 +1929,6 @@ class OrganizationsApisKeyvaluemapsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2083,8 +1959,6 @@ class OrganizationsApisKeyvaluemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2099,8 +1973,6 @@ class OrganizationsApisKeyvaluemapsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2144,8 +2016,6 @@ class OrganizationsApisRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2160,8 +2030,6 @@ class OrganizationsApisRevisionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2205,8 +2073,6 @@ class OrganizationsApisRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2224,8 +2090,6 @@ class OrganizationsApisRevisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2269,8 +2133,6 @@ class OrganizationsApisRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2293,8 +2155,6 @@ class OrganizationsApisRevisionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2333,8 +2193,6 @@ class OrganizationsApisRevisionsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2351,8 +2209,6 @@ class OrganizationsApisRevisionsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2388,8 +2244,6 @@ class OrganizationsAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2404,8 +2258,6 @@ class OrganizationsAppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1App.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2469,8 +2321,6 @@ class OrganizationsAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2512,8 +2362,6 @@ class OrganizationsAppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListAppsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2557,8 +2405,6 @@ class OrganizationsDatacollectorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2583,8 +2429,6 @@ class OrganizationsDatacollectorsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DataCollector.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2614,8 +2458,6 @@ class OrganizationsDatacollectorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2630,8 +2472,6 @@ class OrganizationsDatacollectorsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2661,8 +2501,6 @@ class OrganizationsDatacollectorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2677,8 +2515,6 @@ class OrganizationsDatacollectorsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DataCollector.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2716,8 +2552,6 @@ class OrganizationsDatacollectorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2740,8 +2574,6 @@ class OrganizationsDatacollectorsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2777,8 +2609,6 @@ class OrganizationsDatacollectorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2801,8 +2631,6 @@ class OrganizationsDatacollectorsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DataCollector.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2845,8 +2673,6 @@ class OrganizationsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2866,8 +2692,6 @@ class OrganizationsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2923,8 +2747,6 @@ class OrganizationsDevelopersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2946,8 +2768,6 @@ class OrganizationsDevelopersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2985,8 +2805,6 @@ class OrganizationsDevelopersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3008,8 +2826,6 @@ class OrganizationsDevelopersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3048,8 +2864,6 @@ class OrganizationsDevelopersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3064,8 +2878,6 @@ class OrganizationsDevelopersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3103,8 +2915,6 @@ class OrganizationsDevelopersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3122,8 +2932,6 @@ class OrganizationsDevelopersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3188,8 +2996,6 @@ class OrganizationsDevelopersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3224,8 +3030,6 @@ class OrganizationsDevelopersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3268,8 +3072,6 @@ class OrganizationsDevelopersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3287,8 +3089,6 @@ class OrganizationsDevelopersResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3332,8 +3132,6 @@ class OrganizationsDevelopersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3353,8 +3151,6 @@ class OrganizationsDevelopersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Developer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3404,8 +3200,6 @@ class OrganizationsDevelopersAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3426,8 +3220,6 @@ class OrganizationsDevelopersAppsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3467,8 +3259,6 @@ class OrganizationsDevelopersAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3488,8 +3278,6 @@ class OrganizationsDevelopersAppsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3526,8 +3314,6 @@ class OrganizationsDevelopersAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3542,8 +3328,6 @@ class OrganizationsDevelopersAppsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3606,8 +3390,6 @@ class OrganizationsDevelopersAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3630,8 +3412,6 @@ class OrganizationsDevelopersAppsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3675,8 +3455,6 @@ class OrganizationsDevelopersAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3697,8 +3475,6 @@ class OrganizationsDevelopersAppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3755,8 +3531,6 @@ class OrganizationsDevelopersAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3783,8 +3557,6 @@ class OrganizationsDevelopersAppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3830,8 +3602,6 @@ class OrganizationsDevelopersAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3851,8 +3621,6 @@ class OrganizationsDevelopersAppsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperApp.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3891,8 +3659,6 @@ class OrganizationsDevelopersAppsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3907,8 +3673,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3940,8 +3704,6 @@ class OrganizationsDevelopersAppsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3956,8 +3718,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3989,8 +3749,6 @@ class OrganizationsDevelopersAppsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4007,8 +3765,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4050,8 +3806,6 @@ class OrganizationsDevelopersAppsAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4071,8 +3825,6 @@ class OrganizationsDevelopersAppsAttributesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4130,8 +3882,6 @@ class OrganizationsDevelopersAppsKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4151,8 +3901,6 @@ class OrganizationsDevelopersAppsKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4192,8 +3940,6 @@ class OrganizationsDevelopersAppsKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4208,8 +3954,6 @@ class OrganizationsDevelopersAppsKeysResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4242,8 +3986,6 @@ class OrganizationsDevelopersAppsKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4258,8 +4000,6 @@ class OrganizationsDevelopersAppsKeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4300,8 +4040,6 @@ class OrganizationsDevelopersAppsKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4321,8 +4059,6 @@ class OrganizationsDevelopersAppsKeysResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4368,8 +4104,6 @@ class OrganizationsDevelopersAppsKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4392,8 +4126,6 @@ class OrganizationsDevelopersAppsKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4437,8 +4169,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4453,8 +4183,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4496,8 +4224,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4515,8 +4241,6 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4569,8 +4293,6 @@ class OrganizationsDevelopersAppsKeysCreateResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4592,8 +4314,6 @@ class OrganizationsDevelopersAppsKeysCreateResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4632,8 +4352,6 @@ class OrganizationsDevelopersAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4648,8 +4366,6 @@ class OrganizationsDevelopersAttributesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4681,8 +4397,6 @@ class OrganizationsDevelopersAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4697,8 +4411,6 @@ class OrganizationsDevelopersAttributesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4729,8 +4441,6 @@ class OrganizationsDevelopersAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4747,8 +4457,6 @@ class OrganizationsDevelopersAttributesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attributes.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4790,8 +4498,6 @@ class OrganizationsDevelopersAttributesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4811,8 +4517,6 @@ class OrganizationsDevelopersAttributesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Attribute.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4859,8 +4563,6 @@ class OrganizationsEnvgroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4884,8 +4586,6 @@ class OrganizationsEnvgroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4915,8 +4615,6 @@ class OrganizationsEnvgroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4931,8 +4629,6 @@ class OrganizationsEnvgroupsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4962,8 +4658,6 @@ class OrganizationsEnvgroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4978,8 +4672,6 @@ class OrganizationsEnvgroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1EnvironmentGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5017,8 +4709,6 @@ class OrganizationsEnvgroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5040,8 +4730,6 @@ class OrganizationsEnvgroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5077,8 +4765,6 @@ class OrganizationsEnvgroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5101,8 +4787,6 @@ class OrganizationsEnvgroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5142,8 +4826,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5165,8 +4847,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5198,8 +4878,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5214,8 +4892,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5247,8 +4923,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5263,8 +4937,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5304,8 +4976,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5328,8 +4998,6 @@ class OrganizationsEnvgroupsAttachmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5403,8 +5071,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5429,8 +5095,6 @@ class OrganizationsEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5460,8 +5124,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5476,8 +5138,6 @@ class OrganizationsEnvironmentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5507,8 +5167,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5523,8 +5181,6 @@ class OrganizationsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5555,8 +5211,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5571,8 +5225,6 @@ class OrganizationsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DebugMask.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5604,8 +5256,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5620,8 +5270,6 @@ class OrganizationsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1EnvironmentConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5666,8 +5314,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -5689,8 +5335,6 @@ class OrganizationsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5730,8 +5374,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5753,8 +5395,6 @@ class OrganizationsEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5787,8 +5427,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5804,8 +5442,6 @@ class OrganizationsEnvironmentsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Subscription.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5843,8 +5479,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5866,8 +5500,6 @@ class OrganizationsEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5900,8 +5532,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5923,8 +5553,6 @@ class OrganizationsEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5962,8 +5590,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5983,8 +5609,6 @@ class OrganizationsEnvironmentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6026,8 +5650,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6053,8 +5675,6 @@ class OrganizationsEnvironmentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DebugMask.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6092,8 +5712,6 @@ class OrganizationsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6113,8 +5731,6 @@ class OrganizationsEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6173,8 +5789,6 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6192,8 +5806,6 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Schema.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6237,8 +5849,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6260,8 +5870,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Export.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6295,8 +5903,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6311,8 +5917,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Export.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6343,8 +5947,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -6361,8 +5963,6 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListExportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6412,8 +6012,6 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -6430,8 +6028,6 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6509,8 +6105,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6532,8 +6126,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6566,8 +6158,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6583,8 +6173,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6634,8 +6222,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6654,8 +6240,6 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6706,8 +6290,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6732,8 +6314,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DebugSession.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6768,8 +6348,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6784,8 +6362,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6817,8 +6393,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6833,8 +6407,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DebugSession.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6875,8 +6447,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -6899,8 +6469,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6940,8 +6508,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6956,8 +6522,6 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7016,8 +6580,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7037,8 +6599,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7084,8 +6644,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7102,8 +6660,6 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7141,8 +6697,6 @@ class OrganizationsEnvironmentsCachesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7157,8 +6711,6 @@ class OrganizationsEnvironmentsCachesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7202,8 +6754,6 @@ class OrganizationsEnvironmentsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -7223,8 +6773,6 @@ class OrganizationsEnvironmentsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7266,8 +6814,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7287,8 +6833,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1FlowHook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7319,8 +6863,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7335,8 +6877,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1FlowHook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7370,8 +6910,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7386,8 +6924,6 @@ class OrganizationsEnvironmentsFlowhooksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1FlowHook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7439,8 +6975,6 @@ class OrganizationsEnvironmentsKeystoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7464,8 +6998,6 @@ class OrganizationsEnvironmentsKeystoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Keystore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7496,8 +7028,6 @@ class OrganizationsEnvironmentsKeystoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7512,8 +7042,6 @@ class OrganizationsEnvironmentsKeystoresResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Keystore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7544,8 +7072,6 @@ class OrganizationsEnvironmentsKeystoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7560,8 +7086,6 @@ class OrganizationsEnvironmentsKeystoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Keystore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7641,8 +7165,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7678,8 +7200,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7712,8 +7232,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7728,8 +7246,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7761,8 +7277,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7777,8 +7291,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7810,8 +7322,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7826,8 +7336,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7859,8 +7367,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7876,8 +7382,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7923,8 +7427,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7950,8 +7452,6 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Alias.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7992,8 +7492,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8015,8 +7513,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8047,8 +7543,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -8063,8 +7557,6 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8170,8 +7662,6 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -8231,8 +7721,6 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1OptimizedStats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8276,8 +7764,6 @@ class OrganizationsEnvironmentsQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8298,8 +7784,6 @@ class OrganizationsEnvironmentsQueriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8332,8 +7816,6 @@ class OrganizationsEnvironmentsQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -8348,8 +7830,6 @@ class OrganizationsEnvironmentsQueriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8386,8 +7866,6 @@ class OrganizationsEnvironmentsQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -8402,8 +7880,6 @@ class OrganizationsEnvironmentsQueriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8456,8 +7932,6 @@ class OrganizationsEnvironmentsQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -8491,8 +7965,6 @@ class OrganizationsEnvironmentsQueriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8533,8 +8005,6 @@ class OrganizationsEnvironmentsReferencesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8556,8 +8026,6 @@ class OrganizationsEnvironmentsReferencesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8590,8 +8058,6 @@ class OrganizationsEnvironmentsReferencesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -8606,8 +8072,6 @@ class OrganizationsEnvironmentsReferencesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8638,8 +8102,6 @@ class OrganizationsEnvironmentsReferencesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -8654,8 +8116,6 @@ class OrganizationsEnvironmentsReferencesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8692,8 +8152,6 @@ class OrganizationsEnvironmentsReferencesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8713,8 +8171,6 @@ class OrganizationsEnvironmentsReferencesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Reference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8766,8 +8222,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8795,8 +8249,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ResourceFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8836,8 +8288,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -8863,8 +8313,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ResourceFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8904,8 +8352,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -8931,8 +8377,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8969,8 +8413,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -8990,8 +8432,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9029,8 +8469,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -9051,8 +8489,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9096,8 +8532,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9128,8 +8562,6 @@ class OrganizationsEnvironmentsResourcefilesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ResourceFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9181,8 +8613,6 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -9199,8 +8629,6 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9259,8 +8687,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9279,8 +8705,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9313,8 +8737,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9330,8 +8752,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9370,8 +8790,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9387,8 +8805,6 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9496,8 +8912,6 @@ class OrganizationsEnvironmentsStatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9557,8 +8971,6 @@ class OrganizationsEnvironmentsStatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Stats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9603,8 +9015,6 @@ class OrganizationsEnvironmentsTargetserversResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9629,8 +9039,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9664,8 +9072,6 @@ class OrganizationsEnvironmentsTargetserversResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9680,8 +9086,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9713,8 +9117,6 @@ class OrganizationsEnvironmentsTargetserversResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9729,8 +9131,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9768,8 +9168,6 @@ class OrganizationsEnvironmentsTargetserversResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9789,8 +9187,6 @@ class OrganizationsEnvironmentsTargetserversResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1TargetServer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9834,8 +9230,6 @@ class OrganizationsHostQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9857,8 +9251,6 @@ class OrganizationsHostQueriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9891,8 +9283,6 @@ class OrganizationsHostQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9907,8 +9297,6 @@ class OrganizationsHostQueriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1AsyncQuery.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9944,8 +9332,6 @@ class OrganizationsHostQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -9960,8 +9346,6 @@ class OrganizationsHostQueriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9990,8 +9374,6 @@ class OrganizationsHostQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -10006,8 +9388,6 @@ class OrganizationsHostQueriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1AsyncQueryResultView.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10063,8 +9443,6 @@ class OrganizationsHostQueriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -10102,8 +9480,6 @@ class OrganizationsHostQueriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10202,8 +9578,6 @@ class OrganizationsHostStatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -10260,8 +9634,6 @@ class OrganizationsHostStatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Stats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10311,8 +9683,6 @@ class OrganizationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10333,8 +9703,6 @@ class OrganizationsInstancesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10367,8 +9735,6 @@ class OrganizationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -10383,8 +9749,6 @@ class OrganizationsInstancesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10416,8 +9780,6 @@ class OrganizationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -10432,8 +9794,6 @@ class OrganizationsInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1Instance.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10472,8 +9832,6 @@ class OrganizationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -10495,8 +9853,6 @@ class OrganizationsInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListInstancesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10530,8 +9886,6 @@ class OrganizationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10553,8 +9907,6 @@ class OrganizationsInstancesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10596,8 +9948,6 @@ class OrganizationsInstancesAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10619,8 +9969,6 @@ class OrganizationsInstancesAttachmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10654,8 +10002,6 @@ class OrganizationsInstancesAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -10670,8 +10016,6 @@ class OrganizationsInstancesAttachmentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10705,8 +10049,6 @@ class OrganizationsInstancesAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -10721,8 +10063,6 @@ class OrganizationsInstancesAttachmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1InstanceAttachment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10762,8 +10102,6 @@ class OrganizationsInstancesAttachmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -10786,8 +10124,6 @@ class OrganizationsInstancesAttachmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10827,8 +10163,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10850,8 +10184,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10883,8 +10215,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -10899,8 +10229,6 @@ class OrganizationsInstancesCanaryevaluationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1CanaryEvaluation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10945,8 +10273,6 @@ class OrganizationsInstancesNatAddressesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10966,8 +10292,6 @@ class OrganizationsInstancesNatAddressesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11006,8 +10330,6 @@ class OrganizationsInstancesNatAddressesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11029,8 +10351,6 @@ class OrganizationsInstancesNatAddressesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11065,8 +10385,6 @@ class OrganizationsInstancesNatAddressesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11081,8 +10399,6 @@ class OrganizationsInstancesNatAddressesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11116,8 +10432,6 @@ class OrganizationsInstancesNatAddressesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11132,8 +10446,6 @@ class OrganizationsInstancesNatAddressesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1NatAddress.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11172,8 +10484,6 @@ class OrganizationsInstancesNatAddressesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -11196,8 +10506,6 @@ class OrganizationsInstancesNatAddressesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11237,8 +10545,6 @@ class OrganizationsKeyvaluemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11260,8 +10566,6 @@ class OrganizationsKeyvaluemapsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11291,8 +10595,6 @@ class OrganizationsKeyvaluemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11307,8 +10609,6 @@ class OrganizationsKeyvaluemapsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1KeyValueMap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11347,8 +10647,6 @@ class OrganizationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11363,8 +10661,6 @@ class OrganizationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11411,8 +10707,6 @@ class OrganizationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11437,8 +10731,6 @@ class OrganizationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11532,8 +10824,6 @@ class OrganizationsOptimizedHostStatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11590,8 +10880,6 @@ class OrganizationsOptimizedHostStatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1OptimizedStats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11639,8 +10927,6 @@ class OrganizationsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11661,8 +10947,6 @@ class OrganizationsReportsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1CustomReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11692,8 +10976,6 @@ class OrganizationsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11708,8 +10990,6 @@ class OrganizationsReportsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11739,8 +11019,6 @@ class OrganizationsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -11755,8 +11033,6 @@ class OrganizationsReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1CustomReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11789,8 +11065,6 @@ class OrganizationsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -11809,8 +11083,6 @@ class OrganizationsReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11843,8 +11115,6 @@ class OrganizationsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11864,8 +11134,6 @@ class OrganizationsReportsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1CustomReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11923,8 +11191,6 @@ class OrganizationsSharedflowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11952,8 +11218,6 @@ class OrganizationsSharedflowsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11985,8 +11249,6 @@ class OrganizationsSharedflowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -12001,8 +11263,6 @@ class OrganizationsSharedflowsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1SharedFlow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12032,8 +11292,6 @@ class OrganizationsSharedflowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -12048,8 +11306,6 @@ class OrganizationsSharedflowsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1SharedFlow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12087,8 +11343,6 @@ class OrganizationsSharedflowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -12111,8 +11365,6 @@ class OrganizationsSharedflowsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12150,8 +11402,6 @@ class OrganizationsSharedflowsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -12168,8 +11418,6 @@ class OrganizationsSharedflowsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12214,8 +11462,6 @@ class OrganizationsSharedflowsRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -12230,8 +11476,6 @@ class OrganizationsSharedflowsRevisionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12270,8 +11514,6 @@ class OrganizationsSharedflowsRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -12289,8 +11531,6 @@ class OrganizationsSharedflowsRevisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12335,8 +11575,6 @@ class OrganizationsSharedflowsRevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12359,8 +11597,6 @@ class OrganizationsSharedflowsRevisionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12400,8 +11636,6 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -12418,8 +11652,6 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12468,8 +11700,6 @@ class OrganizationsSitesApicategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12491,8 +11721,6 @@ class OrganizationsSitesApicategoriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12524,8 +11752,6 @@ class OrganizationsSitesApicategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -12540,8 +11766,6 @@ class OrganizationsSitesApicategoriesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12573,8 +11797,6 @@ class OrganizationsSitesApicategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -12589,8 +11811,6 @@ class OrganizationsSitesApicategoriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12620,8 +11840,6 @@ class OrganizationsSitesApicategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -12638,8 +11856,6 @@ class OrganizationsSitesApicategoriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12674,8 +11890,6 @@ class OrganizationsSitesApicategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12695,8 +11909,6 @@ class OrganizationsSitesApicategoriesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudApigeeV1ApiCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12738,8 +11950,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12761,8 +11971,6 @@ class ProjectsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);

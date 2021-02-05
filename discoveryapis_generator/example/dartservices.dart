@@ -59,8 +59,6 @@ class DartservicesApi {
   async.Future<AnalysisResults> analyze(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -74,8 +72,6 @@ class DartservicesApi {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AnalysisResults.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -97,8 +93,6 @@ class DartservicesApi {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (source != null) {
       _queryParams['source'] = [source];
@@ -110,8 +104,6 @@ class DartservicesApi {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AnalysisResults.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -131,8 +123,6 @@ class DartservicesApi {
   async.Future<CompileResponse> compile(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -146,8 +136,6 @@ class DartservicesApi {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CompileResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -169,8 +157,6 @@ class DartservicesApi {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (source != null) {
       _queryParams['source'] = [source];
@@ -182,8 +168,6 @@ class DartservicesApi {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CompileResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -201,8 +185,6 @@ class DartservicesApi {
   async.Future<void> complete(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -216,8 +198,6 @@ class DartservicesApi {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -239,8 +219,6 @@ class DartservicesApi {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
@@ -255,8 +233,6 @@ class DartservicesApi {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -275,8 +251,6 @@ class DartservicesApi {
   async.Future<DocumentResponse> document(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -290,8 +264,6 @@ class DartservicesApi {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DocumentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -316,8 +288,6 @@ class DartservicesApi {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
@@ -332,8 +302,6 @@ class DartservicesApi {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DocumentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -370,8 +338,6 @@ class DartservicesApi {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -389,8 +355,6 @@ class DartservicesApi {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||

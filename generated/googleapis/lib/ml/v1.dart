@@ -109,8 +109,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -130,8 +128,6 @@ class ProjectsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -164,8 +160,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -181,8 +175,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1GetConfigResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -218,8 +210,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -239,8 +229,6 @@ class ProjectsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -278,8 +266,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -299,8 +285,6 @@ class ProjectsJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -332,8 +316,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -353,8 +335,6 @@ class ProjectsJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Job.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -383,8 +363,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -399,8 +377,6 @@ class ProjectsJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Job.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -443,8 +419,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -466,8 +440,6 @@ class ProjectsJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -519,8 +491,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -544,8 +514,6 @@ class ProjectsJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1ListJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -591,8 +559,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -615,8 +581,6 @@ class ProjectsJobsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Job.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -653,8 +617,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -676,8 +638,6 @@ class ProjectsJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -716,8 +676,6 @@ class ProjectsJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -739,8 +697,6 @@ class ProjectsJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -781,8 +737,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -797,8 +751,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Location.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -840,8 +792,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -863,8 +813,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -910,8 +858,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -926,8 +872,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -960,8 +904,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -976,8 +918,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1024,8 +964,6 @@ class ProjectsLocationsStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1049,8 +987,6 @@ class ProjectsLocationsStudiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Study.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1080,8 +1016,6 @@ class ProjectsLocationsStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1096,8 +1030,6 @@ class ProjectsLocationsStudiesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1127,8 +1059,6 @@ class ProjectsLocationsStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1143,8 +1073,6 @@ class ProjectsLocationsStudiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Study.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1174,8 +1102,6 @@ class ProjectsLocationsStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1191,8 +1117,6 @@ class ProjectsLocationsStudiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1ListStudiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1235,8 +1159,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1258,8 +1180,6 @@ class ProjectsLocationsStudiesTrialsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Trial.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1295,8 +1215,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1318,8 +1236,6 @@ class ProjectsLocationsStudiesTrialsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1352,8 +1268,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1373,8 +1287,6 @@ class ProjectsLocationsStudiesTrialsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Trial.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1407,8 +1319,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1428,8 +1338,6 @@ class ProjectsLocationsStudiesTrialsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Trial.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1459,8 +1367,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1475,8 +1381,6 @@ class ProjectsLocationsStudiesTrialsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1506,8 +1410,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1522,8 +1424,6 @@ class ProjectsLocationsStudiesTrialsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Trial.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1553,8 +1453,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1569,8 +1467,6 @@ class ProjectsLocationsStudiesTrialsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1ListTrialsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1608,8 +1504,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1631,8 +1525,6 @@ class ProjectsLocationsStudiesTrialsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1665,8 +1557,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1686,8 +1576,6 @@ class ProjectsLocationsStudiesTrialsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Trial.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1725,8 +1613,6 @@ class ProjectsLocationsStudiesTrialsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1748,8 +1634,6 @@ class ProjectsLocationsStudiesTrialsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1793,8 +1677,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1814,8 +1696,6 @@ class ProjectsModelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Model.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1847,8 +1727,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1863,8 +1741,6 @@ class ProjectsModelsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1895,8 +1771,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1911,8 +1785,6 @@ class ProjectsModelsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Model.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1955,8 +1827,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -1978,8 +1848,6 @@ class ProjectsModelsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2027,8 +1895,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2052,8 +1918,6 @@ class ProjectsModelsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1ListModelsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2097,8 +1961,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2121,8 +1983,6 @@ class ProjectsModelsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2159,8 +2019,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2182,8 +2040,6 @@ class ProjectsModelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1Policy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2222,8 +2078,6 @@ class ProjectsModelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2245,8 +2099,6 @@ class ProjectsModelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2292,8 +2144,6 @@ class ProjectsModelsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2314,8 +2164,6 @@ class ProjectsModelsVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2351,8 +2199,6 @@ class ProjectsModelsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2367,8 +2213,6 @@ class ProjectsModelsVersionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2402,8 +2246,6 @@ class ProjectsModelsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2418,8 +2260,6 @@ class ProjectsModelsVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Version.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2468,8 +2308,6 @@ class ProjectsModelsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2494,8 +2332,6 @@ class ProjectsModelsVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1ListVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2542,8 +2378,6 @@ class ProjectsModelsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2566,8 +2400,6 @@ class ProjectsModelsVersionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2607,8 +2439,6 @@ class ProjectsModelsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2629,8 +2459,6 @@ class ProjectsModelsVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudMlV1Version.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2674,8 +2502,6 @@ class ProjectsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2690,8 +2516,6 @@ class ProjectsOperationsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2723,8 +2547,6 @@ class ProjectsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2739,8 +2561,6 @@ class ProjectsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2787,8 +2607,6 @@ class ProjectsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2813,8 +2631,6 @@ class ProjectsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

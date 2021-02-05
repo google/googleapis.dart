@@ -277,8 +277,6 @@ class ActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
@@ -329,8 +327,6 @@ class ActivitiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Activities.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -533,8 +529,6 @@ class ActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -591,8 +585,6 @@ class ActivitiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -623,8 +615,6 @@ class ChannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -641,8 +631,6 @@ class ChannelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -713,8 +701,6 @@ class CustomerUsageReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
@@ -739,8 +725,6 @@ class CustomerUsageReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UsageReports.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -851,8 +835,6 @@ class EntityUsageReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (entityType == null) {
       throw core.ArgumentError('Parameter entityType is required.');
@@ -893,8 +875,6 @@ class EntityUsageReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UsageReports.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1011,8 +991,6 @@ class UserUsageReportResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
@@ -1054,8 +1032,6 @@ class UserUsageReportResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UsageReports.fromJson(
         _response as core.Map<core.String, core.dynamic>);

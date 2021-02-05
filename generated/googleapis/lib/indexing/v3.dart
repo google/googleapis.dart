@@ -86,8 +86,6 @@ class UrlNotificationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (url != null) {
       _queryParams['url'] = [url];
@@ -102,8 +100,6 @@ class UrlNotificationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UrlNotificationMetadata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -131,8 +127,6 @@ class UrlNotificationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -149,8 +143,6 @@ class UrlNotificationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PublishUrlNotificationResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

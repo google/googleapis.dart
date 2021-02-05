@@ -150,8 +150,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -163,8 +161,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsAuthInfoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -202,8 +198,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -228,8 +222,6 @@ class AccountsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsClaimWebsiteResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -258,8 +250,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -276,8 +266,6 @@ class AccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -311,8 +299,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -336,8 +322,6 @@ class AccountsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -376,8 +360,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -401,8 +383,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -433,8 +413,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -456,8 +434,6 @@ class AccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -493,8 +469,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -521,8 +495,6 @@ class AccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsLinkResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -569,8 +541,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -599,8 +569,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -640,8 +608,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -669,8 +635,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsListLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -708,8 +672,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -735,8 +697,6 @@ class AccountsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -770,8 +730,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -798,8 +756,6 @@ class AccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsUpdateLabelsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -836,8 +792,6 @@ class AccountsLabelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -859,8 +813,6 @@ class AccountsLabelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountLabel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -889,8 +841,6 @@ class AccountsLabelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -911,8 +861,6 @@ class AccountsLabelsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -951,8 +899,6 @@ class AccountsLabelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -975,8 +921,6 @@ class AccountsLabelsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAccountLabelsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1010,8 +954,6 @@ class AccountsLabelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1037,8 +979,6 @@ class AccountsLabelsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountLabel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1077,8 +1017,6 @@ class AccountsReturncarrierResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1100,8 +1038,6 @@ class AccountsReturncarrierResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountReturnCarrier.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1132,8 +1068,6 @@ class AccountsReturncarrierResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1154,8 +1088,6 @@ class AccountsReturncarrierResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1183,8 +1115,6 @@ class AccountsReturncarrierResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1201,8 +1131,6 @@ class AccountsReturncarrierResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAccountReturnCarrierResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1238,8 +1166,6 @@ class AccountsReturncarrierResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1265,8 +1191,6 @@ class AccountsReturncarrierResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountReturnCarrier.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1300,8 +1224,6 @@ class AccountstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1318,8 +1240,6 @@ class AccountstatusesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountstatusesCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1358,8 +1278,6 @@ class AccountstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1383,8 +1301,6 @@ class AccountstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountStatus.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1424,8 +1340,6 @@ class AccountstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1451,8 +1365,6 @@ class AccountstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountstatusesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1487,8 +1399,6 @@ class AccounttaxResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1505,8 +1415,6 @@ class AccounttaxResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccounttaxCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1540,8 +1448,6 @@ class AccounttaxResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1562,8 +1468,6 @@ class AccounttaxResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountTax.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1600,8 +1504,6 @@ class AccounttaxResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1624,8 +1526,6 @@ class AccounttaxResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccounttaxListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1664,8 +1564,6 @@ class AccounttaxResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1691,8 +1589,6 @@ class AccounttaxResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountTax.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1734,8 +1630,6 @@ class CollectionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1757,8 +1651,6 @@ class CollectionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Collection.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1789,8 +1681,6 @@ class CollectionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1811,8 +1701,6 @@ class CollectionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1843,8 +1731,6 @@ class CollectionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1865,8 +1751,6 @@ class CollectionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Collection.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1908,8 +1792,6 @@ class CollectionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1932,8 +1814,6 @@ class CollectionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCollectionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1972,8 +1852,6 @@ class CollectionstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -1994,8 +1872,6 @@ class CollectionstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CollectionStatus.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2034,8 +1910,6 @@ class CollectionstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2058,8 +1932,6 @@ class CollectionstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCollectionStatusesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2099,8 +1971,6 @@ class CssesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (cssGroupId == null) {
       throw core.ArgumentError('Parameter cssGroupId is required.');
@@ -2121,8 +1991,6 @@ class CssesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Css.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2161,8 +2029,6 @@ class CssesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (cssGroupId == null) {
       throw core.ArgumentError('Parameter cssGroupId is required.');
@@ -2185,8 +2051,6 @@ class CssesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCssesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2220,8 +2084,6 @@ class CssesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2248,8 +2110,6 @@ class CssesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Css.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2283,8 +2143,6 @@ class DatafeedsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2301,8 +2159,6 @@ class DatafeedsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatafeedsCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2332,8 +2188,6 @@ class DatafeedsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2354,8 +2208,6 @@ class DatafeedsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2389,8 +2241,6 @@ class DatafeedsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2412,8 +2262,6 @@ class DatafeedsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatafeedsFetchNowResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2445,8 +2293,6 @@ class DatafeedsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2467,8 +2313,6 @@ class DatafeedsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Datafeed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2499,8 +2343,6 @@ class DatafeedsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2522,8 +2364,6 @@ class DatafeedsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Datafeed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2558,8 +2398,6 @@ class DatafeedsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2582,8 +2420,6 @@ class DatafeedsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatafeedsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2620,8 +2456,6 @@ class DatafeedsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2647,8 +2481,6 @@ class DatafeedsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Datafeed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2681,8 +2513,6 @@ class DatafeedstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2699,8 +2529,6 @@ class DatafeedstatusesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatafeedstatusesCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2744,8 +2572,6 @@ class DatafeedstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2772,8 +2598,6 @@ class DatafeedstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatafeedStatus.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2809,8 +2633,6 @@ class DatafeedstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2833,8 +2655,6 @@ class DatafeedstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatafeedstatusesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2869,8 +2689,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2887,8 +2705,6 @@ class LiasettingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2922,8 +2738,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -2944,8 +2758,6 @@ class LiasettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiaSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2980,8 +2792,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3003,8 +2813,6 @@ class LiasettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsGetAccessibleGmbAccountsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3041,8 +2849,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3065,8 +2871,6 @@ class LiasettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3092,8 +2896,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3105,8 +2907,6 @@ class LiasettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsListPosDataProvidersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3142,8 +2942,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3169,8 +2967,6 @@ class LiasettingsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsRequestGmbAccessResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3208,8 +3004,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3235,8 +3029,6 @@ class LiasettingsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsRequestInventoryVerificationResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3283,8 +3075,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3322,8 +3112,6 @@ class LiasettingsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsSetInventoryVerificationContactResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3367,8 +3155,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3400,8 +3186,6 @@ class LiasettingsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiasettingsSetPosDataProviderResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3440,8 +3224,6 @@ class LiasettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3467,8 +3249,6 @@ class LiasettingsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LiaSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3503,8 +3283,6 @@ class LocalinventoryResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3521,8 +3299,6 @@ class LocalinventoryResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LocalinventoryCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3558,8 +3334,6 @@ class LocalinventoryResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3586,8 +3360,6 @@ class LocalinventoryResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LocalInventory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3629,8 +3401,6 @@ class OrderinvoicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3657,8 +3427,6 @@ class OrderinvoicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderinvoicesCreateChargeInvoiceResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3698,8 +3466,6 @@ class OrderinvoicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3726,8 +3492,6 @@ class OrderinvoicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderinvoicesCreateRefundInvoiceResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3777,8 +3541,6 @@ class OrderreportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3807,8 +3569,6 @@ class OrderreportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderreportsListDisbursementsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3857,8 +3617,6 @@ class OrderreportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -3892,8 +3650,6 @@ class OrderreportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderreportsListTransactionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3934,8 +3690,6 @@ class OrderreturnsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3962,8 +3716,6 @@ class OrderreturnsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderreturnsAcknowledgeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3995,8 +3747,6 @@ class OrderreturnsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4018,8 +3768,6 @@ class OrderreturnsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderreturnsCreateOrderReturnResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4051,8 +3799,6 @@ class OrderreturnsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -4073,8 +3819,6 @@ class OrderreturnsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return MerchantOrderReturn.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4167,8 +3911,6 @@ class OrderreturnsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -4218,8 +3960,6 @@ class OrderreturnsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderreturnsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4254,8 +3994,6 @@ class OrderreturnsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4282,8 +4020,6 @@ class OrderreturnsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderreturnsProcessResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4324,8 +4060,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4352,8 +4086,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersAcknowledgeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4387,8 +4119,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -4410,8 +4140,6 @@ class OrdersResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersAdvanceTestOrderResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4446,8 +4174,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4474,8 +4200,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersCancelResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4510,8 +4234,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4538,8 +4260,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersCancelLineItemResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4577,8 +4297,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4605,8 +4323,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersCancelTestOrderByCustomerResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4640,8 +4356,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4663,8 +4377,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersCreateTestOrderResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4701,8 +4413,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4729,8 +4439,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersCreateTestReturnResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4762,8 +4470,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -4784,8 +4490,6 @@ class OrdersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Order.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4816,8 +4520,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -4838,8 +4540,6 @@ class OrdersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersGetByMerchantOrderIdResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4884,8 +4584,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -4909,8 +4607,6 @@ class OrdersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersGetTestOrderTemplateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4955,8 +4651,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4983,8 +4677,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersInStoreRefundLineItemResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5047,8 +4739,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -5086,8 +4776,6 @@ class OrdersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5122,8 +4810,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5150,8 +4836,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersRefundItemResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5186,8 +4870,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5214,8 +4896,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersRefundOrderResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5250,8 +4930,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5278,8 +4956,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersRejectReturnLineItemResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5321,8 +4997,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5349,8 +5023,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersReturnRefundLineItemResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5390,8 +5062,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5418,8 +5088,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersSetLineItemMetadataResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5454,8 +5122,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5482,8 +5148,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersShipLineItemsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5519,8 +5183,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5547,8 +5209,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersUpdateLineItemShippingDetailsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5583,8 +5243,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5611,8 +5269,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersUpdateMerchantOrderIdResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5647,8 +5303,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5675,8 +5329,6 @@ class OrdersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersUpdateShipmentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5715,8 +5367,6 @@ class OrdertrackingsignalsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5738,8 +5388,6 @@ class OrdertrackingsignalsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderTrackingSignal.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5773,8 +5421,6 @@ class PosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5791,8 +5437,6 @@ class PosResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PosCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5824,8 +5468,6 @@ class PosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -5851,8 +5493,6 @@ class PosResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -5885,8 +5525,6 @@ class PosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -5912,8 +5550,6 @@ class PosResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PosStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5946,8 +5582,6 @@ class PosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5974,8 +5608,6 @@ class PosResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PosStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6008,8 +5640,6 @@ class PosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6036,8 +5666,6 @@ class PosResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PosInventoryResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6068,8 +5696,6 @@ class PosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6091,8 +5717,6 @@ class PosResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PosListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6126,8 +5750,6 @@ class PosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6154,8 +5776,6 @@ class PosResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PosSaleResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6189,8 +5809,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6207,8 +5825,6 @@ class ProductsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductsCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6241,8 +5857,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6266,8 +5880,6 @@ class ProductsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -6298,8 +5910,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6320,8 +5930,6 @@ class ProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6358,8 +5966,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6384,8 +5990,6 @@ class ProductsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6423,8 +6027,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6447,8 +6049,6 @@ class ProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6485,8 +6085,6 @@ class ProductstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6503,8 +6101,6 @@ class ProductstatusesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductstatusesCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6540,8 +6136,6 @@ class ProductstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6565,8 +6159,6 @@ class ProductstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductStatus.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6606,8 +6198,6 @@ class ProductstatusesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6633,8 +6223,6 @@ class ProductstatusesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductstatusesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6701,8 +6289,6 @@ class ProductstatusesRepricingreportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6739,8 +6325,6 @@ class ProductstatusesRepricingreportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListRepricingProductReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6776,8 +6360,6 @@ class PubsubnotificationsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -6794,8 +6376,6 @@ class PubsubnotificationsettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PubsubNotificationSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6828,8 +6408,6 @@ class PubsubnotificationsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6851,8 +6429,6 @@ class PubsubnotificationsettingsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PubsubNotificationSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6887,8 +6463,6 @@ class RegionalinventoryResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6905,8 +6479,6 @@ class RegionalinventoryResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RegionalinventoryCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6946,8 +6518,6 @@ class RegionalinventoryResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6974,8 +6544,6 @@ class RegionalinventoryResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RegionalInventory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7016,8 +6584,6 @@ class RegionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7042,8 +6608,6 @@ class RegionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Region.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -7072,8 +6636,6 @@ class RegionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7094,8 +6656,6 @@ class RegionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -7126,8 +6686,6 @@ class RegionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7148,8 +6706,6 @@ class RegionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Region.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -7189,8 +6745,6 @@ class RegionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7213,8 +6767,6 @@ class RegionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListRegionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7252,8 +6804,6 @@ class RegionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7282,8 +6832,6 @@ class RegionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Region.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -7326,8 +6874,6 @@ class RepricingrulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7352,8 +6898,6 @@ class RepricingrulesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RepricingRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7383,8 +6927,6 @@ class RepricingrulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7405,8 +6947,6 @@ class RepricingrulesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -7437,8 +6977,6 @@ class RepricingrulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7459,8 +6997,6 @@ class RepricingrulesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RepricingRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7509,8 +7045,6 @@ class RepricingrulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7539,8 +7073,6 @@ class RepricingrulesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListRepricingRulesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7580,8 +7112,6 @@ class RepricingrulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7607,8 +7137,6 @@ class RepricingrulesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RepricingRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7668,8 +7196,6 @@ class RepricingrulesRepricingreportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7703,8 +7229,6 @@ class RepricingrulesRepricingreportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListRepricingRuleReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7738,8 +7262,6 @@ class ReturnaddressResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7756,8 +7278,6 @@ class ReturnaddressResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnaddressCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7787,8 +7307,6 @@ class ReturnaddressResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7809,8 +7327,6 @@ class ReturnaddressResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -7840,8 +7356,6 @@ class ReturnaddressResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7862,8 +7376,6 @@ class ReturnaddressResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnAddress.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7894,8 +7406,6 @@ class ReturnaddressResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7917,8 +7427,6 @@ class ReturnaddressResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnAddress.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7957,8 +7465,6 @@ class ReturnaddressResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -7984,8 +7490,6 @@ class ReturnaddressResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnaddressListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8019,8 +7523,6 @@ class ReturnpolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8037,8 +7539,6 @@ class ReturnpolicyResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnpolicyCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8068,8 +7568,6 @@ class ReturnpolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8090,8 +7588,6 @@ class ReturnpolicyResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -8121,8 +7617,6 @@ class ReturnpolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8143,8 +7637,6 @@ class ReturnpolicyResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8175,8 +7667,6 @@ class ReturnpolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8198,8 +7688,6 @@ class ReturnpolicyResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8227,8 +7715,6 @@ class ReturnpolicyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8245,8 +7731,6 @@ class ReturnpolicyResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReturnpolicyListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8283,8 +7767,6 @@ class SettlementreportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8305,8 +7787,6 @@ class SettlementreportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SettlementReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8350,8 +7830,6 @@ class SettlementreportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8380,8 +7858,6 @@ class SettlementreportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SettlementreportsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8431,8 +7907,6 @@ class SettlementtransactionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8463,8 +7937,6 @@ class SettlementtransactionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SettlementtransactionsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8499,8 +7971,6 @@ class ShippingsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8517,8 +7987,6 @@ class ShippingsettingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ShippingsettingsCustomBatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8552,8 +8020,6 @@ class ShippingsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8574,8 +8040,6 @@ class ShippingsettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ShippingSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8605,8 +8069,6 @@ class ShippingsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8623,8 +8085,6 @@ class ShippingsettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ShippingsettingsGetSupportedCarriersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8654,8 +8114,6 @@ class ShippingsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8672,8 +8130,6 @@ class ShippingsettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ShippingsettingsGetSupportedHolidaysResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8703,8 +8159,6 @@ class ShippingsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8721,8 +8175,6 @@ class ShippingsettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8759,8 +8211,6 @@ class ShippingsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
@@ -8783,8 +8233,6 @@ class ShippingsettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ShippingsettingsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8823,8 +8271,6 @@ class ShippingsettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8850,8 +8296,6 @@ class ShippingsettingsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ShippingSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);

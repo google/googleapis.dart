@@ -102,8 +102,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -118,8 +116,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -146,8 +142,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (filterAdClientId == null || filterAdClientId.isEmpty) {
       throw core.ArgumentError('Parameter filterAdClientId is required.');
@@ -163,8 +157,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Accounts.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -201,8 +193,6 @@ class AccountsAdclientsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -223,8 +213,6 @@ class AccountsAdclientsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdClient.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -261,8 +249,6 @@ class AccountsAdclientsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -285,8 +271,6 @@ class AccountsAdclientsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -325,8 +309,6 @@ class AccountsAdunitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -352,8 +334,6 @@ class AccountsAdunitsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -386,8 +366,6 @@ class AccountsAdunitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -413,8 +391,6 @@ class AccountsAdunitsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -451,8 +427,6 @@ class AccountsAdunitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -482,8 +456,6 @@ class AccountsAdunitsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdCode.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -516,8 +488,6 @@ class AccountsAdunitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -544,8 +514,6 @@ class AccountsAdunitsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -588,8 +556,6 @@ class AccountsAdunitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -620,8 +586,6 @@ class AccountsAdunitsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdUnits.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -659,8 +623,6 @@ class AccountsAdunitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -691,8 +653,6 @@ class AccountsAdunitsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -725,8 +685,6 @@ class AccountsAdunitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -753,8 +711,6 @@ class AccountsAdunitsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -834,8 +790,6 @@ class AccountsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -880,8 +834,6 @@ class AccountsReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -914,8 +866,6 @@ class AdclientsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
@@ -930,8 +880,6 @@ class AdclientsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdClient.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -965,8 +913,6 @@ class AdclientsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -984,8 +930,6 @@ class AdclientsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1034,8 +978,6 @@ class AssociationsessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (productCode == null || productCode.isEmpty) {
       throw core.ArgumentError('Parameter productCode is required.');
@@ -1064,8 +1006,6 @@ class AssociationsessionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AssociationSession.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1094,8 +1034,6 @@ class AssociationsessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
@@ -1111,8 +1049,6 @@ class AssociationsessionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AssociationSession.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1149,8 +1085,6 @@ class CustomchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
@@ -1171,8 +1105,6 @@ class CustomchannelsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1203,8 +1135,6 @@ class CustomchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
@@ -1225,8 +1155,6 @@ class CustomchannelsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1257,8 +1185,6 @@ class CustomchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1280,8 +1206,6 @@ class CustomchannelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1319,8 +1243,6 @@ class CustomchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
@@ -1343,8 +1265,6 @@ class CustomchannelsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1380,8 +1300,6 @@ class CustomchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1407,8 +1325,6 @@ class CustomchannelsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1439,8 +1355,6 @@ class CustomchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1462,8 +1376,6 @@ class CustomchannelsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1541,8 +1453,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (startDate == null) {
       throw core.ArgumentError('Parameter startDate is required.');
@@ -1583,8 +1493,6 @@ class ReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1620,8 +1528,6 @@ class UrlchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
@@ -1642,8 +1548,6 @@ class UrlchannelsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UrlChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1674,8 +1578,6 @@ class UrlchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1697,8 +1599,6 @@ class UrlchannelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UrlChannel.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1736,8 +1636,6 @@ class UrlchannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
@@ -1760,8 +1658,6 @@ class UrlchannelsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UrlChannels.fromJson(
         _response as core.Map<core.String, core.dynamic>);

@@ -113,8 +113,6 @@ class AccountSummariesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -132,8 +130,6 @@ class AccountSummariesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -179,8 +175,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -195,8 +189,6 @@ class AccountsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -226,8 +218,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -242,8 +232,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -277,8 +265,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -293,8 +279,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -340,8 +324,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -362,8 +344,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -401,8 +381,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -425,8 +403,6 @@ class AccountsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -456,8 +432,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -474,8 +448,6 @@ class AccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -521,8 +493,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -544,8 +514,6 @@ class AccountsUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -585,8 +553,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -608,8 +574,6 @@ class AccountsUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -643,8 +607,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -666,8 +628,6 @@ class AccountsUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -703,8 +663,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -724,8 +682,6 @@ class AccountsUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -761,8 +717,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -784,8 +738,6 @@ class AccountsUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -825,8 +777,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -851,8 +801,6 @@ class AccountsUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -881,8 +829,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -897,8 +843,6 @@ class AccountsUserLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -927,8 +871,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -943,8 +885,6 @@ class AccountsUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -985,8 +925,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1009,8 +947,6 @@ class AccountsUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1042,8 +978,6 @@ class AccountsUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1063,8 +997,6 @@ class AccountsUserLinksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1111,8 +1043,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1129,8 +1059,6 @@ class PropertiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1167,8 +1095,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1183,8 +1109,6 @@ class PropertiesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1214,8 +1138,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1230,8 +1152,6 @@ class PropertiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1288,8 +1208,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -1313,8 +1231,6 @@ class PropertiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1352,8 +1268,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1376,8 +1290,6 @@ class PropertiesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1423,8 +1335,6 @@ class PropertiesAndroidAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1446,8 +1356,6 @@ class PropertiesAndroidAppDataStreamsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1479,8 +1387,6 @@ class PropertiesAndroidAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1495,8 +1401,6 @@ class PropertiesAndroidAppDataStreamsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1528,8 +1432,6 @@ class PropertiesAndroidAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1544,8 +1446,6 @@ class PropertiesAndroidAppDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1592,8 +1492,6 @@ class PropertiesAndroidAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1616,8 +1514,6 @@ class PropertiesAndroidAppDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -1657,8 +1553,6 @@ class PropertiesAndroidAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1681,8 +1575,6 @@ class PropertiesAndroidAppDataStreamsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1724,8 +1616,6 @@ class PropertiesFirebaseLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1747,8 +1637,6 @@ class PropertiesFirebaseLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1779,8 +1667,6 @@ class PropertiesFirebaseLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1795,8 +1681,6 @@ class PropertiesFirebaseLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1840,8 +1724,6 @@ class PropertiesFirebaseLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1864,8 +1746,6 @@ class PropertiesFirebaseLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1902,8 +1782,6 @@ class PropertiesFirebaseLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1926,8 +1804,6 @@ class PropertiesFirebaseLinksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1966,8 +1842,6 @@ class PropertiesGoogleAdsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1989,8 +1863,6 @@ class PropertiesGoogleAdsLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2019,8 +1891,6 @@ class PropertiesGoogleAdsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2035,8 +1905,6 @@ class PropertiesGoogleAdsLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2076,8 +1944,6 @@ class PropertiesGoogleAdsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2100,8 +1966,6 @@ class PropertiesGoogleAdsLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2140,8 +2004,6 @@ class PropertiesGoogleAdsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2164,8 +2026,6 @@ class PropertiesGoogleAdsLinksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2211,8 +2071,6 @@ class PropertiesIosAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2234,8 +2092,6 @@ class PropertiesIosAppDataStreamsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2266,8 +2122,6 @@ class PropertiesIosAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2282,8 +2136,6 @@ class PropertiesIosAppDataStreamsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2314,8 +2166,6 @@ class PropertiesIosAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2330,8 +2180,6 @@ class PropertiesIosAppDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2376,8 +2224,6 @@ class PropertiesIosAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2400,8 +2246,6 @@ class PropertiesIosAppDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2440,8 +2284,6 @@ class PropertiesIosAppDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2464,8 +2306,6 @@ class PropertiesIosAppDataStreamsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2512,8 +2352,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2535,8 +2373,6 @@ class PropertiesUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2576,8 +2412,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2599,8 +2433,6 @@ class PropertiesUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2634,8 +2466,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2657,8 +2487,6 @@ class PropertiesUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2694,8 +2522,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2715,8 +2541,6 @@ class PropertiesUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2752,8 +2576,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2775,8 +2597,6 @@ class PropertiesUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2816,8 +2636,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2842,8 +2660,6 @@ class PropertiesUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2872,8 +2688,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2888,8 +2702,6 @@ class PropertiesUserLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2918,8 +2730,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2934,8 +2744,6 @@ class PropertiesUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2976,8 +2784,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3000,8 +2806,6 @@ class PropertiesUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3033,8 +2837,6 @@ class PropertiesUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3054,8 +2856,6 @@ class PropertiesUserLinksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3095,8 +2895,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3118,8 +2916,6 @@ class PropertiesWebDataStreamsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3150,8 +2946,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3166,8 +2960,6 @@ class PropertiesWebDataStreamsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3198,8 +2990,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3214,8 +3004,6 @@ class PropertiesWebDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3251,8 +3039,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3267,8 +3053,6 @@ class PropertiesWebDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3303,8 +3087,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3319,8 +3101,6 @@ class PropertiesWebDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3364,8 +3144,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3388,8 +3166,6 @@ class PropertiesWebDataStreamsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3428,8 +3204,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3452,8 +3226,6 @@ class PropertiesWebDataStreamsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3497,8 +3269,6 @@ class PropertiesWebDataStreamsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3521,8 +3291,6 @@ class PropertiesWebDataStreamsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);

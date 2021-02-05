@@ -97,8 +97,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -115,8 +113,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProjectSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -163,8 +159,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -181,8 +175,6 @@ class ProjectsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProjectSettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -231,8 +223,6 @@ class ProjectsHistoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -257,8 +247,6 @@ class ProjectsHistoriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return History.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -292,8 +280,6 @@ class ProjectsHistoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -314,8 +300,6 @@ class ProjectsHistoriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return History.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -362,8 +346,6 @@ class ProjectsHistoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -389,8 +371,6 @@ class ProjectsHistoriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListHistoriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -447,8 +427,6 @@ class ProjectsHistoriesExecutionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -478,8 +456,6 @@ class ProjectsHistoriesExecutionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -516,8 +492,6 @@ class ProjectsHistoriesExecutionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -543,8 +517,6 @@ class ProjectsHistoriesExecutionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -590,8 +562,6 @@ class ProjectsHistoriesExecutionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -619,8 +589,6 @@ class ProjectsHistoriesExecutionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListExecutionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -667,8 +635,6 @@ class ProjectsHistoriesExecutionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -702,8 +668,6 @@ class ProjectsHistoriesExecutionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -746,8 +710,6 @@ class ProjectsHistoriesExecutionsClustersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -778,8 +740,6 @@ class ProjectsHistoriesExecutionsClustersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ScreenshotCluster.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -820,8 +780,6 @@ class ProjectsHistoriesExecutionsClustersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -848,8 +806,6 @@ class ProjectsHistoriesExecutionsClustersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListScreenshotClustersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -897,8 +853,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -929,8 +883,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -977,8 +929,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1011,8 +961,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1075,8 +1023,6 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1096,8 +1042,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListStepAccessibilityClustersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1144,8 +1088,6 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1180,8 +1122,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1221,8 +1161,6 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1253,8 +1191,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1293,8 +1229,6 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1326,8 +1260,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PerfMetricsSummary.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1378,8 +1310,6 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1412,8 +1342,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListStepsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1464,8 +1392,6 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1504,8 +1430,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1551,8 +1475,6 @@ class ProjectsHistoriesExecutionsStepsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1589,8 +1511,6 @@ class ProjectsHistoriesExecutionsStepsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1641,8 +1561,6 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1679,8 +1597,6 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PerfMetricsSummary.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1736,8 +1652,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1774,8 +1688,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PerfSampleSeries.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1818,8 +1730,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1855,8 +1765,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PerfSampleSeries.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1903,8 +1811,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1939,8 +1845,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListPerfSampleSeriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2000,8 +1904,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2043,8 +1945,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchCreatePerfSamplesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2101,8 +2001,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2145,8 +2043,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListPerfSamplesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2199,8 +2095,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2236,8 +2130,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestCase.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2288,8 +2180,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2327,8 +2217,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListTestCasesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2387,8 +2275,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2426,8 +2312,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListStepThumbnailsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

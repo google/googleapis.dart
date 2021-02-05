@@ -80,8 +80,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -98,8 +96,6 @@ class V1Resource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

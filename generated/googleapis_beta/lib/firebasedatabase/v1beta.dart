@@ -136,8 +136,6 @@ class ProjectsLocationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -165,8 +163,6 @@ class ProjectsLocationsInstancesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatabaseInstance.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -203,8 +199,6 @@ class ProjectsLocationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -219,8 +213,6 @@ class ProjectsLocationsInstancesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatabaseInstance.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -259,8 +251,6 @@ class ProjectsLocationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -281,8 +271,6 @@ class ProjectsLocationsInstancesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatabaseInstance.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -319,8 +307,6 @@ class ProjectsLocationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -335,8 +321,6 @@ class ProjectsLocationsInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatabaseInstance.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -385,8 +369,6 @@ class ProjectsLocationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -409,8 +391,6 @@ class ProjectsLocationsInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListDatabaseInstancesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -449,8 +429,6 @@ class ProjectsLocationsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -472,8 +450,6 @@ class ProjectsLocationsInstancesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DatabaseInstance.fromJson(
         _response as core.Map<core.String, core.dynamic>);

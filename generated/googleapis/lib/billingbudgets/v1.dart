@@ -108,8 +108,6 @@ class BillingAccountsBudgetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -130,8 +128,6 @@ class BillingAccountsBudgetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudBillingBudgetsV1Budget.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -163,8 +159,6 @@ class BillingAccountsBudgetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -179,8 +173,6 @@ class BillingAccountsBudgetsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -215,8 +207,6 @@ class BillingAccountsBudgetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -231,8 +221,6 @@ class BillingAccountsBudgetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudBillingBudgetsV1Budget.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -277,8 +265,6 @@ class BillingAccountsBudgetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -300,8 +286,6 @@ class BillingAccountsBudgetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -347,8 +331,6 @@ class BillingAccountsBudgetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -371,8 +353,6 @@ class BillingAccountsBudgetsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudBillingBudgetsV1Budget.fromJson(
         _response as core.Map<core.String, core.dynamic>);

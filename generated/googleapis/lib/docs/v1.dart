@@ -112,8 +112,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -135,8 +133,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUpdateDocumentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -167,8 +163,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -185,8 +179,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Document.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -235,8 +227,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (documentId == null) {
       throw core.ArgumentError('Parameter documentId is required.');
@@ -254,8 +244,6 @@ class DocumentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Document.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

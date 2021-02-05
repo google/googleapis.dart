@@ -86,8 +86,6 @@ class AssetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -102,8 +100,6 @@ class AssetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Asset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -172,8 +168,6 @@ class AssetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (category != null) {
       _queryParams['category'] = [category];
@@ -209,8 +203,6 @@ class AssetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAssetsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -288,8 +280,6 @@ class UsersAssetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -319,8 +309,6 @@ class UsersAssetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListUserAssetsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -378,8 +366,6 @@ class UsersLikedassetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -407,8 +393,6 @@ class UsersLikedassetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListLikedAssetsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

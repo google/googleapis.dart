@@ -128,8 +128,6 @@ class DevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -156,8 +154,6 @@ class DevicesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -190,8 +186,6 @@ class DevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -217,8 +211,6 @@ class DevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -257,8 +249,6 @@ class DevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -285,8 +275,6 @@ class DevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DeviceState.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -317,8 +305,6 @@ class DevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -340,8 +326,6 @@ class DevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DevicesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -383,8 +367,6 @@ class DevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -416,8 +398,6 @@ class DevicesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DeviceState.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -464,8 +444,6 @@ class DevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -499,8 +477,6 @@ class DevicesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -534,8 +510,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (notificationSetId != null) {
       _queryParams['notificationSetId'] = [notificationSetId];
@@ -550,8 +524,6 @@ class EnterprisesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -586,8 +558,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (completionToken != null) {
       _queryParams['completionToken'] = [completionToken];
@@ -605,8 +575,6 @@ class EnterprisesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Enterprise.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -641,8 +609,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -664,8 +630,6 @@ class EnterprisesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdministratorWebToken.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -697,8 +661,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -719,8 +681,6 @@ class EnterprisesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Enterprise.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -755,8 +715,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (callbackUrl != null) {
       _queryParams['callbackUrl'] = [callbackUrl];
@@ -771,8 +729,6 @@ class EnterprisesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SignupInfo.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -800,8 +756,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -817,8 +771,6 @@ class EnterprisesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Enterprise.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -868,8 +820,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -889,8 +839,6 @@ class EnterprisesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ServiceAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -921,8 +869,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -939,8 +885,6 @@ class EnterprisesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StoreLayout.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -974,8 +918,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (domain == null) {
       throw core.ArgumentError('Parameter domain is required.');
@@ -991,8 +933,6 @@ class EnterprisesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EnterprisesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1045,8 +985,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (requestMode != null) {
       _queryParams['requestMode'] = [requestMode];
@@ -1061,8 +999,6 @@ class EnterprisesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return NotificationSet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1092,8 +1028,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1110,8 +1044,6 @@ class EnterprisesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EnterprisesSendTestPushNotificationResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1143,8 +1075,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1166,8 +1096,6 @@ class EnterprisesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EnterpriseAccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1206,8 +1134,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1229,8 +1155,6 @@ class EnterprisesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StoreLayout.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1256,8 +1180,6 @@ class EnterprisesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1274,8 +1196,6 @@ class EnterprisesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1313,8 +1233,6 @@ class EntitlementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1340,8 +1258,6 @@ class EntitlementsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1375,8 +1291,6 @@ class EntitlementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1402,8 +1316,6 @@ class EntitlementsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Entitlement.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1436,8 +1348,6 @@ class EntitlementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1459,8 +1369,6 @@ class EntitlementsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntitlementsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1504,8 +1412,6 @@ class EntitlementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1539,8 +1445,6 @@ class EntitlementsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Entitlement.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1578,8 +1482,6 @@ class GrouplicensesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1600,8 +1502,6 @@ class GrouplicensesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GroupLicense.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1630,8 +1530,6 @@ class GrouplicensesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1648,8 +1546,6 @@ class GrouplicensesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GroupLicensesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1688,8 +1584,6 @@ class GrouplicenseusersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1711,8 +1605,6 @@ class GrouplicenseusersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GroupLicenseUsersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1757,8 +1649,6 @@ class InstallsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1789,8 +1679,6 @@ class InstallsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1827,8 +1715,6 @@ class InstallsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1859,8 +1745,6 @@ class InstallsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Install.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1893,8 +1777,6 @@ class InstallsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1921,8 +1803,6 @@ class InstallsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InstallsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1966,8 +1846,6 @@ class InstallsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2003,8 +1881,6 @@ class InstallsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Install.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2047,8 +1923,6 @@ class ManagedconfigurationsfordeviceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2080,8 +1954,6 @@ class ManagedconfigurationsfordeviceResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2118,8 +1990,6 @@ class ManagedconfigurationsfordeviceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2151,8 +2021,6 @@ class ManagedconfigurationsfordeviceResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2188,8 +2056,6 @@ class ManagedconfigurationsfordeviceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2216,8 +2082,6 @@ class ManagedconfigurationsfordeviceResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedConfigurationsForDeviceListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2259,8 +2123,6 @@ class ManagedconfigurationsfordeviceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2297,8 +2159,6 @@ class ManagedconfigurationsfordeviceResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2339,8 +2199,6 @@ class ManagedconfigurationsforuserResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2367,8 +2225,6 @@ class ManagedconfigurationsforuserResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2403,8 +2259,6 @@ class ManagedconfigurationsforuserResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2431,8 +2285,6 @@ class ManagedconfigurationsforuserResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2465,8 +2317,6 @@ class ManagedconfigurationsforuserResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2488,8 +2338,6 @@ class ManagedconfigurationsforuserResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedConfigurationsForUserListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2533,8 +2381,6 @@ class ManagedconfigurationsforuserResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2566,8 +2412,6 @@ class ManagedconfigurationsforuserResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2606,8 +2450,6 @@ class ManagedconfigurationssettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2629,8 +2471,6 @@ class ManagedconfigurationssettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedConfigurationsSettingsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2669,8 +2509,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
@@ -2689,8 +2527,6 @@ class PermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Permission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2733,8 +2569,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2761,8 +2595,6 @@ class ProductsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2805,8 +2637,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2831,8 +2661,6 @@ class ProductsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductsGenerateApprovalUrlResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2867,8 +2695,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2892,8 +2718,6 @@ class ProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2934,8 +2758,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2960,8 +2782,6 @@ class ProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppRestrictionsSchema.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2992,8 +2812,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3015,8 +2833,6 @@ class ProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductPermissions.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3069,8 +2885,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3102,8 +2916,6 @@ class ProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3133,8 +2945,6 @@ class ProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3156,8 +2966,6 @@ class ProductsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3196,8 +3004,6 @@ class ServiceaccountkeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3218,8 +3024,6 @@ class ServiceaccountkeysResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3255,8 +3059,6 @@ class ServiceaccountkeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3278,8 +3080,6 @@ class ServiceaccountkeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ServiceAccountKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3313,8 +3113,6 @@ class ServiceaccountkeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3331,8 +3129,6 @@ class ServiceaccountkeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ServiceAccountKeysListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3371,8 +3167,6 @@ class StorelayoutclustersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3398,8 +3192,6 @@ class StorelayoutclustersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3432,8 +3224,6 @@ class StorelayoutclustersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3459,8 +3249,6 @@ class StorelayoutclustersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StoreCluster.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3494,8 +3282,6 @@ class StorelayoutclustersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3522,8 +3308,6 @@ class StorelayoutclustersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StoreCluster.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3554,8 +3338,6 @@ class StorelayoutclustersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3577,8 +3359,6 @@ class StorelayoutclustersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StoreLayoutClustersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3615,8 +3395,6 @@ class StorelayoutclustersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3647,8 +3425,6 @@ class StorelayoutclustersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StoreCluster.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3683,8 +3459,6 @@ class StorelayoutpagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3705,8 +3479,6 @@ class StorelayoutpagesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3736,8 +3508,6 @@ class StorelayoutpagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3758,8 +3528,6 @@ class StorelayoutpagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StorePage.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3789,8 +3557,6 @@ class StorelayoutpagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3812,8 +3578,6 @@ class StorelayoutpagesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StorePage.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3840,8 +3604,6 @@ class StorelayoutpagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3858,8 +3620,6 @@ class StorelayoutpagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StoreLayoutPagesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3893,8 +3653,6 @@ class StorelayoutpagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3920,8 +3678,6 @@ class StorelayoutpagesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StorePage.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3955,8 +3711,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3977,8 +3731,6 @@ class UsersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4013,8 +3765,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4036,8 +3786,6 @@ class UsersResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AuthenticationToken.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4068,8 +3816,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4090,8 +3836,6 @@ class UsersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4121,8 +3865,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4144,8 +3886,6 @@ class UsersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductSet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4181,8 +3921,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4204,8 +3942,6 @@ class UsersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4240,8 +3976,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4262,8 +3996,6 @@ class UsersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UsersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4295,8 +4027,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4318,8 +4048,6 @@ class UsersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4356,8 +4084,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4384,8 +4110,6 @@ class UsersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductSet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4424,8 +4148,6 @@ class UsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4451,8 +4173,6 @@ class UsersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4486,8 +4206,6 @@ class WebappsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4508,8 +4226,6 @@ class WebappsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4539,8 +4255,6 @@ class WebappsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4561,8 +4275,6 @@ class WebappsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4592,8 +4304,6 @@ class WebappsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4615,8 +4325,6 @@ class WebappsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4643,8 +4351,6 @@ class WebappsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4661,8 +4367,6 @@ class WebappsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WebAppsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4696,8 +4400,6 @@ class WebappsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4723,8 +4425,6 @@ class WebappsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

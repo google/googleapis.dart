@@ -84,8 +84,6 @@ class ChallengeResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -102,8 +100,6 @@ class ChallengeResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Challenge.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -130,8 +126,6 @@ class ChallengeResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -148,8 +142,6 @@ class ChallengeResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return VerifyChallengeResponseResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);

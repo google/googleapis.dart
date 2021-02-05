@@ -127,8 +127,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -143,8 +141,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -171,8 +167,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -187,8 +181,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAccountsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -224,8 +216,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -248,8 +238,6 @@ class AccountsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -296,8 +284,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -319,8 +305,6 @@ class AccountsContainersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -347,8 +331,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -363,8 +345,6 @@ class AccountsContainersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -393,8 +373,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -409,8 +387,6 @@ class AccountsContainersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -442,8 +418,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -463,8 +437,6 @@ class AccountsContainersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListContainersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -501,8 +473,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -525,8 +495,6 @@ class AccountsContainersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -565,8 +533,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -588,8 +554,6 @@ class AccountsContainersEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -618,8 +582,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -634,8 +596,6 @@ class AccountsContainersEnvironmentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -665,8 +625,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -681,8 +639,6 @@ class AccountsContainersEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -715,8 +671,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -736,8 +690,6 @@ class AccountsContainersEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -771,8 +723,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -794,8 +744,6 @@ class AccountsContainersEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -833,8 +781,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -857,8 +803,6 @@ class AccountsContainersEnvironmentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -895,8 +839,6 @@ class AccountsContainersVersionHeadersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -913,8 +855,6 @@ class AccountsContainersVersionHeadersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersionHeader.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -950,8 +890,6 @@ class AccountsContainersVersionHeadersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -974,8 +912,6 @@ class AccountsContainersVersionHeadersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListContainerVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1011,8 +947,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1027,8 +961,6 @@ class AccountsContainersVersionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1062,8 +994,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1081,8 +1011,6 @@ class AccountsContainersVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1112,8 +1040,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1130,8 +1056,6 @@ class AccountsContainersVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1166,8 +1090,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1187,8 +1109,6 @@ class AccountsContainersVersionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PublishContainerVersionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1220,8 +1140,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1238,8 +1156,6 @@ class AccountsContainersVersionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1270,8 +1186,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1288,8 +1202,6 @@ class AccountsContainersVersionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1327,8 +1239,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1351,8 +1261,6 @@ class AccountsContainersVersionsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1407,8 +1315,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1430,8 +1336,6 @@ class AccountsContainersWorkspacesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1466,8 +1370,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1489,8 +1391,6 @@ class AccountsContainersWorkspacesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreateContainerVersionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1519,8 +1419,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1535,8 +1433,6 @@ class AccountsContainersWorkspacesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1566,8 +1462,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1582,8 +1476,6 @@ class AccountsContainersWorkspacesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1613,8 +1505,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1631,8 +1521,6 @@ class AccountsContainersWorkspacesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GetWorkspaceStatusResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1665,8 +1553,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1686,8 +1572,6 @@ class AccountsContainersWorkspacesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListWorkspacesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1719,8 +1603,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1737,8 +1619,6 @@ class AccountsContainersWorkspacesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return QuickPreviewResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1775,8 +1655,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1801,8 +1679,6 @@ class AccountsContainersWorkspacesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1834,8 +1710,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1852,8 +1726,6 @@ class AccountsContainersWorkspacesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SyncWorkspaceResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1891,8 +1763,6 @@ class AccountsContainersWorkspacesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1915,8 +1785,6 @@ class AccountsContainersWorkspacesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1957,8 +1825,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1978,8 +1844,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreateBuiltInVariableResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2011,8 +1875,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2030,8 +1892,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2064,8 +1924,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2085,8 +1943,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListEnabledBuiltInVariablesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2231,8 +2087,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2252,8 +2106,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevertBuiltInVariableResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2294,8 +2146,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2317,8 +2167,6 @@ class AccountsContainersWorkspacesFoldersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2346,8 +2194,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2362,8 +2208,6 @@ class AccountsContainersWorkspacesFoldersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2396,8 +2240,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2417,8 +2259,6 @@ class AccountsContainersWorkspacesFoldersResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FolderEntities.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2449,8 +2289,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2465,8 +2303,6 @@ class AccountsContainersWorkspacesFoldersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2499,8 +2335,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2520,8 +2354,6 @@ class AccountsContainersWorkspacesFoldersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListFoldersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2562,8 +2394,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2594,8 +2424,6 @@ class AccountsContainersWorkspacesFoldersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2629,8 +2457,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2650,8 +2476,6 @@ class AccountsContainersWorkspacesFoldersResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevertFolderResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2689,8 +2513,6 @@ class AccountsContainersWorkspacesFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2713,8 +2535,6 @@ class AccountsContainersWorkspacesFoldersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2754,8 +2574,6 @@ class AccountsContainersWorkspacesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2777,8 +2595,6 @@ class AccountsContainersWorkspacesTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2806,8 +2622,6 @@ class AccountsContainersWorkspacesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2822,8 +2636,6 @@ class AccountsContainersWorkspacesTagsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2853,8 +2665,6 @@ class AccountsContainersWorkspacesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2869,8 +2679,6 @@ class AccountsContainersWorkspacesTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2903,8 +2711,6 @@ class AccountsContainersWorkspacesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2924,8 +2730,6 @@ class AccountsContainersWorkspacesTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2960,8 +2764,6 @@ class AccountsContainersWorkspacesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2981,8 +2783,6 @@ class AccountsContainersWorkspacesTagsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevertTagResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3020,8 +2820,6 @@ class AccountsContainersWorkspacesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3044,8 +2842,6 @@ class AccountsContainersWorkspacesTagsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3085,8 +2881,6 @@ class AccountsContainersWorkspacesTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3108,8 +2902,6 @@ class AccountsContainersWorkspacesTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3138,8 +2930,6 @@ class AccountsContainersWorkspacesTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3154,8 +2944,6 @@ class AccountsContainersWorkspacesTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3185,8 +2973,6 @@ class AccountsContainersWorkspacesTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3201,8 +2987,6 @@ class AccountsContainersWorkspacesTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3236,8 +3020,6 @@ class AccountsContainersWorkspacesTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3257,8 +3039,6 @@ class AccountsContainersWorkspacesTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3293,8 +3073,6 @@ class AccountsContainersWorkspacesTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3314,8 +3092,6 @@ class AccountsContainersWorkspacesTemplatesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevertTemplateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3353,8 +3129,6 @@ class AccountsContainersWorkspacesTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3377,8 +3151,6 @@ class AccountsContainersWorkspacesTemplatesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3419,8 +3191,6 @@ class AccountsContainersWorkspacesTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3442,8 +3212,6 @@ class AccountsContainersWorkspacesTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3471,8 +3239,6 @@ class AccountsContainersWorkspacesTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3487,8 +3253,6 @@ class AccountsContainersWorkspacesTriggersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3518,8 +3282,6 @@ class AccountsContainersWorkspacesTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3534,8 +3296,6 @@ class AccountsContainersWorkspacesTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3568,8 +3328,6 @@ class AccountsContainersWorkspacesTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3589,8 +3347,6 @@ class AccountsContainersWorkspacesTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3625,8 +3381,6 @@ class AccountsContainersWorkspacesTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3646,8 +3400,6 @@ class AccountsContainersWorkspacesTriggersResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevertTriggerResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3685,8 +3437,6 @@ class AccountsContainersWorkspacesTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3709,8 +3459,6 @@ class AccountsContainersWorkspacesTriggersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3750,8 +3498,6 @@ class AccountsContainersWorkspacesVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3773,8 +3519,6 @@ class AccountsContainersWorkspacesVariablesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3802,8 +3546,6 @@ class AccountsContainersWorkspacesVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3818,8 +3560,6 @@ class AccountsContainersWorkspacesVariablesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3849,8 +3589,6 @@ class AccountsContainersWorkspacesVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3865,8 +3603,6 @@ class AccountsContainersWorkspacesVariablesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3899,8 +3635,6 @@ class AccountsContainersWorkspacesVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3920,8 +3654,6 @@ class AccountsContainersWorkspacesVariablesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListVariablesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3956,8 +3688,6 @@ class AccountsContainersWorkspacesVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3977,8 +3707,6 @@ class AccountsContainersWorkspacesVariablesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevertVariableResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4016,8 +3744,6 @@ class AccountsContainersWorkspacesVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4040,8 +3766,6 @@ class AccountsContainersWorkspacesVariablesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4081,8 +3805,6 @@ class AccountsContainersWorkspacesZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4104,8 +3826,6 @@ class AccountsContainersWorkspacesZonesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Zone.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4133,8 +3853,6 @@ class AccountsContainersWorkspacesZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4149,8 +3867,6 @@ class AccountsContainersWorkspacesZonesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4180,8 +3896,6 @@ class AccountsContainersWorkspacesZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4196,8 +3910,6 @@ class AccountsContainersWorkspacesZonesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Zone.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4230,8 +3942,6 @@ class AccountsContainersWorkspacesZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4251,8 +3961,6 @@ class AccountsContainersWorkspacesZonesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListZonesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4287,8 +3995,6 @@ class AccountsContainersWorkspacesZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4308,8 +4014,6 @@ class AccountsContainersWorkspacesZonesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevertZoneResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4347,8 +4051,6 @@ class AccountsContainersWorkspacesZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4371,8 +4073,6 @@ class AccountsContainersWorkspacesZonesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Zone.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4410,8 +4110,6 @@ class AccountsUserPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4433,8 +4131,6 @@ class AccountsUserPermissionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserPermission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4463,8 +4159,6 @@ class AccountsUserPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4479,8 +4173,6 @@ class AccountsUserPermissionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4509,8 +4201,6 @@ class AccountsUserPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4525,8 +4215,6 @@ class AccountsUserPermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserPermission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4560,8 +4248,6 @@ class AccountsUserPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4581,8 +4267,6 @@ class AccountsUserPermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListUserPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4615,8 +4299,6 @@ class AccountsUserPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4636,8 +4318,6 @@ class AccountsUserPermissionsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserPermission.fromJson(
         _response as core.Map<core.String, core.dynamic>);

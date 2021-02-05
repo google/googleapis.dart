@@ -108,8 +108,6 @@ class OrganizationsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -124,8 +122,6 @@ class OrganizationsLocationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -172,8 +168,6 @@ class OrganizationsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -198,8 +192,6 @@ class OrganizationsLocationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -245,8 +237,6 @@ class OrganizationsLocationsWorkloadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -270,8 +260,6 @@ class OrganizationsLocationsWorkloadsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -310,8 +298,6 @@ class OrganizationsLocationsWorkloadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -329,8 +315,6 @@ class OrganizationsLocationsWorkloadsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -364,8 +348,6 @@ class OrganizationsLocationsWorkloadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -380,8 +362,6 @@ class OrganizationsLocationsWorkloadsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -423,8 +403,6 @@ class OrganizationsLocationsWorkloadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -449,8 +427,6 @@ class OrganizationsLocationsWorkloadsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -492,8 +468,6 @@ class OrganizationsLocationsWorkloadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -516,8 +490,6 @@ class OrganizationsLocationsWorkloadsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudAssuredworkloadsV1Workload.fromJson(
         _response as core.Map<core.String, core.dynamic>);

@@ -82,8 +82,6 @@ class GroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (groupUniqueId == null) {
       throw core.ArgumentError('Parameter groupUniqueId is required.');
@@ -98,8 +96,6 @@ class GroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -131,8 +127,6 @@ class GroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -152,8 +146,6 @@ class GroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -183,8 +175,6 @@ class GroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -204,8 +194,6 @@ class GroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

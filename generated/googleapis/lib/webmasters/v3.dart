@@ -101,8 +101,6 @@ class SearchanalyticsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -124,8 +122,6 @@ class SearchanalyticsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SearchAnalyticsQueryResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -162,8 +158,6 @@ class SitemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -184,8 +178,6 @@ class SitemapsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -217,8 +209,6 @@ class SitemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -239,8 +229,6 @@ class SitemapsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WmxSitemap.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -274,8 +262,6 @@ class SitemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -293,8 +279,6 @@ class SitemapsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SitemapsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -325,8 +309,6 @@ class SitemapsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -347,8 +329,6 @@ class SitemapsResource {
       _url,
       'PUT',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -379,8 +359,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -395,8 +373,6 @@ class SitesResource {
       _url,
       'PUT',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -424,8 +400,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -440,8 +414,6 @@ class SitesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -471,8 +443,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -487,8 +457,6 @@ class SitesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WmxSite.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -512,8 +480,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -525,8 +491,6 @@ class SitesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SitesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

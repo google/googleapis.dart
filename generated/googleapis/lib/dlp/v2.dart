@@ -132,8 +132,6 @@ class InfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -157,8 +155,6 @@ class InfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -218,8 +214,6 @@ class LocationsInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -244,8 +238,6 @@ class LocationsInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -316,8 +308,6 @@ class OrganizationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -339,8 +329,6 @@ class OrganizationsDeidentifyTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -376,8 +364,6 @@ class OrganizationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -392,8 +378,6 @@ class OrganizationsDeidentifyTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -429,8 +413,6 @@ class OrganizationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -445,8 +427,6 @@ class OrganizationsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -511,8 +491,6 @@ class OrganizationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -541,8 +519,6 @@ class OrganizationsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -581,8 +557,6 @@ class OrganizationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -602,8 +576,6 @@ class OrganizationsDeidentifyTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -658,8 +630,6 @@ class OrganizationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -681,8 +651,6 @@ class OrganizationsInspectTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -717,8 +685,6 @@ class OrganizationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -733,8 +699,6 @@ class OrganizationsInspectTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -769,8 +733,6 @@ class OrganizationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -785,8 +747,6 @@ class OrganizationsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -850,8 +810,6 @@ class OrganizationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -880,8 +838,6 @@ class OrganizationsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -918,8 +874,6 @@ class OrganizationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -939,8 +893,6 @@ class OrganizationsInspectTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1014,8 +966,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1037,8 +987,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1074,8 +1022,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1090,8 +1036,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1127,8 +1071,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1143,8 +1085,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1209,8 +1149,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1239,8 +1177,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1279,8 +1215,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1300,8 +1234,6 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1394,8 +1326,6 @@ class OrganizationsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1429,8 +1359,6 @@ class OrganizationsLocationsDlpJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1485,8 +1413,6 @@ class OrganizationsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1508,8 +1434,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1544,8 +1468,6 @@ class OrganizationsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1560,8 +1482,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1596,8 +1516,6 @@ class OrganizationsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1612,8 +1530,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1677,8 +1593,6 @@ class OrganizationsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1707,8 +1621,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1745,8 +1657,6 @@ class OrganizationsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1766,8 +1676,6 @@ class OrganizationsLocationsInspectTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1818,8 +1726,6 @@ class OrganizationsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1841,8 +1747,6 @@ class OrganizationsLocationsJobTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1875,8 +1779,6 @@ class OrganizationsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1891,8 +1793,6 @@ class OrganizationsLocationsJobTriggersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1925,8 +1825,6 @@ class OrganizationsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1941,8 +1839,6 @@ class OrganizationsLocationsJobTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2021,8 +1917,6 @@ class OrganizationsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2054,8 +1948,6 @@ class OrganizationsLocationsJobTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2091,8 +1983,6 @@ class OrganizationsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2112,8 +2002,6 @@ class OrganizationsLocationsJobTriggersResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2168,8 +2056,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2191,8 +2077,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2228,8 +2112,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2244,8 +2126,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2280,8 +2160,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2296,8 +2174,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2363,8 +2239,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2393,8 +2267,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2433,8 +2305,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2454,8 +2324,6 @@ class OrganizationsLocationsStoredInfoTypesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2510,8 +2378,6 @@ class OrganizationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2533,8 +2399,6 @@ class OrganizationsStoredInfoTypesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2569,8 +2433,6 @@ class OrganizationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2585,8 +2447,6 @@ class OrganizationsStoredInfoTypesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2620,8 +2480,6 @@ class OrganizationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2636,8 +2494,6 @@ class OrganizationsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2703,8 +2559,6 @@ class OrganizationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2733,8 +2587,6 @@ class OrganizationsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2772,8 +2624,6 @@ class OrganizationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2793,8 +2643,6 @@ class OrganizationsStoredInfoTypesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2867,8 +2715,6 @@ class ProjectsContentResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2890,8 +2736,6 @@ class ProjectsContentResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2939,8 +2783,6 @@ class ProjectsContentResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2962,8 +2804,6 @@ class ProjectsContentResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3008,8 +2848,6 @@ class ProjectsContentResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3031,8 +2869,6 @@ class ProjectsContentResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3088,8 +2924,6 @@ class ProjectsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3111,8 +2945,6 @@ class ProjectsDeidentifyTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3147,8 +2979,6 @@ class ProjectsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3163,8 +2993,6 @@ class ProjectsDeidentifyTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3199,8 +3027,6 @@ class ProjectsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3215,8 +3041,6 @@ class ProjectsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3281,8 +3105,6 @@ class ProjectsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3311,8 +3133,6 @@ class ProjectsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3350,8 +3170,6 @@ class ProjectsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3371,8 +3189,6 @@ class ProjectsDeidentifyTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3414,8 +3230,6 @@ class ProjectsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3435,8 +3249,6 @@ class ProjectsDlpJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3483,8 +3295,6 @@ class ProjectsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3505,8 +3315,6 @@ class ProjectsDlpJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3540,8 +3348,6 @@ class ProjectsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3556,8 +3362,6 @@ class ProjectsDlpJobsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3589,8 +3393,6 @@ class ProjectsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3605,8 +3407,6 @@ class ProjectsDlpJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3692,8 +3492,6 @@ class ProjectsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3727,8 +3525,6 @@ class ProjectsDlpJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3782,8 +3578,6 @@ class ProjectsImageResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3805,8 +3599,6 @@ class ProjectsImageResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2RedactImageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3861,8 +3653,6 @@ class ProjectsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3884,8 +3674,6 @@ class ProjectsInspectTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3919,8 +3707,6 @@ class ProjectsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3935,8 +3721,6 @@ class ProjectsInspectTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3970,8 +3754,6 @@ class ProjectsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3986,8 +3768,6 @@ class ProjectsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4051,8 +3831,6 @@ class ProjectsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4081,8 +3859,6 @@ class ProjectsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4118,8 +3894,6 @@ class ProjectsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4139,8 +3913,6 @@ class ProjectsInspectTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4183,8 +3955,6 @@ class ProjectsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4204,8 +3974,6 @@ class ProjectsJobTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4249,8 +4017,6 @@ class ProjectsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4272,8 +4038,6 @@ class ProjectsJobTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4305,8 +4069,6 @@ class ProjectsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4321,8 +4083,6 @@ class ProjectsJobTriggersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4354,8 +4114,6 @@ class ProjectsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4370,8 +4128,6 @@ class ProjectsJobTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4450,8 +4206,6 @@ class ProjectsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4483,8 +4237,6 @@ class ProjectsJobTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4519,8 +4271,6 @@ class ProjectsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4540,8 +4290,6 @@ class ProjectsJobTriggersResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4616,8 +4364,6 @@ class ProjectsLocationsContentResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4639,8 +4385,6 @@ class ProjectsLocationsContentResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4688,8 +4432,6 @@ class ProjectsLocationsContentResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4711,8 +4453,6 @@ class ProjectsLocationsContentResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4757,8 +4497,6 @@ class ProjectsLocationsContentResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4780,8 +4518,6 @@ class ProjectsLocationsContentResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4837,8 +4573,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4860,8 +4594,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4897,8 +4629,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4913,8 +4643,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4950,8 +4678,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4966,8 +4692,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5032,8 +4756,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5062,8 +4784,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5102,8 +4822,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5123,8 +4841,6 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5168,8 +4884,6 @@ class ProjectsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5189,8 +4903,6 @@ class ProjectsLocationsDlpJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5237,8 +4949,6 @@ class ProjectsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5259,8 +4969,6 @@ class ProjectsLocationsDlpJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5295,8 +5003,6 @@ class ProjectsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5311,8 +5017,6 @@ class ProjectsLocationsDlpJobsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5348,8 +5052,6 @@ class ProjectsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5369,8 +5071,6 @@ class ProjectsLocationsDlpJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5403,8 +5103,6 @@ class ProjectsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5419,8 +5117,6 @@ class ProjectsLocationsDlpJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5457,8 +5153,6 @@ class ProjectsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5480,8 +5174,6 @@ class ProjectsLocationsDlpJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2HybridInspectResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5567,8 +5259,6 @@ class ProjectsLocationsDlpJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5602,8 +5292,6 @@ class ProjectsLocationsDlpJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5658,8 +5346,6 @@ class ProjectsLocationsImageResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5681,8 +5367,6 @@ class ProjectsLocationsImageResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2RedactImageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5737,8 +5421,6 @@ class ProjectsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5760,8 +5442,6 @@ class ProjectsLocationsInspectTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5796,8 +5476,6 @@ class ProjectsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5812,8 +5490,6 @@ class ProjectsLocationsInspectTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5848,8 +5524,6 @@ class ProjectsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5864,8 +5538,6 @@ class ProjectsLocationsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5929,8 +5601,6 @@ class ProjectsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5959,8 +5629,6 @@ class ProjectsLocationsInspectTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5997,8 +5665,6 @@ class ProjectsLocationsInspectTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6018,8 +5684,6 @@ class ProjectsLocationsInspectTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2InspectTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6063,8 +5727,6 @@ class ProjectsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6084,8 +5746,6 @@ class ProjectsLocationsJobTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2DlpJob.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6129,8 +5789,6 @@ class ProjectsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6152,8 +5810,6 @@ class ProjectsLocationsJobTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6186,8 +5842,6 @@ class ProjectsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6202,8 +5856,6 @@ class ProjectsLocationsJobTriggersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6236,8 +5888,6 @@ class ProjectsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6252,8 +5902,6 @@ class ProjectsLocationsJobTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6290,8 +5938,6 @@ class ProjectsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6313,8 +5959,6 @@ class ProjectsLocationsJobTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2HybridInspectResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6393,8 +6037,6 @@ class ProjectsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -6426,8 +6068,6 @@ class ProjectsLocationsJobTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6463,8 +6103,6 @@ class ProjectsLocationsJobTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6484,8 +6122,6 @@ class ProjectsLocationsJobTriggersResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2JobTrigger.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6540,8 +6176,6 @@ class ProjectsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6563,8 +6197,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6600,8 +6232,6 @@ class ProjectsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6616,8 +6246,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6652,8 +6280,6 @@ class ProjectsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6668,8 +6294,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6735,8 +6359,6 @@ class ProjectsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -6765,8 +6387,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6805,8 +6425,6 @@ class ProjectsLocationsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6826,8 +6444,6 @@ class ProjectsLocationsStoredInfoTypesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6882,8 +6498,6 @@ class ProjectsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6905,8 +6519,6 @@ class ProjectsStoredInfoTypesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6941,8 +6553,6 @@ class ProjectsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6957,8 +6567,6 @@ class ProjectsStoredInfoTypesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6992,8 +6600,6 @@ class ProjectsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -7008,8 +6614,6 @@ class ProjectsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7075,8 +6679,6 @@ class ProjectsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -7105,8 +6707,6 @@ class ProjectsStoredInfoTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7144,8 +6744,6 @@ class ProjectsStoredInfoTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7165,8 +6763,6 @@ class ProjectsStoredInfoTypesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GooglePrivacyDlpV2StoredInfoType.fromJson(
         _response as core.Map<core.String, core.dynamic>);

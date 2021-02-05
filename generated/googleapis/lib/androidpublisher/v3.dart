@@ -130,8 +130,6 @@ class EditsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -153,8 +151,6 @@ class EditsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -182,8 +178,6 @@ class EditsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -204,8 +198,6 @@ class EditsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -235,8 +227,6 @@ class EditsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -257,8 +247,6 @@ class EditsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -288,8 +276,6 @@ class EditsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -311,8 +297,6 @@ class EditsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -342,8 +326,6 @@ class EditsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -365,8 +347,6 @@ class EditsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppEdit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -409,8 +389,6 @@ class EditsApksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -437,8 +415,6 @@ class EditsApksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApksAddExternallyHostedResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -469,8 +445,6 @@ class EditsApksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -492,8 +466,6 @@ class EditsApksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApksListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -532,8 +504,6 @@ class EditsApksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -545,16 +515,13 @@ class EditsApksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
           commons.Escaper.ecapeVariable('$editId') +
           '/apks';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -572,8 +539,8 @@ class EditsApksResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return Apk.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -609,8 +576,6 @@ class EditsBundlesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -632,8 +597,6 @@ class EditsBundlesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BundlesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -683,8 +646,6 @@ class EditsBundlesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -701,16 +662,13 @@ class EditsBundlesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
           commons.Escaper.ecapeVariable('$editId') +
           '/bundles';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -728,8 +686,8 @@ class EditsBundlesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return Bundle.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -786,8 +744,6 @@ class EditsDeobfuscationfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -805,10 +761,7 @@ class EditsDeobfuscationfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -817,7 +770,7 @@ class EditsDeobfuscationfilesResource {
           commons.Escaper.ecapeVariable('$apkVersionCode') +
           '/deobfuscationFiles/' +
           commons.Escaper.ecapeVariable('$deobfuscationFileType');
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -841,8 +794,8 @@ class EditsDeobfuscationfilesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return DeobfuscationFilesUploadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -879,8 +832,6 @@ class EditsDetailsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -902,8 +853,6 @@ class EditsDetailsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppDetails.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -937,8 +886,6 @@ class EditsDetailsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -965,8 +912,6 @@ class EditsDetailsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppDetails.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1000,8 +945,6 @@ class EditsDetailsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1028,8 +971,6 @@ class EditsDetailsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppDetails.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1079,8 +1020,6 @@ class EditsExpansionfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1111,8 +1050,6 @@ class EditsExpansionfilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ExpansionFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1161,8 +1098,6 @@ class EditsExpansionfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1198,8 +1133,6 @@ class EditsExpansionfilesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ExpansionFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1248,8 +1181,6 @@ class EditsExpansionfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1285,8 +1216,6 @@ class EditsExpansionfilesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ExpansionFile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1337,8 +1266,6 @@ class EditsExpansionfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1356,10 +1283,7 @@ class EditsExpansionfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -1368,7 +1292,7 @@ class EditsExpansionfilesResource {
           commons.Escaper.ecapeVariable('$apkVersionCode') +
           '/expansionFiles/' +
           commons.Escaper.ecapeVariable('$expansionFileType');
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -1392,8 +1316,8 @@ class EditsExpansionfilesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return ExpansionFilesUploadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1449,8 +1373,6 @@ class EditsImagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1486,8 +1408,6 @@ class EditsImagesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1538,8 +1458,6 @@ class EditsImagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1570,8 +1488,6 @@ class EditsImagesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ImagesDeleteAllResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1623,8 +1539,6 @@ class EditsImagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1655,8 +1569,6 @@ class EditsImagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ImagesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1714,8 +1626,6 @@ class EditsImagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1733,10 +1643,7 @@ class EditsImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -1745,7 +1652,7 @@ class EditsImagesResource {
           commons.Escaper.ecapeVariable('$language') +
           '/' +
           commons.Escaper.ecapeVariable('$imageType');
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/androidpublisher/v3/applications/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/edits/' +
@@ -1769,8 +1676,8 @@ class EditsImagesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return ImagesUploadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1809,8 +1716,6 @@ class EditsListingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1836,8 +1741,6 @@ class EditsListingsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1865,8 +1768,6 @@ class EditsListingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1888,8 +1789,6 @@ class EditsListingsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1923,8 +1822,6 @@ class EditsListingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1950,8 +1847,6 @@ class EditsListingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Listing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1981,8 +1876,6 @@ class EditsListingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2004,8 +1897,6 @@ class EditsListingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListingsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2043,8 +1934,6 @@ class EditsListingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2075,8 +1964,6 @@ class EditsListingsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Listing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2113,8 +2000,6 @@ class EditsListingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2145,8 +2030,6 @@ class EditsListingsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Listing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2185,8 +2068,6 @@ class EditsTestersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2212,8 +2093,6 @@ class EditsTestersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Testers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2249,8 +2128,6 @@ class EditsTestersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2281,8 +2158,6 @@ class EditsTestersResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Testers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2318,8 +2193,6 @@ class EditsTestersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2350,8 +2223,6 @@ class EditsTestersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Testers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2390,8 +2261,6 @@ class EditsTracksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2417,8 +2286,6 @@ class EditsTracksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Track.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2448,8 +2315,6 @@ class EditsTracksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2471,8 +2336,6 @@ class EditsTracksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TracksListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2509,8 +2372,6 @@ class EditsTracksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2541,8 +2402,6 @@ class EditsTracksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Track.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2578,8 +2437,6 @@ class EditsTracksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2610,8 +2467,6 @@ class EditsTracksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Track.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2645,8 +2500,6 @@ class InappproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2667,8 +2520,6 @@ class InappproductsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2698,8 +2549,6 @@ class InappproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2720,8 +2569,6 @@ class InappproductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2758,8 +2605,6 @@ class InappproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2786,8 +2631,6 @@ class InappproductsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2824,8 +2667,6 @@ class InappproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2851,8 +2692,6 @@ class InappproductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InappproductsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2892,8 +2731,6 @@ class InappproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2924,8 +2761,6 @@ class InappproductsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2965,8 +2800,6 @@ class InappproductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2997,8 +2830,6 @@ class InappproductsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InAppProduct.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3047,8 +2878,6 @@ class InternalappsharingartifactsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3057,14 +2886,11 @@ class InternalappsharingartifactsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/internalappsharing/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/artifacts/apk';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url =
           '/resumable/upload/androidpublisher/v3/applications/internalappsharing/' +
               commons.Escaper.ecapeVariable('$packageName') +
@@ -3079,8 +2905,8 @@ class InternalappsharingartifactsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return InternalAppSharingArtifact.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3122,8 +2948,6 @@ class InternalappsharingartifactsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3132,14 +2956,11 @@ class InternalappsharingartifactsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'androidpublisher/v3/applications/internalappsharing/' +
           commons.Escaper.ecapeVariable('$packageName') +
           '/artifacts/bundle';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url =
           '/resumable/upload/androidpublisher/v3/applications/internalappsharing/' +
               commons.Escaper.ecapeVariable('$packageName') +
@@ -3154,8 +2975,8 @@ class InternalappsharingartifactsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return InternalAppSharingArtifact.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3199,8 +3020,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3225,8 +3044,6 @@ class OrdersResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3282,8 +3099,6 @@ class PurchasesProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3315,8 +3130,6 @@ class PurchasesProductsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3352,8 +3165,6 @@ class PurchasesProductsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3379,8 +3190,6 @@ class PurchasesProductsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProductPurchase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3425,8 +3234,6 @@ class PurchasesSubscriptionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3458,8 +3265,6 @@ class PurchasesSubscriptionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3495,8 +3300,6 @@ class PurchasesSubscriptionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3523,8 +3326,6 @@ class PurchasesSubscriptionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3564,8 +3365,6 @@ class PurchasesSubscriptionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3597,8 +3396,6 @@ class PurchasesSubscriptionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SubscriptionPurchasesDeferResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3636,8 +3433,6 @@ class PurchasesSubscriptionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3663,8 +3458,6 @@ class PurchasesSubscriptionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SubscriptionPurchase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3700,8 +3493,6 @@ class PurchasesSubscriptionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3728,8 +3519,6 @@ class PurchasesSubscriptionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3766,8 +3555,6 @@ class PurchasesSubscriptionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3794,8 +3581,6 @@ class PurchasesSubscriptionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3869,8 +3654,6 @@ class PurchasesVoidedpurchasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3905,8 +3688,6 @@ class PurchasesVoidedpurchasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return VoidedPurchasesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3946,8 +3727,6 @@ class ReviewsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3971,8 +3750,6 @@ class ReviewsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Review.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4011,8 +3788,6 @@ class ReviewsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -4041,8 +3816,6 @@ class ReviewsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReviewsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4076,8 +3849,6 @@ class ReviewsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4104,8 +3875,6 @@ class ReviewsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReviewsReplyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4155,8 +3924,6 @@ class SystemapksVariantsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4183,8 +3950,6 @@ class SystemapksVariantsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variant.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4221,8 +3986,6 @@ class SystemapksVariantsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -4249,8 +4012,6 @@ class SystemapksVariantsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -4289,8 +4050,6 @@ class SystemapksVariantsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -4316,8 +4075,6 @@ class SystemapksVariantsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variant.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4347,8 +4104,6 @@ class SystemapksVariantsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -4370,8 +4125,6 @@ class SystemapksVariantsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SystemApksListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

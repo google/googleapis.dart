@@ -86,8 +86,6 @@ class AlertsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -104,8 +102,6 @@ class AlertsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchDeleteAlertsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -133,8 +129,6 @@ class AlertsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -151,8 +145,6 @@ class AlertsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUndeleteAlertsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -190,8 +182,6 @@ class AlertsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
@@ -209,8 +199,6 @@ class AlertsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -244,8 +232,6 @@ class AlertsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
@@ -263,8 +249,6 @@ class AlertsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Alert.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -300,8 +284,6 @@ class AlertsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
@@ -321,8 +303,6 @@ class AlertsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AlertMetadata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -376,8 +356,6 @@ class AlertsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -404,8 +382,6 @@ class AlertsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAlertsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -442,8 +418,6 @@ class AlertsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -465,8 +439,6 @@ class AlertsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Alert.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -512,8 +484,6 @@ class AlertsFeedbackResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -538,8 +508,6 @@ class AlertsFeedbackResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AlertFeedback.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -583,8 +551,6 @@ class AlertsFeedbackResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
@@ -607,8 +573,6 @@ class AlertsFeedbackResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAlertFeedbackResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -644,8 +608,6 @@ class V1beta1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -660,8 +622,6 @@ class V1beta1Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -693,8 +653,6 @@ class V1beta1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -714,8 +672,6 @@ class V1beta1Resource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

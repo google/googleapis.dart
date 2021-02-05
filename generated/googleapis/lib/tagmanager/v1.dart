@@ -124,8 +124,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -141,8 +139,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -166,8 +162,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -179,8 +173,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAccountsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -215,8 +207,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -240,8 +230,6 @@ class AccountsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -295,8 +283,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -318,8 +304,6 @@ class AccountsContainersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -347,8 +331,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -369,8 +351,6 @@ class AccountsContainersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -400,8 +380,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -422,8 +400,6 @@ class AccountsContainersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -450,8 +426,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -468,8 +442,6 @@ class AccountsContainersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListContainersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -507,8 +479,6 @@ class AccountsContainersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -537,8 +507,6 @@ class AccountsContainersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -578,8 +546,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -606,8 +572,6 @@ class AccountsContainersEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -639,8 +603,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -666,8 +628,6 @@ class AccountsContainersEnvironmentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -700,8 +660,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -727,8 +685,6 @@ class AccountsContainersEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -759,8 +715,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -782,8 +736,6 @@ class AccountsContainersEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -824,8 +776,6 @@ class AccountsContainersEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -859,8 +809,6 @@ class AccountsContainersEnvironmentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -904,8 +852,6 @@ class AccountsContainersFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -932,8 +878,6 @@ class AccountsContainersFoldersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -964,8 +908,6 @@ class AccountsContainersFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -991,8 +933,6 @@ class AccountsContainersFoldersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1025,8 +965,6 @@ class AccountsContainersFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1052,8 +990,6 @@ class AccountsContainersFoldersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1083,8 +1019,6 @@ class AccountsContainersFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1106,8 +1040,6 @@ class AccountsContainersFoldersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListFoldersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1148,8 +1080,6 @@ class AccountsContainersFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1183,8 +1113,6 @@ class AccountsContainersFoldersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1224,8 +1152,6 @@ class AccountsContainersFoldersEntitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1252,8 +1178,6 @@ class AccountsContainersFoldersEntitiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FolderEntities.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1304,8 +1228,6 @@ class AccountsContainersMoveFoldersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1345,8 +1267,6 @@ class AccountsContainersMoveFoldersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1389,8 +1309,6 @@ class AccountsContainersReauthorizeEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1421,8 +1339,6 @@ class AccountsContainersReauthorizeEnvironmentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1463,8 +1379,6 @@ class AccountsContainersTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1491,8 +1405,6 @@ class AccountsContainersTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1523,8 +1435,6 @@ class AccountsContainersTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1550,8 +1460,6 @@ class AccountsContainersTagsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1584,8 +1492,6 @@ class AccountsContainersTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1611,8 +1517,6 @@ class AccountsContainersTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1642,8 +1546,6 @@ class AccountsContainersTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1665,8 +1567,6 @@ class AccountsContainersTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1707,8 +1607,6 @@ class AccountsContainersTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1742,8 +1640,6 @@ class AccountsContainersTagsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1783,8 +1679,6 @@ class AccountsContainersTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1811,8 +1705,6 @@ class AccountsContainersTriggersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1843,8 +1735,6 @@ class AccountsContainersTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1870,8 +1760,6 @@ class AccountsContainersTriggersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1904,8 +1792,6 @@ class AccountsContainersTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1931,8 +1817,6 @@ class AccountsContainersTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1962,8 +1846,6 @@ class AccountsContainersTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1985,8 +1867,6 @@ class AccountsContainersTriggersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListTriggersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2027,8 +1907,6 @@ class AccountsContainersTriggersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2062,8 +1940,6 @@ class AccountsContainersTriggersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2103,8 +1979,6 @@ class AccountsContainersVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2131,8 +2005,6 @@ class AccountsContainersVariablesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2163,8 +2035,6 @@ class AccountsContainersVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2190,8 +2060,6 @@ class AccountsContainersVariablesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2224,8 +2092,6 @@ class AccountsContainersVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2251,8 +2117,6 @@ class AccountsContainersVariablesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2282,8 +2146,6 @@ class AccountsContainersVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2305,8 +2167,6 @@ class AccountsContainersVariablesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListVariablesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2347,8 +2207,6 @@ class AccountsContainersVariablesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2382,8 +2240,6 @@ class AccountsContainersVariablesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2423,8 +2279,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2451,8 +2305,6 @@ class AccountsContainersVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreateContainerVersionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2484,8 +2336,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2511,8 +2361,6 @@ class AccountsContainersVersionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2546,8 +2394,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2573,8 +2419,6 @@ class AccountsContainersVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2611,8 +2455,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2640,8 +2482,6 @@ class AccountsContainersVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListContainerVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2679,8 +2519,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2710,8 +2548,6 @@ class AccountsContainersVersionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PublishContainerVersionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2749,8 +2585,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2777,8 +2611,6 @@ class AccountsContainersVersionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2812,8 +2644,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2840,8 +2670,6 @@ class AccountsContainersVersionsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2882,8 +2710,6 @@ class AccountsContainersVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2917,8 +2743,6 @@ class AccountsContainersVersionsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContainerVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2956,8 +2780,6 @@ class AccountsPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2979,8 +2801,6 @@ class AccountsPermissionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserAccess.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3010,8 +2830,6 @@ class AccountsPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3032,8 +2850,6 @@ class AccountsPermissionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3063,8 +2879,6 @@ class AccountsPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3085,8 +2899,6 @@ class AccountsPermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserAccess.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3115,8 +2927,6 @@ class AccountsPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3133,8 +2943,6 @@ class AccountsPermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAccountUsersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3168,8 +2976,6 @@ class AccountsPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3195,8 +3001,6 @@ class AccountsPermissionsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserAccess.fromJson(
         _response as core.Map<core.String, core.dynamic>);

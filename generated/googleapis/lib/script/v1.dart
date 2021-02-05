@@ -197,8 +197,6 @@ class ProcessesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -252,8 +250,6 @@ class ProcessesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListUserProcessesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -322,8 +318,6 @@ class ProcessesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -375,8 +369,6 @@ class ProcessesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListScriptProcessesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -415,8 +407,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -433,8 +423,6 @@ class ProjectsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -461,8 +449,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -477,8 +463,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -510,8 +494,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -531,8 +513,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Content.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -573,8 +553,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -597,8 +575,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Metrics.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -633,8 +609,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -656,8 +630,6 @@ class ProjectsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Content.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -694,8 +666,6 @@ class ProjectsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -717,8 +687,6 @@ class ProjectsDeploymentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -749,8 +717,6 @@ class ProjectsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -771,8 +737,6 @@ class ProjectsDeploymentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -802,8 +766,6 @@ class ProjectsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -824,8 +786,6 @@ class ProjectsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -862,8 +822,6 @@ class ProjectsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -886,8 +844,6 @@ class ProjectsDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -921,8 +877,6 @@ class ProjectsDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -948,8 +902,6 @@ class ProjectsDeploymentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Deployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -987,8 +939,6 @@ class ProjectsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1010,8 +960,6 @@ class ProjectsVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1041,8 +989,6 @@ class ProjectsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -1063,8 +1009,6 @@ class ProjectsVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1100,8 +1044,6 @@ class ProjectsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
@@ -1124,8 +1066,6 @@ class ProjectsVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1175,8 +1115,6 @@ class ScriptsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1196,8 +1134,6 @@ class ScriptsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

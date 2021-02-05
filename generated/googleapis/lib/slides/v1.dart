@@ -125,8 +125,6 @@ class PresentationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -148,8 +146,6 @@ class PresentationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUpdatePresentationResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -182,8 +178,6 @@ class PresentationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -200,8 +194,6 @@ class PresentationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Presentation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -230,8 +222,6 @@ class PresentationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
@@ -247,8 +237,6 @@ class PresentationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Presentation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -285,8 +273,6 @@ class PresentationsPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
@@ -307,8 +293,6 @@ class PresentationsPagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -360,8 +344,6 @@ class PresentationsPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
@@ -393,8 +375,6 @@ class PresentationsPagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Thumbnail.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

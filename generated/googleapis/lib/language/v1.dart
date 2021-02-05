@@ -91,8 +91,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -109,8 +107,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AnalyzeEntitiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -139,8 +135,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -157,8 +151,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AnalyzeEntitySentimentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -186,8 +178,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -204,8 +194,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AnalyzeSentimentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -235,8 +223,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -253,8 +239,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AnalyzeSyntaxResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -283,8 +267,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -301,8 +283,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AnnotateTextResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -330,8 +310,6 @@ class DocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -348,8 +326,6 @@ class DocumentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ClassifyTextResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

@@ -185,8 +185,6 @@ class AssetlinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (relation != null) {
       _queryParams['relation'] = [relation];
@@ -227,8 +225,6 @@ class AssetlinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CheckResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -322,8 +318,6 @@ class StatementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (relation != null) {
       _queryParams['relation'] = [relation];
@@ -351,8 +345,6 @@ class StatementsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

@@ -81,8 +81,6 @@ class ApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (api == null) {
       throw core.ArgumentError('Parameter api is required.');
@@ -104,8 +102,6 @@ class ApisResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RestDescription.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -136,8 +132,6 @@ class ApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name != null) {
       _queryParams['name'] = [name];
@@ -155,8 +149,6 @@ class ApisResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DirectoryList.fromJson(
         _response as core.Map<core.String, core.dynamic>);

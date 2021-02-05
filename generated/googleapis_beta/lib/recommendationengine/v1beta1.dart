@@ -141,8 +141,6 @@ class ProjectsLocationsCatalogsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -165,8 +163,6 @@ class ProjectsLocationsCatalogsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1ListCatalogsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -205,8 +201,6 @@ class ProjectsLocationsCatalogsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -229,8 +223,6 @@ class ProjectsLocationsCatalogsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -271,8 +263,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -294,8 +284,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -327,8 +315,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -343,8 +329,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -376,8 +360,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -392,8 +374,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -434,8 +414,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -457,8 +435,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -502,8 +478,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -529,8 +503,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -571,8 +543,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -595,8 +565,6 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -655,8 +623,6 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -671,8 +637,6 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -720,8 +684,6 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -747,8 +709,6 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -813,8 +773,6 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -836,8 +794,6 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -883,8 +839,6 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -906,8 +860,6 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -939,8 +891,6 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -955,8 +905,6 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -998,8 +946,6 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1022,8 +968,6 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -1080,8 +1024,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1107,8 +1049,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleApiHttpBody.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1148,8 +1088,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1171,8 +1109,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1243,8 +1179,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1270,8 +1204,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -1310,8 +1242,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1333,8 +1263,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1376,8 +1304,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1399,8 +1325,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1434,8 +1358,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1457,8 +1379,6 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1498,8 +1418,6 @@ class ProjectsLocationsCatalogsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1514,8 +1432,6 @@ class ProjectsLocationsCatalogsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1563,8 +1479,6 @@ class ProjectsLocationsCatalogsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1590,8 +1504,6 @@ class ProjectsLocationsCatalogsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

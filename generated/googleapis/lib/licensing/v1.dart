@@ -97,8 +97,6 @@ class LicenseAssignmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
@@ -124,8 +122,6 @@ class LicenseAssignmentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -164,8 +160,6 @@ class LicenseAssignmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
@@ -191,8 +185,6 @@ class LicenseAssignmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LicenseAssignment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -228,8 +220,6 @@ class LicenseAssignmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -256,8 +246,6 @@ class LicenseAssignmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LicenseAssignment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -303,8 +291,6 @@ class LicenseAssignmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
@@ -331,8 +317,6 @@ class LicenseAssignmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LicenseAssignmentList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -382,8 +366,6 @@ class LicenseAssignmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
@@ -415,8 +397,6 @@ class LicenseAssignmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LicenseAssignmentList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -461,8 +441,6 @@ class LicenseAssignmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -493,8 +471,6 @@ class LicenseAssignmentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LicenseAssignment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -537,8 +513,6 @@ class LicenseAssignmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -569,8 +543,6 @@ class LicenseAssignmentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LicenseAssignment.fromJson(
         _response as core.Map<core.String, core.dynamic>);

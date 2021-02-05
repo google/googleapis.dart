@@ -92,8 +92,6 @@ class AutnumResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (autnumId == null) {
       throw core.ArgumentError('Parameter autnumId is required.');
@@ -108,8 +106,6 @@ class AutnumResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -144,8 +140,6 @@ class DomainResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (domainName == null) {
       throw core.ArgumentError('Parameter domainName is required.');
@@ -160,8 +154,6 @@ class DomainResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -197,8 +189,6 @@ class EntityResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (entityId == null) {
       throw core.ArgumentError('Parameter entityId is required.');
@@ -213,8 +203,6 @@ class EntityResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -254,8 +242,6 @@ class IpResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (ipId == null) {
       throw core.ArgumentError('Parameter ipId is required.');
@@ -276,8 +262,6 @@ class IpResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -314,8 +298,6 @@ class NameserverResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (nameserverId == null) {
       throw core.ArgumentError('Parameter nameserverId is required.');
@@ -330,8 +312,6 @@ class NameserverResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -365,8 +345,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -378,8 +356,6 @@ class V1Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -407,8 +383,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -420,8 +394,6 @@ class V1Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -446,8 +418,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -459,8 +429,6 @@ class V1Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -487,8 +455,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -500,8 +466,6 @@ class V1Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -528,8 +492,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -541,8 +503,6 @@ class V1Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RdapResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

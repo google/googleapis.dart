@@ -100,8 +100,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -116,8 +114,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayLocation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -155,8 +151,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -181,8 +175,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -229,8 +221,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -253,8 +243,6 @@ class ProjectsLocationsApisResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -285,8 +273,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -301,8 +287,6 @@ class ProjectsLocationsApisResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -333,8 +317,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -349,8 +331,6 @@ class ProjectsLocationsApisResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayApi.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -394,8 +374,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -417,8 +395,6 @@ class ProjectsLocationsApisResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -460,8 +436,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -488,8 +462,6 @@ class ProjectsLocationsApisResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayListApisResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -530,8 +502,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -554,8 +524,6 @@ class ProjectsLocationsApisResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -593,8 +561,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -616,8 +582,6 @@ class ProjectsLocationsApisResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -657,8 +621,6 @@ class ProjectsLocationsApisResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -680,8 +642,6 @@ class ProjectsLocationsApisResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayTestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -726,8 +686,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -751,8 +709,6 @@ class ProjectsLocationsApisConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -783,8 +739,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -799,8 +753,6 @@ class ProjectsLocationsApisConfigsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -839,8 +791,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -858,8 +808,6 @@ class ProjectsLocationsApisConfigsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayApiConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -903,8 +851,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -926,8 +872,6 @@ class ProjectsLocationsApisConfigsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -970,8 +914,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -999,8 +941,6 @@ class ProjectsLocationsApisConfigsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayListApiConfigsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1041,8 +981,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1065,8 +1003,6 @@ class ProjectsLocationsApisConfigsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1104,8 +1040,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1127,8 +1061,6 @@ class ProjectsLocationsApisConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1168,8 +1100,6 @@ class ProjectsLocationsApisConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1191,8 +1121,6 @@ class ProjectsLocationsApisConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayTestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1236,8 +1164,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1261,8 +1187,6 @@ class ProjectsLocationsGatewaysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1293,8 +1217,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1309,8 +1231,6 @@ class ProjectsLocationsGatewaysResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1341,8 +1261,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1357,8 +1275,6 @@ class ProjectsLocationsGatewaysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayGateway.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1402,8 +1318,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -1425,8 +1339,6 @@ class ProjectsLocationsGatewaysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1468,8 +1380,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1497,8 +1407,6 @@ class ProjectsLocationsGatewaysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayListGatewaysResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1539,8 +1447,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1563,8 +1469,6 @@ class ProjectsLocationsGatewaysResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1602,8 +1506,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1625,8 +1527,6 @@ class ProjectsLocationsGatewaysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1666,8 +1566,6 @@ class ProjectsLocationsGatewaysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1689,8 +1587,6 @@ class ProjectsLocationsGatewaysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayTestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1739,8 +1635,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1760,8 +1654,6 @@ class ProjectsLocationsOperationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1794,8 +1686,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1810,8 +1700,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1843,8 +1731,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1859,8 +1745,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1907,8 +1791,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1933,8 +1815,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApigatewayListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

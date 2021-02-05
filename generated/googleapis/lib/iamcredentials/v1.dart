@@ -103,8 +103,6 @@ class ProjectsServiceAccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -126,8 +124,6 @@ class ProjectsServiceAccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GenerateAccessTokenResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -162,8 +158,6 @@ class ProjectsServiceAccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -185,8 +179,6 @@ class ProjectsServiceAccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GenerateIdTokenResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -221,8 +213,6 @@ class ProjectsServiceAccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -242,8 +232,6 @@ class ProjectsServiceAccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SignBlobResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -278,8 +266,6 @@ class ProjectsServiceAccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -299,8 +285,6 @@ class ProjectsServiceAccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SignJwtResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

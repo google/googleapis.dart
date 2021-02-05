@@ -86,8 +86,6 @@ class ShelvesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -102,8 +100,6 @@ class ShelvesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleExampleLibraryagentV1Shelf.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -141,8 +137,6 @@ class ShelvesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -160,8 +154,6 @@ class ShelvesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -200,8 +192,6 @@ class ShelvesBooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -216,8 +206,6 @@ class ShelvesBooksResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -248,8 +236,6 @@ class ShelvesBooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -264,8 +250,6 @@ class ShelvesBooksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -307,8 +291,6 @@ class ShelvesBooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -329,8 +311,6 @@ class ShelvesBooksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -363,8 +343,6 @@ class ShelvesBooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -379,8 +357,6 @@ class ShelvesBooksResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
         _response as core.Map<core.String, core.dynamic>);

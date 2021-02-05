@@ -84,8 +84,6 @@ class TasklistsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -101,8 +99,6 @@ class TasklistsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -129,8 +125,6 @@ class TasklistsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -146,8 +140,6 @@ class TasklistsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -175,8 +167,6 @@ class TasklistsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -193,8 +183,6 @@ class TasklistsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -225,8 +213,6 @@ class TasklistsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -244,8 +230,6 @@ class TasklistsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TaskLists.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -277,8 +261,6 @@ class TasklistsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -299,8 +281,6 @@ class TasklistsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -330,8 +310,6 @@ class TasklistsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -352,8 +330,6 @@ class TasklistsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -387,8 +363,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -405,8 +379,6 @@ class TasksResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -434,8 +406,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -456,8 +426,6 @@ class TasksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -487,8 +455,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -509,8 +475,6 @@ class TasksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -549,8 +513,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -578,8 +540,6 @@ class TasksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -650,8 +610,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -698,8 +656,6 @@ class TasksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tasks.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -741,8 +697,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -770,8 +724,6 @@ class TasksResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -806,8 +758,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -833,8 +783,6 @@ class TasksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -867,8 +815,6 @@ class TasksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -894,8 +840,6 @@ class TasksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

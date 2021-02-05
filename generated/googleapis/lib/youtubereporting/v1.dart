@@ -109,8 +109,6 @@ class JobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -130,8 +128,6 @@ class JobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -163,8 +159,6 @@ class JobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
@@ -182,8 +176,6 @@ class JobsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -215,8 +207,6 @@ class JobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
@@ -234,8 +224,6 @@ class JobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -279,8 +267,6 @@ class JobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (includeSystemManaged != null) {
       _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
@@ -304,8 +290,6 @@ class JobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -347,8 +331,6 @@ class JobsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
@@ -372,8 +354,6 @@ class JobsReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -429,8 +409,6 @@ class JobsReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
@@ -463,8 +441,6 @@ class JobsReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -510,8 +486,6 @@ class MediaResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
@@ -526,8 +500,6 @@ class MediaResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -584,8 +556,6 @@ class ReportTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (includeSystemManaged != null) {
       _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
@@ -609,8 +579,6 @@ class ReportTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListReportTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

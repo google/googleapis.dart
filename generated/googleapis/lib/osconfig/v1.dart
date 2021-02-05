@@ -110,8 +110,6 @@ class ProjectsPatchDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -136,8 +134,6 @@ class ProjectsPatchDeploymentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PatchDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -167,8 +163,6 @@ class ProjectsPatchDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -183,8 +177,6 @@ class ProjectsPatchDeploymentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -213,8 +205,6 @@ class ProjectsPatchDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -229,8 +219,6 @@ class ProjectsPatchDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PatchDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -269,8 +257,6 @@ class ProjectsPatchDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -293,8 +279,6 @@ class ProjectsPatchDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListPatchDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -338,8 +322,6 @@ class ProjectsPatchJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -359,8 +341,6 @@ class ProjectsPatchJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PatchJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -392,8 +372,6 @@ class ProjectsPatchJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -415,8 +393,6 @@ class ProjectsPatchJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PatchJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -448,8 +424,6 @@ class ProjectsPatchJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -464,8 +438,6 @@ class ProjectsPatchJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PatchJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -505,8 +477,6 @@ class ProjectsPatchJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -531,8 +501,6 @@ class ProjectsPatchJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListPatchJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -582,8 +550,6 @@ class ProjectsPatchJobsInstanceDetailsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -609,8 +575,6 @@ class ProjectsPatchJobsInstanceDetailsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListPatchJobInstanceDetailsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

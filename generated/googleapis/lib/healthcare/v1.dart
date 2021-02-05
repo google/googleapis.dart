@@ -107,8 +107,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -123,8 +121,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -161,8 +157,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -187,8 +181,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -247,8 +239,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -272,8 +262,6 @@ class ProjectsLocationsDatasetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -315,8 +303,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -338,8 +324,6 @@ class ProjectsLocationsDatasetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -373,8 +357,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -389,8 +371,6 @@ class ProjectsLocationsDatasetsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -420,8 +400,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -436,8 +414,6 @@ class ProjectsLocationsDatasetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Dataset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -480,8 +456,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -503,8 +477,6 @@ class ProjectsLocationsDatasetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -541,8 +513,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -564,8 +534,6 @@ class ProjectsLocationsDatasetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListDatasetsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -604,8 +572,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -628,8 +594,6 @@ class ProjectsLocationsDatasetsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Dataset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -666,8 +630,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -689,8 +651,6 @@ class ProjectsLocationsDatasetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -729,8 +689,6 @@ class ProjectsLocationsDatasetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -752,8 +710,6 @@ class ProjectsLocationsDatasetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -804,8 +760,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -827,8 +781,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -865,8 +817,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -888,8 +838,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -928,8 +876,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -951,8 +897,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -999,8 +943,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1025,8 +967,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DicomStore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1069,8 +1009,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1092,8 +1030,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1123,8 +1059,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1139,8 +1073,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1179,8 +1111,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1200,8 +1130,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1230,8 +1158,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1246,8 +1172,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DicomStore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1291,8 +1215,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -1314,8 +1236,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1353,8 +1273,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1374,8 +1292,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1417,8 +1333,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1444,8 +1358,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListDicomStoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1484,8 +1396,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1508,8 +1418,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DicomStore.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1555,8 +1463,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1577,8 +1483,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1622,8 +1526,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1644,8 +1546,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1689,8 +1589,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1711,8 +1609,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1749,8 +1645,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1772,8 +1666,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1821,8 +1713,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1848,8 +1738,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1888,8 +1776,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1911,8 +1797,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1967,8 +1851,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1989,8 +1871,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2035,8 +1915,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2057,8 +1935,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2102,8 +1978,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2124,8 +1998,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2170,8 +2042,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2192,8 +2062,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2237,8 +2105,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2259,8 +2125,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2308,8 +2172,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2335,8 +2197,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2394,8 +2254,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2416,8 +2274,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2462,8 +2318,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2484,8 +2338,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2529,8 +2381,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2551,8 +2401,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2597,8 +2445,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2619,8 +2465,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2677,8 +2521,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2699,8 +2541,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2749,8 +2589,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2771,8 +2609,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2820,8 +2656,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2842,8 +2676,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2890,8 +2722,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2912,8 +2742,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2968,8 +2796,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2990,8 +2816,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3039,8 +2863,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3061,8 +2883,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3108,8 +2928,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3134,8 +2952,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FhirStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3174,8 +2990,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3197,8 +3011,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3227,8 +3039,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3243,8 +3053,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3286,8 +3094,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3307,8 +3113,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3337,8 +3141,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3353,8 +3155,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FhirStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3397,8 +3197,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -3420,8 +3218,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3511,8 +3307,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3532,8 +3326,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3575,8 +3367,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3602,8 +3392,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListFhirStoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3642,8 +3430,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3666,8 +3452,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FhirStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3704,8 +3488,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3727,8 +3509,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3767,8 +3547,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3790,8 +3568,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3880,8 +3656,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3916,8 +3690,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3953,8 +3725,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3969,8 +3739,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4013,8 +3781,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4031,8 +3797,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4089,8 +3853,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4116,8 +3878,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4157,8 +3917,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4173,8 +3931,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4233,8 +3989,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4254,8 +4008,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4325,8 +4077,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4353,8 +4103,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4402,8 +4150,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4423,8 +4169,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4471,8 +4215,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4487,8 +4229,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4566,8 +4306,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4589,8 +4327,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4675,8 +4411,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4703,8 +4437,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4759,8 +4491,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4780,8 +4510,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4823,8 +4551,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4839,8 +4565,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4886,8 +4610,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4912,8 +4634,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Hl7V2Store.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4944,8 +4664,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4960,8 +4678,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4990,8 +4706,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5006,8 +4720,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Hl7V2Store.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5051,8 +4763,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -5074,8 +4784,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5117,8 +4825,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5144,8 +4850,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListHl7V2StoresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5184,8 +4888,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5208,8 +4910,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Hl7V2Store.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5247,8 +4947,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5270,8 +4968,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5310,8 +5006,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5333,8 +5027,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5382,8 +5074,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5404,8 +5094,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5434,8 +5122,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5450,8 +5136,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5492,8 +5176,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5511,8 +5193,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5554,8 +5234,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5577,8 +5255,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return IngestMessageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5659,8 +5335,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5691,8 +5365,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListMessagesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5738,8 +5410,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5762,8 +5432,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5811,8 +5479,6 @@ class ProjectsLocationsDatasetsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5832,8 +5498,6 @@ class ProjectsLocationsDatasetsOperationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5865,8 +5529,6 @@ class ProjectsLocationsDatasetsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5881,8 +5543,6 @@ class ProjectsLocationsDatasetsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5929,8 +5589,6 @@ class ProjectsLocationsDatasetsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5955,8 +5613,6 @@ class ProjectsLocationsDatasetsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

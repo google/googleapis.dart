@@ -86,8 +86,6 @@ class TextResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -104,8 +102,6 @@ class TextResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SynthesizeSpeechResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -146,8 +142,6 @@ class VoicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
@@ -162,8 +156,6 @@ class VoicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListVoicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

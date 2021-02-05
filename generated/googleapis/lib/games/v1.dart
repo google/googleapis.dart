@@ -121,8 +121,6 @@ class AchievementDefinitionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (language != null) {
       _queryParams['language'] = [language];
@@ -143,8 +141,6 @@ class AchievementDefinitionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AchievementDefinitionsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -187,8 +183,6 @@ class AchievementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
@@ -212,8 +206,6 @@ class AchievementsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AchievementIncrementResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -265,8 +257,6 @@ class AchievementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
@@ -295,8 +285,6 @@ class AchievementsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlayerAchievementListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -325,8 +313,6 @@ class AchievementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
@@ -343,8 +329,6 @@ class AchievementsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AchievementRevealResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -380,8 +364,6 @@ class AchievementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
@@ -402,8 +384,6 @@ class AchievementsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AchievementSetStepsAtLeastResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -431,8 +411,6 @@ class AchievementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
@@ -449,8 +427,6 @@ class AchievementsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AchievementUnlockResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -478,8 +454,6 @@ class AchievementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -496,8 +470,6 @@ class AchievementsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AchievementUpdateMultipleResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -548,8 +520,6 @@ class ApplicationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
@@ -571,8 +541,6 @@ class ApplicationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Application.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -608,8 +576,6 @@ class ApplicationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (applicationId != null) {
       _queryParams['applicationId'] = [applicationId];
@@ -627,8 +593,6 @@ class ApplicationsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EndPoint.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -651,8 +615,6 @@ class ApplicationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -664,8 +626,6 @@ class ApplicationsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -695,8 +655,6 @@ class ApplicationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
@@ -713,8 +671,6 @@ class ApplicationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApplicationVerifyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -758,8 +714,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (language != null) {
       _queryParams['language'] = [language];
@@ -780,8 +734,6 @@ class EventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlayerEventListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -818,8 +770,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (language != null) {
       _queryParams['language'] = [language];
@@ -840,8 +790,6 @@ class EventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EventDefinitionListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -874,8 +822,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -895,8 +841,6 @@ class EventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EventUpdateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -934,8 +878,6 @@ class LeaderboardsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
@@ -954,8 +896,6 @@ class LeaderboardsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Leaderboard.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -992,8 +932,6 @@ class LeaderboardsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (language != null) {
       _queryParams['language'] = [language];
@@ -1014,8 +952,6 @@ class LeaderboardsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LeaderboardListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1046,8 +982,6 @@ class MetagameResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1059,8 +993,6 @@ class MetagameResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return MetagameConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1109,8 +1041,6 @@ class MetagameResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
@@ -1140,8 +1070,6 @@ class MetagameResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CategoryListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1183,8 +1111,6 @@ class PlayersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
@@ -1202,8 +1128,6 @@ class PlayersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Player.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1249,8 +1173,6 @@ class PlayersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
@@ -1275,8 +1197,6 @@ class PlayersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlayerListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1314,8 +1234,6 @@ class RevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (clientRevision == null) {
       throw core.ArgumentError('Parameter clientRevision is required.');
@@ -1331,8 +1249,6 @@ class RevisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevisionCheckResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1411,8 +1327,6 @@ class ScoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
@@ -1450,8 +1364,6 @@ class ScoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlayerLeaderboardScoreListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1507,8 +1419,6 @@ class ScoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
@@ -1542,8 +1452,6 @@ class ScoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LeaderboardScores.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1609,8 +1517,6 @@ class ScoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
@@ -1650,8 +1556,6 @@ class ScoresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LeaderboardScores.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1697,8 +1601,6 @@ class ScoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
@@ -1725,8 +1627,6 @@ class ScoresResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlayerScoreResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1758,8 +1658,6 @@ class ScoresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1779,8 +1677,6 @@ class ScoresResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlayerScoreListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1818,8 +1714,6 @@ class SnapshotsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (snapshotId == null) {
       throw core.ArgumentError('Parameter snapshotId is required.');
@@ -1837,8 +1731,6 @@ class SnapshotsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1879,8 +1771,6 @@ class SnapshotsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
@@ -1906,8 +1796,6 @@ class SnapshotsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SnapshotListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1946,8 +1834,6 @@ class SnapshotsExtendedResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1969,8 +1855,6 @@ class SnapshotsExtendedResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ResolveSnapshotHeadResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2002,8 +1886,6 @@ class StatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2015,8 +1897,6 @@ class StatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StatsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

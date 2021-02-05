@@ -128,8 +128,6 @@ class AccountReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (endDate_day != null) {
       _queryParams['endDate.day'] = ['${endDate_day}'];
@@ -168,8 +166,6 @@ class AccountReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -253,8 +249,6 @@ class DetailedLeadReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (endDate_day != null) {
       _queryParams['endDate.day'] = ['${endDate_day}'];
@@ -293,8 +287,6 @@ class DetailedLeadReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);

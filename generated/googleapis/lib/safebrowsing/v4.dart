@@ -106,8 +106,6 @@ class EncodedFullHashesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (encodedRequest == null) {
       throw core.ArgumentError('Parameter encodedRequest is required.');
@@ -129,8 +127,6 @@ class EncodedFullHashesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -170,8 +166,6 @@ class EncodedUpdatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (encodedRequest == null) {
       throw core.ArgumentError('Parameter encodedRequest is required.');
@@ -193,8 +187,6 @@ class EncodedUpdatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -228,8 +220,6 @@ class FullHashesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -246,8 +236,6 @@ class FullHashesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -283,8 +271,6 @@ class ThreatHitsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -301,8 +287,6 @@ class ThreatHitsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -340,8 +324,6 @@ class ThreatListUpdatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -358,8 +340,6 @@ class ThreatListUpdatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -390,8 +370,6 @@ class ThreatListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -403,8 +381,6 @@ class ThreatListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -438,8 +414,6 @@ class ThreatMatchesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -456,8 +430,6 @@ class ThreatMatchesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

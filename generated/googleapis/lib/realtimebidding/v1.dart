@@ -150,8 +150,6 @@ class BiddersCreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -179,8 +177,6 @@ class BiddersCreativesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCreativesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -220,8 +216,6 @@ class BiddersCreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -243,8 +237,6 @@ class BiddersCreativesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WatchCreativesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -284,8 +276,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -305,8 +295,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -340,8 +328,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -363,8 +349,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -398,8 +382,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -421,8 +403,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -456,8 +436,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -479,8 +457,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -518,8 +494,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -541,8 +515,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -572,8 +544,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -588,8 +558,6 @@ class BiddersPretargetingConfigsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -618,8 +586,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -634,8 +600,6 @@ class BiddersPretargetingConfigsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -675,8 +639,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -699,8 +661,6 @@ class BiddersPretargetingConfigsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListPretargetingConfigsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -737,8 +697,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -761,8 +719,6 @@ class BiddersPretargetingConfigsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -796,8 +752,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -819,8 +773,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -854,8 +806,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -877,8 +827,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -912,8 +860,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -935,8 +881,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -969,8 +913,6 @@ class BiddersPretargetingConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -990,8 +932,6 @@ class BiddersPretargetingConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PretargetingConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1039,8 +979,6 @@ class BuyersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1057,8 +995,6 @@ class BuyersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GetRemarketingTagResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1101,8 +1037,6 @@ class BuyersCreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1123,8 +1057,6 @@ class BuyersCreativesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1165,8 +1097,6 @@ class BuyersCreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1184,8 +1114,6 @@ class BuyersCreativesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1255,8 +1183,6 @@ class BuyersCreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1284,8 +1210,6 @@ class BuyersCreativesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCreativesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1324,8 +1248,6 @@ class BuyersCreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1348,8 +1270,6 @@ class BuyersCreativesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1388,8 +1308,6 @@ class BuyersUserListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1409,8 +1327,6 @@ class BuyersUserListsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1446,8 +1362,6 @@ class BuyersUserListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1468,8 +1382,6 @@ class BuyersUserListsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1498,8 +1410,6 @@ class BuyersUserListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1514,8 +1424,6 @@ class BuyersUserListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1553,8 +1461,6 @@ class BuyersUserListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1571,8 +1477,6 @@ class BuyersUserListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GetRemarketingTagResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1613,8 +1517,6 @@ class BuyersUserListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1636,8 +1538,6 @@ class BuyersUserListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListUserListsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1671,8 +1571,6 @@ class BuyersUserListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1692,8 +1590,6 @@ class BuyersUserListsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1731,8 +1627,6 @@ class BuyersUserListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1752,8 +1646,6 @@ class BuyersUserListsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

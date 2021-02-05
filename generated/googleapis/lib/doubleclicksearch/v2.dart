@@ -132,8 +132,6 @@ class ConversionResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (agencyId == null) {
       throw core.ArgumentError('Parameter agencyId is required.');
@@ -188,8 +186,6 @@ class ConversionResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ConversionList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -217,8 +213,6 @@ class ConversionResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -235,8 +229,6 @@ class ConversionResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ConversionList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -264,8 +256,6 @@ class ConversionResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -282,8 +272,6 @@ class ConversionResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ConversionList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -312,8 +300,6 @@ class ConversionResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -330,8 +316,6 @@ class ConversionResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UpdateAvailabilityResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -365,8 +349,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request_1 != null) {
@@ -383,8 +365,6 @@ class ReportsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -411,8 +391,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
@@ -428,8 +406,6 @@ class ReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -462,8 +438,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
@@ -484,8 +458,6 @@ class ReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -518,8 +490,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request_1 != null) {
@@ -536,8 +506,6 @@ class ReportsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -573,8 +541,6 @@ class SavedColumnsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (agencyId == null) {
       throw core.ArgumentError('Parameter agencyId is required.');
@@ -596,8 +562,6 @@ class SavedColumnsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SavedColumnList.fromJson(
         _response as core.Map<core.String, core.dynamic>);

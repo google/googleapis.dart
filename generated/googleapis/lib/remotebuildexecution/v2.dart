@@ -121,8 +121,6 @@ class ActionResultsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
@@ -157,8 +155,6 @@ class ActionResultsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BuildBazelRemoteExecutionV2ActionResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -219,8 +215,6 @@ class ActionResultsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -256,8 +250,6 @@ class ActionResultsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BuildBazelRemoteExecutionV2ActionResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -341,8 +333,6 @@ class ActionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -364,8 +354,6 @@ class ActionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -417,8 +405,6 @@ class BlobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -440,8 +426,6 @@ class BlobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -489,8 +473,6 @@ class BlobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -512,8 +494,6 @@ class BlobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -554,8 +534,6 @@ class BlobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -577,8 +555,6 @@ class BlobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -643,8 +619,6 @@ class BlobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
@@ -677,8 +651,6 @@ class BlobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -723,8 +695,6 @@ class OperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -746,8 +716,6 @@ class OperationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -793,8 +761,6 @@ class V2Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
@@ -811,8 +777,6 @@ class V2Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(
         _response as core.Map<core.String, core.dynamic>);

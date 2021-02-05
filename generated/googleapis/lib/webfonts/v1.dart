@@ -87,8 +87,6 @@ class WebfontsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (sort != null) {
       _queryParams['sort'] = [sort];
@@ -103,8 +101,6 @@ class WebfontsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WebfontList.fromJson(
         _response as core.Map<core.String, core.dynamic>);

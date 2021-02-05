@@ -102,8 +102,6 @@ class EnterprisesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -125,8 +123,6 @@ class EnterprisesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -156,8 +152,6 @@ class EnterprisesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -172,8 +166,6 @@ class EnterprisesDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleHomeEnterpriseSdmV1Device.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -214,8 +206,6 @@ class EnterprisesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -240,8 +230,6 @@ class EnterprisesDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -281,8 +269,6 @@ class EnterprisesStructuresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -297,8 +283,6 @@ class EnterprisesStructuresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleHomeEnterpriseSdmV1Structure.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -338,8 +322,6 @@ class EnterprisesStructuresResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -365,8 +347,6 @@ class EnterprisesStructuresResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -404,8 +384,6 @@ class EnterprisesStructuresRoomsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -420,8 +398,6 @@ class EnterprisesStructuresRoomsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleHomeEnterpriseSdmV1Room.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -458,8 +434,6 @@ class EnterprisesStructuresRoomsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -480,8 +454,6 @@ class EnterprisesStructuresRoomsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

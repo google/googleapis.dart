@@ -105,8 +105,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -121,8 +119,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -159,8 +155,6 @@ class ProjectsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -185,8 +179,6 @@ class ProjectsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -235,8 +227,6 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -260,8 +250,6 @@ class ProjectsLocationsKeyRingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -290,8 +278,6 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -306,8 +292,6 @@ class ProjectsLocationsKeyRingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -350,8 +334,6 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -373,8 +355,6 @@ class ProjectsLocationsKeyRingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -424,8 +404,6 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -453,8 +431,6 @@ class ProjectsLocationsKeyRingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListKeyRingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -492,8 +468,6 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -515,8 +489,6 @@ class ProjectsLocationsKeyRingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -555,8 +527,6 @@ class ProjectsLocationsKeyRingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -578,8 +548,6 @@ class ProjectsLocationsKeyRingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -637,8 +605,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -668,8 +634,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -704,8 +668,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -725,8 +687,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DecryptResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -763,8 +723,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -784,8 +742,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EncryptResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -816,8 +772,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -832,8 +786,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -876,8 +828,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -899,8 +849,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -960,8 +908,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -993,8 +939,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCryptoKeysResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1031,8 +975,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1055,8 +997,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1093,8 +1033,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1116,8 +1054,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1156,8 +1092,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1179,8 +1113,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1215,8 +1147,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1238,8 +1168,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1282,8 +1210,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1305,8 +1231,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AsymmetricDecryptResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1342,8 +1266,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1365,8 +1287,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AsymmetricSignResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1403,8 +1323,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1426,8 +1344,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1466,8 +1382,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1487,8 +1401,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1518,8 +1430,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1534,8 +1444,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1567,8 +1475,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1584,8 +1490,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PublicKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1621,8 +1525,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1644,8 +1546,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1706,8 +1606,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1739,8 +1637,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCryptoKeyVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1782,8 +1678,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1806,8 +1700,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1843,8 +1735,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1864,8 +1754,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CryptoKeyVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1912,8 +1800,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1938,8 +1824,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1968,8 +1852,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1984,8 +1866,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2028,8 +1908,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
@@ -2051,8 +1929,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2103,8 +1979,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2133,8 +2007,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListImportJobsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2172,8 +2044,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2195,8 +2065,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2235,8 +2103,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2258,8 +2124,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

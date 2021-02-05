@@ -151,8 +151,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -172,8 +170,6 @@ class ProjectsLocationsAgentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Agent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -204,8 +200,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -220,8 +214,6 @@ class ProjectsLocationsAgentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -255,8 +247,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -276,8 +266,6 @@ class ProjectsLocationsAgentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -308,8 +296,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -324,8 +310,6 @@ class ProjectsLocationsAgentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Agent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -362,8 +346,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -381,8 +363,6 @@ class ProjectsLocationsAgentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3AgentValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -420,8 +400,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -442,8 +420,6 @@ class ProjectsLocationsAgentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListAgentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -482,8 +458,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -506,8 +480,6 @@ class ProjectsLocationsAgentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Agent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -544,8 +516,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -565,8 +535,6 @@ class ProjectsLocationsAgentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -603,8 +571,6 @@ class ProjectsLocationsAgentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -624,8 +590,6 @@ class ProjectsLocationsAgentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3AgentValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -675,8 +639,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -701,8 +663,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3EntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -742,8 +702,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -761,8 +719,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -802,8 +758,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -821,8 +775,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3EntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -870,8 +822,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -897,8 +847,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListEntityTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -945,8 +893,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -972,8 +918,6 @@ class ProjectsLocationsAgentsEntityTypesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3EntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1019,8 +963,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1042,8 +984,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1074,8 +1014,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1090,8 +1028,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1122,8 +1058,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1138,8 +1072,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Environment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1178,8 +1110,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1202,8 +1132,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListEnvironmentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1244,8 +1172,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1268,8 +1194,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1306,8 +1230,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1330,8 +1252,6 @@ class ProjectsLocationsAgentsEnvironmentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1373,8 +1293,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1396,8 +1314,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1428,8 +1344,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1444,8 +1358,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1476,8 +1388,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1492,8 +1402,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1532,8 +1440,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1556,8 +1462,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListExperimentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1594,8 +1498,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1618,8 +1520,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1655,8 +1555,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1676,8 +1574,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1713,8 +1609,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1734,8 +1628,6 @@ class ProjectsLocationsAgentsEnvironmentsExperimentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1797,8 +1689,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1820,8 +1710,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3DetectIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1865,8 +1753,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1888,8 +1774,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3FulfillIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1931,8 +1815,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1954,8 +1836,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3MatchIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2002,8 +1882,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2025,8 +1903,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2059,8 +1935,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2075,8 +1949,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2109,8 +1981,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2125,8 +1995,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2168,8 +2036,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2192,8 +2058,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2232,8 +2096,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2256,8 +2118,6 @@ class ProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2315,8 +2175,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2339,8 +2197,6 @@ class ProjectsLocationsAgentsFlowsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Flow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2379,8 +2235,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2398,8 +2252,6 @@ class ProjectsLocationsAgentsFlowsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2440,8 +2292,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2459,8 +2309,6 @@ class ProjectsLocationsAgentsFlowsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Flow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2497,8 +2345,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2516,8 +2362,6 @@ class ProjectsLocationsAgentsFlowsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3FlowValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2565,8 +2409,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2590,8 +2432,6 @@ class ProjectsLocationsAgentsFlowsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListFlowsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2638,8 +2478,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2665,8 +2503,6 @@ class ProjectsLocationsAgentsFlowsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Flow.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2702,8 +2538,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2723,8 +2557,6 @@ class ProjectsLocationsAgentsFlowsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2761,8 +2593,6 @@ class ProjectsLocationsAgentsFlowsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2782,8 +2612,6 @@ class ProjectsLocationsAgentsFlowsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3FlowValidationResult.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2836,8 +2664,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2860,8 +2686,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Page.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2900,8 +2724,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2919,8 +2741,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2963,8 +2783,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2982,8 +2800,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Page.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3034,8 +2850,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3059,8 +2873,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListPagesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3111,8 +2923,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3138,8 +2948,6 @@ class ProjectsLocationsAgentsFlowsPagesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Page.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3189,8 +2997,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3215,8 +3021,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3255,8 +3059,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3274,8 +3076,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3314,8 +3114,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3333,8 +3131,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3382,8 +3178,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3409,8 +3203,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3457,8 +3249,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3484,8 +3274,6 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3526,8 +3314,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3548,8 +3334,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3580,8 +3364,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3596,8 +3378,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3628,8 +3408,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3644,8 +3422,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Version.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3684,8 +3460,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3707,8 +3481,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3742,8 +3514,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3763,8 +3533,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3802,8 +3570,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3826,8 +3592,6 @@ class ProjectsLocationsAgentsFlowsVersionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Version.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3876,8 +3640,6 @@ class ProjectsLocationsAgentsIntentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3901,8 +3663,6 @@ class ProjectsLocationsAgentsIntentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Intent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3933,8 +3693,6 @@ class ProjectsLocationsAgentsIntentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3949,8 +3707,6 @@ class ProjectsLocationsAgentsIntentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3989,8 +3745,6 @@ class ProjectsLocationsAgentsIntentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4008,8 +3762,6 @@ class ProjectsLocationsAgentsIntentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Intent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4064,8 +3816,6 @@ class ProjectsLocationsAgentsIntentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4093,8 +3843,6 @@ class ProjectsLocationsAgentsIntentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListIntentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4141,8 +3889,6 @@ class ProjectsLocationsAgentsIntentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4168,8 +3914,6 @@ class ProjectsLocationsAgentsIntentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Intent.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4228,8 +3972,6 @@ class ProjectsLocationsAgentsSessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4251,8 +3993,6 @@ class ProjectsLocationsAgentsSessionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3DetectIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4296,8 +4036,6 @@ class ProjectsLocationsAgentsSessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4319,8 +4057,6 @@ class ProjectsLocationsAgentsSessionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3FulfillIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4362,8 +4098,6 @@ class ProjectsLocationsAgentsSessionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4385,8 +4119,6 @@ class ProjectsLocationsAgentsSessionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3MatchIntentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4433,8 +4165,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4456,8 +4186,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4490,8 +4218,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4506,8 +4232,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4540,8 +4264,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -4556,8 +4278,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4599,8 +4319,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4623,8 +4341,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4663,8 +4379,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4687,8 +4401,6 @@ class ProjectsLocationsAgentsSessionsEntityTypesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SessionEntityType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4732,8 +4444,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4755,8 +4465,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4789,8 +4497,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4812,8 +4518,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4852,8 +4556,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (agent == null) {
       throw core.ArgumentError('Parameter agent is required.');
@@ -4873,8 +4575,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3CalculateCoverageResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4908,8 +4608,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4930,8 +4628,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3TestCase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4968,8 +4664,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4991,8 +4685,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5023,8 +4715,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5039,8 +4729,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3TestCase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5077,8 +4765,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5100,8 +4786,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5152,8 +4836,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5178,8 +4860,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListTestCasesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5218,8 +4898,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5242,8 +4920,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3TestCase.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5280,8 +4956,6 @@ class ProjectsLocationsAgentsTestCasesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5313,8 +4987,6 @@ class ProjectsLocationsAgentsTestCasesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5375,8 +5047,6 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5401,8 +5071,6 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListTestCaseResultsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5443,8 +5111,6 @@ class ProjectsLocationsAgentsWebhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5465,8 +5131,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Webhook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5505,8 +5169,6 @@ class ProjectsLocationsAgentsWebhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5524,8 +5186,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5556,8 +5216,6 @@ class ProjectsLocationsAgentsWebhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5572,8 +5230,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Webhook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5612,8 +5268,6 @@ class ProjectsLocationsAgentsWebhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -5635,8 +5289,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListWebhooksResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5675,8 +5327,6 @@ class ProjectsLocationsAgentsWebhooksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5699,8 +5349,6 @@ class ProjectsLocationsAgentsWebhooksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3Webhook.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5746,8 +5394,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5762,8 +5408,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5796,8 +5440,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5812,8 +5454,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5860,8 +5500,6 @@ class ProjectsLocationsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5886,8 +5524,6 @@ class ProjectsLocationsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5927,8 +5563,6 @@ class ProjectsLocationsSecuritySettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5950,8 +5584,6 @@ class ProjectsLocationsSecuritySettingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SecuritySettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5982,8 +5614,6 @@ class ProjectsLocationsSecuritySettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -5998,8 +5628,6 @@ class ProjectsLocationsSecuritySettingsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6032,8 +5660,6 @@ class ProjectsLocationsSecuritySettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6048,8 +5674,6 @@ class ProjectsLocationsSecuritySettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SecuritySettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6087,8 +5711,6 @@ class ProjectsLocationsSecuritySettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -6111,8 +5733,6 @@ class ProjectsLocationsSecuritySettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3ListSecuritySettingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6150,8 +5770,6 @@ class ProjectsLocationsSecuritySettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6174,8 +5792,6 @@ class ProjectsLocationsSecuritySettingsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDialogflowCxV3SecuritySettings.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6219,8 +5835,6 @@ class ProjectsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6235,8 +5849,6 @@ class ProjectsOperationsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6268,8 +5880,6 @@ class ProjectsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6284,8 +5894,6 @@ class ProjectsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6332,8 +5940,6 @@ class ProjectsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -6358,8 +5964,6 @@ class ProjectsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

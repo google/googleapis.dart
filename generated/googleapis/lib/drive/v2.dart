@@ -158,8 +158,6 @@ class AboutResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (includeSubscribed != null) {
       _queryParams['includeSubscribed'] = ['${includeSubscribed}'];
@@ -180,8 +178,6 @@ class AboutResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return About.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -214,8 +210,6 @@ class AppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appId == null) {
       throw core.ArgumentError('Parameter appId is required.');
@@ -230,8 +224,6 @@ class AppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return App.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -274,8 +266,6 @@ class AppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appFilterExtensions != null) {
       _queryParams['appFilterExtensions'] = [appFilterExtensions];
@@ -296,8 +286,6 @@ class AppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -344,8 +332,6 @@ class ChangesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (changeId == null) {
       throw core.ArgumentError('Parameter changeId is required.');
@@ -372,8 +358,6 @@ class ChangesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Change.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -411,8 +395,6 @@ class ChangesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
@@ -436,8 +418,6 @@ class ChangesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return StartPageToken.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -521,8 +501,6 @@ class ChangesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
@@ -578,8 +556,6 @@ class ChangesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ChangeList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -666,8 +642,6 @@ class ChangesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -728,8 +702,6 @@ class ChangesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -760,8 +732,6 @@ class ChannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -778,8 +748,6 @@ class ChannelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -818,8 +786,6 @@ class ChildrenResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
@@ -843,8 +809,6 @@ class ChildrenResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -874,8 +838,6 @@ class ChildrenResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
@@ -896,8 +858,6 @@ class ChildrenResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ChildReference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -939,8 +899,6 @@ class ChildrenResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -969,8 +927,6 @@ class ChildrenResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ChildReference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1017,8 +973,6 @@ class ChildrenResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
@@ -1045,8 +999,6 @@ class ChildrenResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ChildList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1080,8 +1032,6 @@ class CommentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1102,8 +1052,6 @@ class CommentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1137,8 +1085,6 @@ class CommentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1162,8 +1108,6 @@ class CommentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1193,8 +1137,6 @@ class CommentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1214,8 +1156,6 @@ class CommentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1260,8 +1200,6 @@ class CommentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1288,8 +1226,6 @@ class CommentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CommentList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1323,8 +1259,6 @@ class CommentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1350,8 +1284,6 @@ class CommentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1384,8 +1316,6 @@ class CommentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1411,8 +1341,6 @@ class CommentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1445,8 +1373,6 @@ class DrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
@@ -1461,8 +1387,6 @@ class DrivesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1494,8 +1418,6 @@ class DrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
@@ -1513,8 +1435,6 @@ class DrivesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1541,8 +1461,6 @@ class DrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
@@ -1557,8 +1475,6 @@ class DrivesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1592,8 +1508,6 @@ class DrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1614,8 +1528,6 @@ class DrivesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1654,8 +1566,6 @@ class DrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -1679,8 +1589,6 @@ class DrivesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DriveList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1707,8 +1615,6 @@ class DrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
@@ -1723,8 +1629,6 @@ class DrivesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1759,8 +1663,6 @@ class DrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1783,8 +1685,6 @@ class DrivesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1866,8 +1766,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1920,8 +1818,6 @@ class FilesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1961,8 +1857,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1986,8 +1880,6 @@ class FilesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2014,8 +1906,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
@@ -2030,8 +1920,6 @@ class FilesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -2067,8 +1955,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -2087,8 +1973,6 @@ class FilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -2127,8 +2011,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -2146,8 +2028,6 @@ class FilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GeneratedIds.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2214,8 +2094,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -2251,8 +2129,6 @@ class FilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -2341,8 +2217,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2390,12 +2264,9 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'files';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/drive/v2/files';
     } else {
       _url = '/upload/drive/v2/files';
@@ -2406,8 +2277,8 @@ class FilesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2503,8 +2374,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (corpora != null) {
       _queryParams['corpora'] = [corpora];
@@ -2563,8 +2432,6 @@ class FilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2678,8 +2545,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2752,8 +2617,6 @@ class FilesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2791,8 +2654,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -2816,8 +2677,6 @@ class FilesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2862,8 +2721,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -2887,8 +2744,6 @@ class FilesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2930,8 +2785,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -2955,8 +2808,6 @@ class FilesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3076,8 +2927,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3143,12 +2992,9 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/drive/v2/files/' +
           commons.Escaper.ecapeVariable('$fileId');
     } else {
@@ -3161,8 +3007,8 @@ class FilesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3231,8 +3077,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3273,8 +3117,6 @@ class FilesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -3319,8 +3161,6 @@ class ParentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3344,8 +3184,6 @@ class ParentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3375,8 +3213,6 @@ class ParentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3397,8 +3233,6 @@ class ParentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ParentReference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3440,8 +3274,6 @@ class ParentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3470,8 +3302,6 @@ class ParentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ParentReference.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3499,8 +3329,6 @@ class ParentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3515,8 +3343,6 @@ class ParentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ParentList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3564,8 +3390,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3595,8 +3419,6 @@ class PermissionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3639,8 +3461,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3670,8 +3490,6 @@ class PermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Permission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3699,8 +3517,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (email == null) {
       throw core.ArgumentError('Parameter email is required.');
@@ -3715,8 +3531,6 @@ class PermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PermissionId.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3779,8 +3593,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3821,8 +3633,6 @@ class PermissionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Permission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3879,8 +3689,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3913,8 +3721,6 @@ class PermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PermissionList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3969,8 +3775,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4011,8 +3815,6 @@ class PermissionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Permission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4067,8 +3869,6 @@ class PermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4109,8 +3909,6 @@ class PermissionsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Permission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4148,8 +3946,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4173,8 +3969,6 @@ class PropertiesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4207,8 +4001,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4232,8 +4024,6 @@ class PropertiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Property.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4263,8 +4053,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4284,8 +4072,6 @@ class PropertiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Property.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4312,8 +4098,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4328,8 +4112,6 @@ class PropertiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PropertyList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4367,8 +4149,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4397,8 +4177,6 @@ class PropertiesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Property.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4435,8 +4213,6 @@ class PropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4465,8 +4241,6 @@ class PropertiesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Property.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4503,8 +4277,6 @@ class RepliesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4530,8 +4302,6 @@ class RepliesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4568,8 +4338,6 @@ class RepliesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4598,8 +4366,6 @@ class RepliesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CommentReply.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4633,8 +4399,6 @@ class RepliesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4661,8 +4425,6 @@ class RepliesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CommentReply.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4707,8 +4469,6 @@ class RepliesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4739,8 +4499,6 @@ class RepliesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CommentReplyList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4777,8 +4535,6 @@ class RepliesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4809,8 +4565,6 @@ class RepliesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CommentReply.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4847,8 +4601,6 @@ class RepliesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4879,8 +4631,6 @@ class RepliesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CommentReply.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4919,8 +4669,6 @@ class RevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4941,8 +4689,6 @@ class RevisionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4972,8 +4718,6 @@ class RevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4994,8 +4738,6 @@ class RevisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Revision.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5031,8 +4773,6 @@ class RevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -5053,8 +4793,6 @@ class RevisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RevisionList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5088,8 +4826,6 @@ class RevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5115,8 +4851,6 @@ class RevisionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Revision.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5149,8 +4883,6 @@ class RevisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5176,8 +4908,6 @@ class RevisionsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Revision.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5208,8 +4938,6 @@ class TeamdrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
@@ -5224,8 +4952,6 @@ class TeamdrivesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -5257,8 +4983,6 @@ class TeamdrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
@@ -5276,8 +5000,6 @@ class TeamdrivesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TeamDrive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5311,8 +5033,6 @@ class TeamdrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5333,8 +5053,6 @@ class TeamdrivesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TeamDrive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5373,8 +5091,6 @@ class TeamdrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -5398,8 +5114,6 @@ class TeamdrivesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TeamDriveList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5435,8 +5149,6 @@ class TeamdrivesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5459,8 +5171,6 @@ class TeamdrivesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TeamDrive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

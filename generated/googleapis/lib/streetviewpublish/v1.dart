@@ -102,8 +102,6 @@ class PhotoResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -120,8 +118,6 @@ class PhotoResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Photo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -153,8 +149,6 @@ class PhotoResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (photoId == null) {
       throw core.ArgumentError('Parameter photoId is required.');
@@ -169,8 +163,6 @@ class PhotoResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -219,8 +211,6 @@ class PhotoResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (photoId == null) {
       throw core.ArgumentError('Parameter photoId is required.');
@@ -241,8 +231,6 @@ class PhotoResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Photo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -281,8 +269,6 @@ class PhotoResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -299,8 +285,6 @@ class PhotoResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UploadRef.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -353,8 +337,6 @@ class PhotoResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -377,8 +359,6 @@ class PhotoResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Photo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -418,8 +398,6 @@ class PhotosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -436,8 +414,6 @@ class PhotosResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchDeletePhotosResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -488,8 +464,6 @@ class PhotosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
@@ -510,8 +484,6 @@ class PhotosResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchGetPhotosResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -552,8 +524,6 @@ class PhotosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -570,8 +540,6 @@ class PhotosResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUpdatePhotosResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -631,8 +599,6 @@ class PhotosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -659,8 +625,6 @@ class PhotosResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListPhotosResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

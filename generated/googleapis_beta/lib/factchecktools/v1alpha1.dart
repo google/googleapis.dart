@@ -115,8 +115,6 @@ class ClaimsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
@@ -149,8 +147,6 @@ class ClaimsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -186,8 +182,6 @@ class PagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -204,8 +198,6 @@ class PagesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -235,8 +227,6 @@ class PagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -251,8 +241,6 @@ class PagesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleProtobufEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -284,8 +272,6 @@ class PagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -300,8 +286,6 @@ class PagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -357,8 +341,6 @@ class PagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
@@ -385,8 +367,6 @@ class PagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);
@@ -427,8 +407,6 @@ class PagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -448,8 +426,6 @@ class PagesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
         .fromJson(_response as core.Map<core.String, core.dynamic>);

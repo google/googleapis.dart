@@ -118,8 +118,6 @@ class AppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -136,8 +134,6 @@ class AppsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -165,8 +161,6 @@ class AppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -181,8 +175,6 @@ class AppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Application.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -221,8 +213,6 @@ class AppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -245,8 +235,6 @@ class AppsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -287,8 +275,6 @@ class AppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -308,8 +294,6 @@ class AppsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -347,8 +331,6 @@ class AppsAuthorizedCertificatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -370,8 +352,6 @@ class AppsAuthorizedCertificatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AuthorizedCertificate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -404,8 +384,6 @@ class AppsAuthorizedCertificatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -427,8 +405,6 @@ class AppsAuthorizedCertificatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -469,8 +445,6 @@ class AppsAuthorizedCertificatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -495,8 +469,6 @@ class AppsAuthorizedCertificatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AuthorizedCertificate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -540,8 +512,6 @@ class AppsAuthorizedCertificatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -567,8 +537,6 @@ class AppsAuthorizedCertificatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAuthorizedCertificatesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -614,8 +582,6 @@ class AppsAuthorizedCertificatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -645,8 +611,6 @@ class AppsAuthorizedCertificatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AuthorizedCertificate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -688,8 +652,6 @@ class AppsAuthorizedDomainsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -712,8 +674,6 @@ class AppsAuthorizedDomainsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListAuthorizedDomainsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -769,8 +729,6 @@ class AppsDomainMappingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -795,8 +753,6 @@ class AppsDomainMappingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -830,8 +786,6 @@ class AppsDomainMappingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -852,8 +806,6 @@ class AppsDomainMappingsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -884,8 +836,6 @@ class AppsDomainMappingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -906,8 +856,6 @@ class AppsDomainMappingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DomainMapping.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -942,8 +890,6 @@ class AppsDomainMappingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -966,8 +912,6 @@ class AppsDomainMappingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListDomainMappingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1010,8 +954,6 @@ class AppsDomainMappingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1040,8 +982,6 @@ class AppsDomainMappingsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1093,8 +1033,6 @@ class AppsFirewallIngressRulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1116,8 +1054,6 @@ class AppsFirewallIngressRulesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUpdateIngressRulesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1149,8 +1085,6 @@ class AppsFirewallIngressRulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1172,8 +1106,6 @@ class AppsFirewallIngressRulesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FirewallRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1205,8 +1137,6 @@ class AppsFirewallIngressRulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1227,8 +1157,6 @@ class AppsFirewallIngressRulesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1259,8 +1187,6 @@ class AppsFirewallIngressRulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1281,8 +1207,6 @@ class AppsFirewallIngressRulesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FirewallRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1322,8 +1246,6 @@ class AppsFirewallIngressRulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1349,8 +1271,6 @@ class AppsFirewallIngressRulesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListIngressRulesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1388,8 +1308,6 @@ class AppsFirewallIngressRulesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1418,8 +1336,6 @@ class AppsFirewallIngressRulesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FirewallRule.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1456,8 +1372,6 @@ class AppsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1478,8 +1392,6 @@ class AppsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1516,8 +1428,6 @@ class AppsLocationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1541,8 +1451,6 @@ class AppsLocationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListLocationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1582,8 +1490,6 @@ class AppsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1604,8 +1510,6 @@ class AppsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1650,8 +1554,6 @@ class AppsOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1676,8 +1578,6 @@ class AppsOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListOperationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1718,8 +1618,6 @@ class AppsServicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1740,8 +1638,6 @@ class AppsServicesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1772,8 +1668,6 @@ class AppsServicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1794,8 +1688,6 @@ class AppsServicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1829,8 +1721,6 @@ class AppsServicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1851,8 +1741,6 @@ class AppsServicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListServicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1905,8 +1793,6 @@ class AppsServicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1938,8 +1824,6 @@ class AppsServicesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1983,8 +1867,6 @@ class AppsServicesVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2011,8 +1893,6 @@ class AppsServicesVersionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2046,8 +1926,6 @@ class AppsServicesVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2073,8 +1951,6 @@ class AppsServicesVersionsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2120,8 +1996,6 @@ class AppsServicesVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2150,8 +2024,6 @@ class AppsServicesVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2197,8 +2069,6 @@ class AppsServicesVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2229,8 +2099,6 @@ class AppsServicesVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListVersionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2304,8 +2172,6 @@ class AppsServicesVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2339,8 +2205,6 @@ class AppsServicesVersionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2394,8 +2258,6 @@ class AppsServicesVersionsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2432,8 +2294,6 @@ class AppsServicesVersionsInstancesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2482,8 +2342,6 @@ class AppsServicesVersionsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2514,8 +2372,6 @@ class AppsServicesVersionsInstancesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2552,8 +2408,6 @@ class AppsServicesVersionsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2584,8 +2438,6 @@ class AppsServicesVersionsInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Instance.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2627,8 +2479,6 @@ class AppsServicesVersionsInstancesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2661,8 +2511,6 @@ class AppsServicesVersionsInstancesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListInstancesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

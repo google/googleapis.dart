@@ -86,8 +86,6 @@ class Oauth2Api {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accessToken != null) {
       _queryParams['access_token'] = [accessToken];
@@ -105,8 +103,6 @@ class Oauth2Api {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Tokeninfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -136,8 +132,6 @@ class UserinfoResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -149,8 +143,6 @@ class UserinfoResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Userinfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -186,8 +178,6 @@ class UserinfoV2MeResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -199,8 +189,6 @@ class UserinfoV2MeResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Userinfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

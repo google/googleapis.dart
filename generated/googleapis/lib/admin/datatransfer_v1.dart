@@ -92,8 +92,6 @@ class ApplicationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
@@ -109,8 +107,6 @@ class ApplicationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Application.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -145,8 +141,6 @@ class ApplicationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -167,8 +161,6 @@ class ApplicationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ApplicationsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -203,8 +195,6 @@ class TransfersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (dataTransferId == null) {
       throw core.ArgumentError('Parameter dataTransferId is required.');
@@ -220,8 +210,6 @@ class TransfersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DataTransfer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -249,8 +237,6 @@ class TransfersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -267,8 +253,6 @@ class TransfersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DataTransfer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -313,8 +297,6 @@ class TransfersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -344,8 +326,6 @@ class TransfersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DataTransfersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

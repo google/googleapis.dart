@@ -97,8 +97,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
@@ -115,8 +113,6 @@ class ProjectsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DeleteEventsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -192,8 +188,6 @@ class ProjectsEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
@@ -231,8 +225,6 @@ class ProjectsEventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListEventsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -273,8 +265,6 @@ class ProjectsEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -296,8 +286,6 @@ class ProjectsEventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReportErrorEventResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -413,8 +401,6 @@ class ProjectsGroupStatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
@@ -464,8 +450,6 @@ class ProjectsGroupStatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListGroupStatsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -504,8 +488,6 @@ class ProjectsGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (groupName == null) {
       throw core.ArgumentError('Parameter groupName is required.');
@@ -520,8 +502,6 @@ class ProjectsGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ErrorGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -556,8 +536,6 @@ class ProjectsGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -577,8 +555,6 @@ class ProjectsGroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ErrorGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);

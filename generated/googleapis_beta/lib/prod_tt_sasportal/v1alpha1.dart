@@ -108,8 +108,6 @@ class CustomersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -124,8 +122,6 @@ class CustomersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalCustomer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -157,8 +153,6 @@ class CustomersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -176,8 +170,6 @@ class CustomersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListCustomersResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -212,8 +204,6 @@ class CustomersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -236,8 +226,6 @@ class CustomersResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalCustomer.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -280,8 +268,6 @@ class CustomersDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -303,8 +289,6 @@ class CustomersDeploymentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -333,8 +317,6 @@ class CustomersDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -349,8 +331,6 @@ class CustomersDeploymentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -379,8 +359,6 @@ class CustomersDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -395,8 +373,6 @@ class CustomersDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -438,8 +414,6 @@ class CustomersDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -465,8 +439,6 @@ class CustomersDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -498,8 +470,6 @@ class CustomersDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -520,8 +490,6 @@ class CustomersDeploymentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -556,8 +524,6 @@ class CustomersDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -580,8 +546,6 @@ class CustomersDeploymentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -620,8 +584,6 @@ class CustomersDeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -643,8 +605,6 @@ class CustomersDeploymentsDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -676,8 +636,6 @@ class CustomersDeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -699,8 +657,6 @@ class CustomersDeploymentsDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -743,8 +699,6 @@ class CustomersDeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -770,8 +724,6 @@ class CustomersDeploymentsDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDevicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -809,8 +761,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -832,8 +782,6 @@ class CustomersDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -865,8 +813,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -888,8 +834,6 @@ class CustomersDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -918,8 +862,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -934,8 +876,6 @@ class CustomersDevicesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -964,8 +904,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -980,8 +918,6 @@ class CustomersDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1024,8 +960,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1051,8 +985,6 @@ class CustomersDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDevicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1084,8 +1016,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1106,8 +1036,6 @@ class CustomersDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1142,8 +1070,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1166,8 +1092,6 @@ class CustomersDevicesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1199,8 +1123,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1222,8 +1144,6 @@ class CustomersDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1255,8 +1175,6 @@ class CustomersDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1278,8 +1196,6 @@ class CustomersDevicesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1325,8 +1241,6 @@ class CustomersNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1348,8 +1262,6 @@ class CustomersNodesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1378,8 +1290,6 @@ class CustomersNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1394,8 +1304,6 @@ class CustomersNodesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1424,8 +1332,6 @@ class CustomersNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1440,8 +1346,6 @@ class CustomersNodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1482,8 +1386,6 @@ class CustomersNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1509,8 +1411,6 @@ class CustomersNodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListNodesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1542,8 +1442,6 @@ class CustomersNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1564,8 +1462,6 @@ class CustomersNodesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1600,8 +1496,6 @@ class CustomersNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1624,8 +1518,6 @@ class CustomersNodesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1665,8 +1557,6 @@ class CustomersNodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1688,8 +1578,6 @@ class CustomersNodesDeploymentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1731,8 +1619,6 @@ class CustomersNodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1758,8 +1644,6 @@ class CustomersNodesDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1798,8 +1682,6 @@ class CustomersNodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1821,8 +1703,6 @@ class CustomersNodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1854,8 +1734,6 @@ class CustomersNodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1877,8 +1755,6 @@ class CustomersNodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1921,8 +1797,6 @@ class CustomersNodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1948,8 +1822,6 @@ class CustomersNodesDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDevicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1989,8 +1861,6 @@ class CustomersNodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2012,8 +1882,6 @@ class CustomersNodesNodesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2054,8 +1922,6 @@ class CustomersNodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2081,8 +1947,6 @@ class CustomersNodesNodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListNodesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2120,8 +1984,6 @@ class DeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2136,8 +1998,6 @@ class DeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2172,8 +2032,6 @@ class DeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2188,8 +2046,6 @@ class DeploymentsDevicesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2218,8 +2074,6 @@ class DeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2234,8 +2088,6 @@ class DeploymentsDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2267,8 +2119,6 @@ class DeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2289,8 +2139,6 @@ class DeploymentsDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2325,8 +2173,6 @@ class DeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2349,8 +2195,6 @@ class DeploymentsDevicesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2382,8 +2226,6 @@ class DeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2405,8 +2247,6 @@ class DeploymentsDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2438,8 +2278,6 @@ class DeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2461,8 +2299,6 @@ class DeploymentsDevicesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2496,8 +2332,6 @@ class InstallerResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2514,8 +2348,6 @@ class InstallerResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalGenerateSecretResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2543,8 +2375,6 @@ class InstallerResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2561,8 +2391,6 @@ class InstallerResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalValidateInstallerResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2602,8 +2430,6 @@ class NodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2618,8 +2444,6 @@ class NodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2657,8 +2481,6 @@ class NodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2673,8 +2495,6 @@ class NodesDeploymentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2703,8 +2523,6 @@ class NodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2719,8 +2537,6 @@ class NodesDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2762,8 +2578,6 @@ class NodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2789,8 +2603,6 @@ class NodesDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2822,8 +2634,6 @@ class NodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2844,8 +2654,6 @@ class NodesDeploymentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2880,8 +2688,6 @@ class NodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2904,8 +2710,6 @@ class NodesDeploymentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2944,8 +2748,6 @@ class NodesDeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2967,8 +2769,6 @@ class NodesDeploymentsDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3000,8 +2800,6 @@ class NodesDeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3023,8 +2821,6 @@ class NodesDeploymentsDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3067,8 +2863,6 @@ class NodesDeploymentsDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3094,8 +2888,6 @@ class NodesDeploymentsDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDevicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3133,8 +2925,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3156,8 +2946,6 @@ class NodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3189,8 +2977,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3212,8 +2998,6 @@ class NodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3242,8 +3026,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3258,8 +3040,6 @@ class NodesDevicesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3288,8 +3068,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3304,8 +3082,6 @@ class NodesDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3348,8 +3124,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3375,8 +3149,6 @@ class NodesDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDevicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3408,8 +3180,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3430,8 +3200,6 @@ class NodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3466,8 +3234,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3490,8 +3256,6 @@ class NodesDevicesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3523,8 +3287,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3546,8 +3308,6 @@ class NodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3579,8 +3339,6 @@ class NodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3602,8 +3360,6 @@ class NodesDevicesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3648,8 +3404,6 @@ class NodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3671,8 +3425,6 @@ class NodesNodesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3701,8 +3453,6 @@ class NodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3717,8 +3467,6 @@ class NodesNodesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalEmpty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3747,8 +3495,6 @@ class NodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3763,8 +3509,6 @@ class NodesNodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3805,8 +3549,6 @@ class NodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3832,8 +3574,6 @@ class NodesNodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListNodesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3865,8 +3605,6 @@ class NodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3887,8 +3625,6 @@ class NodesNodesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalOperation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3923,8 +3659,6 @@ class NodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3947,8 +3681,6 @@ class NodesNodesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3988,8 +3720,6 @@ class NodesNodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4011,8 +3741,6 @@ class NodesNodesDeploymentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDeployment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4054,8 +3782,6 @@ class NodesNodesDeploymentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4081,8 +3807,6 @@ class NodesNodesDeploymentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDeploymentsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4120,8 +3844,6 @@ class NodesNodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4143,8 +3865,6 @@ class NodesNodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4176,8 +3896,6 @@ class NodesNodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4199,8 +3917,6 @@ class NodesNodesDevicesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalDevice.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4243,8 +3959,6 @@ class NodesNodesDevicesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4270,8 +3984,6 @@ class NodesNodesDevicesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListDevicesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4310,8 +4022,6 @@ class NodesNodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4333,8 +4043,6 @@ class NodesNodesNodesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalNode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4375,8 +4083,6 @@ class NodesNodesNodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4402,8 +4108,6 @@ class NodesNodesNodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalListNodesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4440,8 +4144,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4458,8 +4160,6 @@ class PoliciesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4489,8 +4189,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4507,8 +4205,6 @@ class PoliciesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalPolicy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4536,8 +4232,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4554,8 +4248,6 @@ class PoliciesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SasPortalTestPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

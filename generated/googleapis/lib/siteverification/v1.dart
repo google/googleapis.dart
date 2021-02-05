@@ -83,8 +83,6 @@ class WebResourceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -99,8 +97,6 @@ class WebResourceResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -127,8 +123,6 @@ class WebResourceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -143,8 +137,6 @@ class WebResourceResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SiteVerificationWebResourceResource.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -172,8 +164,6 @@ class WebResourceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -190,8 +180,6 @@ class WebResourceResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SiteVerificationWebResourceGettokenResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -222,8 +210,6 @@ class WebResourceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -244,8 +230,6 @@ class WebResourceResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SiteVerificationWebResourceResource.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -270,8 +254,6 @@ class WebResourceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -283,8 +265,6 @@ class WebResourceResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SiteVerificationWebResourceListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -317,8 +297,6 @@ class WebResourceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -338,8 +316,6 @@ class WebResourceResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SiteVerificationWebResourceResource.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -370,8 +346,6 @@ class WebResourceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -391,8 +365,6 @@ class WebResourceResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SiteVerificationWebResourceResource.fromJson(
         _response as core.Map<core.String, core.dynamic>);

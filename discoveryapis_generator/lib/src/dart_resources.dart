@@ -328,25 +328,14 @@ class DartResourceMethod {
       }
     }
 
-    final requestCode = StringBuffer();
-    if (mediaUpload) {
-      params.writeln();
-      requestCode.writeln('    _uploadMedia =  uploadMedia;');
-      if (mediaUploadResumable) {
-        requestCode.writeln('    _uploadOptions =  uploadOptions;');
-      }
-    }
-
     final urlPatternCode = StringBuffer();
     final patternExpr = urlPattern.stringExpression(templateVars);
     if (!mediaUpload) {
       urlPatternCode.write('    _url = $patternExpr;');
     } else {
       if (!mediaUploadResumable) {
-        // Use default, if resumable is not supported
         urlPatternCode.write('''
-    _uploadOptions =  ${imports.commons}.UploadOptions.Default;
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = $patternExpr;
     } else {
       _url = ${mediaUploadPatterns['simple'].stringExpression(templateVars)};
@@ -354,9 +343,9 @@ class DartResourceMethod {
 ''');
       } else {
         urlPatternCode.write('''
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = $patternExpr;
-    } else if (_uploadOptions is ${imports.commons}.ResumableUploadOptions) {
+    } else if (uploadOptions is ${imports.commons}.ResumableUploadOptions) {
       _url = ${mediaUploadPatterns['resumable'].stringExpression(templateVars)};
     } else {
       _url = ${mediaUploadPatterns['simple'].stringExpression(templateVars)};
@@ -376,6 +365,15 @@ class DartResourceMethod {
 
     final bodyOption = requestParameter == null ? '' : 'body: _body,';
 
+    final mediaUploadArg = mediaUpload ? 'uploadMedia: uploadMedia,' : '';
+    final mediaResumableArg = mediaUploadResumable
+        ? 'uploadOptions: uploadOptions,'
+        : mediaUpload
+            ? 'uploadOptions: ${imports.commons}.UploadOptions.Default,'
+            : '';
+
+    final requestCode = StringBuffer();
+
     requestCode.write('''
 
 $urlPatternCode
@@ -385,8 +383,8 @@ $urlPatternCode
       '$httpMethod',
       $bodyOption
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      $mediaUploadArg
+      $mediaResumableArg
       $downloadOptions
     );
 ''');
@@ -417,8 +415,6 @@ $urlPatternCode
       '''
     ${core}String _url;
     final _queryParams = <${core}String, ${core}List<${core}String>>{};
-    ${imports.commons}.Media$orNull _uploadMedia;
-    ${imports.commons}.UploadOptions$orNull _uploadOptions;
 
 $params$requestCode''',
     );

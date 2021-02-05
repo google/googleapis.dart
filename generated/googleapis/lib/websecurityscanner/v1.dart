@@ -106,8 +106,6 @@ class ProjectsScanConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -129,8 +127,6 @@ class ProjectsScanConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ScanConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -161,8 +157,6 @@ class ProjectsScanConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -177,8 +171,6 @@ class ProjectsScanConfigsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -208,8 +200,6 @@ class ProjectsScanConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -224,8 +214,6 @@ class ProjectsScanConfigsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ScanConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -265,8 +253,6 @@ class ProjectsScanConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -289,8 +275,6 @@ class ProjectsScanConfigsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListScanConfigsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -331,8 +315,6 @@ class ProjectsScanConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -355,8 +337,6 @@ class ProjectsScanConfigsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ScanConfig.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -390,8 +370,6 @@ class ProjectsScanConfigsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -411,8 +389,6 @@ class ProjectsScanConfigsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -457,8 +433,6 @@ class ProjectsScanConfigsScanRunsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -473,8 +447,6 @@ class ProjectsScanConfigsScanRunsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -515,8 +487,6 @@ class ProjectsScanConfigsScanRunsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -538,8 +508,6 @@ class ProjectsScanConfigsScanRunsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListScanRunsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -576,8 +544,6 @@ class ProjectsScanConfigsScanRunsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -597,8 +563,6 @@ class ProjectsScanConfigsScanRunsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -646,8 +610,6 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -670,8 +632,6 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListCrawledUrlsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -711,8 +671,6 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -729,8 +687,6 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListFindingTypeStatsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -769,8 +725,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -785,8 +739,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Finding.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -831,8 +783,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -857,8 +807,6 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ListFindingsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

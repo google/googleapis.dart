@@ -81,8 +81,6 @@ class V3Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -99,8 +97,6 @@ class V3Resource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleMapsPlayablelocationsV3LogImpressionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -132,8 +128,6 @@ class V3Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -150,8 +144,6 @@ class V3Resource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleMapsPlayablelocationsV3LogPlayerReportsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -185,8 +177,6 @@ class V3Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -203,8 +193,6 @@ class V3Resource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
         .fromJson(_response as core.Map<core.String, core.dynamic>);

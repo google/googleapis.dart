@@ -115,8 +115,6 @@ class AclResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -137,8 +135,6 @@ class AclResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -170,8 +166,6 @@ class AclResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -192,8 +186,6 @@ class AclResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -229,8 +221,6 @@ class AclResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -253,8 +243,6 @@ class AclResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -308,8 +296,6 @@ class AclResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -336,8 +322,6 @@ class AclResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Acl.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -379,8 +363,6 @@ class AclResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -409,8 +391,6 @@ class AclResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -450,8 +430,6 @@ class AclResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -480,8 +458,6 @@ class AclResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -538,8 +514,6 @@ class AclResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -573,8 +547,6 @@ class AclResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -607,8 +579,6 @@ class CalendarListResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -624,8 +594,6 @@ class CalendarListResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -654,8 +622,6 @@ class CalendarListResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -671,8 +637,6 @@ class CalendarListResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CalendarListEntry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -706,8 +670,6 @@ class CalendarListResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -727,8 +689,6 @@ class CalendarListResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CalendarListEntry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -794,8 +754,6 @@ class CalendarListResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -825,8 +783,6 @@ class CalendarListResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CalendarList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -867,8 +823,6 @@ class CalendarListResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -892,8 +846,6 @@ class CalendarListResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CalendarListEntry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -932,8 +884,6 @@ class CalendarListResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -957,8 +907,6 @@ class CalendarListResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CalendarListEntry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1027,8 +975,6 @@ class CalendarListResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1063,8 +1009,6 @@ class CalendarListResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1100,8 +1044,6 @@ class CalendarsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1117,8 +1059,6 @@ class CalendarsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1147,8 +1087,6 @@ class CalendarsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1163,8 +1101,6 @@ class CalendarsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1193,8 +1129,6 @@ class CalendarsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1209,8 +1143,6 @@ class CalendarsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1237,8 +1169,6 @@ class CalendarsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1255,8 +1185,6 @@ class CalendarsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1290,8 +1218,6 @@ class CalendarsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1311,8 +1237,6 @@ class CalendarsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1344,8 +1268,6 @@ class CalendarsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1365,8 +1287,6 @@ class CalendarsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1397,8 +1317,6 @@ class ChannelsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1415,8 +1333,6 @@ class ChannelsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1446,8 +1362,6 @@ class ColorsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1459,8 +1373,6 @@ class ColorsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Colors.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1514,8 +1426,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1542,8 +1452,6 @@ class EventsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1590,8 +1498,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1621,8 +1527,6 @@ class EventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1669,8 +1573,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1698,8 +1600,6 @@ class EventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1767,8 +1667,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1804,8 +1702,6 @@ class EventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1880,8 +1776,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1930,8 +1824,6 @@ class EventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Events.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2078,8 +1970,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -2146,8 +2036,6 @@ class EventsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Events.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2200,8 +2088,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -2233,8 +2119,6 @@ class EventsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2312,8 +2196,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2357,8 +2239,6 @@ class EventsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2408,8 +2288,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -2436,8 +2314,6 @@ class EventsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2513,8 +2389,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2558,8 +2432,6 @@ class EventsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2709,8 +2581,6 @@ class EventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2783,8 +2653,6 @@ class EventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2817,8 +2685,6 @@ class FreebusyResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2835,8 +2701,6 @@ class FreebusyResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FreeBusyResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2870,8 +2734,6 @@ class SettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (setting == null) {
       throw core.ArgumentError('Parameter setting is required.');
@@ -2886,8 +2748,6 @@ class SettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Setting.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2929,8 +2789,6 @@ class SettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -2951,8 +2809,6 @@ class SettingsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2997,8 +2853,6 @@ class SettingsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3024,8 +2878,6 @@ class SettingsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

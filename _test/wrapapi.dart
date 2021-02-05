@@ -51,8 +51,6 @@ class WrapApi {
   async.Future<WrapResponse> helloPost(WrapRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -66,8 +64,6 @@ class WrapApi {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return WrapResponse.fromJson(
         _response['data'] as core.Map<core.String, core.dynamic>);

@@ -116,8 +116,6 @@ class ChangesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -147,8 +145,6 @@ class ChangesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Change.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -188,8 +184,6 @@ class ChangesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -218,8 +212,6 @@ class ChangesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Change.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -266,8 +258,6 @@ class ChangesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -301,8 +291,6 @@ class ChangesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ChangesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -353,8 +341,6 @@ class DnsKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -386,8 +372,6 @@ class DnsKeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DnsKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -431,8 +415,6 @@ class DnsKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -463,8 +445,6 @@ class DnsKeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DnsKeysListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -510,8 +490,6 @@ class ManagedZoneOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -540,8 +518,6 @@ class ManagedZoneOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -586,8 +562,6 @@ class ManagedZoneOperationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -618,8 +592,6 @@ class ManagedZoneOperationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedZoneOperationsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -661,8 +633,6 @@ class ManagedZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -687,8 +657,6 @@ class ManagedZonesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedZone.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -723,8 +691,6 @@ class ManagedZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -748,8 +714,6 @@ class ManagedZonesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -785,8 +749,6 @@ class ManagedZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -810,8 +772,6 @@ class ManagedZonesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedZone.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -850,8 +810,6 @@ class ManagedZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -877,8 +835,6 @@ class ManagedZonesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ManagedZonesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -918,8 +874,6 @@ class ManagedZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -948,8 +902,6 @@ class ManagedZonesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -988,8 +940,6 @@ class ManagedZonesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1018,8 +968,6 @@ class ManagedZonesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1060,8 +1008,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1086,8 +1032,6 @@ class PoliciesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1123,8 +1067,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1148,8 +1090,6 @@ class PoliciesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1185,8 +1125,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1210,8 +1148,6 @@ class PoliciesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1246,8 +1182,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1270,8 +1204,6 @@ class PoliciesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PoliciesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1311,8 +1243,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1341,8 +1271,6 @@ class PoliciesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PoliciesPatchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1382,8 +1310,6 @@ class PoliciesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1412,8 +1338,6 @@ class PoliciesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PoliciesUpdateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1452,8 +1376,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1471,8 +1393,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1525,8 +1445,6 @@ class ResourceRecordSetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1560,8 +1478,6 @@ class ResourceRecordSetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ResourceRecordSetsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

@@ -122,8 +122,6 @@ class SpreadsheetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -145,8 +143,6 @@ class SpreadsheetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUpdateSpreadsheetResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -174,8 +170,6 @@ class SpreadsheetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -192,8 +186,6 @@ class SpreadsheetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Spreadsheet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -239,8 +231,6 @@ class SpreadsheetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
@@ -261,8 +251,6 @@ class SpreadsheetsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Spreadsheet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -306,8 +294,6 @@ class SpreadsheetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -329,8 +315,6 @@ class SpreadsheetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Spreadsheet.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -371,8 +355,6 @@ class SpreadsheetsDeveloperMetadataResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
@@ -393,8 +375,6 @@ class SpreadsheetsDeveloperMetadataResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DeveloperMetadata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -430,8 +410,6 @@ class SpreadsheetsDeveloperMetadataResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -453,8 +431,6 @@ class SpreadsheetsDeveloperMetadataResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SearchDeveloperMetadataResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -496,8 +472,6 @@ class SpreadsheetsSheetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -524,8 +498,6 @@ class SpreadsheetsSheetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SheetProperties.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -637,8 +609,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -682,8 +652,6 @@ class SpreadsheetsValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AppendValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -718,8 +686,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -741,8 +707,6 @@ class SpreadsheetsValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchClearValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -778,8 +742,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -801,8 +763,6 @@ class SpreadsheetsValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchClearValuesByDataFilterResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -880,8 +840,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
@@ -910,8 +868,6 @@ class SpreadsheetsValuesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchGetValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -946,8 +902,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -969,8 +923,6 @@ class SpreadsheetsValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchGetValuesByDataFilterResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1004,8 +956,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1027,8 +977,6 @@ class SpreadsheetsValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUpdateValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1062,8 +1010,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1085,8 +1031,6 @@ class SpreadsheetsValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BatchUpdateValuesByDataFilterResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1124,8 +1068,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1152,8 +1094,6 @@ class SpreadsheetsValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ClearValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1231,8 +1171,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
@@ -1262,8 +1200,6 @@ class SpreadsheetsValuesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ValueRange.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1353,8 +1289,6 @@ class SpreadsheetsValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1394,8 +1328,6 @@ class SpreadsheetsValuesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UpdateValuesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

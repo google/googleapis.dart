@@ -95,8 +95,6 @@ class ApplicationDetailServiceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -113,8 +111,6 @@ class ApplicationDetailServiceResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GetApkDetailsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -167,8 +163,6 @@ class ProjectsTestMatricesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -190,8 +184,6 @@ class ProjectsTestMatricesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CancelTestMatrixResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -233,8 +225,6 @@ class ProjectsTestMatricesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -259,8 +249,6 @@ class ProjectsTestMatricesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestMatrix.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -295,8 +283,6 @@ class ProjectsTestMatricesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -317,8 +303,6 @@ class ProjectsTestMatricesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestMatrix.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -372,8 +356,6 @@ class TestEnvironmentCatalogResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (environmentType == null) {
       throw core.ArgumentError('Parameter environmentType is required.');
@@ -392,8 +374,6 @@ class TestEnvironmentCatalogResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestEnvironmentCatalog.fromJson(
         _response as core.Map<core.String, core.dynamic>);

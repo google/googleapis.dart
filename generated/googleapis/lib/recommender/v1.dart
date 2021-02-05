@@ -143,8 +143,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -159,8 +157,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -214,8 +210,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -240,8 +234,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -280,8 +272,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -303,8 +293,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -357,8 +345,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -373,8 +359,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -429,8 +413,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -456,8 +438,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -498,8 +478,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -520,8 +498,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -562,8 +538,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -584,8 +558,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -626,8 +598,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -649,8 +619,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -720,8 +688,6 @@ class FoldersLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -736,8 +702,6 @@ class FoldersLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -791,8 +755,6 @@ class FoldersLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -817,8 +779,6 @@ class FoldersLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -857,8 +817,6 @@ class FoldersLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -880,8 +838,6 @@ class FoldersLocationsInsightTypesInsightsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -932,8 +888,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -948,8 +902,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1004,8 +956,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1031,8 +981,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1073,8 +1021,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1095,8 +1041,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1137,8 +1081,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1159,8 +1101,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1201,8 +1141,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1224,8 +1162,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1297,8 +1233,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1313,8 +1247,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1368,8 +1300,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1394,8 +1324,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1434,8 +1362,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1457,8 +1383,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1510,8 +1434,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1526,8 +1448,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1582,8 +1502,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1609,8 +1527,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1651,8 +1567,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1673,8 +1587,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1715,8 +1627,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1737,8 +1647,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1779,8 +1687,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1802,8 +1708,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1873,8 +1777,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1889,8 +1791,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1944,8 +1844,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1970,8 +1868,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2010,8 +1906,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2033,8 +1927,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Insight.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2085,8 +1977,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2101,8 +1991,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2157,8 +2045,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2184,8 +2070,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2226,8 +2110,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2248,8 +2130,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2290,8 +2170,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2312,8 +2190,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2354,8 +2230,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2377,8 +2251,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudRecommenderV1Recommendation.fromJson(
         _response as core.Map<core.String, core.dynamic>);

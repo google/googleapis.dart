@@ -222,8 +222,6 @@ class DataGaResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
@@ -278,8 +276,6 @@ class DataGaResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GaData.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -365,8 +361,6 @@ class DataMcfResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
@@ -412,8 +406,6 @@ class DataMcfResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return McfData.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -471,8 +463,6 @@ class DataRealtimeResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
@@ -504,8 +494,6 @@ class DataRealtimeResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RealtimeData.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -592,8 +580,6 @@ class ManagementAccountSummariesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['max-results'] = ['${maxResults}'];
@@ -611,8 +597,6 @@ class ManagementAccountSummariesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountSummaries.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -648,8 +632,6 @@ class ManagementAccountUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -670,8 +652,6 @@ class ManagementAccountUserLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -701,8 +681,6 @@ class ManagementAccountUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -724,8 +702,6 @@ class ManagementAccountUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -762,8 +738,6 @@ class ManagementAccountUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -786,8 +760,6 @@ class ManagementAccountUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLinks.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -821,8 +793,6 @@ class ManagementAccountUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -848,8 +818,6 @@ class ManagementAccountUserLinksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -887,8 +855,6 @@ class ManagementAccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['max-results'] = ['${maxResults}'];
@@ -906,8 +872,6 @@ class ManagementAccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Accounts.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -940,8 +904,6 @@ class ManagementClientIdResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -958,8 +920,6 @@ class ManagementClientIdResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return HashClientIdResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1008,8 +968,6 @@ class ManagementCustomDataSourcesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1037,8 +995,6 @@ class ManagementCustomDataSourcesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomDataSources.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1079,8 +1035,6 @@ class ManagementCustomDimensionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1106,8 +1060,6 @@ class ManagementCustomDimensionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomDimension.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1141,8 +1093,6 @@ class ManagementCustomDimensionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1169,8 +1119,6 @@ class ManagementCustomDimensionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomDimension.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1209,8 +1157,6 @@ class ManagementCustomDimensionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1238,8 +1184,6 @@ class ManagementCustomDimensionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomDimensions.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1284,8 +1228,6 @@ class ManagementCustomDimensionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1321,8 +1263,6 @@ class ManagementCustomDimensionsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomDimension.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1365,8 +1305,6 @@ class ManagementCustomDimensionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1402,8 +1340,6 @@ class ManagementCustomDimensionsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomDimension.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1444,8 +1380,6 @@ class ManagementCustomMetricsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1471,8 +1405,6 @@ class ManagementCustomMetricsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomMetric.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1506,8 +1438,6 @@ class ManagementCustomMetricsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1534,8 +1464,6 @@ class ManagementCustomMetricsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomMetric.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1574,8 +1502,6 @@ class ManagementCustomMetricsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1603,8 +1529,6 @@ class ManagementCustomMetricsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomMetrics.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1648,8 +1572,6 @@ class ManagementCustomMetricsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1685,8 +1607,6 @@ class ManagementCustomMetricsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomMetric.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1728,8 +1648,6 @@ class ManagementCustomMetricsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1765,8 +1683,6 @@ class ManagementCustomMetricsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomMetric.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1808,8 +1724,6 @@ class ManagementExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1840,8 +1754,6 @@ class ManagementExperimentsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1877,8 +1789,6 @@ class ManagementExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1909,8 +1819,6 @@ class ManagementExperimentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1947,8 +1855,6 @@ class ManagementExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1980,8 +1886,6 @@ class ManagementExperimentsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2026,8 +1930,6 @@ class ManagementExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2060,8 +1962,6 @@ class ManagementExperimentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Experiments.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2103,8 +2003,6 @@ class ManagementExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2140,8 +2038,6 @@ class ManagementExperimentsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2181,8 +2077,6 @@ class ManagementExperimentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2218,8 +2112,6 @@ class ManagementExperimentsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Experiment.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2256,8 +2148,6 @@ class ManagementFiltersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2278,8 +2168,6 @@ class ManagementFiltersResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2309,8 +2197,6 @@ class ManagementFiltersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2331,8 +2217,6 @@ class ManagementFiltersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2362,8 +2246,6 @@ class ManagementFiltersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2385,8 +2267,6 @@ class ManagementFiltersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2421,8 +2301,6 @@ class ManagementFiltersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2445,8 +2323,6 @@ class ManagementFiltersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Filters.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2481,8 +2357,6 @@ class ManagementFiltersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2508,8 +2382,6 @@ class ManagementFiltersResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2542,8 +2414,6 @@ class ManagementFiltersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2569,8 +2439,6 @@ class ManagementFiltersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Filter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2612,8 +2480,6 @@ class ManagementGoalsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2644,8 +2510,6 @@ class ManagementGoalsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Goal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2681,8 +2545,6 @@ class ManagementGoalsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2714,8 +2576,6 @@ class ManagementGoalsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Goal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2761,8 +2621,6 @@ class ManagementGoalsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2795,8 +2653,6 @@ class ManagementGoalsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Goals.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2837,8 +2693,6 @@ class ManagementGoalsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2874,8 +2728,6 @@ class ManagementGoalsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Goal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2914,8 +2766,6 @@ class ManagementGoalsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2951,8 +2801,6 @@ class ManagementGoalsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Goal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2998,8 +2846,6 @@ class ManagementProfileFilterLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3030,8 +2876,6 @@ class ManagementProfileFilterLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3071,8 +2915,6 @@ class ManagementProfileFilterLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3103,8 +2945,6 @@ class ManagementProfileFilterLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProfileFilterLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3144,8 +2984,6 @@ class ManagementProfileFilterLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3177,8 +3015,6 @@ class ManagementProfileFilterLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProfileFilterLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3225,8 +3061,6 @@ class ManagementProfileFilterLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3259,8 +3093,6 @@ class ManagementProfileFilterLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProfileFilterLinks.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3306,8 +3138,6 @@ class ManagementProfileFilterLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3343,8 +3173,6 @@ class ManagementProfileFilterLinksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProfileFilterLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3388,8 +3216,6 @@ class ManagementProfileFilterLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3425,8 +3251,6 @@ class ManagementProfileFilterLinksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProfileFilterLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3468,8 +3292,6 @@ class ManagementProfileUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3500,8 +3322,6 @@ class ManagementProfileUserLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3537,8 +3357,6 @@ class ManagementProfileUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3570,8 +3388,6 @@ class ManagementProfileUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3618,8 +3434,6 @@ class ManagementProfileUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3652,8 +3466,6 @@ class ManagementProfileUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLinks.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3693,8 +3505,6 @@ class ManagementProfileUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3730,8 +3540,6 @@ class ManagementProfileUserLinksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3769,8 +3577,6 @@ class ManagementProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3796,8 +3602,6 @@ class ManagementProfilesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3833,8 +3637,6 @@ class ManagementProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3860,8 +3662,6 @@ class ManagementProfilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3894,8 +3694,6 @@ class ManagementProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3922,8 +3720,6 @@ class ManagementProfilesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3965,8 +3761,6 @@ class ManagementProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -3994,8 +3788,6 @@ class ManagementProfilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Profiles.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4033,8 +3825,6 @@ class ManagementProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4065,8 +3855,6 @@ class ManagementProfilesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4102,8 +3890,6 @@ class ManagementProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4134,8 +3920,6 @@ class ManagementProfilesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4174,8 +3958,6 @@ class ManagementRemarketingAudienceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -4201,8 +3983,6 @@ class ManagementRemarketingAudienceResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4236,8 +4016,6 @@ class ManagementRemarketingAudienceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -4263,8 +4041,6 @@ class ManagementRemarketingAudienceResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingAudience.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4299,8 +4075,6 @@ class ManagementRemarketingAudienceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4327,8 +4101,6 @@ class ManagementRemarketingAudienceResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingAudience.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4371,8 +4143,6 @@ class ManagementRemarketingAudienceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -4403,8 +4173,6 @@ class ManagementRemarketingAudienceResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingAudiences.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4444,8 +4212,6 @@ class ManagementRemarketingAudienceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4476,8 +4242,6 @@ class ManagementRemarketingAudienceResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingAudience.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4515,8 +4279,6 @@ class ManagementRemarketingAudienceResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4547,8 +4309,6 @@ class ManagementRemarketingAudienceResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingAudience.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4586,8 +4346,6 @@ class ManagementSegmentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (maxResults != null) {
       _queryParams['max-results'] = ['${maxResults}'];
@@ -4605,8 +4363,6 @@ class ManagementSegmentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Segments.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4647,8 +4403,6 @@ class ManagementUnsampledReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -4679,8 +4433,6 @@ class ManagementUnsampledReportsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4716,8 +4468,6 @@ class ManagementUnsampledReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -4748,8 +4498,6 @@ class ManagementUnsampledReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UnsampledReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4786,8 +4534,6 @@ class ManagementUnsampledReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4819,8 +4565,6 @@ class ManagementUnsampledReportsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UnsampledReport.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4866,8 +4610,6 @@ class ManagementUnsampledReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -4900,8 +4642,6 @@ class ManagementUnsampledReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UnsampledReports.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4946,8 +4686,6 @@ class ManagementUploadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4979,8 +4717,6 @@ class ManagementUploadsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -5020,8 +4756,6 @@ class ManagementUploadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5052,8 +4786,6 @@ class ManagementUploadsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Upload.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5096,8 +4828,6 @@ class ManagementUploadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5130,8 +4860,6 @@ class ManagementUploadsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Uploads.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5175,8 +4903,6 @@ class ManagementUploadsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5191,10 +4917,7 @@ class ManagementUploadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'management/accounts/' +
           commons.Escaper.ecapeVariable('$accountId') +
           '/webproperties/' +
@@ -5202,7 +4925,7 @@ class ManagementUploadsResource {
           '/customDataSources/' +
           commons.Escaper.ecapeVariable('$customDataSourceId') +
           '/uploads';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/analytics/v3/management/accounts/' +
           commons.Escaper.ecapeVariable('$accountId') +
           '/webproperties/' +
@@ -5224,8 +4947,8 @@ class ManagementUploadsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return Upload.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5263,8 +4986,6 @@ class ManagementWebPropertyAdWordsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5291,8 +5012,6 @@ class ManagementWebPropertyAdWordsLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -5325,8 +5044,6 @@ class ManagementWebPropertyAdWordsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5353,8 +5070,6 @@ class ManagementWebPropertyAdWordsLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityAdWordsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5388,8 +5103,6 @@ class ManagementWebPropertyAdWordsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5416,8 +5129,6 @@ class ManagementWebPropertyAdWordsLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityAdWordsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5458,8 +5169,6 @@ class ManagementWebPropertyAdWordsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5487,8 +5196,6 @@ class ManagementWebPropertyAdWordsLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityAdWordsLinks.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5527,8 +5234,6 @@ class ManagementWebPropertyAdWordsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5560,8 +5265,6 @@ class ManagementWebPropertyAdWordsLinksResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityAdWordsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5598,8 +5301,6 @@ class ManagementWebPropertyAdWordsLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5631,8 +5332,6 @@ class ManagementWebPropertyAdWordsLinksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityAdWordsLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5672,8 +5371,6 @@ class ManagementWebpropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5694,8 +5391,6 @@ class ManagementWebpropertiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Webproperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5729,8 +5424,6 @@ class ManagementWebpropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5752,8 +5445,6 @@ class ManagementWebpropertiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Webproperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5791,8 +5482,6 @@ class ManagementWebpropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -5815,8 +5504,6 @@ class ManagementWebpropertiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Webproperties.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5852,8 +5539,6 @@ class ManagementWebpropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5879,8 +5564,6 @@ class ManagementWebpropertiesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Webproperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5914,8 +5597,6 @@ class ManagementWebpropertiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5941,8 +5622,6 @@ class ManagementWebpropertiesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Webproperty.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5981,8 +5660,6 @@ class ManagementWebpropertyUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -6008,8 +5685,6 @@ class ManagementWebpropertyUserLinksResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -6042,8 +5717,6 @@ class ManagementWebpropertyUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6070,8 +5743,6 @@ class ManagementWebpropertyUserLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6113,8 +5784,6 @@ class ManagementWebpropertyUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -6142,8 +5811,6 @@ class ManagementWebpropertyUserLinksResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLinks.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6180,8 +5847,6 @@ class ManagementWebpropertyUserLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6212,8 +5877,6 @@ class ManagementWebpropertyUserLinksResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EntityUserLink.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6257,8 +5920,6 @@ class MetadataColumnsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (reportType == null) {
       throw core.ArgumentError('Parameter reportType is required.');
@@ -6274,8 +5935,6 @@ class MetadataColumnsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Columns.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6308,8 +5967,6 @@ class ProvisioningResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6326,8 +5983,6 @@ class ProvisioningResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountTicket.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6355,8 +6010,6 @@ class ProvisioningResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6373,8 +6026,6 @@ class ProvisioningResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountTreeResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6418,8 +6069,6 @@ class UserDeletionUserDeletionRequestResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6436,8 +6085,6 @@ class UserDeletionUserDeletionRequestResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserDeletionRequest.fromJson(
         _response as core.Map<core.String, core.dynamic>);

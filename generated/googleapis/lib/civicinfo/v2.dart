@@ -87,8 +87,6 @@ class DivisionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (query != null) {
       _queryParams['query'] = [query];
@@ -103,8 +101,6 @@ class DivisionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DivisionSearchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -135,8 +131,6 @@ class ElectionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -148,8 +142,6 @@ class ElectionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ElectionsQueryResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -196,8 +188,6 @@ class ElectionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
@@ -222,8 +212,6 @@ class ElectionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return VoterInfoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -274,8 +262,6 @@ class RepresentativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (address != null) {
       _queryParams['address'] = [address];
@@ -299,8 +285,6 @@ class RepresentativesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RepresentativeInfoResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -345,8 +329,6 @@ class RepresentativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (ocdId == null) {
       throw core.ArgumentError('Parameter ocdId is required.');
@@ -371,8 +353,6 @@ class RepresentativesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RepresentativeInfoData.fromJson(
         _response as core.Map<core.String, core.dynamic>);

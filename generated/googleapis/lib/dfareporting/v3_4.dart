@@ -257,8 +257,6 @@ class AccountActiveAdSummariesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -279,8 +277,6 @@ class AccountActiveAdSummariesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountActiveAdSummary.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -318,8 +314,6 @@ class AccountPermissionGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -340,8 +334,6 @@ class AccountPermissionGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountPermissionGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -369,8 +361,6 @@ class AccountPermissionGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -387,8 +377,6 @@ class AccountPermissionGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountPermissionGroupsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -425,8 +413,6 @@ class AccountPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -447,8 +433,6 @@ class AccountPermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountPermission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -476,8 +460,6 @@ class AccountPermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -494,8 +476,6 @@ class AccountPermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountPermissionsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -533,8 +513,6 @@ class AccountUserProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -555,8 +533,6 @@ class AccountUserProfilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountUserProfile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -587,8 +563,6 @@ class AccountUserProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -610,8 +584,6 @@ class AccountUserProfilesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountUserProfile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -682,8 +654,6 @@ class AccountUserProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -727,8 +697,6 @@ class AccountUserProfilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountUserProfilesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -764,8 +732,6 @@ class AccountUserProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -791,8 +757,6 @@ class AccountUserProfilesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountUserProfile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -823,8 +787,6 @@ class AccountUserProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -846,8 +808,6 @@ class AccountUserProfilesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountUserProfile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -884,8 +844,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -906,8 +864,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -970,8 +926,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -1009,8 +963,6 @@ class AccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AccountsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1046,8 +998,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1073,8 +1023,6 @@ class AccountsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1104,8 +1052,6 @@ class AccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1127,8 +1073,6 @@ class AccountsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1164,8 +1108,6 @@ class AdsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -1186,8 +1128,6 @@ class AdsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1217,8 +1157,6 @@ class AdsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1239,8 +1177,6 @@ class AdsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1367,8 +1303,6 @@ class AdsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -1454,8 +1388,6 @@ class AdsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1491,8 +1423,6 @@ class AdsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1517,8 +1447,6 @@ class AdsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1548,8 +1476,6 @@ class AdsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1570,8 +1496,6 @@ class AdsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1605,8 +1529,6 @@ class AdvertiserGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -1627,8 +1549,6 @@ class AdvertiserGroupsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -1658,8 +1578,6 @@ class AdvertiserGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -1680,8 +1598,6 @@ class AdvertiserGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdvertiserGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1712,8 +1628,6 @@ class AdvertiserGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1735,8 +1649,6 @@ class AdvertiserGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdvertiserGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1797,8 +1709,6 @@ class AdvertiserGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -1833,8 +1743,6 @@ class AdvertiserGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdvertiserGroupsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1870,8 +1778,6 @@ class AdvertiserGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1897,8 +1803,6 @@ class AdvertiserGroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdvertiserGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1929,8 +1833,6 @@ class AdvertiserGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1952,8 +1854,6 @@ class AdvertiserGroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdvertiserGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1991,8 +1891,6 @@ class AdvertiserLandingPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -2013,8 +1911,6 @@ class AdvertiserLandingPagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LandingPage.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2045,8 +1941,6 @@ class AdvertiserLandingPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2068,8 +1962,6 @@ class AdvertiserLandingPagesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LandingPage.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2143,8 +2035,6 @@ class AdvertiserLandingPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -2191,8 +2081,6 @@ class AdvertiserLandingPagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdvertiserLandingPagesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2228,8 +2116,6 @@ class AdvertiserLandingPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2255,8 +2141,6 @@ class AdvertiserLandingPagesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LandingPage.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2287,8 +2171,6 @@ class AdvertiserLandingPagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2310,8 +2192,6 @@ class AdvertiserLandingPagesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LandingPage.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2348,8 +2228,6 @@ class AdvertisersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -2370,8 +2248,6 @@ class AdvertisersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Advertiser.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2402,8 +2278,6 @@ class AdvertisersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2425,8 +2299,6 @@ class AdvertisersResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Advertiser.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2512,8 +2384,6 @@ class AdvertisersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -2568,8 +2438,6 @@ class AdvertisersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return AdvertisersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2605,8 +2473,6 @@ class AdvertisersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2632,8 +2498,6 @@ class AdvertisersResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Advertiser.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2664,8 +2528,6 @@ class AdvertisersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2687,8 +2549,6 @@ class AdvertisersResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Advertiser.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2722,8 +2582,6 @@ class BrowsersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -2740,8 +2598,6 @@ class BrowsersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return BrowsersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2785,8 +2641,6 @@ class CampaignCreativeAssociationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2813,8 +2667,6 @@ class CampaignCreativeAssociationsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CampaignCreativeAssociation.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2860,8 +2712,6 @@ class CampaignCreativeAssociationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -2892,8 +2742,6 @@ class CampaignCreativeAssociationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CampaignCreativeAssociationsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2930,8 +2778,6 @@ class CampaignsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -2952,8 +2798,6 @@ class CampaignsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2983,8 +2827,6 @@ class CampaignsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3006,8 +2848,6 @@ class CampaignsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3092,8 +2932,6 @@ class CampaignsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3151,8 +2989,6 @@ class CampaignsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CampaignsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3188,8 +3024,6 @@ class CampaignsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3215,8 +3049,6 @@ class CampaignsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3246,8 +3078,6 @@ class CampaignsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3269,8 +3099,6 @@ class CampaignsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3306,8 +3134,6 @@ class ChangeLogsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3328,8 +3154,6 @@ class ChangeLogsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ChangeLog.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3459,8 +3283,6 @@ class ChangeLogsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3507,8 +3329,6 @@ class ChangeLogsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ChangeLogsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3554,8 +3374,6 @@ class CitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3584,8 +3402,6 @@ class CitiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CitiesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3622,8 +3438,6 @@ class ConnectionTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3644,8 +3458,6 @@ class ConnectionTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ConnectionType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3673,8 +3485,6 @@ class ConnectionTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3691,8 +3501,6 @@ class ConnectionTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ConnectionTypesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3727,8 +3535,6 @@ class ContentCategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3749,8 +3555,6 @@ class ContentCategoriesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -3780,8 +3584,6 @@ class ContentCategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3802,8 +3604,6 @@ class ContentCategoriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContentCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3834,8 +3634,6 @@ class ContentCategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3857,8 +3655,6 @@ class ContentCategoriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContentCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3919,8 +3715,6 @@ class ContentCategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -3955,8 +3749,6 @@ class ContentCategoriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContentCategoriesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3992,8 +3784,6 @@ class ContentCategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4019,8 +3809,6 @@ class ContentCategoriesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContentCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4051,8 +3839,6 @@ class ContentCategoriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4074,8 +3860,6 @@ class ContentCategoriesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ContentCategory.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4112,8 +3896,6 @@ class ConversionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4135,8 +3917,6 @@ class ConversionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ConversionsBatchInsertResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4167,8 +3947,6 @@ class ConversionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4190,8 +3968,6 @@ class ConversionsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ConversionsBatchUpdateResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4228,8 +4004,6 @@ class CountriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -4250,8 +4024,6 @@ class CountriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Country.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -4278,8 +4050,6 @@ class CountriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -4296,8 +4066,6 @@ class CountriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CountriesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4340,8 +4108,6 @@ class CreativeAssetsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4357,10 +4123,7 @@ class CreativeAssetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-
-    _uploadOptions = commons.UploadOptions.Default;
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'userprofiles/' +
           commons.Escaper.ecapeVariable('$profileId') +
           '/creativeAssets/' +
@@ -4379,8 +4142,8 @@ class CreativeAssetsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.Default,
     );
     return CreativeAssetMetadata.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4419,8 +4182,6 @@ class CreativeFieldValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -4446,8 +4207,6 @@ class CreativeFieldValuesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4480,8 +4239,6 @@ class CreativeFieldValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -4507,8 +4264,6 @@ class CreativeFieldValuesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeFieldValue.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4542,8 +4297,6 @@ class CreativeFieldValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4570,8 +4323,6 @@ class CreativeFieldValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeFieldValue.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4630,8 +4381,6 @@ class CreativeFieldValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -4671,8 +4420,6 @@ class CreativeFieldValuesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeFieldValuesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4711,8 +4458,6 @@ class CreativeFieldValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4743,8 +4488,6 @@ class CreativeFieldValuesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeFieldValue.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4778,8 +4521,6 @@ class CreativeFieldValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4806,8 +4547,6 @@ class CreativeFieldValuesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeFieldValue.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4842,8 +4581,6 @@ class CreativeFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -4864,8 +4601,6 @@ class CreativeFieldsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -4895,8 +4630,6 @@ class CreativeFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -4917,8 +4650,6 @@ class CreativeFieldsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -4949,8 +4680,6 @@ class CreativeFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -4972,8 +4701,6 @@ class CreativeFieldsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5039,8 +4766,6 @@ class CreativeFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -5078,8 +4803,6 @@ class CreativeFieldsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeFieldsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5115,8 +4838,6 @@ class CreativeFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5142,8 +4863,6 @@ class CreativeFieldsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5174,8 +4893,6 @@ class CreativeFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5197,8 +4914,6 @@ class CreativeFieldsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5235,8 +4950,6 @@ class CreativeGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -5257,8 +4970,6 @@ class CreativeGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5289,8 +5000,6 @@ class CreativeGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5312,8 +5021,6 @@ class CreativeGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5383,8 +5090,6 @@ class CreativeGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -5425,8 +5130,6 @@ class CreativeGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeGroupsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5462,8 +5165,6 @@ class CreativeGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5489,8 +5190,6 @@ class CreativeGroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5521,8 +5220,6 @@ class CreativeGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5544,8 +5241,6 @@ class CreativeGroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativeGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5582,8 +5277,6 @@ class CreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -5604,8 +5297,6 @@ class CreativesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5635,8 +5326,6 @@ class CreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5658,8 +5347,6 @@ class CreativesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5753,8 +5440,6 @@ class CreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -5819,8 +5504,6 @@ class CreativesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreativesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -5856,8 +5539,6 @@ class CreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5883,8 +5564,6 @@ class CreativesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5914,8 +5593,6 @@ class CreativesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5937,8 +5614,6 @@ class CreativesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -5974,8 +5649,6 @@ class CustomEventsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -5997,8 +5670,6 @@ class CustomEventsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CustomEventsBatchInsertResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6042,8 +5713,6 @@ class DimensionValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6071,8 +5740,6 @@ class DimensionValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DimensionValueList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6109,8 +5776,6 @@ class DirectorySitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -6131,8 +5796,6 @@ class DirectorySitesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DirectorySite.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6163,8 +5826,6 @@ class DirectorySitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6186,8 +5847,6 @@ class DirectorySitesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DirectorySite.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6268,8 +5927,6 @@ class DirectorySitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -6325,8 +5982,6 @@ class DirectorySitesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DirectorySitesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6377,8 +6032,6 @@ class DynamicTargetingKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -6407,8 +6060,6 @@ class DynamicTargetingKeysResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -6443,8 +6094,6 @@ class DynamicTargetingKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6466,8 +6115,6 @@ class DynamicTargetingKeysResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DynamicTargetingKey.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6513,8 +6160,6 @@ class DynamicTargetingKeysResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -6543,8 +6188,6 @@ class DynamicTargetingKeysResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DynamicTargetingKeysListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6579,8 +6222,6 @@ class EventTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -6601,8 +6242,6 @@ class EventTagsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -6632,8 +6271,6 @@ class EventTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -6654,8 +6291,6 @@ class EventTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6685,8 +6320,6 @@ class EventTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6708,8 +6341,6 @@ class EventTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6792,8 +6423,6 @@ class EventTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -6840,8 +6469,6 @@ class EventTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EventTagsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -6877,8 +6504,6 @@ class EventTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6904,8 +6529,6 @@ class EventTagsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -6935,8 +6558,6 @@ class EventTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -6958,8 +6579,6 @@ class EventTagsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -7006,8 +6625,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
@@ -7028,8 +6645,6 @@ class FilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -7088,8 +6703,6 @@ class FilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -7121,8 +6734,6 @@ class FilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -7157,8 +6768,6 @@ class FloodlightActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -7179,8 +6788,6 @@ class FloodlightActivitiesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -7211,8 +6818,6 @@ class FloodlightActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -7232,8 +6837,6 @@ class FloodlightActivitiesResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivitiesGenerateTagResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7264,8 +6867,6 @@ class FloodlightActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -7286,8 +6887,6 @@ class FloodlightActivitiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivity.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7318,8 +6917,6 @@ class FloodlightActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7341,8 +6938,6 @@ class FloodlightActivitiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivity.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7439,8 +7034,6 @@ class FloodlightActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -7502,8 +7095,6 @@ class FloodlightActivitiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivitiesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7539,8 +7130,6 @@ class FloodlightActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7566,8 +7155,6 @@ class FloodlightActivitiesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivity.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7598,8 +7185,6 @@ class FloodlightActivitiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7621,8 +7206,6 @@ class FloodlightActivitiesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivity.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7660,8 +7243,6 @@ class FloodlightActivityGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -7682,8 +7263,6 @@ class FloodlightActivityGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivityGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7714,8 +7293,6 @@ class FloodlightActivityGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7737,8 +7314,6 @@ class FloodlightActivityGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivityGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7820,8 +7395,6 @@ class FloodlightActivityGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -7865,8 +7438,6 @@ class FloodlightActivityGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivityGroupsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7902,8 +7473,6 @@ class FloodlightActivityGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7929,8 +7498,6 @@ class FloodlightActivityGroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivityGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -7961,8 +7528,6 @@ class FloodlightActivityGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -7984,8 +7549,6 @@ class FloodlightActivityGroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightActivityGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8023,8 +7586,6 @@ class FloodlightConfigurationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8045,8 +7606,6 @@ class FloodlightConfigurationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8078,8 +7637,6 @@ class FloodlightConfigurationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8099,8 +7656,6 @@ class FloodlightConfigurationsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightConfigurationsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8136,8 +7691,6 @@ class FloodlightConfigurationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8163,8 +7716,6 @@ class FloodlightConfigurationsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8195,8 +7746,6 @@ class FloodlightConfigurationsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -8218,8 +7767,6 @@ class FloodlightConfigurationsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FloodlightConfiguration.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8259,8 +7806,6 @@ class InventoryItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8286,8 +7831,6 @@ class InventoryItemsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InventoryItem.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8358,8 +7901,6 @@ class InventoryItemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8408,8 +7949,6 @@ class InventoryItemsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return InventoryItemsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8443,8 +7982,6 @@ class LanguagesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8461,8 +7998,6 @@ class LanguagesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return LanguagesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8496,8 +8031,6 @@ class MetrosResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8514,8 +8047,6 @@ class MetrosResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return MetrosListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8552,8 +8083,6 @@ class MobileAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8574,8 +8103,6 @@ class MobileAppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return MobileApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -8623,8 +8150,6 @@ class MobileAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8656,8 +8181,6 @@ class MobileAppsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return MobileAppsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8694,8 +8217,6 @@ class MobileCarriersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8716,8 +8237,6 @@ class MobileCarriersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return MobileCarrier.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8745,8 +8264,6 @@ class MobileCarriersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8763,8 +8280,6 @@ class MobileCarriersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return MobileCarriersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8802,8 +8317,6 @@ class OperatingSystemVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8824,8 +8337,6 @@ class OperatingSystemVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OperatingSystemVersion.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8853,8 +8364,6 @@ class OperatingSystemVersionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8871,8 +8380,6 @@ class OperatingSystemVersionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OperatingSystemVersionsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8909,8 +8416,6 @@ class OperatingSystemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8931,8 +8436,6 @@ class OperatingSystemsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OperatingSystem.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -8960,8 +8463,6 @@ class OperatingSystemsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -8978,8 +8479,6 @@ class OperatingSystemsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OperatingSystemsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9019,8 +8518,6 @@ class OrderDocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9046,8 +8543,6 @@ class OrderDocumentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderDocument.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9123,8 +8618,6 @@ class OrderDocumentsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9173,8 +8666,6 @@ class OrderDocumentsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrderDocumentsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9214,8 +8705,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9241,8 +8730,6 @@ class OrdersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Order.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -9307,8 +8794,6 @@ class OrdersResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9351,8 +8836,6 @@ class OrdersResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return OrdersListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9389,8 +8872,6 @@ class PlacementGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9411,8 +8892,6 @@ class PlacementGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9443,8 +8922,6 @@ class PlacementGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9466,8 +8943,6 @@ class PlacementGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9592,8 +9067,6 @@ class PlacementGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9667,8 +9140,6 @@ class PlacementGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementGroupsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9704,8 +9175,6 @@ class PlacementGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9731,8 +9200,6 @@ class PlacementGroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9763,8 +9230,6 @@ class PlacementGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9786,8 +9251,6 @@ class PlacementGroupsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9823,8 +9286,6 @@ class PlacementStrategiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9845,8 +9306,6 @@ class PlacementStrategiesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -9876,8 +9335,6 @@ class PlacementStrategiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -9898,8 +9355,6 @@ class PlacementStrategiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementStrategy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -9930,8 +9385,6 @@ class PlacementStrategiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -9953,8 +9406,6 @@ class PlacementStrategiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementStrategy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10016,8 +9467,6 @@ class PlacementStrategiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10052,8 +9501,6 @@ class PlacementStrategiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementStrategiesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10089,8 +9536,6 @@ class PlacementStrategiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10116,8 +9561,6 @@ class PlacementStrategiesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementStrategy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10148,8 +9591,6 @@ class PlacementStrategiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10171,8 +9612,6 @@ class PlacementStrategiesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementStrategy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10217,8 +9656,6 @@ class PlacementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10244,8 +9681,6 @@ class PlacementsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementsGenerateTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10276,8 +9711,6 @@ class PlacementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10298,8 +9731,6 @@ class PlacementsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -10329,8 +9760,6 @@ class PlacementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10352,8 +9781,6 @@ class PlacementsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -10481,8 +9908,6 @@ class PlacementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10565,8 +9990,6 @@ class PlacementsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlacementsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10602,8 +10025,6 @@ class PlacementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10629,8 +10050,6 @@ class PlacementsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -10660,8 +10079,6 @@ class PlacementsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -10683,8 +10100,6 @@ class PlacementsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -10720,8 +10135,6 @@ class PlatformTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10742,8 +10155,6 @@ class PlatformTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlatformType.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10771,8 +10182,6 @@ class PlatformTypesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10789,8 +10198,6 @@ class PlatformTypesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PlatformTypesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10827,8 +10234,6 @@ class PostalCodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10849,8 +10254,6 @@ class PostalCodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PostalCode.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10878,8 +10281,6 @@ class PostalCodesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10896,8 +10297,6 @@ class PostalCodesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return PostalCodesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -10934,8 +10333,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -10956,8 +10353,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -11020,8 +10415,6 @@ class ProjectsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11059,8 +10452,6 @@ class ProjectsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ProjectsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11094,8 +10485,6 @@ class RegionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11112,8 +10501,6 @@ class RegionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RegionsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11151,8 +10538,6 @@ class RemarketingListSharesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11173,8 +10558,6 @@ class RemarketingListSharesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingListShare.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11210,8 +10593,6 @@ class RemarketingListSharesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11237,8 +10618,6 @@ class RemarketingListSharesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingListShare.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11269,8 +10648,6 @@ class RemarketingListSharesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11292,8 +10669,6 @@ class RemarketingListSharesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingListShare.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11330,8 +10705,6 @@ class RemarketingListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11352,8 +10725,6 @@ class RemarketingListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11384,8 +10755,6 @@ class RemarketingListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11407,8 +10776,6 @@ class RemarketingListsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11476,8 +10843,6 @@ class RemarketingListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11519,8 +10884,6 @@ class RemarketingListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingListsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11556,8 +10919,6 @@ class RemarketingListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11583,8 +10944,6 @@ class RemarketingListsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11615,8 +10974,6 @@ class RemarketingListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11638,8 +10995,6 @@ class RemarketingListsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return RemarketingList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11678,8 +11033,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11700,8 +11053,6 @@ class ReportsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -11731,8 +11082,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11753,8 +11102,6 @@ class ReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -11784,8 +11131,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11807,8 +11152,6 @@ class ReportsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -11861,8 +11204,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -11894,8 +11235,6 @@ class ReportsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return ReportList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -11931,8 +11270,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -11958,8 +11295,6 @@ class ReportsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -11992,8 +11327,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12018,8 +11351,6 @@ class ReportsResource {
       _url,
       'POST',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12052,8 +11383,6 @@ class ReportsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12079,8 +11408,6 @@ class ReportsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12119,8 +11446,6 @@ class ReportsCompatibleFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12142,8 +11467,6 @@ class ReportsCompatibleFieldsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CompatibleFields.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12194,8 +11517,6 @@ class ReportsFilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12221,8 +11542,6 @@ class ReportsFilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||
@@ -12277,8 +11596,6 @@ class ReportsFilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12312,8 +11629,6 @@ class ReportsFilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12349,8 +11664,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12371,8 +11684,6 @@ class SitesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12402,8 +11713,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12425,8 +11734,6 @@ class SitesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12516,8 +11823,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12585,8 +11890,6 @@ class SitesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SitesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12622,8 +11925,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12649,8 +11950,6 @@ class SitesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12680,8 +11979,6 @@ class SitesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12703,8 +12000,6 @@ class SitesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12740,8 +12035,6 @@ class SizesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12762,8 +12055,6 @@ class SizesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Size.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12793,8 +12084,6 @@ class SizesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -12816,8 +12105,6 @@ class SizesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Size.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -12862,8 +12149,6 @@ class SizesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12892,8 +12177,6 @@ class SizesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SizesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12930,8 +12213,6 @@ class SubaccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -12952,8 +12233,6 @@ class SubaccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Subaccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -12984,8 +12263,6 @@ class SubaccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -13007,8 +12284,6 @@ class SubaccountsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Subaccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13069,8 +12344,6 @@ class SubaccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13105,8 +12378,6 @@ class SubaccountsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return SubaccountsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13142,8 +12413,6 @@ class SubaccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -13169,8 +12438,6 @@ class SubaccountsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Subaccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13201,8 +12468,6 @@ class SubaccountsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -13224,8 +12489,6 @@ class SubaccountsResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Subaccount.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13263,8 +12526,6 @@ class TargetableRemarketingListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13285,8 +12546,6 @@ class TargetableRemarketingListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TargetableRemarketingList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13352,8 +12611,6 @@ class TargetableRemarketingListsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13392,8 +12649,6 @@ class TargetableRemarketingListsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TargetableRemarketingListsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13430,8 +12685,6 @@ class TargetingTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13452,8 +12705,6 @@ class TargetingTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TargetingTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13484,8 +12735,6 @@ class TargetingTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -13507,8 +12756,6 @@ class TargetingTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TargetingTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13572,8 +12819,6 @@ class TargetingTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13611,8 +12856,6 @@ class TargetingTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TargetingTemplatesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13648,8 +12891,6 @@ class TargetingTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -13675,8 +12916,6 @@ class TargetingTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TargetingTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13707,8 +12946,6 @@ class TargetingTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -13730,8 +12967,6 @@ class TargetingTemplatesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TargetingTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13765,8 +13000,6 @@ class UserProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13781,8 +13014,6 @@ class UserProfilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserProfile.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13807,8 +13038,6 @@ class UserProfilesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -13820,8 +13049,6 @@ class UserProfilesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserProfileList.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13859,8 +13086,6 @@ class UserRolePermissionGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13881,8 +13106,6 @@ class UserRolePermissionGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRolePermissionGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13910,8 +13133,6 @@ class UserRolePermissionGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13928,8 +13149,6 @@ class UserRolePermissionGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRolePermissionGroupsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -13967,8 +13186,6 @@ class UserRolePermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -13989,8 +13206,6 @@ class UserRolePermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRolePermission.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -14021,8 +13236,6 @@ class UserRolePermissionsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -14042,8 +13255,6 @@ class UserRolePermissionsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRolePermissionsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -14078,8 +13289,6 @@ class UserRolesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -14100,8 +13309,6 @@ class UserRolesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
       downloadOptions: null,
     );
   }
@@ -14131,8 +13338,6 @@ class UserRolesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -14153,8 +13358,6 @@ class UserRolesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -14184,8 +13387,6 @@ class UserRolesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -14207,8 +13408,6 @@ class UserRolesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -14275,8 +13474,6 @@ class UserRolesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -14317,8 +13514,6 @@ class UserRolesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRolesListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -14354,8 +13549,6 @@ class UserRolesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -14381,8 +13574,6 @@ class UserRolesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -14412,8 +13603,6 @@ class UserRolesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -14435,8 +13624,6 @@ class UserRolesResource {
       'PUT',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -14472,8 +13659,6 @@ class VideoFormatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -14494,8 +13679,6 @@ class VideoFormatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return VideoFormat.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -14523,8 +13706,6 @@ class VideoFormatsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
@@ -14541,8 +13722,6 @@ class VideoFormatsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return VideoFormatsListResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

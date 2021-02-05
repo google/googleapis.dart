@@ -314,8 +314,6 @@ class CseResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
@@ -420,8 +418,6 @@ class CseResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Search.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -689,8 +685,6 @@ class CseSiterestrictResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
@@ -795,8 +789,6 @@ class CseSiterestrictResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Search.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

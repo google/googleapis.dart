@@ -109,8 +109,6 @@ class CatalogResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -127,8 +125,6 @@ class CatalogResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -180,8 +176,6 @@ class EntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (linkedResource != null) {
       _queryParams['linkedResource'] = [linkedResource];
@@ -199,8 +193,6 @@ class EntriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -280,8 +272,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -306,8 +296,6 @@ class ProjectsLocationsEntryGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -347,8 +335,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -366,8 +352,6 @@ class ProjectsLocationsEntryGroupsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -401,8 +385,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -420,8 +402,6 @@ class ProjectsLocationsEntryGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -466,8 +446,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -489,8 +467,6 @@ class ProjectsLocationsEntryGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -528,8 +504,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -552,8 +526,6 @@ class ProjectsLocationsEntryGroupsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -598,8 +570,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -622,8 +592,6 @@ class ProjectsLocationsEntryGroupsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -667,8 +635,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -690,8 +656,6 @@ class ProjectsLocationsEntryGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -732,8 +696,6 @@ class ProjectsLocationsEntryGroupsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -755,8 +717,6 @@ class ProjectsLocationsEntryGroupsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -813,8 +773,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -839,8 +797,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -877,8 +833,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -893,8 +847,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -924,8 +876,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -940,8 +890,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -986,8 +934,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1009,8 +955,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1055,8 +999,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1082,8 +1024,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1135,8 +1075,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1159,8 +1097,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Entry.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1202,8 +1138,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1225,8 +1159,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1276,8 +1208,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1298,8 +1228,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1330,8 +1258,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1346,8 +1272,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1387,8 +1311,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1410,8 +1332,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1452,8 +1372,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1476,8 +1394,6 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1527,8 +1443,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1549,8 +1463,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1581,8 +1493,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1597,8 +1507,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1638,8 +1546,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1661,8 +1567,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1703,8 +1607,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1727,8 +1629,6 @@ class ProjectsLocationsEntryGroupsTagsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Tag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1780,8 +1680,6 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1806,8 +1704,6 @@ class ProjectsLocationsTagTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1848,8 +1744,6 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1867,8 +1761,6 @@ class ProjectsLocationsTagTemplatesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -1898,8 +1790,6 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1914,8 +1804,6 @@ class ProjectsLocationsTagTemplatesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -1960,8 +1848,6 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -1983,8 +1869,6 @@ class ProjectsLocationsTagTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2032,8 +1916,6 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2056,8 +1938,6 @@ class ProjectsLocationsTagTemplatesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2101,8 +1981,6 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2124,8 +2002,6 @@ class ProjectsLocationsTagTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2166,8 +2042,6 @@ class ProjectsLocationsTagTemplatesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2189,8 +2063,6 @@ class ProjectsLocationsTagTemplatesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2248,8 +2120,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2274,8 +2144,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2317,8 +2185,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2336,8 +2202,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2386,8 +2250,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2410,8 +2272,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2450,8 +2310,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2472,8 +2330,6 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2519,8 +2375,6 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2541,8 +2395,6 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2585,8 +2437,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2608,8 +2458,6 @@ class ProjectsLocationsTaxonomiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2643,8 +2491,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2659,8 +2505,6 @@ class ProjectsLocationsTaxonomiesResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2698,8 +2542,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2722,8 +2564,6 @@ class ProjectsLocationsTaxonomiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2753,8 +2593,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2769,8 +2607,6 @@ class ProjectsLocationsTaxonomiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2805,8 +2641,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2828,8 +2662,6 @@ class ProjectsLocationsTaxonomiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -2865,8 +2697,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -2888,8 +2718,6 @@ class ProjectsLocationsTaxonomiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2928,8 +2756,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2952,8 +2778,6 @@ class ProjectsLocationsTaxonomiesResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -2993,8 +2817,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3017,8 +2839,6 @@ class ProjectsLocationsTaxonomiesResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3053,8 +2873,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3076,8 +2894,6 @@ class ProjectsLocationsTaxonomiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3112,8 +2928,6 @@ class ProjectsLocationsTaxonomiesResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3135,8 +2949,6 @@ class ProjectsLocationsTaxonomiesResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3177,8 +2989,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3200,8 +3010,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3234,8 +3042,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3250,8 +3056,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       _url,
       'DELETE',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3280,8 +3084,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3296,8 +3098,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3332,8 +3132,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3355,8 +3153,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3394,8 +3190,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3418,8 +3212,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3462,8 +3254,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3486,8 +3276,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       'PATCH',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -3522,8 +3310,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3545,8 +3331,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
@@ -3581,8 +3365,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -3604,8 +3386,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return TestIamPermissionsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);

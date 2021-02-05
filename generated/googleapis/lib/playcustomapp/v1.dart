@@ -111,8 +111,6 @@ class AccountsCustomAppsResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -125,14 +123,11 @@ class AccountsCustomAppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-
-    if (_uploadMedia == null) {
+    if (uploadMedia == null) {
       _url = 'playcustomapp/v1/accounts/' +
           commons.Escaper.ecapeVariable('$account') +
           '/customApps';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
       _url = '/resumable/upload/playcustomapp/v1/accounts/' +
           commons.Escaper.ecapeVariable('$account') +
           '/customApps';
@@ -147,8 +142,8 @@ class AccountsCustomAppsResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return CustomApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }

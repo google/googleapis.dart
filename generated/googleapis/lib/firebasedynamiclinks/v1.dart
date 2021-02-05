@@ -95,8 +95,6 @@ class ManagedShortLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -113,8 +111,6 @@ class ManagedShortLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreateManagedShortLinkResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -154,8 +150,6 @@ class ShortLinksResource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -172,8 +166,6 @@ class ShortLinksResource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return CreateShortDynamicLinkResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -217,8 +209,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     if (dynamicLink == null) {
       throw core.ArgumentError('Parameter dynamicLink is required.');
@@ -239,8 +229,6 @@ class V1Resource {
       _url,
       'GET',
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return DynamicLinkStats.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -268,8 +256,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -286,8 +272,6 @@ class V1Resource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GetIosPostInstallAttributionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -315,8 +299,6 @@ class V1Resource {
   }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
 
     core.String _body;
     if (request != null) {
@@ -333,8 +315,6 @@ class V1Resource {
       'POST',
       body: _body,
       queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
     );
     return GetIosReopenAttributionResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
