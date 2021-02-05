@@ -357,10 +357,8 @@ class DevicesResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -432,10 +430,8 @@ class DevicesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -591,10 +587,8 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -641,10 +635,8 @@ class EnterprisesResource {
     core.String token, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
@@ -1039,10 +1031,8 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1096,10 +1086,8 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1364,10 +1352,8 @@ class EntitlementsResource {
     core.bool install,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1784,10 +1770,8 @@ class InstallsResource {
     core.String installId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2053,10 +2037,8 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2303,10 +2285,8 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2485,10 +2465,8 @@ class ProductsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2959,10 +2937,8 @@ class ServiceaccountkeysResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3174,10 +3150,8 @@ class StorelayoutclustersResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3283,10 +3257,8 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3439,10 +3411,8 @@ class StorelayoutpagesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3531,10 +3501,8 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3789,10 +3757,8 @@ class UsersResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3946,10 +3912,8 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -4008,10 +3972,8 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -4158,10 +4120,8 @@ class WebappsResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -4250,10 +4210,8 @@ class WebappsResource {
     core.String webAppId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }

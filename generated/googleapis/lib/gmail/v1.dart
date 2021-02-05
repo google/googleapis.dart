@@ -242,10 +242,8 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -305,10 +303,8 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -559,10 +555,8 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -632,10 +626,8 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -798,10 +790,8 @@ class UsersLabelsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -987,10 +977,8 @@ class UsersLabelsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1043,10 +1031,8 @@ class UsersLabelsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1106,10 +1092,8 @@ class UsersMessagesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1153,10 +1137,8 @@ class UsersMessagesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1357,10 +1339,8 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1455,10 +1435,8 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1604,10 +1582,8 @@ class UsersMessagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1667,10 +1643,8 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2120,10 +2094,8 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2170,10 +2142,8 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2226,10 +2196,8 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2276,10 +2244,8 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2326,10 +2292,8 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2395,10 +2359,8 @@ class UsersSettingsDelegatesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2603,10 +2565,8 @@ class UsersSettingsFiltersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2801,10 +2761,8 @@ class UsersSettingsForwardingAddressesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3011,10 +2969,8 @@ class UsersSettingsSendAsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3209,10 +3165,8 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3270,10 +3224,8 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3498,10 +3450,8 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3864,10 +3814,8 @@ class UsersThreadsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }

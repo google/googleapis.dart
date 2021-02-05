@@ -114,10 +114,8 @@ class DeploymentsResource {
     core.String deployment, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -357,10 +355,8 @@ class DeploymentsResource {
     core.bool preview,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -538,10 +534,8 @@ class DeploymentsResource {
     core.bool preview,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -608,10 +602,8 @@ class DeploymentsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -670,10 +662,8 @@ class DeploymentsResource {
     core.String deployment, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -730,10 +720,8 @@ class DeploymentsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -815,10 +803,8 @@ class DeploymentsResource {
     core.bool preview,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }

@@ -158,10 +158,8 @@ class WebResourceResource {
     SiteVerificationWebResourceGettokenRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -202,10 +200,8 @@ class WebResourceResource {
     core.String verificationMethod, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (verificationMethod == null) {
       throw core.ArgumentError('Parameter verificationMethod is required.');
@@ -285,10 +281,8 @@ class WebResourceResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -332,10 +326,8 @@ class WebResourceResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }

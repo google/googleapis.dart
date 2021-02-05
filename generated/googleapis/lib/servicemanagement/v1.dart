@@ -229,10 +229,8 @@ class ServicesResource {
     ManagedService request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -321,10 +319,8 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -375,10 +371,8 @@ class ServicesResource {
     GenerateConfigReportRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -531,10 +525,8 @@ class ServicesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -652,10 +644,8 @@ class ServicesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -708,10 +698,8 @@ class ServicesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -816,10 +804,8 @@ class ServicesConfigsResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -996,10 +982,8 @@ class ServicesConfigsResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -1056,10 +1040,8 @@ class ServicesConsumersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1110,10 +1092,8 @@ class ServicesConsumersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1166,10 +1146,8 @@ class ServicesConsumersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1232,10 +1210,8 @@ class ServicesRolloutsResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }

@@ -273,10 +273,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -332,10 +330,8 @@ class ProjectsLocationsClustersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -627,10 +623,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -678,10 +672,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -734,10 +726,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -786,10 +776,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -837,10 +825,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -891,10 +877,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -943,10 +927,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -995,10 +977,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1047,10 +1027,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1099,10 +1077,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1150,10 +1126,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1199,10 +1173,8 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1258,10 +1230,8 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1525,10 +1495,8 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1576,10 +1544,8 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1628,10 +1594,8 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1683,10 +1647,8 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1734,10 +1696,8 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1848,10 +1808,8 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -2116,10 +2074,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2186,10 +2142,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2261,10 +2215,8 @@ class ProjectsZonesClustersResource {
     core.String zone, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2468,10 +2420,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2605,10 +2555,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2675,10 +2623,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2745,10 +2691,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2815,10 +2759,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2885,10 +2827,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2952,10 +2892,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3025,10 +2963,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3095,10 +3031,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3165,10 +3099,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3235,10 +3167,8 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3315,10 +3245,8 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3390,10 +3318,8 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3693,10 +3619,8 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3772,10 +3696,8 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3854,10 +3776,8 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3933,10 +3853,8 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4015,10 +3933,8 @@ class ProjectsZonesOperationsResource {
     core.String operationId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }

@@ -968,10 +968,8 @@ class PagesResource {
     core.bool isDraft,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1101,10 +1099,8 @@ class PagesResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1264,10 +1260,8 @@ class PagesResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1702,10 +1696,8 @@ class PostsResource {
     core.bool isDraft,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1884,10 +1876,8 @@ class PostsResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -2134,10 +2124,8 @@ class PostsResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }

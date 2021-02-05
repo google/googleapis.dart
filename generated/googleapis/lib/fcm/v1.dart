@@ -99,10 +99,8 @@ class ProjectsMessagesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }

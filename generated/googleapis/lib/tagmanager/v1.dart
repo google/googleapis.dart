@@ -201,10 +201,8 @@ class AccountsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -275,10 +273,8 @@ class AccountsContainersResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -463,10 +459,8 @@ class AccountsContainersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -528,10 +522,8 @@ class AccountsContainersEnvironmentsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -750,10 +742,8 @@ class AccountsContainersEnvironmentsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -824,10 +814,8 @@ class AccountsContainersFoldersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1044,10 +1032,8 @@ class AccountsContainersFoldersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1188,10 +1174,8 @@ class AccountsContainersMoveFoldersResource {
     core.List<core.String> variableId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1267,10 +1251,8 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     core.String environmentId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1335,10 +1317,8 @@ class AccountsContainersTagsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1555,10 +1535,8 @@ class AccountsContainersTagsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1625,10 +1603,8 @@ class AccountsContainersTriggersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1845,10 +1821,8 @@ class AccountsContainersTriggersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1915,10 +1889,8 @@ class AccountsContainersVariablesResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2135,10 +2107,8 @@ class AccountsContainersVariablesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2205,10 +2175,8 @@ class AccountsContainersVersionsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2622,10 +2590,8 @@ class AccountsContainersVersionsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2690,10 +2656,8 @@ class AccountsPermissionsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2878,10 +2842,8 @@ class AccountsPermissionsResource {
     core.String permissionId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }

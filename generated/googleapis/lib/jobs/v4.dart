@@ -219,10 +219,8 @@ class ProjectsTenantsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -414,10 +412,8 @@ class ProjectsTenantsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -479,10 +475,8 @@ class ProjectsTenantsClientEventsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -538,10 +532,8 @@ class ProjectsTenantsCompaniesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -748,10 +740,8 @@ class ProjectsTenantsCompaniesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -807,10 +797,8 @@ class ProjectsTenantsJobsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -859,10 +847,8 @@ class ProjectsTenantsJobsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -910,10 +896,8 @@ class ProjectsTenantsJobsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -964,10 +948,8 @@ class ProjectsTenantsJobsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1203,10 +1185,8 @@ class ProjectsTenantsJobsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1258,10 +1238,8 @@ class ProjectsTenantsJobsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1317,10 +1295,8 @@ class ProjectsTenantsJobsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }

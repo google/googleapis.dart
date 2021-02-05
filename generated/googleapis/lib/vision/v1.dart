@@ -113,10 +113,8 @@ class FilesResource {
     BatchAnnotateFilesRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -161,10 +159,8 @@ class FilesResource {
     AsyncBatchAnnotateFilesRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -207,10 +203,8 @@ class ImagesResource {
     BatchAnnotateImagesRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -255,10 +249,8 @@ class ImagesResource {
     AsyncBatchAnnotateImagesRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -372,10 +364,8 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -601,10 +591,8 @@ class ProjectsFilesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -662,10 +650,8 @@ class ProjectsFilesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -721,10 +707,8 @@ class ProjectsImagesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -782,10 +766,8 @@ class ProjectsImagesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -865,10 +847,8 @@ class ProjectsLocationsFilesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -926,10 +906,8 @@ class ProjectsLocationsFilesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -986,10 +964,8 @@ class ProjectsLocationsImagesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1047,10 +1023,8 @@ class ProjectsLocationsImagesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1162,10 +1136,8 @@ class ProjectsLocationsProductSetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1220,10 +1192,8 @@ class ProjectsLocationsProductSetsResource {
     core.String productSetId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1370,10 +1340,8 @@ class ProjectsLocationsProductSetsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1492,10 +1460,8 @@ class ProjectsLocationsProductSetsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1545,10 +1511,8 @@ class ProjectsLocationsProductSetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1685,10 +1649,8 @@ class ProjectsLocationsProductsResource {
     core.String productId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1900,10 +1862,8 @@ class ProjectsLocationsProductsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1969,10 +1929,8 @@ class ProjectsLocationsProductsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2048,10 +2006,8 @@ class ProjectsLocationsProductsReferenceImagesResource {
     core.String referenceImageId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }

@@ -379,10 +379,8 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -446,10 +444,8 @@ class ChromeosdevicesResource {
     core.String resourceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -683,10 +679,8 @@ class ChromeosdevicesResource {
     core.String orgUnitPath, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -757,10 +751,8 @@ class ChromeosdevicesResource {
     core.String projection,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -832,10 +824,8 @@ class ChromeosdevicesResource {
     core.String projection,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -918,10 +908,8 @@ class CustomerDevicesChromeosResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -1080,10 +1068,8 @@ class CustomersResource {
     core.String customerKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerKey == null) {
       throw core.ArgumentError('Parameter customerKey is required.');
     }
@@ -1127,10 +1113,8 @@ class CustomersResource {
     core.String customerKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerKey == null) {
       throw core.ArgumentError('Parameter customerKey is required.');
     }
@@ -1273,10 +1257,8 @@ class DomainAliasesResource {
     core.String customer, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -1468,10 +1450,8 @@ class DomainsResource {
     core.String customer, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -1639,10 +1619,8 @@ class GroupsResource {
     Group request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1786,10 +1764,8 @@ class GroupsResource {
     core.String groupKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
@@ -1834,10 +1810,8 @@ class GroupsResource {
     core.String groupKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
@@ -1934,10 +1908,8 @@ class GroupsAliasesResource {
     core.String groupKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
@@ -2180,10 +2152,8 @@ class MembersResource {
     core.String groupKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
@@ -2307,10 +2277,8 @@ class MembersResource {
     core.String memberKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
@@ -2365,10 +2333,8 @@ class MembersResource {
     core.String memberKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
@@ -2431,10 +2397,8 @@ class MobiledevicesResource {
     core.String resourceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -2815,10 +2779,8 @@ class OrgunitsResource {
     core.String customerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -2936,10 +2898,8 @@ class OrgunitsResource {
     core.String orgUnitPath, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -2996,10 +2956,8 @@ class OrgunitsResource {
     core.String orgUnitPath, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -3224,10 +3182,8 @@ class ResourcesBuildingsResource {
     core.String coordinatesSource,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -3347,10 +3303,8 @@ class ResourcesBuildingsResource {
     core.String coordinatesSource,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -3419,10 +3373,8 @@ class ResourcesBuildingsResource {
     core.String coordinatesSource,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -3579,10 +3531,8 @@ class ResourcesCalendarsResource {
     core.String customer, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -3716,10 +3666,8 @@ class ResourcesCalendarsResource {
     core.String calendarResourceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -3778,10 +3726,8 @@ class ResourcesCalendarsResource {
     core.String calendarResourceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -3935,10 +3881,8 @@ class ResourcesFeaturesResource {
     core.String customer, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4043,10 +3987,8 @@ class ResourcesFeaturesResource {
     core.String featureKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4098,10 +4040,8 @@ class ResourcesFeaturesResource {
     core.String oldName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4156,10 +4096,8 @@ class ResourcesFeaturesResource {
     core.String featureKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4307,10 +4245,8 @@ class RoleAssignmentsResource {
     core.String customer, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4523,10 +4459,8 @@ class RolesResource {
     core.String customer, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4627,10 +4561,8 @@ class RolesResource {
     core.String roleId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4682,10 +4614,8 @@ class RolesResource {
     core.String roleId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
@@ -4832,10 +4762,8 @@ class SchemasResource {
     core.String customerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -4923,10 +4851,8 @@ class SchemasResource {
     core.String schemaKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -4978,10 +4904,8 @@ class SchemasResource {
     core.String schemaKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -5336,10 +5260,8 @@ class UsersResource {
     User request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5515,10 +5437,8 @@ class UsersResource {
     core.String userKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -5569,10 +5489,8 @@ class UsersResource {
     core.String userKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -5657,10 +5575,8 @@ class UsersResource {
     core.String userKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -5710,10 +5626,8 @@ class UsersResource {
     core.String userKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -5828,10 +5742,8 @@ class UsersResource {
     core.String viewType,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (customFieldMask != null) {
       _queryParams['customFieldMask'] = [customFieldMask];
@@ -5960,10 +5872,8 @@ class UsersAliasesResource {
     core.String userKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -6056,10 +5966,8 @@ class UsersAliasesResource {
     core.String event,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -6197,10 +6105,8 @@ class UsersPhotosResource {
     core.String userKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -6246,10 +6152,8 @@ class UsersPhotosResource {
     core.String userKey, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }

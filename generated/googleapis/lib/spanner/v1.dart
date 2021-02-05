@@ -250,10 +250,8 @@ class ProjectsInstancesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -396,10 +394,8 @@ class ProjectsInstancesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -550,10 +546,8 @@ class ProjectsInstancesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -602,10 +596,8 @@ class ProjectsInstancesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -659,10 +651,8 @@ class ProjectsInstancesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -840,10 +830,8 @@ class ProjectsInstancesBackupsResource {
     core.String backupId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -981,10 +969,8 @@ class ProjectsInstancesBackupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1130,10 +1116,8 @@ class ProjectsInstancesBackupsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1188,10 +1172,8 @@ class ProjectsInstancesBackupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1248,10 +1230,8 @@ class ProjectsInstancesBackupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1631,10 +1611,8 @@ class ProjectsInstancesDatabasesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1818,10 +1796,8 @@ class ProjectsInstancesDatabasesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1938,10 +1914,8 @@ class ProjectsInstancesDatabasesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1995,10 +1969,8 @@ class ProjectsInstancesDatabasesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -2055,10 +2027,8 @@ class ProjectsInstancesDatabasesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -2112,10 +2082,8 @@ class ProjectsInstancesDatabasesResource {
     core.String database, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
@@ -2383,10 +2351,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String database, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
@@ -2437,10 +2403,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -2500,10 +2464,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -2563,10 +2525,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String database, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
@@ -2665,10 +2625,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -2725,10 +2683,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -2780,10 +2736,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -2952,10 +2906,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -3016,10 +2968,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -3076,10 +3026,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -3132,10 +3080,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }
@@ -3185,10 +3131,8 @@ class ProjectsInstancesDatabasesSessionsResource {
     core.String session, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (session == null) {
       throw core.ArgumentError('Parameter session is required.');
     }

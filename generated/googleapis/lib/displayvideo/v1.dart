@@ -247,10 +247,8 @@ class AdvertisersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -379,10 +377,8 @@ class AdvertisersResource {
     Advertiser request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -605,10 +601,8 @@ class AdvertisersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -670,10 +664,8 @@ class AdvertisersAssetsResource {
     core.String $fields,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -739,10 +731,8 @@ class AdvertisersCampaignsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -996,10 +986,8 @@ class AdvertisersCampaignsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1067,10 +1055,8 @@ class AdvertisersChannelsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1272,10 +1258,8 @@ class AdvertisersChannelsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1346,10 +1330,8 @@ class AdvertisersChannelsSitesResource {
     core.String channelId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1408,10 +1390,8 @@ class AdvertisersChannelsSitesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1634,10 +1614,8 @@ class AdvertisersCreativesResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1905,10 +1883,8 @@ class AdvertisersCreativesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1971,10 +1947,8 @@ class AdvertisersInsertionOrdersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2241,10 +2215,8 @@ class AdvertisersInsertionOrdersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2320,10 +2292,8 @@ class AdvertisersLineItemsResource {
     core.String lineItemId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2476,10 +2446,8 @@ class AdvertisersLineItemsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2748,10 +2716,8 @@ class AdvertisersLineItemsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2916,10 +2882,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3477,10 +3441,8 @@ class AdvertisersLocationListsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3670,10 +3632,8 @@ class AdvertisersLocationListsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3745,10 +3705,8 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String locationListId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3804,10 +3762,8 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String locationListId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4021,10 +3977,8 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4079,10 +4033,8 @@ class AdvertisersManualTriggersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4134,10 +4086,8 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4335,10 +4285,8 @@ class AdvertisersManualTriggersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4406,10 +4354,8 @@ class AdvertisersNegativeKeywordListsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4631,10 +4577,8 @@ class AdvertisersNegativeKeywordListsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4708,10 +4652,8 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4768,10 +4710,8 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -5080,10 +5020,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -6252,10 +6190,8 @@ class FloodlightGroupsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (floodlightGroupId == null) {
       throw core.ArgumentError('Parameter floodlightGroupId is required.');
     }
@@ -6474,10 +6410,8 @@ class InventorySourceGroupsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -6739,10 +6673,8 @@ class InventorySourceGroupsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
@@ -6812,10 +6744,8 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String inventorySourceGroupId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
@@ -6874,10 +6804,8 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
@@ -7326,10 +7254,8 @@ class PartnersResource {
     core.String partnerId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -7503,10 +7429,8 @@ class PartnersChannelsResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -7708,10 +7632,8 @@ class PartnersChannelsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -7782,10 +7704,8 @@ class PartnersChannelsSitesResource {
     core.String channelId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -7844,10 +7764,8 @@ class PartnersChannelsSitesResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -8165,10 +8083,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -8685,10 +8601,8 @@ class SdfdownloadtasksResource {
     CreateSdfDownloadTaskRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -9184,10 +9098,8 @@ class TargetingTypesTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (targetingType == null) {
       throw core.ArgumentError('Parameter targetingType is required.');
     }
@@ -9246,10 +9158,8 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -9294,10 +9204,8 @@ class UsersResource {
     User request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -9510,10 +9418,8 @@ class UsersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }

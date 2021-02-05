@@ -401,10 +401,8 @@ class ProjectsResource {
     CreateProjectRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -595,10 +593,8 @@ class ProjectsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -650,10 +646,8 @@ class ProjectsDeploymentsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -853,10 +847,8 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -913,10 +905,8 @@ class ProjectsVersionsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -1083,10 +1073,8 @@ class ScriptsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }

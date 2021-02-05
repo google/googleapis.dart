@@ -203,10 +203,8 @@ class CoursesResource {
     Course request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -433,10 +431,8 @@ class CoursesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -489,10 +485,8 @@ class CoursesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -549,10 +543,8 @@ class CoursesAliasesResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -731,10 +723,8 @@ class CoursesAnnouncementsResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -988,10 +978,8 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1063,10 +1051,8 @@ class CoursesAnnouncementsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1142,10 +1128,8 @@ class CoursesCourseWorkResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1399,10 +1383,8 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1481,10 +1463,8 @@ class CoursesCourseWorkResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1734,10 +1714,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1818,10 +1796,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1900,10 +1876,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1979,10 +1953,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2056,10 +2028,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2130,10 +2100,8 @@ class CoursesCourseWorkMaterialsResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2415,10 +2383,8 @@ class CoursesCourseWorkMaterialsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2492,10 +2458,8 @@ class CoursesStudentsResource {
     core.String enrollmentCode,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2734,10 +2698,8 @@ class CoursesTeachersResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2971,10 +2933,8 @@ class CoursesTopicsResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -3205,10 +3165,8 @@ class CoursesTopicsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -3320,10 +3278,8 @@ class InvitationsResource {
     Invitation request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3548,10 +3504,8 @@ class RegistrationsResource {
     Registration request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3721,10 +3675,8 @@ class UserProfilesGuardianInvitationsResource {
     core.String studentId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
@@ -3945,10 +3897,8 @@ class UserProfilesGuardianInvitationsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }

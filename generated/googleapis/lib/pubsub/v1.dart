@@ -125,10 +125,8 @@ class ProjectsSnapshotsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -393,10 +391,8 @@ class ProjectsSnapshotsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -445,10 +441,8 @@ class ProjectsSnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -501,10 +495,8 @@ class ProjectsSnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -565,10 +557,8 @@ class ProjectsSubscriptionsResource {
     core.String subscription, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (subscription == null) {
       throw core.ArgumentError('Parameter subscription is required.');
     }
@@ -629,10 +619,8 @@ class ProjectsSubscriptionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -934,10 +922,8 @@ class ProjectsSubscriptionsResource {
     core.String subscription, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (subscription == null) {
       throw core.ArgumentError('Parameter subscription is required.');
     }
@@ -989,10 +975,8 @@ class ProjectsSubscriptionsResource {
     core.String subscription, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (subscription == null) {
       throw core.ArgumentError('Parameter subscription is required.');
     }
@@ -1046,10 +1030,8 @@ class ProjectsSubscriptionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1098,10 +1080,8 @@ class ProjectsSubscriptionsResource {
     core.String subscription, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (subscription == null) {
       throw core.ArgumentError('Parameter subscription is required.');
     }
@@ -1156,10 +1136,8 @@ class ProjectsSubscriptionsResource {
     core.String subscription, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (subscription == null) {
       throw core.ArgumentError('Parameter subscription is required.');
     }
@@ -1211,10 +1189,8 @@ class ProjectsSubscriptionsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1267,10 +1243,8 @@ class ProjectsSubscriptionsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1336,10 +1310,8 @@ class ProjectsTopicsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1592,10 +1564,8 @@ class ProjectsTopicsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1642,10 +1612,8 @@ class ProjectsTopicsResource {
     core.String topic, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (topic == null) {
       throw core.ArgumentError('Parameter topic is required.');
     }
@@ -1696,10 +1664,8 @@ class ProjectsTopicsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1752,10 +1718,8 @@ class ProjectsTopicsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }

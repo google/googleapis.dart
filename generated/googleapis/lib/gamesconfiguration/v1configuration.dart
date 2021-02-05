@@ -178,10 +178,8 @@ class AchievementConfigurationsResource {
     core.String applicationId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -283,10 +281,8 @@ class AchievementConfigurationsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -488,10 +484,8 @@ class LeaderboardConfigurationsResource {
     core.String applicationId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -593,10 +587,8 @@ class LeaderboardConfigurationsResource {
     core.String leaderboardId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }

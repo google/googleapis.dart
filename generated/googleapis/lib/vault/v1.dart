@@ -96,10 +96,8 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -147,10 +145,8 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -196,10 +192,8 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -243,10 +237,8 @@ class MattersResource {
     Matter request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -446,10 +438,8 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -496,10 +486,8 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -546,10 +534,8 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -598,10 +584,8 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -650,10 +634,8 @@ class MattersExportsResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -858,10 +840,8 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -912,10 +892,8 @@ class MattersHoldsResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1147,10 +1125,8 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1208,10 +1184,8 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1273,10 +1247,8 @@ class MattersHoldsAccountsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1445,10 +1417,8 @@ class MattersSavedQueriesResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1665,10 +1635,8 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }

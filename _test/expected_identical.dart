@@ -125,11 +125,10 @@ class ToyApi {
     core.List<ToyRequest> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(
-          request.map((value) => ToyRequestFactory.toJson(value)).toList());
-    }
+    final _body = request == null
+        ? null
+        : convert.json.encode(
+            request.map((value) => ToyRequestFactory.toJson(value)).toList());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -170,13 +169,12 @@ class ToyApi {
     core.List<core.List<ToyRequest>> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request
-          .map((value) =>
-              value.map((value) => ToyRequestFactory.toJson(value)).toList())
-          .toList());
-    }
+    final _body = request == null
+        ? null
+        : convert.json.encode(request
+            .map((value) =>
+                value.map((value) => ToyRequestFactory.toJson(value)).toList())
+            .toList());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -217,10 +215,7 @@ class ToyApi {
     core.Map<core.String, core.int> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request);
-    }
+    final _body = request == null ? null : convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -309,10 +304,9 @@ class ToyApi {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(ToyAgeRequestFactory.toJson(request));
-    }
+    final _body = request == null
+        ? null
+        : convert.json.encode(ToyAgeRequestFactory.toJson(request));
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -400,10 +394,7 @@ class ToyApi {
     core.List<core.List<core.int>> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request);
-    }
+    final _body = request == null ? null : convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -444,10 +435,7 @@ class ToyApi {
     core.List<core.Map<core.String, core.List<core.int>>> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request);
-    }
+    final _body = request == null ? null : convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -526,10 +514,7 @@ class ToyApi {
     core.Map<core.String, core.List<core.Map<core.String, core.int>>> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request);
-    }
+    final _body = request == null ? null : convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -579,10 +564,7 @@ class ToyApi {
     core.Map<core.String, core.Map<core.String, core.int>> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request);
-    }
+    final _body = request == null ? null : convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -627,10 +609,9 @@ class ToyApi {
     ToyRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(ToyRequestFactory.toJson(request));
-    }
+    final _body = request == null
+        ? null
+        : convert.json.encode(ToyRequestFactory.toJson(request));
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -756,10 +737,7 @@ class ToyApi {
     core.List<core.String> request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request);
-    }
+    final _body = request == null ? null : convert.json.encode(request);
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

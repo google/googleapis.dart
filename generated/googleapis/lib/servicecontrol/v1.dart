@@ -98,10 +98,8 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -161,10 +159,8 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -224,10 +220,8 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }

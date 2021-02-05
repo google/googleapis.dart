@@ -211,10 +211,8 @@ class ActionResultsResource {
     core.int resultsCachePolicy_priority,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -327,10 +325,8 @@ class ActionsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -397,10 +393,8 @@ class BlobsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -463,10 +457,8 @@ class BlobsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -522,10 +514,8 @@ class BlobsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -679,10 +669,8 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }

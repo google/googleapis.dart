@@ -472,10 +472,8 @@ class AccountsAdunitsResource {
     core.String adClientId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -603,10 +601,8 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -663,10 +659,8 @@ class AccountsAdunitsResource {
     core.String adClientId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1147,10 +1141,8 @@ class CustomchannelsResource {
     core.String adClientId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1258,10 +1250,8 @@ class CustomchannelsResource {
     core.String customChannelId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1311,10 +1301,8 @@ class CustomchannelsResource {
     core.String adClientId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1528,10 +1516,8 @@ class UrlchannelsResource {
     core.String adClientId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }

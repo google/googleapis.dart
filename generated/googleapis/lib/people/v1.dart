@@ -189,10 +189,8 @@ class ContactGroupsResource {
     CreateContactGroupRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -410,10 +408,8 @@ class ContactGroupsResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -470,10 +466,8 @@ class ContactGroupsMembersResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -528,10 +522,8 @@ class OtherContactsResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -682,10 +674,8 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
@@ -1215,10 +1205,8 @@ class PeopleResource {
     core.String updatePersonFields,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -1273,10 +1261,8 @@ class PeopleResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }

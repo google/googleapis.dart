@@ -211,10 +211,8 @@ class AccountsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -278,10 +276,8 @@ class AccountsContainersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -461,10 +457,8 @@ class AccountsContainersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -520,10 +514,8 @@ class AccountsContainersEnvironmentsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -704,10 +696,8 @@ class AccountsContainersEnvironmentsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -760,10 +750,8 @@ class AccountsContainersEnvironmentsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1203,10 +1191,8 @@ class AccountsContainersVersionsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1278,10 +1264,8 @@ class AccountsContainersWorkspacesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1331,10 +1315,8 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1606,10 +1588,8 @@ class AccountsContainersWorkspacesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1710,10 +1690,8 @@ class AccountsContainersWorkspacesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2085,10 +2063,8 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2325,10 +2301,8 @@ class AccountsContainersWorkspacesFoldersResource {
     core.List<core.String> variableId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2440,10 +2414,8 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2500,10 +2472,8 @@ class AccountsContainersWorkspacesTagsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2738,10 +2708,8 @@ class AccountsContainersWorkspacesTagsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2798,10 +2766,8 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3038,10 +3004,8 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3099,10 +3063,8 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3337,10 +3299,8 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3397,10 +3357,8 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3635,10 +3593,8 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3695,10 +3651,8 @@ class AccountsContainersWorkspacesZonesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3933,10 +3887,8 @@ class AccountsContainersWorkspacesZonesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3991,10 +3943,8 @@ class AccountsUserPermissionsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -4174,10 +4124,8 @@ class AccountsUserPermissionsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }

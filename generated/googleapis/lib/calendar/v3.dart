@@ -215,10 +215,8 @@ class AclResource {
     core.bool sendNotifications,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -355,10 +353,8 @@ class AclResource {
     core.bool sendNotifications,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -420,10 +416,8 @@ class AclResource {
     core.bool sendNotifications,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -502,10 +496,8 @@ class AclResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -652,10 +644,8 @@ class CalendarListResource {
     core.bool colorRgbFormat,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (colorRgbFormat != null) {
       _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
@@ -801,10 +791,8 @@ class CalendarListResource {
     core.bool colorRgbFormat,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -860,10 +848,8 @@ class CalendarListResource {
     core.bool colorRgbFormat,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -949,10 +935,8 @@ class CalendarListResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -1135,10 +1119,8 @@ class CalendarsResource {
     Calendar request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1182,10 +1164,8 @@ class CalendarsResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1230,10 +1210,8 @@ class CalendarsResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1277,10 +1255,8 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1525,10 +1501,8 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1617,10 +1591,8 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -2138,10 +2110,8 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -2327,10 +2297,8 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -2517,10 +2485,8 @@ class EventsResource {
     core.DateTime updatedMin,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -2619,10 +2585,8 @@ class FreebusyResource {
     FreeBusyRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2782,10 +2746,8 @@ class SettingsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];

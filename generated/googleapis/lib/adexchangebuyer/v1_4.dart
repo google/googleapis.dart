@@ -189,10 +189,8 @@ class AccountsResource {
     core.bool confirmUnsafeAccountChange,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -244,10 +242,8 @@ class AccountsResource {
     core.bool confirmUnsafeAccountChange,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -434,10 +430,8 @@ class BudgetResource {
     core.String billingId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -490,10 +484,8 @@ class BudgetResource {
     core.String billingId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -647,10 +639,8 @@ class CreativesResource {
     Creative request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -892,10 +882,8 @@ class MarketplacedealsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -941,10 +929,8 @@ class MarketplacedealsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1037,10 +1023,8 @@ class MarketplacedealsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1092,10 +1076,8 @@ class MarketplacenotesResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1195,10 +1177,8 @@ class MarketplaceprivateauctionResource {
     core.String privateAuctionId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (privateAuctionId == null) {
       throw core.ArgumentError('Parameter privateAuctionId is required.');
     }
@@ -1420,10 +1400,8 @@ class PretargetingConfigResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1513,10 +1491,8 @@ class PretargetingConfigResource {
     core.String configId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1569,10 +1545,8 @@ class PretargetingConfigResource {
     core.String configId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1746,10 +1720,8 @@ class ProposalsResource {
     CreateOrdersRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1809,10 +1781,8 @@ class ProposalsResource {
     core.String updateAction, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1960,10 +1930,8 @@ class ProposalsResource {
     core.String updateAction, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }

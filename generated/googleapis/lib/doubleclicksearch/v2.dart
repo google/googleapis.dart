@@ -209,10 +209,8 @@ class ConversionResource {
     ConversionList request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -250,10 +248,8 @@ class ConversionResource {
     ConversionList request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -292,10 +288,8 @@ class ConversionResource {
     UpdateAvailabilityRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -339,10 +333,8 @@ class ReportsResource {
     ReportRequest request_1, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request_1 != null) {
-      _body = convert.json.encode(request_1.toJson());
-    }
+    final _body =
+        request_1 == null ? null : convert.json.encode(request_1.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -474,10 +466,8 @@ class ReportsResource {
     ReportRequest request_1, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request_1 != null) {
-      _body = convert.json.encode(request_1.toJson());
-    }
+    final _body =
+        request_1 == null ? null : convert.json.encode(request_1.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];

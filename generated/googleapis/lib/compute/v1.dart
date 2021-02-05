@@ -892,10 +892,8 @@ class AddressesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1360,10 +1358,8 @@ class AutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1566,10 +1562,8 @@ class AutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1651,10 +1645,8 @@ class AutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1737,10 +1729,8 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2008,10 +1998,8 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2197,10 +2185,8 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2274,10 +2260,8 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2356,10 +2340,8 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2747,10 +2729,8 @@ class BackendServicesResource {
     core.String backendService, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2820,10 +2800,8 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3009,10 +2987,8 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3084,10 +3060,8 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3164,10 +3138,8 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3566,10 +3538,8 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3782,10 +3752,8 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4088,10 +4056,8 @@ class DisksResource {
     core.String sourceImage,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4292,10 +4258,8 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4380,10 +4344,8 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4454,10 +4416,8 @@ class DisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4539,10 +4499,8 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4611,10 +4569,8 @@ class DisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4814,10 +4770,8 @@ class ExternalVpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4987,10 +4941,8 @@ class ExternalVpnGatewaysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -5047,10 +4999,8 @@ class ExternalVpnGatewaysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -5127,10 +5077,8 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5198,10 +5146,8 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5577,10 +5523,8 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (parentId != null) {
       _queryParams['parentId'] = [parentId];
@@ -5854,10 +5798,8 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5922,10 +5864,8 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -6107,10 +6047,8 @@ class FirewallPoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -6156,10 +6094,8 @@ class FirewallPoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -6347,10 +6283,8 @@ class FirewallsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -6534,10 +6468,8 @@ class FirewallsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -6613,10 +6545,8 @@ class FirewallsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -6957,10 +6887,8 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7165,10 +7093,8 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7252,10 +7178,8 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7341,10 +7265,8 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7546,10 +7468,8 @@ class GlobalAddressesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7855,10 +7775,8 @@ class GlobalForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8045,10 +7963,8 @@ class GlobalForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8109,10 +8025,8 @@ class GlobalForwardingRulesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8186,10 +8100,8 @@ class GlobalForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8269,10 +8181,8 @@ class GlobalNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8413,10 +8323,8 @@ class GlobalNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8540,10 +8448,8 @@ class GlobalNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9717,10 +9623,8 @@ class HealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9906,10 +9810,8 @@ class HealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9983,10 +9885,8 @@ class HealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10183,10 +10083,8 @@ class HttpHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10372,10 +10270,8 @@ class HttpHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10449,10 +10345,8 @@ class HttpHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10649,10 +10543,8 @@ class HttpsHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10838,10 +10730,8 @@ class HttpsHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10915,10 +10805,8 @@ class HttpsHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11067,10 +10955,8 @@ class ImagesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11310,10 +11196,8 @@ class ImagesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11505,10 +11389,8 @@ class ImagesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11569,10 +11451,8 @@ class ImagesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11631,10 +11511,8 @@ class ImagesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11691,10 +11569,8 @@ class ImagesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11789,10 +11665,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11986,10 +11860,8 @@ class InstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12074,10 +11946,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12249,10 +12119,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12320,10 +12188,8 @@ class InstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12469,10 +12335,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13080,10 +12944,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13167,10 +13029,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13263,10 +13123,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13456,10 +13314,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13546,10 +13402,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13634,10 +13488,8 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13727,10 +13579,8 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14073,10 +13923,8 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14318,10 +14166,8 @@ class InstanceGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14420,10 +14266,8 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14504,10 +14348,8 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14780,10 +14622,8 @@ class InstanceTemplatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14953,10 +14793,8 @@ class InstanceTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15013,10 +14851,8 @@ class InstanceTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15102,10 +14938,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15195,10 +15029,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15415,10 +15247,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16188,10 +16018,8 @@ class InstancesResource {
     core.String sourceInstanceTemplate,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16530,10 +16358,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16865,10 +16691,8 @@ class InstancesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16950,10 +16774,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17037,10 +16859,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17124,10 +16944,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17211,10 +17029,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17300,10 +17116,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17390,10 +17204,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17479,10 +17291,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17568,10 +17378,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17655,10 +17463,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17884,10 +17690,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18040,10 +17844,8 @@ class InstancesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18150,10 +17952,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18251,10 +18051,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18344,10 +18142,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18439,10 +18235,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18532,10 +18326,8 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18886,10 +18678,8 @@ class InterconnectAttachmentsResource {
     core.bool validateOnly,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19096,10 +18886,8 @@ class InterconnectAttachmentsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19529,10 +19317,8 @@ class InterconnectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19716,10 +19502,8 @@ class InterconnectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19843,10 +19627,8 @@ class LicenseCodesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20111,10 +19893,8 @@ class LicensesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20291,10 +20071,8 @@ class LicensesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20354,10 +20132,8 @@ class LicensesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20878,10 +20654,8 @@ class NetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21044,10 +20818,8 @@ class NetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21189,10 +20961,8 @@ class NetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21432,10 +21202,8 @@ class NetworkEndpointGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21517,10 +21285,8 @@ class NetworkEndpointGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21603,10 +21369,8 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21797,10 +21561,8 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22127,10 +21889,8 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22203,10 +21963,8 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22353,10 +22111,8 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22440,10 +22196,8 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22729,10 +22483,8 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22948,10 +22700,8 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23287,10 +23037,8 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23360,10 +23108,8 @@ class NodeGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23443,10 +23189,8 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23515,10 +23259,8 @@ class NodeGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23936,10 +23678,8 @@ class NodeTemplatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24126,10 +23866,8 @@ class NodeTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24195,10 +23933,8 @@ class NodeTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24856,10 +24592,8 @@ class PacketMirroringsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25063,10 +24797,8 @@ class PacketMirroringsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25134,10 +24866,8 @@ class PacketMirroringsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25275,10 +25005,8 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25403,10 +25131,8 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25706,10 +25432,8 @@ class ProjectsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25786,10 +25510,8 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25853,10 +25575,8 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25921,10 +25641,8 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25991,10 +25709,8 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26062,10 +25778,8 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26278,10 +25992,8 @@ class RegionAutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26484,10 +26196,8 @@ class RegionAutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26569,10 +26279,8 @@ class RegionAutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26786,10 +26494,8 @@ class RegionBackendServicesResource {
     core.String backendService, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26868,10 +26574,8 @@ class RegionBackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27076,10 +26780,8 @@ class RegionBackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27164,10 +26866,8 @@ class RegionBackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27438,10 +27138,8 @@ class RegionCommitmentsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27839,10 +27537,8 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27925,10 +27621,8 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28222,10 +27916,8 @@ class RegionDisksResource {
     core.String sourceImage,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28427,10 +28119,8 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28513,10 +28203,8 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28587,10 +28275,8 @@ class RegionDisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28670,10 +28356,8 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28742,10 +28426,8 @@ class RegionDisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28965,10 +28647,8 @@ class RegionHealthCheckServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29171,10 +28851,8 @@ class RegionHealthCheckServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29398,10 +29076,8 @@ class RegionHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29605,10 +29281,8 @@ class RegionHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29691,10 +29365,8 @@ class RegionHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29795,10 +29467,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29866,10 +29536,8 @@ class RegionInstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29954,10 +29622,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30126,10 +29792,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30197,10 +29861,8 @@ class RegionInstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30341,10 +30003,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30949,10 +30609,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31036,10 +30694,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31132,10 +30788,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31314,10 +30968,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31400,10 +31052,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31488,10 +31138,8 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31803,10 +31451,8 @@ class RegionInstanceGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31900,10 +31546,8 @@ class RegionInstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -32131,10 +31775,8 @@ class RegionNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -32477,10 +32119,8 @@ class RegionNotificationEndpointsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33143,10 +32783,8 @@ class RegionSslCertificatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33489,10 +33127,8 @@ class RegionTargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33692,10 +33328,8 @@ class RegionTargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33921,10 +33555,8 @@ class RegionTargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34125,10 +33757,8 @@ class RegionTargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34211,10 +33841,8 @@ class RegionTargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34418,10 +34046,8 @@ class RegionUrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34615,10 +34241,8 @@ class RegionUrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34691,10 +34315,8 @@ class RegionUrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34765,10 +34387,8 @@ class RegionUrlMapsResource {
     core.String urlMap, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35355,10 +34975,8 @@ class ReservationsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35559,10 +35177,8 @@ class ReservationsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35633,10 +35249,8 @@ class ReservationsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35702,10 +35316,8 @@ class ReservationsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36120,10 +35732,8 @@ class ResourcePoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36311,10 +35921,8 @@ class ResourcePoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36380,10 +35988,8 @@ class ResourcePoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36923,10 +36529,8 @@ class RoutersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37129,10 +36733,8 @@ class RoutersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37202,10 +36804,8 @@ class RoutersResource {
     core.String router, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37291,10 +36891,8 @@ class RoutersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37495,10 +37093,8 @@ class RoutesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37670,10 +37266,8 @@ class SecurityPoliciesResource {
     core.String securityPolicy, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37920,10 +37514,8 @@ class SecurityPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38222,10 +37814,8 @@ class SecurityPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38287,10 +37877,8 @@ class SecurityPoliciesResource {
     core.int priority,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38719,10 +38307,8 @@ class SnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38781,10 +38367,8 @@ class SnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38841,10 +38425,8 @@ class SnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39165,10 +38747,8 @@ class SslCertificatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39473,10 +39053,8 @@ class SslPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39770,10 +39348,8 @@ class SslPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40057,10 +39633,8 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40273,10 +39847,8 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40601,10 +40173,8 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40677,10 +40247,8 @@ class SubnetworksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40761,10 +40329,8 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40833,10 +40399,8 @@ class SubnetworksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41035,10 +40599,8 @@ class TargetGrpcProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41223,10 +40785,8 @@ class TargetGrpcProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41548,10 +41108,8 @@ class TargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41737,10 +41295,8 @@ class TargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41813,10 +41369,8 @@ class TargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42139,10 +41693,8 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42328,10 +41880,8 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42403,10 +41953,8 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42481,10 +42029,8 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42563,10 +42109,8 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42641,10 +42185,8 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42988,10 +42530,8 @@ class TargetInstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43197,10 +42737,8 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43283,10 +42821,8 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43621,10 +43157,8 @@ class TargetPoolsResource {
     core.String targetPool, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43701,10 +43235,8 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43904,10 +43436,8 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43990,10 +43520,8 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44079,10 +43607,8 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44288,10 +43814,8 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44474,10 +43998,8 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44552,10 +44074,8 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44630,10 +44150,8 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44710,10 +44228,8 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44911,10 +44427,8 @@ class TargetTcpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45097,10 +44611,8 @@ class TargetTcpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45175,10 +44687,8 @@ class TargetTcpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45522,10 +45032,8 @@ class TargetVpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45969,10 +45477,8 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46045,10 +45551,8 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46238,10 +45742,8 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46315,10 +45817,8 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46380,10 +45880,8 @@ class UrlMapsResource {
     core.String urlMap, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46787,10 +46285,8 @@ class VpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46992,10 +46488,8 @@ class VpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -47064,10 +46558,8 @@ class VpnGatewaysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -47413,10 +46905,8 @@ class VpnTunnelsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }

@@ -57,11 +57,8 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalysisResults> analyze(SourceRequest request) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
-
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     const _url = 'analyze';
 
     final _response = await _requester.request(
@@ -115,11 +112,8 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompileResponse> compile(SourceRequest request) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
-
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     const _url = 'compile';
 
     final _response = await _requester.request(
@@ -171,11 +165,8 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> complete(SourceRequest request) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
-
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     const _url = 'complete';
 
     await _requester.request(
@@ -231,11 +222,8 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DocumentResponse> document(SourceRequest request) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
-
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     const _url = 'document';
 
     final _response = await _requester.request(

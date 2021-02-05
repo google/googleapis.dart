@@ -214,10 +214,8 @@ class LicenseAssignmentsResource {
     core.String skuId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
@@ -429,10 +427,8 @@ class LicenseAssignmentsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
@@ -499,10 +495,8 @@ class LicenseAssignmentsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }

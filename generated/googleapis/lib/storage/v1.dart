@@ -261,10 +261,8 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -380,10 +378,8 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -452,10 +448,8 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -765,10 +759,8 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1027,10 +1019,8 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1102,10 +1092,8 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1274,10 +1262,8 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1342,10 +1328,8 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1527,10 +1511,8 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1662,10 +1644,8 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1734,10 +1714,8 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1928,10 +1906,8 @@ class NotificationsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2219,10 +2195,8 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2374,10 +2348,8 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2462,10 +2434,8 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2580,10 +2550,8 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (destinationBucket == null) {
       throw core.ArgumentError('Parameter destinationBucket is required.');
     }
@@ -2747,10 +2715,8 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (sourceBucket == null) {
       throw core.ArgumentError('Parameter sourceBucket is required.');
     }
@@ -3228,10 +3194,8 @@ class ObjectsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -3504,10 +3468,8 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -3693,10 +3655,8 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (sourceBucket == null) {
       throw core.ArgumentError('Parameter sourceBucket is required.');
     }
@@ -3824,10 +3784,8 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -4022,10 +3980,8 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -4155,10 +4111,8 @@ class ObjectsResource {
     core.bool versions,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -4494,10 +4448,8 @@ class ProjectsHmacKeysResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }

@@ -244,10 +244,8 @@ class AccountsResource {
     AccountsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -401,10 +399,8 @@ class AccountsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -455,10 +451,8 @@ class AccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -652,10 +646,8 @@ class AccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -708,10 +700,8 @@ class AccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -768,10 +758,8 @@ class AccountsLabelsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -924,10 +912,8 @@ class AccountsLabelsResource {
     core.String labelId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -985,10 +971,8 @@ class AccountsReturncarrierResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1128,10 +1112,8 @@ class AccountsReturncarrierResource {
     core.String carrierAccountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1184,10 +1166,8 @@ class AccountstatusesResource {
     AccountstatusesCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1353,10 +1333,8 @@ class AccounttaxResource {
     AccounttaxCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1512,10 +1490,8 @@ class AccounttaxResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1576,10 +1552,8 @@ class CollectionsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2014,10 +1988,8 @@ class CssesResource {
     core.String cssDomainId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (cssGroupId == null) {
       throw core.ArgumentError('Parameter cssGroupId is required.');
     }
@@ -2071,10 +2043,8 @@ class DatafeedsResource {
     DatafeedsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2263,10 +2233,8 @@ class DatafeedsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2372,10 +2340,8 @@ class DatafeedsResource {
     core.String datafeedId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2427,10 +2393,8 @@ class DatafeedstatusesResource {
     DatafeedstatusesCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2597,10 +2561,8 @@ class LiasettingsResource {
     LiasettingsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3114,10 +3076,8 @@ class LiasettingsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3171,10 +3131,8 @@ class LocalinventoryResource {
     LocalinventoryCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3220,10 +3178,8 @@ class LocalinventoryResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3285,10 +3241,8 @@ class OrderinvoicesResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3348,10 +3302,8 @@ class OrderinvoicesResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3566,10 +3518,8 @@ class OrderreturnsResource {
     core.String returnId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3621,10 +3571,8 @@ class OrderreturnsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3862,10 +3810,8 @@ class OrderreturnsResource {
     core.String returnId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3926,10 +3872,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4036,10 +3980,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4094,10 +4036,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4155,10 +4095,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4212,10 +4150,8 @@ class OrdersResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4267,10 +4203,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4497,10 +4431,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4652,10 +4584,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4710,10 +4640,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4768,10 +4696,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4833,10 +4759,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4896,10 +4820,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4954,10 +4876,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5013,10 +4933,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5071,10 +4989,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5129,10 +5045,8 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5191,10 +5105,8 @@ class OrdertrackingsignalsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5243,10 +5155,8 @@ class PosResource {
     PosCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5398,10 +5308,8 @@ class PosResource {
     core.String targetMerchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5454,10 +5362,8 @@ class PosResource {
     core.String targetMerchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5560,10 +5466,8 @@ class PosResource {
     core.String targetMerchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5617,10 +5521,8 @@ class ProductsResource {
     ProductsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -5768,10 +5670,8 @@ class ProductsResource {
     core.String feedId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5883,10 +5783,8 @@ class ProductstatusesResource {
     ProductstatusesCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6196,10 +6094,8 @@ class PubsubnotificationsettingsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6249,10 +6145,8 @@ class RegionalinventoryResource {
     RegionalinventoryCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -6302,10 +6196,8 @@ class RegionalinventoryResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6366,10 +6258,8 @@ class RegionsResource {
     core.String regionId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6578,10 +6468,8 @@ class RegionsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6646,10 +6534,8 @@ class RepricingrulesResource {
     core.String ruleId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6876,10 +6762,8 @@ class RepricingrulesResource {
     core.String ruleId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7022,10 +6906,8 @@ class ReturnaddressResource {
     ReturnaddressCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7160,10 +7042,8 @@ class ReturnaddressResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7273,10 +7153,8 @@ class ReturnpolicyResource {
     ReturnpolicyCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7411,10 +7289,8 @@ class ReturnpolicyResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7705,10 +7581,8 @@ class ShippingsettingsResource {
     ShippingsettingsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -7993,10 +7867,8 @@ class ShippingsettingsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }

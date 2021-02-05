@@ -229,10 +229,8 @@ class UsersDataSourcesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -433,10 +431,8 @@ class UsersDataSourcesResource {
     core.String dataSourceId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -745,10 +741,8 @@ class UsersDataSourcesDatasetsResource {
     core.String currentTimeMillis,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -815,10 +809,8 @@ class UsersDatasetResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1013,10 +1005,8 @@ class UsersSessionsResource {
     core.String currentTimeMillis,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }

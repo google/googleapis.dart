@@ -268,10 +268,8 @@ class EditsResource {
     core.String packageName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -377,10 +375,8 @@ class EditsApksResource {
     core.String editId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -863,10 +859,8 @@ class EditsDetailsResource {
     core.String editId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -920,10 +914,8 @@ class EditsDetailsResource {
     core.String editId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -1069,10 +1061,8 @@ class EditsExpansionfilesResource {
     core.String expansionFileType, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -1150,10 +1140,8 @@ class EditsExpansionfilesResource {
     core.String expansionFileType, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -1885,10 +1873,8 @@ class EditsListingsResource {
     core.String language, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -1949,10 +1935,8 @@ class EditsListingsResource {
     core.String language, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -2073,10 +2057,8 @@ class EditsTestersResource {
     core.String track, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -2136,10 +2118,8 @@ class EditsTestersResource {
     core.String track, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -2309,10 +2289,8 @@ class EditsTracksResource {
     core.String track, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -2372,10 +2350,8 @@ class EditsTracksResource {
     core.String track, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -2534,10 +2510,8 @@ class InappproductsResource {
     core.bool autoConvertMissingPrices,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -2656,10 +2630,8 @@ class InappproductsResource {
     core.bool autoConvertMissingPrices,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -2723,10 +2695,8 @@ class InappproductsResource {
     core.bool autoConvertMissingPrices,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -3016,10 +2986,8 @@ class PurchasesProductsResource {
     core.String token, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -3147,10 +3115,8 @@ class PurchasesSubscriptionsResource {
     core.String token, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -3274,10 +3240,8 @@ class PurchasesSubscriptionsResource {
     core.String token, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -3744,10 +3708,8 @@ class ReviewsResource {
     core.String reviewId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
@@ -3817,10 +3779,8 @@ class SystemapksVariantsResource {
     core.String versionCode, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }

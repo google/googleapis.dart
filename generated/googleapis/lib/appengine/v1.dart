@@ -116,10 +116,8 @@ class AppsResource {
     Application request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -207,10 +205,8 @@ class AppsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -267,10 +263,8 @@ class AppsResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -322,10 +316,8 @@ class AppsAuthorizedCertificatesResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -565,10 +557,8 @@ class AppsAuthorizedCertificatesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -708,10 +698,8 @@ class AppsDomainMappingsResource {
     core.String overrideStrategy,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -925,10 +913,8 @@ class AppsDomainMappingsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1002,10 +988,8 @@ class AppsFirewallIngressRulesResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1052,10 +1036,8 @@ class AppsFirewallIngressRulesResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1267,10 +1249,8 @@ class AppsFirewallIngressRulesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1738,10 +1718,8 @@ class AppsServicesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1810,10 +1788,8 @@ class AppsServicesVersionsResource {
     core.String servicesId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -2107,10 +2083,8 @@ class AppsServicesVersionsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -2191,10 +2165,8 @@ class AppsServicesVersionsInstancesResource {
     core.String instancesId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }

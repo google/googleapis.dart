@@ -440,10 +440,8 @@ class AchievementsResource {
     AchievementUpdateMultipleRequest request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -794,10 +792,8 @@ class EventsResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
@@ -1607,10 +1603,8 @@ class ScoresResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
@@ -1778,10 +1772,8 @@ class SnapshotsExtendedResource {
     core.String snapshotName, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (snapshotName == null) {
       throw core.ArgumentError('Parameter snapshotName is required.');
     }

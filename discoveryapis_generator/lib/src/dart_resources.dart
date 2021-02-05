@@ -232,12 +232,10 @@ class DartResourceMethod {
     if (requestParameter != null) {
       final parameterEncode =
           requestParameter.type.jsonEncode('${requestParameter.name}');
-      params.writeln('    ${core}String$orNull _body;');
-      params.writeln('    if (${requestParameter.name} != null) {');
-      params.writeln(
-        '      _body = ${imports.convert.ref()}json.encode($parameterEncode);',
+      params.write(
+        'final _body = ${requestParameter.name} == null ? '
+        'null :${imports.convert.ref()}json.encode($parameterEncode);',
       );
-      params.writeln('    }');
     }
 
     final templateVars = <String, Identifier>{};

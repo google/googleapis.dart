@@ -123,10 +123,8 @@ class GroupsResource {
     core.String groupUniqueId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupUniqueId == null) {
       throw core.ArgumentError('Parameter groupUniqueId is required.');
     }
@@ -169,10 +167,8 @@ class GroupsResource {
     core.String groupUniqueId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (groupUniqueId == null) {
       throw core.ArgumentError('Parameter groupUniqueId is required.');
     }

@@ -166,10 +166,8 @@ class GroupItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
@@ -337,10 +335,8 @@ class GroupsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
@@ -472,10 +468,8 @@ class GroupsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];

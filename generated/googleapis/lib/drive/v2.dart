@@ -628,10 +628,8 @@ class ChangesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
@@ -716,10 +714,8 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -877,10 +873,8 @@ class ChildrenResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
@@ -1109,10 +1103,8 @@ class CommentsResource {
     core.String fileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1229,10 +1221,8 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1284,10 +1274,8 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1469,10 +1457,8 @@ class DrivesResource {
     core.String requestId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId == null) {
       throw core.ArgumentError('Parameter requestId is required.');
@@ -1619,10 +1605,8 @@ class DrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
@@ -1720,10 +1704,8 @@ class FilesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -2160,10 +2142,8 @@ class FilesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (convert != null) {
       _queryParams['convert'] = ['${convert}'];
@@ -2485,10 +2465,8 @@ class FilesResource {
     core.bool useContentAsIndexableText,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -2860,10 +2838,8 @@ class FilesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3009,10 +2985,8 @@ class FilesResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3200,10 +3174,8 @@ class ParentsResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3511,10 +3483,8 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3691,10 +3661,8 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3783,10 +3751,8 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3961,10 +3927,8 @@ class PropertiesResource {
     core.String fileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4055,10 +4019,8 @@ class PropertiesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4117,10 +4079,8 @@ class PropertiesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4297,10 +4257,8 @@ class RepliesResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4429,10 +4387,8 @@ class RepliesResource {
     core.String replyId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4493,10 +4449,8 @@ class RepliesResource {
     core.String replyId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4711,10 +4665,8 @@ class RevisionsResource {
     core.String revisionId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4766,10 +4718,8 @@ class RevisionsResource {
     core.String revisionId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4910,10 +4860,8 @@ class TeamdrivesResource {
     core.String requestId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId == null) {
       throw core.ArgumentError('Parameter requestId is required.');
@@ -5022,10 +4970,8 @@ class TeamdrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert_1.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert_1.json.encode(request.toJson());
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }

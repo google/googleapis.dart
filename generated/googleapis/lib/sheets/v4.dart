@@ -120,10 +120,8 @@ class SpreadsheetsResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -166,10 +164,8 @@ class SpreadsheetsResource {
     Spreadsheet request, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -287,10 +283,8 @@ class SpreadsheetsResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -399,10 +393,8 @@ class SpreadsheetsDeveloperMetadataResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -459,10 +451,8 @@ class SpreadsheetsSheetsResource {
     core.int sheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -594,10 +584,8 @@ class SpreadsheetsValuesResource {
     core.String valueInputOption,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -669,10 +657,8 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -723,10 +709,8 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -879,10 +863,8 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -931,10 +913,8 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -983,10 +963,8 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -1039,10 +1017,8 @@ class SpreadsheetsValuesResource {
     core.String range, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -1256,10 +1232,8 @@ class SpreadsheetsValuesResource {
     core.String valueInputOption,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }

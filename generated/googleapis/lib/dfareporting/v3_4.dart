@@ -549,10 +549,8 @@ class AccountUserProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -714,10 +712,8 @@ class AccountUserProfilesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -767,10 +763,8 @@ class AccountUserProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -972,10 +966,8 @@ class AccountsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1024,10 +1016,8 @@ class AccountsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1125,10 +1115,8 @@ class AdsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1387,10 +1375,8 @@ class AdsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1438,10 +1424,8 @@ class AdsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1584,10 +1568,8 @@ class AdvertiserGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1730,10 +1712,8 @@ class AdvertiserGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1783,10 +1763,8 @@ class AdvertiserGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1887,10 +1865,8 @@ class AdvertiserLandingPagesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2058,10 +2034,8 @@ class AdvertiserLandingPagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2111,10 +2085,8 @@ class AdvertiserLandingPagesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2214,10 +2186,8 @@ class AdvertisersResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2405,10 +2375,8 @@ class AdvertisersResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2458,10 +2426,8 @@ class AdvertisersResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2567,10 +2533,8 @@ class CampaignCreativeAssociationsResource {
     core.String campaignId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2747,10 +2711,8 @@ class CampaignsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2940,10 +2902,8 @@ class CampaignsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2992,10 +2952,8 @@ class CampaignsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3532,10 +3490,8 @@ class ContentCategoriesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3678,10 +3634,8 @@ class ContentCategoriesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3731,10 +3685,8 @@ class ContentCategoriesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3786,10 +3738,8 @@ class ConversionsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3835,10 +3785,8 @@ class ConversionsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3990,10 +3938,8 @@ class CreativeAssetsResource {
     core.String $fields,
     commons.Media uploadMedia,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4174,10 +4120,8 @@ class CreativeFieldValuesResource {
     core.String creativeFieldId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4331,10 +4275,8 @@ class CreativeFieldValuesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4392,10 +4334,8 @@ class CreativeFieldValuesResource {
     core.String creativeFieldId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4545,10 +4485,8 @@ class CreativeFieldsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4699,10 +4637,8 @@ class CreativeFieldsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4752,10 +4688,8 @@ class CreativeFieldsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4855,10 +4789,8 @@ class CreativeGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5016,10 +4948,8 @@ class CreativeGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5069,10 +4999,8 @@ class CreativeGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5171,10 +5099,8 @@ class CreativesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5380,10 +5306,8 @@ class CreativesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5432,10 +5356,8 @@ class CreativesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5486,10 +5408,8 @@ class CustomEventsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5548,10 +5468,8 @@ class DimensionValuesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5657,10 +5575,8 @@ class DirectorySitesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5919,10 +5835,8 @@ class DynamicTargetingKeysResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6137,10 +6051,8 @@ class EventTagsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6317,10 +6229,8 @@ class EventTagsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6369,10 +6279,8 @@ class EventTagsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6716,10 +6624,8 @@ class FloodlightActivitiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6925,10 +6831,8 @@ class FloodlightActivitiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6978,10 +6882,8 @@ class FloodlightActivitiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7082,10 +6984,8 @@ class FloodlightActivityGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7258,10 +7158,8 @@ class FloodlightActivityGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7311,10 +7209,8 @@ class FloodlightActivityGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7468,10 +7364,8 @@ class FloodlightConfigurationsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7521,10 +7415,8 @@ class FloodlightConfigurationsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8661,10 +8553,8 @@ class PlacementGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8910,10 +8800,8 @@ class PlacementGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8963,10 +8851,8 @@ class PlacementGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9112,10 +8998,8 @@ class PlacementStrategiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9259,10 +9143,8 @@ class PlacementStrategiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9312,10 +9194,8 @@ class PlacementStrategiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9475,10 +9355,8 @@ class PlacementsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9736,10 +9614,8 @@ class PlacementsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9788,10 +9664,8 @@ class PlacementsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10284,10 +10158,8 @@ class RemarketingListSharesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10337,10 +10209,8 @@ class RemarketingListSharesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10440,10 +10310,8 @@ class RemarketingListsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10600,10 +10468,8 @@ class RemarketingListsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10653,10 +10519,8 @@ class RemarketingListsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10804,10 +10668,8 @@ class ReportsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10939,10 +10801,8 @@ class ReportsResource {
     core.String reportId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11048,10 +10908,8 @@ class ReportsResource {
     core.String reportId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11109,10 +10967,8 @@ class ReportsCompatibleFieldsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11368,10 +11224,8 @@ class SitesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11576,10 +11430,8 @@ class SitesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11628,10 +11480,8 @@ class SitesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11729,10 +11579,8 @@ class SizesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11902,10 +11750,8 @@ class SubaccountsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12048,10 +11894,8 @@ class SubaccountsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12101,10 +11945,8 @@ class SubaccountsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12360,10 +12202,8 @@ class TargetingTemplatesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12512,10 +12352,8 @@ class TargetingTemplatesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12565,10 +12403,8 @@ class TargetingTemplatesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12988,10 +12824,8 @@ class UserRolesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13146,10 +12980,8 @@ class UserRolesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13198,10 +13030,8 @@ class UserRolesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _body;
-    if (request != null) {
-      _body = convert.json.encode(request.toJson());
-    }
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
