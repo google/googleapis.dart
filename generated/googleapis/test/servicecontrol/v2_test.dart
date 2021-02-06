@@ -527,6 +527,7 @@ api.CheckRequest buildCheckRequest() {
   buildCounterCheckRequest++;
   if (buildCounterCheckRequest < 3) {
     o.attributes = buildAttributeContext();
+    o.flags = 'foo';
     o.resources = buildUnnamed4033();
     o.serviceConfigId = 'foo';
   }
@@ -538,6 +539,7 @@ void checkCheckRequest(api.CheckRequest o) {
   buildCounterCheckRequest++;
   if (buildCounterCheckRequest < 3) {
     checkAttributeContext(o.attributes as api.AttributeContext);
+    unittest.expect(o.flags, unittest.equals('foo'));
     checkUnnamed4033(o.resources);
     unittest.expect(o.serviceConfigId, unittest.equals('foo'));
   }

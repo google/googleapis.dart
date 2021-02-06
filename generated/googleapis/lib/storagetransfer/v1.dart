@@ -597,7 +597,8 @@ class TransferOperationsResource {
 /// [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
 ///
 /// For information on our data retention policy for user credentials, see
-/// \[User credentials\](data-retention#user-credentials).
+/// \[User
+/// credentials\](/storage-transfer/docs/data-retention#user-credentials).
 class AwsAccessKey {
   /// AWS access key ID.
   ///
@@ -643,7 +644,8 @@ class AwsS3Data {
   /// AWS access key used to sign the API requests to the AWS S3 bucket.
   /// Permissions on the bucket must be granted to the access ID of the AWS
   /// access key. For information on our data retention policy for user
-  /// credentials, see \[User credentials\](data-retention#user-credentials).
+  /// credentials, see \[User
+  /// credentials\](/storage-transfer/docs/data-retention#user-credentials).
   ///
   /// Required.
   AwsAccessKey awsAccessKey;
@@ -703,7 +705,7 @@ class AzureBlobStorageData {
   ///
   /// Credentials used to authenticate API requests to Azure. For information on
   /// our data retention policy for user credentials, see \[User
-  /// credentials\](data-retention#user-credentials).
+  /// credentials\](/storage-transfer/docs/data-retention#user-credentials).
   ///
   /// Required.
   AzureCredentials azureCredentials;
@@ -762,7 +764,8 @@ class AzureBlobStorageData {
 }
 
 /// Azure credentials For information on our data retention policy for user
-/// credentials, see \[User credentials\](data-retention#user-credentials).
+/// credentials, see \[User
+/// credentials\](/storage-transfer/docs/data-retention#user-credentials).
 class AzureCredentials {
   /// Azure shared access signature.
   ///
@@ -1305,34 +1308,48 @@ class NotificationConfig {
 /// of Cloud Storage objects, the `LastModified` field of S3 objects, and the
 /// `Last-Modified` header of Azure blobs.
 class ObjectConditions {
-  /// `exclude_prefixes` must follow the requirements described for
-  /// include_prefixes.
+  /// If you specify `exclude_prefixes`, Storage Transfer Service uses the items
+  /// in the `exclude_prefixes` array to determine which objects to exclude from
+  /// a transfer.
   ///
-  /// The max size of `exclude_prefixes` is 1000.
+  /// Objects must not start with one of the matching `exclude_prefixes` for
+  /// inclusion in a transfer. The following are requirements of
+  /// `exclude_prefixes`: * Each exclude-prefix can contain any sequence of
+  /// Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and
+  /// must not contain Carriage Return or Line Feed characters. Wildcard
+  /// matching and regular expression matching are not supported. * Each
+  /// exclude-prefix must omit the leading slash. For example, to exclude the
+  /// object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the
+  /// exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix
+  /// values can be empty, if specified. * Each exclude-prefix must exclude a
+  /// distinct portion of the object namespace. No exclude-prefix may be a
+  /// prefix of another exclude-prefix. * If include_prefixes is specified, then
+  /// each exclude-prefix must start with the value of a path explicitly
+  /// included by `include_prefixes`. The max size of `exclude_prefixes` is
+  /// 1000. For more information, see \[Filtering objects from
+  /// transfers\](/storage-transfer/docs/filtering-objects-from-transfers).
   core.List<core.String> excludePrefixes;
 
-  /// If `include_prefixes` is specified, objects that satisfy the object
-  /// conditions must have names that start with one of the `include_prefixes`
-  /// and that do not start with any of the exclude_prefixes.
+  /// If you specify `include_prefixes`, Storage Transfer Service uses the items
+  /// in the `include_prefixes` array to determine which objects to include in a
+  /// transfer.
   ///
-  /// If `include_prefixes` is not specified, all objects except those that have
-  /// names starting with one of the `exclude_prefixes` must satisfy the object
-  /// conditions. Requirements: * Each include-prefix and exclude-prefix can
-  /// contain any sequence of Unicode characters, to a max length of 1024 bytes
-  /// when UTF8-encoded, and must not contain Carriage Return or Line Feed
-  /// characters. Wildcard matching and regular expression matching are not
-  /// supported. * Each include-prefix and exclude-prefix must omit the leading
-  /// slash. For example, to include the `requests.gz` object in a transfer from
-  /// `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include prefix
-  /// as `logs/y=2015/requests.gz`. * None of the include-prefix or the
-  /// exclude-prefix values can be empty, if specified. * Each include-prefix
-  /// must include a distinct portion of the object namespace. No include-prefix
-  /// may be a prefix of another include-prefix. * Each exclude-prefix must
-  /// exclude a distinct portion of the object namespace. No exclude-prefix may
-  /// be a prefix of another exclude-prefix. * If `include_prefixes` is
-  /// specified, then each exclude-prefix must start with the value of a path
-  /// explicitly included by `include_prefixes`. The max size of
-  /// `include_prefixes` is 1000.
+  /// Objects must start with one of the matching `include_prefixes` for
+  /// inclusion in the transfer. If exclude_prefixes is specified, objects must
+  /// not start with any of the `exclude_prefixes` specified for inclusion in
+  /// the transfer. The following are requirements of `include_prefixes`: * Each
+  /// include-prefix can contain any sequence of Unicode characters, to a max
+  /// length of 1024 bytes when UTF8-encoded, and must not contain Carriage
+  /// Return or Line Feed characters. Wildcard matching and regular expression
+  /// matching are not supported. * Each include-prefix must omit the leading
+  /// slash. For example, to include the object
+  /// `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix
+  /// as `logs/y=2015/requests.gz`. * None of the include-prefix values can be
+  /// empty, if specified. * Each include-prefix must include a distinct portion
+  /// of the object namespace. No include-prefix may be a prefix of another
+  /// include-prefix. The max size of `include_prefixes` is 1000. For more
+  /// information, see \[Filtering objects from
+  /// transfers\](/storage-transfer/docs/filtering-objects-from-transfers).
   core.List<core.String> includePrefixes;
 
   /// If specified, only objects with a "last modification time" before this

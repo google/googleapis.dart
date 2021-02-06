@@ -841,9 +841,10 @@ class AuthorizationInfo {
   /// The required IAM permission.
   core.String permission;
 
-  /// The resource being accessed, as a REST-style string.
+  /// The resource being accessed, as a REST-style or cloud resource string.
   ///
   /// For example: bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
+  /// or projects/PROJECTID/datasets/DATASETID
   core.String resource;
 
   /// Resource attributes used in IAM condition evaluation.
@@ -895,6 +896,11 @@ class CheckRequest {
   /// Describes attributes about the operation being executed by the service.
   AttributeContext attributes;
 
+  /// Contains a comma-separated list of flags.
+  ///
+  /// Optional.
+  core.String flags;
+
   /// Describes the resources and the policies applied to each resource.
   core.List<ResourceInfo> resources;
 
@@ -912,6 +918,9 @@ class CheckRequest {
       attributes = AttributeContext.fromJson(
           _json['attributes'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('flags')) {
+      flags = _json['flags'] as core.String;
+    }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
           .map<ResourceInfo>((value) => ResourceInfo.fromJson(
@@ -927,6 +936,9 @@ class CheckRequest {
     final _json = <core.String, core.Object>{};
     if (attributes != null) {
       _json['attributes'] = attributes.toJson();
+    }
+    if (flags != null) {
+      _json['flags'] = flags;
     }
     if (resources != null) {
       _json['resources'] = resources.map((value) => value.toJson()).toList();

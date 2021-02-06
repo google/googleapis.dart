@@ -19,7 +19,8 @@
 /// The Network Connectivity API will be home to various services which provide
 /// information pertaining to network connectivity.
 ///
-/// For more information, see <https://cloud.google.com/>
+/// For more information, see
+/// <https://cloud.google.com/network-connectivity/docs>
 ///
 /// Create an instance of [NetworkconnectivityApi] to access these resources:
 ///

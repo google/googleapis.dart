@@ -933,9 +933,10 @@ class AuthorizationInfo {
   /// The required IAM permission.
   core.String permission;
 
-  /// The resource being accessed, as a REST-style string.
+  /// The resource being accessed, as a REST-style or cloud resource string.
   ///
   /// For example: bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
+  /// or projects/PROJECTID/datasets/DATASETID
   core.String resource;
 
   /// Resource attributes used in IAM condition evaluation.

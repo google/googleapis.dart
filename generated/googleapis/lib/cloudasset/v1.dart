@@ -768,7 +768,7 @@ class V1Resource {
   /// [scope] - Required. A scope can be a project, a folder, or an
   /// organization. The search is limited to the IAM policies within the
   /// `scope`. The caller must be granted the
-  /// \[`cloudasset.assets.searchAllIamPolicies`\](http://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
+  /// \[`cloudasset.assets.searchAllIamPolicies`\](https://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
   /// permission on the desired scope. The allowed values are: *
   /// projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
   /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678") *
@@ -877,7 +877,7 @@ class V1Resource {
   /// [scope] - Required. A scope can be a project, a folder, or an
   /// organization. The search is limited to the resources within the `scope`.
   /// The caller must be granted the
-  /// \[`cloudasset.assets.searchAllResources`\](http://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
+  /// \[`cloudasset.assets.searchAllResources`\](https://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
   /// permission on the desired scope. The allowed values are: *
   /// projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
   /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678") *
@@ -918,7 +918,7 @@ class V1Resource {
   /// other method parameters, must be identical to those in the previous call.
   ///
   /// [query] - Optional. The query statement. See
-  /// [how to construct a query](http://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
+  /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
   /// resources within the specified `scope`. Examples: * `name:Important` to
   /// find Cloud resources whose name contains "Important" as a word. *
@@ -930,8 +930,16 @@ class V1Resource {
   /// labels contain "prod" as a key or value. * `labels.env:prod` to find Cloud
   /// resources that have a label "env" and its value is "prod". *
   /// `labels.env:*` to find Cloud resources that have a label "env". *
-  /// `Important` to find Cloud resources that contain "Important" as a word in
-  /// any of the searchable fields. * `Impor*` to find Cloud resources that
+  /// `kmsKey:key` to find Cloud resources encrypted with a customer-managed
+  /// encryption key whose name contains the word "key". * `state:ACTIVE` to
+  /// find Cloud resources whose state contains "ACTIVE" as a word. *
+  /// `createTime<1609459200` to find Cloud resources that were created before
+  /// "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
+  /// "2021-01-01 00:00:00 UTC" in seconds. * `updateTime>1609459200` to find
+  /// Cloud resources that were updated after "2021-01-01 00:00:00 UTC".
+  /// 1609459200 is the epoch timestamp of "2021-01-01 00:00:00 UTC" in seconds.
+  /// * `Important` to find Cloud resources that contain "Important" as a word
+  /// in any of the searchable fields. * `Impor*` to find Cloud resources that
   /// contain "Impor" as a prefix of any word in any of the searchable fields. *
   /// `Important location:(us-west1 OR global)` to find Cloud resources that
   /// contain "Important" as a word in any of the searchable fields and are also
@@ -4069,9 +4077,7 @@ class IamPolicyAnalysisOutputConfig {
   }
 }
 
-/// ## LINT.IfChange Keep in sync with ##
-/// logs/proto/cloud_asset_inventory/iam_policy_analyzer_log.proto IAM policy
-/// analysis query message.
+/// ## IAM policy analysis query message.
 class IamPolicyAnalysisQuery {
   /// Specifies roles or permissions for analysis.
   ///
@@ -4349,8 +4355,6 @@ class IamPolicySearchResult {
   ///
   /// It contains additional information to explain why the search result
   /// matches the query.
-  ///
-  /// Optional.
   Explanation explanation;
 
   /// The IAM policy directly set on the given resource.
@@ -4364,8 +4368,6 @@ class IamPolicySearchResult {
   /// `policy:roles/compute.admin` - query by the policy contained roles'
   /// included permissions. Example:
   /// `policy.role.permissions:compute.instances.create`
-  ///
-  /// Required.
   Policy policy;
 
   /// The project that the associated GCP resource belongs to, in the form of
@@ -4373,11 +4375,9 @@ class IamPolicySearchResult {
   ///
   /// If an IAM policy is set on a resource (like VM instance, Cloud Storage
   /// bucket), the project field will indicate the project that contains the
-  /// resource. If an IAM policy is set on a folder or orgnization, the project
-  /// field will be empty. To search against the `project`: * specify the
-  /// `scope` field as this project in your search request.
-  ///
-  /// Optional.
+  /// resource. If an IAM policy is set on a folder or orgnization, this field
+  /// will be empty. To search against the `project`: * specify the `scope`
+  /// field as this project in your search request.
   core.String project;
 
   /// The full resource name of the resource associated with this IAM policy.
@@ -4388,8 +4388,6 @@ class IamPolicySearchResult {
   /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `resource`: * use a field
   /// query. Example: `resource:organizations/123`
-  ///
-  /// Required.
   core.String resource;
 
   IamPolicySearchResult();
@@ -5294,15 +5292,13 @@ class ResourceSearchResult {
   /// List or Get APIs provided by the corresponding GCP service (e.g., Compute
   /// Engine). see
   /// [API references and supported searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
-  /// for more information. You can search values of these fields through free
-  /// text search. However, you should not consume the field programically as
-  /// the field names and values may change as the GCP service updates to a new
-  /// incompatible API version. To search against the `additional_attributes`: *
-  /// use a free text query to match the attributes values. Example: to search
-  /// `additional_attributes = { dnsName: "foobar" }`, you can issue a query
-  /// `foobar`.
-  ///
-  /// Optional.
+  /// to see which fields are included. You can search values of these fields
+  /// through free text search. However, you should not consume the field
+  /// programically as the field names and values may change as the GCP service
+  /// updates to a new incompatible API version. To search against the
+  /// `additional_attributes`: * use a free text query to match the attributes
+  /// values. Example: to search `additional_attributes = { dnsName: "foobar"
+  /// }`, you can issue a query `foobar`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5312,8 +5308,6 @@ class ResourceSearchResult {
   ///
   /// Example: `compute.googleapis.com/Disk`. To search against the
   /// `asset_type`: * specify the `asset_type` field in your search request.
-  ///
-  /// Required.
   core.String assetType;
 
   /// The create timestamp of this resource, at which the resource was created.
@@ -5322,8 +5316,6 @@ class ResourceSearchResult {
   /// field is available only when the resource's proto contains it. To search
   /// against `create_time`: * use a field query (value in seconds). Example:
   /// `createTime >= 1594294238`
-  ///
-  /// Optional.
   core.String createTime;
 
   /// One or more paragraphs of text description of this resource.
@@ -5332,8 +5324,6 @@ class ResourceSearchResult {
   /// the resource's proto contains it. To search against the `description`: *
   /// use a field query. Example: `description:"important instance"` * use a
   /// free text query. Example: `"important instance"`
-  ///
-  /// Optional.
   core.String description;
 
   /// The display name of this resource.
@@ -5342,8 +5332,6 @@ class ResourceSearchResult {
   /// search against the `display_name`: * use a field query. Example:
   /// `displayName:"My Instance"` * use a free text query. Example: `"My
   /// Instance"`
-  ///
-  /// Optional.
   core.String displayName;
 
   /// The folder(s) that this resource belongs to, in the form of
@@ -5353,8 +5341,6 @@ class ResourceSearchResult {
   /// To search against `folders`: * use a field query. Example: `folders:(123
   /// OR 456)` * specify the `scope` field as this folder in your search
   /// request.
-  ///
-  /// Optional.
   core.List<core.String> folders;
 
   /// The Cloud KMS
@@ -5366,8 +5352,6 @@ class ResourceSearchResult {
   /// This field is available only when the resource's proto contains it. To
   /// search against the `kms_key`: * use a field query. Example: `kmsKey:key` *
   /// use a free text query. Example: `key`
-  ///
-  /// Optional.
   core.String kmsKey;
 
   /// Labels associated with this resource.
@@ -5380,8 +5364,6 @@ class ResourceSearchResult {
   /// given label. Example: `labels.env:prod` - query by a given label's
   /// existence. Example: `labels.env:*` * use a free text query. Example:
   /// `prod`
-  ///
-  /// Optional.
   core.Map<core.String, core.String> labels;
 
   /// Location can be `global`, regional like `us-east1`, or zonal like
@@ -5390,8 +5372,6 @@ class ResourceSearchResult {
   /// This field is available only when the resource's proto contains it. To
   /// search against the `location`: * use a field query. Example:
   /// `location:us-west*` * use a free text query. Example: `us-west*`
-  ///
-  /// Optional.
   core.String location;
 
   /// The full resource name of this resource.
@@ -5402,8 +5382,6 @@ class ResourceSearchResult {
   /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `name`: * use a field query.
   /// Example: `name:instance1` * use a free text query. Example: `instance1`
-  ///
-  /// Required.
   core.String name;
 
   /// Network tags associated with this resource.
@@ -5415,19 +5393,15 @@ class ResourceSearchResult {
   /// proto contains it. To search against the `network_tags`: * use a field
   /// query. Example: `networkTags:internal` * use a free text query. Example:
   /// `internal`
-  ///
-  /// Optional.
   core.List<core.String> networkTags;
 
   /// The organization that this resource belongs to, in the form of
   /// organizations/{ORGANIZATION_NUMBER}.
   ///
-  /// This field is available when the resource belongs to a organization. To
+  /// This field is available when the resource belongs to an organization. To
   /// search against `organization`: * use a field query. Example:
   /// `organization:123` * specify the `scope` field as this organization in
   /// your search request.
-  ///
-  /// Optional.
   core.String organization;
 
   /// The project that this resource belongs to, in the form of
@@ -5436,8 +5410,6 @@ class ResourceSearchResult {
   /// This field is available when the resource belongs to a project. To search
   /// against `project`: * use a field query. Example: `project:12345` * specify
   /// the `scope` field as this project in your search request.
-  ///
-  /// Optional.
   core.String project;
 
   /// The state of this resource.
@@ -5455,8 +5427,6 @@ class ResourceSearchResult {
   /// [API Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
   /// To search against the `state`: * use a field query. Example:
   /// `state:RUNNING` * use a free text query. Example: `RUNNING`
-  ///
-  /// Optional.
   core.String state;
 
   /// The last update timestamp of this resource, at which the resource was last
@@ -5466,8 +5436,6 @@ class ResourceSearchResult {
   /// field is available only when the resource's proto contains it. To search
   /// against `update_time`: * use a field query (value in seconds). Example:
   /// `updateTime < 1594294238`
-  ///
-  /// Optional.
   core.String updateTime;
 
   ResourceSearchResult();

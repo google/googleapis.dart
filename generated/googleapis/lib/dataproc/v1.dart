@@ -1596,8 +1596,9 @@ class ProjectsRegionsClustersResource {
   /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two CreateClusterRequest requests with the same id, then
-  /// the second request will be ignored and the first
+  /// server receives two CreateClusterRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s
+  /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.It is recommended to always set this value to a UUID
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
@@ -1670,8 +1671,9 @@ class ProjectsRegionsClustersResource {
   /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
   ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two DeleteClusterRequest requests with the same id, then
-  /// the second request will be ignored and the first
+  /// server receives two DeleteClusterRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteClusterRequest)s
+  /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.It is recommended to always set this value to a UUID
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
@@ -2084,8 +2086,9 @@ class ProjectsRegionsClustersResource {
   /// supported on Dataproc image versions 1.2 and higher.
   ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
-  /// server receives two UpdateClusterRequest requests with the same id, then
-  /// the second request will be ignored and the first
+  /// server receives two UpdateClusterRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.UpdateClusterRequest)s
+  /// with the same id, then the second request will be ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.It is recommended to always set this value to a UUID
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
@@ -2222,6 +2225,132 @@ class ProjectsRegionsClustersResource {
       queryParams: _queryParams,
     );
     return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Starts a cluster in a project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Google Cloud Platform project the
+  /// cluster belongs to.
+  ///
+  /// [region] - Required. The Dataproc region in which to handle the request.
+  ///
+  /// [clusterName] - Required. The cluster name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> start(
+    StartClusterRequest request,
+    core.String projectId,
+    core.String region,
+    core.String clusterName, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (projectId == null) {
+      throw core.ArgumentError('Parameter projectId is required.');
+    }
+    if (region == null) {
+      throw core.ArgumentError('Parameter region is required.');
+    }
+    if (clusterName == null) {
+      throw core.ArgumentError('Parameter clusterName is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{};
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    final _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/clusters/' +
+        commons.Escaper.ecapeVariable('$clusterName') +
+        ':start';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops a cluster in a project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Google Cloud Platform project the
+  /// cluster belongs to.
+  ///
+  /// [region] - Required. The Dataproc region in which to handle the request.
+  ///
+  /// [clusterName] - Required. The cluster name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> stop(
+    StopClusterRequest request,
+    core.String projectId,
+    core.String region,
+    core.String clusterName, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (projectId == null) {
+      throw core.ArgumentError('Parameter projectId is required.');
+    }
+    if (region == null) {
+      throw core.ArgumentError('Parameter region is required.');
+    }
+    if (clusterName == null) {
+      throw core.ArgumentError('Parameter clusterName is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{};
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    final _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/clusters/' +
+        commons.Escaper.ecapeVariable('$clusterName') +
+        ':stop';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4469,6 +4598,11 @@ class ClusterConfig {
   /// Optional.
   InstanceGroupConfig masterConfig;
 
+  /// Metastore configuration.
+  ///
+  /// Optional.
+  MetastoreConfig metastoreConfig;
+
   /// The Compute Engine config settings for additional worker instances in a
   /// cluster.
   ///
@@ -4541,6 +4675,10 @@ class ClusterConfig {
       masterConfig = InstanceGroupConfig.fromJson(
           _json['masterConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('metastoreConfig')) {
+      metastoreConfig = MetastoreConfig.fromJson(
+          _json['metastoreConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('secondaryWorkerConfig')) {
       secondaryWorkerConfig = InstanceGroupConfig.fromJson(
           _json['secondaryWorkerConfig']
@@ -4589,6 +4727,9 @@ class ClusterConfig {
     }
     if (masterConfig != null) {
       _json['masterConfig'] = masterConfig.toJson();
+    }
+    if (metastoreConfig != null) {
+      _json['metastoreConfig'] = metastoreConfig.toJson();
     }
     if (secondaryWorkerConfig != null) {
       _json['secondaryWorkerConfig'] = secondaryWorkerConfig.toJson();
@@ -7329,6 +7470,32 @@ class ManagedGroupConfig {
   }
 }
 
+/// Specifies a Metastore configuration.
+class MetastoreConfig {
+  /// Resource name of an existing Dataproc Metastore service.Example:
+  /// projects/\[project_id\]/locations/\[dataproc_region\]/services/\[service-name\]
+  ///
+  /// Required.
+  core.String dataprocMetastoreService;
+
+  MetastoreConfig();
+
+  MetastoreConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('dataprocMetastoreService')) {
+      dataprocMetastoreService =
+          _json['dataprocMetastoreService'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (dataprocMetastoreService != null) {
+      _json['dataprocMetastoreService'] = dataprocMetastoreService;
+    }
+    return _json;
+  }
+}
+
 /// Node Group Affinity for clusters using sole-tenant node groups.
 class NodeGroupAffinity {
   /// The URI of a sole-tenant node group resource
@@ -8804,6 +8971,51 @@ class SparkSqlJob {
   }
 }
 
+/// A request to start a cluster.
+class StartClusterRequest {
+  /// Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND)
+  /// if a cluster with the specified UUID does not exist.
+  ///
+  /// Optional.
+  core.String clusterUuid;
+
+  /// A unique id used to identify the request.
+  ///
+  /// If the server receives two StartClusterRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.StartClusterRequest)s
+  /// with the same id, then the second request will be ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.Recommendation: Set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
+  core.String requestId;
+
+  StartClusterRequest();
+
+  StartClusterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterUuid')) {
+      clusterUuid = _json['clusterUuid'] as core.String;
+    }
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (clusterUuid != null) {
+      _json['clusterUuid'] = clusterUuid;
+    }
+    if (requestId != null) {
+      _json['requestId'] = requestId;
+    }
+    return _json;
+  }
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -8866,6 +9078,51 @@ class Status {
   }
 }
 
+/// A request to stop a cluster.
+class StopClusterRequest {
+  /// Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND)
+  /// if a cluster with the specified UUID does not exist.
+  ///
+  /// Optional.
+  core.String clusterUuid;
+
+  /// A unique id used to identify the request.
+  ///
+  /// If the server receives two StopClusterRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.StopClusterRequest)s
+  /// with the same id, then the second request will be ignored and the first
+  /// google.longrunning.Operation created and stored in the backend is
+  /// returned.Recommendation: Set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
+  core.String requestId;
+
+  StopClusterRequest();
+
+  StopClusterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterUuid')) {
+      clusterUuid = _json['clusterUuid'] as core.String;
+    }
+    if (_json.containsKey('requestId')) {
+      requestId = _json['requestId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (clusterUuid != null) {
+      _json['clusterUuid'] = clusterUuid;
+    }
+    if (requestId != null) {
+      _json['requestId'] = requestId;
+    }
+    return _json;
+  }
+}
+
 /// A request to submit a job.
 class SubmitJobRequest {
   /// The job resource.
@@ -8875,10 +9132,11 @@ class SubmitJobRequest {
 
   /// A unique id used to identify the request.
   ///
-  /// If the server receives two SubmitJobRequest requests with the same id,
-  /// then the second request will be ignored and the first Job created and
-  /// stored in the backend is returned.It is recommended to always set this
-  /// value to a UUID
+  /// If the server receives two SubmitJobRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.SubmitJobRequest)s
+  /// with the same id, then the second request will be ignored and the first
+  /// Job created and stored in the backend is returned.It is recommended to
+  /// always set this value to a UUID
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
