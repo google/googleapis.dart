@@ -183,39 +183,24 @@ class AssetlinksResource {
     core.String target_web_site,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (relation != null) {
-      _queryParams['relation'] = [relation];
-    }
-    if (source_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams['source.androidApp.certificate.sha256Fingerprint'] = [
-        source_androidApp_certificate_sha256Fingerprint
-      ];
-    }
-    if (source_androidApp_packageName != null) {
-      _queryParams['source.androidApp.packageName'] = [
-        source_androidApp_packageName
-      ];
-    }
-    if (source_web_site != null) {
-      _queryParams['source.web.site'] = [source_web_site];
-    }
-    if (target_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams['target.androidApp.certificate.sha256Fingerprint'] = [
-        target_androidApp_certificate_sha256Fingerprint
-      ];
-    }
-    if (target_androidApp_packageName != null) {
-      _queryParams['target.androidApp.packageName'] = [
-        target_androidApp_packageName
-      ];
-    }
-    if (target_web_site != null) {
-      _queryParams['target.web.site'] = [target_web_site];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (relation != null) 'relation': [relation],
+      if (source_androidApp_certificate_sha256Fingerprint != null)
+        'source.androidApp.certificate.sha256Fingerprint': [
+          source_androidApp_certificate_sha256Fingerprint
+        ],
+      if (source_androidApp_packageName != null)
+        'source.androidApp.packageName': [source_androidApp_packageName],
+      if (source_web_site != null) 'source.web.site': [source_web_site],
+      if (target_androidApp_certificate_sha256Fingerprint != null)
+        'target.androidApp.certificate.sha256Fingerprint': [
+          target_androidApp_certificate_sha256Fingerprint
+        ],
+      if (target_androidApp_packageName != null)
+        'target.androidApp.packageName': [target_androidApp_packageName],
+      if (target_web_site != null) 'target.web.site': [target_web_site],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/assetlinks:check';
 
@@ -314,26 +299,17 @@ class StatementsResource {
     core.String source_web_site,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (relation != null) {
-      _queryParams['relation'] = [relation];
-    }
-    if (source_androidApp_certificate_sha256Fingerprint != null) {
-      _queryParams['source.androidApp.certificate.sha256Fingerprint'] = [
-        source_androidApp_certificate_sha256Fingerprint
-      ];
-    }
-    if (source_androidApp_packageName != null) {
-      _queryParams['source.androidApp.packageName'] = [
-        source_androidApp_packageName
-      ];
-    }
-    if (source_web_site != null) {
-      _queryParams['source.web.site'] = [source_web_site];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (relation != null) 'relation': [relation],
+      if (source_androidApp_certificate_sha256Fingerprint != null)
+        'source.androidApp.certificate.sha256Fingerprint': [
+          source_androidApp_certificate_sha256Fingerprint
+        ],
+      if (source_androidApp_packageName != null)
+        'source.androidApp.packageName': [source_androidApp_packageName],
+      if (source_web_site != null) 'source.web.site': [source_web_site],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/statements:list';
 

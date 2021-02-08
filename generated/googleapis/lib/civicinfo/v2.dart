@@ -85,13 +85,10 @@ class DivisionsResource {
     core.String query,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'civicinfo/v2/divisions';
 
@@ -127,10 +124,9 @@ class ElectionsResource {
   async.Future<ElectionsQueryResponse> electionQuery({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'civicinfo/v2/elections';
 
@@ -182,23 +178,17 @@ class ElectionsResource {
     core.bool returnAllAvailableData,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
     }
-    _queryParams['address'] = [address];
-    if (electionId != null) {
-      _queryParams['electionId'] = [electionId];
-    }
-    if (officialOnly != null) {
-      _queryParams['officialOnly'] = ['${officialOnly}'];
-    }
-    if (returnAllAvailableData != null) {
-      _queryParams['returnAllAvailableData'] = ['${returnAllAvailableData}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'address': [address],
+      if (electionId != null) 'electionId': [electionId],
+      if (officialOnly != null) 'officialOnly': ['${officialOnly}'],
+      if (returnAllAvailableData != null)
+        'returnAllAvailableData': ['${returnAllAvailableData}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'civicinfo/v2/voterinfo';
 
@@ -254,22 +244,13 @@ class RepresentativesResource {
     core.List<core.String> roles,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (address != null) {
-      _queryParams['address'] = [address];
-    }
-    if (includeOffices != null) {
-      _queryParams['includeOffices'] = ['${includeOffices}'];
-    }
-    if (levels != null) {
-      _queryParams['levels'] = levels;
-    }
-    if (roles != null) {
-      _queryParams['roles'] = roles;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (address != null) 'address': [address],
+      if (includeOffices != null) 'includeOffices': ['${includeOffices}'],
+      if (levels != null) 'levels': levels,
+      if (roles != null) 'roles': roles,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'civicinfo/v2/representatives';
 
@@ -322,19 +303,12 @@ class RepresentativesResource {
     if (ocdId == null) {
       throw core.ArgumentError('Parameter ocdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (levels != null) {
-      _queryParams['levels'] = levels;
-    }
-    if (recursive != null) {
-      _queryParams['recursive'] = ['${recursive}'];
-    }
-    if (roles != null) {
-      _queryParams['roles'] = roles;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (levels != null) 'levels': levels,
+      if (recursive != null) 'recursive': ['${recursive}'],
+      if (roles != null) 'roles': roles,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'civicinfo/v2/representatives/' +
         commons.Escaper.ecapeVariable('$ocdId');

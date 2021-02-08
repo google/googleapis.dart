@@ -362,28 +362,16 @@ class AcceleratorTypesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -438,10 +426,9 @@ class AcceleratorTypesResource {
     if (acceleratorType == null) {
       throw core.ArgumentError('Parameter acceleratorType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -546,25 +533,15 @@ class AcceleratorTypesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -675,28 +652,16 @@ class AddressesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -765,13 +730,10 @@ class AddressesResource {
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -828,10 +790,9 @@ class AddressesResource {
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -900,13 +861,10 @@ class AddressesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1009,25 +967,15 @@ class AddressesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1138,28 +1086,16 @@ class AutoscalersResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1228,13 +1164,10 @@ class AutoscalersResource {
     if (autoscaler == null) {
       throw core.ArgumentError('Parameter autoscaler is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1293,10 +1226,9 @@ class AutoscalersResource {
     if (autoscaler == null) {
       throw core.ArgumentError('Parameter autoscaler is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1366,13 +1298,10 @@ class AutoscalersResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1475,25 +1404,15 @@ class AutoscalersResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1570,16 +1489,11 @@ class AutoscalersResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (autoscaler != null) {
-      _queryParams['autoscaler'] = [autoscaler];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (autoscaler != null) 'autoscaler': [autoscaler],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1653,16 +1567,11 @@ class AutoscalersResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (autoscaler != null) {
-      _queryParams['autoscaler'] = [autoscaler];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (autoscaler != null) 'autoscaler': [autoscaler],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1737,13 +1646,10 @@ class BackendBucketsResource {
     if (backendBucket == null) {
       throw core.ArgumentError('Parameter backendBucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1807,13 +1713,10 @@ class BackendBucketsResource {
     if (backendBucket == null) {
       throw core.ArgumentError('Parameter backendBucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1878,17 +1781,14 @@ class BackendBucketsResource {
     if (backendBucket == null) {
       throw core.ArgumentError('Parameter backendBucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (keyName == null) {
       throw core.ArgumentError('Parameter keyName is required.');
     }
-    _queryParams['keyName'] = [keyName];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'keyName': [keyName],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1939,10 +1839,9 @@ class BackendBucketsResource {
     if (backendBucket == null) {
       throw core.ArgumentError('Parameter backendBucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2003,13 +1902,10 @@ class BackendBucketsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2104,25 +2000,15 @@ class BackendBucketsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2193,13 +2079,10 @@ class BackendBucketsResource {
     if (backendBucket == null) {
       throw core.ArgumentError('Parameter backendBucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2268,13 +2151,10 @@ class BackendBucketsResource {
     if (backendBucket == null) {
       throw core.ArgumentError('Parameter backendBucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2348,13 +2228,10 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2460,28 +2337,16 @@ class BackendServicesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2543,13 +2408,10 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2614,17 +2476,14 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (keyName == null) {
       throw core.ArgumentError('Parameter keyName is required.');
     }
-    _queryParams['keyName'] = [keyName];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'keyName': [keyName],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2675,10 +2534,9 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2737,10 +2595,9 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2805,13 +2662,10 @@ class BackendServicesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2906,25 +2760,15 @@ class BackendServicesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2995,13 +2839,10 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3068,13 +2909,10 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3146,13 +2984,10 @@ class BackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3262,28 +3097,16 @@ class DiskTypesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3340,10 +3163,9 @@ class DiskTypesResource {
     if (diskType == null) {
       throw core.ArgumentError('Parameter diskType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3446,25 +3268,15 @@ class DiskTypesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3549,13 +3361,10 @@ class DisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3662,28 +3471,16 @@ class DisksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3763,16 +3560,11 @@ class DisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (guestFlush != null) {
-      _queryParams['guestFlush'] = ['${guestFlush}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (guestFlush != null) 'guestFlush': ['${guestFlush}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3847,13 +3639,10 @@ class DisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3912,10 +3701,9 @@ class DisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -3977,15 +3765,11 @@ class DisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4064,16 +3848,11 @@ class DisksResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if (sourceImage != null) {
-      _queryParams['sourceImage'] = [sourceImage];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (sourceImage != null) 'sourceImage': [sourceImage],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4176,25 +3955,15 @@ class DisksResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4269,13 +4038,10 @@ class DisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4355,13 +4121,10 @@ class DisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4427,10 +4190,9 @@ class DisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4510,13 +4272,10 @@ class DisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4580,10 +4339,9 @@ class DisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4656,13 +4414,10 @@ class ExternalVpnGatewaysResource {
     if (externalVpnGateway == null) {
       throw core.ArgumentError('Parameter externalVpnGateway is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4711,10 +4466,9 @@ class ExternalVpnGatewaysResource {
     if (externalVpnGateway == null) {
       throw core.ArgumentError('Parameter externalVpnGateway is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4775,13 +4529,10 @@ class ExternalVpnGatewaysResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4876,25 +4627,15 @@ class ExternalVpnGatewaysResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -4949,10 +4690,9 @@ class ExternalVpnGatewaysResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -5007,10 +4747,9 @@ class ExternalVpnGatewaysResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -5082,18 +4821,12 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (replaceExistingAssociation != null) {
-      _queryParams['replaceExistingAssociation'] = [
-        '${replaceExistingAssociation}'
-      ];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (replaceExistingAssociation != null)
+        'replaceExistingAssociation': ['${replaceExistingAssociation}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5151,13 +4884,10 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5213,16 +4943,12 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if (sourceFirewallPolicy != null) {
-      _queryParams['sourceFirewallPolicy'] = [sourceFirewallPolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (sourceFirewallPolicy != null)
+        'sourceFirewallPolicy': [sourceFirewallPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5274,13 +5000,10 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy');
@@ -5317,10 +5040,9 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy');
@@ -5362,13 +5084,10 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5412,15 +5131,11 @@ class FirewallPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -5462,13 +5177,10 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (priority != null) {
-      _queryParams['priority'] = ['${priority}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (priority != null) 'priority': ['${priority}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5525,16 +5237,11 @@ class FirewallPoliciesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parentId != null) {
-      _queryParams['parentId'] = [parentId];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parentId != null) 'parentId': [parentId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'locations/global/firewallPolicies';
 
@@ -5622,28 +5329,16 @@ class FirewallPoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (parentId != null) {
-      _queryParams['parentId'] = [parentId];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parentId != null) 'parentId': [parentId],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'locations/global/firewallPolicies';
 
@@ -5677,13 +5372,10 @@ class FirewallPoliciesResource {
     core.String targetResource,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (targetResource != null) {
-      _queryParams['targetResource'] = [targetResource];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (targetResource != null) 'targetResource': [targetResource],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'locations/global/firewallPolicies/listAssociations';
 
@@ -5737,16 +5429,11 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parentId != null) {
-      _queryParams['parentId'] = [parentId];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parentId != null) 'parentId': [parentId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5803,13 +5490,10 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy');
@@ -5869,16 +5553,11 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (priority != null) {
-      _queryParams['priority'] = ['${priority}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (priority != null) 'priority': ['${priority}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5934,16 +5613,11 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -5998,16 +5672,11 @@ class FirewallPoliciesResource {
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (priority != null) {
-      _queryParams['priority'] = ['${priority}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (priority != null) 'priority': ['${priority}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
@@ -6052,10 +5721,9 @@ class FirewallPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -6099,10 +5767,9 @@ class FirewallPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -6171,13 +5838,10 @@ class FirewallsResource {
     if (firewall == null) {
       throw core.ArgumentError('Parameter firewall is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6225,10 +5889,9 @@ class FirewallsResource {
     if (firewall == null) {
       throw core.ArgumentError('Parameter firewall is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6288,13 +5951,10 @@ class FirewallsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6388,25 +6048,15 @@ class FirewallsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6476,13 +6126,10 @@ class FirewallsResource {
     if (firewall == null) {
       throw core.ArgumentError('Parameter firewall is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6553,13 +6200,10 @@ class FirewallsResource {
     if (firewall == null) {
       throw core.ArgumentError('Parameter firewall is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6669,28 +6313,16 @@ class ForwardingRulesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6759,13 +6391,10 @@ class ForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6822,10 +6451,9 @@ class ForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -6895,13 +6523,10 @@ class ForwardingRulesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7005,25 +6630,15 @@ class ForwardingRulesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7104,13 +6719,10 @@ class ForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7189,13 +6801,10 @@ class ForwardingRulesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7276,13 +6885,10 @@ class ForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7354,13 +6960,10 @@ class GlobalAddressesResource {
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7410,10 +7013,9 @@ class GlobalAddressesResource {
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7473,13 +7075,10 @@ class GlobalAddressesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7573,25 +7172,15 @@ class GlobalAddressesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7660,13 +7249,10 @@ class GlobalForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7716,10 +7302,9 @@ class GlobalForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7780,13 +7365,10 @@ class GlobalForwardingRulesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7881,25 +7463,15 @@ class GlobalForwardingRulesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -7971,13 +7543,10 @@ class GlobalForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8033,10 +7602,9 @@ class GlobalForwardingRulesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8108,13 +7676,10 @@ class GlobalForwardingRulesResource {
     if (forwardingRule == null) {
       throw core.ArgumentError('Parameter forwardingRule is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8189,13 +7754,10 @@ class GlobalNetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8259,13 +7821,10 @@ class GlobalNetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8331,13 +7890,10 @@ class GlobalNetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8389,10 +7945,9 @@ class GlobalNetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8453,13 +8008,10 @@ class GlobalNetworkEndpointGroupsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8554,25 +8106,15 @@ class GlobalNetworkEndpointGroupsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8674,25 +8216,15 @@ class GlobalNetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8803,28 +8335,16 @@ class GlobalOperationsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8870,10 +8390,9 @@ class GlobalOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -8923,10 +8442,9 @@ class GlobalOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9021,25 +8539,15 @@ class GlobalOperationsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9101,10 +8609,9 @@ class GlobalOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9153,13 +8660,10 @@ class GlobalOrganizationOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parentId != null) {
-      _queryParams['parentId'] = [parentId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parentId != null) 'parentId': [parentId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
@@ -9202,13 +8706,10 @@ class GlobalOrganizationOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parentId != null) {
-      _queryParams['parentId'] = [parentId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parentId != null) 'parentId': [parentId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'locations/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
@@ -9296,28 +8797,16 @@ class GlobalOrganizationOperationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (parentId != null) {
-      _queryParams['parentId'] = [parentId];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parentId != null) 'parentId': [parentId],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'locations/global/operations';
 
@@ -9425,28 +8914,16 @@ class HealthChecksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9508,13 +8985,10 @@ class HealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9564,10 +9038,9 @@ class HealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9628,13 +9101,10 @@ class HealthChecksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9729,25 +9199,15 @@ class HealthChecksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9818,13 +9278,10 @@ class HealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9893,13 +9350,10 @@ class HealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -9968,13 +9422,10 @@ class HttpHealthChecksResource {
     if (httpHealthCheck == null) {
       throw core.ArgumentError('Parameter httpHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10024,10 +9475,9 @@ class HttpHealthChecksResource {
     if (httpHealthCheck == null) {
       throw core.ArgumentError('Parameter httpHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10088,13 +9538,10 @@ class HttpHealthChecksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10189,25 +9636,15 @@ class HttpHealthChecksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10278,13 +9715,10 @@ class HttpHealthChecksResource {
     if (httpHealthCheck == null) {
       throw core.ArgumentError('Parameter httpHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10353,13 +9787,10 @@ class HttpHealthChecksResource {
     if (httpHealthCheck == null) {
       throw core.ArgumentError('Parameter httpHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10428,13 +9859,10 @@ class HttpsHealthChecksResource {
     if (httpsHealthCheck == null) {
       throw core.ArgumentError('Parameter httpsHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10484,10 +9912,9 @@ class HttpsHealthChecksResource {
     if (httpsHealthCheck == null) {
       throw core.ArgumentError('Parameter httpsHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10548,13 +9975,10 @@ class HttpsHealthChecksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10649,25 +10073,15 @@ class HttpsHealthChecksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10738,13 +10152,10 @@ class HttpsHealthChecksResource {
     if (httpsHealthCheck == null) {
       throw core.ArgumentError('Parameter httpsHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10813,13 +10224,10 @@ class HttpsHealthChecksResource {
     if (httpsHealthCheck == null) {
       throw core.ArgumentError('Parameter httpsHealthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10888,13 +10296,10 @@ class ImagesResource {
     if (image == null) {
       throw core.ArgumentError('Parameter image is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -10963,13 +10368,10 @@ class ImagesResource {
     if (image == null) {
       throw core.ArgumentError('Parameter image is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11021,10 +10423,9 @@ class ImagesResource {
     if (image == null) {
       throw core.ArgumentError('Parameter image is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11073,10 +10474,9 @@ class ImagesResource {
     if (family == null) {
       throw core.ArgumentError('Parameter family is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11129,15 +10529,11 @@ class ImagesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11201,16 +10597,11 @@ class ImagesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (forceCreate != null) {
-      _queryParams['forceCreate'] = ['${forceCreate}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (forceCreate != null) 'forceCreate': ['${forceCreate}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11310,25 +10701,15 @@ class ImagesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11397,13 +10778,10 @@ class ImagesResource {
     if (image == null) {
       throw core.ArgumentError('Parameter image is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11459,10 +10837,9 @@ class ImagesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11519,10 +10896,9 @@ class ImagesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11577,10 +10953,9 @@ class ImagesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11676,13 +11051,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11789,28 +11161,16 @@ class InstanceGroupManagersResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11871,10 +11231,9 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -11957,13 +11316,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12037,13 +11393,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12130,13 +11483,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12199,10 +11549,9 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12261,10 +11610,9 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12343,13 +11691,10 @@ class InstanceGroupManagersResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12452,25 +11797,15 @@ class InstanceGroupManagersResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12585,25 +11920,15 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12720,25 +12045,15 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12854,25 +12169,15 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -12955,13 +12260,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13040,13 +12342,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13134,13 +12433,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13236,17 +12532,14 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (size == null) {
       throw core.ArgumentError('Parameter size is required.');
     }
-    _queryParams['size'] = ['${size}'];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'size': ['${size}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13325,13 +12618,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13413,13 +12703,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13499,13 +12786,10 @@ class InstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13590,13 +12874,10 @@ class InstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13703,28 +12984,16 @@ class InstanceGroupsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13794,13 +13063,10 @@ class InstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13859,10 +13125,9 @@ class InstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -13931,13 +13196,10 @@ class InstanceGroupsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14043,25 +13305,15 @@ class InstanceGroupsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14177,25 +13429,15 @@ class InstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14277,13 +13519,10 @@ class InstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14359,13 +13598,10 @@ class InstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14441,13 +13677,10 @@ class InstanceTemplatesResource {
     if (instanceTemplate == null) {
       throw core.ArgumentError('Parameter instanceTemplate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14497,10 +13730,9 @@ class InstanceTemplatesResource {
     if (instanceTemplate == null) {
       throw core.ArgumentError('Parameter instanceTemplate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14554,15 +13786,11 @@ class InstanceTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14627,13 +13855,10 @@ class InstanceTemplatesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14728,25 +13953,15 @@ class InstanceTemplatesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14801,10 +14016,9 @@ class InstanceTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14859,10 +14073,9 @@ class InstanceTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -14949,17 +14162,14 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (networkInterface == null) {
       throw core.ArgumentError('Parameter networkInterface is required.');
     }
-    _queryParams['networkInterface'] = [networkInterface];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'networkInterface': [networkInterface],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15040,13 +14250,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15154,28 +14361,16 @@ class InstancesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15258,16 +14453,11 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (forceAttach != null) {
-      _queryParams['forceAttach'] = ['${forceAttach}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (forceAttach != null) 'forceAttach': ['${forceAttach}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15342,13 +14532,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15425,21 +14612,18 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (accessConfig == null) {
       throw core.ArgumentError('Parameter accessConfig is required.');
     }
-    _queryParams['accessConfig'] = [accessConfig];
     if (networkInterface == null) {
       throw core.ArgumentError('Parameter networkInterface is required.');
     }
-    _queryParams['networkInterface'] = [networkInterface];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'accessConfig': [accessConfig],
+      'networkInterface': [networkInterface],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15515,17 +14699,14 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (deviceName == null) {
       throw core.ArgumentError('Parameter deviceName is required.');
     }
-    _queryParams['deviceName'] = [deviceName];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'deviceName': [deviceName],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15585,10 +14766,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15651,16 +14831,11 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (queryPath != null) {
-      _queryParams['queryPath'] = [queryPath];
-    }
-    if (variableKey != null) {
-      _queryParams['variableKey'] = [variableKey];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (queryPath != null) 'queryPath': [queryPath],
+      if (variableKey != null) 'variableKey': [variableKey],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15724,15 +14899,11 @@ class InstancesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15790,10 +14961,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15873,16 +15043,11 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (port != null) {
-      _queryParams['port'] = ['${port}'];
-    }
-    if (start_1 != null) {
-      _queryParams['start'] = [start_1];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (port != null) 'port': ['${port}'],
+      if (start_1 != null) 'start': [start_1],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -15941,10 +15106,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16026,16 +15190,12 @@ class InstancesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if (sourceInstanceTemplate != null) {
-      _queryParams['sourceInstanceTemplate'] = [sourceInstanceTemplate];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (sourceInstanceTemplate != null)
+        'sourceInstanceTemplate': [sourceInstanceTemplate],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16138,25 +15298,15 @@ class InstancesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16273,25 +15423,15 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16369,13 +15509,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16451,13 +15588,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16533,16 +15667,12 @@ class InstancesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (deletionProtection != null) {
-      _queryParams['deletionProtection'] = ['${deletionProtection}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (deletionProtection != null)
+        'deletionProtection': ['${deletionProtection}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16623,21 +15753,18 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (autoDelete == null) {
       throw core.ArgumentError('Parameter autoDelete is required.');
     }
-    _queryParams['autoDelete'] = ['${autoDelete}'];
     if (deviceName == null) {
       throw core.ArgumentError('Parameter deviceName is required.');
     }
-    _queryParams['deviceName'] = [deviceName];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'autoDelete': ['${autoDelete}'],
+      'deviceName': [deviceName],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16702,10 +15829,9 @@ class InstancesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16785,13 +15911,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16870,13 +15993,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -16955,13 +16075,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17040,13 +16157,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17127,13 +16241,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17215,13 +16326,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17302,13 +16410,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17389,13 +16494,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17474,13 +16576,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17539,10 +16638,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17616,13 +16714,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17701,13 +16796,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17786,13 +16878,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17855,10 +16944,9 @@ class InstancesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -17963,21 +17051,13 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (minimalAction != null) {
-      _queryParams['minimalAction'] = [minimalAction];
-    }
-    if (mostDisruptiveAllowedAction != null) {
-      _queryParams['mostDisruptiveAllowedAction'] = [
-        mostDisruptiveAllowedAction
-      ];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (minimalAction != null) 'minimalAction': [minimalAction],
+      if (mostDisruptiveAllowedAction != null)
+        'mostDisruptiveAllowedAction': [mostDisruptiveAllowedAction],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18062,17 +17142,14 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (networkInterface == null) {
       throw core.ArgumentError('Parameter networkInterface is required.');
     }
-    _queryParams['networkInterface'] = [networkInterface];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'networkInterface': [networkInterface],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18153,13 +17230,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18246,17 +17320,14 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (networkInterface == null) {
       throw core.ArgumentError('Parameter networkInterface is required.');
     }
-    _queryParams['networkInterface'] = [networkInterface];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'networkInterface': [networkInterface],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18337,13 +17408,10 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18457,28 +17525,16 @@ class InterconnectAttachmentsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18547,13 +17603,10 @@ class InterconnectAttachmentsResource {
     if (interconnectAttachment == null) {
       throw core.ArgumentError('Parameter interconnectAttachment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18610,10 +17663,9 @@ class InterconnectAttachmentsResource {
     if (interconnectAttachment == null) {
       throw core.ArgumentError('Parameter interconnectAttachment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18686,16 +17738,11 @@ class InterconnectAttachmentsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if (validateOnly != null) {
-      _queryParams['validateOnly'] = ['${validateOnly}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18799,25 +17846,15 @@ class InterconnectAttachmentsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18897,13 +17934,10 @@ class InterconnectAttachmentsResource {
     if (interconnectAttachment == null) {
       throw core.ArgumentError('Parameter interconnectAttachment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -18964,10 +17998,9 @@ class InterconnectLocationsResource {
     if (interconnectLocation == null) {
       throw core.ArgumentError('Parameter interconnectLocation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19063,25 +18096,15 @@ class InterconnectLocationsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19149,13 +18172,10 @@ class InterconnectsResource {
     if (interconnect == null) {
       throw core.ArgumentError('Parameter interconnect is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19205,10 +18225,9 @@ class InterconnectsResource {
     if (interconnect == null) {
       throw core.ArgumentError('Parameter interconnect is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19257,10 +18276,9 @@ class InterconnectsResource {
     if (interconnect == null) {
       throw core.ArgumentError('Parameter interconnect is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19322,13 +18340,10 @@ class InterconnectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19422,25 +18437,15 @@ class InterconnectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19510,13 +18515,10 @@ class InterconnectsResource {
     if (interconnect == null) {
       throw core.ArgumentError('Parameter interconnect is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19575,10 +18577,9 @@ class LicenseCodesResource {
     if (licenseCode == null) {
       throw core.ArgumentError('Parameter licenseCode is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19635,10 +18636,9 @@ class LicenseCodesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19712,13 +18712,10 @@ class LicensesResource {
     if (license == null) {
       throw core.ArgumentError('Parameter license is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19769,10 +18766,9 @@ class LicensesResource {
     if (license == null) {
       throw core.ArgumentError('Parameter license is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19827,15 +18823,11 @@ class LicensesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -19898,13 +18890,10 @@ class LicensesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20005,25 +18994,15 @@ class LicensesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20079,10 +19058,9 @@ class LicensesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20140,10 +19118,9 @@ class LicensesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20255,28 +19232,16 @@ class MachineTypesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20333,10 +19298,9 @@ class MachineTypesResource {
     if (machineType == null) {
       throw core.ArgumentError('Parameter machineType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20440,25 +19404,15 @@ class MachineTypesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20570,28 +19524,16 @@ class NetworkEndpointGroupsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20665,13 +19607,10 @@ class NetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20747,13 +19686,10 @@ class NetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20829,13 +19765,10 @@ class NetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20896,10 +19829,9 @@ class NetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -20969,13 +19901,10 @@ class NetworkEndpointGroupsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21079,25 +20008,15 @@ class NetworkEndpointGroupsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21213,25 +20132,15 @@ class NetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21296,10 +20205,9 @@ class NetworkEndpointGroupsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21377,13 +20285,10 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21447,13 +20352,10 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21503,10 +20405,9 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21566,13 +20467,10 @@ class NetworksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21666,25 +20564,15 @@ class NetworksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21799,34 +20687,18 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (direction != null) {
-      _queryParams['direction'] = [direction];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (peeringName != null) {
-      _queryParams['peeringName'] = [peeringName];
-    }
-    if (region != null) {
-      _queryParams['region'] = [region];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (direction != null) 'direction': [direction],
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (peeringName != null) 'peeringName': [peeringName],
+      if (region != null) 'region': [region],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21897,13 +20769,10 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -21971,13 +20840,10 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22041,13 +20907,10 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22119,13 +20982,10 @@ class NetworksResource {
     if (network == null) {
       throw core.ArgumentError('Parameter network is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22207,13 +21067,10 @@ class NodeGroupsResource {
     if (nodeGroup == null) {
       throw core.ArgumentError('Parameter nodeGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22322,28 +21179,16 @@ class NodeGroupsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22412,13 +21257,10 @@ class NodeGroupsResource {
     if (nodeGroup == null) {
       throw core.ArgumentError('Parameter nodeGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22494,13 +21336,10 @@ class NodeGroupsResource {
     if (nodeGroup == null) {
       throw core.ArgumentError('Parameter nodeGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22562,10 +21401,9 @@ class NodeGroupsResource {
     if (nodeGroup == null) {
       throw core.ArgumentError('Parameter nodeGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22627,15 +21465,11 @@ class NodeGroupsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22708,17 +21542,14 @@ class NodeGroupsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (initialNodeCount == null) {
       throw core.ArgumentError('Parameter initialNodeCount is required.');
     }
-    _queryParams['initialNodeCount'] = ['${initialNodeCount}'];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'initialNodeCount': ['${initialNodeCount}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22823,25 +21654,15 @@ class NodeGroupsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -22952,25 +21773,15 @@ class NodeGroupsResource {
     if (nodeGroup == null) {
       throw core.ArgumentError('Parameter nodeGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23048,13 +21859,10 @@ class NodeGroupsResource {
     if (nodeGroup == null) {
       throw core.ArgumentError('Parameter nodeGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23119,10 +21927,9 @@ class NodeGroupsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23200,13 +22007,10 @@ class NodeGroupsResource {
     if (nodeGroup == null) {
       throw core.ArgumentError('Parameter nodeGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23270,10 +22074,9 @@ class NodeGroupsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23387,28 +22190,16 @@ class NodeTemplatesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23477,13 +22268,10 @@ class NodeTemplatesResource {
     if (nodeTemplate == null) {
       throw core.ArgumentError('Parameter nodeTemplate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23542,10 +22330,9 @@ class NodeTemplatesResource {
     if (nodeTemplate == null) {
       throw core.ArgumentError('Parameter nodeTemplate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23608,15 +22395,11 @@ class NodeTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23686,13 +22469,10 @@ class NodeTemplatesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23795,25 +22575,15 @@ class NodeTemplatesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23877,10 +22647,9 @@ class NodeTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -23944,10 +22713,9 @@ class NodeTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24061,28 +22829,16 @@ class NodeTypesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24139,10 +22895,9 @@ class NodeTypesResource {
     if (nodeType == null) {
       throw core.ArgumentError('Parameter nodeType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24245,25 +23000,15 @@ class NodeTypesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24374,28 +23119,16 @@ class PacketMirroringsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24464,13 +23197,10 @@ class PacketMirroringsResource {
     if (packetMirroring == null) {
       throw core.ArgumentError('Parameter packetMirroring is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24527,10 +23257,9 @@ class PacketMirroringsResource {
     if (packetMirroring == null) {
       throw core.ArgumentError('Parameter packetMirroring is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24600,13 +23329,10 @@ class PacketMirroringsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24710,25 +23436,15 @@ class PacketMirroringsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24808,13 +23524,10 @@ class PacketMirroringsResource {
     if (packetMirroring == null) {
       throw core.ArgumentError('Parameter packetMirroring is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24877,10 +23590,9 @@ class PacketMirroringsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -24945,13 +23657,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25010,13 +23719,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25070,13 +23776,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25136,13 +23839,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25182,10 +23882,9 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' + commons.Escaper.ecapeVariable('$project');
 
@@ -25224,10 +23923,9 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'projects/' + commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
@@ -25320,25 +24018,15 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25437,25 +24125,15 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25515,13 +24193,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'projects/' + commons.Escaper.ecapeVariable('$project') + '/moveDisk';
@@ -25580,13 +24255,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25646,13 +24318,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25714,13 +24383,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25783,13 +24449,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25864,13 +24527,10 @@ class RegionAutoscalersResource {
     if (autoscaler == null) {
       throw core.ArgumentError('Parameter autoscaler is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -25927,10 +24587,9 @@ class RegionAutoscalersResource {
     if (autoscaler == null) {
       throw core.ArgumentError('Parameter autoscaler is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26000,13 +24659,10 @@ class RegionAutoscalersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26109,25 +24765,15 @@ class RegionAutoscalersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26204,16 +24850,11 @@ class RegionAutoscalersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (autoscaler != null) {
-      _queryParams['autoscaler'] = [autoscaler];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (autoscaler != null) 'autoscaler': [autoscaler],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26287,16 +24928,11 @@ class RegionAutoscalersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (autoscaler != null) {
-      _queryParams['autoscaler'] = [autoscaler];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (autoscaler != null) 'autoscaler': [autoscaler],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26374,13 +25010,10 @@ class RegionBackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26437,10 +25070,9 @@ class RegionBackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26505,10 +25137,9 @@ class RegionBackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26582,13 +25213,10 @@ class RegionBackendServicesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26692,25 +25320,15 @@ class RegionBackendServicesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26791,13 +25409,10 @@ class RegionBackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26877,13 +25492,10 @@ class RegionBackendServicesResource {
     if (backendService == null) {
       throw core.ArgumentError('Parameter backendService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -26995,28 +25607,16 @@ class RegionCommitmentsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27073,10 +25673,9 @@ class RegionCommitmentsResource {
     if (commitment == null) {
       throw core.ArgumentError('Parameter commitment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27146,13 +25745,10 @@ class RegionCommitmentsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27255,25 +25851,15 @@ class RegionCommitmentsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27338,10 +25924,9 @@ class RegionDiskTypesResource {
     if (diskType == null) {
       throw core.ArgumentError('Parameter diskType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27445,25 +26030,15 @@ class RegionDiskTypesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27548,13 +26123,10 @@ class RegionDisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27632,13 +26204,10 @@ class RegionDisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27714,13 +26283,10 @@ class RegionDisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27777,10 +26343,9 @@ class RegionDisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27842,15 +26407,11 @@ class RegionDisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -27924,16 +26485,11 @@ class RegionDisksResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if (sourceImage != null) {
-      _queryParams['sourceImage'] = [sourceImage];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (sourceImage != null) 'sourceImage': [sourceImage],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28037,25 +26593,15 @@ class RegionDisksResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28130,13 +26676,10 @@ class RegionDisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28214,13 +26757,10 @@ class RegionDisksResource {
     if (disk == null) {
       throw core.ArgumentError('Parameter disk is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28286,10 +26826,9 @@ class RegionDisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28367,13 +26906,10 @@ class RegionDisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28437,10 +26973,9 @@ class RegionDisksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28520,13 +27055,10 @@ class RegionHealthCheckServicesResource {
     if (healthCheckService == null) {
       throw core.ArgumentError('Parameter healthCheckService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28582,10 +27114,9 @@ class RegionHealthCheckServicesResource {
     if (healthCheckService == null) {
       throw core.ArgumentError('Parameter healthCheckService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28655,13 +27186,10 @@ class RegionHealthCheckServicesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28765,25 +27293,15 @@ class RegionHealthCheckServicesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28862,13 +27380,10 @@ class RegionHealthCheckServicesResource {
     if (healthCheckService == null) {
       throw core.ArgumentError('Parameter healthCheckService is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -28946,13 +27461,10 @@ class RegionHealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29011,10 +27523,9 @@ class RegionHealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29084,13 +27595,10 @@ class RegionHealthChecksResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29194,25 +27702,15 @@ class RegionHealthChecksResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29292,13 +27790,10 @@ class RegionHealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29376,13 +27871,10 @@ class RegionHealthChecksResource {
     if (healthCheck == null) {
       throw core.ArgumentError('Parameter healthCheck is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29478,13 +27970,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29547,10 +28036,9 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29633,13 +28121,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29710,13 +28195,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29803,13 +28285,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29872,10 +28351,9 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -29931,10 +28409,9 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30011,13 +28488,10 @@ class RegionInstanceGroupManagersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30120,25 +28594,15 @@ class RegionInstanceGroupManagersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30253,25 +28717,15 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30386,25 +28840,15 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30520,25 +28964,15 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30620,13 +29054,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30705,13 +29136,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30799,13 +29227,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30892,17 +29317,14 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (size == null) {
       throw core.ArgumentError('Parameter size is required.');
     }
-    _queryParams['size'] = ['${size}'];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'size': ['${size}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -30979,13 +29401,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31063,13 +29482,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31149,13 +29565,10 @@ class RegionInstanceGroupManagersResource {
     if (instanceGroupManager == null) {
       throw core.ArgumentError('Parameter instanceGroupManager is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31218,10 +29631,9 @@ class RegionInstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31325,25 +29737,15 @@ class RegionInstanceGroupsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31462,25 +29864,15 @@ class RegionInstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31557,13 +29949,10 @@ class RegionInstanceGroupsResource {
     if (instanceGroup == null) {
       throw core.ArgumentError('Parameter instanceGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31645,13 +30034,10 @@ class RegionNetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31710,10 +30096,9 @@ class RegionNetworkEndpointGroupsResource {
     if (networkEndpointGroup == null) {
       throw core.ArgumentError('Parameter networkEndpointGroup is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31783,13 +30168,10 @@ class RegionNetworkEndpointGroupsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31893,25 +30275,15 @@ class RegionNetworkEndpointGroupsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -31990,13 +30362,10 @@ class RegionNotificationEndpointsResource {
     if (notificationEndpoint == null) {
       throw core.ArgumentError('Parameter notificationEndpoint is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32054,10 +30423,9 @@ class RegionNotificationEndpointsResource {
     if (notificationEndpoint == null) {
       throw core.ArgumentError('Parameter notificationEndpoint is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32127,13 +30495,10 @@ class RegionNotificationEndpointsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32236,25 +30601,15 @@ class RegionNotificationEndpointsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32315,10 +30670,9 @@ class RegionOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32375,10 +30729,9 @@ class RegionOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32482,25 +30835,15 @@ class RegionOperationsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32571,10 +30914,9 @@ class RegionOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32653,13 +30995,10 @@ class RegionSslCertificatesResource {
     if (sslCertificate == null) {
       throw core.ArgumentError('Parameter sslCertificate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32718,10 +31057,9 @@ class RegionSslCertificatesResource {
     if (sslCertificate == null) {
       throw core.ArgumentError('Parameter sslCertificate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32791,13 +31129,10 @@ class RegionSslCertificatesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32901,25 +31236,15 @@ class RegionSslCertificatesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -32997,13 +31322,10 @@ class RegionTargetHttpProxiesResource {
     if (targetHttpProxy == null) {
       throw core.ArgumentError('Parameter targetHttpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33062,10 +31384,9 @@ class RegionTargetHttpProxiesResource {
     if (targetHttpProxy == null) {
       throw core.ArgumentError('Parameter targetHttpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33135,13 +31456,10 @@ class RegionTargetHttpProxiesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33245,25 +31563,15 @@ class RegionTargetHttpProxiesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33339,13 +31647,10 @@ class RegionTargetHttpProxiesResource {
     if (targetHttpProxy == null) {
       throw core.ArgumentError('Parameter targetHttpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33425,13 +31730,10 @@ class RegionTargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33490,10 +31792,9 @@ class RegionTargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33563,13 +31864,10 @@ class RegionTargetHttpsProxiesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33673,25 +31971,15 @@ class RegionTargetHttpsProxiesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33768,13 +32056,10 @@ class RegionTargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33852,13 +32137,10 @@ class RegionTargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33927,13 +32209,10 @@ class RegionUrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -33992,10 +32271,9 @@ class RegionUrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34054,13 +32332,10 @@ class RegionUrlMapsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34164,25 +32439,15 @@ class RegionUrlMapsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34252,13 +32517,10 @@ class RegionUrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34326,13 +32588,10 @@ class RegionUrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34398,10 +32657,9 @@ class RegionUrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34462,10 +32720,9 @@ class RegionsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34559,25 +32816,15 @@ class RegionsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'projects/' + commons.Escaper.ecapeVariable('$project') + '/regions';
@@ -34685,28 +32932,16 @@ class ReservationsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34775,13 +33010,10 @@ class ReservationsResource {
     if (reservation == null) {
       throw core.ArgumentError('Parameter reservation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34838,10 +33070,9 @@ class ReservationsResource {
     if (reservation == null) {
       throw core.ArgumentError('Parameter reservation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34904,15 +33135,11 @@ class ReservationsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -34983,13 +33210,10 @@ class ReservationsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35093,25 +33317,15 @@ class ReservationsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35188,13 +33402,10 @@ class ReservationsResource {
     if (reservation == null) {
       throw core.ArgumentError('Parameter reservation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35260,10 +33471,9 @@ class ReservationsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35327,10 +33537,9 @@ class ReservationsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35444,28 +33653,16 @@ class ResourcePoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35534,13 +33731,10 @@ class ResourcePoliciesResource {
     if (resourcePolicy == null) {
       throw core.ArgumentError('Parameter resourcePolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35597,10 +33791,9 @@ class ResourcePoliciesResource {
     if (resourcePolicy == null) {
       throw core.ArgumentError('Parameter resourcePolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35663,15 +33856,11 @@ class ResourcePoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35740,13 +33929,10 @@ class ResourcePoliciesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35850,25 +34036,15 @@ class ResourcePoliciesResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35932,10 +34108,9 @@ class ResourcePoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -35999,10 +34174,9 @@ class ResourcePoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36116,28 +34290,16 @@ class RoutersResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36206,13 +34368,10 @@ class RoutersResource {
     if (router == null) {
       throw core.ArgumentError('Parameter router is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36271,10 +34430,9 @@ class RoutersResource {
     if (router == null) {
       throw core.ArgumentError('Parameter router is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36386,25 +34544,15 @@ class RoutersResource {
     if (router == null) {
       throw core.ArgumentError('Parameter router is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36463,10 +34611,9 @@ class RoutersResource {
     if (router == null) {
       throw core.ArgumentError('Parameter router is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36537,13 +34684,10 @@ class RoutersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36646,25 +34790,15 @@ class RoutersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36744,13 +34878,10 @@ class RoutersResource {
     if (router == null) {
       throw core.ArgumentError('Parameter router is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36815,10 +34946,9 @@ class RoutersResource {
     if (router == null) {
       throw core.ArgumentError('Parameter router is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36902,13 +35032,10 @@ class RoutersResource {
     if (router == null) {
       throw core.ArgumentError('Parameter router is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -36979,13 +35106,10 @@ class RoutesResource {
     if (route == null) {
       throw core.ArgumentError('Parameter route is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37035,10 +35159,9 @@ class RoutesResource {
     if (route == null) {
       throw core.ArgumentError('Parameter route is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37098,13 +35221,10 @@ class RoutesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37198,25 +35318,15 @@ class RoutesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37274,10 +35384,9 @@ class SecurityPoliciesResource {
     if (securityPolicy == null) {
       throw core.ArgumentError('Parameter securityPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37341,13 +35450,10 @@ class SecurityPoliciesResource {
     if (securityPolicy == null) {
       throw core.ArgumentError('Parameter securityPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37395,10 +35501,9 @@ class SecurityPoliciesResource {
     if (securityPolicy == null) {
       throw core.ArgumentError('Parameter securityPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37451,13 +35556,10 @@ class SecurityPoliciesResource {
     if (securityPolicy == null) {
       throw core.ArgumentError('Parameter securityPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (priority != null) {
-      _queryParams['priority'] = ['${priority}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (priority != null) 'priority': ['${priority}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37519,13 +35621,10 @@ class SecurityPoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37619,25 +35718,15 @@ class SecurityPoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37734,25 +35823,15 @@ class SecurityPoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37822,13 +35901,10 @@ class SecurityPoliciesResource {
     if (securityPolicy == null) {
       throw core.ArgumentError('Parameter securityPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37885,13 +35961,10 @@ class SecurityPoliciesResource {
     if (securityPolicy == null) {
       throw core.ArgumentError('Parameter securityPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (priority != null) {
-      _queryParams['priority'] = ['${priority}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (priority != null) 'priority': ['${priority}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -37944,13 +36017,10 @@ class SecurityPoliciesResource {
     if (securityPolicy == null) {
       throw core.ArgumentError('Parameter securityPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (priority != null) {
-      _queryParams['priority'] = ['${priority}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (priority != null) 'priority': ['${priority}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38026,13 +36096,10 @@ class SnapshotsResource {
     if (snapshot == null) {
       throw core.ArgumentError('Parameter snapshot is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38082,10 +36149,9 @@ class SnapshotsResource {
     if (snapshot == null) {
       throw core.ArgumentError('Parameter snapshot is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38138,15 +36204,11 @@ class SnapshotsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38242,25 +36304,15 @@ class SnapshotsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38315,10 +36367,9 @@ class SnapshotsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38375,10 +36426,9 @@ class SnapshotsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38433,10 +36483,9 @@ class SnapshotsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38549,28 +36598,16 @@ class SslCertificatesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38632,13 +36669,10 @@ class SslCertificatesResource {
     if (sslCertificate == null) {
       throw core.ArgumentError('Parameter sslCertificate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38688,10 +36722,9 @@ class SslCertificatesResource {
     if (sslCertificate == null) {
       throw core.ArgumentError('Parameter sslCertificate is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38752,13 +36785,10 @@ class SslCertificatesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38853,25 +36883,15 @@ class SslCertificatesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38941,13 +36961,10 @@ class SslPoliciesResource {
     if (sslPolicy == null) {
       throw core.ArgumentError('Parameter sslPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -38994,10 +37011,9 @@ class SslPoliciesResource {
     if (sslPolicy == null) {
       throw core.ArgumentError('Parameter sslPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39058,13 +37074,10 @@ class SslPoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39159,25 +37172,15 @@ class SslPoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39272,25 +37275,15 @@ class SslPoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39356,13 +37349,10 @@ class SslPoliciesResource {
     if (sslPolicy == null) {
       throw core.ArgumentError('Parameter sslPolicy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39472,28 +37462,16 @@ class SubnetworksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39562,13 +37540,10 @@ class SubnetworksResource {
     if (subnetwork == null) {
       throw core.ArgumentError('Parameter subnetwork is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39644,13 +37619,10 @@ class SubnetworksResource {
     if (subnetwork == null) {
       throw core.ArgumentError('Parameter subnetwork is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39711,10 +37683,9 @@ class SubnetworksResource {
     if (subnetwork == null) {
       throw core.ArgumentError('Parameter subnetwork is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39777,15 +37748,11 @@ class SubnetworksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39855,13 +37822,10 @@ class SubnetworksResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -39964,25 +37928,15 @@ class SubnetworksResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40078,25 +38032,15 @@ class SubnetworksResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40184,16 +38128,12 @@ class SubnetworksResource {
     if (subnetwork == null) {
       throw core.ArgumentError('Parameter subnetwork is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (drainTimeoutSeconds != null) {
-      _queryParams['drainTimeoutSeconds'] = ['${drainTimeoutSeconds}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (drainTimeoutSeconds != null)
+        'drainTimeoutSeconds': ['${drainTimeoutSeconds}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40258,10 +38198,9 @@ class SubnetworksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40340,13 +38279,10 @@ class SubnetworksResource {
     if (subnetwork == null) {
       throw core.ArgumentError('Parameter subnetwork is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40410,10 +38346,9 @@ class SubnetworksResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40486,13 +38421,10 @@ class TargetGrpcProxiesResource {
     if (targetGrpcProxy == null) {
       throw core.ArgumentError('Parameter targetGrpcProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40540,10 +38472,9 @@ class TargetGrpcProxiesResource {
     if (targetGrpcProxy == null) {
       throw core.ArgumentError('Parameter targetGrpcProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40604,13 +38535,10 @@ class TargetGrpcProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40704,25 +38632,15 @@ class TargetGrpcProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40793,13 +38711,10 @@ class TargetGrpcProxiesResource {
     if (targetGrpcProxy == null) {
       throw core.ArgumentError('Parameter targetGrpcProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40910,28 +38825,16 @@ class TargetHttpProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -40993,13 +38896,10 @@ class TargetHttpProxiesResource {
     if (targetHttpProxy == null) {
       throw core.ArgumentError('Parameter targetHttpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41049,10 +38949,9 @@ class TargetHttpProxiesResource {
     if (targetHttpProxy == null) {
       throw core.ArgumentError('Parameter targetHttpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41113,13 +39012,10 @@ class TargetHttpProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41214,25 +39110,15 @@ class TargetHttpProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41303,13 +39189,10 @@ class TargetHttpProxiesResource {
     if (targetHttpProxy == null) {
       throw core.ArgumentError('Parameter targetHttpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41377,13 +39260,10 @@ class TargetHttpProxiesResource {
     if (targetHttpProxy == null) {
       throw core.ArgumentError('Parameter targetHttpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41495,28 +39375,16 @@ class TargetHttpsProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41578,13 +39446,10 @@ class TargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41634,10 +39499,9 @@ class TargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41698,13 +39562,10 @@ class TargetHttpsProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41799,25 +39660,15 @@ class TargetHttpsProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41888,13 +39739,10 @@ class TargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -41961,13 +39809,10 @@ class TargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42037,13 +39882,10 @@ class TargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42117,13 +39959,10 @@ class TargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42193,13 +40032,10 @@ class TargetHttpsProxiesResource {
     if (targetHttpsProxy == null) {
       throw core.ArgumentError('Parameter targetHttpsProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42310,28 +40146,16 @@ class TargetInstancesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42400,13 +40224,10 @@ class TargetInstancesResource {
     if (targetInstance == null) {
       throw core.ArgumentError('Parameter targetInstance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42465,10 +40286,9 @@ class TargetInstancesResource {
     if (targetInstance == null) {
       throw core.ArgumentError('Parameter targetInstance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42538,13 +40358,10 @@ class TargetInstancesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42648,25 +40465,15 @@ class TargetInstancesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42748,13 +40555,10 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42832,13 +40636,10 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -42945,28 +40746,16 @@ class TargetPoolsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43035,13 +40824,10 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43100,10 +40886,9 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43168,10 +40953,9 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43243,13 +41027,10 @@ class TargetPoolsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43353,25 +41134,15 @@ class TargetPoolsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43447,13 +41218,10 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43531,13 +41299,10 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43618,16 +41383,11 @@ class TargetPoolsResource {
     if (targetPool == null) {
       throw core.ArgumentError('Parameter targetPool is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (failoverRatio != null) {
-      _queryParams['failoverRatio'] = ['${failoverRatio}'];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (failoverRatio != null) 'failoverRatio': ['${failoverRatio}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43699,13 +41459,10 @@ class TargetSslProxiesResource {
     if (targetSslProxy == null) {
       throw core.ArgumentError('Parameter targetSslProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43755,10 +41512,9 @@ class TargetSslProxiesResource {
     if (targetSslProxy == null) {
       throw core.ArgumentError('Parameter targetSslProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43819,13 +41575,10 @@ class TargetSslProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -43920,25 +41673,15 @@ class TargetSslProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44006,13 +41749,10 @@ class TargetSslProxiesResource {
     if (targetSslProxy == null) {
       throw core.ArgumentError('Parameter targetSslProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44082,13 +41822,10 @@ class TargetSslProxiesResource {
     if (targetSslProxy == null) {
       throw core.ArgumentError('Parameter targetSslProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44158,13 +41895,10 @@ class TargetSslProxiesResource {
     if (targetSslProxy == null) {
       throw core.ArgumentError('Parameter targetSslProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44236,13 +41970,10 @@ class TargetSslProxiesResource {
     if (targetSslProxy == null) {
       throw core.ArgumentError('Parameter targetSslProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44312,13 +42043,10 @@ class TargetTcpProxiesResource {
     if (targetTcpProxy == null) {
       throw core.ArgumentError('Parameter targetTcpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44368,10 +42096,9 @@ class TargetTcpProxiesResource {
     if (targetTcpProxy == null) {
       throw core.ArgumentError('Parameter targetTcpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44432,13 +42159,10 @@ class TargetTcpProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44533,25 +42257,15 @@ class TargetTcpProxiesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44619,13 +42333,10 @@ class TargetTcpProxiesResource {
     if (targetTcpProxy == null) {
       throw core.ArgumentError('Parameter targetTcpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44695,13 +42406,10 @@ class TargetTcpProxiesResource {
     if (targetTcpProxy == null) {
       throw core.ArgumentError('Parameter targetTcpProxy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44812,28 +42520,16 @@ class TargetVpnGatewaysResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44902,13 +42598,10 @@ class TargetVpnGatewaysResource {
     if (targetVpnGateway == null) {
       throw core.ArgumentError('Parameter targetVpnGateway is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -44967,10 +42660,9 @@ class TargetVpnGatewaysResource {
     if (targetVpnGateway == null) {
       throw core.ArgumentError('Parameter targetVpnGateway is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45040,13 +42732,10 @@ class TargetVpnGatewaysResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45150,25 +42839,15 @@ class TargetVpnGatewaysResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45280,28 +42959,16 @@ class UrlMapsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45363,13 +43030,10 @@ class UrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45419,10 +43083,9 @@ class UrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45482,13 +43145,10 @@ class UrlMapsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45559,13 +43219,10 @@ class UrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45661,25 +43318,15 @@ class UrlMapsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45750,13 +43397,10 @@ class UrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45825,13 +43469,10 @@ class UrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -45888,10 +43529,9 @@ class UrlMapsResource {
     if (urlMap == null) {
       throw core.ArgumentError('Parameter urlMap is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46003,28 +43643,16 @@ class VpnGatewaysResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46093,13 +43721,10 @@ class VpnGatewaysResource {
     if (vpnGateway == null) {
       throw core.ArgumentError('Parameter vpnGateway is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46158,10 +43783,9 @@ class VpnGatewaysResource {
     if (vpnGateway == null) {
       throw core.ArgumentError('Parameter vpnGateway is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46219,10 +43843,9 @@ class VpnGatewaysResource {
     if (vpnGateway == null) {
       throw core.ArgumentError('Parameter vpnGateway is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46293,13 +43916,10 @@ class VpnGatewaysResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46403,25 +44023,15 @@ class VpnGatewaysResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46499,13 +44109,10 @@ class VpnGatewaysResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46569,10 +44176,9 @@ class VpnGatewaysResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46686,28 +44292,16 @@ class VpnTunnelsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (includeAllScopes != null) {
-      _queryParams['includeAllScopes'] = ['${includeAllScopes}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (includeAllScopes != null) 'includeAllScopes': ['${includeAllScopes}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46776,13 +44370,10 @@ class VpnTunnelsResource {
     if (vpnTunnel == null) {
       throw core.ArgumentError('Parameter vpnTunnel is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46841,10 +44432,9 @@ class VpnTunnelsResource {
     if (vpnTunnel == null) {
       throw core.ArgumentError('Parameter vpnTunnel is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -46913,13 +44503,10 @@ class VpnTunnelsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -47023,25 +44610,15 @@ class VpnTunnelsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -47102,10 +44679,9 @@ class ZoneOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -47162,10 +44738,9 @@ class ZoneOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -47269,25 +44844,15 @@ class ZoneOperationsResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -47358,10 +44923,9 @@ class ZoneOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -47420,10 +44984,9 @@ class ZonesResource {
     if (zone == null) {
       throw core.ArgumentError('Parameter zone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -47517,25 +45080,15 @@ class ZonesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (returnPartialSuccess != null) {
-      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones';

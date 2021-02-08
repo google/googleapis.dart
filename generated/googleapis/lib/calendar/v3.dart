@@ -119,10 +119,9 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -168,10 +167,9 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -220,13 +218,11 @@ class AclResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
@@ -290,22 +286,13 @@ class AclResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
@@ -361,13 +348,11 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -424,13 +409,11 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -501,22 +484,13 @@ class AclResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -560,10 +534,9 @@ class CalendarListResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
@@ -601,10 +574,9 @@ class CalendarListResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
@@ -646,13 +618,10 @@ class CalendarListResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (colorRgbFormat != null) {
-      _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'users/me/calendarList';
 
@@ -724,28 +693,15 @@ class CalendarListResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (minAccessRole != null) {
-      _queryParams['minAccessRole'] = [minAccessRole];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (showHidden != null) {
-      _queryParams['showHidden'] = ['${showHidden}'];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (minAccessRole != null) 'minAccessRole': [minAccessRole],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (showHidden != null) 'showHidden': ['${showHidden}'],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'users/me/calendarList';
 
@@ -796,13 +752,10 @@ class CalendarListResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (colorRgbFormat != null) {
-      _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
@@ -853,13 +806,10 @@ class CalendarListResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (colorRgbFormat != null) {
-      _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
@@ -937,28 +887,15 @@ class CalendarListResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (minAccessRole != null) {
-      _queryParams['minAccessRole'] = [minAccessRole];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (showHidden != null) {
-      _queryParams['showHidden'] = ['${showHidden}'];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (minAccessRole != null) 'minAccessRole': [minAccessRole],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (showHidden != null) 'showHidden': ['${showHidden}'],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'users/me/calendarList/watch';
 
@@ -1003,10 +940,9 @@ class CalendarsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
@@ -1044,10 +980,9 @@ class CalendarsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -1084,10 +1019,9 @@ class CalendarsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -1121,10 +1055,9 @@ class CalendarsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'calendars';
 
@@ -1169,10 +1102,9 @@ class CalendarsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -1215,10 +1147,9 @@ class CalendarsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
@@ -1257,10 +1188,9 @@ class ChannelsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'channels/stop';
 
@@ -1296,10 +1226,9 @@ class ColorsResource {
   async.Future<Colors> get({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'colors';
 
@@ -1364,16 +1293,12 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if (sendUpdates != null) {
-      _queryParams['sendUpdates'] = [sendUpdates];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if (sendUpdates != null) 'sendUpdates': [sendUpdates],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -1434,19 +1359,13 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alwaysIncludeEmail != null) {
-      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
-    }
-    if (maxAttendees != null) {
-      _queryParams['maxAttendees'] = ['${maxAttendees}'];
-    }
-    if (timeZone != null) {
-      _queryParams['timeZone'] = [timeZone];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alwaysIncludeEmail != null)
+        'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
+      if (timeZone != null) 'timeZone': [timeZone],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -1506,16 +1425,13 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (conferenceDataVersion != null) {
-      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
-    }
-    if (supportsAttachments != null) {
-      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (conferenceDataVersion != null)
+        'conferenceDataVersion': ['${conferenceDataVersion}'],
+      if (supportsAttachments != null)
+        'supportsAttachments': ['${supportsAttachments}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -1596,25 +1512,17 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (conferenceDataVersion != null) {
-      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
-    }
-    if (maxAttendees != null) {
-      _queryParams['maxAttendees'] = ['${maxAttendees}'];
-    }
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if (sendUpdates != null) {
-      _queryParams['sendUpdates'] = [sendUpdates];
-    }
-    if (supportsAttachments != null) {
-      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (conferenceDataVersion != null)
+        'conferenceDataVersion': ['${conferenceDataVersion}'],
+      if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if (sendUpdates != null) 'sendUpdates': [sendUpdates],
+      if (supportsAttachments != null)
+        'supportsAttachments': ['${supportsAttachments}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
@@ -1702,37 +1610,19 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alwaysIncludeEmail != null) {
-      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
-    }
-    if (maxAttendees != null) {
-      _queryParams['maxAttendees'] = ['${maxAttendees}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (originalStart != null) {
-      _queryParams['originalStart'] = [originalStart];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (timeMax != null) {
-      _queryParams['timeMax'] = [(timeMax).toIso8601String()];
-    }
-    if (timeMin != null) {
-      _queryParams['timeMin'] = [(timeMin).toIso8601String()];
-    }
-    if (timeZone != null) {
-      _queryParams['timeZone'] = [timeZone];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alwaysIncludeEmail != null)
+        'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (originalStart != null) 'originalStart': [originalStart],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (timeMax != null) 'timeMax': [(timeMax).toIso8601String()],
+      if (timeMin != null) 'timeMin': [(timeMin).toIso8601String()],
+      if (timeZone != null) 'timeZone': [timeZone],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -1891,61 +1781,30 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alwaysIncludeEmail != null) {
-      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
-    }
-    if (iCalUID != null) {
-      _queryParams['iCalUID'] = [iCalUID];
-    }
-    if (maxAttendees != null) {
-      _queryParams['maxAttendees'] = ['${maxAttendees}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (privateExtendedProperty != null) {
-      _queryParams['privateExtendedProperty'] = privateExtendedProperty;
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (sharedExtendedProperty != null) {
-      _queryParams['sharedExtendedProperty'] = sharedExtendedProperty;
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (showHiddenInvitations != null) {
-      _queryParams['showHiddenInvitations'] = ['${showHiddenInvitations}'];
-    }
-    if (singleEvents != null) {
-      _queryParams['singleEvents'] = ['${singleEvents}'];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if (timeMax != null) {
-      _queryParams['timeMax'] = [(timeMax).toIso8601String()];
-    }
-    if (timeMin != null) {
-      _queryParams['timeMin'] = [(timeMin).toIso8601String()];
-    }
-    if (timeZone != null) {
-      _queryParams['timeZone'] = [timeZone];
-    }
-    if (updatedMin != null) {
-      _queryParams['updatedMin'] = [(updatedMin).toIso8601String()];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alwaysIncludeEmail != null)
+        'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (iCalUID != null) 'iCalUID': [iCalUID],
+      if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (privateExtendedProperty != null)
+        'privateExtendedProperty': privateExtendedProperty,
+      if (q != null) 'q': [q],
+      if (sharedExtendedProperty != null)
+        'sharedExtendedProperty': sharedExtendedProperty,
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (showHiddenInvitations != null)
+        'showHiddenInvitations': ['${showHiddenInvitations}'],
+      if (singleEvents != null) 'singleEvents': ['${singleEvents}'],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if (timeMax != null) 'timeMax': [(timeMax).toIso8601String()],
+      if (timeMin != null) 'timeMin': [(timeMin).toIso8601String()],
+      if (timeZone != null) 'timeZone': [timeZone],
+      if (updatedMin != null) 'updatedMin': [(updatedMin).toIso8601String()],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
@@ -2010,20 +1869,16 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (destination == null) {
       throw core.ArgumentError('Parameter destination is required.');
     }
-    _queryParams['destination'] = [destination];
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if (sendUpdates != null) {
-      _queryParams['sendUpdates'] = [sendUpdates];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'destination': [destination],
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if (sendUpdates != null) 'sendUpdates': [sendUpdates],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -2118,28 +1973,19 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alwaysIncludeEmail != null) {
-      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
-    }
-    if (conferenceDataVersion != null) {
-      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
-    }
-    if (maxAttendees != null) {
-      _queryParams['maxAttendees'] = ['${maxAttendees}'];
-    }
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if (sendUpdates != null) {
-      _queryParams['sendUpdates'] = [sendUpdates];
-    }
-    if (supportsAttachments != null) {
-      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alwaysIncludeEmail != null)
+        'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (conferenceDataVersion != null)
+        'conferenceDataVersion': ['${conferenceDataVersion}'],
+      if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if (sendUpdates != null) 'sendUpdates': [sendUpdates],
+      if (supportsAttachments != null)
+        'supportsAttachments': ['${supportsAttachments}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -2201,20 +2047,16 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (text == null) {
       throw core.ArgumentError('Parameter text is required.');
     }
-    _queryParams['text'] = [text];
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if (sendUpdates != null) {
-      _queryParams['sendUpdates'] = [sendUpdates];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'text': [text],
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if (sendUpdates != null) 'sendUpdates': [sendUpdates],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -2305,28 +2147,19 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alwaysIncludeEmail != null) {
-      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
-    }
-    if (conferenceDataVersion != null) {
-      _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
-    }
-    if (maxAttendees != null) {
-      _queryParams['maxAttendees'] = ['${maxAttendees}'];
-    }
-    if (sendNotifications != null) {
-      _queryParams['sendNotifications'] = ['${sendNotifications}'];
-    }
-    if (sendUpdates != null) {
-      _queryParams['sendUpdates'] = [sendUpdates];
-    }
-    if (supportsAttachments != null) {
-      _queryParams['supportsAttachments'] = ['${supportsAttachments}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alwaysIncludeEmail != null)
+        'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (conferenceDataVersion != null)
+        'conferenceDataVersion': ['${conferenceDataVersion}'],
+      if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
+      if (sendNotifications != null)
+        'sendNotifications': ['${sendNotifications}'],
+      if (sendUpdates != null) 'sendUpdates': [sendUpdates],
+      if (supportsAttachments != null)
+        'supportsAttachments': ['${supportsAttachments}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -2490,61 +2323,30 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alwaysIncludeEmail != null) {
-      _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
-    }
-    if (iCalUID != null) {
-      _queryParams['iCalUID'] = [iCalUID];
-    }
-    if (maxAttendees != null) {
-      _queryParams['maxAttendees'] = ['${maxAttendees}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (privateExtendedProperty != null) {
-      _queryParams['privateExtendedProperty'] = privateExtendedProperty;
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (sharedExtendedProperty != null) {
-      _queryParams['sharedExtendedProperty'] = sharedExtendedProperty;
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (showHiddenInvitations != null) {
-      _queryParams['showHiddenInvitations'] = ['${showHiddenInvitations}'];
-    }
-    if (singleEvents != null) {
-      _queryParams['singleEvents'] = ['${singleEvents}'];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if (timeMax != null) {
-      _queryParams['timeMax'] = [(timeMax).toIso8601String()];
-    }
-    if (timeMin != null) {
-      _queryParams['timeMin'] = [(timeMin).toIso8601String()];
-    }
-    if (timeZone != null) {
-      _queryParams['timeZone'] = [timeZone];
-    }
-    if (updatedMin != null) {
-      _queryParams['updatedMin'] = [(updatedMin).toIso8601String()];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alwaysIncludeEmail != null)
+        'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (iCalUID != null) 'iCalUID': [iCalUID],
+      if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (privateExtendedProperty != null)
+        'privateExtendedProperty': privateExtendedProperty,
+      if (q != null) 'q': [q],
+      if (sharedExtendedProperty != null)
+        'sharedExtendedProperty': sharedExtendedProperty,
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (showHiddenInvitations != null)
+        'showHiddenInvitations': ['${showHiddenInvitations}'],
+      if (singleEvents != null) 'singleEvents': ['${singleEvents}'],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if (timeMax != null) 'timeMax': [(timeMax).toIso8601String()],
+      if (timeMin != null) 'timeMin': [(timeMin).toIso8601String()],
+      if (timeZone != null) 'timeZone': [timeZone],
+      if (updatedMin != null) 'updatedMin': [(updatedMin).toIso8601String()],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -2587,10 +2389,9 @@ class FreebusyResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'freeBusy';
 
@@ -2633,10 +2434,9 @@ class SettingsResource {
     if (setting == null) {
       throw core.ArgumentError('Parameter setting is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
@@ -2684,19 +2484,12 @@ class SettingsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'users/me/settings';
 
@@ -2748,19 +2541,12 @@ class SettingsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'users/me/settings/watch';
 

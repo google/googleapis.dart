@@ -114,10 +114,9 @@ class ControllerDebuggeesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/controller/debuggees/register';
 
@@ -188,19 +187,12 @@ class ControllerDebuggeesBreakpointsResource {
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (agentId != null) {
-      _queryParams['agentId'] = [agentId];
-    }
-    if (successOnTimeout != null) {
-      _queryParams['successOnTimeout'] = ['${successOnTimeout}'];
-    }
-    if (waitToken != null) {
-      _queryParams['waitToken'] = [waitToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (agentId != null) 'agentId': [agentId],
+      if (successOnTimeout != null) 'successOnTimeout': ['${successOnTimeout}'],
+      if (waitToken != null) 'waitToken': [waitToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/controller/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
@@ -256,10 +248,9 @@ class ControllerDebuggeesBreakpointsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/controller/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
@@ -323,19 +314,12 @@ class DebuggerDebuggeesResource {
     core.String project,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if (includeInactive != null) {
-      _queryParams['includeInactive'] = ['${includeInactive}'];
-    }
-    if (project != null) {
-      _queryParams['project'] = [project];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientVersion != null) 'clientVersion': [clientVersion],
+      if (includeInactive != null) 'includeInactive': ['${includeInactive}'],
+      if (project != null) 'project': [project],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/debugger/debuggees';
 
@@ -388,13 +372,10 @@ class DebuggerDebuggeesBreakpointsResource {
     if (breakpointId == null) {
       throw core.ArgumentError('Parameter breakpointId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientVersion != null) 'clientVersion': [clientVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
@@ -442,13 +423,10 @@ class DebuggerDebuggeesBreakpointsResource {
     if (breakpointId == null) {
       throw core.ArgumentError('Parameter breakpointId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientVersion != null) 'clientVersion': [clientVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
@@ -522,28 +500,15 @@ class DebuggerDebuggeesBreakpointsResource {
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (action_value != null) {
-      _queryParams['action.value'] = [action_value];
-    }
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if (includeAllUsers != null) {
-      _queryParams['includeAllUsers'] = ['${includeAllUsers}'];
-    }
-    if (includeInactive != null) {
-      _queryParams['includeInactive'] = ['${includeInactive}'];
-    }
-    if (stripResults != null) {
-      _queryParams['stripResults'] = ['${stripResults}'];
-    }
-    if (waitToken != null) {
-      _queryParams['waitToken'] = [waitToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (action_value != null) 'action.value': [action_value],
+      if (clientVersion != null) 'clientVersion': [clientVersion],
+      if (includeAllUsers != null) 'includeAllUsers': ['${includeAllUsers}'],
+      if (includeInactive != null) 'includeInactive': ['${includeInactive}'],
+      if (stripResults != null) 'stripResults': ['${stripResults}'],
+      if (waitToken != null) 'waitToken': [waitToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
@@ -604,16 +569,11 @@ class DebuggerDebuggeesBreakpointsResource {
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (canaryOption != null) {
-      _queryParams['canaryOption'] = [canaryOption];
-    }
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (canaryOption != null) 'canaryOption': [canaryOption],
+      if (clientVersion != null) 'clientVersion': [clientVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +

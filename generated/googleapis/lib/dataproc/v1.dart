@@ -125,10 +125,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -179,10 +178,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -226,10 +224,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -277,10 +274,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -333,16 +329,11 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -392,10 +383,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -447,10 +437,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -504,10 +493,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -563,10 +551,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -621,13 +608,10 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (version != null) {
-      _queryParams['version'] = ['${version}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (version != null) 'version': ['${version}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -677,13 +661,10 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (version != null) {
-      _queryParams['version'] = ['${version}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (version != null) 'version': ['${version}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -731,10 +712,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -796,10 +776,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
@@ -870,13 +849,10 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -929,16 +905,11 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -988,10 +959,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -1043,10 +1013,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -1102,10 +1071,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1178,10 +1146,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1232,10 +1199,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1279,10 +1245,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1330,10 +1295,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -1386,16 +1350,11 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1445,10 +1404,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -1500,10 +1458,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -1557,10 +1514,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1630,13 +1586,10 @@ class ProjectsRegionsClustersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1707,16 +1660,11 @@ class ProjectsRegionsClustersResource {
     if (clusterName == null) {
       throw core.ArgumentError('Parameter clusterName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clusterUuid != null) {
-      _queryParams['clusterUuid'] = [clusterUuid];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clusterUuid != null) 'clusterUuid': [clusterUuid],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1780,10 +1728,9 @@ class ProjectsRegionsClustersResource {
     if (clusterName == null) {
       throw core.ArgumentError('Parameter clusterName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1838,10 +1785,9 @@ class ProjectsRegionsClustersResource {
     if (clusterName == null) {
       throw core.ArgumentError('Parameter clusterName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1893,10 +1839,9 @@ class ProjectsRegionsClustersResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -1958,10 +1903,9 @@ class ProjectsRegionsClustersResource {
     if (cluster == null) {
       throw core.ArgumentError('Parameter cluster is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$project') +
@@ -2030,19 +1974,12 @@ class ProjectsRegionsClustersResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2142,21 +2079,13 @@ class ProjectsRegionsClustersResource {
     if (clusterName == null) {
       throw core.ArgumentError('Parameter clusterName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (gracefulDecommissionTimeout != null) {
-      _queryParams['gracefulDecommissionTimeout'] = [
-        gracefulDecommissionTimeout
-      ];
-    }
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (gracefulDecommissionTimeout != null)
+        'gracefulDecommissionTimeout': [gracefulDecommissionTimeout],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2209,10 +2138,9 @@ class ProjectsRegionsClustersResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -2268,10 +2196,9 @@ class ProjectsRegionsClustersResource {
     if (clusterName == null) {
       throw core.ArgumentError('Parameter clusterName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2331,10 +2258,9 @@ class ProjectsRegionsClustersResource {
     if (clusterName == null) {
       throw core.ArgumentError('Parameter clusterName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2390,10 +2316,9 @@ class ProjectsRegionsClustersResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -2463,10 +2388,9 @@ class ProjectsRegionsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2524,10 +2448,9 @@ class ProjectsRegionsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2580,10 +2503,9 @@ class ProjectsRegionsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2634,10 +2556,9 @@ class ProjectsRegionsJobsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -2714,25 +2635,14 @@ class ProjectsRegionsJobsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clusterName != null) {
-      _queryParams['clusterName'] = [clusterName];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (jobStateMatcher != null) {
-      _queryParams['jobStateMatcher'] = [jobStateMatcher];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clusterName != null) 'clusterName': [clusterName],
+      if (filter != null) 'filter': [filter],
+      if (jobStateMatcher != null) 'jobStateMatcher': [jobStateMatcher],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2797,13 +2707,10 @@ class ProjectsRegionsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2855,10 +2762,9 @@ class ProjectsRegionsJobsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -2908,10 +2814,9 @@ class ProjectsRegionsJobsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2963,10 +2868,9 @@ class ProjectsRegionsJobsResource {
     if (region == null) {
       throw core.ArgumentError('Parameter region is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -3019,10 +2923,9 @@ class ProjectsRegionsJobsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -3079,10 +2982,9 @@ class ProjectsRegionsOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -3124,10 +3026,9 @@ class ProjectsRegionsOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3167,10 +3068,9 @@ class ProjectsRegionsOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3217,10 +3117,9 @@ class ProjectsRegionsOperationsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -3277,19 +3176,12 @@ class ProjectsRegionsOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3337,10 +3229,9 @@ class ProjectsRegionsOperationsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -3392,10 +3283,9 @@ class ProjectsRegionsOperationsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -3453,10 +3343,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3511,13 +3400,10 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (version != null) {
-      _queryParams['version'] = ['${version}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (version != null) 'version': ['${version}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3567,13 +3453,10 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (version != null) {
-      _queryParams['version'] = ['${version}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (version != null) 'version': ['${version}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3621,10 +3504,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -3686,10 +3568,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
@@ -3760,13 +3641,10 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3819,16 +3697,11 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3878,10 +3751,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -3933,10 +3805,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -3992,10 +3863,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 

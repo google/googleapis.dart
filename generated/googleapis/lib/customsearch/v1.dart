@@ -312,103 +312,40 @@ class CseResource {
     core.int start,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (c2coff != null) {
-      _queryParams['c2coff'] = [c2coff];
-    }
-    if (cr != null) {
-      _queryParams['cr'] = [cr];
-    }
-    if (cx != null) {
-      _queryParams['cx'] = [cx];
-    }
-    if (dateRestrict != null) {
-      _queryParams['dateRestrict'] = [dateRestrict];
-    }
-    if (exactTerms != null) {
-      _queryParams['exactTerms'] = [exactTerms];
-    }
-    if (excludeTerms != null) {
-      _queryParams['excludeTerms'] = [excludeTerms];
-    }
-    if (fileType != null) {
-      _queryParams['fileType'] = [fileType];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (gl != null) {
-      _queryParams['gl'] = [gl];
-    }
-    if (googlehost != null) {
-      _queryParams['googlehost'] = [googlehost];
-    }
-    if (highRange != null) {
-      _queryParams['highRange'] = [highRange];
-    }
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (hq != null) {
-      _queryParams['hq'] = [hq];
-    }
-    if (imgColorType != null) {
-      _queryParams['imgColorType'] = [imgColorType];
-    }
-    if (imgDominantColor != null) {
-      _queryParams['imgDominantColor'] = [imgDominantColor];
-    }
-    if (imgSize != null) {
-      _queryParams['imgSize'] = [imgSize];
-    }
-    if (imgType != null) {
-      _queryParams['imgType'] = [imgType];
-    }
-    if (linkSite != null) {
-      _queryParams['linkSite'] = [linkSite];
-    }
-    if (lowRange != null) {
-      _queryParams['lowRange'] = [lowRange];
-    }
-    if (lr != null) {
-      _queryParams['lr'] = [lr];
-    }
-    if (num != null) {
-      _queryParams['num'] = ['${num}'];
-    }
-    if (orTerms != null) {
-      _queryParams['orTerms'] = [orTerms];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (relatedSite != null) {
-      _queryParams['relatedSite'] = [relatedSite];
-    }
-    if (rights != null) {
-      _queryParams['rights'] = [rights];
-    }
-    if (safe != null) {
-      _queryParams['safe'] = [safe];
-    }
-    if (searchType != null) {
-      _queryParams['searchType'] = [searchType];
-    }
-    if (siteSearch != null) {
-      _queryParams['siteSearch'] = [siteSearch];
-    }
-    if (siteSearchFilter != null) {
-      _queryParams['siteSearchFilter'] = [siteSearchFilter];
-    }
-    if (sort != null) {
-      _queryParams['sort'] = [sort];
-    }
-    if (start != null) {
-      _queryParams['start'] = ['${start}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (c2coff != null) 'c2coff': [c2coff],
+      if (cr != null) 'cr': [cr],
+      if (cx != null) 'cx': [cx],
+      if (dateRestrict != null) 'dateRestrict': [dateRestrict],
+      if (exactTerms != null) 'exactTerms': [exactTerms],
+      if (excludeTerms != null) 'excludeTerms': [excludeTerms],
+      if (fileType != null) 'fileType': [fileType],
+      if (filter != null) 'filter': [filter],
+      if (gl != null) 'gl': [gl],
+      if (googlehost != null) 'googlehost': [googlehost],
+      if (highRange != null) 'highRange': [highRange],
+      if (hl != null) 'hl': [hl],
+      if (hq != null) 'hq': [hq],
+      if (imgColorType != null) 'imgColorType': [imgColorType],
+      if (imgDominantColor != null) 'imgDominantColor': [imgDominantColor],
+      if (imgSize != null) 'imgSize': [imgSize],
+      if (imgType != null) 'imgType': [imgType],
+      if (linkSite != null) 'linkSite': [linkSite],
+      if (lowRange != null) 'lowRange': [lowRange],
+      if (lr != null) 'lr': [lr],
+      if (num != null) 'num': ['${num}'],
+      if (orTerms != null) 'orTerms': [orTerms],
+      if (q != null) 'q': [q],
+      if (relatedSite != null) 'relatedSite': [relatedSite],
+      if (rights != null) 'rights': [rights],
+      if (safe != null) 'safe': [safe],
+      if (searchType != null) 'searchType': [searchType],
+      if (siteSearch != null) 'siteSearch': [siteSearch],
+      if (siteSearchFilter != null) 'siteSearchFilter': [siteSearchFilter],
+      if (sort != null) 'sort': [sort],
+      if (start != null) 'start': ['${start}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'customsearch/v1';
 
@@ -681,103 +618,40 @@ class CseSiterestrictResource {
     core.int start,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (c2coff != null) {
-      _queryParams['c2coff'] = [c2coff];
-    }
-    if (cr != null) {
-      _queryParams['cr'] = [cr];
-    }
-    if (cx != null) {
-      _queryParams['cx'] = [cx];
-    }
-    if (dateRestrict != null) {
-      _queryParams['dateRestrict'] = [dateRestrict];
-    }
-    if (exactTerms != null) {
-      _queryParams['exactTerms'] = [exactTerms];
-    }
-    if (excludeTerms != null) {
-      _queryParams['excludeTerms'] = [excludeTerms];
-    }
-    if (fileType != null) {
-      _queryParams['fileType'] = [fileType];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (gl != null) {
-      _queryParams['gl'] = [gl];
-    }
-    if (googlehost != null) {
-      _queryParams['googlehost'] = [googlehost];
-    }
-    if (highRange != null) {
-      _queryParams['highRange'] = [highRange];
-    }
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (hq != null) {
-      _queryParams['hq'] = [hq];
-    }
-    if (imgColorType != null) {
-      _queryParams['imgColorType'] = [imgColorType];
-    }
-    if (imgDominantColor != null) {
-      _queryParams['imgDominantColor'] = [imgDominantColor];
-    }
-    if (imgSize != null) {
-      _queryParams['imgSize'] = [imgSize];
-    }
-    if (imgType != null) {
-      _queryParams['imgType'] = [imgType];
-    }
-    if (linkSite != null) {
-      _queryParams['linkSite'] = [linkSite];
-    }
-    if (lowRange != null) {
-      _queryParams['lowRange'] = [lowRange];
-    }
-    if (lr != null) {
-      _queryParams['lr'] = [lr];
-    }
-    if (num != null) {
-      _queryParams['num'] = ['${num}'];
-    }
-    if (orTerms != null) {
-      _queryParams['orTerms'] = [orTerms];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (relatedSite != null) {
-      _queryParams['relatedSite'] = [relatedSite];
-    }
-    if (rights != null) {
-      _queryParams['rights'] = [rights];
-    }
-    if (safe != null) {
-      _queryParams['safe'] = [safe];
-    }
-    if (searchType != null) {
-      _queryParams['searchType'] = [searchType];
-    }
-    if (siteSearch != null) {
-      _queryParams['siteSearch'] = [siteSearch];
-    }
-    if (siteSearchFilter != null) {
-      _queryParams['siteSearchFilter'] = [siteSearchFilter];
-    }
-    if (sort != null) {
-      _queryParams['sort'] = [sort];
-    }
-    if (start != null) {
-      _queryParams['start'] = ['${start}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (c2coff != null) 'c2coff': [c2coff],
+      if (cr != null) 'cr': [cr],
+      if (cx != null) 'cx': [cx],
+      if (dateRestrict != null) 'dateRestrict': [dateRestrict],
+      if (exactTerms != null) 'exactTerms': [exactTerms],
+      if (excludeTerms != null) 'excludeTerms': [excludeTerms],
+      if (fileType != null) 'fileType': [fileType],
+      if (filter != null) 'filter': [filter],
+      if (gl != null) 'gl': [gl],
+      if (googlehost != null) 'googlehost': [googlehost],
+      if (highRange != null) 'highRange': [highRange],
+      if (hl != null) 'hl': [hl],
+      if (hq != null) 'hq': [hq],
+      if (imgColorType != null) 'imgColorType': [imgColorType],
+      if (imgDominantColor != null) 'imgDominantColor': [imgDominantColor],
+      if (imgSize != null) 'imgSize': [imgSize],
+      if (imgType != null) 'imgType': [imgType],
+      if (linkSite != null) 'linkSite': [linkSite],
+      if (lowRange != null) 'lowRange': [lowRange],
+      if (lr != null) 'lr': [lr],
+      if (num != null) 'num': ['${num}'],
+      if (orTerms != null) 'orTerms': [orTerms],
+      if (q != null) 'q': [q],
+      if (relatedSite != null) 'relatedSite': [relatedSite],
+      if (rights != null) 'rights': [rights],
+      if (safe != null) 'safe': [safe],
+      if (searchType != null) 'searchType': [searchType],
+      if (siteSearch != null) 'siteSearch': [siteSearch],
+      if (siteSearchFilter != null) 'siteSearchFilter': [siteSearchFilter],
+      if (sort != null) 'sort': [sort],
+      if (start != null) 'start': ['${start}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'customsearch/v1/siterestrict';
 

@@ -85,13 +85,10 @@ class WebfontsResource {
     core.String sort,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (sort != null) {
-      _queryParams['sort'] = [sort];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (sort != null) 'sort': [sort],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/webfonts';
 

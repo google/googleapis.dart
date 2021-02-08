@@ -134,10 +134,9 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -180,10 +179,9 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -227,10 +225,9 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -273,10 +270,9 @@ class EditsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -320,10 +316,9 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -383,10 +378,9 @@ class EditsApksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -433,10 +427,9 @@ class EditsApksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -490,10 +483,9 @@ class EditsApksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -561,10 +553,9 @@ class EditsBundlesResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -629,15 +620,11 @@ class EditsBundlesResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ackBundleInstallationWarning != null) {
-      _queryParams['ackBundleInstallationWarning'] = [
-        '${ackBundleInstallationWarning}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ackBundleInstallationWarning != null)
+        'ackBundleInstallationWarning': ['${ackBundleInstallationWarning}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -732,10 +719,9 @@ class EditsDeobfuscationfilesResource {
     if (deobfuscationFileType == null) {
       throw core.ArgumentError('Parameter deobfuscationFileType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -813,10 +799,9 @@ class EditsDetailsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -867,10 +852,9 @@ class EditsDetailsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -922,10 +906,9 @@ class EditsDetailsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -997,10 +980,9 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1075,10 +1057,9 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1154,10 +1135,9 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1233,10 +1213,9 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -1342,10 +1321,9 @@ class EditsImagesResource {
     if (imageId == null) {
       throw core.ArgumentError('Parameter imageId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1422,10 +1400,9 @@ class EditsImagesResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1501,10 +1478,9 @@ class EditsImagesResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1586,10 +1562,9 @@ class EditsImagesResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -1672,10 +1647,9 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1719,10 +1693,9 @@ class EditsListingsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1774,10 +1747,9 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1823,10 +1795,9 @@ class EditsListingsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1884,10 +1855,9 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -1946,10 +1916,9 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2008,10 +1977,9 @@ class EditsTestersResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2068,10 +2036,9 @@ class EditsTestersResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2129,10 +2096,9 @@ class EditsTestersResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2191,10 +2157,9 @@ class EditsTracksResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2240,10 +2205,9 @@ class EditsTracksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2300,10 +2264,9 @@ class EditsTracksResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2361,10 +2324,9 @@ class EditsTracksResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2415,10 +2377,9 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2462,10 +2423,9 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2515,15 +2475,11 @@ class InappproductsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (autoConvertMissingPrices != null) {
-      _queryParams['autoConvertMissingPrices'] = [
-        '${autoConvertMissingPrices}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (autoConvertMissingPrices != null)
+        'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2571,19 +2527,12 @@ class InappproductsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if (token != null) {
-      _queryParams['token'] = [token];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if (token != null) 'token': [token],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2638,15 +2587,11 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (autoConvertMissingPrices != null) {
-      _queryParams['autoConvertMissingPrices'] = [
-        '${autoConvertMissingPrices}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (autoConvertMissingPrices != null)
+        'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2703,15 +2648,11 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (autoConvertMissingPrices != null) {
-      _queryParams['autoConvertMissingPrices'] = [
-        '${autoConvertMissingPrices}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (autoConvertMissingPrices != null)
+        'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2772,10 +2713,9 @@ class InternalappsharingartifactsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -2841,10 +2781,9 @@ class InternalappsharingartifactsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -2915,13 +2854,10 @@ class OrdersResource {
     if (orderId == null) {
       throw core.ArgumentError('Parameter orderId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (revoke != null) {
-      _queryParams['revoke'] = ['${revoke}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (revoke != null) 'revoke': ['${revoke}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -2997,10 +2933,9 @@ class PurchasesProductsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3057,10 +2992,9 @@ class PurchasesProductsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3126,10 +3060,9 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3186,10 +3119,9 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3251,10 +3183,9 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3313,10 +3244,9 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3371,10 +3301,9 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3431,10 +3360,9 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3522,28 +3450,15 @@ class PurchasesVoidedpurchasesResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endTime != null) {
-      _queryParams['endTime'] = [endTime];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
-    }
-    if (token != null) {
-      _queryParams['token'] = [token];
-    }
-    if (type != null) {
-      _queryParams['type'] = ['${type}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endTime != null) 'endTime': [endTime],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if (startTime != null) 'startTime': [startTime],
+      if (token != null) 'token': [token],
+      if (type != null) 'type': ['${type}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3596,13 +3511,11 @@ class ReviewsResource {
     if (reviewId == null) {
       throw core.ArgumentError('Parameter reviewId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (translationLanguage != null) {
-      _queryParams['translationLanguage'] = [translationLanguage];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (translationLanguage != null)
+        'translationLanguage': [translationLanguage],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3652,22 +3565,14 @@ class ReviewsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if (token != null) {
-      _queryParams['token'] = [token];
-    }
-    if (translationLanguage != null) {
-      _queryParams['translationLanguage'] = [translationLanguage];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if (token != null) 'token': [token],
+      if (translationLanguage != null)
+        'translationLanguage': [translationLanguage],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3716,10 +3621,9 @@ class ReviewsResource {
     if (reviewId == null) {
       throw core.ArgumentError('Parameter reviewId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3787,10 +3691,9 @@ class SystemapksVariantsResource {
     if (versionCode == null) {
       throw core.ArgumentError('Parameter versionCode is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3846,10 +3749,9 @@ class SystemapksVariantsResource {
     if (variantId == null) {
       throw core.ArgumentError('Parameter variantId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3908,10 +3810,9 @@ class SystemapksVariantsResource {
     if (variantId == null) {
       throw core.ArgumentError('Parameter variantId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
@@ -3957,10 +3858,9 @@ class SystemapksVariantsResource {
     if (versionCode == null) {
       throw core.ArgumentError('Parameter versionCode is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +

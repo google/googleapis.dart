@@ -261,10 +261,9 @@ class AccountActiveAdSummariesResource {
     if (summaryAccountId == null) {
       throw core.ArgumentError('Parameter summaryAccountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -316,10 +315,9 @@ class AccountPermissionGroupsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -358,10 +356,9 @@ class AccountPermissionGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -411,10 +408,9 @@ class AccountPermissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -453,10 +449,9 @@ class AccountPermissionsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -507,10 +502,9 @@ class AccountUserProfilesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -554,10 +548,9 @@ class AccountUserProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -639,37 +632,18 @@ class AccountUserProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (active != null) {
-      _queryParams['active'] = ['${active}'];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (subaccountId != null) {
-      _queryParams['subaccountId'] = [subaccountId];
-    }
-    if (userRoleId != null) {
-      _queryParams['userRoleId'] = [userRoleId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (active != null) 'active': ['${active}'],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (subaccountId != null) 'subaccountId': [subaccountId],
+      if (userRoleId != null) 'userRoleId': [userRoleId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -717,14 +691,13 @@ class AccountUserProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -768,10 +741,9 @@ class AccountUserProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -822,10 +794,9 @@ class AccountsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -899,31 +870,16 @@ class AccountsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (active != null) {
-      _queryParams['active'] = ['${active}'];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (active != null) 'active': ['${active}'],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -971,14 +927,13 @@ class AccountsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1021,10 +976,9 @@ class AccountsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1074,10 +1028,9 @@ class AdsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1120,10 +1073,9 @@ class AdsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
@@ -1260,80 +1212,36 @@ class AdsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (active != null) {
-      _queryParams['active'] = ['${active}'];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
-    }
-    if (archived != null) {
-      _queryParams['archived'] = ['${archived}'];
-    }
-    if (audienceSegmentIds != null) {
-      _queryParams['audienceSegmentIds'] = audienceSegmentIds;
-    }
-    if (campaignIds != null) {
-      _queryParams['campaignIds'] = campaignIds;
-    }
-    if (compatibility != null) {
-      _queryParams['compatibility'] = [compatibility];
-    }
-    if (creativeIds != null) {
-      _queryParams['creativeIds'] = creativeIds;
-    }
-    if (creativeOptimizationConfigurationIds != null) {
-      _queryParams['creativeOptimizationConfigurationIds'] =
-          creativeOptimizationConfigurationIds;
-    }
-    if (dynamicClickTracker != null) {
-      _queryParams['dynamicClickTracker'] = ['${dynamicClickTracker}'];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (landingPageIds != null) {
-      _queryParams['landingPageIds'] = landingPageIds;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (overriddenEventTagId != null) {
-      _queryParams['overriddenEventTagId'] = [overriddenEventTagId];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (placementIds != null) {
-      _queryParams['placementIds'] = placementIds;
-    }
-    if (remarketingListIds != null) {
-      _queryParams['remarketingListIds'] = remarketingListIds;
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sizeIds != null) {
-      _queryParams['sizeIds'] = sizeIds;
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (sslCompliant != null) {
-      _queryParams['sslCompliant'] = ['${sslCompliant}'];
-    }
-    if (sslRequired != null) {
-      _queryParams['sslRequired'] = ['${sslRequired}'];
-    }
-    if (type != null) {
-      _queryParams['type'] = type;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (active != null) 'active': ['${active}'],
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (archived != null) 'archived': ['${archived}'],
+      if (audienceSegmentIds != null) 'audienceSegmentIds': audienceSegmentIds,
+      if (campaignIds != null) 'campaignIds': campaignIds,
+      if (compatibility != null) 'compatibility': [compatibility],
+      if (creativeIds != null) 'creativeIds': creativeIds,
+      if (creativeOptimizationConfigurationIds != null)
+        'creativeOptimizationConfigurationIds':
+            creativeOptimizationConfigurationIds,
+      if (dynamicClickTracker != null)
+        'dynamicClickTracker': ['${dynamicClickTracker}'],
+      if (ids != null) 'ids': ids,
+      if (landingPageIds != null) 'landingPageIds': landingPageIds,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (overriddenEventTagId != null)
+        'overriddenEventTagId': [overriddenEventTagId],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (placementIds != null) 'placementIds': placementIds,
+      if (remarketingListIds != null) 'remarketingListIds': remarketingListIds,
+      if (searchString != null) 'searchString': [searchString],
+      if (sizeIds != null) 'sizeIds': sizeIds,
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (sslCompliant != null) 'sslCompliant': ['${sslCompliant}'],
+      if (sslRequired != null) 'sslRequired': ['${sslRequired}'],
+      if (type != null) 'type': type,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
@@ -1380,14 +1288,13 @@ class AdsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
@@ -1429,10 +1336,9 @@ class AdsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
@@ -1479,10 +1385,9 @@ class AdvertiserGroupsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1526,10 +1431,9 @@ class AdvertiserGroupsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1573,10 +1477,9 @@ class AdvertiserGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1648,28 +1551,15 @@ class AdvertiserGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1717,14 +1607,13 @@ class AdvertiserGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1768,10 +1657,9 @@ class AdvertiserGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1823,10 +1711,9 @@ class AdvertiserLandingPagesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1870,10 +1757,9 @@ class AdvertiserLandingPagesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1958,40 +1844,19 @@ class AdvertiserLandingPagesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserIds != null) {
-      _queryParams['advertiserIds'] = advertiserIds;
-    }
-    if (archived != null) {
-      _queryParams['archived'] = ['${archived}'];
-    }
-    if (campaignIds != null) {
-      _queryParams['campaignIds'] = campaignIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (subaccountId != null) {
-      _queryParams['subaccountId'] = [subaccountId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserIds != null) 'advertiserIds': advertiserIds,
+      if (archived != null) 'archived': ['${archived}'],
+      if (campaignIds != null) 'campaignIds': campaignIds,
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (subaccountId != null) 'subaccountId': [subaccountId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2039,14 +1904,13 @@ class AdvertiserLandingPagesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2090,10 +1954,9 @@ class AdvertiserLandingPagesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2144,10 +2007,9 @@ class AdvertisersResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2191,10 +2053,9 @@ class AdvertisersResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2291,48 +2152,25 @@ class AdvertisersResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserGroupIds != null) {
-      _queryParams['advertiserGroupIds'] = advertiserGroupIds;
-    }
-    if (floodlightConfigurationIds != null) {
-      _queryParams['floodlightConfigurationIds'] = floodlightConfigurationIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (includeAdvertisersWithoutGroupsOnly != null) {
-      _queryParams['includeAdvertisersWithoutGroupsOnly'] = [
-        '${includeAdvertisersWithoutGroupsOnly}'
-      ];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (onlyParent != null) {
-      _queryParams['onlyParent'] = ['${onlyParent}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (status != null) {
-      _queryParams['status'] = [status];
-    }
-    if (subaccountId != null) {
-      _queryParams['subaccountId'] = [subaccountId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserGroupIds != null) 'advertiserGroupIds': advertiserGroupIds,
+      if (floodlightConfigurationIds != null)
+        'floodlightConfigurationIds': floodlightConfigurationIds,
+      if (ids != null) 'ids': ids,
+      if (includeAdvertisersWithoutGroupsOnly != null)
+        'includeAdvertisersWithoutGroupsOnly': [
+          '${includeAdvertisersWithoutGroupsOnly}'
+        ],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (onlyParent != null) 'onlyParent': ['${onlyParent}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (status != null) 'status': [status],
+      if (subaccountId != null) 'subaccountId': [subaccountId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2380,14 +2218,13 @@ class AdvertisersResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2431,10 +2268,9 @@ class AdvertisersResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2479,10 +2315,9 @@ class BrowsersResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2541,10 +2376,9 @@ class CampaignCreativeAssociationsResource {
     if (campaignId == null) {
       throw core.ArgumentError('Parameter campaignId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2606,19 +2440,12 @@ class CampaignCreativeAssociationsResource {
     if (campaignId == null) {
       throw core.ArgumentError('Parameter campaignId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2670,10 +2497,9 @@ class CampaignsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2716,10 +2542,9 @@ class CampaignsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2815,51 +2640,24 @@ class CampaignsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserGroupIds != null) {
-      _queryParams['advertiserGroupIds'] = advertiserGroupIds;
-    }
-    if (advertiserIds != null) {
-      _queryParams['advertiserIds'] = advertiserIds;
-    }
-    if (archived != null) {
-      _queryParams['archived'] = ['${archived}'];
-    }
-    if (atLeastOneOptimizationActivity != null) {
-      _queryParams['atLeastOneOptimizationActivity'] = [
-        '${atLeastOneOptimizationActivity}'
-      ];
-    }
-    if (excludedIds != null) {
-      _queryParams['excludedIds'] = excludedIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (overriddenEventTagId != null) {
-      _queryParams['overriddenEventTagId'] = [overriddenEventTagId];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (subaccountId != null) {
-      _queryParams['subaccountId'] = [subaccountId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserGroupIds != null) 'advertiserGroupIds': advertiserGroupIds,
+      if (advertiserIds != null) 'advertiserIds': advertiserIds,
+      if (archived != null) 'archived': ['${archived}'],
+      if (atLeastOneOptimizationActivity != null)
+        'atLeastOneOptimizationActivity': ['${atLeastOneOptimizationActivity}'],
+      if (excludedIds != null) 'excludedIds': excludedIds,
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (overriddenEventTagId != null)
+        'overriddenEventTagId': [overriddenEventTagId],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (subaccountId != null) 'subaccountId': [subaccountId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2907,14 +2705,13 @@ class CampaignsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2957,10 +2754,9 @@ class CampaignsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3010,10 +2806,9 @@ class ChangeLogsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3154,40 +2949,19 @@ class ChangeLogsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (action != null) {
-      _queryParams['action'] = [action];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxChangeTime != null) {
-      _queryParams['maxChangeTime'] = [maxChangeTime];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (minChangeTime != null) {
-      _queryParams['minChangeTime'] = [minChangeTime];
-    }
-    if (objectIds != null) {
-      _queryParams['objectIds'] = objectIds;
-    }
-    if (objectType != null) {
-      _queryParams['objectType'] = [objectType];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (userProfileIds != null) {
-      _queryParams['userProfileIds'] = userProfileIds;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (action != null) 'action': [action],
+      if (ids != null) 'ids': ids,
+      if (maxChangeTime != null) 'maxChangeTime': [maxChangeTime],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (minChangeTime != null) 'minChangeTime': [minChangeTime],
+      if (objectIds != null) 'objectIds': objectIds,
+      if (objectType != null) 'objectType': [objectType],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (userProfileIds != null) 'userProfileIds': userProfileIds,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3243,22 +3017,13 @@ class CitiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (countryDartIds != null) {
-      _queryParams['countryDartIds'] = countryDartIds;
-    }
-    if (dartIds != null) {
-      _queryParams['dartIds'] = dartIds;
-    }
-    if (namePrefix != null) {
-      _queryParams['namePrefix'] = [namePrefix];
-    }
-    if (regionDartIds != null) {
-      _queryParams['regionDartIds'] = regionDartIds;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (countryDartIds != null) 'countryDartIds': countryDartIds,
+      if (dartIds != null) 'dartIds': dartIds,
+      if (namePrefix != null) 'namePrefix': [namePrefix],
+      if (regionDartIds != null) 'regionDartIds': regionDartIds,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3308,10 +3073,9 @@ class ConnectionTypesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3350,10 +3114,9 @@ class ConnectionTypesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3401,10 +3164,9 @@ class ContentCategoriesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3448,10 +3210,9 @@ class ContentCategoriesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3495,10 +3256,9 @@ class ContentCategoriesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3570,28 +3330,15 @@ class ContentCategoriesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3639,14 +3386,13 @@ class ContentCategoriesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3690,10 +3436,9 @@ class ContentCategoriesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3743,10 +3488,9 @@ class ConversionsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3790,10 +3534,9 @@ class ConversionsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3844,10 +3587,9 @@ class CountriesResource {
     if (dartId == null) {
       throw core.ArgumentError('Parameter dartId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3885,10 +3627,9 @@ class CountriesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3946,10 +3687,9 @@ class CreativeAssetsResource {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -4018,10 +3758,9 @@ class CreativeFieldValuesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4073,10 +3812,9 @@ class CreativeFieldValuesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4128,10 +3866,9 @@ class CreativeFieldValuesResource {
     if (creativeFieldId == null) {
       throw core.ArgumentError('Parameter creativeFieldId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4206,28 +3943,15 @@ class CreativeFieldValuesResource {
     if (creativeFieldId == null) {
       throw core.ArgumentError('Parameter creativeFieldId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4283,14 +4007,13 @@ class CreativeFieldValuesResource {
     if (creativeFieldId == null) {
       throw core.ArgumentError('Parameter creativeFieldId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4342,10 +4065,9 @@ class CreativeFieldValuesResource {
     if (creativeFieldId == null) {
       throw core.ArgumentError('Parameter creativeFieldId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4396,10 +4118,9 @@ class CreativeFieldsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4443,10 +4164,9 @@ class CreativeFieldsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4490,10 +4210,9 @@ class CreativeFieldsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4570,31 +4289,16 @@ class CreativeFieldsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserIds != null) {
-      _queryParams['advertiserIds'] = advertiserIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserIds != null) 'advertiserIds': advertiserIds,
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4642,14 +4346,13 @@ class CreativeFieldsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4693,10 +4396,9 @@ class CreativeFieldsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4747,10 +4449,9 @@ class CreativeGroupsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4794,10 +4495,9 @@ class CreativeGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4878,34 +4578,17 @@ class CreativeGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserIds != null) {
-      _queryParams['advertiserIds'] = advertiserIds;
-    }
-    if (groupNumber != null) {
-      _queryParams['groupNumber'] = ['${groupNumber}'];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserIds != null) 'advertiserIds': advertiserIds,
+      if (groupNumber != null) 'groupNumber': ['${groupNumber}'],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4953,14 +4636,13 @@ class CreativeGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5004,10 +4686,9 @@ class CreativeGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5058,10 +4739,9 @@ class CreativesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5104,10 +4784,9 @@ class CreativesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5212,58 +4891,26 @@ class CreativesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (active != null) {
-      _queryParams['active'] = ['${active}'];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
-    }
-    if (archived != null) {
-      _queryParams['archived'] = ['${archived}'];
-    }
-    if (campaignId != null) {
-      _queryParams['campaignId'] = [campaignId];
-    }
-    if (companionCreativeIds != null) {
-      _queryParams['companionCreativeIds'] = companionCreativeIds;
-    }
-    if (creativeFieldIds != null) {
-      _queryParams['creativeFieldIds'] = creativeFieldIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (renderingIds != null) {
-      _queryParams['renderingIds'] = renderingIds;
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sizeIds != null) {
-      _queryParams['sizeIds'] = sizeIds;
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (studioCreativeId != null) {
-      _queryParams['studioCreativeId'] = [studioCreativeId];
-    }
-    if (types != null) {
-      _queryParams['types'] = types;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (active != null) 'active': ['${active}'],
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (archived != null) 'archived': ['${archived}'],
+      if (campaignId != null) 'campaignId': [campaignId],
+      if (companionCreativeIds != null)
+        'companionCreativeIds': companionCreativeIds,
+      if (creativeFieldIds != null) 'creativeFieldIds': creativeFieldIds,
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (renderingIds != null) 'renderingIds': renderingIds,
+      if (searchString != null) 'searchString': [searchString],
+      if (sizeIds != null) 'sizeIds': sizeIds,
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (studioCreativeId != null) 'studioCreativeId': [studioCreativeId],
+      if (types != null) 'types': types,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5311,14 +4958,13 @@ class CreativesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5361,10 +5007,9 @@ class CreativesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5413,10 +5058,9 @@ class CustomEventsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5473,16 +5117,11 @@ class DimensionValuesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5533,10 +5172,9 @@ class DirectorySitesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5580,10 +5218,9 @@ class DirectorySitesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5675,49 +5312,23 @@ class DirectorySitesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (acceptsInStreamVideoPlacements != null) {
-      _queryParams['acceptsInStreamVideoPlacements'] = [
-        '${acceptsInStreamVideoPlacements}'
-      ];
-    }
-    if (acceptsInterstitialPlacements != null) {
-      _queryParams['acceptsInterstitialPlacements'] = [
-        '${acceptsInterstitialPlacements}'
-      ];
-    }
-    if (acceptsPublisherPaidPlacements != null) {
-      _queryParams['acceptsPublisherPaidPlacements'] = [
-        '${acceptsPublisherPaidPlacements}'
-      ];
-    }
-    if (active != null) {
-      _queryParams['active'] = ['${active}'];
-    }
-    if (dfpNetworkCode != null) {
-      _queryParams['dfpNetworkCode'] = [dfpNetworkCode];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (acceptsInStreamVideoPlacements != null)
+        'acceptsInStreamVideoPlacements': ['${acceptsInStreamVideoPlacements}'],
+      if (acceptsInterstitialPlacements != null)
+        'acceptsInterstitialPlacements': ['${acceptsInterstitialPlacements}'],
+      if (acceptsPublisherPaidPlacements != null)
+        'acceptsPublisherPaidPlacements': ['${acceptsPublisherPaidPlacements}'],
+      if (active != null) 'active': ['${active}'],
+      if (dfpNetworkCode != null) 'dfpNetworkCode': [dfpNetworkCode],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5781,18 +5392,17 @@ class DynamicTargetingKeysResource {
     if (objectId == null) {
       throw core.ArgumentError('Parameter objectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    _queryParams['name'] = [name];
     if (objectType == null) {
       throw core.ArgumentError('Parameter objectType is required.');
     }
-    _queryParams['objectType'] = [objectType];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'name': [name],
+      'objectType': [objectType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5840,10 +5450,9 @@ class DynamicTargetingKeysResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5900,22 +5509,13 @@ class DynamicTargetingKeysResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
-    }
-    if (names != null) {
-      _queryParams['names'] = names;
-    }
-    if (objectId != null) {
-      _queryParams['objectId'] = [objectId];
-    }
-    if (objectType != null) {
-      _queryParams['objectType'] = [objectType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (names != null) 'names': names,
+      if (objectId != null) 'objectId': [objectId],
+      if (objectType != null) 'objectType': [objectType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5963,10 +5563,9 @@ class EventTagsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6010,10 +5609,9 @@ class EventTagsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6056,10 +5654,9 @@ class EventTagsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6153,40 +5750,19 @@ class EventTagsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (adId != null) {
-      _queryParams['adId'] = [adId];
-    }
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
-    }
-    if (campaignId != null) {
-      _queryParams['campaignId'] = [campaignId];
-    }
-    if (definitionsOnly != null) {
-      _queryParams['definitionsOnly'] = ['${definitionsOnly}'];
-    }
-    if (enabled != null) {
-      _queryParams['enabled'] = ['${enabled}'];
-    }
-    if (eventTagTypes != null) {
-      _queryParams['eventTagTypes'] = eventTagTypes;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (adId != null) 'adId': [adId],
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (campaignId != null) 'campaignId': [campaignId],
+      if (definitionsOnly != null) 'definitionsOnly': ['${definitionsOnly}'],
+      if (enabled != null) 'enabled': ['${enabled}'],
+      if (eventTagTypes != null) 'eventTagTypes': eventTagTypes,
+      if (ids != null) 'ids': ids,
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6234,14 +5810,13 @@ class EventTagsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6284,10 +5859,9 @@ class EventTagsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6348,10 +5922,9 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
@@ -6421,25 +5994,14 @@ class FilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (scope != null) {
-      _queryParams['scope'] = [scope];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (scope != null) 'scope': [scope],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6487,10 +6049,9 @@ class FloodlightActivitiesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6532,13 +6093,11 @@ class FloodlightActivitiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (floodlightActivityId != null) {
-      _queryParams['floodlightActivityId'] = [floodlightActivityId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (floodlightActivityId != null)
+        'floodlightActivityId': [floodlightActivityId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6582,10 +6141,9 @@ class FloodlightActivitiesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6629,10 +6187,9 @@ class FloodlightActivitiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6740,55 +6297,27 @@ class FloodlightActivitiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
-    }
-    if (floodlightActivityGroupIds != null) {
-      _queryParams['floodlightActivityGroupIds'] = floodlightActivityGroupIds;
-    }
-    if (floodlightActivityGroupName != null) {
-      _queryParams['floodlightActivityGroupName'] = [
-        floodlightActivityGroupName
-      ];
-    }
-    if (floodlightActivityGroupTagString != null) {
-      _queryParams['floodlightActivityGroupTagString'] = [
-        floodlightActivityGroupTagString
-      ];
-    }
-    if (floodlightActivityGroupType != null) {
-      _queryParams['floodlightActivityGroupType'] = [
-        floodlightActivityGroupType
-      ];
-    }
-    if (floodlightConfigurationId != null) {
-      _queryParams['floodlightConfigurationId'] = [floodlightConfigurationId];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (tagString != null) {
-      _queryParams['tagString'] = [tagString];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (floodlightActivityGroupIds != null)
+        'floodlightActivityGroupIds': floodlightActivityGroupIds,
+      if (floodlightActivityGroupName != null)
+        'floodlightActivityGroupName': [floodlightActivityGroupName],
+      if (floodlightActivityGroupTagString != null)
+        'floodlightActivityGroupTagString': [floodlightActivityGroupTagString],
+      if (floodlightActivityGroupType != null)
+        'floodlightActivityGroupType': [floodlightActivityGroupType],
+      if (floodlightConfigurationId != null)
+        'floodlightConfigurationId': [floodlightConfigurationId],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (tagString != null) 'tagString': [tagString],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6836,14 +6365,13 @@ class FloodlightActivitiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6887,10 +6415,9 @@ class FloodlightActivitiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6942,10 +6469,9 @@ class FloodlightActivityGroupsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6989,10 +6515,9 @@ class FloodlightActivityGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7085,37 +6610,19 @@ class FloodlightActivityGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
-    }
-    if (floodlightConfigurationId != null) {
-      _queryParams['floodlightConfigurationId'] = [floodlightConfigurationId];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (type != null) {
-      _queryParams['type'] = [type];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (floodlightConfigurationId != null)
+        'floodlightConfigurationId': [floodlightConfigurationId],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7163,14 +6670,13 @@ class FloodlightActivityGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7214,10 +6720,9 @@ class FloodlightActivityGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7269,10 +6774,9 @@ class FloodlightConfigurationsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7315,13 +6819,10 @@ class FloodlightConfigurationsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7369,14 +6870,13 @@ class FloodlightConfigurationsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7420,10 +6920,9 @@ class FloodlightConfigurationsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7480,10 +6979,9 @@ class InventoryItemsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7570,37 +7068,18 @@ class InventoryItemsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (inPlan != null) {
-      _queryParams['inPlan'] = ['${inPlan}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderId != null) {
-      _queryParams['orderId'] = orderId;
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (siteId != null) {
-      _queryParams['siteId'] = siteId;
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (type != null) {
-      _queryParams['type'] = [type];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (inPlan != null) 'inPlan': ['${inPlan}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderId != null) 'orderId': orderId,
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (siteId != null) 'siteId': siteId,
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7646,10 +7125,9 @@ class LanguagesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7693,10 +7171,9 @@ class MetrosResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7746,10 +7223,9 @@ class MobileAppsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7808,25 +7284,14 @@ class MobileAppsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (directories != null) {
-      _queryParams['directories'] = directories;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (directories != null) 'directories': directories,
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7876,10 +7341,9 @@ class MobileCarriersResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7918,10 +7382,9 @@ class MobileCarriersResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7972,10 +7435,9 @@ class OperatingSystemVersionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8014,10 +7476,9 @@ class OperatingSystemVersionsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8067,10 +7528,9 @@ class OperatingSystemsResource {
     if (dartId == null) {
       throw core.ArgumentError('Parameter dartId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8109,10 +7569,9 @@ class OperatingSystemsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8168,10 +7627,9 @@ class OrderDocumentsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8263,37 +7721,18 @@ class OrderDocumentsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (approved != null) {
-      _queryParams['approved'] = ['${approved}'];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderId != null) {
-      _queryParams['orderId'] = orderId;
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (siteId != null) {
-      _queryParams['siteId'] = siteId;
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (approved != null) 'approved': ['${approved}'],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderId != null) 'orderId': orderId,
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (siteId != null) 'siteId': siteId,
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8351,10 +7790,9 @@ class OrdersResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8435,31 +7873,16 @@ class OrdersResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (siteId != null) {
-      _queryParams['siteId'] = siteId;
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (siteId != null) 'siteId': siteId,
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8511,10 +7934,9 @@ class PlacementGroupsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8558,10 +7980,9 @@ class PlacementGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8697,67 +8118,30 @@ class PlacementGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserIds != null) {
-      _queryParams['advertiserIds'] = advertiserIds;
-    }
-    if (archived != null) {
-      _queryParams['archived'] = ['${archived}'];
-    }
-    if (campaignIds != null) {
-      _queryParams['campaignIds'] = campaignIds;
-    }
-    if (contentCategoryIds != null) {
-      _queryParams['contentCategoryIds'] = contentCategoryIds;
-    }
-    if (directorySiteIds != null) {
-      _queryParams['directorySiteIds'] = directorySiteIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxEndDate != null) {
-      _queryParams['maxEndDate'] = [maxEndDate];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (maxStartDate != null) {
-      _queryParams['maxStartDate'] = [maxStartDate];
-    }
-    if (minEndDate != null) {
-      _queryParams['minEndDate'] = [minEndDate];
-    }
-    if (minStartDate != null) {
-      _queryParams['minStartDate'] = [minStartDate];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (placementGroupType != null) {
-      _queryParams['placementGroupType'] = [placementGroupType];
-    }
-    if (placementStrategyIds != null) {
-      _queryParams['placementStrategyIds'] = placementStrategyIds;
-    }
-    if (pricingTypes != null) {
-      _queryParams['pricingTypes'] = pricingTypes;
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (siteIds != null) {
-      _queryParams['siteIds'] = siteIds;
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserIds != null) 'advertiserIds': advertiserIds,
+      if (archived != null) 'archived': ['${archived}'],
+      if (campaignIds != null) 'campaignIds': campaignIds,
+      if (contentCategoryIds != null) 'contentCategoryIds': contentCategoryIds,
+      if (directorySiteIds != null) 'directorySiteIds': directorySiteIds,
+      if (ids != null) 'ids': ids,
+      if (maxEndDate != null) 'maxEndDate': [maxEndDate],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (maxStartDate != null) 'maxStartDate': [maxStartDate],
+      if (minEndDate != null) 'minEndDate': [minEndDate],
+      if (minStartDate != null) 'minStartDate': [minStartDate],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (placementGroupType != null)
+        'placementGroupType': [placementGroupType],
+      if (placementStrategyIds != null)
+        'placementStrategyIds': placementStrategyIds,
+      if (pricingTypes != null) 'pricingTypes': pricingTypes,
+      if (searchString != null) 'searchString': [searchString],
+      if (siteIds != null) 'siteIds': siteIds,
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8805,14 +8189,13 @@ class PlacementGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8856,10 +8239,9 @@ class PlacementGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8909,10 +8291,9 @@ class PlacementStrategiesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8956,10 +8337,9 @@ class PlacementStrategiesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9003,10 +8383,9 @@ class PlacementStrategiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9079,28 +8458,15 @@ class PlacementStrategiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9148,14 +8514,13 @@ class PlacementStrategiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9199,10 +8564,9 @@ class PlacementStrategiesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9258,19 +8622,12 @@ class PlacementsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (campaignId != null) {
-      _queryParams['campaignId'] = [campaignId];
-    }
-    if (placementIds != null) {
-      _queryParams['placementIds'] = placementIds;
-    }
-    if (tagFormats != null) {
-      _queryParams['tagFormats'] = tagFormats;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (campaignId != null) 'campaignId': [campaignId],
+      if (placementIds != null) 'placementIds': placementIds,
+      if (tagFormats != null) 'tagFormats': tagFormats,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9314,10 +8671,9 @@ class PlacementsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9360,10 +8716,9 @@ class PlacementsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9502,76 +8857,32 @@ class PlacementsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserIds != null) {
-      _queryParams['advertiserIds'] = advertiserIds;
-    }
-    if (archived != null) {
-      _queryParams['archived'] = ['${archived}'];
-    }
-    if (campaignIds != null) {
-      _queryParams['campaignIds'] = campaignIds;
-    }
-    if (compatibilities != null) {
-      _queryParams['compatibilities'] = compatibilities;
-    }
-    if (contentCategoryIds != null) {
-      _queryParams['contentCategoryIds'] = contentCategoryIds;
-    }
-    if (directorySiteIds != null) {
-      _queryParams['directorySiteIds'] = directorySiteIds;
-    }
-    if (groupIds != null) {
-      _queryParams['groupIds'] = groupIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxEndDate != null) {
-      _queryParams['maxEndDate'] = [maxEndDate];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (maxStartDate != null) {
-      _queryParams['maxStartDate'] = [maxStartDate];
-    }
-    if (minEndDate != null) {
-      _queryParams['minEndDate'] = [minEndDate];
-    }
-    if (minStartDate != null) {
-      _queryParams['minStartDate'] = [minStartDate];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (paymentSource != null) {
-      _queryParams['paymentSource'] = [paymentSource];
-    }
-    if (placementStrategyIds != null) {
-      _queryParams['placementStrategyIds'] = placementStrategyIds;
-    }
-    if (pricingTypes != null) {
-      _queryParams['pricingTypes'] = pricingTypes;
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (siteIds != null) {
-      _queryParams['siteIds'] = siteIds;
-    }
-    if (sizeIds != null) {
-      _queryParams['sizeIds'] = sizeIds;
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserIds != null) 'advertiserIds': advertiserIds,
+      if (archived != null) 'archived': ['${archived}'],
+      if (campaignIds != null) 'campaignIds': campaignIds,
+      if (compatibilities != null) 'compatibilities': compatibilities,
+      if (contentCategoryIds != null) 'contentCategoryIds': contentCategoryIds,
+      if (directorySiteIds != null) 'directorySiteIds': directorySiteIds,
+      if (groupIds != null) 'groupIds': groupIds,
+      if (ids != null) 'ids': ids,
+      if (maxEndDate != null) 'maxEndDate': [maxEndDate],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (maxStartDate != null) 'maxStartDate': [maxStartDate],
+      if (minEndDate != null) 'minEndDate': [minEndDate],
+      if (minStartDate != null) 'minStartDate': [minStartDate],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (paymentSource != null) 'paymentSource': [paymentSource],
+      if (placementStrategyIds != null)
+        'placementStrategyIds': placementStrategyIds,
+      if (pricingTypes != null) 'pricingTypes': pricingTypes,
+      if (searchString != null) 'searchString': [searchString],
+      if (siteIds != null) 'siteIds': siteIds,
+      if (sizeIds != null) 'sizeIds': sizeIds,
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9619,14 +8930,13 @@ class PlacementsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9669,10 +8979,9 @@ class PlacementsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9722,10 +9031,9 @@ class PlatformTypesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9764,10 +9072,9 @@ class PlatformTypesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9817,10 +9124,9 @@ class PostalCodesResource {
     if (code == null) {
       throw core.ArgumentError('Parameter code is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9859,10 +9165,9 @@ class PostalCodesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9912,10 +9217,9 @@ class ProjectsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9989,31 +9293,16 @@ class ProjectsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserIds != null) {
-      _queryParams['advertiserIds'] = advertiserIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserIds != null) 'advertiserIds': advertiserIds,
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10057,10 +9346,9 @@ class RegionsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10111,10 +9399,9 @@ class RemarketingListSharesResource {
     if (remarketingListId == null) {
       throw core.ArgumentError('Parameter remarketingListId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10163,14 +9450,13 @@ class RemarketingListSharesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10214,10 +9500,9 @@ class RemarketingListSharesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10268,10 +9553,9 @@ class RemarketingListsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10315,10 +9599,9 @@ class RemarketingListsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10397,35 +9680,21 @@ class RemarketingListsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    _queryParams['advertiserId'] = [advertiserId];
-    if (active != null) {
-      _queryParams['active'] = ['${active}'];
-    }
-    if (floodlightActivityId != null) {
-      _queryParams['floodlightActivityId'] = [floodlightActivityId];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'advertiserId': [advertiserId],
+      if (active != null) 'active': ['${active}'],
+      if (floodlightActivityId != null)
+        'floodlightActivityId': [floodlightActivityId],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (name != null) 'name': [name],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10473,14 +9742,13 @@ class RemarketingListsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10524,10 +9792,9 @@ class RemarketingListsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10580,10 +9847,9 @@ class ReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10627,10 +9893,9 @@ class ReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10673,10 +9938,9 @@ class ReportsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10740,25 +10004,14 @@ class ReportsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (scope != null) {
-      _queryParams['scope'] = [scope];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (scope != null) 'scope': [scope],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10809,10 +10062,9 @@ class ReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10860,13 +10112,10 @@ class ReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (synchronous != null) {
-      _queryParams['synchronous'] = ['${synchronous}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (synchronous != null) 'synchronous': ['${synchronous}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10916,10 +10165,9 @@ class ReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10972,10 +10220,9 @@ class ReportsCompatibleFieldsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11043,10 +10290,9 @@ class ReportsFilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11117,22 +10363,13 @@ class ReportsFilesResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11183,10 +10420,9 @@ class SitesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11229,10 +10465,9 @@ class SitesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11333,61 +10568,27 @@ class SitesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (acceptsInStreamVideoPlacements != null) {
-      _queryParams['acceptsInStreamVideoPlacements'] = [
-        '${acceptsInStreamVideoPlacements}'
-      ];
-    }
-    if (acceptsInterstitialPlacements != null) {
-      _queryParams['acceptsInterstitialPlacements'] = [
-        '${acceptsInterstitialPlacements}'
-      ];
-    }
-    if (acceptsPublisherPaidPlacements != null) {
-      _queryParams['acceptsPublisherPaidPlacements'] = [
-        '${acceptsPublisherPaidPlacements}'
-      ];
-    }
-    if (adWordsSite != null) {
-      _queryParams['adWordsSite'] = ['${adWordsSite}'];
-    }
-    if (approved != null) {
-      _queryParams['approved'] = ['${approved}'];
-    }
-    if (campaignIds != null) {
-      _queryParams['campaignIds'] = campaignIds;
-    }
-    if (directorySiteIds != null) {
-      _queryParams['directorySiteIds'] = directorySiteIds;
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (subaccountId != null) {
-      _queryParams['subaccountId'] = [subaccountId];
-    }
-    if (unmappedSite != null) {
-      _queryParams['unmappedSite'] = ['${unmappedSite}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (acceptsInStreamVideoPlacements != null)
+        'acceptsInStreamVideoPlacements': ['${acceptsInStreamVideoPlacements}'],
+      if (acceptsInterstitialPlacements != null)
+        'acceptsInterstitialPlacements': ['${acceptsInterstitialPlacements}'],
+      if (acceptsPublisherPaidPlacements != null)
+        'acceptsPublisherPaidPlacements': ['${acceptsPublisherPaidPlacements}'],
+      if (adWordsSite != null) 'adWordsSite': ['${adWordsSite}'],
+      if (approved != null) 'approved': ['${approved}'],
+      if (campaignIds != null) 'campaignIds': campaignIds,
+      if (directorySiteIds != null) 'directorySiteIds': directorySiteIds,
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (subaccountId != null) 'subaccountId': [subaccountId],
+      if (unmappedSite != null) 'unmappedSite': ['${unmappedSite}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11435,14 +10636,13 @@ class SitesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11485,10 +10685,9 @@ class SitesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11538,10 +10737,9 @@ class SizesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11584,10 +10782,9 @@ class SizesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11643,22 +10840,13 @@ class SizesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (height != null) {
-      _queryParams['height'] = ['${height}'];
-    }
-    if (iabStandard != null) {
-      _queryParams['iabStandard'] = ['${iabStandard}'];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (width != null) {
-      _queryParams['width'] = ['${width}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (height != null) 'height': ['${height}'],
+      if (iabStandard != null) 'iabStandard': ['${iabStandard}'],
+      if (ids != null) 'ids': ids,
+      if (width != null) 'width': ['${width}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11708,10 +10896,9 @@ class SubaccountsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11755,10 +10942,9 @@ class SubaccountsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11830,28 +11016,15 @@ class SubaccountsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11899,14 +11072,13 @@ class SubaccountsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11950,10 +11122,9 @@ class SubaccountsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12005,10 +11176,9 @@ class TargetableRemarketingListsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12085,32 +11255,19 @@ class TargetableRemarketingListsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    _queryParams['advertiserId'] = [advertiserId];
-    if (active != null) {
-      _queryParams['active'] = ['${active}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'advertiserId': [advertiserId],
+      if (active != null) 'active': ['${active}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (name != null) 'name': [name],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12160,10 +11317,9 @@ class TargetingTemplatesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12207,10 +11363,9 @@ class TargetingTemplatesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12285,31 +11440,16 @@ class TargetingTemplatesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (advertiserId != null) {
-      _queryParams['advertiserId'] = [advertiserId];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12357,14 +11497,13 @@ class TargetingTemplatesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12408,10 +11547,9 @@ class TargetingTemplatesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12456,10 +11594,9 @@ class UserProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
 
@@ -12489,10 +11626,9 @@ class UserProfilesResource {
   async.Future<UserProfileList> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'userprofiles';
 
@@ -12541,10 +11677,9 @@ class UserRolePermissionGroupsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12583,10 +11718,9 @@ class UserRolePermissionGroupsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12637,10 +11771,9 @@ class UserRolePermissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12682,13 +11815,10 @@ class UserRolePermissionsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12736,10 +11866,9 @@ class UserRolesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12783,10 +11912,9 @@ class UserRolesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12829,10 +11957,9 @@ class UserRolesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12910,34 +12037,18 @@ class UserRolesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (accountUserRoleOnly != null) {
-      _queryParams['accountUserRoleOnly'] = ['${accountUserRoleOnly}'];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchString != null) {
-      _queryParams['searchString'] = [searchString];
-    }
-    if (sortField != null) {
-      _queryParams['sortField'] = [sortField];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (subaccountId != null) {
-      _queryParams['subaccountId'] = [subaccountId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (accountUserRoleOnly != null)
+        'accountUserRoleOnly': ['${accountUserRoleOnly}'],
+      if (ids != null) 'ids': ids,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchString != null) 'searchString': [searchString],
+      if (sortField != null) 'sortField': [sortField],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (subaccountId != null) 'subaccountId': [subaccountId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12985,14 +12096,13 @@ class UserRolesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -13035,10 +12145,9 @@ class UserRolesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -13088,10 +12197,9 @@ class VideoFormatsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -13130,10 +12238,9 @@ class VideoFormatsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +

@@ -84,10 +84,9 @@ class WebResourceResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
@@ -122,10 +121,9 @@ class WebResourceResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
@@ -160,10 +158,9 @@ class WebResourceResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'token';
 
@@ -202,14 +199,13 @@ class WebResourceResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (verificationMethod == null) {
       throw core.ArgumentError('Parameter verificationMethod is required.');
     }
-    _queryParams['verificationMethod'] = [verificationMethod];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'verificationMethod': [verificationMethod],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'webResource';
 
@@ -240,10 +236,9 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceListResponse> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'webResource';
 
@@ -286,10 +281,9 @@ class WebResourceResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
@@ -331,10 +325,9 @@ class WebResourceResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 

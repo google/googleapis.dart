@@ -281,40 +281,19 @@ class ActivitiesResource {
     if (applicationName == null) {
       throw core.ArgumentError('Parameter applicationName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (actorIpAddress != null) {
-      _queryParams['actorIpAddress'] = [actorIpAddress];
-    }
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (endTime != null) {
-      _queryParams['endTime'] = [endTime];
-    }
-    if (eventName != null) {
-      _queryParams['eventName'] = [eventName];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (groupIdFilter != null) {
-      _queryParams['groupIdFilter'] = [groupIdFilter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orgUnitID != null) {
-      _queryParams['orgUnitID'] = [orgUnitID];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (actorIpAddress != null) 'actorIpAddress': [actorIpAddress],
+      if (customerId != null) 'customerId': [customerId],
+      if (endTime != null) 'endTime': [endTime],
+      if (eventName != null) 'eventName': [eventName],
+      if (filters != null) 'filters': [filters],
+      if (groupIdFilter != null) 'groupIdFilter': [groupIdFilter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orgUnitID != null) 'orgUnitID': [orgUnitID],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startTime != null) 'startTime': [startTime],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/reports/v1/activity/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -533,40 +512,19 @@ class ActivitiesResource {
     if (applicationName == null) {
       throw core.ArgumentError('Parameter applicationName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (actorIpAddress != null) {
-      _queryParams['actorIpAddress'] = [actorIpAddress];
-    }
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (endTime != null) {
-      _queryParams['endTime'] = [endTime];
-    }
-    if (eventName != null) {
-      _queryParams['eventName'] = [eventName];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (groupIdFilter != null) {
-      _queryParams['groupIdFilter'] = [groupIdFilter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orgUnitID != null) {
-      _queryParams['orgUnitID'] = [orgUnitID];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (actorIpAddress != null) 'actorIpAddress': [actorIpAddress],
+      if (customerId != null) 'customerId': [customerId],
+      if (endTime != null) 'endTime': [endTime],
+      if (eventName != null) 'eventName': [eventName],
+      if (filters != null) 'filters': [filters],
+      if (groupIdFilter != null) 'groupIdFilter': [groupIdFilter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orgUnitID != null) 'orgUnitID': [orgUnitID],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startTime != null) 'startTime': [startTime],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/reports/v1/activity/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -609,10 +567,9 @@ class ChannelsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/reports_v1/channels/stop';
 
@@ -692,19 +649,12 @@ class CustomerUsageReportsResource {
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (parameters != null) {
-      _queryParams['parameters'] = [parameters];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parameters != null) 'parameters': [parameters],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/reports/v1/usage/dates/' +
         commons.Escaper.ecapeVariable('$date');
@@ -830,25 +780,14 @@ class EntityUsageReportsResource {
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (parameters != null) {
-      _queryParams['parameters'] = [parameters];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if (filters != null) 'filters': [filters],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parameters != null) 'parameters': [parameters],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/reports/v1/usage/' +
         commons.Escaper.ecapeVariable('$entityType') +
@@ -981,31 +920,16 @@ class UserUsageReportResource {
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (groupIdFilter != null) {
-      _queryParams['groupIdFilter'] = [groupIdFilter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orgUnitID != null) {
-      _queryParams['orgUnitID'] = [orgUnitID];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (parameters != null) {
-      _queryParams['parameters'] = [parameters];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if (filters != null) 'filters': [filters],
+      if (groupIdFilter != null) 'groupIdFilter': [groupIdFilter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orgUnitID != null) 'orgUnitID': [orgUnitID],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parameters != null) 'parameters': [parameters],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/reports/v1/usage/users/' +
         commons.Escaper.ecapeVariable('$userKey') +

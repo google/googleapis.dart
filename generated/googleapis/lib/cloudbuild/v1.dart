@@ -104,10 +104,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -148,10 +147,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -214,10 +212,9 @@ class ProjectsBuildsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -270,13 +267,10 @@ class ProjectsBuildsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parent != null) {
-      _queryParams['parent'] = [parent];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -327,13 +321,10 @@ class ProjectsBuildsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -391,22 +382,13 @@ class ProjectsBuildsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (parent != null) {
-      _queryParams['parent'] = [parent];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -472,10 +454,9 @@ class ProjectsBuildsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -541,10 +522,9 @@ class ProjectsLocationsBuildsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -595,13 +575,10 @@ class ProjectsLocationsBuildsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (projectId != null) {
-      _queryParams['projectId'] = [projectId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
@@ -650,16 +627,11 @@ class ProjectsLocationsBuildsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (id != null) {
-      _queryParams['id'] = [id];
-    }
-    if (projectId != null) {
-      _queryParams['projectId'] = [projectId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -715,22 +687,13 @@ class ProjectsLocationsBuildsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (projectId != null) {
-      _queryParams['projectId'] = [projectId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (projectId != null) 'projectId': [projectId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
@@ -792,10 +755,9 @@ class ProjectsLocationsBuildsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':retry';
@@ -855,10 +817,9 @@ class ProjectsLocationsOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -900,10 +861,9 @@ class ProjectsLocationsOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -952,10 +912,9 @@ class ProjectsTriggersResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1002,10 +961,9 @@ class ProjectsTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1052,10 +1010,9 @@ class ProjectsTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1102,16 +1059,11 @@ class ProjectsTriggersResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1162,10 +1114,9 @@ class ProjectsTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1216,10 +1167,9 @@ class ProjectsTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1275,13 +1225,10 @@ class ProjectsTriggersResource {
     if (trigger == null) {
       throw core.ArgumentError('Parameter trigger is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (secret != null) {
-      _queryParams['secret'] = [secret];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (secret != null) 'secret': [secret],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +

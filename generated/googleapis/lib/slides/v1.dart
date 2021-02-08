@@ -128,10 +128,9 @@ class PresentationsResource {
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariable('$presentationId') +
@@ -174,10 +173,9 @@ class PresentationsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/presentations';
 
@@ -215,10 +213,9 @@ class PresentationsResource {
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariableReserved('$presentationId');
@@ -267,10 +264,9 @@ class PresentationsPagesResource {
     if (pageObjectId == null) {
       throw core.ArgumentError('Parameter pageObjectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariable('$presentationId') +
@@ -336,20 +332,15 @@ class PresentationsPagesResource {
     if (pageObjectId == null) {
       throw core.ArgumentError('Parameter pageObjectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (thumbnailProperties_mimeType != null) {
-      _queryParams['thumbnailProperties.mimeType'] = [
-        thumbnailProperties_mimeType
-      ];
-    }
-    if (thumbnailProperties_thumbnailSize != null) {
-      _queryParams['thumbnailProperties.thumbnailSize'] = [
-        thumbnailProperties_thumbnailSize
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (thumbnailProperties_mimeType != null)
+        'thumbnailProperties.mimeType': [thumbnailProperties_mimeType],
+      if (thumbnailProperties_thumbnailSize != null)
+        'thumbnailProperties.thumbnailSize': [
+          thumbnailProperties_thumbnailSize
+        ],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariable('$presentationId') +

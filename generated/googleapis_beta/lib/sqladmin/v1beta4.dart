@@ -116,10 +116,9 @@ class BackupRunsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -171,10 +170,9 @@ class BackupRunsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -227,10 +225,9 @@ class BackupRunsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -284,16 +281,11 @@ class BackupRunsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -351,10 +343,9 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -407,10 +398,9 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -462,10 +452,9 @@ class DatabasesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -511,10 +500,9 @@ class DatabasesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -574,10 +562,9 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -636,10 +623,9 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -685,13 +671,10 @@ class FlagsResource {
     core.String databaseVersion,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (databaseVersion != null) {
-      _queryParams['databaseVersion'] = [databaseVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (databaseVersion != null) 'databaseVersion': [databaseVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'sql/v1beta4/flags';
 
@@ -745,10 +728,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -802,10 +784,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -852,10 +833,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -905,10 +885,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -961,10 +940,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1017,10 +995,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1066,10 +1043,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1120,10 +1096,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1169,10 +1144,9 @@ class InstancesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1227,19 +1201,12 @@ class InstancesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1289,10 +1256,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1345,10 +1311,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1395,10 +1360,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1444,10 +1408,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1493,10 +1456,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1548,10 +1510,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1603,10 +1564,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1652,10 +1612,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1700,10 +1659,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1753,10 +1711,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1809,10 +1766,9 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1863,10 +1819,9 @@ class OperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1915,19 +1870,12 @@ class OperationsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (instance != null) {
-      _queryParams['instance'] = [instance];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (instance != null) 'instance': [instance],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1991,10 +1939,9 @@ class ProjectsInstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2053,16 +2000,11 @@ class ProjectsInstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (skipVerification != null) {
-      _queryParams['skipVerification'] = ['${skipVerification}'];
-    }
-    if (syncMode != null) {
-      _queryParams['syncMode'] = [syncMode];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (skipVerification != null) 'skipVerification': ['${skipVerification}'],
+      if (syncMode != null) 'syncMode': [syncMode],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2121,16 +2063,12 @@ class ProjectsInstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (syncMode != null) {
-      _queryParams['syncMode'] = [syncMode];
-    }
-    if (verifyConnectionOnly != null) {
-      _queryParams['verifyConnectionOnly'] = ['${verifyConnectionOnly}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (syncMode != null) 'syncMode': [syncMode],
+      if (verifyConnectionOnly != null)
+        'verifyConnectionOnly': ['${verifyConnectionOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2191,10 +2129,9 @@ class SslCertsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2249,10 +2186,9 @@ class SslCertsResource {
     if (sha1Fingerprint == null) {
       throw core.ArgumentError('Parameter sha1Fingerprint is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2307,10 +2243,9 @@ class SslCertsResource {
     if (sha1Fingerprint == null) {
       throw core.ArgumentError('Parameter sha1Fingerprint is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2364,10 +2299,9 @@ class SslCertsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2414,10 +2348,9 @@ class SslCertsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2466,10 +2399,9 @@ class TiersResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2525,16 +2457,11 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (host != null) {
-      _queryParams['host'] = [host];
-    }
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (host != null) 'host': [host],
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2584,10 +2511,9 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2633,10 +2559,9 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2693,16 +2618,11 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (host != null) {
-      _queryParams['host'] = [host];
-    }
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (host != null) 'host': [host],
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +

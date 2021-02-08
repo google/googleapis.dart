@@ -99,10 +99,9 @@ class AccountsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -131,10 +130,9 @@ class AccountsResource {
   async.Future<AccountsList> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'accounts';
 
@@ -177,10 +175,9 @@ class AccountsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -221,10 +218,9 @@ class AccountsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
@@ -266,10 +262,9 @@ class BillingInfoResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId');
 
@@ -300,10 +295,9 @@ class BillingInfoResource {
   async.Future<BillingInfoList> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'billinginfo';
 
@@ -352,10 +346,9 @@ class BudgetResource {
     if (billingId == null) {
       throw core.ArgumentError('Parameter billingId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'billinginfo/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -407,10 +400,9 @@ class BudgetResource {
     if (billingId == null) {
       throw core.ArgumentError('Parameter billingId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'billinginfo/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -461,10 +453,9 @@ class BudgetResource {
     if (billingId == null) {
       throw core.ArgumentError('Parameter billingId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'billinginfo/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -517,10 +508,9 @@ class CreativesResource {
     if (buyerCreativeId == null) {
       throw core.ArgumentError('Parameter buyerCreativeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'creatives/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -557,10 +547,9 @@ class CreativesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'creatives';
 
@@ -618,25 +607,15 @@ class CreativesResource {
     core.String statusFilter,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (accountId != null) {
-      _queryParams['accountId'] = accountId.map((item) => '${item}').toList();
-    }
-    if (buyerCreativeId != null) {
-      _queryParams['buyerCreativeId'] = buyerCreativeId;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (statusFilter != null) {
-      _queryParams['statusFilter'] = [statusFilter];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (accountId != null)
+        'accountId': accountId.map((item) => '${item}').toList(),
+      if (buyerCreativeId != null) 'buyerCreativeId': buyerCreativeId,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (statusFilter != null) 'statusFilter': [statusFilter],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'creatives';
 
@@ -678,10 +657,9 @@ class DirectDealsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'directdeals/' + commons.Escaper.ecapeVariable('$id');
 
@@ -711,10 +689,9 @@ class DirectDealsResource {
   async.Future<DirectDealsList> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'directdeals';
 
@@ -771,28 +748,23 @@ class PerformanceReportResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    _queryParams['accountId'] = [accountId];
     if (endDateTime == null) {
       throw core.ArgumentError('Parameter endDateTime is required.');
     }
-    _queryParams['endDateTime'] = [endDateTime];
     if (startDateTime == null) {
       throw core.ArgumentError('Parameter startDateTime is required.');
     }
-    _queryParams['startDateTime'] = [startDateTime];
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'accountId': [accountId],
+      'endDateTime': [endDateTime],
+      'startDateTime': [startDateTime],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'performancereport';
 
@@ -838,10 +810,9 @@ class PretargetingConfigResource {
     if (configId == null) {
       throw core.ArgumentError('Parameter configId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -885,10 +856,9 @@ class PretargetingConfigResource {
     if (configId == null) {
       throw core.ArgumentError('Parameter configId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -932,10 +902,9 @@ class PretargetingConfigResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
@@ -973,10 +942,9 @@ class PretargetingConfigResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
@@ -1026,10 +994,9 @@ class PretargetingConfigResource {
     if (configId == null) {
       throw core.ArgumentError('Parameter configId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1080,10 +1047,9 @@ class PretargetingConfigResource {
     if (configId == null) {
       throw core.ArgumentError('Parameter configId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +

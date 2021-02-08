@@ -103,10 +103,9 @@ class ServicesResource {
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
@@ -164,10 +163,9 @@ class ServicesResource {
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
@@ -225,10 +223,9 @@ class ServicesResource {
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +

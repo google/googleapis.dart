@@ -86,10 +86,9 @@ class AlertsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1beta1/alerts:batchDelete';
 
@@ -125,10 +124,9 @@ class AlertsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1beta1/alerts:batchUndelete';
 
@@ -175,13 +173,10 @@ class AlertsResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
@@ -223,13 +218,10 @@ class AlertsResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
@@ -273,13 +265,10 @@ class AlertsResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
@@ -340,25 +329,14 @@ class AlertsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1beta1/alerts';
 
@@ -405,10 +383,9 @@ class AlertsResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
@@ -467,13 +444,10 @@ class AlertsFeedbackResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
@@ -528,16 +502,11 @@ class AlertsFeedbackResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if (filter != null) 'filter': [filter],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
@@ -580,13 +549,10 @@ class V1beta1Resource {
     core.String customerId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1beta1/settings';
 
@@ -625,13 +591,10 @@ class V1beta1Resource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1beta1/settings';
 

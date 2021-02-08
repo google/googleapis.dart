@@ -101,10 +101,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -150,10 +149,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':close';
@@ -197,10 +195,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':count';
@@ -239,10 +236,9 @@ class MattersResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/matters';
 
@@ -280,10 +276,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
@@ -327,13 +322,10 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
@@ -387,22 +379,13 @@ class MattersResource {
     core.String view,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (state != null) {
-      _queryParams['state'] = [state];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (state != null) 'state': [state],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/matters';
 
@@ -443,10 +426,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -491,10 +473,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':reopen';
@@ -539,10 +520,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -589,10 +569,9 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
@@ -639,10 +618,9 @@ class MattersExportsResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
@@ -685,10 +663,9 @@ class MattersExportsResource {
     if (exportId == null) {
       throw core.ArgumentError('Parameter exportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -732,10 +709,9 @@ class MattersExportsResource {
     if (exportId == null) {
       throw core.ArgumentError('Parameter exportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -779,16 +755,11 @@ class MattersExportsResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
@@ -848,10 +819,9 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -897,10 +867,9 @@ class MattersHoldsResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
@@ -945,10 +914,9 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1003,13 +971,10 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1069,19 +1034,12 @@ class MattersHoldsResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
@@ -1133,10 +1091,9 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1192,10 +1149,9 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1255,10 +1211,9 @@ class MattersHoldsAccountsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1314,10 +1269,9 @@ class MattersHoldsAccountsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1366,10 +1320,9 @@ class MattersHoldsAccountsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1422,10 +1375,9 @@ class MattersSavedQueriesResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1471,10 +1423,9 @@ class MattersSavedQueriesResource {
     if (savedQueryId == null) {
       throw core.ArgumentError('Parameter savedQueryId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1519,10 +1470,9 @@ class MattersSavedQueriesResource {
     if (savedQueryId == null) {
       throw core.ArgumentError('Parameter savedQueryId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1572,16 +1522,11 @@ class MattersSavedQueriesResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
@@ -1640,10 +1585,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -1685,10 +1629,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1727,10 +1670,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1784,19 +1726,12 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 

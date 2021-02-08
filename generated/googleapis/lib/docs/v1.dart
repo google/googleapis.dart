@@ -115,10 +115,9 @@ class DocumentsResource {
     if (documentId == null) {
       throw core.ArgumentError('Parameter documentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/documents/' +
         commons.Escaper.ecapeVariable('$documentId') +
@@ -159,10 +158,9 @@ class DocumentsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/documents';
 
@@ -220,13 +218,11 @@ class DocumentsResource {
     if (documentId == null) {
       throw core.ArgumentError('Parameter documentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (suggestionsViewMode != null) {
-      _queryParams['suggestionsViewMode'] = [suggestionsViewMode];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (suggestionsViewMode != null)
+        'suggestionsViewMode': [suggestionsViewMode],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/documents/' + commons.Escaper.ecapeVariable('$documentId');
 

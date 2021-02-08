@@ -83,10 +83,9 @@ class GroupsResource {
     if (groupUniqueId == null) {
       throw core.ArgumentError('Parameter groupUniqueId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
@@ -128,10 +127,9 @@ class GroupsResource {
     if (groupUniqueId == null) {
       throw core.ArgumentError('Parameter groupUniqueId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
@@ -172,10 +170,9 @@ class GroupsResource {
     if (groupUniqueId == null) {
       throw core.ArgumentError('Parameter groupUniqueId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 

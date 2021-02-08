@@ -95,10 +95,9 @@ class AchievementsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
@@ -134,10 +133,9 @@ class AchievementsResource {
   async.Future<AchievementResetAllResponse> resetAll({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/achievements/reset';
 
@@ -167,10 +165,9 @@ class AchievementsResource {
   async.Future<void> resetAllForAllPlayers({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/achievements/resetAllForAllPlayers';
 
@@ -206,10 +203,9 @@ class AchievementsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
@@ -246,10 +242,9 @@ class AchievementsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/achievements/resetMultipleForAllPlayers';
 
@@ -302,16 +297,11 @@ class ApplicationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -357,10 +347,9 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/events/' +
         commons.Escaper.ecapeVariable('$eventId') +
@@ -393,10 +382,9 @@ class EventsResource {
   async.Future<void> resetAll({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/events/reset';
 
@@ -425,10 +413,9 @@ class EventsResource {
   async.Future<void> resetAllForAllPlayers({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/events/resetAllForAllPlayers';
 
@@ -464,10 +451,9 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/events/' +
         commons.Escaper.ecapeVariable('$eventId') +
@@ -504,10 +490,9 @@ class EventsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/events/resetMultipleForAllPlayers';
 
@@ -557,10 +542,9 @@ class PlayersResource {
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -606,10 +590,9 @@ class PlayersResource {
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -657,10 +640,9 @@ class ScoresResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
@@ -696,10 +678,9 @@ class ScoresResource {
   async.Future<PlayerScoreResetAllResponse> resetAll({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/scores/reset';
 
@@ -729,10 +710,9 @@ class ScoresResource {
   async.Future<void> resetAllForAllPlayers({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/scores/resetAllForAllPlayers';
 
@@ -768,10 +748,9 @@ class ScoresResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1management/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
@@ -808,10 +787,9 @@ class ScoresResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1management/scores/resetMultipleForAllPlayers';
 

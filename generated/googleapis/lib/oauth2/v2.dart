@@ -84,16 +84,11 @@ class Oauth2Api {
     core.String idToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (accessToken != null) {
-      _queryParams['access_token'] = [accessToken];
-    }
-    if (idToken != null) {
-      _queryParams['id_token'] = [idToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (accessToken != null) 'access_token': [accessToken],
+      if (idToken != null) 'id_token': [idToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'oauth2/v2/tokeninfo';
 
@@ -128,10 +123,9 @@ class UserinfoResource {
   async.Future<Userinfo> get({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'oauth2/v2/userinfo';
 
@@ -172,10 +166,9 @@ class UserinfoV2MeResource {
   async.Future<Userinfo> get({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'userinfo/v2/me';
 

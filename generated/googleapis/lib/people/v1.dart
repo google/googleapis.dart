@@ -144,19 +144,12 @@ class ContactGroupsResource {
     core.List<core.String> resourceNames,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (groupFields != null) {
-      _queryParams['groupFields'] = [groupFields];
-    }
-    if (maxMembers != null) {
-      _queryParams['maxMembers'] = ['${maxMembers}'];
-    }
-    if (resourceNames != null) {
-      _queryParams['resourceNames'] = resourceNames;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (groupFields != null) 'groupFields': [groupFields],
+      if (maxMembers != null) 'maxMembers': ['${maxMembers}'],
+      if (resourceNames != null) 'resourceNames': resourceNames,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/contactGroups:batchGet';
 
@@ -191,10 +184,9 @@ class ContactGroupsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/contactGroups';
 
@@ -238,13 +230,10 @@ class ContactGroupsResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (deleteContacts != null) {
-      _queryParams['deleteContacts'] = ['${deleteContacts}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (deleteContacts != null) 'deleteContacts': ['${deleteContacts}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
@@ -291,16 +280,11 @@ class ContactGroupsResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (groupFields != null) {
-      _queryParams['groupFields'] = [groupFields];
-    }
-    if (maxMembers != null) {
-      _queryParams['maxMembers'] = ['${maxMembers}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (groupFields != null) 'groupFields': [groupFields],
+      if (maxMembers != null) 'maxMembers': ['${maxMembers}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
@@ -353,22 +337,13 @@ class ContactGroupsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (groupFields != null) {
-      _queryParams['groupFields'] = [groupFields];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (groupFields != null) 'groupFields': [groupFields],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/contactGroups';
 
@@ -413,10 +388,9 @@ class ContactGroupsResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
@@ -471,10 +445,9 @@ class ContactGroupsMembersResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
@@ -527,10 +500,9 @@ class OtherContactsResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
@@ -595,25 +567,14 @@ class OtherContactsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (readMask != null) {
-      _queryParams['readMask'] = [readMask];
-    }
-    if (requestSyncToken != null) {
-      _queryParams['requestSyncToken'] = ['${requestSyncToken}'];
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if (requestSyncToken != null) 'requestSyncToken': ['${requestSyncToken}'],
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/otherContacts';
 
@@ -676,16 +637,11 @@ class PeopleResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (personFields != null) {
-      _queryParams['personFields'] = [personFields];
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (personFields != null) 'personFields': [personFields],
+      if (sources != null) 'sources': sources,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/people:createContact';
 
@@ -724,10 +680,9 @@ class PeopleResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
@@ -781,16 +736,11 @@ class PeopleResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (personFields != null) {
-      _queryParams['personFields'] = [personFields];
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (personFields != null) 'personFields': [personFields],
+      if (sources != null) 'sources': sources,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
@@ -856,19 +806,13 @@ class PeopleResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (personFields != null) {
-      _queryParams['personFields'] = [personFields];
-    }
-    if (requestMask_includeField != null) {
-      _queryParams['requestMask.includeField'] = [requestMask_includeField];
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (personFields != null) 'personFields': [personFields],
+      if (requestMask_includeField != null)
+        'requestMask.includeField': [requestMask_includeField],
+      if (sources != null) 'sources': sources,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
@@ -931,22 +875,14 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (personFields != null) {
-      _queryParams['personFields'] = [personFields];
-    }
-    if (requestMask_includeField != null) {
-      _queryParams['requestMask.includeField'] = [requestMask_includeField];
-    }
-    if (resourceNames != null) {
-      _queryParams['resourceNames'] = resourceNames;
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (personFields != null) 'personFields': [personFields],
+      if (requestMask_includeField != null)
+        'requestMask.includeField': [requestMask_includeField],
+      if (resourceNames != null) 'resourceNames': resourceNames,
+      if (sources != null) 'sources': sources,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/people:batchGet';
 
@@ -1018,31 +954,16 @@ class PeopleResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (mergeSources != null) {
-      _queryParams['mergeSources'] = mergeSources;
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (readMask != null) {
-      _queryParams['readMask'] = [readMask];
-    }
-    if (requestSyncToken != null) {
-      _queryParams['requestSyncToken'] = ['${requestSyncToken}'];
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (mergeSources != null) 'mergeSources': mergeSources,
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if (requestSyncToken != null) 'requestSyncToken': ['${requestSyncToken}'],
+      if (sources != null) 'sources': sources,
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/people:listDirectoryPeople';
 
@@ -1106,28 +1027,15 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (mergeSources != null) {
-      _queryParams['mergeSources'] = mergeSources;
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (readMask != null) {
-      _queryParams['readMask'] = [readMask];
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (mergeSources != null) 'mergeSources': mergeSources,
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if (readMask != null) 'readMask': [readMask],
+      if (sources != null) 'sources': sources,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/people:searchDirectoryPeople';
 
@@ -1210,19 +1118,13 @@ class PeopleResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (personFields != null) {
-      _queryParams['personFields'] = [personFields];
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if (updatePersonFields != null) {
-      _queryParams['updatePersonFields'] = [updatePersonFields];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (personFields != null) 'personFields': [personFields],
+      if (sources != null) 'sources': sources,
+      if (updatePersonFields != null)
+        'updatePersonFields': [updatePersonFields],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
@@ -1266,10 +1168,9 @@ class PeopleResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
@@ -1381,34 +1282,18 @@ class PeopleConnectionsResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (personFields != null) {
-      _queryParams['personFields'] = [personFields];
-    }
-    if (requestMask_includeField != null) {
-      _queryParams['requestMask.includeField'] = [requestMask_includeField];
-    }
-    if (requestSyncToken != null) {
-      _queryParams['requestSyncToken'] = ['${requestSyncToken}'];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (sources != null) {
-      _queryParams['sources'] = sources;
-    }
-    if (syncToken != null) {
-      _queryParams['syncToken'] = [syncToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (personFields != null) 'personFields': [personFields],
+      if (requestMask_includeField != null)
+        'requestMask.includeField': [requestMask_includeField],
+      if (requestSyncToken != null) 'requestSyncToken': ['${requestSyncToken}'],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (sources != null) 'sources': sources,
+      if (syncToken != null) 'syncToken': [syncToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +

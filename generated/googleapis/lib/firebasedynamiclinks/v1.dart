@@ -95,10 +95,9 @@ class ManagedShortLinksResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/managedShortLinks:create';
 
@@ -146,10 +145,9 @@ class ShortLinksResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/shortLinks';
 
@@ -202,16 +200,11 @@ class V1Resource {
     if (dynamicLink == null) {
       throw core.ArgumentError('Parameter dynamicLink is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (durationDays != null) {
-      _queryParams['durationDays'] = [durationDays];
-    }
-    if (sdkVersion != null) {
-      _queryParams['sdkVersion'] = [sdkVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (durationDays != null) 'durationDays': [durationDays],
+      if (sdkVersion != null) 'sdkVersion': [sdkVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
@@ -247,10 +240,9 @@ class V1Resource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/installAttribution';
 
@@ -286,10 +278,9 @@ class V1Resource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/reopenAttribution';
 

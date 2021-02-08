@@ -597,68 +597,40 @@ class FoldersTimeSeriesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams['aggregation.alignmentPeriod'] = [
-        aggregation_alignmentPeriod
-      ];
-    }
-    if (aggregation_crossSeriesReducer != null) {
-      _queryParams['aggregation.crossSeriesReducer'] = [
-        aggregation_crossSeriesReducer
-      ];
-    }
-    if (aggregation_groupByFields != null) {
-      _queryParams['aggregation.groupByFields'] = aggregation_groupByFields;
-    }
-    if (aggregation_perSeriesAligner != null) {
-      _queryParams['aggregation.perSeriesAligner'] = [
-        aggregation_perSeriesAligner
-      ];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (interval_endTime != null) {
-      _queryParams['interval.endTime'] = [interval_endTime];
-    }
-    if (interval_startTime != null) {
-      _queryParams['interval.startTime'] = [interval_startTime];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (secondaryAggregation_alignmentPeriod != null) {
-      _queryParams['secondaryAggregation.alignmentPeriod'] = [
-        secondaryAggregation_alignmentPeriod
-      ];
-    }
-    if (secondaryAggregation_crossSeriesReducer != null) {
-      _queryParams['secondaryAggregation.crossSeriesReducer'] = [
-        secondaryAggregation_crossSeriesReducer
-      ];
-    }
-    if (secondaryAggregation_groupByFields != null) {
-      _queryParams['secondaryAggregation.groupByFields'] =
-          secondaryAggregation_groupByFields;
-    }
-    if (secondaryAggregation_perSeriesAligner != null) {
-      _queryParams['secondaryAggregation.perSeriesAligner'] = [
-        secondaryAggregation_perSeriesAligner
-      ];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (aggregation_alignmentPeriod != null)
+        'aggregation.alignmentPeriod': [aggregation_alignmentPeriod],
+      if (aggregation_crossSeriesReducer != null)
+        'aggregation.crossSeriesReducer': [aggregation_crossSeriesReducer],
+      if (aggregation_groupByFields != null)
+        'aggregation.groupByFields': aggregation_groupByFields,
+      if (aggregation_perSeriesAligner != null)
+        'aggregation.perSeriesAligner': [aggregation_perSeriesAligner],
+      if (filter != null) 'filter': [filter],
+      if (interval_endTime != null) 'interval.endTime': [interval_endTime],
+      if (interval_startTime != null)
+        'interval.startTime': [interval_startTime],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (secondaryAggregation_alignmentPeriod != null)
+        'secondaryAggregation.alignmentPeriod': [
+          secondaryAggregation_alignmentPeriod
+        ],
+      if (secondaryAggregation_crossSeriesReducer != null)
+        'secondaryAggregation.crossSeriesReducer': [
+          secondaryAggregation_crossSeriesReducer
+        ],
+      if (secondaryAggregation_groupByFields != null)
+        'secondaryAggregation.groupByFields':
+            secondaryAggregation_groupByFields,
+      if (secondaryAggregation_perSeriesAligner != null)
+        'secondaryAggregation.perSeriesAligner': [
+          secondaryAggregation_perSeriesAligner
+        ],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/timeSeries';
@@ -1172,68 +1144,40 @@ class OrganizationsTimeSeriesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams['aggregation.alignmentPeriod'] = [
-        aggregation_alignmentPeriod
-      ];
-    }
-    if (aggregation_crossSeriesReducer != null) {
-      _queryParams['aggregation.crossSeriesReducer'] = [
-        aggregation_crossSeriesReducer
-      ];
-    }
-    if (aggregation_groupByFields != null) {
-      _queryParams['aggregation.groupByFields'] = aggregation_groupByFields;
-    }
-    if (aggregation_perSeriesAligner != null) {
-      _queryParams['aggregation.perSeriesAligner'] = [
-        aggregation_perSeriesAligner
-      ];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (interval_endTime != null) {
-      _queryParams['interval.endTime'] = [interval_endTime];
-    }
-    if (interval_startTime != null) {
-      _queryParams['interval.startTime'] = [interval_startTime];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (secondaryAggregation_alignmentPeriod != null) {
-      _queryParams['secondaryAggregation.alignmentPeriod'] = [
-        secondaryAggregation_alignmentPeriod
-      ];
-    }
-    if (secondaryAggregation_crossSeriesReducer != null) {
-      _queryParams['secondaryAggregation.crossSeriesReducer'] = [
-        secondaryAggregation_crossSeriesReducer
-      ];
-    }
-    if (secondaryAggregation_groupByFields != null) {
-      _queryParams['secondaryAggregation.groupByFields'] =
-          secondaryAggregation_groupByFields;
-    }
-    if (secondaryAggregation_perSeriesAligner != null) {
-      _queryParams['secondaryAggregation.perSeriesAligner'] = [
-        secondaryAggregation_perSeriesAligner
-      ];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (aggregation_alignmentPeriod != null)
+        'aggregation.alignmentPeriod': [aggregation_alignmentPeriod],
+      if (aggregation_crossSeriesReducer != null)
+        'aggregation.crossSeriesReducer': [aggregation_crossSeriesReducer],
+      if (aggregation_groupByFields != null)
+        'aggregation.groupByFields': aggregation_groupByFields,
+      if (aggregation_perSeriesAligner != null)
+        'aggregation.perSeriesAligner': [aggregation_perSeriesAligner],
+      if (filter != null) 'filter': [filter],
+      if (interval_endTime != null) 'interval.endTime': [interval_endTime],
+      if (interval_startTime != null)
+        'interval.startTime': [interval_startTime],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (secondaryAggregation_alignmentPeriod != null)
+        'secondaryAggregation.alignmentPeriod': [
+          secondaryAggregation_alignmentPeriod
+        ],
+      if (secondaryAggregation_crossSeriesReducer != null)
+        'secondaryAggregation.crossSeriesReducer': [
+          secondaryAggregation_crossSeriesReducer
+        ],
+      if (secondaryAggregation_groupByFields != null)
+        'secondaryAggregation.groupByFields':
+            secondaryAggregation_groupByFields,
+      if (secondaryAggregation_perSeriesAligner != null)
+        'secondaryAggregation.perSeriesAligner': [
+          secondaryAggregation_perSeriesAligner
+        ],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/timeSeries';
@@ -1317,10 +1261,9 @@ class ProjectsAlertPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1362,10 +1305,9 @@ class ProjectsAlertPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1402,10 +1344,9 @@ class ProjectsAlertPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1468,22 +1409,13 @@ class ProjectsAlertPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1555,13 +1487,10 @@ class ProjectsAlertPoliciesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1615,10 +1544,9 @@ class ProjectsCollectdTimeSeriesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1677,13 +1605,10 @@ class ProjectsGroupsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (validateOnly != null) {
-      _queryParams['validateOnly'] = ['${validateOnly}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/groups';
@@ -1727,13 +1652,10 @@ class ProjectsGroupsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (recursive != null) {
-      _queryParams['recursive'] = ['${recursive}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (recursive != null) 'recursive': ['${recursive}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1770,10 +1692,9 @@ class ProjectsGroupsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1841,25 +1762,15 @@ class ProjectsGroupsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ancestorsOfGroup != null) {
-      _queryParams['ancestorsOfGroup'] = [ancestorsOfGroup];
-    }
-    if (childrenOfGroup != null) {
-      _queryParams['childrenOfGroup'] = [childrenOfGroup];
-    }
-    if (descendantsOfGroup != null) {
-      _queryParams['descendantsOfGroup'] = [descendantsOfGroup];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ancestorsOfGroup != null) 'ancestorsOfGroup': [ancestorsOfGroup],
+      if (childrenOfGroup != null) 'childrenOfGroup': [childrenOfGroup],
+      if (descendantsOfGroup != null)
+        'descendantsOfGroup': [descendantsOfGroup],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/groups';
@@ -1912,13 +1823,10 @@ class ProjectsGroupsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (validateOnly != null) {
-      _queryParams['validateOnly'] = ['${validateOnly}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1989,25 +1897,15 @@ class ProjectsGroupsMembersResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (interval_endTime != null) {
-      _queryParams['interval.endTime'] = [interval_endTime];
-    }
-    if (interval_startTime != null) {
-      _queryParams['interval.startTime'] = [interval_startTime];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (interval_endTime != null) 'interval.endTime': [interval_endTime],
+      if (interval_startTime != null)
+        'interval.startTime': [interval_startTime],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/members';
@@ -2061,10 +1959,9 @@ class ProjectsMetricDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2110,10 +2007,9 @@ class ProjectsMetricDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2155,10 +2051,9 @@ class ProjectsMetricDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2217,19 +2112,12 @@ class ProjectsMetricDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2281,10 +2169,9 @@ class ProjectsMonitoredResourceDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2342,19 +2229,12 @@ class ProjectsMonitoredResourceDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2406,10 +2286,9 @@ class ProjectsNotificationChannelDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2464,16 +2343,11 @@ class ProjectsNotificationChannelDescriptorsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2530,10 +2404,9 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2581,13 +2454,10 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (force != null) {
-      _queryParams['force'] = ['${force}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2631,10 +2501,9 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2699,10 +2568,9 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2769,22 +2637,13 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2835,13 +2694,10 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2888,10 +2744,9 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2937,10 +2792,9 @@ class ProjectsNotificationChannelsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + ':verify';
@@ -2995,10 +2849,9 @@ class ProjectsTimeSeriesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/timeSeries';
@@ -3496,68 +3349,40 @@ class ProjectsTimeSeriesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams['aggregation.alignmentPeriod'] = [
-        aggregation_alignmentPeriod
-      ];
-    }
-    if (aggregation_crossSeriesReducer != null) {
-      _queryParams['aggregation.crossSeriesReducer'] = [
-        aggregation_crossSeriesReducer
-      ];
-    }
-    if (aggregation_groupByFields != null) {
-      _queryParams['aggregation.groupByFields'] = aggregation_groupByFields;
-    }
-    if (aggregation_perSeriesAligner != null) {
-      _queryParams['aggregation.perSeriesAligner'] = [
-        aggregation_perSeriesAligner
-      ];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (interval_endTime != null) {
-      _queryParams['interval.endTime'] = [interval_endTime];
-    }
-    if (interval_startTime != null) {
-      _queryParams['interval.startTime'] = [interval_startTime];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (secondaryAggregation_alignmentPeriod != null) {
-      _queryParams['secondaryAggregation.alignmentPeriod'] = [
-        secondaryAggregation_alignmentPeriod
-      ];
-    }
-    if (secondaryAggregation_crossSeriesReducer != null) {
-      _queryParams['secondaryAggregation.crossSeriesReducer'] = [
-        secondaryAggregation_crossSeriesReducer
-      ];
-    }
-    if (secondaryAggregation_groupByFields != null) {
-      _queryParams['secondaryAggregation.groupByFields'] =
-          secondaryAggregation_groupByFields;
-    }
-    if (secondaryAggregation_perSeriesAligner != null) {
-      _queryParams['secondaryAggregation.perSeriesAligner'] = [
-        secondaryAggregation_perSeriesAligner
-      ];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (aggregation_alignmentPeriod != null)
+        'aggregation.alignmentPeriod': [aggregation_alignmentPeriod],
+      if (aggregation_crossSeriesReducer != null)
+        'aggregation.crossSeriesReducer': [aggregation_crossSeriesReducer],
+      if (aggregation_groupByFields != null)
+        'aggregation.groupByFields': aggregation_groupByFields,
+      if (aggregation_perSeriesAligner != null)
+        'aggregation.perSeriesAligner': [aggregation_perSeriesAligner],
+      if (filter != null) 'filter': [filter],
+      if (interval_endTime != null) 'interval.endTime': [interval_endTime],
+      if (interval_startTime != null)
+        'interval.startTime': [interval_startTime],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (secondaryAggregation_alignmentPeriod != null)
+        'secondaryAggregation.alignmentPeriod': [
+          secondaryAggregation_alignmentPeriod
+        ],
+      if (secondaryAggregation_crossSeriesReducer != null)
+        'secondaryAggregation.crossSeriesReducer': [
+          secondaryAggregation_crossSeriesReducer
+        ],
+      if (secondaryAggregation_groupByFields != null)
+        'secondaryAggregation.groupByFields':
+            secondaryAggregation_groupByFields,
+      if (secondaryAggregation_perSeriesAligner != null)
+        'secondaryAggregation.perSeriesAligner': [
+          secondaryAggregation_perSeriesAligner
+        ],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/timeSeries';
@@ -3603,10 +3428,9 @@ class ProjectsTimeSeriesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -3659,10 +3483,9 @@ class ProjectsUptimeCheckConfigsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3708,10 +3531,9 @@ class ProjectsUptimeCheckConfigsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3749,10 +3571,9 @@ class ProjectsUptimeCheckConfigsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3803,16 +3624,11 @@ class ProjectsUptimeCheckConfigsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3872,13 +3688,10 @@ class ProjectsUptimeCheckConfigsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -3936,13 +3749,10 @@ class ServicesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (serviceId != null) {
-      _queryParams['serviceId'] = [serviceId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (serviceId != null) 'serviceId': [serviceId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
@@ -3981,10 +3791,9 @@ class ServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -4021,10 +3830,9 @@ class ServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -4087,19 +3895,12 @@ class ServicesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
@@ -4147,13 +3948,10 @@ class ServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -4208,13 +4006,11 @@ class ServicesServiceLevelObjectivesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (serviceLevelObjectiveId != null) {
-      _queryParams['serviceLevelObjectiveId'] = [serviceLevelObjectiveId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (serviceLevelObjectiveId != null)
+        'serviceLevelObjectiveId': [serviceLevelObjectiveId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -4257,10 +4053,9 @@ class ServicesServiceLevelObjectivesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -4314,13 +4109,10 @@ class ServicesServiceLevelObjectivesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -4388,22 +4180,13 @@ class ServicesServiceLevelObjectivesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -4453,13 +4236,10 @@ class ServicesServiceLevelObjectivesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -4508,16 +4288,11 @@ class UptimeCheckIpsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v3/uptimeCheckIps';
 

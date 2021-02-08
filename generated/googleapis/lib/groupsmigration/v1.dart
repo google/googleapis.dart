@@ -95,10 +95,9 @@ class ArchiveResource {
     if (groupId == null) {
       throw core.ArgumentError('Parameter groupId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {

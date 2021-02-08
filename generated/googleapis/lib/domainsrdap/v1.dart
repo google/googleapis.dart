@@ -93,10 +93,9 @@ class AutnumResource {
     if (autnumId == null) {
       throw core.ArgumentError('Parameter autnumId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/autnum/' + commons.Escaper.ecapeVariable('$autnumId');
 
@@ -139,10 +138,9 @@ class DomainResource {
     if (domainName == null) {
       throw core.ArgumentError('Parameter domainName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/domain/' + commons.Escaper.ecapeVariableReserved('$domainName');
@@ -187,10 +185,9 @@ class EntityResource {
     if (entityId == null) {
       throw core.ArgumentError('Parameter entityId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/entity/' + commons.Escaper.ecapeVariable('$entityId');
 
@@ -241,10 +238,9 @@ class IpResource {
     if (ipId1 == null) {
       throw core.ArgumentError('Parameter ipId1 is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/ip/' +
         commons.Escaper.ecapeVariable('$ipId') +
@@ -292,10 +288,9 @@ class NameserverResource {
     if (nameserverId == null) {
       throw core.ArgumentError('Parameter nameserverId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/nameserver/' + commons.Escaper.ecapeVariable('$nameserverId');
@@ -335,10 +330,9 @@ class V1Resource {
   async.Future<RdapResponse> getDomains({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/domains';
 
@@ -371,10 +365,9 @@ class V1Resource {
   async.Future<RdapResponse> getEntities({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/entities';
 
@@ -404,10 +397,9 @@ class V1Resource {
   async.Future<HttpBody> getHelp({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/help';
 
@@ -439,10 +431,9 @@ class V1Resource {
   async.Future<HttpBody> getIp({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/ip';
 
@@ -474,10 +465,9 @@ class V1Resource {
   async.Future<RdapResponse> getNameservers({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/nameservers';
 

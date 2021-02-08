@@ -234,10 +234,9 @@ class UsersDataSourcesResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
@@ -283,10 +282,9 @@ class UsersDataSourcesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
@@ -331,10 +329,9 @@ class UsersDataSourcesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
@@ -381,13 +378,10 @@ class UsersDataSourcesResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (dataTypeName != null) {
-      _queryParams['dataTypeName'] = dataTypeName;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (dataTypeName != null) 'dataTypeName': dataTypeName,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
@@ -439,10 +433,9 @@ class UsersDataSourcesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
@@ -505,16 +498,11 @@ class UsersDataSourcesDataPointChangesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (limit != null) 'limit': ['${limit}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
@@ -589,16 +577,12 @@ class UsersDataSourcesDatasetsResource {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (currentTimeMillis != null) {
-      _queryParams['currentTimeMillis'] = [currentTimeMillis];
-    }
-    if (modifiedTimeMillis != null) {
-      _queryParams['modifiedTimeMillis'] = [modifiedTimeMillis];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
+      if (modifiedTimeMillis != null)
+        'modifiedTimeMillis': [modifiedTimeMillis],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
@@ -674,16 +658,11 @@ class UsersDataSourcesDatasetsResource {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (limit != null) 'limit': ['${limit}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
@@ -752,13 +731,10 @@ class UsersDataSourcesDatasetsResource {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (currentTimeMillis != null) {
-      _queryParams['currentTimeMillis'] = [currentTimeMillis];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
@@ -814,10 +790,9 @@ class UsersDatasetResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
@@ -870,13 +845,10 @@ class UsersSessionsResource {
     if (sessionId == null) {
       throw core.ArgumentError('Parameter sessionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (currentTimeMillis != null) {
-      _queryParams['currentTimeMillis'] = [currentTimeMillis];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/sessions/' +
@@ -942,26 +914,15 @@ class UsersSessionsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (activityType != null) {
-      _queryParams['activityType'] =
-          activityType.map((item) => '${item}').toList();
-    }
-    if (endTime != null) {
-      _queryParams['endTime'] = [endTime];
-    }
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams['startTime'] = [startTime];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (activityType != null)
+        'activityType': activityType.map((item) => '${item}').toList(),
+      if (endTime != null) 'endTime': [endTime],
+      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startTime != null) 'startTime': [startTime],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
@@ -1013,13 +974,10 @@ class UsersSessionsResource {
     if (sessionId == null) {
       throw core.ArgumentError('Parameter sessionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (currentTimeMillis != null) {
-      _queryParams['currentTimeMillis'] = [currentTimeMillis];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = commons.Escaper.ecapeVariable('$userId') +
         '/sessions/' +

@@ -98,10 +98,9 @@ class ProjectsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -158,10 +157,9 @@ class ProjectsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -222,13 +220,10 @@ class ProjectsHistoriesResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -276,10 +271,9 @@ class ProjectsHistoriesResource {
     if (historyId == null) {
       throw core.ArgumentError('Parameter historyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -337,19 +331,12 @@ class ProjectsHistoriesResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filterByName != null) {
-      _queryParams['filterByName'] = [filterByName];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filterByName != null) 'filterByName': [filterByName],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -421,13 +408,10 @@ class ProjectsHistoriesExecutionsResource {
     if (historyId == null) {
       throw core.ArgumentError('Parameter historyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -483,10 +467,9 @@ class ProjectsHistoriesExecutionsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -548,16 +531,11 @@ class ProjectsHistoriesExecutionsResource {
     if (historyId == null) {
       throw core.ArgumentError('Parameter historyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -624,13 +602,10 @@ class ProjectsHistoriesExecutionsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -696,10 +671,9 @@ class ProjectsHistoriesExecutionsClustersResource {
     if (clusterId == null) {
       throw core.ArgumentError('Parameter clusterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -761,10 +735,9 @@ class ProjectsHistoriesExecutionsClustersResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -835,10 +808,9 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -906,16 +878,11 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -992,13 +959,10 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (locale != null) 'locale': [locale],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1063,13 +1027,10 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1133,10 +1094,9 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1199,10 +1159,9 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1275,16 +1234,11 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1360,13 +1314,10 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1439,10 +1390,9 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1521,10 +1471,9 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1608,10 +1557,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1683,10 +1631,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     if (sampleSeriesId == null) {
       throw core.ArgumentError('Parameter sampleSeriesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1759,13 +1706,10 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = filter;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': filter,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1855,10 +1799,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     if (sampleSeriesId == null) {
       throw core.ArgumentError('Parameter sampleSeriesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -1946,16 +1889,11 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     if (sampleSeriesId == null) {
       throw core.ArgumentError('Parameter sampleSeriesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2038,10 +1976,9 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     if (testCaseId == null) {
       throw core.ArgumentError('Parameter testCaseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2118,16 +2055,11 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -2211,16 +2143,11 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +

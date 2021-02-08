@@ -112,16 +112,12 @@ class GroupItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (id != null) {
-      _queryParams['id'] = [id];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/groupItems';
 
@@ -168,13 +164,11 @@ class GroupItemsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/groupItems';
 
@@ -220,16 +214,12 @@ class GroupItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (groupId != null) {
-      _queryParams['groupId'] = [groupId];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (groupId != null) 'groupId': [groupId],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/groupItems';
 
@@ -281,16 +271,12 @@ class GroupsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (id != null) {
-      _queryParams['id'] = [id];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/groups';
 
@@ -337,13 +323,11 @@ class GroupsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/groups';
 
@@ -406,22 +390,14 @@ class GroupsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (id != null) {
-      _queryParams['id'] = [id];
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (id != null) 'id': [id],
+      if (mine != null) 'mine': ['${mine}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/groups';
 
@@ -470,13 +446,11 @@ class GroupsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/groups';
 
@@ -585,45 +559,21 @@ class ReportsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (currency != null) {
-      _queryParams['currency'] = [currency];
-    }
-    if (dimensions != null) {
-      _queryParams['dimensions'] = [dimensions];
-    }
-    if (endDate != null) {
-      _queryParams['endDate'] = [endDate];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (ids != null) {
-      _queryParams['ids'] = [ids];
-    }
-    if (includeHistoricalChannelData != null) {
-      _queryParams['includeHistoricalChannelData'] = [
-        '${includeHistoricalChannelData}'
-      ];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (metrics != null) {
-      _queryParams['metrics'] = [metrics];
-    }
-    if (sort != null) {
-      _queryParams['sort'] = [sort];
-    }
-    if (startDate != null) {
-      _queryParams['startDate'] = [startDate];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (currency != null) 'currency': [currency],
+      if (dimensions != null) 'dimensions': [dimensions],
+      if (endDate != null) 'endDate': [endDate],
+      if (filters != null) 'filters': [filters],
+      if (ids != null) 'ids': [ids],
+      if (includeHistoricalChannelData != null)
+        'includeHistoricalChannelData': ['${includeHistoricalChannelData}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (metrics != null) 'metrics': [metrics],
+      if (sort != null) 'sort': [sort],
+      if (startDate != null) 'startDate': [startDate],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v2/reports';
 

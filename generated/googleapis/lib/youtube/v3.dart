@@ -189,14 +189,13 @@ class AbuseReportsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/abuseReports';
 
@@ -271,38 +270,21 @@ class ActivitiesResource {
     core.String regionCode,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (channelId != null) {
-      _queryParams['channelId'] = [channelId];
-    }
-    if (home != null) {
-      _queryParams['home'] = ['${home}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (publishedAfter != null) {
-      _queryParams['publishedAfter'] = [publishedAfter];
-    }
-    if (publishedBefore != null) {
-      _queryParams['publishedBefore'] = [publishedBefore];
-    }
-    if (regionCode != null) {
-      _queryParams['regionCode'] = [regionCode];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (channelId != null) 'channelId': [channelId],
+      if (home != null) 'home': ['${home}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (mine != null) 'mine': ['${mine}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (publishedAfter != null) 'publishedAfter': [publishedAfter],
+      if (publishedBefore != null) 'publishedBefore': [publishedBefore],
+      if (regionCode != null) 'regionCode': [regionCode],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/activities';
 
@@ -355,20 +337,16 @@ class CaptionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if (onBehalfOf != null) {
-      _queryParams['onBehalfOf'] = [onBehalfOf];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if (onBehalfOf != null) 'onBehalfOf': [onBehalfOf],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/captions';
 
@@ -430,22 +408,14 @@ class CaptionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOf != null) {
-      _queryParams['onBehalfOf'] = [onBehalfOf];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (tfmt != null) {
-      _queryParams['tfmt'] = [tfmt];
-    }
-    if (tlang != null) {
-      _queryParams['tlang'] = [tlang];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOf != null) 'onBehalfOf': [onBehalfOf],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (tfmt != null) 'tfmt': [tfmt],
+      if (tlang != null) 'tlang': [tlang],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
 
@@ -517,23 +487,17 @@ class CaptionsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOf != null) {
-      _queryParams['onBehalfOf'] = [onBehalfOf];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (sync != null) {
-      _queryParams['sync'] = ['${sync}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOf != null) 'onBehalfOf': [onBehalfOf],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (sync != null) 'sync': ['${sync}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -599,27 +563,21 @@ class CaptionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
     if (videoId == null) {
       throw core.ArgumentError('Parameter videoId is required.');
     }
-    _queryParams['videoId'] = [videoId];
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (onBehalfOf != null) {
-      _queryParams['onBehalfOf'] = [onBehalfOf];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      'videoId': [videoId],
+      if (id != null) 'id': id,
+      if (onBehalfOf != null) 'onBehalfOf': [onBehalfOf],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/captions';
 
@@ -687,23 +645,17 @@ class CaptionsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOf != null) {
-      _queryParams['onBehalfOf'] = [onBehalfOf];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (sync != null) {
-      _queryParams['sync'] = ['${sync}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOf != null) 'onBehalfOf': [onBehalfOf],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (sync != null) 'sync': ['${sync}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -795,21 +747,14 @@ class ChannelBannersResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (channelId != null) {
-      _queryParams['channelId'] = [channelId];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (channelId != null) 'channelId': [channelId],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -868,17 +813,15 @@ class ChannelSectionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/channelSections';
 
@@ -948,22 +891,17 @@ class ChannelSectionsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/channelSections';
 
@@ -1030,29 +968,19 @@ class ChannelSectionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (channelId != null) {
-      _queryParams['channelId'] = [channelId];
-    }
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (channelId != null) 'channelId': [channelId],
+      if (hl != null) 'hl': [hl],
+      if (id != null) 'id': id,
+      if (mine != null) 'mine': ['${mine}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/channelSections';
 
@@ -1105,17 +1033,15 @@ class ChannelSectionsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/channelSections';
 
@@ -1208,44 +1134,24 @@ class ChannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (categoryId != null) {
-      _queryParams['categoryId'] = [categoryId];
-    }
-    if (forUsername != null) {
-      _queryParams['forUsername'] = [forUsername];
-    }
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (managedByMe != null) {
-      _queryParams['managedByMe'] = ['${managedByMe}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (mySubscribers != null) {
-      _queryParams['mySubscribers'] = ['${mySubscribers}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (categoryId != null) 'categoryId': [categoryId],
+      if (forUsername != null) 'forUsername': [forUsername],
+      if (hl != null) 'hl': [hl],
+      if (id != null) 'id': id,
+      if (managedByMe != null) 'managedByMe': ['${managedByMe}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (mine != null) 'mine': ['${mine}'],
+      if (mySubscribers != null) 'mySubscribers': ['${mySubscribers}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/channels';
 
@@ -1301,17 +1207,15 @@ class ChannelsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/channels';
 
@@ -1357,14 +1261,13 @@ class CommentThreadsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/commentThreads';
 
@@ -1452,46 +1355,24 @@ class CommentThreadsResource {
     core.String videoId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (allThreadsRelatedToChannelId != null) {
-      _queryParams['allThreadsRelatedToChannelId'] = [
-        allThreadsRelatedToChannelId
-      ];
-    }
-    if (channelId != null) {
-      _queryParams['channelId'] = [channelId];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (moderationStatus != null) {
-      _queryParams['moderationStatus'] = [moderationStatus];
-    }
-    if (order != null) {
-      _queryParams['order'] = [order];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (searchTerms != null) {
-      _queryParams['searchTerms'] = [searchTerms];
-    }
-    if (textFormat != null) {
-      _queryParams['textFormat'] = [textFormat];
-    }
-    if (videoId != null) {
-      _queryParams['videoId'] = [videoId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (allThreadsRelatedToChannelId != null)
+        'allThreadsRelatedToChannelId': [allThreadsRelatedToChannelId],
+      if (channelId != null) 'channelId': [channelId],
+      if (id != null) 'id': id,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (moderationStatus != null) 'moderationStatus': [moderationStatus],
+      if (order != null) 'order': [order],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (searchTerms != null) 'searchTerms': [searchTerms],
+      if (textFormat != null) 'textFormat': [textFormat],
+      if (videoId != null) 'videoId': [videoId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/commentThreads';
 
@@ -1532,14 +1413,13 @@ class CommentThreadsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/commentThreads';
 
@@ -1577,14 +1457,13 @@ class CommentsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/comments';
 
@@ -1623,14 +1502,13 @@ class CommentsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/comments';
 
@@ -1689,29 +1567,18 @@ class CommentsResource {
     core.String textFormat,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (parentId != null) {
-      _queryParams['parentId'] = [parentId];
-    }
-    if (textFormat != null) {
-      _queryParams['textFormat'] = [textFormat];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (id != null) 'id': id,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (parentId != null) 'parentId': [parentId],
+      if (textFormat != null) 'textFormat': [textFormat],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/comments';
 
@@ -1744,14 +1611,13 @@ class CommentsResource {
     core.List<core.String> id, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = id;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': id,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/comments/markAsSpam';
 
@@ -1798,21 +1664,18 @@ class CommentsResource {
     core.bool banAuthor,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = id;
     if (moderationStatus == null) {
       throw core.ArgumentError('Parameter moderationStatus is required.');
     }
-    _queryParams['moderationStatus'] = [moderationStatus];
-    if (banAuthor != null) {
-      _queryParams['banAuthor'] = ['${banAuthor}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': id,
+      'moderationStatus': [moderationStatus],
+      if (banAuthor != null) 'banAuthor': ['${banAuthor}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/comments/setModerationStatus';
 
@@ -1852,14 +1715,13 @@ class CommentsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/comments';
 
@@ -1903,17 +1765,14 @@ class I18nLanguagesResource {
     core.String hl,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (hl != null) 'hl': [hl],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/i18nLanguages';
 
@@ -1956,17 +1815,14 @@ class I18nRegionsResource {
     core.String hl,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (hl != null) 'hl': [hl],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/i18nRegions';
 
@@ -2044,29 +1900,22 @@ class LiveBroadcastsResource {
     core.String streamId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if (streamId != null) {
-      _queryParams['streamId'] = [streamId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (streamId != null) 'streamId': [streamId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveBroadcasts/bind';
 
@@ -2127,22 +1976,17 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveBroadcasts';
 
@@ -2213,22 +2057,17 @@ class LiveBroadcastsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveBroadcasts';
 
@@ -2329,40 +2168,23 @@ class LiveBroadcastsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (broadcastStatus != null) {
-      _queryParams['broadcastStatus'] = [broadcastStatus];
-    }
-    if (broadcastType != null) {
-      _queryParams['broadcastType'] = [broadcastType];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (broadcastStatus != null) 'broadcastStatus': [broadcastStatus],
+      if (broadcastType != null) 'broadcastType': [broadcastType],
+      if (id != null) 'id': id,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (mine != null) 'mine': ['${mine}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveBroadcasts';
 
@@ -2444,30 +2266,25 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (broadcastStatus == null) {
       throw core.ArgumentError('Parameter broadcastStatus is required.');
     }
-    _queryParams['broadcastStatus'] = [broadcastStatus];
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'broadcastStatus': [broadcastStatus],
+      'id': [id],
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveBroadcasts/transition';
 
@@ -2547,22 +2364,17 @@ class LiveBroadcastsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveBroadcasts';
 
@@ -2600,14 +2412,13 @@ class LiveChatBansResource {
     core.String id, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/bans';
 
@@ -2647,14 +2458,13 @@ class LiveChatBansResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/bans';
 
@@ -2692,14 +2502,13 @@ class LiveChatMessagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/messages';
 
@@ -2738,14 +2547,13 @@ class LiveChatMessagesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/messages';
 
@@ -2803,30 +2611,21 @@ class LiveChatMessagesResource {
     core.int profileImageSize,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (liveChatId == null) {
       throw core.ArgumentError('Parameter liveChatId is required.');
     }
-    _queryParams['liveChatId'] = [liveChatId];
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (profileImageSize != null) {
-      _queryParams['profileImageSize'] = ['${profileImageSize}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'liveChatId': [liveChatId],
+      'part': part,
+      if (hl != null) 'hl': [hl],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (profileImageSize != null) 'profileImageSize': ['${profileImageSize}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/messages';
 
@@ -2863,14 +2662,13 @@ class LiveChatModeratorsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/moderators';
 
@@ -2910,14 +2708,13 @@ class LiveChatModeratorsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/moderators';
 
@@ -2967,24 +2764,19 @@ class LiveChatModeratorsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (liveChatId == null) {
       throw core.ArgumentError('Parameter liveChatId is required.');
     }
-    _queryParams['liveChatId'] = [liveChatId];
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'liveChatId': [liveChatId],
+      'part': part,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveChat/moderators';
 
@@ -3051,22 +2843,17 @@ class LiveStreamsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveStreams';
 
@@ -3137,22 +2924,17 @@ class LiveStreamsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveStreams';
 
@@ -3237,34 +3019,21 @@ class LiveStreamsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (id != null) 'id': id,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (mine != null) 'mine': ['${mine}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveStreams';
 
@@ -3339,22 +3108,17 @@ class LiveStreamsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/liveStreams';
 
@@ -3421,29 +3185,19 @@ class MembersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (filterByMemberChannelId != null) {
-      _queryParams['filterByMemberChannelId'] = [filterByMemberChannelId];
-    }
-    if (hasAccessToLevel != null) {
-      _queryParams['hasAccessToLevel'] = [hasAccessToLevel];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (mode != null) {
-      _queryParams['mode'] = [mode];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (filterByMemberChannelId != null)
+        'filterByMemberChannelId': [filterByMemberChannelId],
+      if (hasAccessToLevel != null) 'hasAccessToLevel': [hasAccessToLevel],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (mode != null) 'mode': [mode],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/members';
 
@@ -3484,14 +3238,13 @@ class MembershipsLevelsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/membershipsLevels';
 
@@ -3540,17 +3293,15 @@ class PlaylistItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlistItems';
 
@@ -3601,17 +3352,15 @@ class PlaylistItemsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlistItems';
 
@@ -3683,32 +3432,20 @@ class PlaylistItemsResource {
     core.String videoId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (playlistId != null) {
-      _queryParams['playlistId'] = [playlistId];
-    }
-    if (videoId != null) {
-      _queryParams['videoId'] = [videoId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (id != null) 'id': id,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (playlistId != null) 'playlistId': [playlistId],
+      if (videoId != null) 'videoId': [videoId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlistItems';
 
@@ -3770,17 +3507,15 @@ class PlaylistItemsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlistItems';
 
@@ -3830,17 +3565,15 @@ class PlaylistsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlists';
 
@@ -3909,22 +3642,17 @@ class PlaylistsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlists';
 
@@ -4015,40 +3743,23 @@ class PlaylistsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (channelId != null) {
-      _queryParams['channelId'] = [channelId];
-    }
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (channelId != null) 'channelId': [channelId],
+      if (hl != null) 'hl': [hl],
+      if (id != null) 'id': id,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (mine != null) 'mine': ['${mine}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlists';
 
@@ -4106,17 +3817,15 @@ class PlaylistsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/playlists';
 
@@ -4335,104 +4044,44 @@ class SearchResource {
     core.String videoType,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (channelId != null) {
-      _queryParams['channelId'] = [channelId];
-    }
-    if (channelType != null) {
-      _queryParams['channelType'] = [channelType];
-    }
-    if (eventType != null) {
-      _queryParams['eventType'] = [eventType];
-    }
-    if (forContentOwner != null) {
-      _queryParams['forContentOwner'] = ['${forContentOwner}'];
-    }
-    if (forDeveloper != null) {
-      _queryParams['forDeveloper'] = ['${forDeveloper}'];
-    }
-    if (forMine != null) {
-      _queryParams['forMine'] = ['${forMine}'];
-    }
-    if (location != null) {
-      _queryParams['location'] = [location];
-    }
-    if (locationRadius != null) {
-      _queryParams['locationRadius'] = [locationRadius];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (order != null) {
-      _queryParams['order'] = [order];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (publishedAfter != null) {
-      _queryParams['publishedAfter'] = [publishedAfter];
-    }
-    if (publishedBefore != null) {
-      _queryParams['publishedBefore'] = [publishedBefore];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (regionCode != null) {
-      _queryParams['regionCode'] = [regionCode];
-    }
-    if (relatedToVideoId != null) {
-      _queryParams['relatedToVideoId'] = [relatedToVideoId];
-    }
-    if (relevanceLanguage != null) {
-      _queryParams['relevanceLanguage'] = [relevanceLanguage];
-    }
-    if (safeSearch != null) {
-      _queryParams['safeSearch'] = [safeSearch];
-    }
-    if (topicId != null) {
-      _queryParams['topicId'] = [topicId];
-    }
-    if (type != null) {
-      _queryParams['type'] = type;
-    }
-    if (videoCaption != null) {
-      _queryParams['videoCaption'] = [videoCaption];
-    }
-    if (videoCategoryId != null) {
-      _queryParams['videoCategoryId'] = [videoCategoryId];
-    }
-    if (videoDefinition != null) {
-      _queryParams['videoDefinition'] = [videoDefinition];
-    }
-    if (videoDimension != null) {
-      _queryParams['videoDimension'] = [videoDimension];
-    }
-    if (videoDuration != null) {
-      _queryParams['videoDuration'] = [videoDuration];
-    }
-    if (videoEmbeddable != null) {
-      _queryParams['videoEmbeddable'] = [videoEmbeddable];
-    }
-    if (videoLicense != null) {
-      _queryParams['videoLicense'] = [videoLicense];
-    }
-    if (videoSyndicated != null) {
-      _queryParams['videoSyndicated'] = [videoSyndicated];
-    }
-    if (videoType != null) {
-      _queryParams['videoType'] = [videoType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (channelId != null) 'channelId': [channelId],
+      if (channelType != null) 'channelType': [channelType],
+      if (eventType != null) 'eventType': [eventType],
+      if (forContentOwner != null) 'forContentOwner': ['${forContentOwner}'],
+      if (forDeveloper != null) 'forDeveloper': ['${forDeveloper}'],
+      if (forMine != null) 'forMine': ['${forMine}'],
+      if (location != null) 'location': [location],
+      if (locationRadius != null) 'locationRadius': [locationRadius],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (order != null) 'order': [order],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (publishedAfter != null) 'publishedAfter': [publishedAfter],
+      if (publishedBefore != null) 'publishedBefore': [publishedBefore],
+      if (q != null) 'q': [q],
+      if (regionCode != null) 'regionCode': [regionCode],
+      if (relatedToVideoId != null) 'relatedToVideoId': [relatedToVideoId],
+      if (relevanceLanguage != null) 'relevanceLanguage': [relevanceLanguage],
+      if (safeSearch != null) 'safeSearch': [safeSearch],
+      if (topicId != null) 'topicId': [topicId],
+      if (type != null) 'type': type,
+      if (videoCaption != null) 'videoCaption': [videoCaption],
+      if (videoCategoryId != null) 'videoCategoryId': [videoCategoryId],
+      if (videoDefinition != null) 'videoDefinition': [videoDefinition],
+      if (videoDimension != null) 'videoDimension': [videoDimension],
+      if (videoDuration != null) 'videoDuration': [videoDuration],
+      if (videoEmbeddable != null) 'videoEmbeddable': [videoEmbeddable],
+      if (videoLicense != null) 'videoLicense': [videoLicense],
+      if (videoSyndicated != null) 'videoSyndicated': [videoSyndicated],
+      if (videoType != null) 'videoType': [videoType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/search';
 
@@ -4469,14 +4118,13 @@ class SubscriptionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/subscriptions';
 
@@ -4515,14 +4163,13 @@ class SubscriptionsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/subscriptions';
 
@@ -4629,49 +4276,27 @@ class SubscriptionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (channelId != null) {
-      _queryParams['channelId'] = [channelId];
-    }
-    if (forChannelId != null) {
-      _queryParams['forChannelId'] = [forChannelId];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (mine != null) {
-      _queryParams['mine'] = ['${mine}'];
-    }
-    if (myRecentSubscribers != null) {
-      _queryParams['myRecentSubscribers'] = ['${myRecentSubscribers}'];
-    }
-    if (mySubscribers != null) {
-      _queryParams['mySubscribers'] = ['${mySubscribers}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if (order != null) {
-      _queryParams['order'] = [order];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (channelId != null) 'channelId': [channelId],
+      if (forChannelId != null) 'forChannelId': [forChannelId],
+      if (id != null) 'id': id,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (mine != null) 'mine': ['${mine}'],
+      if (myRecentSubscribers != null)
+        'myRecentSubscribers': ['${myRecentSubscribers}'],
+      if (mySubscribers != null) 'mySubscribers': ['${mySubscribers}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (order != null) 'order': [order],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/subscriptions';
 
@@ -4724,23 +4349,16 @@ class SuperChatEventsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (hl != null) 'hl': [hl],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/superChatEvents';
 
@@ -4784,14 +4402,13 @@ class TestsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/tests';
 
@@ -4839,21 +4456,18 @@ class ThirdPartyLinksResource {
     core.List<core.String> part,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (linkingToken == null) {
       throw core.ArgumentError('Parameter linkingToken is required.');
     }
-    _queryParams['linkingToken'] = [linkingToken];
     if (type == null) {
       throw core.ArgumentError('Parameter type is required.');
     }
-    _queryParams['type'] = [type];
-    if (part != null) {
-      _queryParams['part'] = part;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'linkingToken': [linkingToken],
+      'type': [type],
+      if (part != null) 'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/thirdPartyLinks';
 
@@ -4892,14 +4506,13 @@ class ThirdPartyLinksResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/thirdPartyLinks';
 
@@ -4946,20 +4559,15 @@ class ThirdPartyLinksResource {
     core.String type,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (linkingToken != null) {
-      _queryParams['linkingToken'] = [linkingToken];
-    }
-    if (type != null) {
-      _queryParams['type'] = [type];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (linkingToken != null) 'linkingToken': [linkingToken],
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/thirdPartyLinks';
 
@@ -4999,14 +4607,13 @@ class ThirdPartyLinksResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/thirdPartyLinks';
 
@@ -5069,17 +4676,15 @@ class ThumbnailsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (videoId == null) {
       throw core.ArgumentError('Parameter videoId is required.');
     }
-    _queryParams['videoId'] = [videoId];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'videoId': [videoId],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -5132,17 +4737,14 @@ class VideoAbuseReportReasonsResource {
     core.String hl,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (hl != null) 'hl': [hl],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videoAbuseReportReasons';
 
@@ -5193,23 +4795,16 @@ class VideoCategoriesResource {
     core.String regionCode,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (regionCode != null) {
-      _queryParams['regionCode'] = [regionCode];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (hl != null) 'hl': [hl],
+      if (id != null) 'id': id,
+      if (regionCode != null) 'regionCode': [regionCode],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videoCategories';
 
@@ -5258,17 +4853,15 @@ class VideosResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videos';
 
@@ -5313,17 +4906,15 @@ class VideosResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = id;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': id,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videos/getRating';
 
@@ -5416,31 +5007,21 @@ class VideosResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (autoLevels != null) {
-      _queryParams['autoLevels'] = ['${autoLevels}'];
-    }
-    if (notifySubscribers != null) {
-      _queryParams['notifySubscribers'] = ['${notifySubscribers}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if (stabilize != null) {
-      _queryParams['stabilize'] = ['${stabilize}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (autoLevels != null) 'autoLevels': ['${autoLevels}'],
+      if (notifySubscribers != null)
+        'notifySubscribers': ['${notifySubscribers}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (onBehalfOfContentOwnerChannel != null)
+        'onBehalfOfContentOwnerChannel': [onBehalfOfContentOwnerChannel],
+      if (stabilize != null) 'stabilize': ['${stabilize}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -5558,50 +5139,26 @@ class VideosResource {
     core.String videoCategoryId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (chart != null) {
-      _queryParams['chart'] = [chart];
-    }
-    if (hl != null) {
-      _queryParams['hl'] = [hl];
-    }
-    if (id != null) {
-      _queryParams['id'] = id;
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxHeight != null) {
-      _queryParams['maxHeight'] = ['${maxHeight}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (maxWidth != null) {
-      _queryParams['maxWidth'] = ['${maxWidth}'];
-    }
-    if (myRating != null) {
-      _queryParams['myRating'] = [myRating];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (regionCode != null) {
-      _queryParams['regionCode'] = [regionCode];
-    }
-    if (videoCategoryId != null) {
-      _queryParams['videoCategoryId'] = [videoCategoryId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (chart != null) 'chart': [chart],
+      if (hl != null) 'hl': [hl],
+      if (id != null) 'id': id,
+      if (locale != null) 'locale': [locale],
+      if (maxHeight != null) 'maxHeight': ['${maxHeight}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (maxWidth != null) 'maxWidth': ['${maxWidth}'],
+      if (myRating != null) 'myRating': [myRating],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (regionCode != null) 'regionCode': [regionCode],
+      if (videoCategoryId != null) 'videoCategoryId': [videoCategoryId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videos';
 
@@ -5639,18 +5196,17 @@ class VideosResource {
     core.String rating, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    _queryParams['id'] = [id];
     if (rating == null) {
       throw core.ArgumentError('Parameter rating is required.');
     }
-    _queryParams['rating'] = [rating];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'id': [id],
+      'rating': [rating],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videos/rate';
 
@@ -5694,13 +5250,11 @@ class VideosResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videos/reportAbuse';
 
@@ -5766,17 +5320,15 @@ class VideosResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
-    _queryParams['part'] = part;
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'part': part,
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/videos';
 
@@ -5838,17 +5390,15 @@ class WatermarksResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }
-    _queryParams['channelId'] = [channelId];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'channelId': [channelId],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -5900,17 +5450,15 @@ class WatermarksResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }
-    _queryParams['channelId'] = [channelId];
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'channelId': [channelId],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'youtube/v3/watermarks/unset';
 

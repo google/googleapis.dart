@@ -248,10 +248,9 @@ class AspsResource {
     if (codeId == null) {
       throw core.ArgumentError('Parameter codeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -296,10 +295,9 @@ class AspsResource {
     if (codeId == null) {
       throw core.ArgumentError('Parameter codeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -338,10 +336,9 @@ class AspsResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -381,10 +378,9 @@ class ChannelsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/directory_v1/channels/stop';
 
@@ -452,10 +448,9 @@ class ChromeosdevicesResource {
     if (resourceId == null) {
       throw core.ArgumentError('Parameter resourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -517,13 +512,10 @@ class ChromeosdevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projection != null) 'projection': [projection],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -614,31 +606,16 @@ class ChromeosdevicesResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (orgUnitPath != null) {
-      _queryParams['orgUnitPath'] = [orgUnitPath];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (orgUnitPath != null) 'orgUnitPath': [orgUnitPath],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (projection != null) 'projection': [projection],
+      if (query != null) 'query': [query],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -684,14 +661,13 @@ class ChromeosdevicesResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (orgUnitPath == null) {
       throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
-    _queryParams['orgUnitPath'] = [orgUnitPath];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'orgUnitPath': [orgUnitPath],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -759,13 +735,10 @@ class ChromeosdevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projection != null) 'projection': [projection],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -832,13 +805,10 @@ class ChromeosdevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projection != null) 'projection': [projection],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -916,10 +886,9 @@ class CustomerDevicesChromeosResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -979,10 +948,9 @@ class CustomerDevicesChromeosCommandsResource {
     if (commandId == null) {
       throw core.ArgumentError('Parameter commandId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -1029,10 +997,9 @@ class CustomersResource {
     if (customerKey == null) {
       throw core.ArgumentError('Parameter customerKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerKey');
@@ -1073,10 +1040,9 @@ class CustomersResource {
     if (customerKey == null) {
       throw core.ArgumentError('Parameter customerKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerKey');
@@ -1118,10 +1084,9 @@ class CustomersResource {
     if (customerKey == null) {
       throw core.ArgumentError('Parameter customerKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerKey');
@@ -1168,10 +1133,9 @@ class DomainAliasesResource {
     if (domainAliasName == null) {
       throw core.ArgumentError('Parameter domainAliasName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1215,10 +1179,9 @@ class DomainAliasesResource {
     if (domainAliasName == null) {
       throw core.ArgumentError('Parameter domainAliasName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1262,10 +1225,9 @@ class DomainAliasesResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1308,13 +1270,10 @@ class DomainAliasesResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parentDomainName != null) {
-      _queryParams['parentDomainName'] = [parentDomainName];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parentDomainName != null) 'parentDomainName': [parentDomainName],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1362,10 +1321,9 @@ class DomainsResource {
     if (domainName == null) {
       throw core.ArgumentError('Parameter domainName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1409,10 +1367,9 @@ class DomainsResource {
     if (domainName == null) {
       throw core.ArgumentError('Parameter domainName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1455,10 +1412,9 @@ class DomainsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1496,10 +1452,9 @@ class DomainsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -1543,10 +1498,9 @@ class GroupsResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey');
@@ -1583,10 +1537,9 @@ class GroupsResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey');
@@ -1621,10 +1574,9 @@ class GroupsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/directory/v1/groups';
 
@@ -1698,34 +1650,17 @@ class GroupsResource {
     core.String userKey,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customer != null) {
-      _queryParams['customer'] = [customer];
-    }
-    if (domain != null) {
-      _queryParams['domain'] = [domain];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (userKey != null) {
-      _queryParams['userKey'] = [userKey];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customer != null) 'customer': [customer],
+      if (domain != null) 'domain': [domain],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (userKey != null) 'userKey': [userKey],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/directory/v1/groups';
 
@@ -1769,10 +1704,9 @@ class GroupsResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey');
@@ -1815,10 +1749,9 @@ class GroupsResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey');
@@ -1866,10 +1799,9 @@ class GroupsAliasesResource {
     if (alias == null) {
       throw core.ArgumentError('Parameter alias is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -1913,10 +1845,9 @@ class GroupsAliasesResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -1955,10 +1886,9 @@ class GroupsAliasesResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2008,10 +1938,9 @@ class MembersResource {
     if (memberKey == null) {
       throw core.ArgumentError('Parameter memberKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2058,10 +1987,9 @@ class MembersResource {
     if (memberKey == null) {
       throw core.ArgumentError('Parameter memberKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2109,10 +2037,9 @@ class MembersResource {
     if (memberKey == null) {
       throw core.ArgumentError('Parameter memberKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2157,10 +2084,9 @@ class MembersResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2214,24 +2140,14 @@ class MembersResource {
     if (groupKey == null) {
       throw core.ArgumentError('Parameter groupKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeDerivedMembership != null) {
-      _queryParams['includeDerivedMembership'] = [
-        '${includeDerivedMembership}'
-      ];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (roles != null) {
-      _queryParams['roles'] = [roles];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeDerivedMembership != null)
+        'includeDerivedMembership': ['${includeDerivedMembership}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (roles != null) 'roles': [roles],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2285,10 +2201,9 @@ class MembersResource {
     if (memberKey == null) {
       throw core.ArgumentError('Parameter memberKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2341,10 +2256,9 @@ class MembersResource {
     if (memberKey == null) {
       throw core.ArgumentError('Parameter memberKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/groups/' +
         commons.Escaper.ecapeVariable('$groupKey') +
@@ -2405,10 +2319,9 @@ class MobiledevicesResource {
     if (resourceId == null) {
       throw core.ArgumentError('Parameter resourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2457,10 +2370,9 @@ class MobiledevicesResource {
     if (resourceId == null) {
       throw core.ArgumentError('Parameter resourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2517,13 +2429,10 @@ class MobiledevicesResource {
     if (resourceId == null) {
       throw core.ArgumentError('Parameter resourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (projection != null) 'projection': [projection],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2608,28 +2517,15 @@ class MobiledevicesResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (projection != null) 'projection': [projection],
+      if (query != null) 'query': [query],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2682,10 +2578,9 @@ class OrgunitsResource {
     if (orgUnitPath == null) {
       throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2734,10 +2629,9 @@ class OrgunitsResource {
     if (orgUnitPath == null) {
       throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2784,10 +2678,9 @@ class OrgunitsResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2841,16 +2734,11 @@ class OrgunitsResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (orgUnitPath != null) {
-      _queryParams['orgUnitPath'] = [orgUnitPath];
-    }
-    if (type != null) {
-      _queryParams['type'] = [type];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (orgUnitPath != null) 'orgUnitPath': [orgUnitPath],
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2906,10 +2794,9 @@ class OrgunitsResource {
     if (orgUnitPath == null) {
       throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -2964,10 +2851,9 @@ class OrgunitsResource {
     if (orgUnitPath == null) {
       throw core.ArgumentError('Parameter orgUnitPath is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -3012,10 +2898,9 @@ class PrivilegesResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3078,10 +2963,9 @@ class ResourcesBuildingsResource {
     if (buildingId == null) {
       throw core.ArgumentError('Parameter buildingId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3127,10 +3011,9 @@ class ResourcesBuildingsResource {
     if (buildingId == null) {
       throw core.ArgumentError('Parameter buildingId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3187,13 +3070,10 @@ class ResourcesBuildingsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (coordinatesSource != null) {
-      _queryParams['coordinatesSource'] = [coordinatesSource];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3240,16 +3120,11 @@ class ResourcesBuildingsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3311,13 +3186,10 @@ class ResourcesBuildingsResource {
     if (buildingId == null) {
       throw core.ArgumentError('Parameter buildingId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (coordinatesSource != null) {
-      _queryParams['coordinatesSource'] = [coordinatesSource];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3381,13 +3253,10 @@ class ResourcesBuildingsResource {
     if (buildingId == null) {
       throw core.ArgumentError('Parameter buildingId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (coordinatesSource != null) {
-      _queryParams['coordinatesSource'] = [coordinatesSource];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3438,10 +3307,9 @@ class ResourcesCalendarsResource {
     if (calendarResourceId == null) {
       throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3487,10 +3355,9 @@ class ResourcesCalendarsResource {
     if (calendarResourceId == null) {
       throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3536,10 +3403,9 @@ class ResourcesCalendarsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3608,22 +3474,13 @@ class ResourcesCalendarsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3674,10 +3531,9 @@ class ResourcesCalendarsResource {
     if (calendarResourceId == null) {
       throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3734,10 +3590,9 @@ class ResourcesCalendarsResource {
     if (calendarResourceId == null) {
       throw core.ArgumentError('Parameter calendarResourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3789,10 +3644,9 @@ class ResourcesFeaturesResource {
     if (featureKey == null) {
       throw core.ArgumentError('Parameter featureKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3838,10 +3692,9 @@ class ResourcesFeaturesResource {
     if (featureKey == null) {
       throw core.ArgumentError('Parameter featureKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3886,10 +3739,9 @@ class ResourcesFeaturesResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3936,16 +3788,11 @@ class ResourcesFeaturesResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -3995,10 +3842,9 @@ class ResourcesFeaturesResource {
     if (featureKey == null) {
       throw core.ArgumentError('Parameter featureKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4048,10 +3894,9 @@ class ResourcesFeaturesResource {
     if (oldName == null) {
       throw core.ArgumentError('Parameter oldName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4104,10 +3949,9 @@ class ResourcesFeaturesResource {
     if (featureKey == null) {
       throw core.ArgumentError('Parameter featureKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4156,10 +4000,9 @@ class RoleAssignmentsResource {
     if (roleAssignmentId == null) {
       throw core.ArgumentError('Parameter roleAssignmentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4203,10 +4046,9 @@ class RoleAssignmentsResource {
     if (roleAssignmentId == null) {
       throw core.ArgumentError('Parameter roleAssignmentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4250,10 +4092,9 @@ class RoleAssignmentsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4308,22 +4149,13 @@ class RoleAssignmentsResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (roleId != null) {
-      _queryParams['roleId'] = [roleId];
-    }
-    if (userKey != null) {
-      _queryParams['userKey'] = [userKey];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (roleId != null) 'roleId': [roleId],
+      if (userKey != null) 'userKey': [userKey],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4371,10 +4203,9 @@ class RolesResource {
     if (roleId == null) {
       throw core.ArgumentError('Parameter roleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4418,10 +4249,9 @@ class RolesResource {
     if (roleId == null) {
       throw core.ArgumentError('Parameter roleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4464,10 +4294,9 @@ class RolesResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4512,16 +4341,11 @@ class RolesResource {
     if (customer == null) {
       throw core.ArgumentError('Parameter customer is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4569,10 +4393,9 @@ class RolesResource {
     if (roleId == null) {
       throw core.ArgumentError('Parameter roleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4622,10 +4445,9 @@ class RolesResource {
     if (roleId == null) {
       throw core.ArgumentError('Parameter roleId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -4674,10 +4496,9 @@ class SchemasResource {
     if (schemaKey == null) {
       throw core.ArgumentError('Parameter schemaKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -4721,10 +4542,9 @@ class SchemasResource {
     if (schemaKey == null) {
       throw core.ArgumentError('Parameter schemaKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -4767,10 +4587,9 @@ class SchemasResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -4808,10 +4627,9 @@ class SchemasResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -4859,10 +4677,9 @@ class SchemasResource {
     if (schemaKey == null) {
       throw core.ArgumentError('Parameter schemaKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -4912,10 +4729,9 @@ class SchemasResource {
     if (schemaKey == null) {
       throw core.ArgumentError('Parameter schemaKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -4965,10 +4781,9 @@ class TokensResource {
     if (clientId == null) {
       throw core.ArgumentError('Parameter clientId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5013,10 +4828,9 @@ class TokensResource {
     if (clientId == null) {
       throw core.ArgumentError('Parameter clientId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5056,10 +4870,9 @@ class TokensResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5102,10 +4915,9 @@ class TwoStepVerificationResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5150,10 +4962,9 @@ class UsersResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
@@ -5215,19 +5026,12 @@ class UsersResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customFieldMask != null) {
-      _queryParams['customFieldMask'] = [customFieldMask];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (viewType != null) {
-      _queryParams['viewType'] = [viewType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customFieldMask != null) 'customFieldMask': [customFieldMask],
+      if (projection != null) 'projection': [projection],
+      if (viewType != null) 'viewType': [viewType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
@@ -5262,10 +5066,9 @@ class UsersResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/directory/v1/users';
 
@@ -5367,43 +5170,20 @@ class UsersResource {
     core.String viewType,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customFieldMask != null) {
-      _queryParams['customFieldMask'] = [customFieldMask];
-    }
-    if (customer != null) {
-      _queryParams['customer'] = [customer];
-    }
-    if (domain != null) {
-      _queryParams['domain'] = [domain];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = [showDeleted];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (viewType != null) {
-      _queryParams['viewType'] = [viewType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customFieldMask != null) 'customFieldMask': [customFieldMask],
+      if (customer != null) 'customer': [customer],
+      if (domain != null) 'domain': [domain],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (projection != null) 'projection': [projection],
+      if (query != null) 'query': [query],
+      if (showDeleted != null) 'showDeleted': [showDeleted],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (viewType != null) 'viewType': [viewType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/directory/v1/users';
 
@@ -5442,10 +5222,9 @@ class UsersResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5494,10 +5273,9 @@ class UsersResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
@@ -5537,10 +5315,9 @@ class UsersResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5580,10 +5357,9 @@ class UsersResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5631,10 +5407,9 @@ class UsersResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'admin/directory/v1/users/' + commons.Escaper.ecapeVariable('$userKey');
@@ -5744,46 +5519,21 @@ class UsersResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customFieldMask != null) {
-      _queryParams['customFieldMask'] = [customFieldMask];
-    }
-    if (customer != null) {
-      _queryParams['customer'] = [customer];
-    }
-    if (domain != null) {
-      _queryParams['domain'] = [domain];
-    }
-    if (event != null) {
-      _queryParams['event'] = [event];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = [showDeleted];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if (viewType != null) {
-      _queryParams['viewType'] = [viewType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customFieldMask != null) 'customFieldMask': [customFieldMask],
+      if (customer != null) 'customer': [customer],
+      if (domain != null) 'domain': [domain],
+      if (event != null) 'event': [event],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (projection != null) 'projection': [projection],
+      if (query != null) 'query': [query],
+      if (showDeleted != null) 'showDeleted': [showDeleted],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if (viewType != null) 'viewType': [viewType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/directory/v1/users/watch';
 
@@ -5830,10 +5580,9 @@ class UsersAliasesResource {
     if (alias == null) {
       throw core.ArgumentError('Parameter alias is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5877,10 +5626,9 @@ class UsersAliasesResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5919,10 +5667,9 @@ class UsersAliasesResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -5971,13 +5718,10 @@ class UsersAliasesResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (event != null) {
-      _queryParams['event'] = [event];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (event != null) 'event': [event],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -6020,10 +5764,9 @@ class UsersPhotosResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -6061,10 +5804,9 @@ class UsersPhotosResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -6110,10 +5852,9 @@ class UsersPhotosResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -6157,10 +5898,9 @@ class UsersPhotosResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -6202,10 +5942,9 @@ class VerificationCodesResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -6240,10 +5979,9 @@ class VerificationCodesResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -6282,10 +6020,9 @@ class VerificationCodesResource {
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/directory/v1/users/' +
         commons.Escaper.ecapeVariable('$userKey') +

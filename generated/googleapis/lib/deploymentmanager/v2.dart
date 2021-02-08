@@ -122,10 +122,9 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -179,13 +178,10 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (deletePolicy != null) {
-      _queryParams['deletePolicy'] = [deletePolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (deletePolicy != null) 'deletePolicy': [deletePolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -232,10 +228,9 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -289,15 +284,11 @@ class DeploymentsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -360,16 +351,11 @@ class DeploymentsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (createPolicy != null) {
-      _queryParams['createPolicy'] = [createPolicy];
-    }
-    if (preview != null) {
-      _queryParams['preview'] = ['${preview}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (createPolicy != null) 'createPolicy': [createPolicy],
+      if (preview != null) 'preview': ['${preview}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -450,22 +436,13 @@ class DeploymentsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -542,19 +519,12 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (createPolicy != null) {
-      _queryParams['createPolicy'] = [createPolicy];
-    }
-    if (deletePolicy != null) {
-      _queryParams['deletePolicy'] = [deletePolicy];
-    }
-    if (preview != null) {
-      _queryParams['preview'] = ['${preview}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (createPolicy != null) 'createPolicy': [createPolicy],
+      if (deletePolicy != null) 'deletePolicy': [deletePolicy],
+      if (preview != null) 'preview': ['${preview}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -610,10 +580,9 @@ class DeploymentsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -670,10 +639,9 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -728,10 +696,9 @@ class DeploymentsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -811,19 +778,12 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (createPolicy != null) {
-      _queryParams['createPolicy'] = [createPolicy];
-    }
-    if (deletePolicy != null) {
-      _queryParams['deletePolicy'] = [deletePolicy];
-    }
-    if (preview != null) {
-      _queryParams['preview'] = ['${preview}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (createPolicy != null) 'createPolicy': [createPolicy],
+      if (deletePolicy != null) 'deletePolicy': [deletePolicy],
+      if (preview != null) 'preview': ['${preview}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -884,10 +844,9 @@ class ManifestsResource {
     if (manifest == null) {
       throw core.ArgumentError('Parameter manifest is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -977,22 +936,13 @@ class ManifestsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1046,10 +996,9 @@ class OperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1130,22 +1079,13 @@ class OperationsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1204,10 +1144,9 @@ class ResourcesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1297,22 +1236,13 @@ class ResourcesResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1401,22 +1331,13 @@ class TypesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +

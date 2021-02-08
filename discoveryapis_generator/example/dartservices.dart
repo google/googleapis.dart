@@ -84,10 +84,9 @@ class DartservicesApi {
   async.Future<AnalysisResults> analyzeGet({
     core.String source,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+    };
 
     const _url = 'analyze';
 
@@ -139,10 +138,9 @@ class DartservicesApi {
   async.Future<CompileResponse> compileGet({
     core.String source,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+    };
 
     const _url = 'compile';
 
@@ -192,13 +190,10 @@ class DartservicesApi {
     core.int offset,
     core.String source,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (offset != null) {
-      _queryParams['offset'] = ['${offset}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (offset != null) 'offset': ['${offset}'],
+      if (source != null) 'source': [source],
+    };
 
     const _url = 'complete';
 
@@ -252,13 +247,10 @@ class DartservicesApi {
     core.int offset,
     core.String source,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (offset != null) {
-      _queryParams['offset'] = ['${offset}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (offset != null) 'offset': ['${offset}'],
+      if (source != null) 'source': [source],
+    };
 
     const _url = 'document';
 

@@ -114,32 +114,19 @@ class PagespeedapiResource {
     core.String utmSource,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (url == null) {
       throw core.ArgumentError('Parameter url is required.');
     }
-    _queryParams['url'] = [url];
-    if (captchaToken != null) {
-      _queryParams['captchaToken'] = [captchaToken];
-    }
-    if (category != null) {
-      _queryParams['category'] = category;
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (strategy != null) {
-      _queryParams['strategy'] = [strategy];
-    }
-    if (utmCampaign != null) {
-      _queryParams['utm_campaign'] = [utmCampaign];
-    }
-    if (utmSource != null) {
-      _queryParams['utm_source'] = [utmSource];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'url': [url],
+      if (captchaToken != null) 'captchaToken': [captchaToken],
+      if (category != null) 'category': category,
+      if (locale != null) 'locale': [locale],
+      if (strategy != null) 'strategy': [strategy],
+      if (utmCampaign != null) 'utm_campaign': [utmCampaign],
+      if (utmSource != null) 'utm_source': [utmSource],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'pagespeedonline/v5/runPagespeed';
 

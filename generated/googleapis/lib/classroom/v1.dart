@@ -205,10 +205,9 @@ class CoursesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/courses';
 
@@ -249,10 +248,9 @@ class CoursesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
@@ -292,10 +290,9 @@ class CoursesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
@@ -359,25 +356,14 @@ class CoursesResource {
     core.String teacherId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (courseStates != null) {
-      _queryParams['courseStates'] = courseStates;
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (studentId != null) {
-      _queryParams['studentId'] = [studentId];
-    }
-    if (teacherId != null) {
-      _queryParams['teacherId'] = [teacherId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (courseStates != null) 'courseStates': courseStates,
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (studentId != null) 'studentId': [studentId],
+      if (teacherId != null) 'teacherId': [teacherId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/courses';
 
@@ -436,13 +422,10 @@ class CoursesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
@@ -490,10 +473,9 @@ class CoursesResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
@@ -548,10 +530,9 @@ class CoursesAliasesResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
@@ -604,10 +585,9 @@ class CoursesAliasesResource {
     if (alias == null) {
       throw core.ArgumentError('Parameter alias is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -661,16 +641,11 @@ class CoursesAliasesResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
@@ -728,10 +703,9 @@ class CoursesAnnouncementsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -787,10 +761,9 @@ class CoursesAnnouncementsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -841,10 +814,9 @@ class CoursesAnnouncementsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -914,22 +886,13 @@ class CoursesAnnouncementsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (announcementStates != null) {
-      _queryParams['announcementStates'] = announcementStates;
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (announcementStates != null) 'announcementStates': announcementStates,
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -986,10 +949,9 @@ class CoursesAnnouncementsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1059,13 +1021,10 @@ class CoursesAnnouncementsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1133,10 +1092,9 @@ class CoursesCourseWorkResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1192,10 +1150,9 @@ class CoursesCourseWorkResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1246,10 +1203,9 @@ class CoursesCourseWorkResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1319,22 +1275,13 @@ class CoursesCourseWorkResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (courseWorkStates != null) {
-      _queryParams['courseWorkStates'] = courseWorkStates;
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (courseWorkStates != null) 'courseWorkStates': courseWorkStates,
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1391,10 +1338,9 @@ class CoursesCourseWorkResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1471,13 +1417,10 @@ class CoursesCourseWorkResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1542,10 +1485,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1637,25 +1579,14 @@ class CoursesCourseWorkStudentSubmissionsResource {
     if (courseWorkId == null) {
       throw core.ArgumentError('Parameter courseWorkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (late != null) {
-      _queryParams['late'] = [late];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (states != null) {
-      _queryParams['states'] = states;
-    }
-    if (userId != null) {
-      _queryParams['userId'] = [userId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (late != null) 'late': [late],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (states != null) 'states': states,
+      if (userId != null) 'userId': [userId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1725,10 +1656,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1807,13 +1737,10 @@ class CoursesCourseWorkStudentSubmissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1887,10 +1814,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -1964,10 +1890,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2039,10 +1964,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2105,10 +2029,9 @@ class CoursesCourseWorkMaterialsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2165,10 +2088,9 @@ class CoursesCourseWorkMaterialsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2219,10 +2141,9 @@ class CoursesCourseWorkMaterialsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2303,28 +2224,16 @@ class CoursesCourseWorkMaterialsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (courseWorkMaterialStates != null) {
-      _queryParams['courseWorkMaterialStates'] = courseWorkMaterialStates;
-    }
-    if (materialDriveId != null) {
-      _queryParams['materialDriveId'] = [materialDriveId];
-    }
-    if (materialLink != null) {
-      _queryParams['materialLink'] = [materialLink];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (courseWorkMaterialStates != null)
+        'courseWorkMaterialStates': courseWorkMaterialStates,
+      if (materialDriveId != null) 'materialDriveId': [materialDriveId],
+      if (materialLink != null) 'materialLink': [materialLink],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2391,13 +2300,10 @@ class CoursesCourseWorkMaterialsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2463,13 +2369,10 @@ class CoursesStudentsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (enrollmentCode != null) {
-      _queryParams['enrollmentCode'] = [enrollmentCode];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (enrollmentCode != null) 'enrollmentCode': [enrollmentCode],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2522,10 +2425,9 @@ class CoursesStudentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2578,10 +2480,9 @@ class CoursesStudentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2635,16 +2536,11 @@ class CoursesStudentsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2703,10 +2599,9 @@ class CoursesTeachersResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2760,10 +2655,9 @@ class CoursesTeachersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2816,10 +2710,9 @@ class CoursesTeachersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2873,16 +2766,11 @@ class CoursesTeachersResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -2938,10 +2826,9 @@ class CoursesTopicsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
@@ -2991,10 +2878,9 @@ class CoursesTopicsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -3043,10 +2929,9 @@ class CoursesTopicsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -3101,16 +2986,11 @@ class CoursesTopicsResource {
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
@@ -3173,13 +3053,10 @@ class CoursesTopicsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
@@ -3233,10 +3110,9 @@ class InvitationsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/invitations/' + commons.Escaper.ecapeVariable('$id') + ':accept';
@@ -3280,10 +3156,9 @@ class InvitationsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/invitations';
 
@@ -3325,10 +3200,9 @@ class InvitationsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
@@ -3368,10 +3242,9 @@ class InvitationsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
@@ -3427,22 +3300,13 @@ class InvitationsResource {
     core.String userId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (courseId != null) {
-      _queryParams['courseId'] = [courseId];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (userId != null) {
-      _queryParams['userId'] = [userId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (courseId != null) 'courseId': [courseId],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (userId != null) 'userId': [userId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/invitations';
 
@@ -3506,10 +3370,9 @@ class RegistrationsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/registrations';
 
@@ -3548,10 +3411,9 @@ class RegistrationsResource {
     if (registrationId == null) {
       throw core.ArgumentError('Parameter registrationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/registrations/' + commons.Escaper.ecapeVariable('$registrationId');
@@ -3605,10 +3467,9 @@ class UserProfilesResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$userId');
 
@@ -3680,10 +3541,9 @@ class UserProfilesGuardianInvitationsResource {
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
@@ -3740,10 +3600,9 @@ class UserProfilesGuardianInvitationsResource {
     if (invitationId == null) {
       throw core.ArgumentError('Parameter invitationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
@@ -3819,22 +3678,14 @@ class UserProfilesGuardianInvitationsResource {
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (invitedEmailAddress != null) {
-      _queryParams['invitedEmailAddress'] = [invitedEmailAddress];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (states != null) {
-      _queryParams['states'] = states;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (invitedEmailAddress != null)
+        'invitedEmailAddress': [invitedEmailAddress],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (states != null) 'states': states,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
@@ -3905,13 +3756,10 @@ class UserProfilesGuardianInvitationsResource {
     if (invitationId == null) {
       throw core.ArgumentError('Parameter invitationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
@@ -3979,10 +3827,9 @@ class UserProfilesGuardiansResource {
     if (guardianId == null) {
       throw core.ArgumentError('Parameter guardianId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
@@ -4040,10 +3887,9 @@ class UserProfilesGuardiansResource {
     if (guardianId == null) {
       throw core.ArgumentError('Parameter guardianId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
@@ -4118,19 +3964,13 @@ class UserProfilesGuardiansResource {
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (invitedEmailAddress != null) {
-      _queryParams['invitedEmailAddress'] = [invitedEmailAddress];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (invitedEmailAddress != null)
+        'invitedEmailAddress': [invitedEmailAddress],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +

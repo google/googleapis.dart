@@ -142,16 +142,12 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -205,16 +201,12 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -266,16 +258,12 @@ class BucketAccessControlsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
@@ -320,16 +308,12 @@ class BucketAccessControlsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
@@ -386,16 +370,12 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -456,16 +436,12 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -525,22 +501,16 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -599,25 +569,17 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -665,21 +627,14 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (optionsRequestedPolicyVersion != null) {
-      _queryParams['optionsRequestedPolicyVersion'] = [
-        '${optionsRequestedPolicyVersion}'
-      ];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (optionsRequestedPolicyVersion != null)
+        'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
@@ -761,29 +716,20 @@ class BucketsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    _queryParams['project'] = [project];
-    if (predefinedAcl != null) {
-      _queryParams['predefinedAcl'] = [predefinedAcl];
-    }
-    if (predefinedDefaultObjectAcl != null) {
-      _queryParams['predefinedDefaultObjectAcl'] = [predefinedDefaultObjectAcl];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'project': [project],
+      if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
+      if (predefinedDefaultObjectAcl != null)
+        'predefinedDefaultObjectAcl': [predefinedDefaultObjectAcl],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'b';
 
@@ -840,32 +786,20 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    _queryParams['project'] = [project];
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (prefix != null) {
-      _queryParams['prefix'] = [prefix];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'project': [project],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (prefix != null) 'prefix': [prefix],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'b';
 
@@ -912,20 +846,16 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (ifMetagenerationMatch == null) {
       throw core.ArgumentError('Parameter ifMetagenerationMatch is required.');
     }
-    _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1024,31 +954,20 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (predefinedAcl != null) {
-      _queryParams['predefinedAcl'] = [predefinedAcl];
-    }
-    if (predefinedDefaultObjectAcl != null) {
-      _queryParams['predefinedDefaultObjectAcl'] = [predefinedDefaultObjectAcl];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
+      if (predefinedDefaultObjectAcl != null)
+        'predefinedDefaultObjectAcl': [predefinedDefaultObjectAcl],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -1097,16 +1016,12 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
@@ -1154,20 +1069,16 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (permissions == null || permissions.isEmpty) {
       throw core.ArgumentError('Parameter permissions is required.');
     }
-    _queryParams['permissions'] = permissions;
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'permissions': permissions,
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1267,31 +1178,20 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (predefinedAcl != null) {
-      _queryParams['predefinedAcl'] = [predefinedAcl];
-    }
-    if (predefinedDefaultObjectAcl != null) {
-      _queryParams['predefinedDefaultObjectAcl'] = [predefinedDefaultObjectAcl];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
+      if (predefinedDefaultObjectAcl != null)
+        'predefinedDefaultObjectAcl': [predefinedDefaultObjectAcl],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -1330,10 +1230,9 @@ class ChannelsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'channels/stop';
 
@@ -1391,16 +1290,12 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1455,16 +1350,12 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1516,16 +1407,12 @@ class DefaultObjectAccessControlsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
@@ -1579,22 +1466,16 @@ class DefaultObjectAccessControlsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
@@ -1652,16 +1533,12 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1722,16 +1599,12 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1789,16 +1662,12 @@ class NotificationsResource {
     if (notification == null) {
       throw core.ArgumentError('Parameter notification is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1850,16 +1719,12 @@ class NotificationsResource {
     if (notification == null) {
       throw core.ArgumentError('Parameter notification is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1911,16 +1776,12 @@ class NotificationsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -1967,16 +1828,12 @@ class NotificationsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2047,19 +1904,13 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2126,19 +1977,13 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2203,19 +2048,13 @@ class ObjectAccessControlsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2275,19 +2114,13 @@ class ObjectAccessControlsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2359,19 +2192,13 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2445,19 +2272,13 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2558,28 +2379,18 @@ class ObjectsResource {
     if (destinationObject == null) {
       throw core.ArgumentError('Parameter destinationObject is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (destinationPredefinedAcl != null) {
-      _queryParams['destinationPredefinedAcl'] = [destinationPredefinedAcl];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (kmsKeyName != null) {
-      _queryParams['kmsKeyName'] = [kmsKeyName];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (destinationPredefinedAcl != null)
+        'destinationPredefinedAcl': [destinationPredefinedAcl],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (kmsKeyName != null) 'kmsKeyName': [kmsKeyName],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$destinationBucket') +
@@ -2729,56 +2540,33 @@ class ObjectsResource {
     if (destinationObject == null) {
       throw core.ArgumentError('Parameter destinationObject is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (destinationKmsKeyName != null) {
-      _queryParams['destinationKmsKeyName'] = [destinationKmsKeyName];
-    }
-    if (destinationPredefinedAcl != null) {
-      _queryParams['destinationPredefinedAcl'] = [destinationPredefinedAcl];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifGenerationNotMatch != null) {
-      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (ifSourceGenerationMatch != null) {
-      _queryParams['ifSourceGenerationMatch'] = [ifSourceGenerationMatch];
-    }
-    if (ifSourceGenerationNotMatch != null) {
-      _queryParams['ifSourceGenerationNotMatch'] = [ifSourceGenerationNotMatch];
-    }
-    if (ifSourceMetagenerationMatch != null) {
-      _queryParams['ifSourceMetagenerationMatch'] = [
-        ifSourceMetagenerationMatch
-      ];
-    }
-    if (ifSourceMetagenerationNotMatch != null) {
-      _queryParams['ifSourceMetagenerationNotMatch'] = [
-        ifSourceMetagenerationNotMatch
-      ];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (sourceGeneration != null) {
-      _queryParams['sourceGeneration'] = [sourceGeneration];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (destinationKmsKeyName != null)
+        'destinationKmsKeyName': [destinationKmsKeyName],
+      if (destinationPredefinedAcl != null)
+        'destinationPredefinedAcl': [destinationPredefinedAcl],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (ifSourceGenerationMatch != null)
+        'ifSourceGenerationMatch': [ifSourceGenerationMatch],
+      if (ifSourceGenerationNotMatch != null)
+        'ifSourceGenerationNotMatch': [ifSourceGenerationNotMatch],
+      if (ifSourceMetagenerationMatch != null)
+        'ifSourceMetagenerationMatch': [ifSourceMetagenerationMatch],
+      if (ifSourceMetagenerationNotMatch != null)
+        'ifSourceMetagenerationNotMatch': [ifSourceMetagenerationNotMatch],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (sourceGeneration != null) 'sourceGeneration': [sourceGeneration],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$sourceBucket') +
@@ -2860,31 +2648,20 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifGenerationNotMatch != null) {
-      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -2975,34 +2752,21 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifGenerationNotMatch != null) {
-      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -3065,19 +2829,13 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -3199,43 +2957,24 @@ class ObjectsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (contentEncoding != null) {
-      _queryParams['contentEncoding'] = [contentEncoding];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifGenerationNotMatch != null) {
-      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (kmsKeyName != null) {
-      _queryParams['kmsKeyName'] = [kmsKeyName];
-    }
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if (predefinedAcl != null) {
-      _queryParams['predefinedAcl'] = [predefinedAcl];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (contentEncoding != null) 'contentEncoding': [contentEncoding],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (kmsKeyName != null) 'kmsKeyName': [kmsKeyName],
+      if (name != null) 'name': [name],
+      if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -3338,45 +3077,22 @@ class ObjectsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (delimiter != null) {
-      _queryParams['delimiter'] = [delimiter];
-    }
-    if (endOffset != null) {
-      _queryParams['endOffset'] = [endOffset];
-    }
-    if (includeTrailingDelimiter != null) {
-      _queryParams['includeTrailingDelimiter'] = [
-        '${includeTrailingDelimiter}'
-      ];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (prefix != null) {
-      _queryParams['prefix'] = [prefix];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (startOffset != null) {
-      _queryParams['startOffset'] = [startOffset];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if (versions != null) {
-      _queryParams['versions'] = ['${versions}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (delimiter != null) 'delimiter': [delimiter],
+      if (endOffset != null) 'endOffset': [endOffset],
+      if (includeTrailingDelimiter != null)
+        'includeTrailingDelimiter': ['${includeTrailingDelimiter}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (prefix != null) 'prefix': [prefix],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (startOffset != null) 'startOffset': [startOffset],
+      if (userProject != null) 'userProject': [userProject],
+      if (versions != null) 'versions': ['${versions}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
 
@@ -3476,37 +3192,22 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifGenerationNotMatch != null) {
-      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (predefinedAcl != null) {
-      _queryParams['predefinedAcl'] = [predefinedAcl];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -3669,62 +3370,36 @@ class ObjectsResource {
     if (destinationObject == null) {
       throw core.ArgumentError('Parameter destinationObject is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (destinationKmsKeyName != null) {
-      _queryParams['destinationKmsKeyName'] = [destinationKmsKeyName];
-    }
-    if (destinationPredefinedAcl != null) {
-      _queryParams['destinationPredefinedAcl'] = [destinationPredefinedAcl];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifGenerationNotMatch != null) {
-      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (ifSourceGenerationMatch != null) {
-      _queryParams['ifSourceGenerationMatch'] = [ifSourceGenerationMatch];
-    }
-    if (ifSourceGenerationNotMatch != null) {
-      _queryParams['ifSourceGenerationNotMatch'] = [ifSourceGenerationNotMatch];
-    }
-    if (ifSourceMetagenerationMatch != null) {
-      _queryParams['ifSourceMetagenerationMatch'] = [
-        ifSourceMetagenerationMatch
-      ];
-    }
-    if (ifSourceMetagenerationNotMatch != null) {
-      _queryParams['ifSourceMetagenerationNotMatch'] = [
-        ifSourceMetagenerationNotMatch
-      ];
-    }
-    if (maxBytesRewrittenPerCall != null) {
-      _queryParams['maxBytesRewrittenPerCall'] = [maxBytesRewrittenPerCall];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (rewriteToken != null) {
-      _queryParams['rewriteToken'] = [rewriteToken];
-    }
-    if (sourceGeneration != null) {
-      _queryParams['sourceGeneration'] = [sourceGeneration];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (destinationKmsKeyName != null)
+        'destinationKmsKeyName': [destinationKmsKeyName],
+      if (destinationPredefinedAcl != null)
+        'destinationPredefinedAcl': [destinationPredefinedAcl],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (ifSourceGenerationMatch != null)
+        'ifSourceGenerationMatch': [ifSourceGenerationMatch],
+      if (ifSourceGenerationNotMatch != null)
+        'ifSourceGenerationNotMatch': [ifSourceGenerationNotMatch],
+      if (ifSourceMetagenerationMatch != null)
+        'ifSourceMetagenerationMatch': [ifSourceMetagenerationMatch],
+      if (ifSourceMetagenerationNotMatch != null)
+        'ifSourceMetagenerationNotMatch': [ifSourceMetagenerationNotMatch],
+      if (maxBytesRewrittenPerCall != null)
+        'maxBytesRewrittenPerCall': [maxBytesRewrittenPerCall],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (rewriteToken != null) 'rewriteToken': [rewriteToken],
+      if (sourceGeneration != null) 'sourceGeneration': [sourceGeneration],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$sourceBucket') +
@@ -3792,19 +3467,13 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -3867,23 +3536,17 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (permissions == null || permissions.isEmpty) {
       throw core.ArgumentError('Parameter permissions is required.');
     }
-    _queryParams['permissions'] = permissions;
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'permissions': permissions,
+      if (generation != null) 'generation': [generation],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -3988,37 +3651,22 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (generation != null) {
-      _queryParams['generation'] = [generation];
-    }
-    if (ifGenerationMatch != null) {
-      _queryParams['ifGenerationMatch'] = [ifGenerationMatch];
-    }
-    if (ifGenerationNotMatch != null) {
-      _queryParams['ifGenerationNotMatch'] = [ifGenerationNotMatch];
-    }
-    if (ifMetagenerationMatch != null) {
-      _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
-    }
-    if (ifMetagenerationNotMatch != null) {
-      _queryParams['ifMetagenerationNotMatch'] = [ifMetagenerationNotMatch];
-    }
-    if (predefinedAcl != null) {
-      _queryParams['predefinedAcl'] = [predefinedAcl];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (generation != null) 'generation': [generation],
+      if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
+      if (ifGenerationNotMatch != null)
+        'ifGenerationNotMatch': [ifGenerationNotMatch],
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
@@ -4116,45 +3764,22 @@ class ObjectsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (delimiter != null) {
-      _queryParams['delimiter'] = [delimiter];
-    }
-    if (endOffset != null) {
-      _queryParams['endOffset'] = [endOffset];
-    }
-    if (includeTrailingDelimiter != null) {
-      _queryParams['includeTrailingDelimiter'] = [
-        '${includeTrailingDelimiter}'
-      ];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (prefix != null) {
-      _queryParams['prefix'] = [prefix];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (startOffset != null) {
-      _queryParams['startOffset'] = [startOffset];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if (versions != null) {
-      _queryParams['versions'] = ['${versions}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (delimiter != null) 'delimiter': [delimiter],
+      if (endOffset != null) 'endOffset': [endOffset],
+      if (includeTrailingDelimiter != null)
+        'includeTrailingDelimiter': ['${includeTrailingDelimiter}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (prefix != null) 'prefix': [prefix],
+      if (projection != null) 'projection': [projection],
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (startOffset != null) 'startOffset': [startOffset],
+      if (userProject != null) 'userProject': [userProject],
+      if (versions != null) 'versions': ['${versions}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
 
@@ -4212,17 +3837,14 @@ class ProjectsHmacKeysResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (serviceAccountEmail == null) {
       throw core.ArgumentError('Parameter serviceAccountEmail is required.');
     }
-    _queryParams['serviceAccountEmail'] = [serviceAccountEmail];
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'serviceAccountEmail': [serviceAccountEmail],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
@@ -4265,13 +3887,10 @@ class ProjectsHmacKeysResource {
     if (accessId == null) {
       throw core.ArgumentError('Parameter accessId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -4318,13 +3937,10 @@ class ProjectsHmacKeysResource {
     if (accessId == null) {
       throw core.ArgumentError('Parameter accessId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -4385,25 +4001,15 @@ class ProjectsHmacKeysResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (serviceAccountEmail != null) {
-      _queryParams['serviceAccountEmail'] = [serviceAccountEmail];
-    }
-    if (showDeletedKeys != null) {
-      _queryParams['showDeletedKeys'] = ['${showDeletedKeys}'];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (serviceAccountEmail != null)
+        'serviceAccountEmail': [serviceAccountEmail],
+      if (showDeletedKeys != null) 'showDeletedKeys': ['${showDeletedKeys}'],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
@@ -4456,13 +4062,10 @@ class ProjectsHmacKeysResource {
     if (accessId == null) {
       throw core.ArgumentError('Parameter accessId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -4517,16 +4120,12 @@ class ProjectsServiceAccountResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (provisionalUserProject != null) {
-      _queryParams['provisionalUserProject'] = [provisionalUserProject];
-    }
-    if (userProject != null) {
-      _queryParams['userProject'] = [userProject];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (provisionalUserProject != null)
+        'provisionalUserProject': [provisionalUserProject],
+      if (userProject != null) 'userProject': [userProject],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +

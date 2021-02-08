@@ -111,13 +111,10 @@ class BlogUserInfosResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxPosts != null) {
-      _queryParams['maxPosts'] = ['${maxPosts}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -173,16 +170,11 @@ class BlogsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxPosts != null) {
-      _queryParams['maxPosts'] = ['${maxPosts}'];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
@@ -222,17 +214,14 @@ class BlogsResource {
     core.String view,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (url == null) {
       throw core.ArgumentError('Parameter url is required.');
     }
-    _queryParams['url'] = [url];
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'url': [url],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v3/blogs/byurl';
 
@@ -284,22 +273,13 @@ class BlogsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fetchUserInfo != null) {
-      _queryParams['fetchUserInfo'] = ['${fetchUserInfo}'];
-    }
-    if (role != null) {
-      _queryParams['role'] = role;
-    }
-    if (status != null) {
-      _queryParams['status'] = status;
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fetchUserInfo != null) 'fetchUserInfo': ['${fetchUserInfo}'],
+      if (role != null) 'role': role,
+      if (status != null) 'status': status,
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
@@ -353,10 +333,9 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -407,10 +386,9 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -470,13 +448,10 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -553,31 +528,16 @@ class CommentsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endDate != null) {
-      _queryParams['endDate'] = [endDate];
-    }
-    if (fetchBodies != null) {
-      _queryParams['fetchBodies'] = ['${fetchBodies}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startDate != null) {
-      _queryParams['startDate'] = [startDate];
-    }
-    if (status != null) {
-      _queryParams['status'] = [status];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate != null) 'endDate': [endDate],
+      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startDate != null) 'startDate': [startDate],
+      if (status != null) 'status': [status],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -635,28 +595,15 @@ class CommentsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endDate != null) {
-      _queryParams['endDate'] = [endDate];
-    }
-    if (fetchBodies != null) {
-      _queryParams['fetchBodies'] = ['${fetchBodies}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startDate != null) {
-      _queryParams['startDate'] = [startDate];
-    }
-    if (status != null) {
-      _queryParams['status'] = status;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate != null) 'endDate': [endDate],
+      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startDate != null) 'startDate': [startDate],
+      if (status != null) 'status': status,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
@@ -705,10 +652,9 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -761,10 +707,9 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -814,13 +759,10 @@ class PageViewsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (range != null) {
-      _queryParams['range'] = range;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (range != null) 'range': range,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
@@ -866,10 +808,9 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -921,13 +862,10 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -973,13 +911,10 @@ class PagesResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (isDraft != null) {
-      _queryParams['isDraft'] = ['${isDraft}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (isDraft != null) 'isDraft': ['${isDraft}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
@@ -1036,25 +971,14 @@ class PagesResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fetchBodies != null) {
-      _queryParams['fetchBodies'] = ['${fetchBodies}'];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (status != null) {
-      _queryParams['status'] = status;
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (status != null) 'status': status,
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
@@ -1107,16 +1031,11 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (publish_1 != null) {
-      _queryParams['publish'] = ['${publish_1}'];
-    }
-    if (revert_1 != null) {
-      _queryParams['revert'] = ['${revert_1}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (publish_1 != null) 'publish': ['${publish_1}'],
+      if (revert_1 != null) 'revert': ['${revert_1}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1161,10 +1080,9 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1209,10 +1127,9 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1268,16 +1185,11 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (publish_1 != null) {
-      _queryParams['publish'] = ['${publish_1}'];
-    }
-    if (revert_1 != null) {
-      _queryParams['revert'] = ['${revert_1}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (publish_1 != null) 'publish': ['${publish_1}'],
+      if (revert_1 != null) 'revert': ['${revert_1}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1337,13 +1249,10 @@ class PostUserInfosResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxComments != null) {
-      _queryParams['maxComments'] = ['${maxComments}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxComments != null) 'maxComments': ['${maxComments}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1426,37 +1335,18 @@ class PostUserInfosResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endDate != null) {
-      _queryParams['endDate'] = [endDate];
-    }
-    if (fetchBodies != null) {
-      _queryParams['fetchBodies'] = ['${fetchBodies}'];
-    }
-    if (labels != null) {
-      _queryParams['labels'] = [labels];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startDate != null) {
-      _queryParams['startDate'] = [startDate];
-    }
-    if (status != null) {
-      _queryParams['status'] = status;
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate != null) 'endDate': [endDate],
+      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
+      if (labels != null) 'labels': [labels],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startDate != null) 'startDate': [startDate],
+      if (status != null) 'status': status,
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1506,10 +1396,9 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1570,22 +1459,13 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fetchBody != null) {
-      _queryParams['fetchBody'] = ['${fetchBody}'];
-    }
-    if (fetchImages != null) {
-      _queryParams['fetchImages'] = ['${fetchImages}'];
-    }
-    if (maxComments != null) {
-      _queryParams['maxComments'] = ['${maxComments}'];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
+      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
+      if (maxComments != null) 'maxComments': ['${maxComments}'],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1637,20 +1517,15 @@ class PostsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    _queryParams['path'] = [path];
-    if (maxComments != null) {
-      _queryParams['maxComments'] = ['${maxComments}'];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'path': [path],
+      if (maxComments != null) 'maxComments': ['${maxComments}'],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1701,19 +1576,12 @@ class PostsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fetchBody != null) {
-      _queryParams['fetchBody'] = ['${fetchBody}'];
-    }
-    if (fetchImages != null) {
-      _queryParams['fetchImages'] = ['${fetchImages}'];
-    }
-    if (isDraft != null) {
-      _queryParams['isDraft'] = ['${isDraft}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
+      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
+      if (isDraft != null) 'isDraft': ['${isDraft}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
@@ -1789,40 +1657,19 @@ class PostsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endDate != null) {
-      _queryParams['endDate'] = [endDate];
-    }
-    if (fetchBodies != null) {
-      _queryParams['fetchBodies'] = ['${fetchBodies}'];
-    }
-    if (fetchImages != null) {
-      _queryParams['fetchImages'] = ['${fetchImages}'];
-    }
-    if (labels != null) {
-      _queryParams['labels'] = [labels];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startDate != null) {
-      _queryParams['startDate'] = [startDate];
-    }
-    if (status != null) {
-      _queryParams['status'] = status;
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate != null) 'endDate': [endDate],
+      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
+      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
+      if (labels != null) 'labels': [labels],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startDate != null) 'startDate': [startDate],
+      if (status != null) 'status': status,
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
@@ -1884,25 +1731,14 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fetchBody != null) {
-      _queryParams['fetchBody'] = ['${fetchBody}'];
-    }
-    if (fetchImages != null) {
-      _queryParams['fetchImages'] = ['${fetchImages}'];
-    }
-    if (maxComments != null) {
-      _queryParams['maxComments'] = ['${maxComments}'];
-    }
-    if (publish_1 != null) {
-      _queryParams['publish'] = ['${publish_1}'];
-    }
-    if (revert_1 != null) {
-      _queryParams['revert'] = ['${revert_1}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
+      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
+      if (maxComments != null) 'maxComments': ['${maxComments}'],
+      if (publish_1 != null) 'publish': ['${publish_1}'],
+      if (revert_1 != null) 'revert': ['${revert_1}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1950,13 +1786,10 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (publishDate != null) {
-      _queryParams['publishDate'] = [publishDate];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (publishDate != null) 'publishDate': [publishDate],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -2001,10 +1834,9 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -2056,20 +1888,15 @@ class PostsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (q == null) {
       throw core.ArgumentError('Parameter q is required.');
     }
-    _queryParams['q'] = [q];
-    if (fetchBodies != null) {
-      _queryParams['fetchBodies'] = ['${fetchBodies}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'q': [q],
+      if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -2132,25 +1959,14 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fetchBody != null) {
-      _queryParams['fetchBody'] = ['${fetchBody}'];
-    }
-    if (fetchImages != null) {
-      _queryParams['fetchImages'] = ['${fetchImages}'];
-    }
-    if (maxComments != null) {
-      _queryParams['maxComments'] = ['${maxComments}'];
-    }
-    if (publish_1 != null) {
-      _queryParams['publish'] = ['${publish_1}'];
-    }
-    if (revert_1 != null) {
-      _queryParams['revert'] = ['${revert_1}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
+      if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
+      if (maxComments != null) 'maxComments': ['${maxComments}'],
+      if (publish_1 != null) 'publish': ['${publish_1}'],
+      if (revert_1 != null) 'revert': ['${revert_1}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -2195,10 +2011,9 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
 

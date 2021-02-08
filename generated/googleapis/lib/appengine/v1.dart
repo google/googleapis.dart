@@ -118,10 +118,9 @@ class AppsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/apps';
 
@@ -158,10 +157,9 @@ class AppsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
@@ -210,13 +208,10 @@ class AppsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
@@ -268,10 +263,9 @@ class AppsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + ':repair';
@@ -321,10 +315,9 @@ class AppsAuthorizedCertificatesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -372,10 +365,9 @@ class AppsAuthorizedCertificatesResource {
       throw core.ArgumentError(
           'Parameter authorizedCertificatesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -431,13 +423,10 @@ class AppsAuthorizedCertificatesResource {
       throw core.ArgumentError(
           'Parameter authorizedCertificatesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -492,19 +481,12 @@ class AppsAuthorizedCertificatesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -566,13 +548,10 @@ class AppsAuthorizedCertificatesResource {
       throw core.ArgumentError(
           'Parameter authorizedCertificatesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -626,16 +605,11 @@ class AppsAuthorizedDomainsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -703,13 +677,10 @@ class AppsDomainMappingsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (overrideStrategy != null) {
-      _queryParams['overrideStrategy'] = [overrideStrategy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (overrideStrategy != null) 'overrideStrategy': [overrideStrategy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -757,10 +728,9 @@ class AppsDomainMappingsResource {
     if (domainMappingsId == null) {
       throw core.ArgumentError('Parameter domainMappingsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -805,10 +775,9 @@ class AppsDomainMappingsResource {
     if (domainMappingsId == null) {
       throw core.ArgumentError('Parameter domainMappingsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -854,16 +823,11 @@ class AppsDomainMappingsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -921,13 +885,10 @@ class AppsDomainMappingsResource {
     if (domainMappingsId == null) {
       throw core.ArgumentError('Parameter domainMappingsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -993,10 +954,9 @@ class AppsFirewallIngressRulesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1041,10 +1001,9 @@ class AppsFirewallIngressRulesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1090,10 +1049,9 @@ class AppsFirewallIngressRulesResource {
     if (ingressRulesId == null) {
       throw core.ArgumentError('Parameter ingressRulesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1138,10 +1096,9 @@ class AppsFirewallIngressRulesResource {
     if (ingressRulesId == null) {
       throw core.ArgumentError('Parameter ingressRulesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1192,19 +1149,12 @@ class AppsFirewallIngressRulesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (matchingAddress != null) {
-      _queryParams['matchingAddress'] = [matchingAddress];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (matchingAddress != null) 'matchingAddress': [matchingAddress],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1257,13 +1207,10 @@ class AppsFirewallIngressRulesResource {
     if (ingressRulesId == null) {
       throw core.ArgumentError('Parameter ingressRulesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1315,10 +1262,9 @@ class AppsLocationsResource {
     if (locationsId == null) {
       throw core.ArgumentError('Parameter locationsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1366,19 +1312,12 @@ class AppsLocationsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
@@ -1430,10 +1369,9 @@ class AppsOperationsResource {
     if (operationsId == null) {
       throw core.ArgumentError('Parameter operationsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1489,19 +1427,12 @@ class AppsOperationsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
@@ -1554,10 +1485,9 @@ class AppsServicesResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1602,10 +1532,9 @@ class AppsServicesResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1650,16 +1579,11 @@ class AppsServicesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
@@ -1726,16 +1650,11 @@ class AppsServicesResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (migrateTraffic != null) {
-      _queryParams['migrateTraffic'] = ['${migrateTraffic}'];
-    }
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (migrateTraffic != null) 'migrateTraffic': ['${migrateTraffic}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1796,10 +1715,9 @@ class AppsServicesVersionsResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1852,10 +1770,9 @@ class AppsServicesVersionsResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1920,13 +1837,10 @@ class AppsServicesVersionsResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -1988,19 +1902,12 @@ class AppsServicesVersionsResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (view != null) {
-      _queryParams['view'] = [view];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -2094,13 +2001,10 @@ class AppsServicesVersionsResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (updateMask != null) {
-      _queryParams['updateMask'] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -2179,10 +2083,9 @@ class AppsServicesVersionsInstancesResource {
     if (instancesId == null) {
       throw core.ArgumentError('Parameter instancesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -2257,10 +2160,9 @@ class AppsServicesVersionsInstancesResource {
     if (instancesId == null) {
       throw core.ArgumentError('Parameter instancesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -2321,10 +2223,9 @@ class AppsServicesVersionsInstancesResource {
     if (instancesId == null) {
       throw core.ArgumentError('Parameter instancesId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
@@ -2387,16 +2288,11 @@ class AppsServicesVersionsInstancesResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +

@@ -109,10 +109,9 @@ class SearchanalyticsResource {
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webmasters/v3/sites/' +
         commons.Escaper.ecapeVariable('$siteUrl') +
@@ -163,10 +162,9 @@ class SitemapsResource {
     if (feedpath == null) {
       throw core.ArgumentError('Parameter feedpath is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webmasters/v3/sites/' +
         commons.Escaper.ecapeVariable('$siteUrl') +
@@ -212,10 +210,9 @@ class SitemapsResource {
     if (feedpath == null) {
       throw core.ArgumentError('Parameter feedpath is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webmasters/v3/sites/' +
         commons.Escaper.ecapeVariable('$siteUrl') +
@@ -261,13 +258,10 @@ class SitemapsResource {
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (sitemapIndex != null) {
-      _queryParams['sitemapIndex'] = [sitemapIndex];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (sitemapIndex != null) 'sitemapIndex': [sitemapIndex],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webmasters/v3/sites/' +
         commons.Escaper.ecapeVariable('$siteUrl') +
@@ -311,10 +305,9 @@ class SitemapsResource {
     if (feedpath == null) {
       throw core.ArgumentError('Parameter feedpath is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'webmasters/v3/sites/' +
         commons.Escaper.ecapeVariable('$siteUrl') +
@@ -356,10 +349,9 @@ class SitesResource {
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
@@ -394,10 +386,9 @@ class SitesResource {
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
@@ -434,10 +425,9 @@ class SitesResource {
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'webmasters/v3/sites/' + commons.Escaper.ecapeVariable('$siteUrl');
@@ -467,10 +457,9 @@ class SitesResource {
   async.Future<SitesListResponse> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'webmasters/v3/sites';
 
@@ -521,10 +510,9 @@ class UrlTestingToolsMobileFriendlyTestResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/urlTestingTools/mobileFriendlyTest:run';
 

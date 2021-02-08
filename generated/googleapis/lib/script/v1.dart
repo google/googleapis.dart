@@ -195,52 +195,30 @@ class ProcessesResource {
     core.List<core.String> userProcessFilter_userAccessLevels,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (userProcessFilter_deploymentId != null) {
-      _queryParams['userProcessFilter.deploymentId'] = [
-        userProcessFilter_deploymentId
-      ];
-    }
-    if (userProcessFilter_endTime != null) {
-      _queryParams['userProcessFilter.endTime'] = [userProcessFilter_endTime];
-    }
-    if (userProcessFilter_functionName != null) {
-      _queryParams['userProcessFilter.functionName'] = [
-        userProcessFilter_functionName
-      ];
-    }
-    if (userProcessFilter_projectName != null) {
-      _queryParams['userProcessFilter.projectName'] = [
-        userProcessFilter_projectName
-      ];
-    }
-    if (userProcessFilter_scriptId != null) {
-      _queryParams['userProcessFilter.scriptId'] = [userProcessFilter_scriptId];
-    }
-    if (userProcessFilter_startTime != null) {
-      _queryParams['userProcessFilter.startTime'] = [
-        userProcessFilter_startTime
-      ];
-    }
-    if (userProcessFilter_statuses != null) {
-      _queryParams['userProcessFilter.statuses'] = userProcessFilter_statuses;
-    }
-    if (userProcessFilter_types != null) {
-      _queryParams['userProcessFilter.types'] = userProcessFilter_types;
-    }
-    if (userProcessFilter_userAccessLevels != null) {
-      _queryParams['userProcessFilter.userAccessLevels'] =
-          userProcessFilter_userAccessLevels;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (userProcessFilter_deploymentId != null)
+        'userProcessFilter.deploymentId': [userProcessFilter_deploymentId],
+      if (userProcessFilter_endTime != null)
+        'userProcessFilter.endTime': [userProcessFilter_endTime],
+      if (userProcessFilter_functionName != null)
+        'userProcessFilter.functionName': [userProcessFilter_functionName],
+      if (userProcessFilter_projectName != null)
+        'userProcessFilter.projectName': [userProcessFilter_projectName],
+      if (userProcessFilter_scriptId != null)
+        'userProcessFilter.scriptId': [userProcessFilter_scriptId],
+      if (userProcessFilter_startTime != null)
+        'userProcessFilter.startTime': [userProcessFilter_startTime],
+      if (userProcessFilter_statuses != null)
+        'userProcessFilter.statuses': userProcessFilter_statuses,
+      if (userProcessFilter_types != null)
+        'userProcessFilter.types': userProcessFilter_types,
+      if (userProcessFilter_userAccessLevels != null)
+        'userProcessFilter.userAccessLevels':
+            userProcessFilter_userAccessLevels,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/processes';
 
@@ -314,50 +292,27 @@ class ProcessesResource {
     core.List<core.String> scriptProcessFilter_userAccessLevels,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (scriptId != null) {
-      _queryParams['scriptId'] = [scriptId];
-    }
-    if (scriptProcessFilter_deploymentId != null) {
-      _queryParams['scriptProcessFilter.deploymentId'] = [
-        scriptProcessFilter_deploymentId
-      ];
-    }
-    if (scriptProcessFilter_endTime != null) {
-      _queryParams['scriptProcessFilter.endTime'] = [
-        scriptProcessFilter_endTime
-      ];
-    }
-    if (scriptProcessFilter_functionName != null) {
-      _queryParams['scriptProcessFilter.functionName'] = [
-        scriptProcessFilter_functionName
-      ];
-    }
-    if (scriptProcessFilter_startTime != null) {
-      _queryParams['scriptProcessFilter.startTime'] = [
-        scriptProcessFilter_startTime
-      ];
-    }
-    if (scriptProcessFilter_statuses != null) {
-      _queryParams['scriptProcessFilter.statuses'] =
-          scriptProcessFilter_statuses;
-    }
-    if (scriptProcessFilter_types != null) {
-      _queryParams['scriptProcessFilter.types'] = scriptProcessFilter_types;
-    }
-    if (scriptProcessFilter_userAccessLevels != null) {
-      _queryParams['scriptProcessFilter.userAccessLevels'] =
-          scriptProcessFilter_userAccessLevels;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (scriptId != null) 'scriptId': [scriptId],
+      if (scriptProcessFilter_deploymentId != null)
+        'scriptProcessFilter.deploymentId': [scriptProcessFilter_deploymentId],
+      if (scriptProcessFilter_endTime != null)
+        'scriptProcessFilter.endTime': [scriptProcessFilter_endTime],
+      if (scriptProcessFilter_functionName != null)
+        'scriptProcessFilter.functionName': [scriptProcessFilter_functionName],
+      if (scriptProcessFilter_startTime != null)
+        'scriptProcessFilter.startTime': [scriptProcessFilter_startTime],
+      if (scriptProcessFilter_statuses != null)
+        'scriptProcessFilter.statuses': scriptProcessFilter_statuses,
+      if (scriptProcessFilter_types != null)
+        'scriptProcessFilter.types': scriptProcessFilter_types,
+      if (scriptProcessFilter_userAccessLevels != null)
+        'scriptProcessFilter.userAccessLevels':
+            scriptProcessFilter_userAccessLevels,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/processes:listScriptProcesses';
 
@@ -403,10 +358,9 @@ class ProjectsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/projects';
 
@@ -442,10 +396,9 @@ class ProjectsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
 
@@ -485,13 +438,10 @@ class ProjectsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (versionNumber != null) {
-      _queryParams['versionNumber'] = ['${versionNumber}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (versionNumber != null) 'versionNumber': ['${versionNumber}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -542,16 +492,13 @@ class ProjectsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (metricsFilter_deploymentId != null) {
-      _queryParams['metricsFilter.deploymentId'] = [metricsFilter_deploymentId];
-    }
-    if (metricsGranularity != null) {
-      _queryParams['metricsGranularity'] = [metricsGranularity];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (metricsFilter_deploymentId != null)
+        'metricsFilter.deploymentId': [metricsFilter_deploymentId],
+      if (metricsGranularity != null)
+        'metricsGranularity': [metricsGranularity],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -598,10 +545,9 @@ class ProjectsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -651,10 +597,9 @@ class ProjectsDeploymentsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -699,10 +644,9 @@ class ProjectsDeploymentsResource {
     if (deploymentId == null) {
       throw core.ArgumentError('Parameter deploymentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -746,10 +690,9 @@ class ProjectsDeploymentsResource {
     if (deploymentId == null) {
       throw core.ArgumentError('Parameter deploymentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -797,16 +740,11 @@ class ProjectsDeploymentsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -855,10 +793,9 @@ class ProjectsDeploymentsResource {
     if (deploymentId == null) {
       throw core.ArgumentError('Parameter deploymentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -910,10 +847,9 @@ class ProjectsVersionsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -957,10 +893,9 @@ class ProjectsVersionsResource {
     if (versionNumber == null) {
       throw core.ArgumentError('Parameter versionNumber is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -1007,16 +942,11 @@ class ProjectsVersionsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
@@ -1078,10 +1008,9 @@ class ScriptsResource {
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';

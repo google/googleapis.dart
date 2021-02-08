@@ -85,10 +85,9 @@ class TasklistsResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
@@ -124,10 +123,9 @@ class TasklistsResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
@@ -163,10 +161,9 @@ class TasklistsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'tasks/v1/users/@me/lists';
 
@@ -203,16 +200,11 @@ class TasklistsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'tasks/v1/users/@me/lists';
 
@@ -254,10 +246,9 @@ class TasklistsResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
@@ -299,10 +290,9 @@ class TasklistsResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
@@ -346,10 +336,9 @@ class TasksResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -390,10 +379,9 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -437,10 +425,9 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -492,16 +479,11 @@ class TasksResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parent != null) {
-      _queryParams['parent'] = [parent];
-    }
-    if (previous != null) {
-      _queryParams['previous'] = [previous];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (previous != null) 'previous': [previous],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -583,40 +565,19 @@ class TasksResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (completedMax != null) {
-      _queryParams['completedMax'] = [completedMax];
-    }
-    if (completedMin != null) {
-      _queryParams['completedMin'] = [completedMin];
-    }
-    if (dueMax != null) {
-      _queryParams['dueMax'] = [dueMax];
-    }
-    if (dueMin != null) {
-      _queryParams['dueMin'] = [dueMin];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showCompleted != null) {
-      _queryParams['showCompleted'] = ['${showCompleted}'];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (showHidden != null) {
-      _queryParams['showHidden'] = ['${showHidden}'];
-    }
-    if (updatedMin != null) {
-      _queryParams['updatedMin'] = [updatedMin];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (completedMax != null) 'completedMax': [completedMax],
+      if (completedMin != null) 'completedMin': [completedMin],
+      if (dueMax != null) 'dueMax': [dueMax],
+      if (dueMin != null) 'dueMin': [dueMin],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showCompleted != null) 'showCompleted': ['${showCompleted}'],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (showHidden != null) 'showHidden': ['${showHidden}'],
+      if (updatedMin != null) 'updatedMin': [updatedMin],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -671,16 +632,11 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (parent != null) {
-      _queryParams['parent'] = [parent];
-    }
-    if (previous != null) {
-      _queryParams['previous'] = [previous];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
+      if (previous != null) 'previous': [previous],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -732,10 +688,9 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
@@ -785,10 +740,9 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +

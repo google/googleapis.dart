@@ -122,13 +122,10 @@ class ChangesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -187,13 +184,10 @@ class ChangesResource {
     if (changeId == null) {
       throw core.ArgumentError('Parameter changeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -256,22 +250,13 @@ class ChangesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (sortBy != null) {
-      _queryParams['sortBy'] = [sortBy];
-    }
-    if (sortOrder != null) {
-      _queryParams['sortOrder'] = [sortOrder];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (sortBy != null) 'sortBy': [sortBy],
+      if (sortOrder != null) 'sortOrder': [sortOrder],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -340,16 +325,11 @@ class DnsKeysResource {
     if (dnsKeyId == null) {
       throw core.ArgumentError('Parameter dnsKeyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if (digestType != null) {
-      _queryParams['digestType'] = [digestType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if (digestType != null) 'digestType': [digestType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -409,19 +389,12 @@ class DnsKeysResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (digestType != null) {
-      _queryParams['digestType'] = [digestType];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (digestType != null) 'digestType': [digestType],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -485,13 +458,10 @@ class ManagedZoneOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -552,19 +522,12 @@ class ManagedZoneOperationsResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (sortBy != null) {
-      _queryParams['sortBy'] = [sortBy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (sortBy != null) 'sortBy': [sortBy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -620,13 +583,10 @@ class ManagedZonesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -675,13 +635,10 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -731,13 +688,10 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -787,19 +741,12 @@ class ManagedZonesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (dnsName != null) {
-      _queryParams['dnsName'] = [dnsName];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (dnsName != null) 'dnsName': [dnsName],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -854,13 +801,10 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -916,13 +860,10 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -977,13 +918,10 @@ class PoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1033,13 +971,10 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1089,13 +1024,10 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1141,16 +1073,11 @@ class PoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1205,13 +1132,10 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1268,13 +1192,10 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1325,13 +1246,10 @@ class ProjectsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientOperationId != null) {
-      _queryParams['clientOperationId'] = [clientOperationId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientOperationId != null) 'clientOperationId': [clientOperationId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' + commons.Escaper.ecapeVariable('$project');
 
@@ -1395,22 +1313,13 @@ class ResourceRecordSetsResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (type != null) {
-      _queryParams['type'] = [type];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (name != null) 'name': [name],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +

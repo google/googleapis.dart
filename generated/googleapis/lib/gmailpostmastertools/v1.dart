@@ -95,10 +95,9 @@ class DomainsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -140,16 +139,11 @@ class DomainsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/domains';
 
@@ -197,10 +191,9 @@ class DomainsTrafficStatsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -278,34 +271,17 @@ class DomainsTrafficStatsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endDate_day != null) {
-      _queryParams['endDate.day'] = ['${endDate_day}'];
-    }
-    if (endDate_month != null) {
-      _queryParams['endDate.month'] = ['${endDate_month}'];
-    }
-    if (endDate_year != null) {
-      _queryParams['endDate.year'] = ['${endDate_year}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startDate_day != null) {
-      _queryParams['startDate.day'] = ['${startDate_day}'];
-    }
-    if (startDate_month != null) {
-      _queryParams['startDate.month'] = ['${startDate_month}'];
-    }
-    if (startDate_year != null) {
-      _queryParams['startDate.year'] = ['${startDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
+      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
+      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
+      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
+      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +

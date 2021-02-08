@@ -93,10 +93,9 @@ class ApplicationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/datatransfer/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
@@ -137,19 +136,12 @@ class ApplicationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/datatransfer/v1/applications';
 
@@ -192,10 +184,9 @@ class TransfersResource {
     if (dataTransferId == null) {
       throw core.ArgumentError('Parameter dataTransferId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'admin/datatransfer/v1/transfers/' +
         commons.Escaper.ecapeVariable('$dataTransferId');
@@ -231,10 +222,9 @@ class TransfersResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/datatransfer/v1/transfers';
 
@@ -285,28 +275,15 @@ class TransfersResource {
     core.String status,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (newOwnerUserId != null) {
-      _queryParams['newOwnerUserId'] = [newOwnerUserId];
-    }
-    if (oldOwnerUserId != null) {
-      _queryParams['oldOwnerUserId'] = [oldOwnerUserId];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (status != null) {
-      _queryParams['status'] = [status];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerId != null) 'customerId': [customerId],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (newOwnerUserId != null) 'newOwnerUserId': [newOwnerUserId],
+      if (oldOwnerUserId != null) 'oldOwnerUserId': [oldOwnerUserId],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (status != null) 'status': [status],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'admin/datatransfer/v1/transfers';
 

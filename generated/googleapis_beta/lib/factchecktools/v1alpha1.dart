@@ -113,31 +113,17 @@ class ClaimsResource {
     core.String reviewPublisherSiteFilter,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (languageCode != null) {
-      _queryParams['languageCode'] = [languageCode];
-    }
-    if (maxAgeDays != null) {
-      _queryParams['maxAgeDays'] = ['${maxAgeDays}'];
-    }
-    if (offset != null) {
-      _queryParams['offset'] = ['${offset}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (reviewPublisherSiteFilter != null) {
-      _queryParams['reviewPublisherSiteFilter'] = [reviewPublisherSiteFilter];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (maxAgeDays != null) 'maxAgeDays': ['${maxAgeDays}'],
+      if (offset != null) 'offset': ['${offset}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if (reviewPublisherSiteFilter != null)
+        'reviewPublisherSiteFilter': [reviewPublisherSiteFilter],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1alpha1/claims:search';
 
@@ -180,10 +166,9 @@ class PagesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1alpha1/pages';
 
@@ -222,10 +207,9 @@ class PagesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -265,10 +249,9 @@ class PagesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -329,25 +312,14 @@ class PagesResource {
     core.String url,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (offset != null) {
-      _queryParams['offset'] = ['${offset}'];
-    }
-    if (organization != null) {
-      _queryParams['organization'] = [organization];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (url != null) {
-      _queryParams['url'] = [url];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (offset != null) 'offset': ['${offset}'],
+      if (organization != null) 'organization': [organization],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (url != null) 'url': [url],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1alpha1/pages';
 
@@ -398,10 +370,9 @@ class PagesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 

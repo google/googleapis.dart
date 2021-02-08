@@ -85,10 +85,9 @@ class ApisResource {
     if (version == null) {
       throw core.ArgumentError('Parameter version is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/' +
         commons.Escaper.ecapeVariable('$api') +
@@ -128,16 +127,11 @@ class ApisResource {
     core.bool preferred,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if (preferred != null) {
-      _queryParams['preferred'] = ['${preferred}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if (preferred != null) 'preferred': ['${preferred}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'apis';
 

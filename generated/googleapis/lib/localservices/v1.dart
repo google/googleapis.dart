@@ -126,37 +126,18 @@ class AccountReportsResource {
     core.int startDate_year,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endDate_day != null) {
-      _queryParams['endDate.day'] = ['${endDate_day}'];
-    }
-    if (endDate_month != null) {
-      _queryParams['endDate.month'] = ['${endDate_month}'];
-    }
-    if (endDate_year != null) {
-      _queryParams['endDate.year'] = ['${endDate_year}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (startDate_day != null) {
-      _queryParams['startDate.day'] = ['${startDate_day}'];
-    }
-    if (startDate_month != null) {
-      _queryParams['startDate.month'] = ['${startDate_month}'];
-    }
-    if (startDate_year != null) {
-      _queryParams['startDate.year'] = ['${startDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
+      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
+      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
+      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
+      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/accountReports:search';
 
@@ -245,37 +226,18 @@ class DetailedLeadReportsResource {
     core.int startDate_year,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (endDate_day != null) {
-      _queryParams['endDate.day'] = ['${endDate_day}'];
-    }
-    if (endDate_month != null) {
-      _queryParams['endDate.month'] = ['${endDate_month}'];
-    }
-    if (endDate_year != null) {
-      _queryParams['endDate.year'] = ['${endDate_year}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (startDate_day != null) {
-      _queryParams['startDate.day'] = ['${startDate_day}'];
-    }
-    if (startDate_month != null) {
-      _queryParams['startDate.month'] = ['${startDate_month}'];
-    }
-    if (startDate_year != null) {
-      _queryParams['startDate.year'] = ['${startDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
+      if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
+      if (endDate_year != null) 'endDate.year': ['${endDate_year}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if (startDate_day != null) 'startDate.day': ['${startDate_day}'],
+      if (startDate_month != null) 'startDate.month': ['${startDate_month}'],
+      if (startDate_year != null) 'startDate.year': ['${startDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/detailedLeadReports:search';
 

@@ -127,16 +127,11 @@ class NamespacesAuthorizeddomainsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/domains.cloudrun.com/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -183,10 +178,9 @@ class NamespacesConfigurationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -252,31 +246,17 @@ class NamespacesConfigurationsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -329,10 +309,9 @@ class NamespacesDomainmappingsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/domains.cloudrun.com/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -385,19 +364,12 @@ class NamespacesDomainmappingsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (apiVersion != null) {
-      _queryParams['apiVersion'] = [apiVersion];
-    }
-    if (kind != null) {
-      _queryParams['kind'] = [kind];
-    }
-    if (propagationPolicy != null) {
-      _queryParams['propagationPolicy'] = [propagationPolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/domains.cloudrun.com/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -435,10 +407,9 @@ class NamespacesDomainmappingsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/domains.cloudrun.com/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -504,31 +475,17 @@ class NamespacesDomainmappingsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/domains.cloudrun.com/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -587,19 +544,12 @@ class NamespacesRevisionsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (apiVersion != null) {
-      _queryParams['apiVersion'] = [apiVersion];
-    }
-    if (kind != null) {
-      _queryParams['kind'] = [kind];
-    }
-    if (propagationPolicy != null) {
-      _queryParams['propagationPolicy'] = [propagationPolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -637,10 +587,9 @@ class NamespacesRevisionsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -705,31 +654,17 @@ class NamespacesRevisionsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -775,10 +710,9 @@ class NamespacesRoutesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -842,31 +776,17 @@ class NamespacesRoutesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -917,10 +837,9 @@ class NamespacesServicesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -975,19 +894,12 @@ class NamespacesServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (apiVersion != null) {
-      _queryParams['apiVersion'] = [apiVersion];
-    }
-    if (kind != null) {
-      _queryParams['kind'] = [kind];
-    }
-    if (propagationPolicy != null) {
-      _queryParams['propagationPolicy'] = [propagationPolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -1025,10 +937,9 @@ class NamespacesServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -1093,31 +1004,17 @@ class NamespacesServicesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1167,10 +1064,9 @@ class NamespacesServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apis/serving.knative.dev/v1/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -1233,16 +1129,11 @@ class ProjectsAuthorizeddomainsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1309,19 +1200,12 @@ class ProjectsLocationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
@@ -1373,16 +1257,11 @@ class ProjectsLocationsAuthorizeddomainsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1430,10 +1309,9 @@ class ProjectsLocationsConfigurationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1498,31 +1376,17 @@ class ProjectsLocationsConfigurationsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1575,10 +1439,9 @@ class ProjectsLocationsDomainmappingsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1632,19 +1495,12 @@ class ProjectsLocationsDomainmappingsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (apiVersion != null) {
-      _queryParams['apiVersion'] = [apiVersion];
-    }
-    if (kind != null) {
-      _queryParams['kind'] = [kind];
-    }
-    if (propagationPolicy != null) {
-      _queryParams['propagationPolicy'] = [propagationPolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1682,10 +1538,9 @@ class ProjectsLocationsDomainmappingsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1750,31 +1605,17 @@ class ProjectsLocationsDomainmappingsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1834,19 +1675,12 @@ class ProjectsLocationsRevisionsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (apiVersion != null) {
-      _queryParams['apiVersion'] = [apiVersion];
-    }
-    if (kind != null) {
-      _queryParams['kind'] = [kind];
-    }
-    if (propagationPolicy != null) {
-      _queryParams['propagationPolicy'] = [propagationPolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1884,10 +1718,9 @@ class ProjectsLocationsRevisionsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1951,31 +1784,17 @@ class ProjectsLocationsRevisionsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/revisions';
@@ -2022,10 +1841,9 @@ class ProjectsLocationsRoutesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2088,31 +1906,17 @@ class ProjectsLocationsRoutesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/routes';
@@ -2163,10 +1967,9 @@ class ProjectsLocationsServicesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
@@ -2221,19 +2024,12 @@ class ProjectsLocationsServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (apiVersion != null) {
-      _queryParams['apiVersion'] = [apiVersion];
-    }
-    if (kind != null) {
-      _queryParams['kind'] = [kind];
-    }
-    if (propagationPolicy != null) {
-      _queryParams['propagationPolicy'] = [propagationPolicy];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2271,10 +2067,9 @@ class ProjectsLocationsServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2325,15 +2120,11 @@ class ProjectsLocationsServicesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (options_requestedPolicyVersion != null) {
-      _queryParams['options.requestedPolicyVersion'] = [
-        '${options_requestedPolicyVersion}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -2399,31 +2190,17 @@ class ProjectsLocationsServicesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (continue_ != null) {
-      _queryParams['continue'] = [continue_];
-    }
-    if (fieldSelector != null) {
-      _queryParams['fieldSelector'] = [fieldSelector];
-    }
-    if (includeUninitialized != null) {
-      _queryParams['includeUninitialized'] = ['${includeUninitialized}'];
-    }
-    if (labelSelector != null) {
-      _queryParams['labelSelector'] = [labelSelector];
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (resourceVersion != null) {
-      _queryParams['resourceVersion'] = [resourceVersion];
-    }
-    if (watch != null) {
-      _queryParams['watch'] = ['${watch}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
@@ -2473,10 +2250,9 @@ class ProjectsLocationsServicesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -2523,10 +2299,9 @@ class ProjectsLocationsServicesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
@@ -2575,10 +2350,9 @@ class ProjectsLocationsServicesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +

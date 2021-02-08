@@ -125,10 +125,9 @@ class AccountsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
@@ -158,10 +157,9 @@ class AccountsResource {
   async.Future<ListAccountsResponse> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'tagmanager/v1/accounts';
 
@@ -206,13 +204,10 @@ class AccountsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
@@ -278,10 +273,9 @@ class AccountsContainersResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -323,10 +317,9 @@ class AccountsContainersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -370,10 +363,9 @@ class AccountsContainersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -411,10 +403,9 @@ class AccountsContainersResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -467,13 +458,10 @@ class AccountsContainersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -530,10 +518,9 @@ class AccountsContainersEnvironmentsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -584,10 +571,9 @@ class AccountsContainersEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -639,10 +625,9 @@ class AccountsContainersEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -689,10 +674,9 @@ class AccountsContainersEnvironmentsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -753,13 +737,10 @@ class AccountsContainersEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -822,10 +803,9 @@ class AccountsContainersFoldersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -875,10 +855,9 @@ class AccountsContainersFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -930,10 +909,9 @@ class AccountsContainersFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -979,10 +957,9 @@ class AccountsContainersFoldersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1043,13 +1020,10 @@ class AccountsContainersFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1109,10 +1083,9 @@ class AccountsContainersFoldersEntitiesResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1185,19 +1158,12 @@ class AccountsContainersMoveFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (tagId != null) {
-      _queryParams['tagId'] = tagId;
-    }
-    if (triggerId != null) {
-      _queryParams['triggerId'] = triggerId;
-    }
-    if (variableId != null) {
-      _queryParams['variableId'] = variableId;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (tagId != null) 'tagId': tagId,
+      if (triggerId != null) 'triggerId': triggerId,
+      if (variableId != null) 'variableId': variableId,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1262,10 +1228,9 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1325,10 +1290,9 @@ class AccountsContainersTagsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1378,10 +1342,9 @@ class AccountsContainersTagsResource {
     if (tagId == null) {
       throw core.ArgumentError('Parameter tagId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1433,10 +1396,9 @@ class AccountsContainersTagsResource {
     if (tagId == null) {
       throw core.ArgumentError('Parameter tagId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1482,10 +1444,9 @@ class AccountsContainersTagsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1546,13 +1507,10 @@ class AccountsContainersTagsResource {
     if (tagId == null) {
       throw core.ArgumentError('Parameter tagId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1611,10 +1569,9 @@ class AccountsContainersTriggersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1664,10 +1621,9 @@ class AccountsContainersTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1719,10 +1675,9 @@ class AccountsContainersTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1768,10 +1723,9 @@ class AccountsContainersTriggersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1832,13 +1786,10 @@ class AccountsContainersTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1897,10 +1848,9 @@ class AccountsContainersVariablesResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1950,10 +1900,9 @@ class AccountsContainersVariablesResource {
     if (variableId == null) {
       throw core.ArgumentError('Parameter variableId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2005,10 +1954,9 @@ class AccountsContainersVariablesResource {
     if (variableId == null) {
       throw core.ArgumentError('Parameter variableId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2054,10 +2002,9 @@ class AccountsContainersVariablesResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2118,13 +2065,10 @@ class AccountsContainersVariablesResource {
     if (variableId == null) {
       throw core.ArgumentError('Parameter variableId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2183,10 +2127,9 @@ class AccountsContainersVersionsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2237,10 +2180,9 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2293,10 +2235,9 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2349,16 +2290,11 @@ class AccountsContainersVersionsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (headers != null) {
-      _queryParams['headers'] = ['${headers}'];
-    }
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (headers != null) 'headers': ['${headers}'],
+      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2414,13 +2350,10 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2478,10 +2411,9 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2535,10 +2467,9 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2601,13 +2532,10 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2661,10 +2589,9 @@ class AccountsPermissionsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2708,10 +2635,9 @@ class AccountsPermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2755,10 +2681,9 @@ class AccountsPermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2798,10 +2723,9 @@ class AccountsPermissionsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2850,10 +2774,9 @@ class AccountsPermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +

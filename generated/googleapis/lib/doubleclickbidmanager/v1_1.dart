@@ -91,10 +91,9 @@ class LineitemsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'lineitems/downloadlineitems';
 
@@ -132,10 +131,9 @@ class LineitemsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'lineitems/uploadlineitems';
 
@@ -181,13 +179,10 @@ class QueriesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (asynchronous != null) {
-      _queryParams['asynchronous'] = ['${asynchronous}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'query';
 
@@ -221,10 +216,9 @@ class QueriesResource {
     if (queryId == null) {
       throw core.ArgumentError('Parameter queryId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
@@ -259,10 +253,9 @@ class QueriesResource {
     if (queryId == null) {
       throw core.ArgumentError('Parameter queryId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
@@ -298,16 +291,11 @@ class QueriesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'queries';
 
@@ -349,13 +337,10 @@ class QueriesResource {
     if (queryId == null) {
       throw core.ArgumentError('Parameter queryId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (asynchronous != null) {
-      _queryParams['asynchronous'] = ['${asynchronous}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
@@ -404,16 +389,11 @@ class ReportsResource {
     if (queryId == null) {
       throw core.ArgumentError('Parameter queryId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
@@ -455,10 +435,9 @@ class SdfResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'sdf/download';
 

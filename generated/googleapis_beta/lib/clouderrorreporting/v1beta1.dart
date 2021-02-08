@@ -98,10 +98,9 @@ class ProjectsResource {
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
@@ -187,31 +186,19 @@ class ProjectsEventsResource {
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (groupId != null) {
-      _queryParams['groupId'] = [groupId];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (serviceFilter_resourceType != null) {
-      _queryParams['serviceFilter.resourceType'] = [serviceFilter_resourceType];
-    }
-    if (serviceFilter_service != null) {
-      _queryParams['serviceFilter.service'] = [serviceFilter_service];
-    }
-    if (serviceFilter_version != null) {
-      _queryParams['serviceFilter.version'] = [serviceFilter_version];
-    }
-    if (timeRange_period != null) {
-      _queryParams['timeRange.period'] = [timeRange_period];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (groupId != null) 'groupId': [groupId],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (serviceFilter_resourceType != null)
+        'serviceFilter.resourceType': [serviceFilter_resourceType],
+      if (serviceFilter_service != null)
+        'serviceFilter.service': [serviceFilter_service],
+      if (serviceFilter_version != null)
+        'serviceFilter.version': [serviceFilter_version],
+      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
@@ -264,10 +251,9 @@ class ProjectsEventsResource {
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
@@ -394,43 +380,24 @@ class ProjectsGroupStatsResource {
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alignment != null) {
-      _queryParams['alignment'] = [alignment];
-    }
-    if (alignmentTime != null) {
-      _queryParams['alignmentTime'] = [alignmentTime];
-    }
-    if (groupId != null) {
-      _queryParams['groupId'] = groupId;
-    }
-    if (order != null) {
-      _queryParams['order'] = [order];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (serviceFilter_resourceType != null) {
-      _queryParams['serviceFilter.resourceType'] = [serviceFilter_resourceType];
-    }
-    if (serviceFilter_service != null) {
-      _queryParams['serviceFilter.service'] = [serviceFilter_service];
-    }
-    if (serviceFilter_version != null) {
-      _queryParams['serviceFilter.version'] = [serviceFilter_version];
-    }
-    if (timeRange_period != null) {
-      _queryParams['timeRange.period'] = [timeRange_period];
-    }
-    if (timedCountDuration != null) {
-      _queryParams['timedCountDuration'] = [timedCountDuration];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alignment != null) 'alignment': [alignment],
+      if (alignmentTime != null) 'alignmentTime': [alignmentTime],
+      if (groupId != null) 'groupId': groupId,
+      if (order != null) 'order': [order],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (serviceFilter_resourceType != null)
+        'serviceFilter.resourceType': [serviceFilter_resourceType],
+      if (serviceFilter_service != null)
+        'serviceFilter.service': [serviceFilter_service],
+      if (serviceFilter_version != null)
+        'serviceFilter.version': [serviceFilter_version],
+      if (timeRange_period != null) 'timeRange.period': [timeRange_period],
+      if (timedCountDuration != null)
+        'timedCountDuration': [timedCountDuration],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
@@ -479,10 +446,9 @@ class ProjectsGroupsResource {
     if (groupName == null) {
       throw core.ArgumentError('Parameter groupName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
@@ -528,10 +494,9 @@ class ProjectsGroupsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 

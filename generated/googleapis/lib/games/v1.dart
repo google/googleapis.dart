@@ -119,19 +119,12 @@ class AchievementDefinitionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/achievements';
 
@@ -182,17 +175,14 @@ class AchievementsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (stepsToIncrement == null) {
       throw core.ArgumentError('Parameter stepsToIncrement is required.');
     }
-    _queryParams['stepsToIncrement'] = ['${stepsToIncrement}'];
-    if (requestId != null) {
-      _queryParams['requestId'] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'stepsToIncrement': ['${stepsToIncrement}'],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
@@ -254,22 +244,13 @@ class AchievementsResource {
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (state != null) {
-      _queryParams['state'] = [state];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (state != null) 'state': [state],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
@@ -308,10 +289,9 @@ class AchievementsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
@@ -357,14 +337,13 @@ class AchievementsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (steps == null) {
       throw core.ArgumentError('Parameter steps is required.');
     }
-    _queryParams['steps'] = ['${steps}'];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'steps': ['${steps}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
@@ -402,10 +381,9 @@ class AchievementsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
@@ -442,10 +420,9 @@ class AchievementsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/achievements/updateMultiple';
 
@@ -505,16 +482,11 @@ class ApplicationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (platformType != null) {
-      _queryParams['platformType'] = [platformType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (platformType != null) 'platformType': [platformType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
@@ -556,16 +528,11 @@ class ApplicationsResource {
     core.String endPointType,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (applicationId != null) {
-      _queryParams['applicationId'] = [applicationId];
-    }
-    if (endPointType != null) {
-      _queryParams['endPointType'] = [endPointType];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (applicationId != null) 'applicationId': [applicationId],
+      if (endPointType != null) 'endPointType': [endPointType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/applications/getEndPoint';
 
@@ -593,10 +560,9 @@ class ApplicationsResource {
   async.Future<void> played({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/applications/played';
 
@@ -634,10 +600,9 @@ class ApplicationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -688,19 +653,12 @@ class EventsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/events';
 
@@ -742,19 +700,12 @@ class EventsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/eventDefinitions';
 
@@ -794,13 +745,10 @@ class EventsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/events';
 
@@ -847,13 +795,10 @@ class LeaderboardsResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
@@ -896,19 +841,12 @@ class LeaderboardsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/leaderboards';
 
@@ -944,10 +882,9 @@ class MetagameResource {
   async.Future<MetagameConfig> getMetagameConfig({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/metagameConfig';
 
@@ -1007,19 +944,12 @@ class MetagameResource {
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
@@ -1072,13 +1002,10 @@ class PlayersResource {
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
@@ -1133,19 +1060,12 @@ class PlayersResource {
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/players/me/players/' +
         commons.Escaper.ecapeVariable('$collection');
@@ -1189,14 +1109,13 @@ class RevisionsResource {
     core.String clientRevision, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientRevision == null) {
       throw core.ArgumentError('Parameter clientRevision is required.');
     }
-    _queryParams['clientRevision'] = [clientRevision];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'clientRevision': [clientRevision],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/revisions/check';
 
@@ -1289,22 +1208,13 @@ class ScoresResource {
     if (timeSpan == null) {
       throw core.ArgumentError('Parameter timeSpan is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeRankType != null) {
-      _queryParams['includeRankType'] = [includeRankType];
-    }
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeRankType != null) 'includeRankType': [includeRankType],
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
@@ -1376,23 +1286,16 @@ class ScoresResource {
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (timeSpan == null) {
       throw core.ArgumentError('Parameter timeSpan is required.');
     }
-    _queryParams['timeSpan'] = [timeSpan];
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'timeSpan': [timeSpan],
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
@@ -1472,29 +1375,19 @@ class ScoresResource {
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (timeSpan == null) {
       throw core.ArgumentError('Parameter timeSpan is required.');
     }
-    _queryParams['timeSpan'] = [timeSpan];
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (resultsAbove != null) {
-      _queryParams['resultsAbove'] = ['${resultsAbove}'];
-    }
-    if (returnTopIfAbsent != null) {
-      _queryParams['returnTopIfAbsent'] = ['${returnTopIfAbsent}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'timeSpan': [timeSpan],
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resultsAbove != null) 'resultsAbove': ['${resultsAbove}'],
+      if (returnTopIfAbsent != null)
+        'returnTopIfAbsent': ['${returnTopIfAbsent}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
@@ -1551,20 +1444,15 @@ class ScoresResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (score == null) {
       throw core.ArgumentError('Parameter score is required.');
     }
-    _queryParams['score'] = [score];
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (scoreTag != null) {
-      _queryParams['scoreTag'] = [scoreTag];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'score': [score],
+      if (language != null) 'language': [language],
+      if (scoreTag != null) 'scoreTag': [scoreTag],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
@@ -1605,13 +1493,10 @@ class ScoresResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/leaderboards/scores';
 
@@ -1658,13 +1543,10 @@ class SnapshotsResource {
     if (snapshotId == null) {
       throw core.ArgumentError('Parameter snapshotId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
@@ -1714,19 +1596,12 @@ class SnapshotsResource {
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (language != null) {
-      _queryParams['language'] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (language != null) 'language': [language],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
@@ -1777,10 +1652,9 @@ class SnapshotsExtendedResource {
     if (snapshotName == null) {
       throw core.ArgumentError('Parameter snapshotName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1/snapshotsExtended/' +
         commons.Escaper.ecapeVariable('$snapshotName') +
@@ -1820,10 +1694,9 @@ class StatsResource {
   async.Future<StatsResponse> get({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'games/v1/stats';
 

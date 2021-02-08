@@ -139,38 +139,29 @@ class ConversionResource {
     if (engineAccountId == null) {
       throw core.ArgumentError('Parameter engineAccountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate == null) {
       throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams['endDate'] = ['${endDate}'];
     if (rowCount == null) {
       throw core.ArgumentError('Parameter rowCount is required.');
     }
-    _queryParams['rowCount'] = ['${rowCount}'];
     if (startDate == null) {
       throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams['startDate'] = ['${startDate}'];
     if (startRow == null) {
       throw core.ArgumentError('Parameter startRow is required.');
     }
-    _queryParams['startRow'] = ['${startRow}'];
-    if (adGroupId != null) {
-      _queryParams['adGroupId'] = [adGroupId];
-    }
-    if (adId != null) {
-      _queryParams['adId'] = [adId];
-    }
-    if (campaignId != null) {
-      _queryParams['campaignId'] = [campaignId];
-    }
-    if (criterionId != null) {
-      _queryParams['criterionId'] = [criterionId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'endDate': ['${endDate}'],
+      'rowCount': ['${rowCount}'],
+      'startDate': ['${startDate}'],
+      'startRow': ['${startRow}'],
+      if (adGroupId != null) 'adGroupId': [adGroupId],
+      if (adId != null) 'adId': [adId],
+      if (campaignId != null) 'campaignId': [campaignId],
+      if (criterionId != null) 'criterionId': [criterionId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'doubleclicksearch/v2/agency/' +
         commons.Escaper.ecapeVariable('$agencyId') +
@@ -211,10 +202,9 @@ class ConversionResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'doubleclicksearch/v2/conversion';
 
@@ -250,10 +240,9 @@ class ConversionResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'doubleclicksearch/v2/conversion';
 
@@ -290,10 +279,9 @@ class ConversionResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'doubleclicksearch/v2/conversion/updateAvailability';
 
@@ -335,10 +323,9 @@ class ReportsResource {
   }) async {
     final _body =
         request_1 == null ? null : convert.json.encode(request_1.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'doubleclicksearch/v2/reports/generate';
 
@@ -374,10 +361,9 @@ class ReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'doubleclicksearch/v2/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
@@ -422,10 +408,9 @@ class ReportsResource {
     if (reportFragment == null) {
       throw core.ArgumentError('Parameter reportFragment is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'doubleclicksearch/v2/reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
@@ -468,10 +453,9 @@ class ReportsResource {
   }) async {
     final _body =
         request_1 == null ? null : convert.json.encode(request_1.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'doubleclicksearch/v2/reports';
 
@@ -519,10 +503,9 @@ class SavedColumnsResource {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'doubleclicksearch/v2/agency/' +
         commons.Escaper.ecapeVariable('$agencyId') +

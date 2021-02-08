@@ -220,53 +220,35 @@ class DataGaResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
     }
-    _queryParams['ids'] = [ids];
     if (startDate == null) {
       throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams['start-date'] = [startDate];
     if (endDate == null) {
       throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams['end-date'] = [endDate];
     if (metrics == null) {
       throw core.ArgumentError('Parameter metrics is required.');
     }
-    _queryParams['metrics'] = [metrics];
-    if (dimensions != null) {
-      _queryParams['dimensions'] = [dimensions];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (includeEmptyRows != null) {
-      _queryParams['include-empty-rows'] = ['${includeEmptyRows}'];
-    }
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (output != null) {
-      _queryParams['output'] = [output];
-    }
-    if (samplingLevel != null) {
-      _queryParams['samplingLevel'] = [samplingLevel];
-    }
-    if (segment != null) {
-      _queryParams['segment'] = [segment];
-    }
-    if (sort != null) {
-      _queryParams['sort'] = [sort];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'ids': [ids],
+      'start-date': [startDate],
+      'end-date': [endDate],
+      'metrics': [metrics],
+      if (dimensions != null) 'dimensions': [dimensions],
+      if (filters != null) 'filters': [filters],
+      if (includeEmptyRows != null)
+        'include-empty-rows': ['${includeEmptyRows}'],
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (output != null) 'output': [output],
+      if (samplingLevel != null) 'samplingLevel': [samplingLevel],
+      if (segment != null) 'segment': [segment],
+      if (sort != null) 'sort': [sort],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'data/ga';
 
@@ -357,44 +339,31 @@ class DataMcfResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
     }
-    _queryParams['ids'] = [ids];
     if (startDate == null) {
       throw core.ArgumentError('Parameter startDate is required.');
     }
-    _queryParams['start-date'] = [startDate];
     if (endDate == null) {
       throw core.ArgumentError('Parameter endDate is required.');
     }
-    _queryParams['end-date'] = [endDate];
     if (metrics == null) {
       throw core.ArgumentError('Parameter metrics is required.');
     }
-    _queryParams['metrics'] = [metrics];
-    if (dimensions != null) {
-      _queryParams['dimensions'] = [dimensions];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (samplingLevel != null) {
-      _queryParams['samplingLevel'] = [samplingLevel];
-    }
-    if (sort != null) {
-      _queryParams['sort'] = [sort];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'ids': [ids],
+      'start-date': [startDate],
+      'end-date': [endDate],
+      'metrics': [metrics],
+      if (dimensions != null) 'dimensions': [dimensions],
+      if (filters != null) 'filters': [filters],
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (samplingLevel != null) 'samplingLevel': [samplingLevel],
+      if (sort != null) 'sort': [sort],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'data/mcf';
 
@@ -457,30 +426,21 @@ class DataRealtimeResource {
     core.String sort,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
     }
-    _queryParams['ids'] = [ids];
     if (metrics == null) {
       throw core.ArgumentError('Parameter metrics is required.');
     }
-    _queryParams['metrics'] = [metrics];
-    if (dimensions != null) {
-      _queryParams['dimensions'] = [dimensions];
-    }
-    if (filters != null) {
-      _queryParams['filters'] = [filters];
-    }
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (sort != null) {
-      _queryParams['sort'] = [sort];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'ids': [ids],
+      'metrics': [metrics],
+      if (dimensions != null) 'dimensions': [dimensions],
+      if (filters != null) 'filters': [filters],
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (sort != null) 'sort': [sort],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'data/realtime';
 
@@ -572,16 +532,11 @@ class ManagementAccountSummariesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'management/accountSummaries';
 
@@ -628,10 +583,9 @@ class ManagementAccountUserLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -674,10 +628,9 @@ class ManagementAccountUserLinksResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -725,16 +678,11 @@ class ManagementAccountUserLinksResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -783,10 +731,9 @@ class ManagementAccountUserLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -833,16 +780,11 @@ class ManagementAccountsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'management/accounts';
 
@@ -882,10 +824,9 @@ class ManagementClientIdResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'management/clientId:hashClientId';
 
@@ -946,16 +887,11 @@ class ManagementCustomDataSourcesResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1014,10 +950,9 @@ class ManagementCustomDimensionsResource {
     if (customDimensionId == null) {
       throw core.ArgumentError('Parameter customDimensionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1069,10 +1004,9 @@ class ManagementCustomDimensionsResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1127,16 +1061,11 @@ class ManagementCustomDimensionsResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1201,15 +1130,11 @@ class ManagementCustomDimensionsResource {
     if (customDimensionId == null) {
       throw core.ArgumentError('Parameter customDimensionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ignoreCustomDataSourceLinks != null) {
-      _queryParams['ignoreCustomDataSourceLinks'] = [
-        '${ignoreCustomDataSourceLinks}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ignoreCustomDataSourceLinks != null)
+        'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1274,15 +1199,11 @@ class ManagementCustomDimensionsResource {
     if (customDimensionId == null) {
       throw core.ArgumentError('Parameter customDimensionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ignoreCustomDataSourceLinks != null) {
-      _queryParams['ignoreCustomDataSourceLinks'] = [
-        '${ignoreCustomDataSourceLinks}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ignoreCustomDataSourceLinks != null)
+        'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1343,10 +1264,9 @@ class ManagementCustomMetricsResource {
     if (customMetricId == null) {
       throw core.ArgumentError('Parameter customMetricId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1398,10 +1318,9 @@ class ManagementCustomMetricsResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1456,16 +1375,11 @@ class ManagementCustomMetricsResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1529,15 +1443,11 @@ class ManagementCustomMetricsResource {
     if (customMetricId == null) {
       throw core.ArgumentError('Parameter customMetricId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ignoreCustomDataSourceLinks != null) {
-      _queryParams['ignoreCustomDataSourceLinks'] = [
-        '${ignoreCustomDataSourceLinks}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ignoreCustomDataSourceLinks != null)
+        'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1601,15 +1511,11 @@ class ManagementCustomMetricsResource {
     if (customMetricId == null) {
       throw core.ArgumentError('Parameter customMetricId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ignoreCustomDataSourceLinks != null) {
-      _queryParams['ignoreCustomDataSourceLinks'] = [
-        '${ignoreCustomDataSourceLinks}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ignoreCustomDataSourceLinks != null)
+        'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1674,10 +1580,9 @@ class ManagementExperimentsResource {
     if (experimentId == null) {
       throw core.ArgumentError('Parameter experimentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1737,10 +1642,9 @@ class ManagementExperimentsResource {
     if (experimentId == null) {
       throw core.ArgumentError('Parameter experimentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1800,10 +1704,9 @@ class ManagementExperimentsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1869,16 +1772,11 @@ class ManagementExperimentsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -1945,10 +1843,9 @@ class ManagementExperimentsResource {
     if (experimentId == null) {
       throw core.ArgumentError('Parameter experimentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2015,10 +1912,9 @@ class ManagementExperimentsResource {
     if (experimentId == null) {
       throw core.ArgumentError('Parameter experimentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2074,10 +1970,9 @@ class ManagementFiltersResource {
     if (filterId == null) {
       throw core.ArgumentError('Parameter filterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2121,10 +2016,9 @@ class ManagementFiltersResource {
     if (filterId == null) {
       throw core.ArgumentError('Parameter filterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2167,10 +2061,9 @@ class ManagementFiltersResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2216,16 +2109,11 @@ class ManagementFiltersResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2275,10 +2163,9 @@ class ManagementFiltersResource {
     if (filterId == null) {
       throw core.ArgumentError('Parameter filterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2328,10 +2215,9 @@ class ManagementFiltersResource {
     if (filterId == null) {
       throw core.ArgumentError('Parameter filterId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2394,10 +2280,9 @@ class ManagementGoalsResource {
     if (goalId == null) {
       throw core.ArgumentError('Parameter goalId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2456,10 +2341,9 @@ class ManagementGoalsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2526,16 +2410,11 @@ class ManagementGoalsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2601,10 +2480,9 @@ class ManagementGoalsResource {
     if (goalId == null) {
       throw core.ArgumentError('Parameter goalId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2670,10 +2548,9 @@ class ManagementGoalsResource {
     if (goalId == null) {
       throw core.ArgumentError('Parameter goalId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2744,10 +2621,9 @@ class ManagementProfileFilterLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2811,10 +2687,9 @@ class ManagementProfileFilterLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2877,10 +2752,9 @@ class ManagementProfileFilterLinksResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2948,16 +2822,11 @@ class ManagementProfileFilterLinksResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3028,10 +2897,9 @@ class ManagementProfileFilterLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3102,10 +2970,9 @@ class ManagementProfileFilterLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3172,10 +3039,9 @@ class ManagementProfileUserLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3234,10 +3100,9 @@ class ManagementProfileUserLinksResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3305,16 +3170,11 @@ class ManagementProfileUserLinksResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3379,10 +3239,9 @@ class ManagementProfileUserLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3442,10 +3301,9 @@ class ManagementProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3500,10 +3358,9 @@ class ManagementProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3554,10 +3411,9 @@ class ManagementProfilesResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3615,16 +3471,11 @@ class ManagementProfilesResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3682,10 +3533,9 @@ class ManagementProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3743,10 +3593,9 @@ class ManagementProfilesResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3805,10 +3654,9 @@ class ManagementRemarketingAudienceResource {
     if (remarketingAudienceId == null) {
       throw core.ArgumentError('Parameter remarketingAudienceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3861,10 +3709,9 @@ class ManagementRemarketingAudienceResource {
     if (remarketingAudienceId == null) {
       throw core.ArgumentError('Parameter remarketingAudienceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3917,10 +3764,9 @@ class ManagementRemarketingAudienceResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3979,19 +3825,12 @@ class ManagementRemarketingAudienceResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if (type != null) {
-      _queryParams['type'] = [type];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4051,10 +3890,9 @@ class ManagementRemarketingAudienceResource {
     if (remarketingAudienceId == null) {
       throw core.ArgumentError('Parameter remarketingAudienceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4114,10 +3952,9 @@ class ManagementRemarketingAudienceResource {
     if (remarketingAudienceId == null) {
       throw core.ArgumentError('Parameter remarketingAudienceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4166,16 +4003,11 @@ class ManagementSegmentsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'management/segments';
 
@@ -4233,10 +4065,9 @@ class ManagementUnsampledReportsResource {
     if (unsampledReportId == null) {
       throw core.ArgumentError('Parameter unsampledReportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4296,10 +4127,9 @@ class ManagementUnsampledReportsResource {
     if (unsampledReportId == null) {
       throw core.ArgumentError('Parameter unsampledReportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4359,10 +4189,9 @@ class ManagementUnsampledReportsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4429,16 +4258,11 @@ class ManagementUnsampledReportsResource {
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4505,10 +4329,9 @@ class ManagementUploadsResource {
     if (customDataSourceId == null) {
       throw core.ArgumentError('Parameter customDataSourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4572,10 +4395,9 @@ class ManagementUploadsResource {
     if (uploadId == null) {
       throw core.ArgumentError('Parameter uploadId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4639,16 +4461,11 @@ class ManagementUploadsResource {
     if (customDataSourceId == null) {
       throw core.ArgumentError('Parameter customDataSourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4712,10 +4529,9 @@ class ManagementUploadsResource {
     if (customDataSourceId == null) {
       throw core.ArgumentError('Parameter customDataSourceId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -4795,10 +4611,9 @@ class ManagementWebPropertyAdWordsLinksResource {
       throw core.ArgumentError(
           'Parameter webPropertyAdWordsLinkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4851,10 +4666,9 @@ class ManagementWebPropertyAdWordsLinksResource {
       throw core.ArgumentError(
           'Parameter webPropertyAdWordsLinkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4906,10 +4720,9 @@ class ManagementWebPropertyAdWordsLinksResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -4966,16 +4779,11 @@ class ManagementWebPropertyAdWordsLinksResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5035,10 +4843,9 @@ class ManagementWebPropertyAdWordsLinksResource {
       throw core.ArgumentError(
           'Parameter webPropertyAdWordsLinkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5098,10 +4905,9 @@ class ManagementWebPropertyAdWordsLinksResource {
       throw core.ArgumentError(
           'Parameter webPropertyAdWordsLinkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5158,10 +4964,9 @@ class ManagementWebpropertiesResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5208,10 +5013,9 @@ class ManagementWebpropertiesResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5260,16 +5064,11 @@ class ManagementWebpropertiesResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5320,10 +5119,9 @@ class ManagementWebpropertiesResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5374,10 +5172,9 @@ class ManagementWebpropertiesResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5434,10 +5231,9 @@ class ManagementWebpropertyUserLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5488,10 +5284,9 @@ class ManagementWebpropertyUserLinksResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5549,16 +5344,11 @@ class ManagementWebpropertyUserLinksResource {
     if (webPropertyId == null) {
       throw core.ArgumentError('Parameter webPropertyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['max-results'] = ['${maxResults}'];
-    }
-    if (startIndex != null) {
-      _queryParams['start-index'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'max-results': ['${maxResults}'],
+      if (startIndex != null) 'start-index': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5615,10 +5405,9 @@ class ManagementWebpropertyUserLinksResource {
     if (linkId == null) {
       throw core.ArgumentError('Parameter linkId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -5676,10 +5465,9 @@ class MetadataColumnsResource {
     if (reportType == null) {
       throw core.ArgumentError('Parameter reportType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'metadata/' + commons.Escaper.ecapeVariable('$reportType') + '/columns';
@@ -5720,10 +5508,9 @@ class ProvisioningResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'provisioning/createAccountTicket';
 
@@ -5759,10 +5546,9 @@ class ProvisioningResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'provisioning/createAccountTree';
 
@@ -5814,10 +5600,9 @@ class UserDeletionUserDeletionRequestResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'userDeletion/userDeletionRequests:upsert';
 

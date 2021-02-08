@@ -100,31 +100,16 @@ class EntitiesResource {
     core.List<core.String> types,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (ids != null) {
-      _queryParams['ids'] = ids;
-    }
-    if (indent != null) {
-      _queryParams['indent'] = ['${indent}'];
-    }
-    if (languages != null) {
-      _queryParams['languages'] = languages;
-    }
-    if (limit != null) {
-      _queryParams['limit'] = ['${limit}'];
-    }
-    if (prefix != null) {
-      _queryParams['prefix'] = ['${prefix}'];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if (types != null) {
-      _queryParams['types'] = types;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (ids != null) 'ids': ids,
+      if (indent != null) 'indent': ['${indent}'],
+      if (languages != null) 'languages': languages,
+      if (limit != null) 'limit': ['${limit}'],
+      if (prefix != null) 'prefix': ['${prefix}'],
+      if (query != null) 'query': [query],
+      if (types != null) 'types': types,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/entities:search';
 

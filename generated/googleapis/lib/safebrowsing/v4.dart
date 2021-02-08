@@ -107,16 +107,11 @@ class EncodedFullHashesResource {
     if (encodedRequest == null) {
       throw core.ArgumentError('Parameter encodedRequest is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientId != null) {
-      _queryParams['clientId'] = [clientId];
-    }
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientId != null) 'clientId': [clientId],
+      if (clientVersion != null) 'clientVersion': [clientVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/encodedFullHashes/' +
         commons.Escaper.ecapeVariable('$encodedRequest');
@@ -165,16 +160,11 @@ class EncodedUpdatesResource {
     if (encodedRequest == null) {
       throw core.ArgumentError('Parameter encodedRequest is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (clientId != null) {
-      _queryParams['clientId'] = [clientId];
-    }
-    if (clientVersion != null) {
-      _queryParams['clientVersion'] = [clientVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (clientId != null) 'clientId': [clientId],
+      if (clientVersion != null) 'clientVersion': [clientVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
@@ -216,10 +206,9 @@ class FullHashesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v4/fullHashes:find';
 
@@ -263,10 +252,9 @@ class ThreatHitsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v4/threatHits';
 
@@ -312,10 +300,9 @@ class ThreatListUpdatesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v4/threatListUpdates:fetch';
 
@@ -352,10 +339,9 @@ class ThreatListsResource {
   async.Future<GoogleSecuritySafebrowsingV4ListThreatListsResponse> list({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v4/threatLists';
 
@@ -396,10 +382,9 @@ class ThreatMatchesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v4/threatMatches:find';
 

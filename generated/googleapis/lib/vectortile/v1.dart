@@ -183,69 +183,42 @@ class FeaturetilesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (alwaysIncludeBuildingFootprints != null) {
-      _queryParams['alwaysIncludeBuildingFootprints'] = [
-        '${alwaysIncludeBuildingFootprints}'
-      ];
-    }
-    if (clientInfo_apiClient != null) {
-      _queryParams['clientInfo.apiClient'] = [clientInfo_apiClient];
-    }
-    if (clientInfo_applicationId != null) {
-      _queryParams['clientInfo.applicationId'] = [clientInfo_applicationId];
-    }
-    if (clientInfo_applicationVersion != null) {
-      _queryParams['clientInfo.applicationVersion'] = [
-        clientInfo_applicationVersion
-      ];
-    }
-    if (clientInfo_deviceModel != null) {
-      _queryParams['clientInfo.deviceModel'] = [clientInfo_deviceModel];
-    }
-    if (clientInfo_operatingSystem != null) {
-      _queryParams['clientInfo.operatingSystem'] = [clientInfo_operatingSystem];
-    }
-    if (clientInfo_platform != null) {
-      _queryParams['clientInfo.platform'] = [clientInfo_platform];
-    }
-    if (clientInfo_userId != null) {
-      _queryParams['clientInfo.userId'] = [clientInfo_userId];
-    }
-    if (clientTileVersionId != null) {
-      _queryParams['clientTileVersionId'] = [clientTileVersionId];
-    }
-    if (enableDetailedHighwayTypes != null) {
-      _queryParams['enableDetailedHighwayTypes'] = [
-        '${enableDetailedHighwayTypes}'
-      ];
-    }
-    if (enableFeatureNames != null) {
-      _queryParams['enableFeatureNames'] = ['${enableFeatureNames}'];
-    }
-    if (enableModeledVolumes != null) {
-      _queryParams['enableModeledVolumes'] = ['${enableModeledVolumes}'];
-    }
-    if (enablePoliticalFeatures != null) {
-      _queryParams['enablePoliticalFeatures'] = ['${enablePoliticalFeatures}'];
-    }
-    if (enablePrivateRoads != null) {
-      _queryParams['enablePrivateRoads'] = ['${enablePrivateRoads}'];
-    }
-    if (enableUnclippedBuildings != null) {
-      _queryParams['enableUnclippedBuildings'] = [
-        '${enableUnclippedBuildings}'
-      ];
-    }
-    if (languageCode != null) {
-      _queryParams['languageCode'] = [languageCode];
-    }
-    if (regionCode != null) {
-      _queryParams['regionCode'] = [regionCode];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (alwaysIncludeBuildingFootprints != null)
+        'alwaysIncludeBuildingFootprints': [
+          '${alwaysIncludeBuildingFootprints}'
+        ],
+      if (clientInfo_apiClient != null)
+        'clientInfo.apiClient': [clientInfo_apiClient],
+      if (clientInfo_applicationId != null)
+        'clientInfo.applicationId': [clientInfo_applicationId],
+      if (clientInfo_applicationVersion != null)
+        'clientInfo.applicationVersion': [clientInfo_applicationVersion],
+      if (clientInfo_deviceModel != null)
+        'clientInfo.deviceModel': [clientInfo_deviceModel],
+      if (clientInfo_operatingSystem != null)
+        'clientInfo.operatingSystem': [clientInfo_operatingSystem],
+      if (clientInfo_platform != null)
+        'clientInfo.platform': [clientInfo_platform],
+      if (clientInfo_userId != null) 'clientInfo.userId': [clientInfo_userId],
+      if (clientTileVersionId != null)
+        'clientTileVersionId': [clientTileVersionId],
+      if (enableDetailedHighwayTypes != null)
+        'enableDetailedHighwayTypes': ['${enableDetailedHighwayTypes}'],
+      if (enableFeatureNames != null)
+        'enableFeatureNames': ['${enableFeatureNames}'],
+      if (enableModeledVolumes != null)
+        'enableModeledVolumes': ['${enableModeledVolumes}'],
+      if (enablePoliticalFeatures != null)
+        'enablePoliticalFeatures': ['${enablePoliticalFeatures}'],
+      if (enablePrivateRoads != null)
+        'enablePrivateRoads': ['${enablePrivateRoads}'],
+      if (enableUnclippedBuildings != null)
+        'enableUnclippedBuildings': ['${enableUnclippedBuildings}'],
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (regionCode != null) 'regionCode': [regionCode],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -358,51 +331,29 @@ class TerraintilesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (altitudePrecisionCentimeters != null) {
-      _queryParams['altitudePrecisionCentimeters'] = [
-        '${altitudePrecisionCentimeters}'
-      ];
-    }
-    if (clientInfo_apiClient != null) {
-      _queryParams['clientInfo.apiClient'] = [clientInfo_apiClient];
-    }
-    if (clientInfo_applicationId != null) {
-      _queryParams['clientInfo.applicationId'] = [clientInfo_applicationId];
-    }
-    if (clientInfo_applicationVersion != null) {
-      _queryParams['clientInfo.applicationVersion'] = [
-        clientInfo_applicationVersion
-      ];
-    }
-    if (clientInfo_deviceModel != null) {
-      _queryParams['clientInfo.deviceModel'] = [clientInfo_deviceModel];
-    }
-    if (clientInfo_operatingSystem != null) {
-      _queryParams['clientInfo.operatingSystem'] = [clientInfo_operatingSystem];
-    }
-    if (clientInfo_platform != null) {
-      _queryParams['clientInfo.platform'] = [clientInfo_platform];
-    }
-    if (clientInfo_userId != null) {
-      _queryParams['clientInfo.userId'] = [clientInfo_userId];
-    }
-    if (maxElevationResolutionCells != null) {
-      _queryParams['maxElevationResolutionCells'] = [
-        '${maxElevationResolutionCells}'
-      ];
-    }
-    if (minElevationResolutionCells != null) {
-      _queryParams['minElevationResolutionCells'] = [
-        '${minElevationResolutionCells}'
-      ];
-    }
-    if (terrainFormats != null) {
-      _queryParams['terrainFormats'] = terrainFormats;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (altitudePrecisionCentimeters != null)
+        'altitudePrecisionCentimeters': ['${altitudePrecisionCentimeters}'],
+      if (clientInfo_apiClient != null)
+        'clientInfo.apiClient': [clientInfo_apiClient],
+      if (clientInfo_applicationId != null)
+        'clientInfo.applicationId': [clientInfo_applicationId],
+      if (clientInfo_applicationVersion != null)
+        'clientInfo.applicationVersion': [clientInfo_applicationVersion],
+      if (clientInfo_deviceModel != null)
+        'clientInfo.deviceModel': [clientInfo_deviceModel],
+      if (clientInfo_operatingSystem != null)
+        'clientInfo.operatingSystem': [clientInfo_operatingSystem],
+      if (clientInfo_platform != null)
+        'clientInfo.platform': [clientInfo_platform],
+      if (clientInfo_userId != null) 'clientInfo.userId': [clientInfo_userId],
+      if (maxElevationResolutionCells != null)
+        'maxElevationResolutionCells': ['${maxElevationResolutionCells}'],
+      if (minElevationResolutionCells != null)
+        'minElevationResolutionCells': ['${minElevationResolutionCells}'],
+      if (terrainFormats != null) 'terrainFormats': terrainFormats,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 

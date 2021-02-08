@@ -194,15 +194,11 @@ class DebugDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/debug/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -250,10 +246,9 @@ class DebugDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/debug/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -315,21 +310,13 @@ class DebugDatasourcesItemsUnmappedidsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/debug/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -409,27 +396,15 @@ class DebugIdentitysourcesItemsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if (groupResourceName != null) {
-      _queryParams['groupResourceName'] = [groupResourceName];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (userResourceName != null) {
-      _queryParams['userResourceName'] = [userResourceName];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (groupResourceName != null) 'groupResourceName': [groupResourceName],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (userResourceName != null) 'userResourceName': [userResourceName],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/debug/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -505,24 +480,15 @@ class DebugIdentitysourcesUnmappedidsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (resolutionStatusCode != null) {
-      _queryParams['resolutionStatusCode'] = [resolutionStatusCode];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resolutionStatusCode != null)
+        'resolutionStatusCode': [resolutionStatusCode],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/debug/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -587,15 +553,11 @@ class IndexingDatasourcesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -640,15 +602,11 @@ class IndexingDatasourcesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -696,10 +654,9 @@ class IndexingDatasourcesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -775,24 +732,14 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (connectorName != null) {
-      _queryParams['connectorName'] = [connectorName];
-    }
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if (mode != null) {
-      _queryParams['mode'] = [mode];
-    }
-    if (version != null) {
-      _queryParams['version'] = [version];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (connectorName != null) 'connectorName': [connectorName],
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (mode != null) 'mode': [mode],
+      if (version != null) 'version': [version],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/indexing/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -839,10 +786,9 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -893,18 +839,12 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (connectorName != null) {
-      _queryParams['connectorName'] = [connectorName];
-    }
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (connectorName != null) 'connectorName': [connectorName],
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/indexing/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -953,10 +893,9 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1025,27 +964,15 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (brief != null) {
-      _queryParams['brief'] = ['${brief}'];
-    }
-    if (connectorName != null) {
-      _queryParams['connectorName'] = [connectorName];
-    }
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (brief != null) 'brief': ['${brief}'],
+      if (connectorName != null) 'connectorName': [connectorName],
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1101,10 +1028,9 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1154,10 +1080,9 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1207,10 +1132,9 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1260,10 +1184,9 @@ class IndexingDatasourcesItemsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/indexing/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -1331,10 +1254,9 @@ class MediaResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -1391,10 +1313,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -1454,19 +1375,12 @@ class OperationsLroResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/lro';
@@ -1519,10 +1433,9 @@ class QueryResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/query/search';
 
@@ -1564,10 +1477,9 @@ class QueryResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/query/suggest';
 
@@ -1642,31 +1554,22 @@ class QuerySourcesResource {
     core.String requestOptions_timeZone,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (requestOptions_debugOptions_enableDebugging != null) {
-      _queryParams['requestOptions.debugOptions.enableDebugging'] = [
-        '${requestOptions_debugOptions_enableDebugging}'
-      ];
-    }
-    if (requestOptions_languageCode != null) {
-      _queryParams['requestOptions.languageCode'] = [
-        requestOptions_languageCode
-      ];
-    }
-    if (requestOptions_searchApplicationId != null) {
-      _queryParams['requestOptions.searchApplicationId'] = [
-        requestOptions_searchApplicationId
-      ];
-    }
-    if (requestOptions_timeZone != null) {
-      _queryParams['requestOptions.timeZone'] = [requestOptions_timeZone];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (requestOptions_debugOptions_enableDebugging != null)
+        'requestOptions.debugOptions.enableDebugging': [
+          '${requestOptions_debugOptions_enableDebugging}'
+        ],
+      if (requestOptions_languageCode != null)
+        'requestOptions.languageCode': [requestOptions_languageCode],
+      if (requestOptions_searchApplicationId != null)
+        'requestOptions.searchApplicationId': [
+          requestOptions_searchApplicationId
+        ],
+      if (requestOptions_timeZone != null)
+        'requestOptions.timeZone': [requestOptions_timeZone],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/query/sources';
 
@@ -1721,10 +1624,9 @@ class SettingsDatasourcesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/settings/datasources';
 
@@ -1767,15 +1669,11 @@ class SettingsDatasourcesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1818,15 +1716,11 @@ class SettingsDatasourcesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1870,21 +1764,13 @@ class SettingsDatasourcesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/settings/datasources';
 
@@ -1929,10 +1815,9 @@ class SettingsDatasourcesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1977,10 +1862,9 @@ class SettingsSearchapplicationsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/settings/searchapplications';
 
@@ -2024,15 +1908,11 @@ class SettingsSearchapplicationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2076,15 +1956,11 @@ class SettingsSearchapplicationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2128,21 +2004,13 @@ class SettingsSearchapplicationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (debugOptions_enableDebugging != null) {
-      _queryParams['debugOptions.enableDebugging'] = [
-        '${debugOptions_enableDebugging}'
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (debugOptions_enableDebugging != null)
+        'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/settings/searchapplications';
 
@@ -2188,10 +2056,9 @@ class SettingsSearchapplicationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/settings/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -2238,10 +2105,9 @@ class SettingsSearchapplicationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2307,28 +2173,15 @@ class StatsResource {
     core.int toDate_year,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/stats/index';
 
@@ -2380,28 +2233,15 @@ class StatsResource {
     core.int toDate_year,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/stats/query';
 
@@ -2454,28 +2294,15 @@ class StatsResource {
     core.int toDate_year,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/stats/session';
 
@@ -2527,28 +2354,15 @@ class StatsResource {
     core.int toDate_year,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/stats/user';
 
@@ -2624,28 +2438,15 @@ class StatsIndexDatasourcesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/stats/index/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2722,28 +2523,15 @@ class StatsQuerySearchapplicationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/stats/query/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2821,28 +2609,15 @@ class StatsSessionSearchapplicationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/stats/session/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2919,28 +2694,15 @@ class StatsUserSearchapplicationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fromDate_day != null) {
-      _queryParams['fromDate.day'] = ['${fromDate_day}'];
-    }
-    if (fromDate_month != null) {
-      _queryParams['fromDate.month'] = ['${fromDate_month}'];
-    }
-    if (fromDate_year != null) {
-      _queryParams['fromDate.year'] = ['${fromDate_year}'];
-    }
-    if (toDate_day != null) {
-      _queryParams['toDate.day'] = ['${toDate_day}'];
-    }
-    if (toDate_month != null) {
-      _queryParams['toDate.month'] = ['${toDate_month}'];
-    }
-    if (toDate_year != null) {
-      _queryParams['toDate.year'] = ['${toDate_year}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
+      if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
+      if (fromDate_year != null) 'fromDate.year': ['${fromDate_year}'],
+      if (toDate_day != null) 'toDate.day': ['${toDate_day}'],
+      if (toDate_month != null) 'toDate.month': ['${toDate_month}'],
+      if (toDate_year != null) 'toDate.year': ['${toDate_year}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/stats/user/' + commons.Escaper.ecapeVariableReserved('$name');

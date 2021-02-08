@@ -132,10 +132,9 @@ class AboutResource {
   async.Future<About> get({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'about';
 
@@ -184,22 +183,15 @@ class ChangesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (driveId != null) {
-      _queryParams['driveId'] = [driveId];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (teamDriveId != null) {
-      _queryParams['teamDriveId'] = [teamDriveId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (driveId != null) 'driveId': [driveId],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'changes/startPageToken';
 
@@ -286,52 +278,32 @@ class ChangesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken == null) {
       throw core.ArgumentError('Parameter pageToken is required.');
     }
-    _queryParams['pageToken'] = [pageToken];
-    if (driveId != null) {
-      _queryParams['driveId'] = [driveId];
-    }
-    if (includeCorpusRemovals != null) {
-      _queryParams['includeCorpusRemovals'] = ['${includeCorpusRemovals}'];
-    }
-    if (includeItemsFromAllDrives != null) {
-      _queryParams['includeItemsFromAllDrives'] = [
-        '${includeItemsFromAllDrives}'
-      ];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (includeRemoved != null) {
-      _queryParams['includeRemoved'] = ['${includeRemoved}'];
-    }
-    if (includeTeamDriveItems != null) {
-      _queryParams['includeTeamDriveItems'] = ['${includeTeamDriveItems}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (restrictToMyDrive != null) {
-      _queryParams['restrictToMyDrive'] = ['${restrictToMyDrive}'];
-    }
-    if (spaces != null) {
-      _queryParams['spaces'] = [spaces];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (teamDriveId != null) {
-      _queryParams['teamDriveId'] = [teamDriveId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'pageToken': [pageToken],
+      if (driveId != null) 'driveId': [driveId],
+      if (includeCorpusRemovals != null)
+        'includeCorpusRemovals': ['${includeCorpusRemovals}'],
+      if (includeItemsFromAllDrives != null)
+        'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (includeRemoved != null) 'includeRemoved': ['${includeRemoved}'],
+      if (includeTeamDriveItems != null)
+        'includeTeamDriveItems': ['${includeTeamDriveItems}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (restrictToMyDrive != null)
+        'restrictToMyDrive': ['${restrictToMyDrive}'],
+      if (spaces != null) 'spaces': [spaces],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'changes';
 
@@ -423,52 +395,32 @@ class ChangesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken == null) {
       throw core.ArgumentError('Parameter pageToken is required.');
     }
-    _queryParams['pageToken'] = [pageToken];
-    if (driveId != null) {
-      _queryParams['driveId'] = [driveId];
-    }
-    if (includeCorpusRemovals != null) {
-      _queryParams['includeCorpusRemovals'] = ['${includeCorpusRemovals}'];
-    }
-    if (includeItemsFromAllDrives != null) {
-      _queryParams['includeItemsFromAllDrives'] = [
-        '${includeItemsFromAllDrives}'
-      ];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (includeRemoved != null) {
-      _queryParams['includeRemoved'] = ['${includeRemoved}'];
-    }
-    if (includeTeamDriveItems != null) {
-      _queryParams['includeTeamDriveItems'] = ['${includeTeamDriveItems}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (restrictToMyDrive != null) {
-      _queryParams['restrictToMyDrive'] = ['${restrictToMyDrive}'];
-    }
-    if (spaces != null) {
-      _queryParams['spaces'] = [spaces];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (teamDriveId != null) {
-      _queryParams['teamDriveId'] = [teamDriveId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'pageToken': [pageToken],
+      if (driveId != null) 'driveId': [driveId],
+      if (includeCorpusRemovals != null)
+        'includeCorpusRemovals': ['${includeCorpusRemovals}'],
+      if (includeItemsFromAllDrives != null)
+        'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (includeRemoved != null) 'includeRemoved': ['${includeRemoved}'],
+      if (includeTeamDriveItems != null)
+        'includeTeamDriveItems': ['${includeTeamDriveItems}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (restrictToMyDrive != null)
+        'restrictToMyDrive': ['${restrictToMyDrive}'],
+      if (spaces != null) 'spaces': [spaces],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'changes/watch';
 
@@ -507,10 +459,9 @@ class ChannelsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'channels/stop';
 
@@ -557,10 +508,9 @@ class CommentsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
@@ -601,10 +551,9 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -652,13 +601,10 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -713,22 +659,13 @@ class CommentsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startModifiedTime != null) {
-      _queryParams['startModifiedTime'] = [startModifiedTime];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startModifiedTime != null) 'startModifiedTime': [startModifiedTime],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
@@ -776,10 +713,9 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -830,14 +766,13 @@ class DrivesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId == null) {
       throw core.ArgumentError('Parameter requestId is required.');
     }
-    _queryParams['requestId'] = [requestId];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'drives';
 
@@ -873,10 +808,9 @@ class DrivesResource {
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
@@ -916,13 +850,11 @@ class DrivesResource {
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
@@ -957,10 +889,9 @@ class DrivesResource {
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/hide';
@@ -1005,22 +936,14 @@ class DrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (q != null) 'q': [q],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'drives';
 
@@ -1055,10 +978,9 @@ class DrivesResource {
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/unhide';
@@ -1104,13 +1026,11 @@ class DrivesResource {
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
@@ -1192,31 +1112,22 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (enforceSingleParent != null) {
-      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
-    }
-    if (ignoreDefaultVisibility != null) {
-      _queryParams['ignoreDefaultVisibility'] = ['${ignoreDefaultVisibility}'];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (keepRevisionForever != null) {
-      _queryParams['keepRevisionForever'] = ['${keepRevisionForever}'];
-    }
-    if (ocrLanguage != null) {
-      _queryParams['ocrLanguage'] = [ocrLanguage];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (enforceSingleParent != null)
+        'enforceSingleParent': ['${enforceSingleParent}'],
+      if (ignoreDefaultVisibility != null)
+        'ignoreDefaultVisibility': ['${ignoreDefaultVisibility}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (keepRevisionForever != null)
+        'keepRevisionForever': ['${keepRevisionForever}'],
+      if (ocrLanguage != null) 'ocrLanguage': [ocrLanguage],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
@@ -1295,36 +1206,24 @@ class FilesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (enforceSingleParent != null) {
-      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
-    }
-    if (ignoreDefaultVisibility != null) {
-      _queryParams['ignoreDefaultVisibility'] = ['${ignoreDefaultVisibility}'];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (keepRevisionForever != null) {
-      _queryParams['keepRevisionForever'] = ['${keepRevisionForever}'];
-    }
-    if (ocrLanguage != null) {
-      _queryParams['ocrLanguage'] = [ocrLanguage];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (useContentAsIndexableText != null) {
-      _queryParams['useContentAsIndexableText'] = [
-        '${useContentAsIndexableText}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (enforceSingleParent != null)
+        'enforceSingleParent': ['${enforceSingleParent}'],
+      if (ignoreDefaultVisibility != null)
+        'ignoreDefaultVisibility': ['${ignoreDefaultVisibility}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (keepRevisionForever != null)
+        'keepRevisionForever': ['${keepRevisionForever}'],
+      if (ocrLanguage != null) 'ocrLanguage': [ocrLanguage],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (useContentAsIndexableText != null)
+        'useContentAsIndexableText': ['${useContentAsIndexableText}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -1384,19 +1283,15 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (enforceSingleParent != null) {
-      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (enforceSingleParent != null)
+        'enforceSingleParent': ['${enforceSingleParent}'],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
@@ -1428,13 +1323,11 @@ class FilesResource {
     core.bool enforceSingleParent,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (enforceSingleParent != null) {
-      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (enforceSingleParent != null)
+        'enforceSingleParent': ['${enforceSingleParent}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'files/trash';
 
@@ -1478,14 +1371,13 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (mimeType == null) {
       throw core.ArgumentError('Parameter mimeType is required.');
     }
-    _queryParams['mimeType'] = [mimeType];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'mimeType': [mimeType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
@@ -1530,16 +1422,11 @@ class FilesResource {
     core.String space,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (count != null) {
-      _queryParams['count'] = ['${count}'];
-    }
-    if (space != null) {
-      _queryParams['space'] = [space];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (count != null) 'count': ['${count}'],
+      if (space != null) 'space': [space],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'files/generateIds';
 
@@ -1600,22 +1487,16 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (acknowledgeAbuse != null) {
-      _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
@@ -1721,54 +1602,28 @@ class FilesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (corpora != null) {
-      _queryParams['corpora'] = [corpora];
-    }
-    if (corpus != null) {
-      _queryParams['corpus'] = [corpus];
-    }
-    if (driveId != null) {
-      _queryParams['driveId'] = [driveId];
-    }
-    if (includeItemsFromAllDrives != null) {
-      _queryParams['includeItemsFromAllDrives'] = [
-        '${includeItemsFromAllDrives}'
-      ];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (includeTeamDriveItems != null) {
-      _queryParams['includeTeamDriveItems'] = ['${includeTeamDriveItems}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (spaces != null) {
-      _queryParams['spaces'] = [spaces];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (teamDriveId != null) {
-      _queryParams['teamDriveId'] = [teamDriveId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (corpora != null) 'corpora': [corpora],
+      if (corpus != null) 'corpus': [corpus],
+      if (driveId != null) 'driveId': [driveId],
+      if (includeItemsFromAllDrives != null)
+        'includeItemsFromAllDrives': ['${includeItemsFromAllDrives}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (includeTeamDriveItems != null)
+        'includeTeamDriveItems': ['${includeTeamDriveItems}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (q != null) 'q': [q],
+      if (spaces != null) 'spaces': [spaces],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (teamDriveId != null) 'teamDriveId': [teamDriveId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'files';
 
@@ -1853,39 +1708,24 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (addParents != null) {
-      _queryParams['addParents'] = [addParents];
-    }
-    if (enforceSingleParent != null) {
-      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (keepRevisionForever != null) {
-      _queryParams['keepRevisionForever'] = ['${keepRevisionForever}'];
-    }
-    if (ocrLanguage != null) {
-      _queryParams['ocrLanguage'] = [ocrLanguage];
-    }
-    if (removeParents != null) {
-      _queryParams['removeParents'] = [removeParents];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (useContentAsIndexableText != null) {
-      _queryParams['useContentAsIndexableText'] = [
-        '${useContentAsIndexableText}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (addParents != null) 'addParents': [addParents],
+      if (enforceSingleParent != null)
+        'enforceSingleParent': ['${enforceSingleParent}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (keepRevisionForever != null)
+        'keepRevisionForever': ['${keepRevisionForever}'],
+      if (ocrLanguage != null) 'ocrLanguage': [ocrLanguage],
+      if (removeParents != null) 'removeParents': [removeParents],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (useContentAsIndexableText != null)
+        'useContentAsIndexableText': ['${useContentAsIndexableText}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -1962,22 +1802,16 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (acknowledgeAbuse != null) {
-      _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
-    }
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/watch';
 
@@ -2068,34 +1902,24 @@ class PermissionsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (emailMessage != null) {
-      _queryParams['emailMessage'] = [emailMessage];
-    }
-    if (enforceSingleParent != null) {
-      _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
-    }
-    if (moveToNewOwnersRoot != null) {
-      _queryParams['moveToNewOwnersRoot'] = ['${moveToNewOwnersRoot}'];
-    }
-    if (sendNotificationEmail != null) {
-      _queryParams['sendNotificationEmail'] = ['${sendNotificationEmail}'];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (transferOwnership != null) {
-      _queryParams['transferOwnership'] = ['${transferOwnership}'];
-    }
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (emailMessage != null) 'emailMessage': [emailMessage],
+      if (enforceSingleParent != null)
+        'enforceSingleParent': ['${enforceSingleParent}'],
+      if (moveToNewOwnersRoot != null)
+        'moveToNewOwnersRoot': ['${moveToNewOwnersRoot}'],
+      if (sendNotificationEmail != null)
+        'sendNotificationEmail': ['${sendNotificationEmail}'],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (transferOwnership != null)
+        'transferOwnership': ['${transferOwnership}'],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
@@ -2150,19 +1974,15 @@ class PermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2219,19 +2039,15 @@ class PermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2299,28 +2115,19 @@ class PermissionsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includePermissionsForView != null) {
-      _queryParams['includePermissionsForView'] = [includePermissionsForView];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includePermissionsForView != null)
+        'includePermissionsForView': [includePermissionsForView],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
@@ -2389,25 +2196,18 @@ class PermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (removeExpiration != null) {
-      _queryParams['removeExpiration'] = ['${removeExpiration}'];
-    }
-    if (supportsAllDrives != null) {
-      _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
-    }
-    if (supportsTeamDrives != null) {
-      _queryParams['supportsTeamDrives'] = ['${supportsTeamDrives}'];
-    }
-    if (transferOwnership != null) {
-      _queryParams['transferOwnership'] = ['${transferOwnership}'];
-    }
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
+      if (supportsAllDrives != null)
+        'supportsAllDrives': ['${supportsAllDrives}'],
+      if (supportsTeamDrives != null)
+        'supportsTeamDrives': ['${supportsTeamDrives}'],
+      if (transferOwnership != null)
+        'transferOwnership': ['${transferOwnership}'],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2464,10 +2264,9 @@ class RepliesResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2517,10 +2316,9 @@ class RepliesResource {
     if (replyId == null) {
       throw core.ArgumentError('Parameter replyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2576,13 +2374,10 @@ class RepliesResource {
     if (replyId == null) {
       throw core.ArgumentError('Parameter replyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2641,19 +2436,12 @@ class RepliesResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2709,10 +2497,9 @@ class RepliesResource {
     if (replyId == null) {
       throw core.ArgumentError('Parameter replyId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2767,10 +2554,9 @@ class RevisionsResource {
     if (revisionId == null) {
       throw core.ArgumentError('Parameter revisionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2828,13 +2614,10 @@ class RevisionsResource {
     if (revisionId == null) {
       throw core.ArgumentError('Parameter revisionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (acknowledgeAbuse != null) {
-      _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2888,16 +2671,11 @@ class RevisionsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
@@ -2945,10 +2723,9 @@ class RevisionsResource {
     if (revisionId == null) {
       throw core.ArgumentError('Parameter revisionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
@@ -2999,14 +2776,13 @@ class TeamdrivesResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId == null) {
       throw core.ArgumentError('Parameter requestId is required.');
     }
-    _queryParams['requestId'] = [requestId];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'teamdrives';
 
@@ -3040,10 +2816,9 @@ class TeamdrivesResource {
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
@@ -3083,13 +2858,11 @@ class TeamdrivesResource {
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
@@ -3133,22 +2906,14 @@ class TeamdrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (q != null) 'q': [q],
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'teamdrives';
 
@@ -3194,13 +2959,11 @@ class TeamdrivesResource {
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (useDomainAdminAccess != null) {
-      _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (useDomainAdminAccess != null)
+        'useDomainAdminAccess': ['${useDomainAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 

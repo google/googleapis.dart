@@ -131,13 +131,10 @@ class BookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -178,13 +175,10 @@ class BookshelvesResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -247,22 +241,13 @@ class BookshelvesVolumesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (showPreorders != null) {
-      _queryParams['showPreorders'] = ['${showPreorders}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (showPreorders != null) 'showPreorders': ['${showPreorders}'],
+      if (source != null) 'source': [source],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -316,22 +301,13 @@ class CloudloadingResource {
     core.String uploadClientToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (driveDocumentId != null) {
-      _queryParams['drive_document_id'] = [driveDocumentId];
-    }
-    if (mimeType != null) {
-      _queryParams['mime_type'] = [mimeType];
-    }
-    if (name != null) {
-      _queryParams['name'] = [name];
-    }
-    if (uploadClientToken != null) {
-      _queryParams['upload_client_token'] = [uploadClientToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (driveDocumentId != null) 'drive_document_id': [driveDocumentId],
+      if (mimeType != null) 'mime_type': [mimeType],
+      if (name != null) 'name': [name],
+      if (uploadClientToken != null) 'upload_client_token': [uploadClientToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/cloudloading/addBook';
 
@@ -364,14 +340,13 @@ class CloudloadingResource {
     core.String volumeId, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    _queryParams['volumeId'] = [volumeId];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'volumeId': [volumeId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/cloudloading/deleteBook';
 
@@ -405,10 +380,9 @@ class CloudloadingResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/cloudloading/updateBook';
 
@@ -448,14 +422,13 @@ class DictionaryResource {
     core.String cpksver, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
-    _queryParams['cpksver'] = [cpksver];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'cpksver': [cpksver],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/dictionary/listOfflineMetadata';
 
@@ -493,13 +466,10 @@ class FamilysharingResource {
     core.String source,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/familysharing/getFamilyInfo';
 
@@ -540,19 +510,12 @@ class FamilysharingResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (docId != null) {
-      _queryParams['docId'] = [docId];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (docId != null) 'docId': [docId],
+      if (source != null) 'source': [source],
+      if (volumeId != null) 'volumeId': [volumeId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/familysharing/share';
 
@@ -593,19 +556,12 @@ class FamilysharingResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (docId != null) {
-      _queryParams['docId'] = [docId];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (docId != null) 'docId': [docId],
+      if (source != null) 'source': [source],
+      if (volumeId != null) 'volumeId': [volumeId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/familysharing/unshare';
 
@@ -663,16 +619,11 @@ class LayersResource {
     if (summaryId == null) {
       throw core.ArgumentError('Parameter summaryId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (contentVersion != null) 'contentVersion': [contentVersion],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -724,22 +675,13 @@ class LayersResource {
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (contentVersion != null) 'contentVersion': [contentVersion],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -822,32 +764,20 @@ class LayersAnnotationDataResource {
     if (annotationDataId == null) {
       throw core.ArgumentError('Parameter annotationDataId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion == null) {
       throw core.ArgumentError('Parameter contentVersion is required.');
     }
-    _queryParams['contentVersion'] = [contentVersion];
-    if (allowWebDefinitions != null) {
-      _queryParams['allowWebDefinitions'] = ['${allowWebDefinitions}'];
-    }
-    if (h != null) {
-      _queryParams['h'] = ['${h}'];
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (scale != null) {
-      _queryParams['scale'] = ['${scale}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (w != null) {
-      _queryParams['w'] = ['${w}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'contentVersion': [contentVersion],
+      if (allowWebDefinitions != null)
+        'allowWebDefinitions': ['${allowWebDefinitions}'],
+      if (h != null) 'h': ['${h}'],
+      if (locale != null) 'locale': [locale],
+      if (scale != null) 'scale': ['${scale}'],
+      if (source != null) 'source': [source],
+      if (w != null) 'w': ['${w}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -934,44 +864,23 @@ class LayersAnnotationDataResource {
     if (layerId == null) {
       throw core.ArgumentError('Parameter layerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion == null) {
       throw core.ArgumentError('Parameter contentVersion is required.');
     }
-    _queryParams['contentVersion'] = [contentVersion];
-    if (annotationDataId != null) {
-      _queryParams['annotationDataId'] = annotationDataId;
-    }
-    if (h != null) {
-      _queryParams['h'] = ['${h}'];
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (scale != null) {
-      _queryParams['scale'] = ['${scale}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (updatedMax != null) {
-      _queryParams['updatedMax'] = [updatedMax];
-    }
-    if (updatedMin != null) {
-      _queryParams['updatedMin'] = [updatedMin];
-    }
-    if (w != null) {
-      _queryParams['w'] = ['${w}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'contentVersion': [contentVersion],
+      if (annotationDataId != null) 'annotationDataId': annotationDataId,
+      if (h != null) 'h': ['${h}'],
+      if (locale != null) 'locale': [locale],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (scale != null) 'scale': ['${scale}'],
+      if (source != null) 'source': [source],
+      if (updatedMax != null) 'updatedMax': [updatedMax],
+      if (updatedMin != null) 'updatedMin': [updatedMin],
+      if (w != null) 'w': ['${w}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -1037,16 +946,11 @@ class LayersVolumeAnnotationsResource {
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (locale != null) 'locale': [locale],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -1138,50 +1042,26 @@ class LayersVolumeAnnotationsResource {
     if (layerId == null) {
       throw core.ArgumentError('Parameter layerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion == null) {
       throw core.ArgumentError('Parameter contentVersion is required.');
     }
-    _queryParams['contentVersion'] = [contentVersion];
-    if (endOffset != null) {
-      _queryParams['endOffset'] = [endOffset];
-    }
-    if (endPosition != null) {
-      _queryParams['endPosition'] = [endPosition];
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (startOffset != null) {
-      _queryParams['startOffset'] = [startOffset];
-    }
-    if (startPosition != null) {
-      _queryParams['startPosition'] = [startPosition];
-    }
-    if (updatedMax != null) {
-      _queryParams['updatedMax'] = [updatedMax];
-    }
-    if (updatedMin != null) {
-      _queryParams['updatedMin'] = [updatedMin];
-    }
-    if (volumeAnnotationsVersion != null) {
-      _queryParams['volumeAnnotationsVersion'] = [volumeAnnotationsVersion];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'contentVersion': [contentVersion],
+      if (endOffset != null) 'endOffset': [endOffset],
+      if (endPosition != null) 'endPosition': [endPosition],
+      if (locale != null) 'locale': [locale],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (source != null) 'source': [source],
+      if (startOffset != null) 'startOffset': [startOffset],
+      if (startPosition != null) 'startPosition': [startPosition],
+      if (updatedMax != null) 'updatedMax': [updatedMax],
+      if (updatedMin != null) 'updatedMin': [updatedMin],
+      if (volumeAnnotationsVersion != null)
+        'volumeAnnotationsVersion': [volumeAnnotationsVersion],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -1224,13 +1104,10 @@ class MyconfigResource {
     core.String country,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (country != null) {
-      _queryParams['country'] = [country];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (country != null) 'country': [country],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/myconfig/getUserSettings';
 
@@ -1273,24 +1150,19 @@ class MyconfigResource {
     core.String source,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
-    _queryParams['cpksver'] = [cpksver];
     if (volumeIds == null || volumeIds.isEmpty) {
       throw core.ArgumentError('Parameter volumeIds is required.');
     }
-    _queryParams['volumeIds'] = volumeIds;
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'cpksver': [cpksver],
+      'volumeIds': volumeIds,
+      if (locale != null) 'locale': [locale],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/myconfig/releaseDownloadAccess';
 
@@ -1345,32 +1217,27 @@ class MyconfigResource {
     core.String locale,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
-    _queryParams['cpksver'] = [cpksver];
     if (nonce == null) {
       throw core.ArgumentError('Parameter nonce is required.');
     }
-    _queryParams['nonce'] = [nonce];
     if (source == null) {
       throw core.ArgumentError('Parameter source is required.');
     }
-    _queryParams['source'] = [source];
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    _queryParams['volumeId'] = [volumeId];
-    if (licenseTypes != null) {
-      _queryParams['licenseTypes'] = [licenseTypes];
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'cpksver': [cpksver],
+      'nonce': [nonce],
+      'source': [source],
+      'volumeId': [volumeId],
+      if (licenseTypes != null) 'licenseTypes': [licenseTypes],
+      if (locale != null) 'locale': [locale],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/myconfig/requestAccess';
 
@@ -1428,37 +1295,27 @@ class MyconfigResource {
     core.List<core.String> volumeIds,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
-    _queryParams['cpksver'] = [cpksver];
     if (nonce == null) {
       throw core.ArgumentError('Parameter nonce is required.');
     }
-    _queryParams['nonce'] = [nonce];
     if (source == null) {
       throw core.ArgumentError('Parameter source is required.');
     }
-    _queryParams['source'] = [source];
-    if (features != null) {
-      _queryParams['features'] = features;
-    }
-    if (includeNonComicsSeries != null) {
-      _queryParams['includeNonComicsSeries'] = ['${includeNonComicsSeries}'];
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (showPreorders != null) {
-      _queryParams['showPreorders'] = ['${showPreorders}'];
-    }
-    if (volumeIds != null) {
-      _queryParams['volumeIds'] = volumeIds;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'cpksver': [cpksver],
+      'nonce': [nonce],
+      'source': [source],
+      if (features != null) 'features': features,
+      if (includeNonComicsSeries != null)
+        'includeNonComicsSeries': ['${includeNonComicsSeries}'],
+      if (locale != null) 'locale': [locale],
+      if (showPreorders != null) 'showPreorders': ['${showPreorders}'],
+      if (volumeIds != null) 'volumeIds': volumeIds,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/myconfig/syncVolumeLicenses';
 
@@ -1496,10 +1353,9 @@ class MyconfigResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/myconfig/updateUserSettings';
 
@@ -1559,13 +1415,10 @@ class MylibraryAnnotationsResource {
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
@@ -1613,24 +1466,14 @@ class MylibraryAnnotationsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (annotationId != null) {
-      _queryParams['annotationId'] = [annotationId];
-    }
-    if (country != null) {
-      _queryParams['country'] = [country];
-    }
-    if (showOnlySummaryInResponse != null) {
-      _queryParams['showOnlySummaryInResponse'] = [
-        '${showOnlySummaryInResponse}'
-      ];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (annotationId != null) 'annotationId': [annotationId],
+      if (country != null) 'country': [country],
+      if (showOnlySummaryInResponse != null)
+        'showOnlySummaryInResponse': ['${showOnlySummaryInResponse}'],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/mylibrary/annotations';
 
@@ -1695,40 +1538,19 @@ class MylibraryAnnotationsResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
-    }
-    if (layerId != null) {
-      _queryParams['layerId'] = [layerId];
-    }
-    if (layerIds != null) {
-      _queryParams['layerIds'] = layerIds;
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (showDeleted != null) {
-      _queryParams['showDeleted'] = ['${showDeleted}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (updatedMax != null) {
-      _queryParams['updatedMax'] = [updatedMax];
-    }
-    if (updatedMin != null) {
-      _queryParams['updatedMin'] = [updatedMin];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (contentVersion != null) 'contentVersion': [contentVersion],
+      if (layerId != null) 'layerId': [layerId],
+      if (layerIds != null) 'layerIds': layerIds,
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
+      if (source != null) 'source': [source],
+      if (updatedMax != null) 'updatedMax': [updatedMax],
+      if (updatedMin != null) 'updatedMin': [updatedMin],
+      if (volumeId != null) 'volumeId': [volumeId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/mylibrary/annotations';
 
@@ -1764,18 +1586,17 @@ class MylibraryAnnotationsResource {
     core.String volumeId, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (layerIds == null || layerIds.isEmpty) {
       throw core.ArgumentError('Parameter layerIds is required.');
     }
-    _queryParams['layerIds'] = layerIds;
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    _queryParams['volumeId'] = [volumeId];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'layerIds': layerIds,
+      'volumeId': [volumeId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/mylibrary/annotations/summary';
 
@@ -1819,13 +1640,10 @@ class MylibraryAnnotationsResource {
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
@@ -1887,20 +1705,15 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    _queryParams['volumeId'] = [volumeId];
-    if (reason != null) {
-      _queryParams['reason'] = [reason];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'volumeId': [volumeId],
+      if (reason != null) 'reason': [reason],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
@@ -1940,13 +1753,10 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
@@ -1987,13 +1797,10 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf');
@@ -2026,13 +1833,10 @@ class MylibraryBookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/mylibrary/bookshelves';
 
@@ -2079,21 +1883,18 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    _queryParams['volumeId'] = [volumeId];
     if (volumePosition == null) {
       throw core.ArgumentError('Parameter volumePosition is required.');
     }
-    _queryParams['volumePosition'] = ['${volumePosition}'];
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'volumeId': [volumeId],
+      'volumePosition': ['${volumePosition}'],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
@@ -2142,20 +1943,15 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    _queryParams['volumeId'] = [volumeId];
-    if (reason != null) {
-      _queryParams['reason'] = [reason];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'volumeId': [volumeId],
+      if (reason != null) 'reason': [reason],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
@@ -2225,31 +2021,16 @@ class MylibraryBookshelvesVolumesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (country != null) {
-      _queryParams['country'] = [country];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
-    }
-    if (showPreorders != null) {
-      _queryParams['showPreorders'] = ['${showPreorders}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (country != null) 'country': [country],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (projection != null) 'projection': [projection],
+      if (q != null) 'q': [q],
+      if (showPreorders != null) 'showPreorders': ['${showPreorders}'],
+      if (source != null) 'source': [source],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
@@ -2300,16 +2081,11 @@ class MylibraryReadingpositionsResource {
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (contentVersion != null) 'contentVersion': [contentVersion],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/readingpositions/' +
         commons.Escaper.ecapeVariable('$volumeId');
@@ -2374,30 +2150,21 @@ class MylibraryReadingpositionsResource {
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (position == null) {
       throw core.ArgumentError('Parameter position is required.');
     }
-    _queryParams['position'] = [position];
     if (timestamp == null) {
       throw core.ArgumentError('Parameter timestamp is required.');
     }
-    _queryParams['timestamp'] = [timestamp];
-    if (action != null) {
-      _queryParams['action'] = [action];
-    }
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
-    }
-    if (deviceCookie != null) {
-      _queryParams['deviceCookie'] = [deviceCookie];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'position': [position],
+      'timestamp': [timestamp],
+      if (action != null) 'action': [action],
+      if (contentVersion != null) 'contentVersion': [contentVersion],
+      if (deviceCookie != null) 'deviceCookie': [deviceCookie],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/mylibrary/readingpositions/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -2444,20 +2211,15 @@ class NotificationResource {
     core.String source,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (notificationId == null) {
       throw core.ArgumentError('Parameter notificationId is required.');
     }
-    _queryParams['notification_id'] = [notificationId];
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'notification_id': [notificationId],
+      if (locale != null) 'locale': [locale],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/notification/get';
 
@@ -2497,13 +2259,10 @@ class OnboardingResource {
     core.String locale,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (locale != null) 'locale': [locale],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/onboarding/listCategories';
 
@@ -2554,25 +2313,15 @@ class OnboardingResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (categoryId != null) {
-      _queryParams['categoryId'] = categoryId;
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxAllowedMaturityRating != null) {
-      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (categoryId != null) 'categoryId': categoryId,
+      if (locale != null) 'locale': [locale],
+      if (maxAllowedMaturityRating != null)
+        'maxAllowedMaturityRating': [maxAllowedMaturityRating],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/onboarding/listCategoryVolumes';
 
@@ -2623,19 +2372,13 @@ class PersonalizedstreamResource {
     core.String source,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxAllowedMaturityRating != null) {
-      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (locale != null) 'locale': [locale],
+      if (maxAllowedMaturityRating != null)
+        'maxAllowedMaturityRating': [maxAllowedMaturityRating],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/personalizedstream/get';
 
@@ -2695,34 +2438,17 @@ class PromoofferResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (androidId != null) {
-      _queryParams['androidId'] = [androidId];
-    }
-    if (device != null) {
-      _queryParams['device'] = [device];
-    }
-    if (manufacturer != null) {
-      _queryParams['manufacturer'] = [manufacturer];
-    }
-    if (model != null) {
-      _queryParams['model'] = [model];
-    }
-    if (offerId != null) {
-      _queryParams['offerId'] = [offerId];
-    }
-    if (product != null) {
-      _queryParams['product'] = [product];
-    }
-    if (serial != null) {
-      _queryParams['serial'] = [serial];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (androidId != null) 'androidId': [androidId],
+      if (device != null) 'device': [device],
+      if (manufacturer != null) 'manufacturer': [manufacturer],
+      if (model != null) 'model': [model],
+      if (offerId != null) 'offerId': [offerId],
+      if (product != null) 'product': [product],
+      if (serial != null) 'serial': [serial],
+      if (volumeId != null) 'volumeId': [volumeId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/promooffer/accept';
 
@@ -2772,31 +2498,16 @@ class PromoofferResource {
     core.String serial,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (androidId != null) {
-      _queryParams['androidId'] = [androidId];
-    }
-    if (device != null) {
-      _queryParams['device'] = [device];
-    }
-    if (manufacturer != null) {
-      _queryParams['manufacturer'] = [manufacturer];
-    }
-    if (model != null) {
-      _queryParams['model'] = [model];
-    }
-    if (offerId != null) {
-      _queryParams['offerId'] = [offerId];
-    }
-    if (product != null) {
-      _queryParams['product'] = [product];
-    }
-    if (serial != null) {
-      _queryParams['serial'] = [serial];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (androidId != null) 'androidId': [androidId],
+      if (device != null) 'device': [device],
+      if (manufacturer != null) 'manufacturer': [manufacturer],
+      if (model != null) 'model': [model],
+      if (offerId != null) 'offerId': [offerId],
+      if (product != null) 'product': [product],
+      if (serial != null) 'serial': [serial],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/promooffer/dismiss';
 
@@ -2843,28 +2554,15 @@ class PromoofferResource {
     core.String serial,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (androidId != null) {
-      _queryParams['androidId'] = [androidId];
-    }
-    if (device != null) {
-      _queryParams['device'] = [device];
-    }
-    if (manufacturer != null) {
-      _queryParams['manufacturer'] = [manufacturer];
-    }
-    if (model != null) {
-      _queryParams['model'] = [model];
-    }
-    if (product != null) {
-      _queryParams['product'] = [product];
-    }
-    if (serial != null) {
-      _queryParams['serial'] = [serial];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (androidId != null) 'androidId': [androidId],
+      if (device != null) 'device': [device],
+      if (manufacturer != null) 'manufacturer': [manufacturer],
+      if (model != null) 'model': [model],
+      if (product != null) 'product': [product],
+      if (serial != null) 'serial': [serial],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/promooffer/get';
 
@@ -2905,14 +2603,13 @@ class SeriesResource {
     core.List<core.String> seriesId, {
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (seriesId == null || seriesId.isEmpty) {
       throw core.ArgumentError('Parameter seriesId is required.');
     }
-    _queryParams['series_id'] = seriesId;
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'series_id': seriesId,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/series/get';
 
@@ -2957,20 +2654,15 @@ class SeriesMembershipResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (seriesId == null) {
       throw core.ArgumentError('Parameter seriesId is required.');
     }
-    _queryParams['series_id'] = [seriesId];
-    if (pageSize != null) {
-      _queryParams['page_size'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['page_token'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'series_id': [seriesId],
+      if (pageSize != null) 'page_size': ['${pageSize}'],
+      if (pageToken != null) 'page_token': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/series/membership/get';
 
@@ -3043,30 +2735,17 @@ class VolumesResource {
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (country != null) {
-      _queryParams['country'] = [country];
-    }
-    if (includeNonComicsSeries != null) {
-      _queryParams['includeNonComicsSeries'] = ['${includeNonComicsSeries}'];
-    }
-    if (partner != null) {
-      _queryParams['partner'] = [partner];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (userLibraryConsistentRead != null) {
-      _queryParams['user_library_consistent_read'] = [
-        '${userLibraryConsistentRead}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (country != null) 'country': [country],
+      if (includeNonComicsSeries != null)
+        'includeNonComicsSeries': ['${includeNonComicsSeries}'],
+      if (partner != null) 'partner': [partner],
+      if (projection != null) 'projection': [projection],
+      if (source != null) 'source': [source],
+      if (userLibraryConsistentRead != null)
+        'user_library_consistent_read': ['${userLibraryConsistentRead}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'books/v1/volumes/' + commons.Escaper.ecapeVariable('$volumeId');
@@ -3173,53 +2852,27 @@ class VolumesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (q == null) {
       throw core.ArgumentError('Parameter q is required.');
     }
-    _queryParams['q'] = [q];
-    if (download != null) {
-      _queryParams['download'] = [download];
-    }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (langRestrict != null) {
-      _queryParams['langRestrict'] = [langRestrict];
-    }
-    if (libraryRestrict != null) {
-      _queryParams['libraryRestrict'] = [libraryRestrict];
-    }
-    if (maxAllowedMaturityRating != null) {
-      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (partner != null) {
-      _queryParams['partner'] = [partner];
-    }
-    if (printType != null) {
-      _queryParams['printType'] = [printType];
-    }
-    if (projection != null) {
-      _queryParams['projection'] = [projection];
-    }
-    if (showPreorders != null) {
-      _queryParams['showPreorders'] = ['${showPreorders}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'q': [q],
+      if (download != null) 'download': [download],
+      if (filter != null) 'filter': [filter],
+      if (langRestrict != null) 'langRestrict': [langRestrict],
+      if (libraryRestrict != null) 'libraryRestrict': [libraryRestrict],
+      if (maxAllowedMaturityRating != null)
+        'maxAllowedMaturityRating': [maxAllowedMaturityRating],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (partner != null) 'partner': [partner],
+      if (printType != null) 'printType': [printType],
+      if (projection != null) 'projection': [projection],
+      if (showPreorders != null) 'showPreorders': ['${showPreorders}'],
+      if (source != null) 'source': [source],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/volumes';
 
@@ -3284,22 +2937,14 @@ class VolumesAssociatedResource {
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (association != null) {
-      _queryParams['association'] = [association];
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxAllowedMaturityRating != null) {
-      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (association != null) 'association': [association],
+      if (locale != null) 'locale': [locale],
+      if (maxAllowedMaturityRating != null)
+        'maxAllowedMaturityRating': [maxAllowedMaturityRating],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -3361,31 +3006,16 @@ class VolumesMybooksResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (acquireMethod != null) {
-      _queryParams['acquireMethod'] = acquireMethod;
-    }
-    if (country != null) {
-      _queryParams['country'] = [country];
-    }
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (processingState != null) {
-      _queryParams['processingState'] = processingState;
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (acquireMethod != null) 'acquireMethod': acquireMethod,
+      if (country != null) 'country': [country],
+      if (locale != null) 'locale': [locale],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (processingState != null) 'processingState': processingState,
+      if (source != null) 'source': [source],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/volumes/mybooks';
 
@@ -3436,19 +3066,13 @@ class VolumesRecommendedResource {
     core.String source,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxAllowedMaturityRating != null) {
-      _queryParams['maxAllowedMaturityRating'] = [maxAllowedMaturityRating];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (locale != null) 'locale': [locale],
+      if (maxAllowedMaturityRating != null)
+        'maxAllowedMaturityRating': [maxAllowedMaturityRating],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/volumes/recommended';
 
@@ -3494,24 +3118,19 @@ class VolumesRecommendedResource {
     core.String source,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (rating == null) {
       throw core.ArgumentError('Parameter rating is required.');
     }
-    _queryParams['rating'] = [rating];
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
-    _queryParams['volumeId'] = [volumeId];
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'rating': [rating],
+      'volumeId': [volumeId],
+      if (locale != null) 'locale': [locale],
+      if (source != null) 'source': [source],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/volumes/recommended/rate';
 
@@ -3570,28 +3189,15 @@ class VolumesUseruploadedResource {
     core.List<core.String> volumeId,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (locale != null) {
-      _queryParams['locale'] = [locale];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (processingState != null) {
-      _queryParams['processingState'] = processingState;
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (startIndex != null) {
-      _queryParams['startIndex'] = ['${startIndex}'];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = volumeId;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (locale != null) 'locale': [locale],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (processingState != null) 'processingState': processingState,
+      if (source != null) 'source': [source],
+      if (startIndex != null) 'startIndex': ['${startIndex}'],
+      if (volumeId != null) 'volumeId': volumeId,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'books/v1/volumes/useruploaded';
 

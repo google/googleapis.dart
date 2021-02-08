@@ -98,10 +98,9 @@ class AchievementConfigurationsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
@@ -137,10 +136,9 @@ class AchievementConfigurationsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
@@ -183,10 +181,9 @@ class AchievementConfigurationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -234,16 +231,11 @@ class AchievementConfigurationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -286,10 +278,9 @@ class AchievementConfigurationsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
@@ -347,10 +338,9 @@ class ImageConfigurationsResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     core.String _url;
     if (uploadMedia == null) {
@@ -404,10 +394,9 @@ class LeaderboardConfigurationsResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
@@ -443,10 +432,9 @@ class LeaderboardConfigurationsResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
@@ -489,10 +477,9 @@ class LeaderboardConfigurationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -540,16 +527,11 @@ class LeaderboardConfigurationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
@@ -592,10 +574,9 @@ class LeaderboardConfigurationsResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');

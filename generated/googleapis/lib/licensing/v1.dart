@@ -104,10 +104,9 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -165,10 +164,9 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -222,10 +220,9 @@ class LicenseAssignmentsResource {
     if (skuId == null) {
       throw core.ArgumentError('Parameter skuId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -284,20 +281,15 @@ class LicenseAssignmentsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    _queryParams['customerId'] = [customerId];
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'customerId': [customerId],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -360,20 +352,15 @@ class LicenseAssignmentsResource {
     if (skuId == null) {
       throw core.ArgumentError('Parameter skuId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    _queryParams['customerId'] = [customerId];
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'customerId': [customerId],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -438,10 +425,9 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -506,10 +492,9 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/licensing/v1/product/' +
         commons.Escaper.ecapeVariable('$productId') +

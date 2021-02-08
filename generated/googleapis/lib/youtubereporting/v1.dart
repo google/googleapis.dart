@@ -109,13 +109,11 @@ class JobsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/jobs';
 
@@ -156,13 +154,11 @@ class JobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
@@ -202,13 +198,11 @@ class JobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
@@ -257,22 +251,15 @@ class JobsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeSystemManaged != null) {
-      _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeSystemManaged != null)
+        'includeSystemManaged': ['${includeSystemManaged}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/jobs';
 
@@ -325,13 +312,11 @@ class JobsReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/jobs/' +
         commons.Escaper.ecapeVariable('$jobId') +
@@ -398,28 +383,17 @@ class JobsReportsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (createdAfter != null) {
-      _queryParams['createdAfter'] = [createdAfter];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (startTimeAtOrAfter != null) {
-      _queryParams['startTimeAtOrAfter'] = [startTimeAtOrAfter];
-    }
-    if (startTimeBefore != null) {
-      _queryParams['startTimeBefore'] = [startTimeBefore];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (createdAfter != null) 'createdAfter': [createdAfter],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (startTimeAtOrAfter != null)
+        'startTimeAtOrAfter': [startTimeAtOrAfter],
+      if (startTimeBefore != null) 'startTimeBefore': [startTimeBefore],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
@@ -474,10 +448,9 @@ class MediaResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
@@ -540,22 +513,15 @@ class ReportTypesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeSystemManaged != null) {
-      _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeSystemManaged != null)
+        'includeSystemManaged': ['${includeSystemManaged}'],
+      if (onBehalfOfContentOwner != null)
+        'onBehalfOfContentOwner': [onBehalfOfContentOwner],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v1/reportTypes';
 

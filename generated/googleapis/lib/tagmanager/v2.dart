@@ -128,10 +128,9 @@ class AccountsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -164,13 +163,10 @@ class AccountsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'tagmanager/v2/accounts';
 
@@ -216,13 +212,10 @@ class AccountsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -281,10 +274,9 @@ class AccountsContainersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -322,10 +314,9 @@ class AccountsContainersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -363,10 +354,9 @@ class AccountsContainersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -407,13 +397,10 @@ class AccountsContainersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -462,13 +449,10 @@ class AccountsContainersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -519,10 +503,9 @@ class AccountsContainersEnvironmentsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -562,10 +545,9 @@ class AccountsContainersEnvironmentsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -604,10 +586,9 @@ class AccountsContainersEnvironmentsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -649,13 +630,10 @@ class AccountsContainersEnvironmentsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -701,10 +679,9 @@ class AccountsContainersEnvironmentsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -755,13 +732,10 @@ class AccountsContainersEnvironmentsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -808,10 +782,9 @@ class AccountsContainersVersionHeadersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -857,16 +830,11 @@ class AccountsContainersVersionHeadersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeDeleted != null) {
-      _queryParams['includeDeleted'] = ['${includeDeleted}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -912,10 +880,9 @@ class AccountsContainersVersionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -958,13 +925,11 @@ class AccountsContainersVersionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (containerVersionId != null) {
-      _queryParams['containerVersionId'] = [containerVersionId];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (containerVersionId != null)
+        'containerVersionId': [containerVersionId],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -1003,10 +968,9 @@ class AccountsContainersVersionsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1051,13 +1015,10 @@ class AccountsContainersVersionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1099,10 +1060,9 @@ class AccountsContainersVersionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1143,10 +1103,9 @@ class AccountsContainersVersionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1196,13 +1155,10 @@ class AccountsContainersVersionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -1269,10 +1225,9 @@ class AccountsContainersWorkspacesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1320,10 +1275,9 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1363,10 +1317,9 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -1405,10 +1358,9 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -1447,10 +1399,9 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1493,13 +1444,10 @@ class AccountsContainersWorkspacesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1541,10 +1489,9 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1593,13 +1540,10 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1642,10 +1586,9 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -1695,13 +1638,10 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -1752,13 +1692,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (type != null) {
-      _queryParams['type'] = type;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (type != null) 'type': type,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1800,13 +1737,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (type != null) {
-      _queryParams['type'] = type;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (type != null) 'type': type,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -1848,13 +1782,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -2009,13 +1940,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (type != null) {
-      _queryParams['type'] = [type];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -2068,10 +1996,9 @@ class AccountsContainersWorkspacesFoldersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -2110,10 +2037,9 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2155,13 +2081,10 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -2202,10 +2125,9 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2247,13 +2169,10 @@ class AccountsContainersWorkspacesFoldersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -2306,19 +2225,12 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (tagId != null) {
-      _queryParams['tagId'] = tagId;
-    }
-    if (triggerId != null) {
-      _queryParams['triggerId'] = triggerId;
-    }
-    if (variableId != null) {
-      _queryParams['variableId'] = variableId;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (tagId != null) 'tagId': tagId,
+      if (triggerId != null) 'triggerId': triggerId,
+      if (variableId != null) 'variableId': variableId,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -2363,13 +2275,10 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -2419,13 +2328,10 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2477,10 +2383,9 @@ class AccountsContainersWorkspacesTagsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -2519,10 +2424,9 @@ class AccountsContainersWorkspacesTagsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2561,10 +2465,9 @@ class AccountsContainersWorkspacesTagsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2606,13 +2509,10 @@ class AccountsContainersWorkspacesTagsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -2657,13 +2557,10 @@ class AccountsContainersWorkspacesTagsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -2713,13 +2610,10 @@ class AccountsContainersWorkspacesTagsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2771,10 +2665,9 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -2814,10 +2707,9 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2856,10 +2748,9 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -2902,13 +2793,10 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -2953,13 +2841,10 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -3009,13 +2894,10 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3068,10 +2950,9 @@ class AccountsContainersWorkspacesTriggersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3110,10 +2991,9 @@ class AccountsContainersWorkspacesTriggersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3152,10 +3032,9 @@ class AccountsContainersWorkspacesTriggersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3197,13 +3076,10 @@ class AccountsContainersWorkspacesTriggersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3248,13 +3124,10 @@ class AccountsContainersWorkspacesTriggersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -3304,13 +3177,10 @@ class AccountsContainersWorkspacesTriggersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3362,10 +3232,9 @@ class AccountsContainersWorkspacesVariablesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3404,10 +3273,9 @@ class AccountsContainersWorkspacesVariablesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3446,10 +3314,9 @@ class AccountsContainersWorkspacesVariablesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3491,13 +3358,10 @@ class AccountsContainersWorkspacesVariablesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3542,13 +3406,10 @@ class AccountsContainersWorkspacesVariablesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -3598,13 +3459,10 @@ class AccountsContainersWorkspacesVariablesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3656,10 +3514,9 @@ class AccountsContainersWorkspacesZonesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3698,10 +3555,9 @@ class AccountsContainersWorkspacesZonesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3740,10 +3596,9 @@ class AccountsContainersWorkspacesZonesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3785,13 +3640,10 @@ class AccountsContainersWorkspacesZonesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3836,13 +3688,10 @@ class AccountsContainersWorkspacesZonesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
@@ -3892,13 +3741,10 @@ class AccountsContainersWorkspacesZonesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (fingerprint != null) {
-      _queryParams['fingerprint'] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -3948,10 +3794,9 @@ class AccountsUserPermissionsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -3991,10 +3836,9 @@ class AccountsUserPermissionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -4032,10 +3876,9 @@ class AccountsUserPermissionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
@@ -4078,13 +3921,10 @@ class AccountsUserPermissionsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -4129,10 +3969,9 @@ class AccountsUserPermissionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');

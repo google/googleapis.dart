@@ -96,10 +96,9 @@ class CustomersResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId');
@@ -142,13 +141,10 @@ class CustomersResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerAuthToken != null) {
-      _queryParams['customerAuthToken'] = [customerAuthToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'apps/reseller/v1/customers';
 
@@ -192,10 +188,9 @@ class CustomersResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId');
@@ -240,10 +235,9 @@ class CustomersResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId');
@@ -280,10 +274,9 @@ class ResellernotifyResource_1 {
   async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails({
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'apps/reseller/v1/resellernotify/getwatchdetails';
 
@@ -317,13 +310,11 @@ class ResellernotifyResource_1 {
     core.String serviceAccountEmailAddress,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (serviceAccountEmailAddress != null) {
-      _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (serviceAccountEmailAddress != null)
+        'serviceAccountEmailAddress': [serviceAccountEmailAddress],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'apps/reseller/v1/resellernotify/register';
 
@@ -357,13 +348,11 @@ class ResellernotifyResource_1 {
     core.String serviceAccountEmailAddress,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (serviceAccountEmailAddress != null) {
-      _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (serviceAccountEmailAddress != null)
+        'serviceAccountEmailAddress': [serviceAccountEmailAddress],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'apps/reseller/v1/resellernotify/unregister';
 
@@ -418,10 +407,9 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -482,10 +470,9 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -546,10 +533,9 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -608,10 +594,9 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -676,14 +661,13 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (deletionType == null) {
       throw core.ArgumentError('Parameter deletionType is required.');
     }
-    _queryParams['deletionType'] = [deletionType];
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      'deletionType': [deletionType],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -734,10 +718,9 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -792,13 +775,10 @@ class SubscriptionsResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerAuthToken != null) {
-      _queryParams['customerAuthToken'] = [customerAuthToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -866,25 +846,15 @@ class SubscriptionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (customerAuthToken != null) {
-      _queryParams['customerAuthToken'] = [customerAuthToken];
-    }
-    if (customerId != null) {
-      _queryParams['customerId'] = [customerId];
-    }
-    if (customerNamePrefix != null) {
-      _queryParams['customerNamePrefix'] = [customerNamePrefix];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
+      if (customerId != null) 'customerId': [customerId],
+      if (customerNamePrefix != null)
+        'customerNamePrefix': [customerNamePrefix],
+      if (maxResults != null) 'maxResults': ['${maxResults}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'apps/reseller/v1/subscriptions';
 
@@ -934,10 +904,9 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -990,10 +959,9 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId') +

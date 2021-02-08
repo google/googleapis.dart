@@ -270,15 +270,8 @@ class DartResourceMethod {
       }
     }
 
-    var queryParamsWritten = false;
+    final queryParams = <String>[];
     void encodeQueryParam(MethodParameter param) {
-      if (!queryParamsWritten) {
-        queryParamsWritten = true;
-        params.writeln(
-          'final _queryParams = <${core}String, ${core}List<${core}String>>{};',
-        );
-      }
-
       String propertyAssignment;
       // NOTE: We need to special case array values, since they get encoded
       // as repeated query parameters.
@@ -292,12 +285,10 @@ class DartResourceMethod {
           expr = param.name.name;
         }
 
-        propertyAssignment =
-            "_queryParams['${escapeString(param.jsonName)}'] = $expr;";
+        propertyAssignment = "'${escapeString(param.jsonName)}': $expr,";
       } else {
         final expr = param.type.primitiveEncoding(param.name.name);
-        propertyAssignment =
-            "_queryParams['${escapeString(param.jsonName)}'] = [$expr];";
+        propertyAssignment = "'${escapeString(param.jsonName)}': [$expr],";
       }
 
       if (param.required) {
@@ -310,11 +301,10 @@ class DartResourceMethod {
         params.writeln('      throw ${imports.core.ref()}ArgumentError'
             "('Parameter ${param.name} is required.');");
         params.writeln('    }');
-        params.writeln('    $propertyAssignment');
+
+        queryParams.add(propertyAssignment);
       } else {
-        params.writeln('    if (${param.name} != null) {');
-        params.writeln('      $propertyAssignment');
-        params.writeln('    }');
+        queryParams.add('if (${param.name} != null) $propertyAssignment');
       }
     }
 
@@ -332,6 +322,15 @@ class DartResourceMethod {
       } else {
         encodeQueryParam(p);
       }
+    }
+
+    if (queryParams.isNotEmpty) {
+      params.writeln(
+        '''
+final _queryParams = <${core}String, ${core}List<${core}String>>{
+  ${queryParams.join('\n')}
+};''',
+      );
     }
 
     final urlPatternCode = StringBuffer();
@@ -374,7 +373,7 @@ class DartResourceMethod {
 
     final bodyOption = requestParameter == null ? '' : 'body: _body,';
     final queryParamsArg =
-        queryParamsWritten ? 'queryParams: _queryParams,' : '';
+        queryParams.isNotEmpty ? 'queryParams: _queryParams,' : '';
     final mediaUploadArg = mediaUpload ? 'uploadMedia: uploadMedia,' : '';
     final mediaResumableArg = mediaUploadResumable
         ? 'uploadOptions: uploadOptions,'

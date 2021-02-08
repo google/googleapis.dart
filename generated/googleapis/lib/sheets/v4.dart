@@ -125,10 +125,9 @@ class SpreadsheetsResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -166,10 +165,9 @@ class SpreadsheetsResource {
   }) async {
     final _body =
         request == null ? null : convert.json.encode(request.toJson());
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     const _url = 'v4/spreadsheets';
 
@@ -224,16 +222,11 @@ class SpreadsheetsResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeGridData != null) {
-      _queryParams['includeGridData'] = ['${includeGridData}'];
-    }
-    if (ranges != null) {
-      _queryParams['ranges'] = ranges;
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeGridData != null) 'includeGridData': ['${includeGridData}'],
+      if (ranges != null) 'ranges': ranges,
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId');
@@ -288,10 +281,9 @@ class SpreadsheetsResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -346,10 +338,9 @@ class SpreadsheetsDeveloperMetadataResource {
     if (metadataId == null) {
       throw core.ArgumentError('Parameter metadataId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -398,10 +389,9 @@ class SpreadsheetsDeveloperMetadataResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -459,10 +449,9 @@ class SpreadsheetsSheetsResource {
     if (sheetId == null) {
       throw core.ArgumentError('Parameter sheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -592,27 +581,17 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeValuesInResponse != null) {
-      _queryParams['includeValuesInResponse'] = ['${includeValuesInResponse}'];
-    }
-    if (insertDataOption != null) {
-      _queryParams['insertDataOption'] = [insertDataOption];
-    }
-    if (responseDateTimeRenderOption != null) {
-      _queryParams['responseDateTimeRenderOption'] = [
-        responseDateTimeRenderOption
-      ];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams['responseValueRenderOption'] = [responseValueRenderOption];
-    }
-    if (valueInputOption != null) {
-      _queryParams['valueInputOption'] = [valueInputOption];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeValuesInResponse != null)
+        'includeValuesInResponse': ['${includeValuesInResponse}'],
+      if (insertDataOption != null) 'insertDataOption': [insertDataOption],
+      if (responseDateTimeRenderOption != null)
+        'responseDateTimeRenderOption': [responseDateTimeRenderOption],
+      if (responseValueRenderOption != null)
+        'responseValueRenderOption': [responseValueRenderOption],
+      if (valueInputOption != null) 'valueInputOption': [valueInputOption],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -662,10 +641,9 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -714,10 +692,9 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -806,22 +783,14 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (dateTimeRenderOption != null) {
-      _queryParams['dateTimeRenderOption'] = [dateTimeRenderOption];
-    }
-    if (majorDimension != null) {
-      _queryParams['majorDimension'] = [majorDimension];
-    }
-    if (ranges != null) {
-      _queryParams['ranges'] = ranges;
-    }
-    if (valueRenderOption != null) {
-      _queryParams['valueRenderOption'] = [valueRenderOption];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (dateTimeRenderOption != null)
+        'dateTimeRenderOption': [dateTimeRenderOption],
+      if (majorDimension != null) 'majorDimension': [majorDimension],
+      if (ranges != null) 'ranges': ranges,
+      if (valueRenderOption != null) 'valueRenderOption': [valueRenderOption],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -868,10 +837,9 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -918,10 +886,9 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -968,10 +935,9 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -1025,10 +991,9 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -1122,19 +1087,13 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (dateTimeRenderOption != null) {
-      _queryParams['dateTimeRenderOption'] = [dateTimeRenderOption];
-    }
-    if (majorDimension != null) {
-      _queryParams['majorDimension'] = [majorDimension];
-    }
-    if (valueRenderOption != null) {
-      _queryParams['valueRenderOption'] = [valueRenderOption];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (dateTimeRenderOption != null)
+        'dateTimeRenderOption': [dateTimeRenderOption],
+      if (majorDimension != null) 'majorDimension': [majorDimension],
+      if (valueRenderOption != null) 'valueRenderOption': [valueRenderOption],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -1240,24 +1199,16 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (includeValuesInResponse != null) {
-      _queryParams['includeValuesInResponse'] = ['${includeValuesInResponse}'];
-    }
-    if (responseDateTimeRenderOption != null) {
-      _queryParams['responseDateTimeRenderOption'] = [
-        responseDateTimeRenderOption
-      ];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams['responseValueRenderOption'] = [responseValueRenderOption];
-    }
-    if (valueInputOption != null) {
-      _queryParams['valueInputOption'] = [valueInputOption];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (includeValuesInResponse != null)
+        'includeValuesInResponse': ['${includeValuesInResponse}'],
+      if (responseDateTimeRenderOption != null)
+        'responseDateTimeRenderOption': [responseDateTimeRenderOption],
+      if (responseValueRenderOption != null)
+        'responseValueRenderOption': [responseValueRenderOption],
+      if (valueInputOption != null) 'valueInputOption': [valueInputOption],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +

@@ -128,19 +128,12 @@ class ActionResultsResource {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (inlineOutputFiles != null) {
-      _queryParams['inlineOutputFiles'] = inlineOutputFiles;
-    }
-    if (inlineStderr != null) {
-      _queryParams['inlineStderr'] = ['${inlineStderr}'];
-    }
-    if (inlineStdout != null) {
-      _queryParams['inlineStdout'] = ['${inlineStdout}'];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (inlineOutputFiles != null) 'inlineOutputFiles': inlineOutputFiles,
+      if (inlineStderr != null) 'inlineStderr': ['${inlineStderr}'],
+      if (inlineStdout != null) 'inlineStdout': ['${inlineStdout}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
@@ -222,15 +215,11 @@ class ActionResultsResource {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (resultsCachePolicy_priority != null) {
-      _queryParams['resultsCachePolicy.priority'] = [
-        '${resultsCachePolicy_priority}'
-      ];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (resultsCachePolicy_priority != null)
+        'resultsCachePolicy.priority': ['${resultsCachePolicy_priority}'],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
@@ -330,10 +319,9 @@ class ActionsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
@@ -398,10 +386,9 @@ class BlobsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
@@ -462,10 +449,9 @@ class BlobsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
@@ -519,10 +505,9 @@ class BlobsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
@@ -604,16 +589,11 @@ class BlobsResource {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
@@ -674,10 +654,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$name') +
@@ -734,10 +713,9 @@ class V2Resource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +

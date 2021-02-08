@@ -98,10 +98,9 @@ class FeedsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/feeds';
@@ -141,10 +140,9 @@ class FeedsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -182,10 +180,9 @@ class FeedsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -224,10 +221,9 @@ class FeedsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/feeds';
@@ -275,10 +271,9 @@ class FeedsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -324,10 +319,9 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
@@ -476,60 +470,48 @@ class V1Resource {
     if (scope == null) {
       throw core.ArgumentError('Parameter scope is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (analysisQuery_accessSelector_permissions != null) {
-      _queryParams['analysisQuery.accessSelector.permissions'] =
-          analysisQuery_accessSelector_permissions;
-    }
-    if (analysisQuery_accessSelector_roles != null) {
-      _queryParams['analysisQuery.accessSelector.roles'] =
-          analysisQuery_accessSelector_roles;
-    }
-    if (analysisQuery_identitySelector_identity != null) {
-      _queryParams['analysisQuery.identitySelector.identity'] = [
-        analysisQuery_identitySelector_identity
-      ];
-    }
-    if (analysisQuery_options_analyzeServiceAccountImpersonation != null) {
-      _queryParams['analysisQuery.options.analyzeServiceAccountImpersonation'] =
-          ['${analysisQuery_options_analyzeServiceAccountImpersonation}'];
-    }
-    if (analysisQuery_options_expandGroups != null) {
-      _queryParams['analysisQuery.options.expandGroups'] = [
-        '${analysisQuery_options_expandGroups}'
-      ];
-    }
-    if (analysisQuery_options_expandResources != null) {
-      _queryParams['analysisQuery.options.expandResources'] = [
-        '${analysisQuery_options_expandResources}'
-      ];
-    }
-    if (analysisQuery_options_expandRoles != null) {
-      _queryParams['analysisQuery.options.expandRoles'] = [
-        '${analysisQuery_options_expandRoles}'
-      ];
-    }
-    if (analysisQuery_options_outputGroupEdges != null) {
-      _queryParams['analysisQuery.options.outputGroupEdges'] = [
-        '${analysisQuery_options_outputGroupEdges}'
-      ];
-    }
-    if (analysisQuery_options_outputResourceEdges != null) {
-      _queryParams['analysisQuery.options.outputResourceEdges'] = [
-        '${analysisQuery_options_outputResourceEdges}'
-      ];
-    }
-    if (analysisQuery_resourceSelector_fullResourceName != null) {
-      _queryParams['analysisQuery.resourceSelector.fullResourceName'] = [
-        analysisQuery_resourceSelector_fullResourceName
-      ];
-    }
-    if (executionTimeout != null) {
-      _queryParams['executionTimeout'] = [executionTimeout];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (analysisQuery_accessSelector_permissions != null)
+        'analysisQuery.accessSelector.permissions':
+            analysisQuery_accessSelector_permissions,
+      if (analysisQuery_accessSelector_roles != null)
+        'analysisQuery.accessSelector.roles':
+            analysisQuery_accessSelector_roles,
+      if (analysisQuery_identitySelector_identity != null)
+        'analysisQuery.identitySelector.identity': [
+          analysisQuery_identitySelector_identity
+        ],
+      if (analysisQuery_options_analyzeServiceAccountImpersonation != null)
+        'analysisQuery.options.analyzeServiceAccountImpersonation': [
+          '${analysisQuery_options_analyzeServiceAccountImpersonation}'
+        ],
+      if (analysisQuery_options_expandGroups != null)
+        'analysisQuery.options.expandGroups': [
+          '${analysisQuery_options_expandGroups}'
+        ],
+      if (analysisQuery_options_expandResources != null)
+        'analysisQuery.options.expandResources': [
+          '${analysisQuery_options_expandResources}'
+        ],
+      if (analysisQuery_options_expandRoles != null)
+        'analysisQuery.options.expandRoles': [
+          '${analysisQuery_options_expandRoles}'
+        ],
+      if (analysisQuery_options_outputGroupEdges != null)
+        'analysisQuery.options.outputGroupEdges': [
+          '${analysisQuery_options_outputGroupEdges}'
+        ],
+      if (analysisQuery_options_outputResourceEdges != null)
+        'analysisQuery.options.outputResourceEdges': [
+          '${analysisQuery_options_outputResourceEdges}'
+        ],
+      if (analysisQuery_resourceSelector_fullResourceName != null)
+        'analysisQuery.resourceSelector.fullResourceName': [
+          analysisQuery_resourceSelector_fullResourceName
+        ],
+      if (executionTimeout != null) 'executionTimeout': [executionTimeout],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$scope') +
@@ -590,10 +572,9 @@ class V1Resource {
     if (scope == null) {
       throw core.ArgumentError('Parameter scope is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$scope') +
@@ -667,22 +648,15 @@ class V1Resource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (assetNames != null) {
-      _queryParams['assetNames'] = assetNames;
-    }
-    if (contentType != null) {
-      _queryParams['contentType'] = [contentType];
-    }
-    if (readTimeWindow_endTime != null) {
-      _queryParams['readTimeWindow.endTime'] = [readTimeWindow_endTime];
-    }
-    if (readTimeWindow_startTime != null) {
-      _queryParams['readTimeWindow.startTime'] = [readTimeWindow_startTime];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (assetNames != null) 'assetNames': assetNames,
+      if (contentType != null) 'contentType': [contentType],
+      if (readTimeWindow_endTime != null)
+        'readTimeWindow.endTime': [readTimeWindow_endTime],
+      if (readTimeWindow_startTime != null)
+        'readTimeWindow.startTime': [readTimeWindow_startTime],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -739,10 +713,9 @@ class V1Resource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
@@ -839,19 +812,12 @@ class V1Resource {
     if (scope == null) {
       throw core.ArgumentError('Parameter scope is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$scope') +
@@ -967,25 +933,14 @@ class V1Resource {
     if (scope == null) {
       throw core.ArgumentError('Parameter scope is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
-    if (assetTypes != null) {
-      _queryParams['assetTypes'] = assetTypes;
-    }
-    if (orderBy != null) {
-      _queryParams['orderBy'] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams['pageSize'] = ['${pageSize}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if (query != null) {
-      _queryParams['query'] = [query];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (assetTypes != null) 'assetTypes': assetTypes,
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
 
     final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$scope') +
