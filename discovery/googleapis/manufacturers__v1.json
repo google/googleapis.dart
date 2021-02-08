@@ -282,7 +282,7 @@
             }
         }
     },
-    "revision": "20210127",
+    "revision": "20210203",
     "rootUrl": "https://manufacturers.googleapis.com/",
     "schemas": {
         "Attributes": {

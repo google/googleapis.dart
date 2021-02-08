@@ -1028,6 +1028,7 @@ api.Environment buildEnvironment() {
     o.sdkPipelineOptions = buildUnnamed7580();
     o.serviceAccountEmail = 'foo';
     o.serviceKmsKeyName = 'foo';
+    o.shuffleMode = 'foo';
     o.tempStoragePrefix = 'foo';
     o.userAgent = buildUnnamed7581();
     o.version = buildUnnamed7582();
@@ -1050,6 +1051,7 @@ void checkEnvironment(api.Environment o) {
     checkUnnamed7580(o.sdkPipelineOptions);
     unittest.expect(o.serviceAccountEmail, unittest.equals('foo'));
     unittest.expect(o.serviceKmsKeyName, unittest.equals('foo'));
+    unittest.expect(o.shuffleMode, unittest.equals('foo'));
     unittest.expect(o.tempStoragePrefix, unittest.equals('foo'));
     checkUnnamed7581(o.userAgent);
     checkUnnamed7582(o.version);
@@ -3953,6 +3955,7 @@ api.SdkHarnessContainerImage buildSdkHarnessContainerImage() {
   buildCounterSdkHarnessContainerImage++;
   if (buildCounterSdkHarnessContainerImage < 3) {
     o.containerImage = 'foo';
+    o.environmentId = 'foo';
     o.useSingleCorePerContainer = true;
   }
   buildCounterSdkHarnessContainerImage--;
@@ -3963,6 +3966,7 @@ void checkSdkHarnessContainerImage(api.SdkHarnessContainerImage o) {
   buildCounterSdkHarnessContainerImage++;
   if (buildCounterSdkHarnessContainerImage < 3) {
     unittest.expect(o.containerImage, unittest.equals('foo'));
+    unittest.expect(o.environmentId, unittest.equals('foo'));
     unittest.expect(o.useSingleCorePerContainer, unittest.isTrue);
   }
   buildCounterSdkHarnessContainerImage--;

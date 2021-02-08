@@ -5364,6 +5364,15 @@ class Environment {
   /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
   core.String serviceKmsKeyName;
 
+  /// The shuffle mode used for the job.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SHUFFLE_MODE_UNSPECIFIED" : Shuffle mode information is not available.
+  /// - "VM_BASED" : Shuffle is done on the worker VMs.
+  /// - "SERVICE_BASED" : Shuffle is done on the service side.
+  core.String shuffleMode;
+
   /// The prefix of the resources the system should use for temporary storage.
   ///
   /// The system will append the suffix "/temp-{JOBNAME} to this resource
@@ -5456,6 +5465,9 @@ class Environment {
     if (_json.containsKey('serviceKmsKeyName')) {
       serviceKmsKeyName = _json['serviceKmsKeyName'] as core.String;
     }
+    if (_json.containsKey('shuffleMode')) {
+      shuffleMode = _json['shuffleMode'] as core.String;
+    }
     if (_json.containsKey('tempStoragePrefix')) {
       tempStoragePrefix = _json['tempStoragePrefix'] as core.String;
     }
@@ -5516,6 +5528,9 @@ class Environment {
     }
     if (serviceKmsKeyName != null) {
       _json['serviceKmsKeyName'] = serviceKmsKeyName;
+    }
+    if (shuffleMode != null) {
+      _json['shuffleMode'] = shuffleMode;
     }
     if (tempStoragePrefix != null) {
       _json['tempStoragePrefix'] = tempStoragePrefix;
@@ -9938,6 +9953,10 @@ class SdkHarnessContainerImage {
   /// A docker container image that resides in Google Container Registry.
   core.String containerImage;
 
+  /// Environment ID for the Beam runner API proto Environment that corresponds
+  /// to the current SDK Harness.
+  core.String environmentId;
+
   /// If true, recommends the Dataflow service to use only one core per SDK
   /// container instance with this image.
   ///
@@ -9952,6 +9971,9 @@ class SdkHarnessContainerImage {
     if (_json.containsKey('containerImage')) {
       containerImage = _json['containerImage'] as core.String;
     }
+    if (_json.containsKey('environmentId')) {
+      environmentId = _json['environmentId'] as core.String;
+    }
     if (_json.containsKey('useSingleCorePerContainer')) {
       useSingleCorePerContainer =
           _json['useSingleCorePerContainer'] as core.bool;
@@ -9962,6 +9984,9 @@ class SdkHarnessContainerImage {
     final _json = <core.String, core.Object>{};
     if (containerImage != null) {
       _json['containerImage'] = containerImage;
+    }
+    if (environmentId != null) {
+      _json['environmentId'] = environmentId;
     }
     if (useSingleCorePerContainer != null) {
       _json['useSingleCorePerContainer'] = useSingleCorePerContainer;

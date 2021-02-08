@@ -1791,7 +1791,9 @@ class Pivot {
 
   /// The number of rows to return in this pivot.
   ///
-  /// If unspecified, 10 rows are returned. If -1, all rows are returned.
+  /// If the `limit` parameter is unspecified, up to 10,000 rows are returned.
+  /// The API returns a maximum of 100,000 rows per request, no matter how many
+  /// you ask for.
   core.String limit;
 
   /// Aggregate the metrics by dimensions in this pivot using the specified
@@ -1891,10 +1893,10 @@ class PivotHeader {
   /// combinations.
   core.List<PivotDimensionHeader> pivotDimensionHeaders;
 
-  /// The cardinality of the pivot as if offset = 0 and limit = -1.
+  /// The cardinality of the pivot.
   ///
   /// The total number of rows for this pivot's fields regardless of how the
-  /// parameters offset and limit are specified in the request.
+  /// parameters `offset` and `limit` are specified in the request.
   core.int rowCount;
 
   PivotHeader();
@@ -2478,7 +2480,9 @@ class RunRealtimeReportRequest {
 
   /// The number of rows to return.
   ///
-  /// If unspecified, 10 rows are returned. If -1, all rows are returned.
+  /// If the `limit` parameter is unspecified, 10,000 rows are returned. The API
+  /// returns a maximum of 100,000 rows per request, no matter how many you ask
+  /// for.
   core.String limit;
 
   /// Aggregation of metrics.
@@ -2739,9 +2743,9 @@ class RunReportRequest {
 
   /// The number of rows to return.
   ///
-  /// If unspecified, 10 rows are returned. If -1, all rows are returned. To
-  /// learn more about this pagination parameter, see
-  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  /// If the `limit` parameter is unspecified, 10,000 rows are returned. The API
+  /// returns a maximum of 100,000 rows per request, no matter how many you ask
+  /// for.
   core.String limit;
 
   /// Aggregation of metrics.
@@ -2762,9 +2766,7 @@ class RunReportRequest {
 
   /// The row count of the start row.
   ///
-  /// The first row is counted as row 0. To learn more about this pagination
-  /// parameter, see
-  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  /// The first row is counted as row 0.
   core.String offset;
 
   /// Specifies how rows are ordered in the response.
