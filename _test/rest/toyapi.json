@@ -361,7 +361,7 @@
     "foo": {
      "type": "string",
      "description": "Query parameter: 'foo'.",
-     "required": false,
+     "required": true,
      "location": "query"
     },
     "age": {
@@ -372,7 +372,7 @@
     }
    },
    "parameterOrder": [
-    "name"
+    "foo"
    ],
    "response": {
     "$ref": "ToyResponse"

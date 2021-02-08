@@ -1026,9 +1026,9 @@ void main() {
     unittest.test('method--helloNameQueryAgeFoo', () {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
+      var arg_foo = 'foo';
       var arg_name = 'foo';
       var arg_age = 42;
-      var arg_foo = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1063,9 +1063,9 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["foo"].first, unittest.equals(arg_foo));
         unittest.expect(
             core.int.parse(queryMap["age"].first), unittest.equals(arg_age));
-        unittest.expect(queryMap["foo"].first, unittest.equals(arg_foo));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1075,8 +1075,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .helloNameQueryAgeFoo(arg_name,
-              age: arg_age, foo: arg_foo, $fields: arg_$fields)
+          .helloNameQueryAgeFoo(arg_foo, arg_name,
+              age: arg_age, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkToyResponse(response as api.ToyResponse);
       })));

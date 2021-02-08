@@ -323,11 +323,11 @@ class ToyApi {
 
   /// Request parameters:
   ///
+  /// [foo] - Query parameter: 'foo'.
+  ///
   /// [name] - Path parameter: 'name'.
   ///
   /// [age] - Query parameter: 'age'.
-  ///
-  /// [foo] - Query parameter: 'foo'.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -340,20 +340,21 @@ class ToyApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloNameQueryAgeFoo(
+    core.String foo,
     core.String name, {
     core.int age,
-    core.String foo,
     core.String $fields,
   }) async {
+    final _queryParams = <core.String, core.List<core.String>>{};
+    if (foo == null) {
+      throw core.ArgumentError('Parameter foo is required.');
+    }
+    _queryParams['foo'] = [foo];
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    final _queryParams = <core.String, core.List<core.String>>{};
     if (age != null) {
       _queryParams['age'] = ['${age}'];
-    }
-    if (foo != null) {
-      _queryParams['foo'] = [foo];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
