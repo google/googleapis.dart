@@ -254,28 +254,14 @@ class AudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioEncoding != null) {
-      _json['audioEncoding'] = audioEncoding;
-    }
-    if (effectsProfileId != null) {
-      _json['effectsProfileId'] = effectsProfileId;
-    }
-    if (pitch != null) {
-      _json['pitch'] = pitch;
-    }
-    if (sampleRateHertz != null) {
-      _json['sampleRateHertz'] = sampleRateHertz;
-    }
-    if (speakingRate != null) {
-      _json['speakingRate'] = speakingRate;
-    }
-    if (volumeGainDb != null) {
-      _json['volumeGainDb'] = volumeGainDb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioEncoding != null) 'audioEncoding': audioEncoding,
+        if (effectsProfileId != null) 'effectsProfileId': effectsProfileId,
+        if (pitch != null) 'pitch': pitch,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+        if (speakingRate != null) 'speakingRate': speakingRate,
+        if (volumeGainDb != null) 'volumeGainDb': volumeGainDb,
+      };
 }
 
 /// The message returned to the client by the `ListVoices` method.
@@ -294,13 +280,10 @@ class ListVoicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (voices != null) {
-      _json['voices'] = voices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (voices != null)
+          'voices': voices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Contains text input to be synthesized.
@@ -330,16 +313,10 @@ class SynthesisInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ssml != null) {
-      _json['ssml'] = ssml;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ssml != null) 'ssml': ssml,
+        if (text != null) 'text': text,
+      };
 }
 
 /// The top-level message sent by the client for the `SynthesizeSpeech` method.
@@ -376,19 +353,11 @@ class SynthesizeSpeechRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioConfig != null) {
-      _json['audioConfig'] = audioConfig.toJson();
-    }
-    if (input != null) {
-      _json['input'] = input.toJson();
-    }
-    if (voice != null) {
-      _json['voice'] = voice.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioConfig != null) 'audioConfig': audioConfig.toJson(),
+        if (input != null) 'input': input.toJson(),
+        if (voice != null) 'voice': voice.toJson(),
+      };
 }
 
 /// The message returned to the client by the `SynthesizeSpeech` method.
@@ -416,13 +385,9 @@ class SynthesizeSpeechResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioContent != null) {
-      _json['audioContent'] = audioContent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioContent != null) 'audioContent': audioContent,
+      };
 }
 
 /// Description of a voice supported by the TTS service.
@@ -471,22 +436,13 @@ class Voice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCodes != null) {
-      _json['languageCodes'] = languageCodes;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (naturalSampleRateHertz != null) {
-      _json['naturalSampleRateHertz'] = naturalSampleRateHertz;
-    }
-    if (ssmlGender != null) {
-      _json['ssmlGender'] = ssmlGender;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCodes != null) 'languageCodes': languageCodes,
+        if (name != null) 'name': name,
+        if (naturalSampleRateHertz != null)
+          'naturalSampleRateHertz': naturalSampleRateHertz,
+        if (ssmlGender != null) 'ssmlGender': ssmlGender,
+      };
 }
 
 /// Description of which voice to use for a synthesis request.
@@ -545,17 +501,9 @@ class VoiceSelectionParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ssmlGender != null) {
-      _json['ssmlGender'] = ssmlGender;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (name != null) 'name': name,
+        if (ssmlGender != null) 'ssmlGender': ssmlGender,
+      };
 }

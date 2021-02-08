@@ -709,16 +709,10 @@ class Arg {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (anyValue != null) {
-      _json['anyValue'] = anyValue.toJson();
-    }
-    if (exactValue != null) {
-      _json['exactValue'] = exactValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (anyValue != null) 'anyValue': anyValue.toJson(),
+        if (exactValue != null) 'exactValue': exactValue,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -735,10 +729,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Describes where in a file an expression is found and what it was evaluated
@@ -774,19 +765,13 @@ class ExpressionReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (children != null) {
-      _json['children'] = children.map((value) => value.toJson()).toList();
-    }
-    if (sourcePosition != null) {
-      _json['sourcePosition'] = sourcePosition.toJson();
-    }
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (children != null)
+          'children': children.map((value) => value.toJson()).toList(),
+        if (sourcePosition != null) 'sourcePosition': sourcePosition.toJson(),
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// `File` containing source content.
@@ -821,19 +806,11 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Represents a service-defined function call that was invoked during test
@@ -861,16 +838,10 @@ class FunctionCall {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (function != null) {
-      _json['function'] = function;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (args != null) 'args': args,
+        if (function != null) 'function': function,
+      };
 }
 
 /// Mock function definition.
@@ -915,19 +886,11 @@ class FunctionMock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (args != null) {
-      _json['args'] = args.map((value) => value.toJson()).toList();
-    }
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (args != null) 'args': args.map((value) => value.toJson()).toList(),
+        if (function != null) 'function': function,
+        if (result != null) 'result': result.toJson(),
+      };
 }
 
 /// The response for FirebaseRulesService.GetReleaseExecutable
@@ -995,28 +958,14 @@ class GetReleaseExecutableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executable != null) {
-      _json['executable'] = executable;
-    }
-    if (executableVersion != null) {
-      _json['executableVersion'] = executableVersion;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (rulesetName != null) {
-      _json['rulesetName'] = rulesetName;
-    }
-    if (syncTime != null) {
-      _json['syncTime'] = syncTime;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executable != null) 'executable': executable,
+        if (executableVersion != null) 'executableVersion': executableVersion,
+        if (language != null) 'language': language,
+        if (rulesetName != null) 'rulesetName': rulesetName,
+        if (syncTime != null) 'syncTime': syncTime,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Issues include warnings, errors, and deprecation notices.
@@ -1052,19 +1001,11 @@ class Issue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (sourcePosition != null) {
-      _json['sourcePosition'] = sourcePosition.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (severity != null) 'severity': severity,
+        if (sourcePosition != null) 'sourcePosition': sourcePosition.toJson(),
+      };
 }
 
 /// The response for FirebaseRulesService.ListReleases.
@@ -1091,16 +1032,11 @@ class ListReleasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (releases != null) {
-      _json['releases'] = releases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (releases != null)
+          'releases': releases.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response for FirebaseRulesService.ListRulesets.
@@ -1127,16 +1063,11 @@ class ListRulesetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (rulesets != null) {
-      _json['rulesets'] = rulesets.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (rulesets != null)
+          'rulesets': rulesets.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata for a Ruleset.
@@ -1156,13 +1087,9 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (services != null) {
-      _json['services'] = services;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (services != null) 'services': services,
+      };
 }
 
 /// `Release` is a named reference to a `Ruleset`.
@@ -1221,22 +1148,12 @@ class Release {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (rulesetName != null) {
-      _json['rulesetName'] = rulesetName;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (name != null) 'name': name,
+        if (rulesetName != null) 'rulesetName': rulesetName,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Possible result values from the function mock invocation.
@@ -1264,16 +1181,10 @@ class Result {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (undefined != null) {
-      _json['undefined'] = undefined.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (undefined != null) 'undefined': undefined.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// `Ruleset` is an immutable copy of `Source` with a globally unique identifier
@@ -1317,22 +1228,12 @@ class Ruleset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (name != null) 'name': name,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// `Source` is one or more `File` messages comprising a logical set of rules.
@@ -1351,13 +1252,10 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (files != null) {
-      _json['files'] = files.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (files != null)
+          'files': files.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Position in the `Source` content including its line, column number, and an
@@ -1402,25 +1300,13 @@ class SourcePosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (column != null) {
-      _json['column'] = column;
-    }
-    if (currentOffset != null) {
-      _json['currentOffset'] = currentOffset;
-    }
-    if (endOffset != null) {
-      _json['endOffset'] = endOffset;
-    }
-    if (fileName != null) {
-      _json['fileName'] = fileName;
-    }
-    if (line != null) {
-      _json['line'] = line;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (column != null) 'column': column,
+        if (currentOffset != null) 'currentOffset': currentOffset,
+        if (endOffset != null) 'endOffset': endOffset,
+        if (fileName != null) 'fileName': fileName,
+        if (line != null) 'line': line,
+      };
 }
 
 /// `TestCase` messages provide the request context and an expectation as to
@@ -1514,29 +1400,17 @@ class TestCase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expectation != null) {
-      _json['expectation'] = expectation;
-    }
-    if (expressionReportLevel != null) {
-      _json['expressionReportLevel'] = expressionReportLevel;
-    }
-    if (functionMocks != null) {
-      _json['functionMocks'] =
-          functionMocks.map((value) => value.toJson()).toList();
-    }
-    if (pathEncoding != null) {
-      _json['pathEncoding'] = pathEncoding;
-    }
-    if (request != null) {
-      _json['request'] = request;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expectation != null) 'expectation': expectation,
+        if (expressionReportLevel != null)
+          'expressionReportLevel': expressionReportLevel,
+        if (functionMocks != null)
+          'functionMocks':
+              functionMocks.map((value) => value.toJson()).toList(),
+        if (pathEncoding != null) 'pathEncoding': pathEncoding,
+        if (request != null) 'request': request,
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// Test result message containing the state of the test as well as a
@@ -1624,31 +1498,20 @@ class TestResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (debugMessages != null) {
-      _json['debugMessages'] = debugMessages;
-    }
-    if (errorPosition != null) {
-      _json['errorPosition'] = errorPosition.toJson();
-    }
-    if (expressionReports != null) {
-      _json['expressionReports'] =
-          expressionReports.map((value) => value.toJson()).toList();
-    }
-    if (functionCalls != null) {
-      _json['functionCalls'] =
-          functionCalls.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (visitedExpressions != null) {
-      _json['visitedExpressions'] =
-          visitedExpressions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (debugMessages != null) 'debugMessages': debugMessages,
+        if (errorPosition != null) 'errorPosition': errorPosition.toJson(),
+        if (expressionReports != null)
+          'expressionReports':
+              expressionReports.map((value) => value.toJson()).toList(),
+        if (functionCalls != null)
+          'functionCalls':
+              functionCalls.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+        if (visitedExpressions != null)
+          'visitedExpressions':
+              visitedExpressions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request for FirebaseRulesService.TestRuleset.
@@ -1674,16 +1537,10 @@ class TestRulesetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (testSuite != null) {
-      _json['testSuite'] = testSuite.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (source != null) 'source': source.toJson(),
+        if (testSuite != null) 'testSuite': testSuite.toJson(),
+      };
 }
 
 /// The response for FirebaseRulesService.TestRuleset.
@@ -1716,17 +1573,12 @@ class TestRulesetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (issues != null) {
-      _json['issues'] = issues.map((value) => value.toJson()).toList();
-    }
-    if (testResults != null) {
-      _json['testResults'] =
-          testResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (issues != null)
+          'issues': issues.map((value) => value.toJson()).toList(),
+        if (testResults != null)
+          'testResults': testResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// `TestSuite` is a collection of `TestCase` instances that validate the
@@ -1749,13 +1601,10 @@ class TestSuite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (testCases != null) {
-      _json['testCases'] = testCases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (testCases != null)
+          'testCases': testCases.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request for FirebaseRulesService.UpdateReleasePatch.
@@ -1778,16 +1627,10 @@ class UpdateReleaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (release != null) {
-      _json['release'] = release.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (release != null) 'release': release.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Tuple for how many times an Expression was evaluated to a particular
@@ -1813,16 +1656,10 @@ class ValueCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Store the position and access outcome for an expression visited in rules.
@@ -1848,14 +1685,8 @@ class VisitedExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sourcePosition != null) {
-      _json['sourcePosition'] = sourcePosition.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sourcePosition != null) 'sourcePosition': sourcePosition.toJson(),
+        if (value != null) 'value': value,
+      };
 }

@@ -170,34 +170,16 @@ class Webfont {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (family != null) {
-      _json['family'] = family;
-    }
-    if (files != null) {
-      _json['files'] = files;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (lastModified != null) {
-      _json['lastModified'] = lastModified;
-    }
-    if (subsets != null) {
-      _json['subsets'] = subsets;
-    }
-    if (variants != null) {
-      _json['variants'] = variants;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (family != null) 'family': family,
+        if (files != null) 'files': files,
+        if (kind != null) 'kind': kind,
+        if (lastModified != null) 'lastModified': lastModified,
+        if (subsets != null) 'subsets': subsets,
+        if (variants != null) 'variants': variants,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Response containing the list of fonts currently served by the Google Fonts
@@ -223,14 +205,9 @@ class WebfontList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }

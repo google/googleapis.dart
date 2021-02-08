@@ -4555,13 +4555,9 @@ class BucketBilling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requesterPays != null) {
-      _json['requesterPays'] = requesterPays;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requesterPays != null) 'requesterPays': requesterPays,
+      };
 }
 
 class BucketCors {
@@ -4606,22 +4602,12 @@ class BucketCors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxAgeSeconds != null) {
-      _json['maxAgeSeconds'] = maxAgeSeconds;
-    }
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (origin != null) {
-      _json['origin'] = origin;
-    }
-    if (responseHeader != null) {
-      _json['responseHeader'] = responseHeader;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxAgeSeconds != null) 'maxAgeSeconds': maxAgeSeconds,
+        if (method != null) 'method': method,
+        if (origin != null) 'origin': origin,
+        if (responseHeader != null) 'responseHeader': responseHeader,
+      };
 }
 
 /// Encryption configuration for a bucket.
@@ -4638,13 +4624,9 @@ class BucketEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultKmsKeyName != null) {
-      _json['defaultKmsKeyName'] = defaultKmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultKmsKeyName != null) 'defaultKmsKeyName': defaultKmsKeyName,
+      };
 }
 
 /// The bucket's uniform bucket-level access configuration.
@@ -4675,16 +4657,10 @@ class BucketIamConfigurationBucketPolicyOnly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (lockedTime != null) {
-      _json['lockedTime'] = (lockedTime).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+        if (lockedTime != null) 'lockedTime': (lockedTime).toIso8601String(),
+      };
 }
 
 /// The bucket's uniform bucket-level access configuration.
@@ -4711,16 +4687,10 @@ class BucketIamConfigurationUniformBucketLevelAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (lockedTime != null) {
-      _json['lockedTime'] = (lockedTime).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+        if (lockedTime != null) 'lockedTime': (lockedTime).toIso8601String(),
+      };
 }
 
 /// The bucket's IAM configuration.
@@ -4759,19 +4729,14 @@ class BucketIamConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketPolicyOnly != null) {
-      _json['bucketPolicyOnly'] = bucketPolicyOnly.toJson();
-    }
-    if (publicAccessPrevention != null) {
-      _json['publicAccessPrevention'] = publicAccessPrevention;
-    }
-    if (uniformBucketLevelAccess != null) {
-      _json['uniformBucketLevelAccess'] = uniformBucketLevelAccess.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketPolicyOnly != null)
+          'bucketPolicyOnly': bucketPolicyOnly.toJson(),
+        if (publicAccessPrevention != null)
+          'publicAccessPrevention': publicAccessPrevention,
+        if (uniformBucketLevelAccess != null)
+          'uniformBucketLevelAccess': uniformBucketLevelAccess.toJson(),
+      };
 }
 
 /// The action to take.
@@ -4797,16 +4762,10 @@ class BucketLifecycleRuleAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (storageClass != null) {
-      _json['storageClass'] = storageClass;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (storageClass != null) 'storageClass': storageClass,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The condition(s) under which the action will be taken.
@@ -4923,43 +4882,27 @@ class BucketLifecycleRuleCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (age != null) {
-      _json['age'] = age;
-    }
-    if (createdBefore != null) {
-      _json['createdBefore'] =
-          "${(createdBefore).year.toString().padLeft(4, '0')}-${(createdBefore).month.toString().padLeft(2, '0')}-${(createdBefore).day.toString().padLeft(2, '0')}";
-    }
-    if (customTimeBefore != null) {
-      _json['customTimeBefore'] =
-          "${(customTimeBefore).year.toString().padLeft(4, '0')}-${(customTimeBefore).month.toString().padLeft(2, '0')}-${(customTimeBefore).day.toString().padLeft(2, '0')}";
-    }
-    if (daysSinceCustomTime != null) {
-      _json['daysSinceCustomTime'] = daysSinceCustomTime;
-    }
-    if (daysSinceNoncurrentTime != null) {
-      _json['daysSinceNoncurrentTime'] = daysSinceNoncurrentTime;
-    }
-    if (isLive != null) {
-      _json['isLive'] = isLive;
-    }
-    if (matchesPattern != null) {
-      _json['matchesPattern'] = matchesPattern;
-    }
-    if (matchesStorageClass != null) {
-      _json['matchesStorageClass'] = matchesStorageClass;
-    }
-    if (noncurrentTimeBefore != null) {
-      _json['noncurrentTimeBefore'] =
-          "${(noncurrentTimeBefore).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore).day.toString().padLeft(2, '0')}";
-    }
-    if (numNewerVersions != null) {
-      _json['numNewerVersions'] = numNewerVersions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (age != null) 'age': age,
+        if (createdBefore != null)
+          'createdBefore':
+              "${(createdBefore).year.toString().padLeft(4, '0')}-${(createdBefore).month.toString().padLeft(2, '0')}-${(createdBefore).day.toString().padLeft(2, '0')}",
+        if (customTimeBefore != null)
+          'customTimeBefore':
+              "${(customTimeBefore).year.toString().padLeft(4, '0')}-${(customTimeBefore).month.toString().padLeft(2, '0')}-${(customTimeBefore).day.toString().padLeft(2, '0')}",
+        if (daysSinceCustomTime != null)
+          'daysSinceCustomTime': daysSinceCustomTime,
+        if (daysSinceNoncurrentTime != null)
+          'daysSinceNoncurrentTime': daysSinceNoncurrentTime,
+        if (isLive != null) 'isLive': isLive,
+        if (matchesPattern != null) 'matchesPattern': matchesPattern,
+        if (matchesStorageClass != null)
+          'matchesStorageClass': matchesStorageClass,
+        if (noncurrentTimeBefore != null)
+          'noncurrentTimeBefore':
+              "${(noncurrentTimeBefore).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore).day.toString().padLeft(2, '0')}",
+        if (numNewerVersions != null) 'numNewerVersions': numNewerVersions,
+      };
 }
 
 class BucketLifecycleRule {
@@ -4982,16 +4925,10 @@ class BucketLifecycleRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action.toJson();
-    }
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action.toJson(),
+        if (condition != null) 'condition': condition.toJson(),
+      };
 }
 
 /// The bucket's lifecycle configuration.
@@ -5013,13 +4950,9 @@ class BucketLifecycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rule != null) {
-      _json['rule'] = rule.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rule != null) 'rule': rule.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The bucket's logging configuration, which defines the destination bucket and
@@ -5042,16 +4975,10 @@ class BucketLogging {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (logBucket != null) {
-      _json['logBucket'] = logBucket;
-    }
-    if (logObjectPrefix != null) {
-      _json['logObjectPrefix'] = logObjectPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (logBucket != null) 'logBucket': logBucket,
+        if (logObjectPrefix != null) 'logObjectPrefix': logObjectPrefix,
+      };
 }
 
 /// The owner of the bucket.
@@ -5075,16 +5002,10 @@ class BucketOwner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity,
+        if (entityId != null) 'entityId': entityId,
+      };
 }
 
 /// The bucket's retention policy.
@@ -5129,19 +5050,12 @@ class BucketRetentionPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effectiveTime != null) {
-      _json['effectiveTime'] = (effectiveTime).toIso8601String();
-    }
-    if (isLocked != null) {
-      _json['isLocked'] = isLocked;
-    }
-    if (retentionPeriod != null) {
-      _json['retentionPeriod'] = retentionPeriod;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effectiveTime != null)
+          'effectiveTime': (effectiveTime).toIso8601String(),
+        if (isLocked != null) 'isLocked': isLocked,
+        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod,
+      };
 }
 
 /// The bucket's versioning configuration.
@@ -5157,13 +5071,9 @@ class BucketVersioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabled != null) 'enabled': enabled,
+      };
 }
 
 /// The bucket's website configuration, controlling how the service behaves when
@@ -5195,16 +5105,10 @@ class BucketWebsite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mainPageSuffix != null) {
-      _json['mainPageSuffix'] = mainPageSuffix;
-    }
-    if (notFoundPage != null) {
-      _json['notFoundPage'] = notFoundPage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mainPageSuffix != null) 'mainPageSuffix': mainPageSuffix,
+        if (notFoundPage != null) 'notFoundPage': notFoundPage,
+      };
 }
 
 /// A bucket.
@@ -5459,95 +5363,41 @@ class Bucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acl != null) {
-      _json['acl'] = acl.map((value) => value.toJson()).toList();
-    }
-    if (billing != null) {
-      _json['billing'] = billing.toJson();
-    }
-    if (cors != null) {
-      _json['cors'] = cors.map((value) => value.toJson()).toList();
-    }
-    if (defaultEventBasedHold != null) {
-      _json['defaultEventBasedHold'] = defaultEventBasedHold;
-    }
-    if (defaultObjectAcl != null) {
-      _json['defaultObjectAcl'] =
-          defaultObjectAcl.map((value) => value.toJson()).toList();
-    }
-    if (encryption != null) {
-      _json['encryption'] = encryption.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (iamConfiguration != null) {
-      _json['iamConfiguration'] = iamConfiguration.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (lifecycle != null) {
-      _json['lifecycle'] = lifecycle.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (locationType != null) {
-      _json['locationType'] = locationType;
-    }
-    if (logging != null) {
-      _json['logging'] = logging.toJson();
-    }
-    if (metageneration != null) {
-      _json['metageneration'] = metageneration;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (owner != null) {
-      _json['owner'] = owner.toJson();
-    }
-    if (projectNumber != null) {
-      _json['projectNumber'] = projectNumber;
-    }
-    if (retentionPolicy != null) {
-      _json['retentionPolicy'] = retentionPolicy.toJson();
-    }
-    if (satisfiesPZS != null) {
-      _json['satisfiesPZS'] = satisfiesPZS;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (storageClass != null) {
-      _json['storageClass'] = storageClass;
-    }
-    if (timeCreated != null) {
-      _json['timeCreated'] = (timeCreated).toIso8601String();
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (versioning != null) {
-      _json['versioning'] = versioning.toJson();
-    }
-    if (website != null) {
-      _json['website'] = website.toJson();
-    }
-    if (zoneAffinity != null) {
-      _json['zoneAffinity'] = zoneAffinity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acl != null) 'acl': acl.map((value) => value.toJson()).toList(),
+        if (billing != null) 'billing': billing.toJson(),
+        if (cors != null) 'cors': cors.map((value) => value.toJson()).toList(),
+        if (defaultEventBasedHold != null)
+          'defaultEventBasedHold': defaultEventBasedHold,
+        if (defaultObjectAcl != null)
+          'defaultObjectAcl':
+              defaultObjectAcl.map((value) => value.toJson()).toList(),
+        if (encryption != null) 'encryption': encryption.toJson(),
+        if (etag != null) 'etag': etag,
+        if (iamConfiguration != null)
+          'iamConfiguration': iamConfiguration.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (lifecycle != null) 'lifecycle': lifecycle.toJson(),
+        if (location != null) 'location': location,
+        if (locationType != null) 'locationType': locationType,
+        if (logging != null) 'logging': logging.toJson(),
+        if (metageneration != null) 'metageneration': metageneration,
+        if (name != null) 'name': name,
+        if (owner != null) 'owner': owner.toJson(),
+        if (projectNumber != null) 'projectNumber': projectNumber,
+        if (retentionPolicy != null)
+          'retentionPolicy': retentionPolicy.toJson(),
+        if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (storageClass != null) 'storageClass': storageClass,
+        if (timeCreated != null) 'timeCreated': (timeCreated).toIso8601String(),
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (versioning != null) 'versioning': versioning.toJson(),
+        if (website != null) 'website': website.toJson(),
+        if (zoneAffinity != null) 'zoneAffinity': zoneAffinity,
+      };
 }
 
 /// The project team associated with the entity, if any.
@@ -5569,16 +5419,10 @@ class BucketAccessControlProjectTeam {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectNumber != null) {
-      _json['projectNumber'] = projectNumber;
-    }
-    if (team != null) {
-      _json['team'] = team;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectNumber != null) 'projectNumber': projectNumber,
+        if (team != null) 'team': team,
+      };
 }
 
 /// An access-control entry.
@@ -5673,43 +5517,19 @@ class BucketAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucket != null) {
-      _json['bucket'] = bucket;
-    }
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (entity != null) {
-      _json['entity'] = entity;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (projectTeam != null) {
-      _json['projectTeam'] = projectTeam.toJson();
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucket != null) 'bucket': bucket,
+        if (domain != null) 'domain': domain,
+        if (email != null) 'email': email,
+        if (entity != null) 'entity': entity,
+        if (entityId != null) 'entityId': entityId,
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (projectTeam != null) 'projectTeam': projectTeam.toJson(),
+        if (role != null) 'role': role,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// An access-control list.
@@ -5737,16 +5557,11 @@ class BucketAccessControls {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// A list of buckets.
@@ -5782,19 +5597,12 @@ class Buckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// An notification channel used to watch for resource changes.
@@ -5883,40 +5691,18 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (expiration != null) {
-      _json['expiration'] = expiration;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (expiration != null) 'expiration': expiration,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (params != null) 'params': params,
+        if (payload != null) 'payload': payload,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (resourceUri != null) 'resourceUri': resourceUri,
+        if (token != null) 'token': token,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Conditions that must be met for this operation to execute.
@@ -5936,13 +5722,9 @@ class ComposeRequestSourceObjectsObjectPreconditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ifGenerationMatch != null) {
-      _json['ifGenerationMatch'] = ifGenerationMatch;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ifGenerationMatch != null) 'ifGenerationMatch': ifGenerationMatch,
+      };
 }
 
 class ComposeRequestSourceObjects {
@@ -5974,19 +5756,12 @@ class ComposeRequestSourceObjects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (generation != null) {
-      _json['generation'] = generation;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (objectPreconditions != null) {
-      _json['objectPreconditions'] = objectPreconditions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (generation != null) 'generation': generation,
+        if (name != null) 'name': name,
+        if (objectPreconditions != null)
+          'objectPreconditions': objectPreconditions.toJson(),
+      };
 }
 
 /// A Compose request.
@@ -6019,20 +5794,13 @@ class ComposeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destination != null) {
-      _json['destination'] = destination.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (sourceObjects != null) {
-      _json['sourceObjects'] =
-          sourceObjects.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destination != null) 'destination': destination.toJson(),
+        if (kind != null) 'kind': kind,
+        if (sourceObjects != null)
+          'sourceObjects':
+              sourceObjects.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents an expression text.
@@ -6080,22 +5848,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// JSON template to produce a JSON-style HMAC Key resource for Create
@@ -6127,19 +5885,11 @@ class HmacKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (secret != null) {
-      _json['secret'] = secret;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (secret != null) 'secret': secret,
+      };
 }
 
 /// JSON template to produce a JSON-style HMAC Key metadata resource.
@@ -6213,40 +5963,19 @@ class HmacKeyMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessId != null) {
-      _json['accessId'] = accessId;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (serviceAccountEmail != null) {
-      _json['serviceAccountEmail'] = serviceAccountEmail;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (timeCreated != null) {
-      _json['timeCreated'] = (timeCreated).toIso8601String();
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessId != null) 'accessId': accessId,
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (projectId != null) 'projectId': projectId,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail,
+        if (state != null) 'state': state,
+        if (timeCreated != null) 'timeCreated': (timeCreated).toIso8601String(),
+        if (updated != null) 'updated': (updated).toIso8601String(),
+      };
 }
 
 /// A list of hmacKeys.
@@ -6282,19 +6011,12 @@ class HmacKeysMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A subscription to receive Google PubSub notifications.
@@ -6376,37 +6098,17 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customAttributes != null) {
-      _json['custom_attributes'] = customAttributes;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventTypes != null) {
-      _json['event_types'] = eventTypes;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (objectNamePrefix != null) {
-      _json['object_name_prefix'] = objectNamePrefix;
-    }
-    if (payloadFormat != null) {
-      _json['payload_format'] = payloadFormat;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customAttributes != null) 'custom_attributes': customAttributes,
+        if (etag != null) 'etag': etag,
+        if (eventTypes != null) 'event_types': eventTypes,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (objectNamePrefix != null) 'object_name_prefix': objectNamePrefix,
+        if (payloadFormat != null) 'payload_format': payloadFormat,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (topic != null) 'topic': topic,
+      };
 }
 
 /// A list of notification subscriptions.
@@ -6433,16 +6135,11 @@ class Notifications {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Metadata of customer-supplied encryption key, if the object is encrypted by
@@ -6465,16 +6162,11 @@ class ObjectCustomerEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encryptionAlgorithm != null) {
-      _json['encryptionAlgorithm'] = encryptionAlgorithm;
-    }
-    if (keySha256 != null) {
-      _json['keySha256'] = keySha256;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encryptionAlgorithm != null)
+          'encryptionAlgorithm': encryptionAlgorithm,
+        if (keySha256 != null) 'keySha256': keySha256,
+      };
 }
 
 /// The owner of the object.
@@ -6498,16 +6190,10 @@ class ObjectOwner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity,
+        if (entityId != null) 'entityId': entityId,
+      };
 }
 
 /// An object.
@@ -6784,108 +6470,46 @@ class Object {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acl != null) {
-      _json['acl'] = acl.map((value) => value.toJson()).toList();
-    }
-    if (bucket != null) {
-      _json['bucket'] = bucket;
-    }
-    if (cacheControl != null) {
-      _json['cacheControl'] = cacheControl;
-    }
-    if (componentCount != null) {
-      _json['componentCount'] = componentCount;
-    }
-    if (contentDisposition != null) {
-      _json['contentDisposition'] = contentDisposition;
-    }
-    if (contentEncoding != null) {
-      _json['contentEncoding'] = contentEncoding;
-    }
-    if (contentLanguage != null) {
-      _json['contentLanguage'] = contentLanguage;
-    }
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (crc32c != null) {
-      _json['crc32c'] = crc32c;
-    }
-    if (customTime != null) {
-      _json['customTime'] = (customTime).toIso8601String();
-    }
-    if (customerEncryption != null) {
-      _json['customerEncryption'] = customerEncryption.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventBasedHold != null) {
-      _json['eventBasedHold'] = eventBasedHold;
-    }
-    if (generation != null) {
-      _json['generation'] = generation;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    if (md5Hash != null) {
-      _json['md5Hash'] = md5Hash;
-    }
-    if (mediaLink != null) {
-      _json['mediaLink'] = mediaLink;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (metageneration != null) {
-      _json['metageneration'] = metageneration;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (owner != null) {
-      _json['owner'] = owner.toJson();
-    }
-    if (retentionExpirationTime != null) {
-      _json['retentionExpirationTime'] =
-          (retentionExpirationTime).toIso8601String();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (storageClass != null) {
-      _json['storageClass'] = storageClass;
-    }
-    if (temporaryHold != null) {
-      _json['temporaryHold'] = temporaryHold;
-    }
-    if (timeCreated != null) {
-      _json['timeCreated'] = (timeCreated).toIso8601String();
-    }
-    if (timeDeleted != null) {
-      _json['timeDeleted'] = (timeDeleted).toIso8601String();
-    }
-    if (timeStorageClassUpdated != null) {
-      _json['timeStorageClassUpdated'] =
-          (timeStorageClassUpdated).toIso8601String();
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acl != null) 'acl': acl.map((value) => value.toJson()).toList(),
+        if (bucket != null) 'bucket': bucket,
+        if (cacheControl != null) 'cacheControl': cacheControl,
+        if (componentCount != null) 'componentCount': componentCount,
+        if (contentDisposition != null)
+          'contentDisposition': contentDisposition,
+        if (contentEncoding != null) 'contentEncoding': contentEncoding,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage,
+        if (contentType != null) 'contentType': contentType,
+        if (crc32c != null) 'crc32c': crc32c,
+        if (customTime != null) 'customTime': (customTime).toIso8601String(),
+        if (customerEncryption != null)
+          'customerEncryption': customerEncryption.toJson(),
+        if (etag != null) 'etag': etag,
+        if (eventBasedHold != null) 'eventBasedHold': eventBasedHold,
+        if (generation != null) 'generation': generation,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+        if (md5Hash != null) 'md5Hash': md5Hash,
+        if (mediaLink != null) 'mediaLink': mediaLink,
+        if (metadata != null) 'metadata': metadata,
+        if (metageneration != null) 'metageneration': metageneration,
+        if (name != null) 'name': name,
+        if (owner != null) 'owner': owner.toJson(),
+        if (retentionExpirationTime != null)
+          'retentionExpirationTime':
+              (retentionExpirationTime).toIso8601String(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (size != null) 'size': size,
+        if (storageClass != null) 'storageClass': storageClass,
+        if (temporaryHold != null) 'temporaryHold': temporaryHold,
+        if (timeCreated != null) 'timeCreated': (timeCreated).toIso8601String(),
+        if (timeDeleted != null) 'timeDeleted': (timeDeleted).toIso8601String(),
+        if (timeStorageClassUpdated != null)
+          'timeStorageClassUpdated':
+              (timeStorageClassUpdated).toIso8601String(),
+        if (updated != null) 'updated': (updated).toIso8601String(),
+      };
 }
 
 /// The project team associated with the entity, if any.
@@ -6907,16 +6531,10 @@ class ObjectAccessControlProjectTeam {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectNumber != null) {
-      _json['projectNumber'] = projectNumber;
-    }
-    if (team != null) {
-      _json['team'] = team;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectNumber != null) 'projectNumber': projectNumber,
+        if (team != null) 'team': team,
+      };
 }
 
 /// An access-control entry.
@@ -7023,49 +6641,21 @@ class ObjectAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucket != null) {
-      _json['bucket'] = bucket;
-    }
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (entity != null) {
-      _json['entity'] = entity;
-    }
-    if (entityId != null) {
-      _json['entityId'] = entityId;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (generation != null) {
-      _json['generation'] = generation;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (object != null) {
-      _json['object'] = object;
-    }
-    if (projectTeam != null) {
-      _json['projectTeam'] = projectTeam.toJson();
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucket != null) 'bucket': bucket,
+        if (domain != null) 'domain': domain,
+        if (email != null) 'email': email,
+        if (entity != null) 'entity': entity,
+        if (entityId != null) 'entityId': entityId,
+        if (etag != null) 'etag': etag,
+        if (generation != null) 'generation': generation,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (object != null) 'object': object,
+        if (projectTeam != null) 'projectTeam': projectTeam.toJson(),
+        if (role != null) 'role': role,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// An access-control list.
@@ -7093,16 +6683,11 @@ class ObjectAccessControls {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// A list of objects.
@@ -7147,22 +6732,13 @@ class Objects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (prefixes != null) {
-      _json['prefixes'] = prefixes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (prefixes != null) 'prefixes': prefixes,
+      };
 }
 
 class PolicyBindings {
@@ -7243,19 +6819,11 @@ class PolicyBindings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A bucket/object IAM policy.
@@ -7315,25 +6883,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A rewrite response.
@@ -7392,28 +6949,15 @@ class RewriteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (objectSize != null) {
-      _json['objectSize'] = objectSize;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    if (rewriteToken != null) {
-      _json['rewriteToken'] = rewriteToken;
-    }
-    if (totalBytesRewritten != null) {
-      _json['totalBytesRewritten'] = totalBytesRewritten;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (kind != null) 'kind': kind,
+        if (objectSize != null) 'objectSize': objectSize,
+        if (resource != null) 'resource': resource.toJson(),
+        if (rewriteToken != null) 'rewriteToken': rewriteToken,
+        if (totalBytesRewritten != null)
+          'totalBytesRewritten': totalBytesRewritten,
+      };
 }
 
 /// A subscription to receive Google PubSub notifications.
@@ -7437,16 +6981,10 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emailAddress != null) {
-      _json['email_address'] = emailAddress;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emailAddress != null) 'email_address': emailAddress,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// A storage.(buckets|objects).testIamPermissions response.
@@ -7488,14 +7026,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (permissions != null) 'permissions': permissions,
+      };
 }

@@ -1392,22 +1392,12 @@ class Assignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignee != null) {
-      _json['assignee'] = assignee;
-    }
-    if (jobType != null) {
-      _json['jobType'] = jobType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignee != null) 'assignee': assignee,
+        if (jobType != null) 'jobType': jobType,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Represents a BI Reservation.
@@ -1440,19 +1430,11 @@ class BiReservation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (size != null) 'size': size,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Capacity commitment is a way to purchase compute capacity for BigQuery jobs
@@ -1575,34 +1557,17 @@ class CapacityCommitment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commitmentEndTime != null) {
-      _json['commitmentEndTime'] = commitmentEndTime;
-    }
-    if (commitmentStartTime != null) {
-      _json['commitmentStartTime'] = commitmentStartTime;
-    }
-    if (failureStatus != null) {
-      _json['failureStatus'] = failureStatus.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (plan != null) {
-      _json['plan'] = plan;
-    }
-    if (renewalPlan != null) {
-      _json['renewalPlan'] = renewalPlan;
-    }
-    if (slotCount != null) {
-      _json['slotCount'] = slotCount;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime,
+        if (commitmentStartTime != null)
+          'commitmentStartTime': commitmentStartTime,
+        if (failureStatus != null) 'failureStatus': failureStatus.toJson(),
+        if (name != null) 'name': name,
+        if (plan != null) 'plan': plan,
+        if (renewalPlan != null) 'renewalPlan': renewalPlan,
+        if (slotCount != null) 'slotCount': slotCount,
+        if (state != null) 'state': state,
+      };
 }
 
 /// The metadata for operation returned from ReservationService.CreateSlotPool.
@@ -1621,13 +1586,9 @@ class CreateSlotPoolMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (slotPool != null) {
-      _json['slotPool'] = slotPool;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (slotPool != null) 'slotPool': slotPool,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1644,10 +1605,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response for ReservationService.ListAssignments.
@@ -1673,17 +1631,11 @@ class ListAssignmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignments != null) {
-      _json['assignments'] =
-          assignments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignments != null)
+          'assignments': assignments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response for ReservationService.ListCapacityCommitments.
@@ -1709,17 +1661,12 @@ class ListCapacityCommitmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (capacityCommitments != null) {
-      _json['capacityCommitments'] =
-          capacityCommitments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (capacityCommitments != null)
+          'capacityCommitments':
+              capacityCommitments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1744,16 +1691,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response for ReservationService.ListReservations.
@@ -1779,17 +1721,11 @@ class ListReservationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (reservations != null) {
-      _json['reservations'] =
-          reservations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (reservations != null)
+          'reservations': reservations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request for ReservationService.MergeCapacityCommitments.
@@ -1812,13 +1748,10 @@ class MergeCapacityCommitmentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (capacityCommitmentIds != null) {
-      _json['capacityCommitmentIds'] = capacityCommitmentIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (capacityCommitmentIds != null)
+          'capacityCommitmentIds': capacityCommitmentIds,
+      };
 }
 
 /// The request for ReservationService.MoveAssignment.
@@ -1840,13 +1773,9 @@ class MoveAssignmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationId != null) {
-      _json['destinationId'] = destinationId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationId != null) 'destinationId': destinationId,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1925,25 +1854,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A reservation is a mechanism used to guarantee slots to users.
@@ -2000,25 +1917,13 @@ class Reservation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (ignoreIdleSlots != null) {
-      _json['ignoreIdleSlots'] = ignoreIdleSlots;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (slotCapacity != null) {
-      _json['slotCapacity'] = slotCapacity;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots,
+        if (name != null) 'name': name,
+        if (slotCapacity != null) 'slotCapacity': slotCapacity,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The response for ReservationService.SearchAllAssignments.
@@ -2044,17 +1949,11 @@ class SearchAllAssignmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignments != null) {
-      _json['assignments'] =
-          assignments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignments != null)
+          'assignments': assignments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response for ReservationService.SearchAssignments.
@@ -2080,17 +1979,11 @@ class SearchAssignmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignments != null) {
-      _json['assignments'] =
-          assignments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignments != null)
+          'assignments': assignments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The request for ReservationService.SplitCapacityCommitment.
@@ -2106,13 +1999,9 @@ class SplitCapacityCommitmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (slotCount != null) {
-      _json['slotCount'] = slotCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (slotCount != null) 'slotCount': slotCount,
+      };
 }
 
 /// The response for ReservationService.SplitCapacityCommitment.
@@ -2136,16 +2025,10 @@ class SplitCapacityCommitmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (first != null) {
-      _json['first'] = first.toJson();
-    }
-    if (second != null) {
-      _json['second'] = second.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (first != null) 'first': first.toJson(),
+        if (second != null) 'second': second.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2195,17 +2078,9 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

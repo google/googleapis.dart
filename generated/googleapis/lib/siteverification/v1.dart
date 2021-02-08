@@ -373,16 +373,10 @@ class SiteVerificationWebResourceGettokenRequestSite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identifier != null) {
-      _json['identifier'] = identifier;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identifier != null) 'identifier': identifier,
+        if (type != null) 'type': type,
+      };
 }
 
 class SiteVerificationWebResourceGettokenRequest {
@@ -407,16 +401,11 @@ class SiteVerificationWebResourceGettokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (site != null) {
-      _json['site'] = site.toJson();
-    }
-    if (verificationMethod != null) {
-      _json['verificationMethod'] = verificationMethod;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (site != null) 'site': site.toJson(),
+        if (verificationMethod != null)
+          'verificationMethod': verificationMethod,
+      };
 }
 
 class SiteVerificationWebResourceGettokenResponse {
@@ -445,16 +434,10 @@ class SiteVerificationWebResourceGettokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (method != null) 'method': method,
+        if (token != null) 'token': token,
+      };
 }
 
 class SiteVerificationWebResourceListResponse {
@@ -473,13 +456,10 @@ class SiteVerificationWebResourceListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The address and type of a site that is verified or will be verified.
@@ -506,16 +486,10 @@ class SiteVerificationWebResourceResourceSite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (identifier != null) {
-      _json['identifier'] = identifier;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (identifier != null) 'identifier': identifier,
+        if (type != null) 'type': type,
+      };
 }
 
 class SiteVerificationWebResourceResource {
@@ -548,17 +522,9 @@ class SiteVerificationWebResourceResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (owners != null) {
-      _json['owners'] = owners;
-    }
-    if (site != null) {
-      _json['site'] = site.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (owners != null) 'owners': owners,
+        if (site != null) 'site': site.toJson(),
+      };
 }

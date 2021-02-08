@@ -391,22 +391,15 @@ class AdministrationRegion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (electionAdministrationBody != null) {
-      _json['electionAdministrationBody'] = electionAdministrationBody.toJson();
-    }
-    if (localJurisdiction != null) {
-      _json['local_jurisdiction'] = localJurisdiction.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (electionAdministrationBody != null)
+          'electionAdministrationBody': electionAdministrationBody.toJson(),
+        if (localJurisdiction != null)
+          'local_jurisdiction': localJurisdiction.toJson(),
+        if (name != null) 'name': name,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about an election administrative body (e.g. County Board of
@@ -524,57 +517,33 @@ class AdministrativeBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (absenteeVotingInfoUrl != null) {
-      _json['absenteeVotingInfoUrl'] = absenteeVotingInfoUrl;
-    }
-    if (ballotInfoUrl != null) {
-      _json['ballotInfoUrl'] = ballotInfoUrl;
-    }
-    if (correspondenceAddress != null) {
-      _json['correspondenceAddress'] = correspondenceAddress.toJson();
-    }
-    if (electionInfoUrl != null) {
-      _json['electionInfoUrl'] = electionInfoUrl;
-    }
-    if (electionNoticeText != null) {
-      _json['electionNoticeText'] = electionNoticeText;
-    }
-    if (electionNoticeUrl != null) {
-      _json['electionNoticeUrl'] = electionNoticeUrl;
-    }
-    if (electionOfficials != null) {
-      _json['electionOfficials'] =
-          electionOfficials.map((value) => value.toJson()).toList();
-    }
-    if (electionRegistrationConfirmationUrl != null) {
-      _json['electionRegistrationConfirmationUrl'] =
-          electionRegistrationConfirmationUrl;
-    }
-    if (electionRegistrationUrl != null) {
-      _json['electionRegistrationUrl'] = electionRegistrationUrl;
-    }
-    if (electionRulesUrl != null) {
-      _json['electionRulesUrl'] = electionRulesUrl;
-    }
-    if (hoursOfOperation != null) {
-      _json['hoursOfOperation'] = hoursOfOperation;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (physicalAddress != null) {
-      _json['physicalAddress'] = physicalAddress.toJson();
-    }
-    if (voterServices != null) {
-      _json['voter_services'] = voterServices;
-    }
-    if (votingLocationFinderUrl != null) {
-      _json['votingLocationFinderUrl'] = votingLocationFinderUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (absenteeVotingInfoUrl != null)
+          'absenteeVotingInfoUrl': absenteeVotingInfoUrl,
+        if (ballotInfoUrl != null) 'ballotInfoUrl': ballotInfoUrl,
+        if (correspondenceAddress != null)
+          'correspondenceAddress': correspondenceAddress.toJson(),
+        if (electionInfoUrl != null) 'electionInfoUrl': electionInfoUrl,
+        if (electionNoticeText != null)
+          'electionNoticeText': electionNoticeText,
+        if (electionNoticeUrl != null) 'electionNoticeUrl': electionNoticeUrl,
+        if (electionOfficials != null)
+          'electionOfficials':
+              electionOfficials.map((value) => value.toJson()).toList(),
+        if (electionRegistrationConfirmationUrl != null)
+          'electionRegistrationConfirmationUrl':
+              electionRegistrationConfirmationUrl,
+        if (electionRegistrationUrl != null)
+          'electionRegistrationUrl': electionRegistrationUrl,
+        if (electionRulesUrl != null) 'electionRulesUrl': electionRulesUrl,
+        if (hoursOfOperation != null) 'hoursOfOperation': hoursOfOperation,
+        if (name != null) 'name': name,
+        if (physicalAddress != null)
+          'physicalAddress': physicalAddress.toJson(),
+        if (voterServices != null) 'voter_services': voterServices,
+        if (votingLocationFinderUrl != null)
+          'votingLocationFinderUrl': votingLocationFinderUrl,
+      };
 }
 
 /// Information about a candidate running for elected office.
@@ -639,34 +608,17 @@ class Candidate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (candidateUrl != null) {
-      _json['candidateUrl'] = candidateUrl;
-    }
-    if (channels != null) {
-      _json['channels'] = channels.map((value) => value.toJson()).toList();
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (orderOnBallot != null) {
-      _json['orderOnBallot'] = orderOnBallot;
-    }
-    if (party != null) {
-      _json['party'] = party;
-    }
-    if (phone != null) {
-      _json['phone'] = phone;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (candidateUrl != null) 'candidateUrl': candidateUrl,
+        if (channels != null)
+          'channels': channels.map((value) => value.toJson()).toList(),
+        if (email != null) 'email': email,
+        if (name != null) 'name': name,
+        if (orderOnBallot != null) 'orderOnBallot': orderOnBallot,
+        if (party != null) 'party': party,
+        if (phone != null) 'phone': phone,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+      };
 }
 
 /// A social media or web channel for a candidate.
@@ -692,16 +644,10 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about a contest that appears on a voter's ballot.
@@ -926,85 +872,42 @@ class Contest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ballotPlacement != null) {
-      _json['ballotPlacement'] = ballotPlacement;
-    }
-    if (ballotTitle != null) {
-      _json['ballotTitle'] = ballotTitle;
-    }
-    if (candidates != null) {
-      _json['candidates'] = candidates.map((value) => value.toJson()).toList();
-    }
-    if (district != null) {
-      _json['district'] = district.toJson();
-    }
-    if (electorateSpecifications != null) {
-      _json['electorateSpecifications'] = electorateSpecifications;
-    }
-    if (level != null) {
-      _json['level'] = level;
-    }
-    if (numberElected != null) {
-      _json['numberElected'] = numberElected;
-    }
-    if (numberVotingFor != null) {
-      _json['numberVotingFor'] = numberVotingFor;
-    }
-    if (office != null) {
-      _json['office'] = office;
-    }
-    if (primaryParties != null) {
-      _json['primaryParties'] = primaryParties;
-    }
-    if (primaryParty != null) {
-      _json['primaryParty'] = primaryParty;
-    }
-    if (referendumBallotResponses != null) {
-      _json['referendumBallotResponses'] = referendumBallotResponses;
-    }
-    if (referendumBrief != null) {
-      _json['referendumBrief'] = referendumBrief;
-    }
-    if (referendumConStatement != null) {
-      _json['referendumConStatement'] = referendumConStatement;
-    }
-    if (referendumEffectOfAbstain != null) {
-      _json['referendumEffectOfAbstain'] = referendumEffectOfAbstain;
-    }
-    if (referendumPassageThreshold != null) {
-      _json['referendumPassageThreshold'] = referendumPassageThreshold;
-    }
-    if (referendumProStatement != null) {
-      _json['referendumProStatement'] = referendumProStatement;
-    }
-    if (referendumSubtitle != null) {
-      _json['referendumSubtitle'] = referendumSubtitle;
-    }
-    if (referendumText != null) {
-      _json['referendumText'] = referendumText;
-    }
-    if (referendumTitle != null) {
-      _json['referendumTitle'] = referendumTitle;
-    }
-    if (referendumUrl != null) {
-      _json['referendumUrl'] = referendumUrl;
-    }
-    if (roles != null) {
-      _json['roles'] = roles;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    if (special != null) {
-      _json['special'] = special;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ballotPlacement != null) 'ballotPlacement': ballotPlacement,
+        if (ballotTitle != null) 'ballotTitle': ballotTitle,
+        if (candidates != null)
+          'candidates': candidates.map((value) => value.toJson()).toList(),
+        if (district != null) 'district': district.toJson(),
+        if (electorateSpecifications != null)
+          'electorateSpecifications': electorateSpecifications,
+        if (level != null) 'level': level,
+        if (numberElected != null) 'numberElected': numberElected,
+        if (numberVotingFor != null) 'numberVotingFor': numberVotingFor,
+        if (office != null) 'office': office,
+        if (primaryParties != null) 'primaryParties': primaryParties,
+        if (primaryParty != null) 'primaryParty': primaryParty,
+        if (referendumBallotResponses != null)
+          'referendumBallotResponses': referendumBallotResponses,
+        if (referendumBrief != null) 'referendumBrief': referendumBrief,
+        if (referendumConStatement != null)
+          'referendumConStatement': referendumConStatement,
+        if (referendumEffectOfAbstain != null)
+          'referendumEffectOfAbstain': referendumEffectOfAbstain,
+        if (referendumPassageThreshold != null)
+          'referendumPassageThreshold': referendumPassageThreshold,
+        if (referendumProStatement != null)
+          'referendumProStatement': referendumProStatement,
+        if (referendumSubtitle != null)
+          'referendumSubtitle': referendumSubtitle,
+        if (referendumText != null) 'referendumText': referendumText,
+        if (referendumTitle != null) 'referendumTitle': referendumTitle,
+        if (referendumUrl != null) 'referendumUrl': referendumUrl,
+        if (roles != null) 'roles': roles,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+        if (special != null) 'special': special,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The result of a division search query.
@@ -1029,16 +932,11 @@ class DivisionSearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a political geographic division that matches the requested query.
@@ -1074,19 +972,11 @@ class DivisionSearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aliases != null) {
-      _json['aliases'] = aliases;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ocdId != null) {
-      _json['ocdId'] = ocdId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aliases != null) 'aliases': aliases,
+        if (name != null) 'name': name,
+        if (ocdId != null) 'ocdId': ocdId,
+      };
 }
 
 /// Information about the election that was queried.
@@ -1125,22 +1015,12 @@ class Election {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (electionDay != null) {
-      _json['electionDay'] = electionDay;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ocdDivisionId != null) {
-      _json['ocdDivisionId'] = ocdDivisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (electionDay != null) 'electionDay': electionDay,
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (ocdDivisionId != null) 'ocdDivisionId': ocdDivisionId,
+      };
 }
 
 /// Information about individual election officials.
@@ -1180,25 +1060,13 @@ class ElectionOfficial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (faxNumber != null) {
-      _json['faxNumber'] = faxNumber;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (officePhoneNumber != null) {
-      _json['officePhoneNumber'] = officePhoneNumber;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (faxNumber != null) 'faxNumber': faxNumber,
+        if (name != null) 'name': name,
+        if (officePhoneNumber != null) 'officePhoneNumber': officePhoneNumber,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The list of elections available for this version of the API.
@@ -1225,16 +1093,11 @@ class ElectionsQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (elections != null) {
-      _json['elections'] = elections.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (elections != null)
+          'elections': elections.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// Describes the geographic scope of a contest.
@@ -1284,19 +1147,11 @@ class ElectoralDistrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (scope != null) 'scope': scope,
+      };
 }
 
 /// Describes a political geography.
@@ -1341,19 +1196,11 @@ class GeographicDivision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alsoKnownAs != null) {
-      _json['alsoKnownAs'] = alsoKnownAs;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (officeIndices != null) {
-      _json['officeIndices'] = officeIndices;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alsoKnownAs != null) 'alsoKnownAs': alsoKnownAs,
+        if (name != null) 'name': name,
+        if (officeIndices != null) 'officeIndices': officeIndices,
+      };
 }
 
 /// Information about an Office held by one or more Officials.
@@ -1422,28 +1269,15 @@ class Office {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (divisionId != null) {
-      _json['divisionId'] = divisionId;
-    }
-    if (levels != null) {
-      _json['levels'] = levels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (officialIndices != null) {
-      _json['officialIndices'] = officialIndices;
-    }
-    if (roles != null) {
-      _json['roles'] = roles;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (divisionId != null) 'divisionId': divisionId,
+        if (levels != null) 'levels': levels,
+        if (name != null) 'name': name,
+        if (officialIndices != null) 'officialIndices': officialIndices,
+        if (roles != null) 'roles': roles,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about a person holding an elected office.
@@ -1513,34 +1347,18 @@ class Official {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address.map((value) => value.toJson()).toList();
-    }
-    if (channels != null) {
-      _json['channels'] = channels.map((value) => value.toJson()).toList();
-    }
-    if (emails != null) {
-      _json['emails'] = emails;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (party != null) {
-      _json['party'] = party;
-    }
-    if (phones != null) {
-      _json['phones'] = phones;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    if (urls != null) {
-      _json['urls'] = urls;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null)
+          'address': address.map((value) => value.toJson()).toList(),
+        if (channels != null)
+          'channels': channels.map((value) => value.toJson()).toList(),
+        if (emails != null) 'emails': emails,
+        if (name != null) 'name': name,
+        if (party != null) 'party': party,
+        if (phones != null) 'phones': phones,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+        if (urls != null) 'urls': urls,
+      };
 }
 
 /// A location where a voter can vote.
@@ -1632,40 +1450,19 @@ class PollingLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address.toJson();
-    }
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (pollingHours != null) {
-      _json['pollingHours'] = pollingHours;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    if (voterServices != null) {
-      _json['voterServices'] = voterServices;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address.toJson(),
+        if (endDate != null) 'endDate': endDate,
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (pollingHours != null) 'pollingHours': pollingHours,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+        if (startDate != null) 'startDate': startDate,
+        if (voterServices != null) 'voterServices': voterServices,
+      };
 }
 
 class RepresentativeInfoData {
@@ -1710,20 +1507,15 @@ class RepresentativeInfoData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (divisions != null) {
-      _json['divisions'] =
-          divisions.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (offices != null) {
-      _json['offices'] = offices.map((value) => value.toJson()).toList();
-    }
-    if (officials != null) {
-      _json['officials'] = officials.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (divisions != null)
+          'divisions':
+              divisions.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (offices != null)
+          'offices': offices.map((value) => value.toJson()).toList(),
+        if (officials != null)
+          'officials': officials.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The result of a representative info lookup query.
@@ -1784,26 +1576,18 @@ class RepresentativeInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (divisions != null) {
-      _json['divisions'] =
-          divisions.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (normalizedInput != null) {
-      _json['normalizedInput'] = normalizedInput.toJson();
-    }
-    if (offices != null) {
-      _json['offices'] = offices.map((value) => value.toJson()).toList();
-    }
-    if (officials != null) {
-      _json['officials'] = officials.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (divisions != null)
+          'divisions':
+              divisions.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kind != null) 'kind': kind,
+        if (normalizedInput != null)
+          'normalizedInput': normalizedInput.toJson(),
+        if (offices != null)
+          'offices': offices.map((value) => value.toJson()).toList(),
+        if (officials != null)
+          'officials': officials.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A simple representation of an address.
@@ -1855,31 +1639,15 @@ class SimpleAddressType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (city != null) {
-      _json['city'] = city;
-    }
-    if (line1 != null) {
-      _json['line1'] = line1;
-    }
-    if (line2 != null) {
-      _json['line2'] = line2;
-    }
-    if (line3 != null) {
-      _json['line3'] = line3;
-    }
-    if (locationName != null) {
-      _json['locationName'] = locationName;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (zip != null) {
-      _json['zip'] = zip;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (city != null) 'city': city,
+        if (line1 != null) 'line1': line1,
+        if (line2 != null) 'line2': line2,
+        if (line3 != null) 'line3': line3,
+        if (locationName != null) 'locationName': locationName,
+        if (state != null) 'state': state,
+        if (zip != null) 'zip': zip,
+      };
 }
 
 /// Contains information about the data source for the element containing it.
@@ -1901,16 +1669,10 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (official != null) {
-      _json['official'] = official;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (official != null) 'official': official,
+      };
 }
 
 /// The result of a voter info lookup query.
@@ -2025,45 +1787,28 @@ class VoterInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contests != null) {
-      _json['contests'] = contests.map((value) => value.toJson()).toList();
-    }
-    if (dropOffLocations != null) {
-      _json['dropOffLocations'] =
-          dropOffLocations.map((value) => value.toJson()).toList();
-    }
-    if (earlyVoteSites != null) {
-      _json['earlyVoteSites'] =
-          earlyVoteSites.map((value) => value.toJson()).toList();
-    }
-    if (election != null) {
-      _json['election'] = election.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (mailOnly != null) {
-      _json['mailOnly'] = mailOnly;
-    }
-    if (normalizedInput != null) {
-      _json['normalizedInput'] = normalizedInput.toJson();
-    }
-    if (otherElections != null) {
-      _json['otherElections'] =
-          otherElections.map((value) => value.toJson()).toList();
-    }
-    if (pollingLocations != null) {
-      _json['pollingLocations'] =
-          pollingLocations.map((value) => value.toJson()).toList();
-    }
-    if (precinctId != null) {
-      _json['precinctId'] = precinctId;
-    }
-    if (state != null) {
-      _json['state'] = state.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contests != null)
+          'contests': contests.map((value) => value.toJson()).toList(),
+        if (dropOffLocations != null)
+          'dropOffLocations':
+              dropOffLocations.map((value) => value.toJson()).toList(),
+        if (earlyVoteSites != null)
+          'earlyVoteSites':
+              earlyVoteSites.map((value) => value.toJson()).toList(),
+        if (election != null) 'election': election.toJson(),
+        if (kind != null) 'kind': kind,
+        if (mailOnly != null) 'mailOnly': mailOnly,
+        if (normalizedInput != null)
+          'normalizedInput': normalizedInput.toJson(),
+        if (otherElections != null)
+          'otherElections':
+              otherElections.map((value) => value.toJson()).toList(),
+        if (pollingLocations != null)
+          'pollingLocations':
+              pollingLocations.map((value) => value.toJson()).toList(),
+        if (precinctId != null) 'precinctId': precinctId,
+        if (state != null)
+          'state': state.map((value) => value.toJson()).toList(),
+      };
 }

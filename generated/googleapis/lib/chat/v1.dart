@@ -1078,16 +1078,10 @@ class ActionParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Parameters that a bot can use to configure how it's response is posted.
@@ -1117,16 +1111,10 @@ class ActionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Annotations associated with the plain-text body of the message.
@@ -1181,25 +1169,13 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (length != null) {
-      _json['length'] = length;
-    }
-    if (slashCommand != null) {
-      _json['slashCommand'] = slashCommand.toJson();
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (userMention != null) {
-      _json['userMention'] = userMention.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (length != null) 'length': length,
+        if (slashCommand != null) 'slashCommand': slashCommand.toJson(),
+        if (startIndex != null) 'startIndex': startIndex,
+        if (type != null) 'type': type,
+        if (userMention != null) 'userMention': userMention.toJson(),
+      };
 }
 
 /// An attachment in Hangouts Chat.
@@ -1278,34 +1254,17 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attachmentDataRef != null) {
-      _json['attachmentDataRef'] = attachmentDataRef.toJson();
-    }
-    if (contentName != null) {
-      _json['contentName'] = contentName;
-    }
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (downloadUri != null) {
-      _json['downloadUri'] = downloadUri;
-    }
-    if (driveDataRef != null) {
-      _json['driveDataRef'] = driveDataRef.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (thumbnailUri != null) {
-      _json['thumbnailUri'] = thumbnailUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attachmentDataRef != null)
+          'attachmentDataRef': attachmentDataRef.toJson(),
+        if (contentName != null) 'contentName': contentName,
+        if (contentType != null) 'contentType': contentType,
+        if (downloadUri != null) 'downloadUri': downloadUri,
+        if (driveDataRef != null) 'driveDataRef': driveDataRef.toJson(),
+        if (name != null) 'name': name,
+        if (source != null) 'source': source,
+        if (thumbnailUri != null) 'thumbnailUri': thumbnailUri,
+      };
 }
 
 /// A reference to the data of an attachment.
@@ -1323,13 +1282,9 @@ class AttachmentDataRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// A button.
@@ -1355,16 +1310,10 @@ class Button {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageButton != null) {
-      _json['imageButton'] = imageButton.toJson();
-    }
-    if (textButton != null) {
-      _json['textButton'] = textButton.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageButton != null) 'imageButton': imageButton.toJson(),
+        if (textButton != null) 'textButton': textButton.toJson(),
+      };
 }
 
 /// A card is a UI element that can contain UI widgets such as texts, images.
@@ -1407,23 +1356,14 @@ class Card {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cardActions != null) {
-      _json['cardActions'] =
-          cardActions.map((value) => value.toJson()).toList();
-    }
-    if (header != null) {
-      _json['header'] = header.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sections != null) {
-      _json['sections'] = sections.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cardActions != null)
+          'cardActions': cardActions.map((value) => value.toJson()).toList(),
+        if (header != null) 'header': header.toJson(),
+        if (name != null) 'name': name,
+        if (sections != null)
+          'sections': sections.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A card action is the action associated with the card.
@@ -1449,16 +1389,10 @@ class CardAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionLabel != null) {
-      _json['actionLabel'] = actionLabel;
-    }
-    if (onClick != null) {
-      _json['onClick'] = onClick.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionLabel != null) 'actionLabel': actionLabel,
+        if (onClick != null) 'onClick': onClick.toJson(),
+      };
 }
 
 class CardHeader {
@@ -1499,22 +1433,12 @@ class CardHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageStyle != null) {
-      _json['imageStyle'] = imageStyle;
-    }
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageStyle != null) 'imageStyle': imageStyle,
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (subtitle != null) 'subtitle': subtitle,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Google Chat events.
@@ -1603,37 +1527,18 @@ class DeprecatedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action.toJson();
-    }
-    if (configCompleteRedirectUrl != null) {
-      _json['configCompleteRedirectUrl'] = configCompleteRedirectUrl;
-    }
-    if (eventTime != null) {
-      _json['eventTime'] = eventTime;
-    }
-    if (message != null) {
-      _json['message'] = message.toJson();
-    }
-    if (space != null) {
-      _json['space'] = space.toJson();
-    }
-    if (threadKey != null) {
-      _json['threadKey'] = threadKey;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action.toJson(),
+        if (configCompleteRedirectUrl != null)
+          'configCompleteRedirectUrl': configCompleteRedirectUrl,
+        if (eventTime != null) 'eventTime': eventTime,
+        if (message != null) 'message': message.toJson(),
+        if (space != null) 'space': space.toJson(),
+        if (threadKey != null) 'threadKey': threadKey,
+        if (token != null) 'token': token,
+        if (type != null) 'type': type,
+        if (user != null) 'user': user.toJson(),
+      };
 }
 
 /// A reference to the data of a drive attachment.
@@ -1649,13 +1554,9 @@ class DriveDataRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (driveFileId != null) {
-      _json['driveFileId'] = driveFileId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (driveFileId != null) 'driveFileId': driveFileId,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1672,10 +1573,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A form action describes the behavior when the form is submitted.
@@ -1707,16 +1605,11 @@ class FormAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionMethodName != null) {
-      _json['actionMethodName'] = actionMethodName;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionMethodName != null) 'actionMethodName': actionMethodName,
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An image that is specified by a URL and can have an onclick action.
@@ -1749,19 +1642,11 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aspectRatio != null) {
-      _json['aspectRatio'] = aspectRatio;
-    }
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (onClick != null) {
-      _json['onClick'] = onClick.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aspectRatio != null) 'aspectRatio': aspectRatio,
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (onClick != null) 'onClick': onClick.toJson(),
+      };
 }
 
 /// An image button with an onclick action.
@@ -1831,22 +1716,12 @@ class ImageButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (icon != null) {
-      _json['icon'] = icon;
-    }
-    if (iconUrl != null) {
-      _json['iconUrl'] = iconUrl;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (onClick != null) {
-      _json['onClick'] = onClick.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (icon != null) 'icon': icon,
+        if (iconUrl != null) 'iconUrl': iconUrl,
+        if (name != null) 'name': name,
+        if (onClick != null) 'onClick': onClick.toJson(),
+      };
 }
 
 /// A UI element contains a key (label) and a value (content).
@@ -1949,34 +1824,16 @@ class KeyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottomLabel != null) {
-      _json['bottomLabel'] = bottomLabel;
-    }
-    if (button != null) {
-      _json['button'] = button.toJson();
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (contentMultiline != null) {
-      _json['contentMultiline'] = contentMultiline;
-    }
-    if (icon != null) {
-      _json['icon'] = icon;
-    }
-    if (iconUrl != null) {
-      _json['iconUrl'] = iconUrl;
-    }
-    if (onClick != null) {
-      _json['onClick'] = onClick.toJson();
-    }
-    if (topLabel != null) {
-      _json['topLabel'] = topLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottomLabel != null) 'bottomLabel': bottomLabel,
+        if (button != null) 'button': button.toJson(),
+        if (content != null) 'content': content,
+        if (contentMultiline != null) 'contentMultiline': contentMultiline,
+        if (icon != null) 'icon': icon,
+        if (iconUrl != null) 'iconUrl': iconUrl,
+        if (onClick != null) 'onClick': onClick.toJson(),
+        if (topLabel != null) 'topLabel': topLabel,
+      };
 }
 
 class ListMembershipsResponse {
@@ -2002,17 +1859,11 @@ class ListMembershipsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (memberships != null) {
-      _json['memberships'] =
-          memberships.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (memberships != null)
+          'memberships': memberships.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListSpacesResponse {
@@ -2039,16 +1890,11 @@ class ListSpacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (spaces != null) {
-      _json['spaces'] = spaces.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (spaces != null)
+          'spaces': spaces.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Media resource.
@@ -2064,13 +1910,9 @@ class Media {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// Represents a membership relation in Hangouts Chat.
@@ -2111,22 +1953,12 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (member != null) {
-      _json['member'] = member.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (member != null) 'member': member.toJson(),
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
 }
 
 /// A message in Hangouts Chat.
@@ -2249,53 +2081,25 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionResponse != null) {
-      _json['actionResponse'] = actionResponse.toJson();
-    }
-    if (annotations != null) {
-      _json['annotations'] =
-          annotations.map((value) => value.toJson()).toList();
-    }
-    if (argumentText != null) {
-      _json['argumentText'] = argumentText;
-    }
-    if (attachment != null) {
-      _json['attachment'] = attachment.map((value) => value.toJson()).toList();
-    }
-    if (cards != null) {
-      _json['cards'] = cards.map((value) => value.toJson()).toList();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (fallbackText != null) {
-      _json['fallbackText'] = fallbackText;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (previewText != null) {
-      _json['previewText'] = previewText;
-    }
-    if (sender != null) {
-      _json['sender'] = sender.toJson();
-    }
-    if (slashCommand != null) {
-      _json['slashCommand'] = slashCommand.toJson();
-    }
-    if (space != null) {
-      _json['space'] = space.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (thread != null) {
-      _json['thread'] = thread.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionResponse != null) 'actionResponse': actionResponse.toJson(),
+        if (annotations != null)
+          'annotations': annotations.map((value) => value.toJson()).toList(),
+        if (argumentText != null) 'argumentText': argumentText,
+        if (attachment != null)
+          'attachment': attachment.map((value) => value.toJson()).toList(),
+        if (cards != null)
+          'cards': cards.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime,
+        if (fallbackText != null) 'fallbackText': fallbackText,
+        if (name != null) 'name': name,
+        if (previewText != null) 'previewText': previewText,
+        if (sender != null) 'sender': sender.toJson(),
+        if (slashCommand != null) 'slashCommand': slashCommand.toJson(),
+        if (space != null) 'space': space.toJson(),
+        if (text != null) 'text': text,
+        if (thread != null) 'thread': thread.toJson(),
+      };
 }
 
 /// An onclick action (e.g. open a link).
@@ -2319,16 +2123,10 @@ class OnClick {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action.toJson();
-    }
-    if (openLink != null) {
-      _json['openLink'] = openLink.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action.toJson(),
+        if (openLink != null) 'openLink': openLink.toJson(),
+      };
 }
 
 /// A link that opens a new window.
@@ -2344,13 +2142,9 @@ class OpenLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 /// A section contains a collection of widgets that are rendered (vertically) in
@@ -2379,16 +2173,11 @@ class Section {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (header != null) {
-      _json['header'] = header;
-    }
-    if (widgets != null) {
-      _json['widgets'] = widgets.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (header != null) 'header': header,
+        if (widgets != null)
+          'widgets': widgets.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Slash Command in Hangouts Chat.
@@ -2404,13 +2193,9 @@ class SlashCommand {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commandId != null) {
-      _json['commandId'] = commandId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commandId != null) 'commandId': commandId,
+      };
 }
 
 /// Annotation metadata for slash commands (/).
@@ -2454,25 +2239,13 @@ class SlashCommandMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bot != null) {
-      _json['bot'] = bot.toJson();
-    }
-    if (commandId != null) {
-      _json['commandId'] = commandId;
-    }
-    if (commandName != null) {
-      _json['commandName'] = commandName;
-    }
-    if (triggersDialog != null) {
-      _json['triggersDialog'] = triggersDialog;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bot != null) 'bot': bot.toJson(),
+        if (commandId != null) 'commandId': commandId,
+        if (commandName != null) 'commandName': commandName,
+        if (triggersDialog != null) 'triggersDialog': triggersDialog,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A room or DM in Hangouts Chat.
@@ -2528,25 +2301,13 @@ class Space {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (singleUserBotDm != null) {
-      _json['singleUserBotDm'] = singleUserBotDm;
-    }
-    if (threaded != null) {
-      _json['threaded'] = threaded;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm,
+        if (threaded != null) 'threaded': threaded,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A button with text and onclick action.
@@ -2569,16 +2330,10 @@ class TextButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (onClick != null) {
-      _json['onClick'] = onClick.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (onClick != null) 'onClick': onClick.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// A paragraph of text.
@@ -2595,13 +2350,9 @@ class TextParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// A thread in Hangouts Chat.
@@ -2619,13 +2370,9 @@ class Thread {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// A user in Hangouts Chat.
@@ -2669,25 +2416,13 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (domainId != null) {
-      _json['domainId'] = domainId;
-    }
-    if (isAnonymous != null) {
-      _json['isAnonymous'] = isAnonymous;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (domainId != null) 'domainId': domainId,
+        if (isAnonymous != null) 'isAnonymous': isAnonymous,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Annotation metadata for user mentions (@).
@@ -2714,16 +2449,10 @@ class UserMentionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (user != null) 'user': user.toJson(),
+      };
 }
 
 /// A widget is a UI element that presents texts, images, etc.
@@ -2765,20 +2494,11 @@ class WidgetMarkup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buttons != null) {
-      _json['buttons'] = buttons.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (keyValue != null) {
-      _json['keyValue'] = keyValue.toJson();
-    }
-    if (textParagraph != null) {
-      _json['textParagraph'] = textParagraph.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buttons != null)
+          'buttons': buttons.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (keyValue != null) 'keyValue': keyValue.toJson(),
+        if (textParagraph != null) 'textParagraph': textParagraph.toJson(),
+      };
 }

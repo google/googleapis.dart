@@ -1207,33 +1207,20 @@ class BatchTranslateTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (glossaries != null) {
-      _json['glossaries'] =
-          glossaries.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (inputConfigs != null) {
-      _json['inputConfigs'] =
-          inputConfigs.map((value) => value.toJson()).toList();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (models != null) {
-      _json['models'] = models;
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (sourceLanguageCode != null) {
-      _json['sourceLanguageCode'] = sourceLanguageCode;
-    }
-    if (targetLanguageCodes != null) {
-      _json['targetLanguageCodes'] = targetLanguageCodes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (glossaries != null)
+          'glossaries':
+              glossaries.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (inputConfigs != null)
+          'inputConfigs': inputConfigs.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels,
+        if (models != null) 'models': models,
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode,
+        if (targetLanguageCodes != null)
+          'targetLanguageCodes': targetLanguageCodes,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1244,10 +1231,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request message for language detection.
@@ -1308,22 +1292,12 @@ class DetectLanguageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (labels != null) 'labels': labels,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (model != null) 'model': model,
+      };
 }
 
 /// The response message for language detection.
@@ -1344,13 +1318,10 @@ class DetectLanguageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languages != null) {
-      _json['languages'] = languages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languages != null)
+          'languages': languages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response message for language detection.
@@ -1373,16 +1344,10 @@ class DetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1399,10 +1364,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The Google Cloud Storage location for the output content.
@@ -1425,13 +1387,9 @@ class GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputUriPrefix != null) {
-      _json['outputUriPrefix'] = outputUriPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix,
+      };
 }
 
 /// The Google Cloud Storage location for the input content.
@@ -1451,13 +1409,9 @@ class GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputUri != null) 'inputUri': inputUri,
+      };
 }
 
 /// Represents a glossary built from user provided data.
@@ -1527,31 +1481,16 @@ class Glossary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (entryCount != null) {
-      _json['entryCount'] = entryCount;
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (languageCodesSet != null) {
-      _json['languageCodesSet'] = languageCodesSet.toJson();
-    }
-    if (languagePair != null) {
-      _json['languagePair'] = languagePair.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (submitTime != null) {
-      _json['submitTime'] = submitTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (entryCount != null) 'entryCount': entryCount,
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (languageCodesSet != null)
+          'languageCodesSet': languageCodesSet.toJson(),
+        if (languagePair != null) 'languagePair': languagePair.toJson(),
+        if (name != null) 'name': name,
+        if (submitTime != null) 'submitTime': submitTime,
+      };
 }
 
 /// Input configuration for glossaries.
@@ -1583,13 +1522,9 @@ class GlossaryInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+      };
 }
 
 /// Input configuration for BatchTranslateText request.
@@ -1633,16 +1568,10 @@ class InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Used with unidirectional glossaries.
@@ -1672,16 +1601,12 @@ class LanguageCodePair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sourceLanguageCode != null) {
-      _json['sourceLanguageCode'] = sourceLanguageCode;
-    }
-    if (targetLanguageCode != null) {
-      _json['targetLanguageCode'] = targetLanguageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode,
+        if (targetLanguageCode != null)
+          'targetLanguageCode': targetLanguageCode,
+      };
 }
 
 /// Used with equivalent term set glossaries.
@@ -1702,13 +1627,9 @@ class LanguageCodesSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCodes != null) {
-      _json['languageCodes'] = languageCodes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCodes != null) 'languageCodes': languageCodes,
+      };
 }
 
 /// Response message for ListGlossaries.
@@ -1737,16 +1658,11 @@ class ListGlossariesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (glossaries != null) {
-      _json['glossaries'] = glossaries.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (glossaries != null)
+          'glossaries': glossaries.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1771,16 +1687,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1805,16 +1716,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1879,25 +1785,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1976,25 +1870,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Output configuration for BatchTranslateText request.
@@ -2059,13 +1941,9 @@ class OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2115,19 +1993,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A single supported language response corresponds to information related to
@@ -2167,22 +2037,12 @@ class SupportedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (supportSource != null) {
-      _json['supportSource'] = supportSource;
-    }
-    if (supportTarget != null) {
-      _json['supportTarget'] = supportTarget;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (supportSource != null) 'supportSource': supportSource,
+        if (supportTarget != null) 'supportTarget': supportTarget,
+      };
 }
 
 /// The response message for discovering supported languages.
@@ -2204,13 +2064,10 @@ class SupportedLanguages {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languages != null) {
-      _json['languages'] = languages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languages != null)
+          'languages': languages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Configures which glossary should be used for a specific target language, and
@@ -2242,16 +2099,10 @@ class TranslateTextGlossaryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (glossary != null) {
-      _json['glossary'] = glossary;
-    }
-    if (ignoreCase != null) {
-      _json['ignoreCase'] = ignoreCase;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (glossary != null) 'glossary': glossary,
+        if (ignoreCase != null) 'ignoreCase': ignoreCase,
+      };
 }
 
 /// The request message for synchronous translation.
@@ -2357,31 +2208,17 @@ class TranslateTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contents != null) {
-      _json['contents'] = contents;
-    }
-    if (glossaryConfig != null) {
-      _json['glossaryConfig'] = glossaryConfig.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (sourceLanguageCode != null) {
-      _json['sourceLanguageCode'] = sourceLanguageCode;
-    }
-    if (targetLanguageCode != null) {
-      _json['targetLanguageCode'] = targetLanguageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contents != null) 'contents': contents,
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig.toJson(),
+        if (labels != null) 'labels': labels,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (model != null) 'model': model,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode,
+        if (targetLanguageCode != null)
+          'targetLanguageCode': targetLanguageCode,
+      };
 }
 
 class TranslateTextResponse {
@@ -2413,18 +2250,13 @@ class TranslateTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (glossaryTranslations != null) {
-      _json['glossaryTranslations'] =
-          glossaryTranslations.map((value) => value.toJson()).toList();
-    }
-    if (translations != null) {
-      _json['translations'] =
-          translations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (glossaryTranslations != null)
+          'glossaryTranslations':
+              glossaryTranslations.map((value) => value.toJson()).toList(),
+        if (translations != null)
+          'translations': translations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single translation response.
@@ -2470,22 +2302,13 @@ class Translation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectedLanguageCode != null) {
-      _json['detectedLanguageCode'] = detectedLanguageCode;
-    }
-    if (glossaryConfig != null) {
-      _json['glossaryConfig'] = glossaryConfig.toJson();
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (translatedText != null) {
-      _json['translatedText'] = translatedText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectedLanguageCode != null)
+          'detectedLanguageCode': detectedLanguageCode,
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig.toJson(),
+        if (model != null) 'model': model,
+        if (translatedText != null) 'translatedText': translatedText,
+      };
 }
 
 /// The request message for Operations.WaitOperation.
@@ -2505,11 +2328,7 @@ class WaitOperationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (timeout != null) 'timeout': timeout,
+      };
 }

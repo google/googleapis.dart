@@ -313,13 +313,9 @@ class AgentDeviceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 /// Alternate third-party device ID.
@@ -341,16 +337,10 @@ class AgentOtherDeviceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentId != null) {
-      _json['agentId'] = agentId;
-    }
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentId != null) 'agentId': agentId,
+        if (deviceId != null) 'deviceId': deviceId,
+      };
 }
 
 /// Third-party device definition.
@@ -502,51 +492,26 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes;
-    }
-    if (customData != null) {
-      _json['customData'] = customData;
-    }
-    if (deviceInfo != null) {
-      _json['deviceInfo'] = deviceInfo.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name.toJson();
-    }
-    if (nonLocalTraits != null) {
-      _json['nonLocalTraits'] =
-          nonLocalTraits.map((value) => value.toJson()).toList();
-    }
-    if (notificationSupportedByAgent != null) {
-      _json['notificationSupportedByAgent'] = notificationSupportedByAgent;
-    }
-    if (otherDeviceIds != null) {
-      _json['otherDeviceIds'] =
-          otherDeviceIds.map((value) => value.toJson()).toList();
-    }
-    if (roomHint != null) {
-      _json['roomHint'] = roomHint;
-    }
-    if (structureHint != null) {
-      _json['structureHint'] = structureHint;
-    }
-    if (traits != null) {
-      _json['traits'] = traits;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (willReportState != null) {
-      _json['willReportState'] = willReportState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes,
+        if (customData != null) 'customData': customData,
+        if (deviceInfo != null) 'deviceInfo': deviceInfo.toJson(),
+        if (id != null) 'id': id,
+        if (name != null) 'name': name.toJson(),
+        if (nonLocalTraits != null)
+          'nonLocalTraits':
+              nonLocalTraits.map((value) => value.toJson()).toList(),
+        if (notificationSupportedByAgent != null)
+          'notificationSupportedByAgent': notificationSupportedByAgent,
+        if (otherDeviceIds != null)
+          'otherDeviceIds':
+              otherDeviceIds.map((value) => value.toJson()).toList(),
+        if (roomHint != null) 'roomHint': roomHint,
+        if (structureHint != null) 'structureHint': structureHint,
+        if (traits != null) 'traits': traits,
+        if (type != null) 'type': type,
+        if (willReportState != null) 'willReportState': willReportState,
+      };
 }
 
 /// Device information.
@@ -580,22 +545,12 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hwVersion != null) {
-      _json['hwVersion'] = hwVersion;
-    }
-    if (manufacturer != null) {
-      _json['manufacturer'] = manufacturer;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (swVersion != null) {
-      _json['swVersion'] = swVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hwVersion != null) 'hwVersion': hwVersion,
+        if (manufacturer != null) 'manufacturer': manufacturer,
+        if (model != null) 'model': model,
+        if (swVersion != null) 'swVersion': swVersion,
+      };
 }
 
 /// Identifiers used to describe the device.
@@ -628,19 +583,11 @@ class DeviceNames {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultNames != null) {
-      _json['defaultNames'] = defaultNames;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (nicknames != null) {
-      _json['nicknames'] = nicknames;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultNames != null) 'defaultNames': defaultNames,
+        if (name != null) 'name': name,
+        if (nicknames != null) 'nicknames': nicknames,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -657,10 +604,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// LINT.IfChange go/shed-per-trait-routing.
@@ -682,13 +626,9 @@ class NonLocalTrait {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trait != null) {
-      _json['trait'] = trait;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trait != null) 'trait': trait,
+      };
 }
 
 /// Request type for the
@@ -725,19 +665,12 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentUserId != null) {
-      _json['agentUserId'] = agentUserId;
-    }
-    if (inputs != null) {
-      _json['inputs'] = inputs.map((value) => value.toJson()).toList();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId,
+        if (inputs != null)
+          'inputs': inputs.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Device ID inputs to QueryRequest.
@@ -754,13 +687,9 @@ class QueryRequestInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payload != null) {
-      _json['payload'] = payload.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payload != null) 'payload': payload.toJson(),
+      };
 }
 
 /// Payload containing device IDs.
@@ -779,13 +708,10 @@ class QueryRequestPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response type for the
@@ -819,16 +745,10 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payload != null) {
-      _json['payload'] = payload.toJson();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payload != null) 'payload': payload.toJson(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Payload containing device states information.
@@ -860,13 +780,9 @@ class QueryResponsePayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null) 'devices': devices,
+      };
 }
 
 /// The states and notifications specific to a device.
@@ -913,16 +829,10 @@ class ReportStateAndNotificationDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notifications != null) {
-      _json['notifications'] = notifications;
-    }
-    if (states != null) {
-      _json['states'] = states;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notifications != null) 'notifications': notifications,
+        if (states != null) 'states': states,
+      };
 }
 
 /// Request type for the
@@ -980,25 +890,13 @@ class ReportStateAndNotificationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentUserId != null) {
-      _json['agentUserId'] = agentUserId;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (followUpToken != null) {
-      _json['followUpToken'] = followUpToken;
-    }
-    if (payload != null) {
-      _json['payload'] = payload.toJson();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId,
+        if (eventId != null) 'eventId': eventId,
+        if (followUpToken != null) 'followUpToken': followUpToken,
+        if (payload != null) 'payload': payload.toJson(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Response type for the
@@ -1016,13 +914,9 @@ class ReportStateAndNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Request type for the
@@ -1054,16 +948,10 @@ class RequestSyncDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentUserId != null) {
-      _json['agentUserId'] = agentUserId;
-    }
-    if (async != null) {
-      _json['async'] = async;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId,
+        if (async != null) 'async': async,
+      };
 }
 
 /// Response type for the
@@ -1079,10 +967,7 @@ class RequestSyncDevicesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Payload containing the state and notification information for devices.
@@ -1099,13 +984,9 @@ class StateAndNotificationPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null) 'devices': devices.toJson(),
+      };
 }
 
 /// Request type for the
@@ -1130,16 +1011,10 @@ class SyncRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentUserId != null) {
-      _json['agentUserId'] = agentUserId;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId,
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Response type for the
@@ -1177,16 +1052,10 @@ class SyncResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payload != null) {
-      _json['payload'] = payload.toJson();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payload != null) 'payload': payload.toJson(),
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Payload containing device information.
@@ -1211,14 +1080,9 @@ class SyncResponsePayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (agentUserId != null) {
-      _json['agentUserId'] = agentUserId;
-    }
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId,
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+      };
 }

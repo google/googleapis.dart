@@ -415,60 +415,36 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (aggregatorInfo != null) {
-      _json['aggregatorInfo'] = aggregatorInfo.toJson();
-    }
-    if (averageFiveStarRating != null) {
-      _json['averageFiveStarRating'] = averageFiveStarRating;
-    }
-    if (averageWeeklyBudget != null) {
-      _json['averageWeeklyBudget'] = averageWeeklyBudget;
-    }
-    if (businessName != null) {
-      _json['businessName'] = businessName;
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (currentPeriodChargedLeads != null) {
-      _json['currentPeriodChargedLeads'] = currentPeriodChargedLeads;
-    }
-    if (currentPeriodConnectedPhoneCalls != null) {
-      _json['currentPeriodConnectedPhoneCalls'] =
-          currentPeriodConnectedPhoneCalls;
-    }
-    if (currentPeriodPhoneCalls != null) {
-      _json['currentPeriodPhoneCalls'] = currentPeriodPhoneCalls;
-    }
-    if (currentPeriodTotalCost != null) {
-      _json['currentPeriodTotalCost'] = currentPeriodTotalCost;
-    }
-    if (phoneLeadResponsiveness != null) {
-      _json['phoneLeadResponsiveness'] = phoneLeadResponsiveness;
-    }
-    if (previousPeriodChargedLeads != null) {
-      _json['previousPeriodChargedLeads'] = previousPeriodChargedLeads;
-    }
-    if (previousPeriodConnectedPhoneCalls != null) {
-      _json['previousPeriodConnectedPhoneCalls'] =
-          previousPeriodConnectedPhoneCalls;
-    }
-    if (previousPeriodPhoneCalls != null) {
-      _json['previousPeriodPhoneCalls'] = previousPeriodPhoneCalls;
-    }
-    if (previousPeriodTotalCost != null) {
-      _json['previousPeriodTotalCost'] = previousPeriodTotalCost;
-    }
-    if (totalReview != null) {
-      _json['totalReview'] = totalReview;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo.toJson(),
+        if (averageFiveStarRating != null)
+          'averageFiveStarRating': averageFiveStarRating,
+        if (averageWeeklyBudget != null)
+          'averageWeeklyBudget': averageWeeklyBudget,
+        if (businessName != null) 'businessName': businessName,
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (currentPeriodChargedLeads != null)
+          'currentPeriodChargedLeads': currentPeriodChargedLeads,
+        if (currentPeriodConnectedPhoneCalls != null)
+          'currentPeriodConnectedPhoneCalls': currentPeriodConnectedPhoneCalls,
+        if (currentPeriodPhoneCalls != null)
+          'currentPeriodPhoneCalls': currentPeriodPhoneCalls,
+        if (currentPeriodTotalCost != null)
+          'currentPeriodTotalCost': currentPeriodTotalCost,
+        if (phoneLeadResponsiveness != null)
+          'phoneLeadResponsiveness': phoneLeadResponsiveness,
+        if (previousPeriodChargedLeads != null)
+          'previousPeriodChargedLeads': previousPeriodChargedLeads,
+        if (previousPeriodConnectedPhoneCalls != null)
+          'previousPeriodConnectedPhoneCalls':
+              previousPeriodConnectedPhoneCalls,
+        if (previousPeriodPhoneCalls != null)
+          'previousPeriodPhoneCalls': previousPeriodPhoneCalls,
+        if (previousPeriodTotalCost != null)
+          'previousPeriodTotalCost': previousPeriodTotalCost,
+        if (totalReview != null) 'totalReview': totalReview,
+      };
 }
 
 /// Conatiner for aggregator specific information if lead is for an aggregator
@@ -486,13 +462,10 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregatorProviderId != null) {
-      _json['aggregatorProviderId'] = aggregatorProviderId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregatorProviderId != null)
+          'aggregatorProviderId': aggregatorProviderId,
+      };
 }
 
 /// A Detailed Lead Report of a lead identified by their lead id and contains
@@ -607,55 +580,24 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (aggregatorInfo != null) {
-      _json['aggregatorInfo'] = aggregatorInfo.toJson();
-    }
-    if (businessName != null) {
-      _json['businessName'] = businessName;
-    }
-    if (chargeStatus != null) {
-      _json['chargeStatus'] = chargeStatus;
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (disputeStatus != null) {
-      _json['disputeStatus'] = disputeStatus;
-    }
-    if (geo != null) {
-      _json['geo'] = geo;
-    }
-    if (leadCategory != null) {
-      _json['leadCategory'] = leadCategory;
-    }
-    if (leadCreationTimestamp != null) {
-      _json['leadCreationTimestamp'] = leadCreationTimestamp;
-    }
-    if (leadId != null) {
-      _json['leadId'] = leadId;
-    }
-    if (leadPrice != null) {
-      _json['leadPrice'] = leadPrice;
-    }
-    if (leadType != null) {
-      _json['leadType'] = leadType;
-    }
-    if (messageLead != null) {
-      _json['messageLead'] = messageLead.toJson();
-    }
-    if (phoneLead != null) {
-      _json['phoneLead'] = phoneLead.toJson();
-    }
-    if (timezone != null) {
-      _json['timezone'] = timezone.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo.toJson(),
+        if (businessName != null) 'businessName': businessName,
+        if (chargeStatus != null) 'chargeStatus': chargeStatus,
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (disputeStatus != null) 'disputeStatus': disputeStatus,
+        if (geo != null) 'geo': geo,
+        if (leadCategory != null) 'leadCategory': leadCategory,
+        if (leadCreationTimestamp != null)
+          'leadCreationTimestamp': leadCreationTimestamp,
+        if (leadId != null) 'leadId': leadId,
+        if (leadPrice != null) 'leadPrice': leadPrice,
+        if (leadType != null) 'leadType': leadType,
+        if (messageLead != null) 'messageLead': messageLead.toJson(),
+        if (phoneLead != null) 'phoneLead': phoneLead.toJson(),
+        if (timezone != null) 'timezone': timezone.toJson(),
+      };
 }
 
 /// Container for message lead specific information.
@@ -689,22 +631,13 @@ class GoogleAdsHomeservicesLocalservicesV1MessageLead {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consumerPhoneNumber != null) {
-      _json['consumerPhoneNumber'] = consumerPhoneNumber;
-    }
-    if (customerName != null) {
-      _json['customerName'] = customerName;
-    }
-    if (jobType != null) {
-      _json['jobType'] = jobType;
-    }
-    if (postalCode != null) {
-      _json['postalCode'] = postalCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consumerPhoneNumber != null)
+          'consumerPhoneNumber': consumerPhoneNumber,
+        if (customerName != null) 'customerName': customerName,
+        if (jobType != null) 'jobType': jobType,
+        if (postalCode != null) 'postalCode': postalCode,
+      };
 }
 
 /// Container for phone lead specific information.
@@ -733,20 +666,15 @@ class GoogleAdsHomeservicesLocalservicesV1PhoneLead {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chargedCallTimestamp != null) {
-      _json['chargedCallTimestamp'] = chargedCallTimestamp;
-    }
-    if (chargedConnectedCallDurationSeconds != null) {
-      _json['chargedConnectedCallDurationSeconds'] =
-          chargedConnectedCallDurationSeconds;
-    }
-    if (consumerPhoneNumber != null) {
-      _json['consumerPhoneNumber'] = consumerPhoneNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chargedCallTimestamp != null)
+          'chargedCallTimestamp': chargedCallTimestamp,
+        if (chargedConnectedCallDurationSeconds != null)
+          'chargedConnectedCallDurationSeconds':
+              chargedConnectedCallDurationSeconds,
+        if (consumerPhoneNumber != null)
+          'consumerPhoneNumber': consumerPhoneNumber,
+      };
 }
 
 /// A page of the response received from the SearchAccountReports method.
@@ -780,17 +708,12 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountReports != null) {
-      _json['accountReports'] =
-          accountReports.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountReports != null)
+          'accountReports':
+              accountReports.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A page of the response received from the SearchDetailedLeadReports method.
@@ -825,17 +748,12 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detailedLeadReports != null) {
-      _json['detailedLeadReports'] =
-          detailedLeadReports.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detailedLeadReports != null)
+          'detailedLeadReports':
+              detailedLeadReports.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Represents a time zone from the
@@ -860,14 +778,8 @@ class GoogleTypeTimeZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (version != null) 'version': version,
+      };
 }

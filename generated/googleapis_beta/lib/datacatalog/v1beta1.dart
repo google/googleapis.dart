@@ -3280,19 +3280,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3309,10 +3301,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3376,22 +3365,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -3409,13 +3388,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -3440,13 +3415,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.
@@ -3489,19 +3461,11 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (shardCount != null) {
-      _json['shardCount'] = shardCount;
-    }
-    if (tablePrefix != null) {
-      _json['tablePrefix'] = tablePrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset,
+        if (shardCount != null) 'shardCount': shardCount,
+        if (tablePrefix != null) 'tablePrefix': tablePrefix,
+      };
 }
 
 /// Describes a BigQuery table.
@@ -3544,19 +3508,11 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tableSourceType != null) {
-      _json['tableSourceType'] = tableSourceType;
-    }
-    if (tableSpec != null) {
-      _json['tableSpec'] = tableSpec.toJson();
-    }
-    if (viewSpec != null) {
-      _json['viewSpec'] = viewSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tableSourceType != null) 'tableSourceType': tableSourceType,
+        if (tableSpec != null) 'tableSpec': tableSpec.toJson(),
+        if (viewSpec != null) 'viewSpec': viewSpec.toJson(),
+      };
 }
 
 /// Representation of a column within a schema.
@@ -3620,25 +3576,14 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (column != null) {
-      _json['column'] = column;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (subcolumns != null) {
-      _json['subcolumns'] = subcolumns.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (column != null) 'column': column,
+        if (description != null) 'description': description,
+        if (mode != null) 'mode': mode,
+        if (subcolumns != null)
+          'subcolumns': subcolumns.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Entry Metadata.
@@ -3816,49 +3761,25 @@ class GoogleCloudDatacatalogV1beta1Entry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryDateShardedSpec != null) {
-      _json['bigqueryDateShardedSpec'] = bigqueryDateShardedSpec.toJson();
-    }
-    if (bigqueryTableSpec != null) {
-      _json['bigqueryTableSpec'] = bigqueryTableSpec.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (gcsFilesetSpec != null) {
-      _json['gcsFilesetSpec'] = gcsFilesetSpec.toJson();
-    }
-    if (integratedSystem != null) {
-      _json['integratedSystem'] = integratedSystem;
-    }
-    if (linkedResource != null) {
-      _json['linkedResource'] = linkedResource;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (schema != null) {
-      _json['schema'] = schema.toJson();
-    }
-    if (sourceSystemTimestamps != null) {
-      _json['sourceSystemTimestamps'] = sourceSystemTimestamps.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (userSpecifiedSystem != null) {
-      _json['userSpecifiedSystem'] = userSpecifiedSystem;
-    }
-    if (userSpecifiedType != null) {
-      _json['userSpecifiedType'] = userSpecifiedType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryDateShardedSpec != null)
+          'bigqueryDateShardedSpec': bigqueryDateShardedSpec.toJson(),
+        if (bigqueryTableSpec != null)
+          'bigqueryTableSpec': bigqueryTableSpec.toJson(),
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec.toJson(),
+        if (integratedSystem != null) 'integratedSystem': integratedSystem,
+        if (linkedResource != null) 'linkedResource': linkedResource,
+        if (name != null) 'name': name,
+        if (schema != null) 'schema': schema.toJson(),
+        if (sourceSystemTimestamps != null)
+          'sourceSystemTimestamps': sourceSystemTimestamps.toJson(),
+        if (type != null) 'type': type,
+        if (userSpecifiedSystem != null)
+          'userSpecifiedSystem': userSpecifiedSystem,
+        if (userSpecifiedType != null) 'userSpecifiedType': userSpecifiedType,
+      };
 }
 
 /// EntryGroup Metadata.
@@ -3913,22 +3834,13 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataCatalogTimestamps != null) {
-      _json['dataCatalogTimestamps'] = dataCatalogTimestamps.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataCatalogTimestamps != null)
+          'dataCatalogTimestamps': dataCatalogTimestamps.toJson(),
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Response message for ExportTaxonomies.
@@ -3949,13 +3861,10 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (taxonomies != null) {
-      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (taxonomies != null)
+          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudDatacatalogV1beta1FieldType {
@@ -3984,16 +3893,10 @@ class GoogleCloudDatacatalogV1beta1FieldType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enumType != null) {
-      _json['enumType'] = enumType.toJson();
-    }
-    if (primitiveType != null) {
-      _json['primitiveType'] = primitiveType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enumType != null) 'enumType': enumType.toJson(),
+        if (primitiveType != null) 'primitiveType': primitiveType,
+      };
 }
 
 class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
@@ -4012,14 +3915,11 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedValues != null) {
-      _json['allowedValues'] =
-          allowedValues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedValues != null)
+          'allowedValues':
+              allowedValues.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
@@ -4039,13 +3939,9 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// Specifications of a single file in Cloud Storage.
@@ -4082,19 +3978,11 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filePath != null) {
-      _json['filePath'] = filePath;
-    }
-    if (gcsTimestamps != null) {
-      _json['gcsTimestamps'] = gcsTimestamps.toJson();
-    }
-    if (sizeBytes != null) {
-      _json['sizeBytes'] = sizeBytes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filePath != null) 'filePath': filePath,
+        if (gcsTimestamps != null) 'gcsTimestamps': gcsTimestamps.toJson(),
+        if (sizeBytes != null) 'sizeBytes': sizeBytes,
+      };
 }
 
 /// Describes a Cloud Storage fileset entry.
@@ -4145,17 +4033,12 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filePatterns != null) {
-      _json['filePatterns'] = filePatterns;
-    }
-    if (sampleGcsFileSpecs != null) {
-      _json['sampleGcsFileSpecs'] =
-          sampleGcsFileSpecs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filePatterns != null) 'filePatterns': filePatterns,
+        if (sampleGcsFileSpecs != null)
+          'sampleGcsFileSpecs':
+              sampleGcsFileSpecs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for ImportTaxonomies.
@@ -4173,13 +4056,9 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inlineSource != null) {
-      _json['inlineSource'] = inlineSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inlineSource != null) 'inlineSource': inlineSource.toJson(),
+      };
 }
 
 /// Response message for ImportTaxonomies.
@@ -4200,13 +4079,10 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (taxonomies != null) {
-      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (taxonomies != null)
+          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Inline source used for taxonomies import.
@@ -4228,13 +4104,10 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (taxonomies != null) {
-      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (taxonomies != null)
+          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ListEntries.
@@ -4262,16 +4135,11 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListEntryGroups.
@@ -4300,17 +4168,11 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entryGroups != null) {
-      _json['entryGroups'] =
-          entryGroups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entryGroups != null)
+          'entryGroups': entryGroups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListPolicyTags.
@@ -4337,16 +4199,11 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (policyTags != null) {
-      _json['policyTags'] = policyTags.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (policyTags != null)
+          'policyTags': policyTags.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ListTags.
@@ -4374,16 +4231,10 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (tags != null) {
-      _json['tags'] = tags.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (tags != null) 'tags': tags.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ListTaxonomies.
@@ -4410,16 +4261,11 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (taxonomies != null) {
-      _json['taxonomies'] = taxonomies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (taxonomies != null)
+          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Denotes one policy tag in a taxonomy (e.g. ssn).
@@ -4488,25 +4334,13 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (childPolicyTags != null) {
-      _json['childPolicyTags'] = childPolicyTags;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentPolicyTag != null) {
-      _json['parentPolicyTag'] = parentPolicyTag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (childPolicyTags != null) 'childPolicyTags': childPolicyTags,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (parentPolicyTag != null) 'parentPolicyTag': parentPolicyTag,
+      };
 }
 
 /// Request message for RenameTagTemplateFieldEnumValue.
@@ -4527,13 +4361,10 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (newEnumValueDisplayName != null) {
-      _json['newEnumValueDisplayName'] = newEnumValueDisplayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (newEnumValueDisplayName != null)
+          'newEnumValueDisplayName': newEnumValueDisplayName,
+      };
 }
 
 /// Request message for RenameTagTemplateField.
@@ -4554,13 +4385,10 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (newTagTemplateFieldId != null) {
-      _json['newTagTemplateFieldId'] = newTagTemplateFieldId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (newTagTemplateFieldId != null)
+          'newTagTemplateFieldId': newTagTemplateFieldId,
+      };
 }
 
 /// Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
@@ -4584,13 +4412,10 @@ class GoogleCloudDatacatalogV1beta1Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null)
+          'columns': columns.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for SearchCatalog.
@@ -4660,25 +4485,13 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (orderBy != null) {
-      _json['orderBy'] = orderBy;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (scope != null) {
-      _json['scope'] = scope.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (orderBy != null) 'orderBy': orderBy,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (query != null) 'query': query,
+        if (scope != null) 'scope': scope.toJson(),
+      };
 }
 
 /// The criteria that select the subspace used for query matching.
@@ -4745,22 +4558,14 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeGcpPublicDatasets != null) {
-      _json['includeGcpPublicDatasets'] = includeGcpPublicDatasets;
-    }
-    if (includeOrgIds != null) {
-      _json['includeOrgIds'] = includeOrgIds;
-    }
-    if (includeProjectIds != null) {
-      _json['includeProjectIds'] = includeProjectIds;
-    }
-    if (restrictedLocations != null) {
-      _json['restrictedLocations'] = restrictedLocations;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeGcpPublicDatasets != null)
+          'includeGcpPublicDatasets': includeGcpPublicDatasets,
+        if (includeOrgIds != null) 'includeOrgIds': includeOrgIds,
+        if (includeProjectIds != null) 'includeProjectIds': includeProjectIds,
+        if (restrictedLocations != null)
+          'restrictedLocations': restrictedLocations,
+      };
 }
 
 /// Response message for SearchCatalog.
@@ -4799,19 +4604,12 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// A result that appears in the response of a search request.
@@ -4874,25 +4672,15 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (linkedResource != null) {
-      _json['linkedResource'] = linkedResource;
-    }
-    if (modifyTime != null) {
-      _json['modifyTime'] = modifyTime;
-    }
-    if (relativeResourceName != null) {
-      _json['relativeResourceName'] = relativeResourceName;
-    }
-    if (searchResultSubtype != null) {
-      _json['searchResultSubtype'] = searchResultSubtype;
-    }
-    if (searchResultType != null) {
-      _json['searchResultType'] = searchResultType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (linkedResource != null) 'linkedResource': linkedResource,
+        if (modifyTime != null) 'modifyTime': modifyTime,
+        if (relativeResourceName != null)
+          'relativeResourceName': relativeResourceName,
+        if (searchResultSubtype != null)
+          'searchResultSubtype': searchResultSubtype,
+        if (searchResultType != null) 'searchResultType': searchResultType,
+      };
 }
 
 /// Message representing one policy tag when exported as a nested proto.
@@ -4939,23 +4727,14 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (childPolicyTags != null) {
-      _json['childPolicyTags'] =
-          childPolicyTags.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (policyTag != null) {
-      _json['policyTag'] = policyTag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (childPolicyTags != null)
+          'childPolicyTags':
+              childPolicyTags.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (policyTag != null) 'policyTag': policyTag,
+      };
 }
 
 /// Message capturing a taxonomy and its policy tag hierarchy as a nested proto.
@@ -5004,22 +4783,14 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activatedPolicyTypes != null) {
-      _json['activatedPolicyTypes'] = activatedPolicyTypes;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (policyTags != null) {
-      _json['policyTags'] = policyTags.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activatedPolicyTypes != null)
+          'activatedPolicyTypes': activatedPolicyTypes,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (policyTags != null)
+          'policyTags': policyTags.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Timestamps about this resource according to a particular system.
@@ -5051,19 +4822,11 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Normal BigQuery table spec.
@@ -5086,13 +4849,9 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupedEntry != null) {
-      _json['groupedEntry'] = groupedEntry;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupedEntry != null) 'groupedEntry': groupedEntry,
+      };
 }
 
 /// Tags are used to attach custom metadata to Data Catalog resources.
@@ -5165,26 +4924,16 @@ class GoogleCloudDatacatalogV1beta1Tag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (column != null) {
-      _json['column'] = column;
-    }
-    if (fields != null) {
-      _json['fields'] =
-          fields.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (template != null) {
-      _json['template'] = template;
-    }
-    if (templateDisplayName != null) {
-      _json['templateDisplayName'] = templateDisplayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (column != null) 'column': column,
+        if (fields != null)
+          'fields':
+              fields.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name,
+        if (template != null) 'template': template,
+        if (templateDisplayName != null)
+          'templateDisplayName': templateDisplayName,
+      };
 }
 
 /// Contains the value and supporting information for a field within a Tag.
@@ -5248,31 +4997,15 @@ class GoogleCloudDatacatalogV1beta1TagField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (doubleValue != null) {
-      _json['doubleValue'] = doubleValue;
-    }
-    if (enumValue != null) {
-      _json['enumValue'] = enumValue.toJson();
-    }
-    if (order != null) {
-      _json['order'] = order;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    if (timestampValue != null) {
-      _json['timestampValue'] = timestampValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (displayName != null) 'displayName': displayName,
+        if (doubleValue != null) 'doubleValue': doubleValue,
+        if (enumValue != null) 'enumValue': enumValue.toJson(),
+        if (order != null) 'order': order,
+        if (stringValue != null) 'stringValue': stringValue,
+        if (timestampValue != null) 'timestampValue': timestampValue,
+      };
 }
 
 /// Holds an enum value.
@@ -5288,13 +5021,9 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// A tag template defines a tag, which can have one or more typed fields.
@@ -5351,20 +5080,13 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (fields != null) {
-      _json['fields'] =
-          fields.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (fields != null)
+          'fields':
+              fields.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name,
+      };
 }
 
 /// The template for an individual field within a tag template.
@@ -5430,28 +5152,14 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (isRequired != null) {
-      _json['isRequired'] = isRequired;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (order != null) {
-      _json['order'] = order;
-    }
-    if (type != null) {
-      _json['type'] = type.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (isRequired != null) 'isRequired': isRequired,
+        if (name != null) 'name': name,
+        if (order != null) 'order': order,
+        if (type != null) 'type': type.toJson(),
+      };
 }
 
 /// A taxonomy is a collection of policy tags that classify data along a common
@@ -5533,28 +5241,16 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activatedPolicyTypes != null) {
-      _json['activatedPolicyTypes'] = activatedPolicyTypes;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (policyTagCount != null) {
-      _json['policyTagCount'] = policyTagCount;
-    }
-    if (taxonomyTimestamps != null) {
-      _json['taxonomyTimestamps'] = taxonomyTimestamps.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activatedPolicyTypes != null)
+          'activatedPolicyTypes': activatedPolicyTypes,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (policyTagCount != null) 'policyTagCount': policyTagCount,
+        if (taxonomyTimestamps != null)
+          'taxonomyTimestamps': taxonomyTimestamps.toJson(),
+      };
 }
 
 /// Table view specification.
@@ -5572,13 +5268,9 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (viewQuery != null) {
-      _json['viewQuery'] = viewQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (viewQuery != null) 'viewQuery': viewQuery,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -5676,19 +5368,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -5709,13 +5394,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -5737,13 +5418,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -5762,11 +5439,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

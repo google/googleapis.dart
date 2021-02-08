@@ -455,23 +455,13 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claimDate != null) {
-      _json['claimDate'] = claimDate;
-    }
-    if (claimReview != null) {
-      _json['claimReview'] =
-          claimReview.map((value) => value.toJson()).toList();
-    }
-    if (claimant != null) {
-      _json['claimant'] = claimant;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claimDate != null) 'claimDate': claimDate,
+        if (claimReview != null)
+          'claimReview': claimReview.map((value) => value.toJson()).toList(),
+        if (claimant != null) 'claimant': claimant,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Information about the claim author.
@@ -508,22 +498,12 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (jobTitle != null) {
-      _json['jobTitle'] = jobTitle;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sameAs != null) {
-      _json['sameAs'] = sameAs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (jobTitle != null) 'jobTitle': jobTitle,
+        if (name != null) 'name': name,
+        if (sameAs != null) 'sameAs': sameAs,
+      };
 }
 
 /// Information about the claim rating.
@@ -580,28 +560,14 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bestRating != null) {
-      _json['bestRating'] = bestRating;
-    }
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (ratingExplanation != null) {
-      _json['ratingExplanation'] = ratingExplanation;
-    }
-    if (ratingValue != null) {
-      _json['ratingValue'] = ratingValue;
-    }
-    if (textualRating != null) {
-      _json['textualRating'] = textualRating;
-    }
-    if (worstRating != null) {
-      _json['worstRating'] = worstRating;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bestRating != null) 'bestRating': bestRating,
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (ratingExplanation != null) 'ratingExplanation': ratingExplanation,
+        if (ratingValue != null) 'ratingValue': ratingValue,
+        if (textualRating != null) 'textualRating': textualRating,
+        if (worstRating != null) 'worstRating': worstRating,
+      };
 }
 
 /// Information about a claim review.
@@ -652,28 +618,14 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (publisher != null) {
-      _json['publisher'] = publisher.toJson();
-    }
-    if (reviewDate != null) {
-      _json['reviewDate'] = reviewDate;
-    }
-    if (textualRating != null) {
-      _json['textualRating'] = textualRating;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (publisher != null) 'publisher': publisher.toJson(),
+        if (reviewDate != null) 'reviewDate': reviewDate,
+        if (textualRating != null) 'textualRating': textualRating,
+        if (title != null) 'title': title,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Information about the claim review author.
@@ -698,16 +650,10 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Fields for an individual `ClaimReview` element.
@@ -791,34 +737,17 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claimAppearances != null) {
-      _json['claimAppearances'] = claimAppearances;
-    }
-    if (claimAuthor != null) {
-      _json['claimAuthor'] = claimAuthor.toJson();
-    }
-    if (claimDate != null) {
-      _json['claimDate'] = claimDate;
-    }
-    if (claimFirstAppearance != null) {
-      _json['claimFirstAppearance'] = claimFirstAppearance;
-    }
-    if (claimLocation != null) {
-      _json['claimLocation'] = claimLocation;
-    }
-    if (claimReviewed != null) {
-      _json['claimReviewed'] = claimReviewed;
-    }
-    if (rating != null) {
-      _json['rating'] = rating.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claimAppearances != null) 'claimAppearances': claimAppearances,
+        if (claimAuthor != null) 'claimAuthor': claimAuthor.toJson(),
+        if (claimDate != null) 'claimDate': claimDate,
+        if (claimFirstAppearance != null)
+          'claimFirstAppearance': claimFirstAppearance,
+        if (claimLocation != null) 'claimLocation': claimLocation,
+        if (claimReviewed != null) 'claimReviewed': claimReviewed,
+        if (rating != null) 'rating': rating.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Holds one or more instances of `ClaimReview` markup for a webpage.
@@ -895,29 +824,17 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claimReviewAuthor != null) {
-      _json['claimReviewAuthor'] = claimReviewAuthor.toJson();
-    }
-    if (claimReviewMarkups != null) {
-      _json['claimReviewMarkups'] =
-          claimReviewMarkups.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pageUrl != null) {
-      _json['pageUrl'] = pageUrl;
-    }
-    if (publishDate != null) {
-      _json['publishDate'] = publishDate;
-    }
-    if (versionId != null) {
-      _json['versionId'] = versionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claimReviewAuthor != null)
+          'claimReviewAuthor': claimReviewAuthor.toJson(),
+        if (claimReviewMarkups != null)
+          'claimReviewMarkups':
+              claimReviewMarkups.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (pageUrl != null) 'pageUrl': pageUrl,
+        if (publishDate != null) 'publishDate': publishDate,
+        if (versionId != null) 'versionId': versionId,
+      };
 }
 
 /// Response from searching fact-checked claims.
@@ -947,16 +864,11 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claims != null) {
-      _json['claims'] = claims.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claims != null)
+          'claims': claims.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response from listing `ClaimReview` markup.
@@ -988,17 +900,12 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claimReviewMarkupPages != null) {
-      _json['claimReviewMarkupPages'] =
-          claimReviewMarkupPages.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claimReviewMarkupPages != null)
+          'claimReviewMarkupPages':
+              claimReviewMarkupPages.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Information about the publisher.
@@ -1025,16 +932,10 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (site != null) {
-      _json['site'] = site;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (site != null) 'site': site,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1051,8 +952,5 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }

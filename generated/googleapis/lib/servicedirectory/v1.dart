@@ -1457,19 +1457,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1486,10 +1478,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An individual endpoint that provides a service.
@@ -1562,22 +1551,12 @@ class Endpoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (annotations != null) {
-      _json['annotations'] = annotations;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (annotations != null) 'annotations': annotations,
+        if (name != null) 'name': name,
+        if (port != null) 'port': port,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1641,22 +1620,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -1674,13 +1643,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -1705,13 +1670,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// The response message for RegistrationService.ListEndpoints.
@@ -1737,16 +1699,11 @@ class ListEndpointsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endpoints != null) {
-      _json['endpoints'] = endpoints.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endpoints != null)
+          'endpoints': endpoints.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1771,16 +1728,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for RegistrationService.ListNamespaces.
@@ -1806,16 +1758,11 @@ class ListNamespacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namespaces != null) {
-      _json['namespaces'] = namespaces.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namespaces != null)
+          'namespaces': namespaces.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for RegistrationService.ListServices.
@@ -1841,16 +1788,11 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (services != null) {
-      _json['services'] = services.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (services != null)
+          'services': services.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1915,25 +1857,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A container for services.
@@ -1972,16 +1902,10 @@ class Namespace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2079,19 +2003,12 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// The request message for LookupService.ResolveService.
@@ -2135,16 +2052,10 @@ class ResolveServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endpointFilter != null) {
-      _json['endpointFilter'] = endpointFilter;
-    }
-    if (maxEndpoints != null) {
-      _json['maxEndpoints'] = maxEndpoints;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endpointFilter != null) 'endpointFilter': endpointFilter,
+        if (maxEndpoints != null) 'maxEndpoints': maxEndpoints,
+      };
 }
 
 /// The response message for LookupService.ResolveService.
@@ -2160,13 +2071,9 @@ class ResolveServiceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (service != null) {
-      _json['service'] = service.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (service != null) 'service': service.toJson(),
+      };
 }
 
 /// An individual service.
@@ -2235,19 +2142,12 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotations != null) {
-      _json['annotations'] = annotations;
-    }
-    if (endpoints != null) {
-      _json['endpoints'] = endpoints.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotations != null) 'annotations': annotations,
+        if (endpoints != null)
+          'endpoints': endpoints.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2268,13 +2168,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -2296,13 +2192,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -2321,11 +2213,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

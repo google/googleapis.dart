@@ -1293,13 +1293,9 @@ class AddBandingRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bandedRange != null) {
-      _json['bandedRange'] = bandedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bandedRange != null) 'bandedRange': bandedRange.toJson(),
+      };
 }
 
 /// The result of adding a banded range.
@@ -1316,13 +1312,9 @@ class AddBandingResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bandedRange != null) {
-      _json['bandedRange'] = bandedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bandedRange != null) 'bandedRange': bandedRange.toJson(),
+      };
 }
 
 /// Adds a chart to a sheet in the spreadsheet.
@@ -1344,13 +1336,9 @@ class AddChartRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chart != null) {
-      _json['chart'] = chart.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chart != null) 'chart': chart.toJson(),
+      };
 }
 
 /// The result of adding a chart to a spreadsheet.
@@ -1367,13 +1355,9 @@ class AddChartResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chart != null) {
-      _json['chart'] = chart.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chart != null) 'chart': chart.toJson(),
+      };
 }
 
 /// Adds a new conditional format rule at the given index.
@@ -1398,16 +1382,10 @@ class AddConditionalFormatRuleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (rule != null) {
-      _json['rule'] = rule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (index != null) 'index': index,
+        if (rule != null) 'rule': rule.toJson(),
+      };
 }
 
 /// Adds a data source.
@@ -1429,13 +1407,9 @@ class AddDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSource != null) {
-      _json['dataSource'] = dataSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSource != null) 'dataSource': dataSource.toJson(),
+      };
 }
 
 /// The result of adding a data source.
@@ -1459,16 +1433,11 @@ class AddDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (dataSource != null) {
-      _json['dataSource'] = dataSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (dataSource != null) 'dataSource': dataSource.toJson(),
+      };
 }
 
 /// Creates a group over the specified range.
@@ -1499,13 +1468,9 @@ class AddDimensionGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The result of adding a group.
@@ -1524,14 +1489,11 @@ class AddDimensionGroupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionGroups != null) {
-      _json['dimensionGroups'] =
-          dimensionGroups.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionGroups != null)
+          'dimensionGroups':
+              dimensionGroups.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Adds a filter view.
@@ -1552,13 +1514,9 @@ class AddFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter.toJson(),
+      };
 }
 
 /// The result of adding a filter view.
@@ -1575,13 +1533,9 @@ class AddFilterViewResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter.toJson(),
+      };
 }
 
 /// Adds a named range to the spreadsheet.
@@ -1602,13 +1556,9 @@ class AddNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedRange != null) {
-      _json['namedRange'] = namedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedRange != null) 'namedRange': namedRange.toJson(),
+      };
 }
 
 /// The result of adding a named range.
@@ -1625,13 +1575,9 @@ class AddNamedRangeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedRange != null) {
-      _json['namedRange'] = namedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedRange != null) 'namedRange': namedRange.toJson(),
+      };
 }
 
 /// Adds a new protected range.
@@ -1652,13 +1598,9 @@ class AddProtectedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (protectedRange != null) {
-      _json['protectedRange'] = protectedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (protectedRange != null) 'protectedRange': protectedRange.toJson(),
+      };
 }
 
 /// The result of adding a new protected range.
@@ -1675,13 +1617,9 @@ class AddProtectedRangeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (protectedRange != null) {
-      _json['protectedRange'] = protectedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (protectedRange != null) 'protectedRange': protectedRange.toJson(),
+      };
 }
 
 /// Adds a new sheet.
@@ -1706,13 +1644,9 @@ class AddSheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (properties != null) 'properties': properties.toJson(),
+      };
 }
 
 /// The result of adding a sheet.
@@ -1729,13 +1663,9 @@ class AddSheetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (properties != null) 'properties': properties.toJson(),
+      };
 }
 
 /// Adds a slicer to a sheet in the spreadsheet.
@@ -1757,13 +1687,9 @@ class AddSlicerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (slicer != null) {
-      _json['slicer'] = slicer.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (slicer != null) 'slicer': slicer.toJson(),
+      };
 }
 
 /// The result of adding a slicer to a spreadsheet.
@@ -1780,13 +1706,9 @@ class AddSlicerResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (slicer != null) {
-      _json['slicer'] = slicer.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (slicer != null) 'slicer': slicer.toJson(),
+      };
 }
 
 /// Adds new cells after the last row with data in a sheet, inserting new rows
@@ -1822,19 +1744,11 @@ class AppendCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// Appends rows or columns to the end of a sheet.
@@ -1866,19 +1780,11 @@ class AppendDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (length != null) {
-      _json['length'] = length;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (length != null) 'length': length,
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -1910,19 +1816,11 @@ class AppendValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (tableRange != null) {
-      _json['tableRange'] = tableRange;
-    }
-    if (updates != null) {
-      _json['updates'] = updates.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (tableRange != null) 'tableRange': tableRange,
+        if (updates != null) 'updates': updates.toJson(),
+      };
 }
 
 /// Fills in more data based on existing data.
@@ -1960,19 +1858,13 @@ class AutoFillRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (sourceAndDestination != null) {
-      _json['sourceAndDestination'] = sourceAndDestination.toJson();
-    }
-    if (useAlternateSeries != null) {
-      _json['useAlternateSeries'] = useAlternateSeries;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+        if (sourceAndDestination != null)
+          'sourceAndDestination': sourceAndDestination.toJson(),
+        if (useAlternateSeries != null)
+          'useAlternateSeries': useAlternateSeries,
+      };
 }
 
 /// Automatically resizes one or more dimensions based on the contents of the
@@ -1998,16 +1890,11 @@ class AutoResizeDimensionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceSheetDimensions != null) {
-      _json['dataSourceSheetDimensions'] = dataSourceSheetDimensions.toJson();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceSheetDimensions != null)
+          'dataSourceSheetDimensions': dataSourceSheetDimensions.toJson(),
+        if (dimensions != null) 'dimensions': dimensions.toJson(),
+      };
 }
 
 /// A banded (alternating colors) range in a sheet.
@@ -2052,22 +1939,13 @@ class BandedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bandedRangeId != null) {
-      _json['bandedRangeId'] = bandedRangeId;
-    }
-    if (columnProperties != null) {
-      _json['columnProperties'] = columnProperties.toJson();
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (rowProperties != null) {
-      _json['rowProperties'] = rowProperties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId,
+        if (columnProperties != null)
+          'columnProperties': columnProperties.toJson(),
+        if (range != null) 'range': range.toJson(),
+        if (rowProperties != null) 'rowProperties': rowProperties.toJson(),
+      };
 }
 
 /// Properties referring a single dimension (either row or column).
@@ -2173,34 +2051,21 @@ class BandingProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (firstBandColor != null) {
-      _json['firstBandColor'] = firstBandColor.toJson();
-    }
-    if (firstBandColorStyle != null) {
-      _json['firstBandColorStyle'] = firstBandColorStyle.toJson();
-    }
-    if (footerColor != null) {
-      _json['footerColor'] = footerColor.toJson();
-    }
-    if (footerColorStyle != null) {
-      _json['footerColorStyle'] = footerColorStyle.toJson();
-    }
-    if (headerColor != null) {
-      _json['headerColor'] = headerColor.toJson();
-    }
-    if (headerColorStyle != null) {
-      _json['headerColorStyle'] = headerColorStyle.toJson();
-    }
-    if (secondBandColor != null) {
-      _json['secondBandColor'] = secondBandColor.toJson();
-    }
-    if (secondBandColorStyle != null) {
-      _json['secondBandColorStyle'] = secondBandColorStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (firstBandColor != null) 'firstBandColor': firstBandColor.toJson(),
+        if (firstBandColorStyle != null)
+          'firstBandColorStyle': firstBandColorStyle.toJson(),
+        if (footerColor != null) 'footerColor': footerColor.toJson(),
+        if (footerColorStyle != null)
+          'footerColorStyle': footerColorStyle.toJson(),
+        if (headerColor != null) 'headerColor': headerColor.toJson(),
+        if (headerColorStyle != null)
+          'headerColorStyle': headerColorStyle.toJson(),
+        if (secondBandColor != null)
+          'secondBandColor': secondBandColor.toJson(),
+        if (secondBandColorStyle != null)
+          'secondBandColorStyle': secondBandColorStyle.toJson(),
+      };
 }
 
 /// Formatting options for baseline value.
@@ -2288,34 +2153,18 @@ class BaselineValueFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comparisonType != null) {
-      _json['comparisonType'] = comparisonType;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (negativeColor != null) {
-      _json['negativeColor'] = negativeColor.toJson();
-    }
-    if (negativeColorStyle != null) {
-      _json['negativeColorStyle'] = negativeColorStyle.toJson();
-    }
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (positiveColor != null) {
-      _json['positiveColor'] = positiveColor.toJson();
-    }
-    if (positiveColorStyle != null) {
-      _json['positiveColorStyle'] = positiveColorStyle.toJson();
-    }
-    if (textFormat != null) {
-      _json['textFormat'] = textFormat.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType,
+        if (description != null) 'description': description,
+        if (negativeColor != null) 'negativeColor': negativeColor.toJson(),
+        if (negativeColorStyle != null)
+          'negativeColorStyle': negativeColorStyle.toJson(),
+        if (position != null) 'position': position.toJson(),
+        if (positiveColor != null) 'positiveColor': positiveColor.toJson(),
+        if (positiveColorStyle != null)
+          'positiveColorStyle': positiveColorStyle.toJson(),
+        if (textFormat != null) 'textFormat': textFormat.toJson(),
+      };
 }
 
 /// An axis of the chart.
@@ -2374,25 +2223,15 @@ class BasicChartAxis {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (format != null) {
-      _json['format'] = format.toJson();
-    }
-    if (position != null) {
-      _json['position'] = position;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (titleTextPosition != null) {
-      _json['titleTextPosition'] = titleTextPosition.toJson();
-    }
-    if (viewWindowOptions != null) {
-      _json['viewWindowOptions'] = viewWindowOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (format != null) 'format': format.toJson(),
+        if (position != null) 'position': position,
+        if (title != null) 'title': title,
+        if (titleTextPosition != null)
+          'titleTextPosition': titleTextPosition.toJson(),
+        if (viewWindowOptions != null)
+          'viewWindowOptions': viewWindowOptions.toJson(),
+      };
 }
 
 /// The domain of a chart.
@@ -2420,16 +2259,10 @@ class BasicChartDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domain != null) {
-      _json['domain'] = domain.toJson();
-    }
-    if (reversed != null) {
-      _json['reversed'] = reversed;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domain != null) 'domain': domain.toJson(),
+        if (reversed != null) 'reversed': reversed,
+      };
 }
 
 /// A single series of data in a chart.
@@ -2548,38 +2381,19 @@ class BasicChartSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (colorStyle != null) {
-      _json['colorStyle'] = colorStyle.toJson();
-    }
-    if (dataLabel != null) {
-      _json['dataLabel'] = dataLabel.toJson();
-    }
-    if (lineStyle != null) {
-      _json['lineStyle'] = lineStyle.toJson();
-    }
-    if (pointStyle != null) {
-      _json['pointStyle'] = pointStyle.toJson();
-    }
-    if (series != null) {
-      _json['series'] = series.toJson();
-    }
-    if (styleOverrides != null) {
-      _json['styleOverrides'] =
-          styleOverrides.map((value) => value.toJson()).toList();
-    }
-    if (targetAxis != null) {
-      _json['targetAxis'] = targetAxis;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
+        if (dataLabel != null) 'dataLabel': dataLabel.toJson(),
+        if (lineStyle != null) 'lineStyle': lineStyle.toJson(),
+        if (pointStyle != null) 'pointStyle': pointStyle.toJson(),
+        if (series != null) 'series': series.toJson(),
+        if (styleOverrides != null)
+          'styleOverrides':
+              styleOverrides.map((value) => value.toJson()).toList(),
+        if (targetAxis != null) 'targetAxis': targetAxis,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The specification for a basic chart.
@@ -2731,46 +2545,22 @@ class BasicChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (axis != null) {
-      _json['axis'] = axis.map((value) => value.toJson()).toList();
-    }
-    if (chartType != null) {
-      _json['chartType'] = chartType;
-    }
-    if (compareMode != null) {
-      _json['compareMode'] = compareMode;
-    }
-    if (domains != null) {
-      _json['domains'] = domains.map((value) => value.toJson()).toList();
-    }
-    if (headerCount != null) {
-      _json['headerCount'] = headerCount;
-    }
-    if (interpolateNulls != null) {
-      _json['interpolateNulls'] = interpolateNulls;
-    }
-    if (legendPosition != null) {
-      _json['legendPosition'] = legendPosition;
-    }
-    if (lineSmoothing != null) {
-      _json['lineSmoothing'] = lineSmoothing;
-    }
-    if (series != null) {
-      _json['series'] = series.map((value) => value.toJson()).toList();
-    }
-    if (stackedType != null) {
-      _json['stackedType'] = stackedType;
-    }
-    if (threeDimensional != null) {
-      _json['threeDimensional'] = threeDimensional;
-    }
-    if (totalDataLabel != null) {
-      _json['totalDataLabel'] = totalDataLabel.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (axis != null) 'axis': axis.map((value) => value.toJson()).toList(),
+        if (chartType != null) 'chartType': chartType,
+        if (compareMode != null) 'compareMode': compareMode,
+        if (domains != null)
+          'domains': domains.map((value) => value.toJson()).toList(),
+        if (headerCount != null) 'headerCount': headerCount,
+        if (interpolateNulls != null) 'interpolateNulls': interpolateNulls,
+        if (legendPosition != null) 'legendPosition': legendPosition,
+        if (lineSmoothing != null) 'lineSmoothing': lineSmoothing,
+        if (series != null)
+          'series': series.map((value) => value.toJson()).toList(),
+        if (stackedType != null) 'stackedType': stackedType,
+        if (threeDimensional != null) 'threeDimensional': threeDimensional,
+        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel.toJson(),
+      };
 }
 
 /// The default filter associated with a sheet.
@@ -2827,24 +2617,16 @@ class BasicFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (criteria != null) {
-      _json['criteria'] =
-          criteria.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (filterSpecs != null) {
-      _json['filterSpecs'] =
-          filterSpecs.map((value) => value.toJson()).toList();
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (sortSpecs != null) {
-      _json['sortSpecs'] = sortSpecs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (criteria != null)
+          'criteria':
+              criteria.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (filterSpecs != null)
+          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
+        if (range != null) 'range': range.toJson(),
+        if (sortSpecs != null)
+          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Style override settings for a single series data point.
@@ -2890,22 +2672,12 @@ class BasicSeriesDataPointStyleOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (colorStyle != null) {
-      _json['colorStyle'] = colorStyle.toJson();
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (pointStyle != null) {
-      _json['pointStyle'] = pointStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
+        if (index != null) 'index': index,
+        if (pointStyle != null) 'pointStyle': pointStyle.toJson(),
+      };
 }
 
 /// The request for clearing more than one range selected by a DataFilter in a
@@ -2925,14 +2697,10 @@ class BatchClearValuesByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilters != null) {
-      _json['dataFilters'] =
-          dataFilters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilters != null)
+          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response when clearing a range of values selected with DataFilters in a
@@ -2961,16 +2729,10 @@ class BatchClearValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clearedRanges != null) {
-      _json['clearedRanges'] = clearedRanges;
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clearedRanges != null) 'clearedRanges': clearedRanges,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+      };
 }
 
 /// The request for clearing more than one range of values in a spreadsheet.
@@ -2988,13 +2750,9 @@ class BatchClearValuesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ranges != null) {
-      _json['ranges'] = ranges;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ranges != null) 'ranges': ranges,
+      };
 }
 
 /// The response when clearing a range of values in a spreadsheet.
@@ -3022,16 +2780,10 @@ class BatchClearValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clearedRanges != null) {
-      _json['clearedRanges'] = clearedRanges;
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clearedRanges != null) 'clearedRanges': clearedRanges,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+      };
 }
 
 /// The request for retrieving a range of values in a spreadsheet selected by a
@@ -3110,23 +2862,14 @@ class BatchGetValuesByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilters != null) {
-      _json['dataFilters'] =
-          dataFilters.map((value) => value.toJson()).toList();
-    }
-    if (dateTimeRenderOption != null) {
-      _json['dateTimeRenderOption'] = dateTimeRenderOption;
-    }
-    if (majorDimension != null) {
-      _json['majorDimension'] = majorDimension;
-    }
-    if (valueRenderOption != null) {
-      _json['valueRenderOption'] = valueRenderOption;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilters != null)
+          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+        if (dateTimeRenderOption != null)
+          'dateTimeRenderOption': dateTimeRenderOption,
+        if (majorDimension != null) 'majorDimension': majorDimension,
+        if (valueRenderOption != null) 'valueRenderOption': valueRenderOption,
+      };
 }
 
 /// The response when retrieving more than one range of values in a spreadsheet
@@ -3152,17 +2895,11 @@ class BatchGetValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (valueRanges != null) {
-      _json['valueRanges'] =
-          valueRanges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (valueRanges != null)
+          'valueRanges': valueRanges.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response when retrieving more than one range of values in a spreadsheet.
@@ -3190,17 +2927,11 @@ class BatchGetValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (valueRanges != null) {
-      _json['valueRanges'] =
-          valueRanges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (valueRanges != null)
+          'valueRanges': valueRanges.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request for updating any aspect of a spreadsheet.
@@ -3248,22 +2979,15 @@ class BatchUpdateSpreadsheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeSpreadsheetInResponse != null) {
-      _json['includeSpreadsheetInResponse'] = includeSpreadsheetInResponse;
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    if (responseIncludeGridData != null) {
-      _json['responseIncludeGridData'] = responseIncludeGridData;
-    }
-    if (responseRanges != null) {
-      _json['responseRanges'] = responseRanges;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeSpreadsheetInResponse != null)
+          'includeSpreadsheetInResponse': includeSpreadsheetInResponse,
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+        if (responseIncludeGridData != null)
+          'responseIncludeGridData': responseIncludeGridData,
+        if (responseRanges != null) 'responseRanges': responseRanges,
+      };
 }
 
 /// The reply for batch updating a spreadsheet.
@@ -3302,19 +3026,13 @@ class BatchUpdateSpreadsheetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (replies != null) {
-      _json['replies'] = replies.map((value) => value.toJson()).toList();
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (updatedSpreadsheet != null) {
-      _json['updatedSpreadsheet'] = updatedSpreadsheet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (replies != null)
+          'replies': replies.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (updatedSpreadsheet != null)
+          'updatedSpreadsheet': updatedSpreadsheet.toJson(),
+      };
 }
 
 /// The request for updating more than one range of values in a spreadsheet.
@@ -3408,25 +3126,16 @@ class BatchUpdateValuesByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (includeValuesInResponse != null) {
-      _json['includeValuesInResponse'] = includeValuesInResponse;
-    }
-    if (responseDateTimeRenderOption != null) {
-      _json['responseDateTimeRenderOption'] = responseDateTimeRenderOption;
-    }
-    if (responseValueRenderOption != null) {
-      _json['responseValueRenderOption'] = responseValueRenderOption;
-    }
-    if (valueInputOption != null) {
-      _json['valueInputOption'] = valueInputOption;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (includeValuesInResponse != null)
+          'includeValuesInResponse': includeValuesInResponse,
+        if (responseDateTimeRenderOption != null)
+          'responseDateTimeRenderOption': responseDateTimeRenderOption,
+        if (responseValueRenderOption != null)
+          'responseValueRenderOption': responseValueRenderOption,
+        if (valueInputOption != null) 'valueInputOption': valueInputOption,
+      };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -3478,28 +3187,17 @@ class BatchUpdateValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (totalUpdatedCells != null) {
-      _json['totalUpdatedCells'] = totalUpdatedCells;
-    }
-    if (totalUpdatedColumns != null) {
-      _json['totalUpdatedColumns'] = totalUpdatedColumns;
-    }
-    if (totalUpdatedRows != null) {
-      _json['totalUpdatedRows'] = totalUpdatedRows;
-    }
-    if (totalUpdatedSheets != null) {
-      _json['totalUpdatedSheets'] = totalUpdatedSheets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells,
+        if (totalUpdatedColumns != null)
+          'totalUpdatedColumns': totalUpdatedColumns,
+        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows,
+        if (totalUpdatedSheets != null)
+          'totalUpdatedSheets': totalUpdatedSheets,
+      };
 }
 
 /// The request for updating more than one range of values in a spreadsheet.
@@ -3590,25 +3288,16 @@ class BatchUpdateValuesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (includeValuesInResponse != null) {
-      _json['includeValuesInResponse'] = includeValuesInResponse;
-    }
-    if (responseDateTimeRenderOption != null) {
-      _json['responseDateTimeRenderOption'] = responseDateTimeRenderOption;
-    }
-    if (responseValueRenderOption != null) {
-      _json['responseValueRenderOption'] = responseValueRenderOption;
-    }
-    if (valueInputOption != null) {
-      _json['valueInputOption'] = valueInputOption;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (includeValuesInResponse != null)
+          'includeValuesInResponse': includeValuesInResponse,
+        if (responseDateTimeRenderOption != null)
+          'responseDateTimeRenderOption': responseDateTimeRenderOption,
+        if (responseValueRenderOption != null)
+          'responseValueRenderOption': responseValueRenderOption,
+        if (valueInputOption != null) 'valueInputOption': valueInputOption,
+      };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -3660,28 +3349,17 @@ class BatchUpdateValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (totalUpdatedCells != null) {
-      _json['totalUpdatedCells'] = totalUpdatedCells;
-    }
-    if (totalUpdatedColumns != null) {
-      _json['totalUpdatedColumns'] = totalUpdatedColumns;
-    }
-    if (totalUpdatedRows != null) {
-      _json['totalUpdatedRows'] = totalUpdatedRows;
-    }
-    if (totalUpdatedSheets != null) {
-      _json['totalUpdatedSheets'] = totalUpdatedSheets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells,
+        if (totalUpdatedColumns != null)
+          'totalUpdatedColumns': totalUpdatedColumns,
+        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows,
+        if (totalUpdatedSheets != null)
+          'totalUpdatedSheets': totalUpdatedSheets,
+      };
 }
 
 /// The specification of a BigQuery data source that's connected to a sheet.
@@ -3713,19 +3391,11 @@ class BigQueryDataSourceSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (querySpec != null) {
-      _json['querySpec'] = querySpec.toJson();
-    }
-    if (tableSpec != null) {
-      _json['tableSpec'] = tableSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (projectId != null) 'projectId': projectId,
+        if (querySpec != null) 'querySpec': querySpec.toJson(),
+        if (tableSpec != null) 'tableSpec': tableSpec.toJson(),
+      };
 }
 
 /// Specifies a custom BigQuery query.
@@ -3741,13 +3411,9 @@ class BigQueryQuerySpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rawQuery != null) {
-      _json['rawQuery'] = rawQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rawQuery != null) 'rawQuery': rawQuery,
+      };
 }
 
 /// Specifies a BigQuery table definition.
@@ -3780,19 +3446,11 @@ class BigQueryTableSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasetId != null) {
-      _json['datasetId'] = datasetId;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    if (tableProjectId != null) {
-      _json['tableProjectId'] = tableProjectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId,
+        if (tableId != null) 'tableId': tableId,
+        if (tableProjectId != null) 'tableProjectId': tableProjectId,
+      };
 }
 
 /// A condition that can evaluate to true or false.
@@ -3930,16 +3588,11 @@ class BooleanCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A rule that may or may not match, depending on the condition.
@@ -3968,16 +3621,10 @@ class BooleanRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (format != null) {
-      _json['format'] = format.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (format != null) 'format': format.toJson(),
+      };
 }
 
 /// A border along a cell.
@@ -4027,22 +3674,12 @@ class Border {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (colorStyle != null) {
-      _json['colorStyle'] = colorStyle.toJson();
-    }
-    if (style != null) {
-      _json['style'] = style;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
+        if (style != null) 'style': style,
+        if (width != null) 'width': width,
+      };
 }
 
 /// The borders of the cell.
@@ -4080,22 +3717,12 @@ class Borders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom.toJson();
-    }
-    if (left != null) {
-      _json['left'] = left.toJson();
-    }
-    if (right != null) {
-      _json['right'] = right.toJson();
-    }
-    if (top != null) {
-      _json['top'] = top.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom.toJson(),
+        if (left != null) 'left': left.toJson(),
+        if (right != null) 'right': right.toJson(),
+        if (top != null) 'top': top.toJson(),
+      };
 }
 
 /// A bubble chart.
@@ -4218,46 +3845,25 @@ class BubbleChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bubbleBorderColor != null) {
-      _json['bubbleBorderColor'] = bubbleBorderColor.toJson();
-    }
-    if (bubbleBorderColorStyle != null) {
-      _json['bubbleBorderColorStyle'] = bubbleBorderColorStyle.toJson();
-    }
-    if (bubbleLabels != null) {
-      _json['bubbleLabels'] = bubbleLabels.toJson();
-    }
-    if (bubbleMaxRadiusSize != null) {
-      _json['bubbleMaxRadiusSize'] = bubbleMaxRadiusSize;
-    }
-    if (bubbleMinRadiusSize != null) {
-      _json['bubbleMinRadiusSize'] = bubbleMinRadiusSize;
-    }
-    if (bubbleOpacity != null) {
-      _json['bubbleOpacity'] = bubbleOpacity;
-    }
-    if (bubbleSizes != null) {
-      _json['bubbleSizes'] = bubbleSizes.toJson();
-    }
-    if (bubbleTextStyle != null) {
-      _json['bubbleTextStyle'] = bubbleTextStyle.toJson();
-    }
-    if (domain != null) {
-      _json['domain'] = domain.toJson();
-    }
-    if (groupIds != null) {
-      _json['groupIds'] = groupIds.toJson();
-    }
-    if (legendPosition != null) {
-      _json['legendPosition'] = legendPosition;
-    }
-    if (series != null) {
-      _json['series'] = series.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bubbleBorderColor != null)
+          'bubbleBorderColor': bubbleBorderColor.toJson(),
+        if (bubbleBorderColorStyle != null)
+          'bubbleBorderColorStyle': bubbleBorderColorStyle.toJson(),
+        if (bubbleLabels != null) 'bubbleLabels': bubbleLabels.toJson(),
+        if (bubbleMaxRadiusSize != null)
+          'bubbleMaxRadiusSize': bubbleMaxRadiusSize,
+        if (bubbleMinRadiusSize != null)
+          'bubbleMinRadiusSize': bubbleMinRadiusSize,
+        if (bubbleOpacity != null) 'bubbleOpacity': bubbleOpacity,
+        if (bubbleSizes != null) 'bubbleSizes': bubbleSizes.toJson(),
+        if (bubbleTextStyle != null)
+          'bubbleTextStyle': bubbleTextStyle.toJson(),
+        if (domain != null) 'domain': domain.toJson(),
+        if (groupIds != null) 'groupIds': groupIds.toJson(),
+        if (legendPosition != null) 'legendPosition': legendPosition,
+        if (series != null) 'series': series.toJson(),
+      };
 }
 
 /// A candlestick chart.
@@ -4288,16 +3894,10 @@ class CandlestickChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (domain != null) {
-      _json['domain'] = domain.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (domain != null) 'domain': domain.toJson(),
+      };
 }
 
 /// The Candlestick chart data, each containing the low, open, close, and high
@@ -4346,22 +3946,12 @@ class CandlestickData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (closeSeries != null) {
-      _json['closeSeries'] = closeSeries.toJson();
-    }
-    if (highSeries != null) {
-      _json['highSeries'] = highSeries.toJson();
-    }
-    if (lowSeries != null) {
-      _json['lowSeries'] = lowSeries.toJson();
-    }
-    if (openSeries != null) {
-      _json['openSeries'] = openSeries.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (closeSeries != null) 'closeSeries': closeSeries.toJson(),
+        if (highSeries != null) 'highSeries': highSeries.toJson(),
+        if (lowSeries != null) 'lowSeries': lowSeries.toJson(),
+        if (openSeries != null) 'openSeries': openSeries.toJson(),
+      };
 }
 
 /// The domain of a CandlestickChart.
@@ -4384,16 +3974,10 @@ class CandlestickDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.toJson();
-    }
-    if (reversed != null) {
-      _json['reversed'] = reversed;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.toJson(),
+        if (reversed != null) 'reversed': reversed,
+      };
 }
 
 /// The series of a CandlestickData.
@@ -4410,13 +3994,9 @@ class CandlestickSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.toJson(),
+      };
 }
 
 /// Data about a specific cell.
@@ -4554,47 +4134,27 @@ class CellData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceFormula != null) {
-      _json['dataSourceFormula'] = dataSourceFormula.toJson();
-    }
-    if (dataSourceTable != null) {
-      _json['dataSourceTable'] = dataSourceTable.toJson();
-    }
-    if (dataValidation != null) {
-      _json['dataValidation'] = dataValidation.toJson();
-    }
-    if (effectiveFormat != null) {
-      _json['effectiveFormat'] = effectiveFormat.toJson();
-    }
-    if (effectiveValue != null) {
-      _json['effectiveValue'] = effectiveValue.toJson();
-    }
-    if (formattedValue != null) {
-      _json['formattedValue'] = formattedValue;
-    }
-    if (hyperlink != null) {
-      _json['hyperlink'] = hyperlink;
-    }
-    if (note != null) {
-      _json['note'] = note;
-    }
-    if (pivotTable != null) {
-      _json['pivotTable'] = pivotTable.toJson();
-    }
-    if (textFormatRuns != null) {
-      _json['textFormatRuns'] =
-          textFormatRuns.map((value) => value.toJson()).toList();
-    }
-    if (userEnteredFormat != null) {
-      _json['userEnteredFormat'] = userEnteredFormat.toJson();
-    }
-    if (userEnteredValue != null) {
-      _json['userEnteredValue'] = userEnteredValue.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceFormula != null)
+          'dataSourceFormula': dataSourceFormula.toJson(),
+        if (dataSourceTable != null)
+          'dataSourceTable': dataSourceTable.toJson(),
+        if (dataValidation != null) 'dataValidation': dataValidation.toJson(),
+        if (effectiveFormat != null)
+          'effectiveFormat': effectiveFormat.toJson(),
+        if (effectiveValue != null) 'effectiveValue': effectiveValue.toJson(),
+        if (formattedValue != null) 'formattedValue': formattedValue,
+        if (hyperlink != null) 'hyperlink': hyperlink,
+        if (note != null) 'note': note,
+        if (pivotTable != null) 'pivotTable': pivotTable.toJson(),
+        if (textFormatRuns != null)
+          'textFormatRuns':
+              textFormatRuns.map((value) => value.toJson()).toList(),
+        if (userEnteredFormat != null)
+          'userEnteredFormat': userEnteredFormat.toJson(),
+        if (userEnteredValue != null)
+          'userEnteredValue': userEnteredValue.toJson(),
+      };
 }
 
 /// The format of a cell.
@@ -4729,46 +4289,24 @@ class CellFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (backgroundColorStyle != null) {
-      _json['backgroundColorStyle'] = backgroundColorStyle.toJson();
-    }
-    if (borders != null) {
-      _json['borders'] = borders.toJson();
-    }
-    if (horizontalAlignment != null) {
-      _json['horizontalAlignment'] = horizontalAlignment;
-    }
-    if (hyperlinkDisplayType != null) {
-      _json['hyperlinkDisplayType'] = hyperlinkDisplayType;
-    }
-    if (numberFormat != null) {
-      _json['numberFormat'] = numberFormat.toJson();
-    }
-    if (padding != null) {
-      _json['padding'] = padding.toJson();
-    }
-    if (textDirection != null) {
-      _json['textDirection'] = textDirection;
-    }
-    if (textFormat != null) {
-      _json['textFormat'] = textFormat.toJson();
-    }
-    if (textRotation != null) {
-      _json['textRotation'] = textRotation.toJson();
-    }
-    if (verticalAlignment != null) {
-      _json['verticalAlignment'] = verticalAlignment;
-    }
-    if (wrapStrategy != null) {
-      _json['wrapStrategy'] = wrapStrategy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (backgroundColorStyle != null)
+          'backgroundColorStyle': backgroundColorStyle.toJson(),
+        if (borders != null) 'borders': borders.toJson(),
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment,
+        if (hyperlinkDisplayType != null)
+          'hyperlinkDisplayType': hyperlinkDisplayType,
+        if (numberFormat != null) 'numberFormat': numberFormat.toJson(),
+        if (padding != null) 'padding': padding.toJson(),
+        if (textDirection != null) 'textDirection': textDirection,
+        if (textFormat != null) 'textFormat': textFormat.toJson(),
+        if (textRotation != null) 'textRotation': textRotation.toJson(),
+        if (verticalAlignment != null) 'verticalAlignment': verticalAlignment,
+        if (wrapStrategy != null) 'wrapStrategy': wrapStrategy,
+      };
 }
 
 /// The options that define a "view window" for a chart (such as the visible
@@ -4813,19 +4351,11 @@ class ChartAxisViewWindowOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (viewWindowMax != null) {
-      _json['viewWindowMax'] = viewWindowMax;
-    }
-    if (viewWindowMin != null) {
-      _json['viewWindowMin'] = viewWindowMin;
-    }
-    if (viewWindowMode != null) {
-      _json['viewWindowMode'] = viewWindowMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (viewWindowMax != null) 'viewWindowMax': viewWindowMax,
+        if (viewWindowMin != null) 'viewWindowMin': viewWindowMin,
+        if (viewWindowMode != null) 'viewWindowMode': viewWindowMode,
+      };
 }
 
 /// Custom number formatting options for chart attributes.
@@ -4851,16 +4381,10 @@ class ChartCustomNumberFormatOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (prefix != null) {
-      _json['prefix'] = prefix;
-    }
-    if (suffix != null) {
-      _json['suffix'] = suffix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (prefix != null) 'prefix': prefix,
+        if (suffix != null) 'suffix': suffix,
+      };
 }
 
 /// The data included in a domain or series.
@@ -4910,22 +4434,13 @@ class ChartData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregateType != null) {
-      _json['aggregateType'] = aggregateType;
-    }
-    if (columnReference != null) {
-      _json['columnReference'] = columnReference.toJson();
-    }
-    if (groupRule != null) {
-      _json['groupRule'] = groupRule.toJson();
-    }
-    if (sourceRange != null) {
-      _json['sourceRange'] = sourceRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregateType != null) 'aggregateType': aggregateType,
+        if (columnReference != null)
+          'columnReference': columnReference.toJson(),
+        if (groupRule != null) 'groupRule': groupRule.toJson(),
+        if (sourceRange != null) 'sourceRange': sourceRange.toJson(),
+      };
 }
 
 /// Allows you to organize the date-time values in a source data column into
@@ -4970,13 +4485,9 @@ class ChartDateTimeRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// An optional setting on the ChartData of the domain of a data source chart
@@ -5007,16 +4518,10 @@ class ChartGroupRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateTimeRule != null) {
-      _json['dateTimeRule'] = dateTimeRule.toJson();
-    }
-    if (histogramRule != null) {
-      _json['histogramRule'] = histogramRule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule.toJson(),
+        if (histogramRule != null) 'histogramRule': histogramRule.toJson(),
+      };
 }
 
 /// Allows you to organize numeric values in a source data column into buckets
@@ -5053,19 +4558,11 @@ class ChartHistogramRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intervalSize != null) {
-      _json['intervalSize'] = intervalSize;
-    }
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intervalSize != null) 'intervalSize': intervalSize,
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+      };
 }
 
 /// Source ranges for a chart.
@@ -5093,13 +4590,10 @@ class ChartSourceRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The specifications of a chart.
@@ -5313,83 +4807,43 @@ class ChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (altText != null) {
-      _json['altText'] = altText;
-    }
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (backgroundColorStyle != null) {
-      _json['backgroundColorStyle'] = backgroundColorStyle.toJson();
-    }
-    if (basicChart != null) {
-      _json['basicChart'] = basicChart.toJson();
-    }
-    if (bubbleChart != null) {
-      _json['bubbleChart'] = bubbleChart.toJson();
-    }
-    if (candlestickChart != null) {
-      _json['candlestickChart'] = candlestickChart.toJson();
-    }
-    if (dataSourceChartProperties != null) {
-      _json['dataSourceChartProperties'] = dataSourceChartProperties.toJson();
-    }
-    if (filterSpecs != null) {
-      _json['filterSpecs'] =
-          filterSpecs.map((value) => value.toJson()).toList();
-    }
-    if (fontName != null) {
-      _json['fontName'] = fontName;
-    }
-    if (hiddenDimensionStrategy != null) {
-      _json['hiddenDimensionStrategy'] = hiddenDimensionStrategy;
-    }
-    if (histogramChart != null) {
-      _json['histogramChart'] = histogramChart.toJson();
-    }
-    if (maximized != null) {
-      _json['maximized'] = maximized;
-    }
-    if (orgChart != null) {
-      _json['orgChart'] = orgChart.toJson();
-    }
-    if (pieChart != null) {
-      _json['pieChart'] = pieChart.toJson();
-    }
-    if (scorecardChart != null) {
-      _json['scorecardChart'] = scorecardChart.toJson();
-    }
-    if (sortSpecs != null) {
-      _json['sortSpecs'] = sortSpecs.map((value) => value.toJson()).toList();
-    }
-    if (subtitle != null) {
-      _json['subtitle'] = subtitle;
-    }
-    if (subtitleTextFormat != null) {
-      _json['subtitleTextFormat'] = subtitleTextFormat.toJson();
-    }
-    if (subtitleTextPosition != null) {
-      _json['subtitleTextPosition'] = subtitleTextPosition.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (titleTextFormat != null) {
-      _json['titleTextFormat'] = titleTextFormat.toJson();
-    }
-    if (titleTextPosition != null) {
-      _json['titleTextPosition'] = titleTextPosition.toJson();
-    }
-    if (treemapChart != null) {
-      _json['treemapChart'] = treemapChart.toJson();
-    }
-    if (waterfallChart != null) {
-      _json['waterfallChart'] = waterfallChart.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (altText != null) 'altText': altText,
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (backgroundColorStyle != null)
+          'backgroundColorStyle': backgroundColorStyle.toJson(),
+        if (basicChart != null) 'basicChart': basicChart.toJson(),
+        if (bubbleChart != null) 'bubbleChart': bubbleChart.toJson(),
+        if (candlestickChart != null)
+          'candlestickChart': candlestickChart.toJson(),
+        if (dataSourceChartProperties != null)
+          'dataSourceChartProperties': dataSourceChartProperties.toJson(),
+        if (filterSpecs != null)
+          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
+        if (fontName != null) 'fontName': fontName,
+        if (hiddenDimensionStrategy != null)
+          'hiddenDimensionStrategy': hiddenDimensionStrategy,
+        if (histogramChart != null) 'histogramChart': histogramChart.toJson(),
+        if (maximized != null) 'maximized': maximized,
+        if (orgChart != null) 'orgChart': orgChart.toJson(),
+        if (pieChart != null) 'pieChart': pieChart.toJson(),
+        if (scorecardChart != null) 'scorecardChart': scorecardChart.toJson(),
+        if (sortSpecs != null)
+          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+        if (subtitle != null) 'subtitle': subtitle,
+        if (subtitleTextFormat != null)
+          'subtitleTextFormat': subtitleTextFormat.toJson(),
+        if (subtitleTextPosition != null)
+          'subtitleTextPosition': subtitleTextPosition.toJson(),
+        if (title != null) 'title': title,
+        if (titleTextFormat != null)
+          'titleTextFormat': titleTextFormat.toJson(),
+        if (titleTextPosition != null)
+          'titleTextPosition': titleTextPosition.toJson(),
+        if (treemapChart != null) 'treemapChart': treemapChart.toJson(),
+        if (waterfallChart != null) 'waterfallChart': waterfallChart.toJson(),
+      };
 }
 
 /// Clears the basic filter, if any exists on the sheet.
@@ -5405,13 +4859,9 @@ class ClearBasicFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// The request for clearing a range of values in a spreadsheet.
@@ -5422,10 +4872,7 @@ class ClearValuesRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response when clearing a range of values in a spreadsheet.
@@ -5451,16 +4898,10 @@ class ClearValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clearedRange != null) {
-      _json['clearedRange'] = clearedRange;
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clearedRange != null) 'clearedRange': clearedRange,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+      };
 }
 
 /// Represents a color in the RGBA color space.
@@ -5551,22 +4992,12 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alpha != null) {
-      _json['alpha'] = alpha;
-    }
-    if (blue != null) {
-      _json['blue'] = blue;
-    }
-    if (green != null) {
-      _json['green'] = green;
-    }
-    if (red != null) {
-      _json['red'] = red;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alpha != null) 'alpha': alpha,
+        if (blue != null) 'blue': blue,
+        if (green != null) 'green': green,
+        if (red != null) 'red': red,
+      };
 }
 
 /// A color value.
@@ -5600,16 +5031,10 @@ class ColorStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rgbColor != null) {
-      _json['rgbColor'] = rgbColor.toJson();
-    }
-    if (themeColor != null) {
-      _json['themeColor'] = themeColor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rgbColor != null) 'rgbColor': rgbColor.toJson(),
+        if (themeColor != null) 'themeColor': themeColor,
+      };
 }
 
 /// The value of the condition.
@@ -5646,16 +5071,10 @@ class ConditionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (relativeDate != null) {
-      _json['relativeDate'] = relativeDate;
-    }
-    if (userEnteredValue != null) {
-      _json['userEnteredValue'] = userEnteredValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (relativeDate != null) 'relativeDate': relativeDate,
+        if (userEnteredValue != null) 'userEnteredValue': userEnteredValue,
+      };
 }
 
 /// A rule describing a conditional format.
@@ -5690,19 +5109,12 @@ class ConditionalFormatRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (booleanRule != null) {
-      _json['booleanRule'] = booleanRule.toJson();
-    }
-    if (gradientRule != null) {
-      _json['gradientRule'] = gradientRule.toJson();
-    }
-    if (ranges != null) {
-      _json['ranges'] = ranges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (booleanRule != null) 'booleanRule': booleanRule.toJson(),
+        if (gradientRule != null) 'gradientRule': gradientRule.toJson(),
+        if (ranges != null)
+          'ranges': ranges.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Copies data from the source to the destination.
@@ -5757,22 +5169,12 @@ class CopyPasteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destination != null) {
-      _json['destination'] = destination.toJson();
-    }
-    if (pasteOrientation != null) {
-      _json['pasteOrientation'] = pasteOrientation;
-    }
-    if (pasteType != null) {
-      _json['pasteType'] = pasteType;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destination != null) 'destination': destination.toJson(),
+        if (pasteOrientation != null) 'pasteOrientation': pasteOrientation,
+        if (pasteType != null) 'pasteType': pasteType,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// The request to copy a sheet across spreadsheets.
@@ -5789,13 +5191,10 @@ class CopySheetToAnotherSpreadsheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationSpreadsheetId != null) {
-      _json['destinationSpreadsheetId'] = destinationSpreadsheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationSpreadsheetId != null)
+          'destinationSpreadsheetId': destinationSpreadsheetId,
+      };
 }
 
 /// A request to create developer metadata.
@@ -5812,13 +5211,10 @@ class CreateDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (developerMetadata != null) {
-      _json['developerMetadata'] = developerMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (developerMetadata != null)
+          'developerMetadata': developerMetadata.toJson(),
+      };
 }
 
 /// The response from creating developer metadata.
@@ -5835,13 +5231,10 @@ class CreateDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (developerMetadata != null) {
-      _json['developerMetadata'] = developerMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (developerMetadata != null)
+          'developerMetadata': developerMetadata.toJson(),
+      };
 }
 
 /// Moves data from the source to the destination.
@@ -5883,19 +5276,11 @@ class CutPasteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destination != null) {
-      _json['destination'] = destination.toJson();
-    }
-    if (pasteType != null) {
-      _json['pasteType'] = pasteType;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destination != null) 'destination': destination.toJson(),
+        if (pasteType != null) 'pasteType': pasteType,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// The data execution status.
@@ -5974,22 +5359,12 @@ class DataExecutionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (lastRefreshTime != null) {
-      _json['lastRefreshTime'] = lastRefreshTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Filter that describes what data should be selected or returned from a
@@ -6022,19 +5397,12 @@ class DataFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (a1Range != null) {
-      _json['a1Range'] = a1Range;
-    }
-    if (developerMetadataLookup != null) {
-      _json['developerMetadataLookup'] = developerMetadataLookup.toJson();
-    }
-    if (gridRange != null) {
-      _json['gridRange'] = gridRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (a1Range != null) 'a1Range': a1Range,
+        if (developerMetadataLookup != null)
+          'developerMetadataLookup': developerMetadataLookup.toJson(),
+        if (gridRange != null) 'gridRange': gridRange.toJson(),
+      };
 }
 
 /// A range of values whose location is specified by a DataFilter.
@@ -6079,19 +5447,11 @@ class DataFilterValueRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilter != null) {
-      _json['dataFilter'] = dataFilter.toJson();
-    }
-    if (majorDimension != null) {
-      _json['majorDimension'] = majorDimension;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilter != null) 'dataFilter': dataFilter.toJson(),
+        if (majorDimension != null) 'majorDimension': majorDimension,
+        if (values != null) 'values': values,
+      };
 }
 
 /// Settings for one set of data labels.
@@ -6159,22 +5519,13 @@ class DataLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customLabelData != null) {
-      _json['customLabelData'] = customLabelData.toJson();
-    }
-    if (placement != null) {
-      _json['placement'] = placement;
-    }
-    if (textFormat != null) {
-      _json['textFormat'] = textFormat.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customLabelData != null)
+          'customLabelData': customLabelData.toJson(),
+        if (placement != null) 'placement': placement,
+        if (textFormat != null) 'textFormat': textFormat.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about an external data source in the spreadsheet.
@@ -6218,23 +5569,14 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (calculatedColumns != null) {
-      _json['calculatedColumns'] =
-          calculatedColumns.map((value) => value.toJson()).toList();
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (calculatedColumns != null)
+          'calculatedColumns':
+              calculatedColumns.map((value) => value.toJson()).toList(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (sheetId != null) 'sheetId': sheetId,
+        if (spec != null) 'spec': spec.toJson(),
+      };
 }
 
 /// Properties of a data source chart.
@@ -6259,16 +5601,11 @@ class DataSourceChartProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+      };
 }
 
 /// A column in a data source.
@@ -6291,16 +5628,10 @@ class DataSourceColumn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formula != null) {
-      _json['formula'] = formula;
-    }
-    if (reference != null) {
-      _json['reference'] = reference.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formula != null) 'formula': formula,
+        if (reference != null) 'reference': reference.toJson(),
+      };
 }
 
 /// An unique identifier that references a data source column.
@@ -6318,13 +5649,9 @@ class DataSourceColumnReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// A data source formula.
@@ -6349,16 +5676,11 @@ class DataSourceFormula {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+      };
 }
 
 /// Reference to a data source object.
@@ -6404,26 +5726,17 @@ class DataSourceObjectReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chartId != null) {
-      _json['chartId'] = chartId;
-    }
-    if (dataSourceFormulaCell != null) {
-      _json['dataSourceFormulaCell'] = dataSourceFormulaCell.toJson();
-    }
-    if (dataSourcePivotTableAnchorCell != null) {
-      _json['dataSourcePivotTableAnchorCell'] =
-          dataSourcePivotTableAnchorCell.toJson();
-    }
-    if (dataSourceTableAnchorCell != null) {
-      _json['dataSourceTableAnchorCell'] = dataSourceTableAnchorCell.toJson();
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chartId != null) 'chartId': chartId,
+        if (dataSourceFormulaCell != null)
+          'dataSourceFormulaCell': dataSourceFormulaCell.toJson(),
+        if (dataSourcePivotTableAnchorCell != null)
+          'dataSourcePivotTableAnchorCell':
+              dataSourcePivotTableAnchorCell.toJson(),
+        if (dataSourceTableAnchorCell != null)
+          'dataSourceTableAnchorCell': dataSourceTableAnchorCell.toJson(),
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// A list of references to data source objects.
@@ -6443,13 +5756,10 @@ class DataSourceObjectReferences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (references != null) {
-      _json['references'] = references.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (references != null)
+          'references': references.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A parameter in a data source's query.
@@ -6489,19 +5799,11 @@ class DataSourceParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// A schedule for data to refresh every day in a given time interval.
@@ -6522,13 +5824,9 @@ class DataSourceRefreshDailySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (startTime != null) {
-      _json['startTime'] = startTime.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (startTime != null) 'startTime': startTime.toJson(),
+      };
 }
 
 /// A monthly schedule for data to refresh on specific days in the month in a
@@ -6561,16 +5859,10 @@ class DataSourceRefreshMonthlySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (daysOfMonth != null) {
-      _json['daysOfMonth'] = daysOfMonth;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (daysOfMonth != null) 'daysOfMonth': daysOfMonth,
+        if (startTime != null) 'startTime': startTime.toJson(),
+      };
 }
 
 /// Schedule for refreshing the data source.
@@ -6634,28 +5926,15 @@ class DataSourceRefreshSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dailySchedule != null) {
-      _json['dailySchedule'] = dailySchedule.toJson();
-    }
-    if (enabled != null) {
-      _json['enabled'] = enabled;
-    }
-    if (monthlySchedule != null) {
-      _json['monthlySchedule'] = monthlySchedule.toJson();
-    }
-    if (nextRun != null) {
-      _json['nextRun'] = nextRun.toJson();
-    }
-    if (refreshScope != null) {
-      _json['refreshScope'] = refreshScope;
-    }
-    if (weeklySchedule != null) {
-      _json['weeklySchedule'] = weeklySchedule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dailySchedule != null) 'dailySchedule': dailySchedule.toJson(),
+        if (enabled != null) 'enabled': enabled,
+        if (monthlySchedule != null)
+          'monthlySchedule': monthlySchedule.toJson(),
+        if (nextRun != null) 'nextRun': nextRun.toJson(),
+        if (refreshScope != null) 'refreshScope': refreshScope,
+        if (weeklySchedule != null) 'weeklySchedule': weeklySchedule.toJson(),
+      };
 }
 
 /// A weekly schedule for data to refresh on specific days in a given time
@@ -6687,16 +5966,10 @@ class DataSourceRefreshWeeklySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (daysOfWeek != null) {
-      _json['daysOfWeek'] = daysOfWeek;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek,
+        if (startTime != null) 'startTime': startTime.toJson(),
+      };
 }
 
 /// A range along a single dimension on a DATA_SOURCE sheet.
@@ -6722,17 +5995,12 @@ class DataSourceSheetDimensionRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnReferences != null) {
-      _json['columnReferences'] =
-          columnReferences.map((value) => value.toJson()).toList();
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnReferences != null)
+          'columnReferences':
+              columnReferences.map((value) => value.toJson()).toList(),
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// Additional properties of a DATA_SOURCE sheet.
@@ -6765,19 +6033,13 @@ class DataSourceSheetProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns.map((value) => value.toJson()).toList();
-    }
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null)
+          'columns': columns.map((value) => value.toJson()).toList(),
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+      };
 }
 
 /// This specifies the details of the data source.
@@ -6806,16 +6068,11 @@ class DataSourceSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigQuery != null) {
-      _json['bigQuery'] = bigQuery.toJson();
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigQuery != null) 'bigQuery': bigQuery.toJson(),
+        if (parameters != null)
+          'parameters': parameters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A data source table, which allows the user to import a static table of data
@@ -6900,32 +6157,20 @@ class DataSourceTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnSelectionType != null) {
-      _json['columnSelectionType'] = columnSelectionType;
-    }
-    if (columns != null) {
-      _json['columns'] = columns.map((value) => value.toJson()).toList();
-    }
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (filterSpecs != null) {
-      _json['filterSpecs'] =
-          filterSpecs.map((value) => value.toJson()).toList();
-    }
-    if (rowLimit != null) {
-      _json['rowLimit'] = rowLimit;
-    }
-    if (sortSpecs != null) {
-      _json['sortSpecs'] = sortSpecs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnSelectionType != null)
+          'columnSelectionType': columnSelectionType,
+        if (columns != null)
+          'columns': columns.map((value) => value.toJson()).toList(),
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (filterSpecs != null)
+          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
+        if (rowLimit != null) 'rowLimit': rowLimit,
+        if (sortSpecs != null)
+          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A data validation rule.
@@ -6962,22 +6207,12 @@ class DataValidationRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (inputMessage != null) {
-      _json['inputMessage'] = inputMessage;
-    }
-    if (showCustomUi != null) {
-      _json['showCustomUi'] = showCustomUi;
-    }
-    if (strict != null) {
-      _json['strict'] = strict;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (inputMessage != null) 'inputMessage': inputMessage,
+        if (showCustomUi != null) 'showCustomUi': showCustomUi,
+        if (strict != null) 'strict': strict,
+      };
 }
 
 /// Allows you to organize the date-time values in a source data column into
@@ -7031,13 +6266,9 @@ class DateTimeRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 /// Removes the banded range with the given ID from the spreadsheet.
@@ -7053,13 +6284,9 @@ class DeleteBandingRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bandedRangeId != null) {
-      _json['bandedRangeId'] = bandedRangeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId,
+      };
 }
 
 /// Deletes a conditional format rule at the given index.
@@ -7083,16 +6310,10 @@ class DeleteConditionalFormatRuleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (index != null) 'index': index,
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// The result of deleting a conditional format rule.
@@ -7109,13 +6330,9 @@ class DeleteConditionalFormatRuleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rule != null) {
-      _json['rule'] = rule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rule != null) 'rule': rule.toJson(),
+      };
 }
 
 /// Deletes a data source.
@@ -7134,13 +6351,9 @@ class DeleteDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+      };
 }
 
 /// A request to delete developer metadata.
@@ -7158,13 +6371,9 @@ class DeleteDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilter != null) {
-      _json['dataFilter'] = dataFilter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilter != null) 'dataFilter': dataFilter.toJson(),
+      };
 }
 
 /// The response from deleting developer metadata.
@@ -7184,14 +6393,11 @@ class DeleteDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deletedDeveloperMetadata != null) {
-      _json['deletedDeveloperMetadata'] =
-          deletedDeveloperMetadata.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deletedDeveloperMetadata != null)
+          'deletedDeveloperMetadata':
+              deletedDeveloperMetadata.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Deletes a group over the specified range by decrementing the depth of the
@@ -7213,13 +6419,9 @@ class DeleteDimensionGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The result of deleting a group.
@@ -7238,14 +6440,11 @@ class DeleteDimensionGroupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionGroups != null) {
-      _json['dimensionGroups'] =
-          dimensionGroups.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionGroups != null)
+          'dimensionGroups':
+              dimensionGroups.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Deletes the dimensions from the sheet.
@@ -7262,13 +6461,9 @@ class DeleteDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Removes rows within this range that contain values in the specified columns
@@ -7305,17 +6500,12 @@ class DeleteDuplicatesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comparisonColumns != null) {
-      _json['comparisonColumns'] =
-          comparisonColumns.map((value) => value.toJson()).toList();
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comparisonColumns != null)
+          'comparisonColumns':
+              comparisonColumns.map((value) => value.toJson()).toList(),
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The result of removing duplicates in a range.
@@ -7331,13 +6521,10 @@ class DeleteDuplicatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duplicatesRemovedCount != null) {
-      _json['duplicatesRemovedCount'] = duplicatesRemovedCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duplicatesRemovedCount != null)
+          'duplicatesRemovedCount': duplicatesRemovedCount,
+      };
 }
 
 /// Deletes the embedded object with the given ID.
@@ -7353,13 +6540,9 @@ class DeleteEmbeddedObjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectId != null) 'objectId': objectId,
+      };
 }
 
 /// Deletes a particular filter view.
@@ -7375,13 +6558,9 @@ class DeleteFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filterId != null) {
-      _json['filterId'] = filterId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filterId != null) 'filterId': filterId,
+      };
 }
 
 /// Removes the named range with the given ID from the spreadsheet.
@@ -7397,13 +6576,9 @@ class DeleteNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+      };
 }
 
 /// Deletes the protected range with the given ID.
@@ -7419,13 +6594,9 @@ class DeleteProtectedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (protectedRangeId != null) {
-      _json['protectedRangeId'] = protectedRangeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId,
+      };
 }
 
 /// Deletes a range of cells, shifting other cells into the deleted area.
@@ -7456,16 +6627,10 @@ class DeleteRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (shiftDimension != null) {
-      _json['shiftDimension'] = shiftDimension;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+        if (shiftDimension != null) 'shiftDimension': shiftDimension,
+      };
 }
 
 /// Deletes the requested sheet.
@@ -7484,13 +6649,9 @@ class DeleteSheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// Developer metadata associated with a location or object in a spreadsheet.
@@ -7553,25 +6714,13 @@ class DeveloperMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (metadataId != null) {
-      _json['metadataId'] = metadataId;
-    }
-    if (metadataKey != null) {
-      _json['metadataKey'] = metadataKey;
-    }
-    if (metadataValue != null) {
-      _json['metadataValue'] = metadataValue;
-    }
-    if (visibility != null) {
-      _json['visibility'] = visibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (location != null) 'location': location.toJson(),
+        if (metadataId != null) 'metadataId': metadataId,
+        if (metadataKey != null) 'metadataKey': metadataKey,
+        if (metadataValue != null) 'metadataValue': metadataValue,
+        if (visibility != null) 'visibility': visibility,
+      };
 }
 
 /// A location where metadata may be associated in a spreadsheet.
@@ -7617,22 +6766,12 @@ class DeveloperMetadataLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionRange != null) {
-      _json['dimensionRange'] = dimensionRange.toJson();
-    }
-    if (locationType != null) {
-      _json['locationType'] = locationType;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    if (spreadsheet != null) {
-      _json['spreadsheet'] = spreadsheet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionRange != null) 'dimensionRange': dimensionRange.toJson(),
+        if (locationType != null) 'locationType': locationType,
+        if (sheetId != null) 'sheetId': sheetId,
+        if (spreadsheet != null) 'spreadsheet': spreadsheet,
+      };
 }
 
 /// Selects DeveloperMetadata that matches all of the specified fields.
@@ -7749,31 +6888,17 @@ class DeveloperMetadataLookup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locationMatchingStrategy != null) {
-      _json['locationMatchingStrategy'] = locationMatchingStrategy;
-    }
-    if (locationType != null) {
-      _json['locationType'] = locationType;
-    }
-    if (metadataId != null) {
-      _json['metadataId'] = metadataId;
-    }
-    if (metadataKey != null) {
-      _json['metadataKey'] = metadataKey;
-    }
-    if (metadataLocation != null) {
-      _json['metadataLocation'] = metadataLocation.toJson();
-    }
-    if (metadataValue != null) {
-      _json['metadataValue'] = metadataValue;
-    }
-    if (visibility != null) {
-      _json['visibility'] = visibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locationMatchingStrategy != null)
+          'locationMatchingStrategy': locationMatchingStrategy,
+        if (locationType != null) 'locationType': locationType,
+        if (metadataId != null) 'metadataId': metadataId,
+        if (metadataKey != null) 'metadataKey': metadataKey,
+        if (metadataLocation != null)
+          'metadataLocation': metadataLocation.toJson(),
+        if (metadataValue != null) 'metadataValue': metadataValue,
+        if (visibility != null) 'visibility': visibility,
+      };
 }
 
 /// A group over an interval of rows or columns on a sheet, which can contain or
@@ -7813,19 +6938,11 @@ class DimensionGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (collapsed != null) {
-      _json['collapsed'] = collapsed;
-    }
-    if (depth != null) {
-      _json['depth'] = depth;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (collapsed != null) 'collapsed': collapsed,
+        if (depth != null) 'depth': depth,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Properties about a dimension.
@@ -7874,26 +6991,16 @@ class DimensionProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceColumnReference != null) {
-      _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
-    }
-    if (developerMetadata != null) {
-      _json['developerMetadata'] =
-          developerMetadata.map((value) => value.toJson()).toList();
-    }
-    if (hiddenByFilter != null) {
-      _json['hiddenByFilter'] = hiddenByFilter;
-    }
-    if (hiddenByUser != null) {
-      _json['hiddenByUser'] = hiddenByUser;
-    }
-    if (pixelSize != null) {
-      _json['pixelSize'] = pixelSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceColumnReference != null)
+          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
+        if (developerMetadata != null)
+          'developerMetadata':
+              developerMetadata.map((value) => value.toJson()).toList(),
+        if (hiddenByFilter != null) 'hiddenByFilter': hiddenByFilter,
+        if (hiddenByUser != null) 'hiddenByUser': hiddenByUser,
+        if (pixelSize != null) 'pixelSize': pixelSize,
+      };
 }
 
 /// A range along a single dimension on a sheet.
@@ -7935,22 +7042,12 @@ class DimensionRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (endIndex != null) {
-      _json['endIndex'] = endIndex;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (endIndex != null) 'endIndex': endIndex,
+        if (sheetId != null) 'sheetId': sheetId,
+        if (startIndex != null) 'startIndex': startIndex,
+      };
 }
 
 /// Duplicates a particular filter view.
@@ -7966,13 +7063,9 @@ class DuplicateFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filterId != null) {
-      _json['filterId'] = filterId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filterId != null) 'filterId': filterId,
+      };
 }
 
 /// The result of a filter view being duplicated.
@@ -7989,13 +7082,9 @@ class DuplicateFilterViewResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter.toJson(),
+      };
 }
 
 /// Duplicates the contents of a sheet.
@@ -8041,22 +7130,12 @@ class DuplicateSheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insertSheetIndex != null) {
-      _json['insertSheetIndex'] = insertSheetIndex;
-    }
-    if (newSheetId != null) {
-      _json['newSheetId'] = newSheetId;
-    }
-    if (newSheetName != null) {
-      _json['newSheetName'] = newSheetName;
-    }
-    if (sourceSheetId != null) {
-      _json['sourceSheetId'] = sourceSheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insertSheetIndex != null) 'insertSheetIndex': insertSheetIndex,
+        if (newSheetId != null) 'newSheetId': newSheetId,
+        if (newSheetName != null) 'newSheetName': newSheetName,
+        if (sourceSheetId != null) 'sourceSheetId': sourceSheetId,
+      };
 }
 
 /// The result of duplicating a sheet.
@@ -8073,13 +7152,9 @@ class DuplicateSheetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (properties != null) 'properties': properties.toJson(),
+      };
 }
 
 /// The editors of a protected range.
@@ -8114,19 +7189,12 @@ class Editors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domainUsersCanEdit != null) {
-      _json['domainUsersCanEdit'] = domainUsersCanEdit;
-    }
-    if (groups != null) {
-      _json['groups'] = groups;
-    }
-    if (users != null) {
-      _json['users'] = users;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domainUsersCanEdit != null)
+          'domainUsersCanEdit': domainUsersCanEdit,
+        if (groups != null) 'groups': groups,
+        if (users != null) 'users': users,
+      };
 }
 
 /// A chart embedded in a sheet.
@@ -8163,22 +7231,12 @@ class EmbeddedChart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (border != null) {
-      _json['border'] = border.toJson();
-    }
-    if (chartId != null) {
-      _json['chartId'] = chartId;
-    }
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (border != null) 'border': border.toJson(),
+        if (chartId != null) 'chartId': chartId,
+        if (position != null) 'position': position.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+      };
 }
 
 /// A border along an embedded object.
@@ -8204,16 +7262,10 @@ class EmbeddedObjectBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (colorStyle != null) {
-      _json['colorStyle'] = colorStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
+      };
 }
 
 /// The position of an embedded object such as a chart.
@@ -8247,19 +7299,12 @@ class EmbeddedObjectPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (newSheet != null) {
-      _json['newSheet'] = newSheet;
-    }
-    if (overlayPosition != null) {
-      _json['overlayPosition'] = overlayPosition.toJson();
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (newSheet != null) 'newSheet': newSheet,
+        if (overlayPosition != null)
+          'overlayPosition': overlayPosition.toJson(),
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// An error in a cell.
@@ -8293,16 +7338,10 @@ class ErrorValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (message != null) 'message': message,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The kinds of value that a cell in a spreadsheet can have.
@@ -8352,25 +7391,13 @@ class ExtendedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (errorValue != null) {
-      _json['errorValue'] = errorValue.toJson();
-    }
-    if (formulaValue != null) {
-      _json['formulaValue'] = formulaValue;
-    }
-    if (numberValue != null) {
-      _json['numberValue'] = numberValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (errorValue != null) 'errorValue': errorValue.toJson(),
+        if (formulaValue != null) 'formulaValue': formulaValue,
+        if (numberValue != null) 'numberValue': numberValue,
+        if (stringValue != null) 'stringValue': stringValue,
+      };
 }
 
 /// Criteria for showing/hiding rows in a filter or filter view.
@@ -8444,30 +7471,18 @@ class FilterCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (hiddenValues != null) {
-      _json['hiddenValues'] = hiddenValues;
-    }
-    if (visibleBackgroundColor != null) {
-      _json['visibleBackgroundColor'] = visibleBackgroundColor.toJson();
-    }
-    if (visibleBackgroundColorStyle != null) {
-      _json['visibleBackgroundColorStyle'] =
-          visibleBackgroundColorStyle.toJson();
-    }
-    if (visibleForegroundColor != null) {
-      _json['visibleForegroundColor'] = visibleForegroundColor.toJson();
-    }
-    if (visibleForegroundColorStyle != null) {
-      _json['visibleForegroundColorStyle'] =
-          visibleForegroundColorStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (hiddenValues != null) 'hiddenValues': hiddenValues,
+        if (visibleBackgroundColor != null)
+          'visibleBackgroundColor': visibleBackgroundColor.toJson(),
+        if (visibleBackgroundColorStyle != null)
+          'visibleBackgroundColorStyle': visibleBackgroundColorStyle.toJson(),
+        if (visibleForegroundColor != null)
+          'visibleForegroundColor': visibleForegroundColor.toJson(),
+        if (visibleForegroundColorStyle != null)
+          'visibleForegroundColorStyle': visibleForegroundColorStyle.toJson(),
+      };
 }
 
 /// The filter criteria associated with a specific column.
@@ -8498,19 +7513,12 @@ class FilterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnIndex != null) {
-      _json['columnIndex'] = columnIndex;
-    }
-    if (dataSourceColumnReference != null) {
-      _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
-    }
-    if (filterCriteria != null) {
-      _json['filterCriteria'] = filterCriteria.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex,
+        if (dataSourceColumnReference != null)
+          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
+        if (filterCriteria != null) 'filterCriteria': filterCriteria.toJson(),
+      };
 }
 
 /// A filter view.
@@ -8589,33 +7597,19 @@ class FilterView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (criteria != null) {
-      _json['criteria'] =
-          criteria.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (filterSpecs != null) {
-      _json['filterSpecs'] =
-          filterSpecs.map((value) => value.toJson()).toList();
-    }
-    if (filterViewId != null) {
-      _json['filterViewId'] = filterViewId;
-    }
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (sortSpecs != null) {
-      _json['sortSpecs'] = sortSpecs.map((value) => value.toJson()).toList();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (criteria != null)
+          'criteria':
+              criteria.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (filterSpecs != null)
+          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
+        if (filterViewId != null) 'filterViewId': filterViewId,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+        if (range != null) 'range': range.toJson(),
+        if (sortSpecs != null)
+          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Finds and replaces data in cells over a range, sheet, or all sheets.
@@ -8690,37 +7684,17 @@ class FindReplaceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allSheets != null) {
-      _json['allSheets'] = allSheets;
-    }
-    if (find != null) {
-      _json['find'] = find;
-    }
-    if (includeFormulas != null) {
-      _json['includeFormulas'] = includeFormulas;
-    }
-    if (matchCase != null) {
-      _json['matchCase'] = matchCase;
-    }
-    if (matchEntireCell != null) {
-      _json['matchEntireCell'] = matchEntireCell;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (replacement != null) {
-      _json['replacement'] = replacement;
-    }
-    if (searchByRegex != null) {
-      _json['searchByRegex'] = searchByRegex;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allSheets != null) 'allSheets': allSheets,
+        if (find != null) 'find': find,
+        if (includeFormulas != null) 'includeFormulas': includeFormulas,
+        if (matchCase != null) 'matchCase': matchCase,
+        if (matchEntireCell != null) 'matchEntireCell': matchEntireCell,
+        if (range != null) 'range': range.toJson(),
+        if (replacement != null) 'replacement': replacement,
+        if (searchByRegex != null) 'searchByRegex': searchByRegex,
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// The result of the find/replace.
@@ -8763,25 +7737,14 @@ class FindReplaceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formulasChanged != null) {
-      _json['formulasChanged'] = formulasChanged;
-    }
-    if (occurrencesChanged != null) {
-      _json['occurrencesChanged'] = occurrencesChanged;
-    }
-    if (rowsChanged != null) {
-      _json['rowsChanged'] = rowsChanged;
-    }
-    if (sheetsChanged != null) {
-      _json['sheetsChanged'] = sheetsChanged;
-    }
-    if (valuesChanged != null) {
-      _json['valuesChanged'] = valuesChanged;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formulasChanged != null) 'formulasChanged': formulasChanged,
+        if (occurrencesChanged != null)
+          'occurrencesChanged': occurrencesChanged,
+        if (rowsChanged != null) 'rowsChanged': rowsChanged,
+        if (sheetsChanged != null) 'sheetsChanged': sheetsChanged,
+        if (valuesChanged != null) 'valuesChanged': valuesChanged,
+      };
 }
 
 /// The request for retrieving a Spreadsheet.
@@ -8809,17 +7772,11 @@ class GetSpreadsheetByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilters != null) {
-      _json['dataFilters'] =
-          dataFilters.map((value) => value.toJson()).toList();
-    }
-    if (includeGridData != null) {
-      _json['includeGridData'] = includeGridData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilters != null)
+          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+        if (includeGridData != null) 'includeGridData': includeGridData,
+      };
 }
 
 /// A rule that applies a gradient color scale format, based on the
@@ -8854,19 +7811,11 @@ class GradientRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxpoint != null) {
-      _json['maxpoint'] = maxpoint.toJson();
-    }
-    if (midpoint != null) {
-      _json['midpoint'] = midpoint.toJson();
-    }
-    if (minpoint != null) {
-      _json['minpoint'] = minpoint.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxpoint != null) 'maxpoint': maxpoint.toJson(),
+        if (midpoint != null) 'midpoint': midpoint.toJson(),
+        if (minpoint != null) 'minpoint': minpoint.toJson(),
+      };
 }
 
 /// A coordinate in a sheet.
@@ -8896,19 +7845,11 @@ class GridCoordinate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnIndex != null) {
-      _json['columnIndex'] = columnIndex;
-    }
-    if (rowIndex != null) {
-      _json['rowIndex'] = rowIndex;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex,
+        if (rowIndex != null) 'rowIndex': rowIndex,
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// Data in the grid, as well as metadata about the dimensions.
@@ -8962,27 +7903,17 @@ class GridData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnMetadata != null) {
-      _json['columnMetadata'] =
-          columnMetadata.map((value) => value.toJson()).toList();
-    }
-    if (rowData != null) {
-      _json['rowData'] = rowData.map((value) => value.toJson()).toList();
-    }
-    if (rowMetadata != null) {
-      _json['rowMetadata'] =
-          rowMetadata.map((value) => value.toJson()).toList();
-    }
-    if (startColumn != null) {
-      _json['startColumn'] = startColumn;
-    }
-    if (startRow != null) {
-      _json['startRow'] = startRow;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnMetadata != null)
+          'columnMetadata':
+              columnMetadata.map((value) => value.toJson()).toList(),
+        if (rowData != null)
+          'rowData': rowData.map((value) => value.toJson()).toList(),
+        if (rowMetadata != null)
+          'rowMetadata': rowMetadata.map((value) => value.toJson()).toList(),
+        if (startColumn != null) 'startColumn': startColumn,
+        if (startRow != null) 'startRow': startRow,
+      };
 }
 
 /// Properties of a grid.
@@ -9034,31 +7965,17 @@ class GridProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnCount != null) {
-      _json['columnCount'] = columnCount;
-    }
-    if (columnGroupControlAfter != null) {
-      _json['columnGroupControlAfter'] = columnGroupControlAfter;
-    }
-    if (frozenColumnCount != null) {
-      _json['frozenColumnCount'] = frozenColumnCount;
-    }
-    if (frozenRowCount != null) {
-      _json['frozenRowCount'] = frozenRowCount;
-    }
-    if (hideGridlines != null) {
-      _json['hideGridlines'] = hideGridlines;
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    if (rowGroupControlAfter != null) {
-      _json['rowGroupControlAfter'] = rowGroupControlAfter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnCount != null) 'columnCount': columnCount,
+        if (columnGroupControlAfter != null)
+          'columnGroupControlAfter': columnGroupControlAfter,
+        if (frozenColumnCount != null) 'frozenColumnCount': frozenColumnCount,
+        if (frozenRowCount != null) 'frozenRowCount': frozenRowCount,
+        if (hideGridlines != null) 'hideGridlines': hideGridlines,
+        if (rowCount != null) 'rowCount': rowCount,
+        if (rowGroupControlAfter != null)
+          'rowGroupControlAfter': rowGroupControlAfter,
+      };
 }
 
 /// A range on a sheet.
@@ -9112,25 +8029,13 @@ class GridRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endColumnIndex != null) {
-      _json['endColumnIndex'] = endColumnIndex;
-    }
-    if (endRowIndex != null) {
-      _json['endRowIndex'] = endRowIndex;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    if (startColumnIndex != null) {
-      _json['startColumnIndex'] = startColumnIndex;
-    }
-    if (startRowIndex != null) {
-      _json['startRowIndex'] = startRowIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endColumnIndex != null) 'endColumnIndex': endColumnIndex,
+        if (endRowIndex != null) 'endRowIndex': endRowIndex,
+        if (sheetId != null) 'sheetId': sheetId,
+        if (startColumnIndex != null) 'startColumnIndex': startColumnIndex,
+        if (startRowIndex != null) 'startRowIndex': startRowIndex,
+      };
 }
 
 /// A histogram chart.
@@ -9201,25 +8106,14 @@ class HistogramChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketSize != null) {
-      _json['bucketSize'] = bucketSize;
-    }
-    if (legendPosition != null) {
-      _json['legendPosition'] = legendPosition;
-    }
-    if (outlierPercentile != null) {
-      _json['outlierPercentile'] = outlierPercentile;
-    }
-    if (series != null) {
-      _json['series'] = series.map((value) => value.toJson()).toList();
-    }
-    if (showItemDividers != null) {
-      _json['showItemDividers'] = showItemDividers;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketSize != null) 'bucketSize': bucketSize,
+        if (legendPosition != null) 'legendPosition': legendPosition,
+        if (outlierPercentile != null) 'outlierPercentile': outlierPercentile,
+        if (series != null)
+          'series': series.map((value) => value.toJson()).toList(),
+        if (showItemDividers != null) 'showItemDividers': showItemDividers,
+      };
 }
 
 /// Allows you to organize the numeric values in a source data column into
@@ -9273,19 +8167,11 @@ class HistogramRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (end != null) {
-      _json['end'] = end;
-    }
-    if (interval != null) {
-      _json['interval'] = interval;
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (end != null) 'end': end,
+        if (interval != null) 'interval': interval,
+        if (start != null) 'start': start,
+      };
 }
 
 /// A histogram series containing the series color and data.
@@ -9321,19 +8207,11 @@ class HistogramSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (barColor != null) {
-      _json['barColor'] = barColor.toJson();
-    }
-    if (barColorStyle != null) {
-      _json['barColorStyle'] = barColorStyle.toJson();
-    }
-    if (data != null) {
-      _json['data'] = data.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (barColor != null) 'barColor': barColor.toJson(),
+        if (barColorStyle != null) 'barColorStyle': barColorStyle.toJson(),
+        if (data != null) 'data': data.toJson(),
+      };
 }
 
 /// Inserts rows or columns in a sheet at a particular index.
@@ -9368,16 +8246,10 @@ class InsertDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inheritFromBefore != null) {
-      _json['inheritFromBefore'] = inheritFromBefore;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inheritFromBefore != null) 'inheritFromBefore': inheritFromBefore,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Inserts cells into a range, shifting the existing cells over or down.
@@ -9407,16 +8279,10 @@ class InsertRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (shiftDimension != null) {
-      _json['shiftDimension'] = shiftDimension;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+        if (shiftDimension != null) 'shiftDimension': shiftDimension,
+      };
 }
 
 /// A single interpolation point on a gradient conditional format.
@@ -9476,22 +8342,12 @@ class InterpolationPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (colorStyle != null) {
-      _json['colorStyle'] = colorStyle.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
@@ -9528,16 +8384,10 @@ class Interval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Settings to control how circular dependencies are resolved with iterative
@@ -9563,16 +8413,11 @@ class IterativeCalculationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (convergenceThreshold != null) {
-      _json['convergenceThreshold'] = convergenceThreshold;
-    }
-    if (maxIterations != null) {
-      _json['maxIterations'] = maxIterations;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (convergenceThreshold != null)
+          'convergenceThreshold': convergenceThreshold,
+        if (maxIterations != null) 'maxIterations': maxIterations,
+      };
 }
 
 /// Formatting options for key value.
@@ -9598,16 +8443,10 @@ class KeyValueFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (textFormat != null) {
-      _json['textFormat'] = textFormat.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+        if (textFormat != null) 'textFormat': textFormat.toJson(),
+      };
 }
 
 /// Properties that describe the style of a line.
@@ -9642,16 +8481,10 @@ class LineStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Allows you to manually organize the values in a source data column into
@@ -9684,13 +8517,10 @@ class ManualRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groups != null) {
-      _json['groups'] = groups.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groups != null)
+          'groups': groups.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A group name and a list of items from the source data that should be placed
@@ -9723,16 +8553,11 @@ class ManualRuleGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupName != null) {
-      _json['groupName'] = groupName.toJson();
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupName != null) 'groupName': groupName.toJson(),
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A developer metadata entry and the data filters specified in the original
@@ -9759,17 +8584,12 @@ class MatchedDeveloperMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilters != null) {
-      _json['dataFilters'] =
-          dataFilters.map((value) => value.toJson()).toList();
-    }
-    if (developerMetadata != null) {
-      _json['developerMetadata'] = developerMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilters != null)
+          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+        if (developerMetadata != null)
+          'developerMetadata': developerMetadata.toJson(),
+      };
 }
 
 /// A value range that was matched by one or more data filers.
@@ -9795,17 +8615,11 @@ class MatchedValueRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilters != null) {
-      _json['dataFilters'] =
-          dataFilters.map((value) => value.toJson()).toList();
-    }
-    if (valueRange != null) {
-      _json['valueRange'] = valueRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilters != null)
+          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+        if (valueRange != null) 'valueRange': valueRange.toJson(),
+      };
 }
 
 /// Merges all cells in the range.
@@ -9832,16 +8646,10 @@ class MergeCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mergeType != null) {
-      _json['mergeType'] = mergeType;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mergeType != null) 'mergeType': mergeType,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Moves one or more rows or columns.
@@ -9873,16 +8681,10 @@ class MoveDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationIndex != null) {
-      _json['destinationIndex'] = destinationIndex;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationIndex != null) 'destinationIndex': destinationIndex,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// A named range.
@@ -9911,19 +8713,11 @@ class NamedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The number format of a cell.
@@ -9963,16 +8757,10 @@ class NumberFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pattern != null) {
-      _json['pattern'] = pattern;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pattern != null) 'pattern': pattern,
+        if (type != null) 'type': type,
+      };
 }
 
 /// An org chart.
@@ -10064,34 +8852,18 @@ class OrgChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels.toJson();
-    }
-    if (nodeColor != null) {
-      _json['nodeColor'] = nodeColor.toJson();
-    }
-    if (nodeColorStyle != null) {
-      _json['nodeColorStyle'] = nodeColorStyle.toJson();
-    }
-    if (nodeSize != null) {
-      _json['nodeSize'] = nodeSize;
-    }
-    if (parentLabels != null) {
-      _json['parentLabels'] = parentLabels.toJson();
-    }
-    if (selectedNodeColor != null) {
-      _json['selectedNodeColor'] = selectedNodeColor.toJson();
-    }
-    if (selectedNodeColorStyle != null) {
-      _json['selectedNodeColorStyle'] = selectedNodeColorStyle.toJson();
-    }
-    if (tooltips != null) {
-      _json['tooltips'] = tooltips.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels.toJson(),
+        if (nodeColor != null) 'nodeColor': nodeColor.toJson(),
+        if (nodeColorStyle != null) 'nodeColorStyle': nodeColorStyle.toJson(),
+        if (nodeSize != null) 'nodeSize': nodeSize,
+        if (parentLabels != null) 'parentLabels': parentLabels.toJson(),
+        if (selectedNodeColor != null)
+          'selectedNodeColor': selectedNodeColor.toJson(),
+        if (selectedNodeColorStyle != null)
+          'selectedNodeColorStyle': selectedNodeColorStyle.toJson(),
+        if (tooltips != null) 'tooltips': tooltips.toJson(),
+      };
 }
 
 /// The location an object is overlaid on top of a grid.
@@ -10138,25 +8910,13 @@ class OverlayPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (anchorCell != null) {
-      _json['anchorCell'] = anchorCell.toJson();
-    }
-    if (heightPixels != null) {
-      _json['heightPixels'] = heightPixels;
-    }
-    if (offsetXPixels != null) {
-      _json['offsetXPixels'] = offsetXPixels;
-    }
-    if (offsetYPixels != null) {
-      _json['offsetYPixels'] = offsetYPixels;
-    }
-    if (widthPixels != null) {
-      _json['widthPixels'] = widthPixels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (anchorCell != null) 'anchorCell': anchorCell.toJson(),
+        if (heightPixels != null) 'heightPixels': heightPixels,
+        if (offsetXPixels != null) 'offsetXPixels': offsetXPixels,
+        if (offsetYPixels != null) 'offsetYPixels': offsetYPixels,
+        if (widthPixels != null) 'widthPixels': widthPixels,
+      };
 }
 
 /// The amount of padding around the cell, in pixels.
@@ -10192,22 +8952,12 @@ class Padding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom;
-    }
-    if (left != null) {
-      _json['left'] = left;
-    }
-    if (right != null) {
-      _json['right'] = right;
-    }
-    if (top != null) {
-      _json['top'] = top;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom,
+        if (left != null) 'left': left,
+        if (right != null) 'right': right,
+        if (top != null) 'top': top,
+      };
 }
 
 /// Inserts data into the spreadsheet starting at the specified coordinate.
@@ -10258,25 +9008,13 @@ class PasteDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coordinate != null) {
-      _json['coordinate'] = coordinate.toJson();
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (delimiter != null) {
-      _json['delimiter'] = delimiter;
-    }
-    if (html != null) {
-      _json['html'] = html;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coordinate != null) 'coordinate': coordinate.toJson(),
+        if (data != null) 'data': data,
+        if (delimiter != null) 'delimiter': delimiter,
+        if (html != null) 'html': html,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A pie chart.
@@ -10326,25 +9064,13 @@ class PieChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domain != null) {
-      _json['domain'] = domain.toJson();
-    }
-    if (legendPosition != null) {
-      _json['legendPosition'] = legendPosition;
-    }
-    if (pieHole != null) {
-      _json['pieHole'] = pieHole;
-    }
-    if (series != null) {
-      _json['series'] = series.toJson();
-    }
-    if (threeDimensional != null) {
-      _json['threeDimensional'] = threeDimensional;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domain != null) 'domain': domain.toJson(),
+        if (legendPosition != null) 'legendPosition': legendPosition,
+        if (pieHole != null) 'pieHole': pieHole,
+        if (series != null) 'series': series.toJson(),
+        if (threeDimensional != null) 'threeDimensional': threeDimensional,
+      };
 }
 
 /// Criteria for showing/hiding rows in a pivot table.
@@ -10392,19 +9118,11 @@ class PivotFilterCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (visibleByDefault != null) {
-      _json['visibleByDefault'] = visibleByDefault;
-    }
-    if (visibleValues != null) {
-      _json['visibleValues'] = visibleValues;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (visibleByDefault != null) 'visibleByDefault': visibleByDefault,
+        if (visibleValues != null) 'visibleValues': visibleValues,
+      };
 }
 
 /// The pivot table filter criteria associated with a specific source column
@@ -10436,19 +9154,12 @@ class PivotFilterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnOffsetIndex != null) {
-      _json['columnOffsetIndex'] = columnOffsetIndex;
-    }
-    if (dataSourceColumnReference != null) {
-      _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
-    }
-    if (filterCriteria != null) {
-      _json['filterCriteria'] = filterCriteria.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnOffsetIndex != null) 'columnOffsetIndex': columnOffsetIndex,
+        if (dataSourceColumnReference != null)
+          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
+        if (filterCriteria != null) 'filterCriteria': filterCriteria.toJson(),
+      };
 }
 
 /// A single grouping (either row or column) in a pivot table.
@@ -10557,41 +9268,22 @@ class PivotGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceColumnReference != null) {
-      _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
-    }
-    if (groupLimit != null) {
-      _json['groupLimit'] = groupLimit.toJson();
-    }
-    if (groupRule != null) {
-      _json['groupRule'] = groupRule.toJson();
-    }
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (repeatHeadings != null) {
-      _json['repeatHeadings'] = repeatHeadings;
-    }
-    if (showTotals != null) {
-      _json['showTotals'] = showTotals;
-    }
-    if (sortOrder != null) {
-      _json['sortOrder'] = sortOrder;
-    }
-    if (sourceColumnOffset != null) {
-      _json['sourceColumnOffset'] = sourceColumnOffset;
-    }
-    if (valueBucket != null) {
-      _json['valueBucket'] = valueBucket.toJson();
-    }
-    if (valueMetadata != null) {
-      _json['valueMetadata'] =
-          valueMetadata.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceColumnReference != null)
+          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
+        if (groupLimit != null) 'groupLimit': groupLimit.toJson(),
+        if (groupRule != null) 'groupRule': groupRule.toJson(),
+        if (label != null) 'label': label,
+        if (repeatHeadings != null) 'repeatHeadings': repeatHeadings,
+        if (showTotals != null) 'showTotals': showTotals,
+        if (sortOrder != null) 'sortOrder': sortOrder,
+        if (sourceColumnOffset != null)
+          'sourceColumnOffset': sourceColumnOffset,
+        if (valueBucket != null) 'valueBucket': valueBucket.toJson(),
+        if (valueMetadata != null)
+          'valueMetadata':
+              valueMetadata.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The count limit on rows or columns in the pivot group.
@@ -10620,16 +9312,10 @@ class PivotGroupLimit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applyOrder != null) {
-      _json['applyOrder'] = applyOrder;
-    }
-    if (countLimit != null) {
-      _json['countLimit'] = countLimit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applyOrder != null) 'applyOrder': applyOrder,
+        if (countLimit != null) 'countLimit': countLimit,
+      };
 }
 
 /// An optional setting on a PivotGroup that defines buckets for the values in
@@ -10665,19 +9351,11 @@ class PivotGroupRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateTimeRule != null) {
-      _json['dateTimeRule'] = dateTimeRule.toJson();
-    }
-    if (histogramRule != null) {
-      _json['histogramRule'] = histogramRule.toJson();
-    }
-    if (manualRule != null) {
-      _json['manualRule'] = manualRule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule.toJson(),
+        if (histogramRule != null) 'histogramRule': histogramRule.toJson(),
+        if (manualRule != null) 'manualRule': manualRule.toJson(),
+      };
 }
 
 /// Information about which values in a pivot group should be used for sorting.
@@ -10711,16 +9389,11 @@ class PivotGroupSortValueBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buckets != null) {
-      _json['buckets'] = buckets.map((value) => value.toJson()).toList();
-    }
-    if (valuesIndex != null) {
-      _json['valuesIndex'] = valuesIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buckets != null)
+          'buckets': buckets.map((value) => value.toJson()).toList(),
+        if (valuesIndex != null) 'valuesIndex': valuesIndex,
+      };
 }
 
 /// Metadata about a value in a pivot grouping.
@@ -10746,16 +9419,10 @@ class PivotGroupValueMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (collapsed != null) {
-      _json['collapsed'] = collapsed;
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (collapsed != null) 'collapsed': collapsed,
+        if (value != null) 'value': value.toJson(),
+      };
 }
 
 /// A pivot table.
@@ -10857,39 +9524,23 @@ class PivotTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns.map((value) => value.toJson()).toList();
-    }
-    if (criteria != null) {
-      _json['criteria'] =
-          criteria.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (filterSpecs != null) {
-      _json['filterSpecs'] =
-          filterSpecs.map((value) => value.toJson()).toList();
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (valueLayout != null) {
-      _json['valueLayout'] = valueLayout;
-    }
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null)
+          'columns': columns.map((value) => value.toJson()).toList(),
+        if (criteria != null)
+          'criteria':
+              criteria.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (filterSpecs != null)
+          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source.toJson(),
+        if (valueLayout != null) 'valueLayout': valueLayout,
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The definition of how a value in a pivot table should be calculated.
@@ -10978,28 +9629,17 @@ class PivotValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (calculatedDisplayType != null) {
-      _json['calculatedDisplayType'] = calculatedDisplayType;
-    }
-    if (dataSourceColumnReference != null) {
-      _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
-    }
-    if (formula != null) {
-      _json['formula'] = formula;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sourceColumnOffset != null) {
-      _json['sourceColumnOffset'] = sourceColumnOffset;
-    }
-    if (summarizeFunction != null) {
-      _json['summarizeFunction'] = summarizeFunction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (calculatedDisplayType != null)
+          'calculatedDisplayType': calculatedDisplayType,
+        if (dataSourceColumnReference != null)
+          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
+        if (formula != null) 'formula': formula,
+        if (name != null) 'name': name,
+        if (sourceColumnOffset != null)
+          'sourceColumnOffset': sourceColumnOffset,
+        if (summarizeFunction != null) 'summarizeFunction': summarizeFunction,
+      };
 }
 
 /// The style of a point on the chart.
@@ -11035,16 +9675,10 @@ class PointStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (shape != null) {
-      _json['shape'] = shape;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (shape != null) 'shape': shape,
+        if (size != null) 'size': size,
+      };
 }
 
 /// A protected range.
@@ -11131,35 +9765,19 @@ class ProtectedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (editors != null) {
-      _json['editors'] = editors.toJson();
-    }
-    if (namedRangeId != null) {
-      _json['namedRangeId'] = namedRangeId;
-    }
-    if (protectedRangeId != null) {
-      _json['protectedRangeId'] = protectedRangeId;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (requestingUserCanEdit != null) {
-      _json['requestingUserCanEdit'] = requestingUserCanEdit;
-    }
-    if (unprotectedRanges != null) {
-      _json['unprotectedRanges'] =
-          unprotectedRanges.map((value) => value.toJson()).toList();
-    }
-    if (warningOnly != null) {
-      _json['warningOnly'] = warningOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (editors != null) 'editors': editors.toJson(),
+        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId,
+        if (range != null) 'range': range.toJson(),
+        if (requestingUserCanEdit != null)
+          'requestingUserCanEdit': requestingUserCanEdit,
+        if (unprotectedRanges != null)
+          'unprotectedRanges':
+              unprotectedRanges.map((value) => value.toJson()).toList(),
+        if (warningOnly != null) 'warningOnly': warningOnly,
+      };
 }
 
 /// Randomizes the order of the rows in a range.
@@ -11176,13 +9794,9 @@ class RandomizeRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The execution status of refreshing one data source object.
@@ -11206,16 +9820,11 @@ class RefreshDataSourceObjectExecutionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (reference != null) {
-      _json['reference'] = reference.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (reference != null) 'reference': reference.toJson(),
+      };
 }
 
 /// Refreshes one or multiple data source objects in the spreadsheet by the
@@ -11262,22 +9871,12 @@ class RefreshDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceId != null) {
-      _json['dataSourceId'] = dataSourceId;
-    }
-    if (force != null) {
-      _json['force'] = force;
-    }
-    if (isAll != null) {
-      _json['isAll'] = isAll;
-    }
-    if (references != null) {
-      _json['references'] = references.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+        if (force != null) 'force': force,
+        if (isAll != null) 'isAll': isAll,
+        if (references != null) 'references': references.toJson(),
+      };
 }
 
 /// The response from refreshing one or multiple data source objects.
@@ -11300,13 +9899,10 @@ class RefreshDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (statuses != null) {
-      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (statuses != null)
+          'statuses': statuses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Updates all cells in the range to the values in the given Cell object.
@@ -11349,19 +9945,11 @@ class RepeatCellRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cell != null) {
-      _json['cell'] = cell.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cell != null) 'cell': cell.toJson(),
+        if (fields != null) 'fields': fields,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// A single kind of update to apply to a spreadsheet.
@@ -11840,209 +10428,108 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addBanding != null) {
-      _json['addBanding'] = addBanding.toJson();
-    }
-    if (addChart != null) {
-      _json['addChart'] = addChart.toJson();
-    }
-    if (addConditionalFormatRule != null) {
-      _json['addConditionalFormatRule'] = addConditionalFormatRule.toJson();
-    }
-    if (addDataSource != null) {
-      _json['addDataSource'] = addDataSource.toJson();
-    }
-    if (addDimensionGroup != null) {
-      _json['addDimensionGroup'] = addDimensionGroup.toJson();
-    }
-    if (addFilterView != null) {
-      _json['addFilterView'] = addFilterView.toJson();
-    }
-    if (addNamedRange != null) {
-      _json['addNamedRange'] = addNamedRange.toJson();
-    }
-    if (addProtectedRange != null) {
-      _json['addProtectedRange'] = addProtectedRange.toJson();
-    }
-    if (addSheet != null) {
-      _json['addSheet'] = addSheet.toJson();
-    }
-    if (addSlicer != null) {
-      _json['addSlicer'] = addSlicer.toJson();
-    }
-    if (appendCells != null) {
-      _json['appendCells'] = appendCells.toJson();
-    }
-    if (appendDimension != null) {
-      _json['appendDimension'] = appendDimension.toJson();
-    }
-    if (autoFill != null) {
-      _json['autoFill'] = autoFill.toJson();
-    }
-    if (autoResizeDimensions != null) {
-      _json['autoResizeDimensions'] = autoResizeDimensions.toJson();
-    }
-    if (clearBasicFilter != null) {
-      _json['clearBasicFilter'] = clearBasicFilter.toJson();
-    }
-    if (copyPaste != null) {
-      _json['copyPaste'] = copyPaste.toJson();
-    }
-    if (createDeveloperMetadata != null) {
-      _json['createDeveloperMetadata'] = createDeveloperMetadata.toJson();
-    }
-    if (cutPaste != null) {
-      _json['cutPaste'] = cutPaste.toJson();
-    }
-    if (deleteBanding != null) {
-      _json['deleteBanding'] = deleteBanding.toJson();
-    }
-    if (deleteConditionalFormatRule != null) {
-      _json['deleteConditionalFormatRule'] =
-          deleteConditionalFormatRule.toJson();
-    }
-    if (deleteDataSource != null) {
-      _json['deleteDataSource'] = deleteDataSource.toJson();
-    }
-    if (deleteDeveloperMetadata != null) {
-      _json['deleteDeveloperMetadata'] = deleteDeveloperMetadata.toJson();
-    }
-    if (deleteDimension != null) {
-      _json['deleteDimension'] = deleteDimension.toJson();
-    }
-    if (deleteDimensionGroup != null) {
-      _json['deleteDimensionGroup'] = deleteDimensionGroup.toJson();
-    }
-    if (deleteDuplicates != null) {
-      _json['deleteDuplicates'] = deleteDuplicates.toJson();
-    }
-    if (deleteEmbeddedObject != null) {
-      _json['deleteEmbeddedObject'] = deleteEmbeddedObject.toJson();
-    }
-    if (deleteFilterView != null) {
-      _json['deleteFilterView'] = deleteFilterView.toJson();
-    }
-    if (deleteNamedRange != null) {
-      _json['deleteNamedRange'] = deleteNamedRange.toJson();
-    }
-    if (deleteProtectedRange != null) {
-      _json['deleteProtectedRange'] = deleteProtectedRange.toJson();
-    }
-    if (deleteRange != null) {
-      _json['deleteRange'] = deleteRange.toJson();
-    }
-    if (deleteSheet != null) {
-      _json['deleteSheet'] = deleteSheet.toJson();
-    }
-    if (duplicateFilterView != null) {
-      _json['duplicateFilterView'] = duplicateFilterView.toJson();
-    }
-    if (duplicateSheet != null) {
-      _json['duplicateSheet'] = duplicateSheet.toJson();
-    }
-    if (findReplace != null) {
-      _json['findReplace'] = findReplace.toJson();
-    }
-    if (insertDimension != null) {
-      _json['insertDimension'] = insertDimension.toJson();
-    }
-    if (insertRange != null) {
-      _json['insertRange'] = insertRange.toJson();
-    }
-    if (mergeCells != null) {
-      _json['mergeCells'] = mergeCells.toJson();
-    }
-    if (moveDimension != null) {
-      _json['moveDimension'] = moveDimension.toJson();
-    }
-    if (pasteData != null) {
-      _json['pasteData'] = pasteData.toJson();
-    }
-    if (randomizeRange != null) {
-      _json['randomizeRange'] = randomizeRange.toJson();
-    }
-    if (refreshDataSource != null) {
-      _json['refreshDataSource'] = refreshDataSource.toJson();
-    }
-    if (repeatCell != null) {
-      _json['repeatCell'] = repeatCell.toJson();
-    }
-    if (setBasicFilter != null) {
-      _json['setBasicFilter'] = setBasicFilter.toJson();
-    }
-    if (setDataValidation != null) {
-      _json['setDataValidation'] = setDataValidation.toJson();
-    }
-    if (sortRange != null) {
-      _json['sortRange'] = sortRange.toJson();
-    }
-    if (textToColumns != null) {
-      _json['textToColumns'] = textToColumns.toJson();
-    }
-    if (trimWhitespace != null) {
-      _json['trimWhitespace'] = trimWhitespace.toJson();
-    }
-    if (unmergeCells != null) {
-      _json['unmergeCells'] = unmergeCells.toJson();
-    }
-    if (updateBanding != null) {
-      _json['updateBanding'] = updateBanding.toJson();
-    }
-    if (updateBorders != null) {
-      _json['updateBorders'] = updateBorders.toJson();
-    }
-    if (updateCells != null) {
-      _json['updateCells'] = updateCells.toJson();
-    }
-    if (updateChartSpec != null) {
-      _json['updateChartSpec'] = updateChartSpec.toJson();
-    }
-    if (updateConditionalFormatRule != null) {
-      _json['updateConditionalFormatRule'] =
-          updateConditionalFormatRule.toJson();
-    }
-    if (updateDataSource != null) {
-      _json['updateDataSource'] = updateDataSource.toJson();
-    }
-    if (updateDeveloperMetadata != null) {
-      _json['updateDeveloperMetadata'] = updateDeveloperMetadata.toJson();
-    }
-    if (updateDimensionGroup != null) {
-      _json['updateDimensionGroup'] = updateDimensionGroup.toJson();
-    }
-    if (updateDimensionProperties != null) {
-      _json['updateDimensionProperties'] = updateDimensionProperties.toJson();
-    }
-    if (updateEmbeddedObjectBorder != null) {
-      _json['updateEmbeddedObjectBorder'] = updateEmbeddedObjectBorder.toJson();
-    }
-    if (updateEmbeddedObjectPosition != null) {
-      _json['updateEmbeddedObjectPosition'] =
-          updateEmbeddedObjectPosition.toJson();
-    }
-    if (updateFilterView != null) {
-      _json['updateFilterView'] = updateFilterView.toJson();
-    }
-    if (updateNamedRange != null) {
-      _json['updateNamedRange'] = updateNamedRange.toJson();
-    }
-    if (updateProtectedRange != null) {
-      _json['updateProtectedRange'] = updateProtectedRange.toJson();
-    }
-    if (updateSheetProperties != null) {
-      _json['updateSheetProperties'] = updateSheetProperties.toJson();
-    }
-    if (updateSlicerSpec != null) {
-      _json['updateSlicerSpec'] = updateSlicerSpec.toJson();
-    }
-    if (updateSpreadsheetProperties != null) {
-      _json['updateSpreadsheetProperties'] =
-          updateSpreadsheetProperties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addBanding != null) 'addBanding': addBanding.toJson(),
+        if (addChart != null) 'addChart': addChart.toJson(),
+        if (addConditionalFormatRule != null)
+          'addConditionalFormatRule': addConditionalFormatRule.toJson(),
+        if (addDataSource != null) 'addDataSource': addDataSource.toJson(),
+        if (addDimensionGroup != null)
+          'addDimensionGroup': addDimensionGroup.toJson(),
+        if (addFilterView != null) 'addFilterView': addFilterView.toJson(),
+        if (addNamedRange != null) 'addNamedRange': addNamedRange.toJson(),
+        if (addProtectedRange != null)
+          'addProtectedRange': addProtectedRange.toJson(),
+        if (addSheet != null) 'addSheet': addSheet.toJson(),
+        if (addSlicer != null) 'addSlicer': addSlicer.toJson(),
+        if (appendCells != null) 'appendCells': appendCells.toJson(),
+        if (appendDimension != null)
+          'appendDimension': appendDimension.toJson(),
+        if (autoFill != null) 'autoFill': autoFill.toJson(),
+        if (autoResizeDimensions != null)
+          'autoResizeDimensions': autoResizeDimensions.toJson(),
+        if (clearBasicFilter != null)
+          'clearBasicFilter': clearBasicFilter.toJson(),
+        if (copyPaste != null) 'copyPaste': copyPaste.toJson(),
+        if (createDeveloperMetadata != null)
+          'createDeveloperMetadata': createDeveloperMetadata.toJson(),
+        if (cutPaste != null) 'cutPaste': cutPaste.toJson(),
+        if (deleteBanding != null) 'deleteBanding': deleteBanding.toJson(),
+        if (deleteConditionalFormatRule != null)
+          'deleteConditionalFormatRule': deleteConditionalFormatRule.toJson(),
+        if (deleteDataSource != null)
+          'deleteDataSource': deleteDataSource.toJson(),
+        if (deleteDeveloperMetadata != null)
+          'deleteDeveloperMetadata': deleteDeveloperMetadata.toJson(),
+        if (deleteDimension != null)
+          'deleteDimension': deleteDimension.toJson(),
+        if (deleteDimensionGroup != null)
+          'deleteDimensionGroup': deleteDimensionGroup.toJson(),
+        if (deleteDuplicates != null)
+          'deleteDuplicates': deleteDuplicates.toJson(),
+        if (deleteEmbeddedObject != null)
+          'deleteEmbeddedObject': deleteEmbeddedObject.toJson(),
+        if (deleteFilterView != null)
+          'deleteFilterView': deleteFilterView.toJson(),
+        if (deleteNamedRange != null)
+          'deleteNamedRange': deleteNamedRange.toJson(),
+        if (deleteProtectedRange != null)
+          'deleteProtectedRange': deleteProtectedRange.toJson(),
+        if (deleteRange != null) 'deleteRange': deleteRange.toJson(),
+        if (deleteSheet != null) 'deleteSheet': deleteSheet.toJson(),
+        if (duplicateFilterView != null)
+          'duplicateFilterView': duplicateFilterView.toJson(),
+        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet.toJson(),
+        if (findReplace != null) 'findReplace': findReplace.toJson(),
+        if (insertDimension != null)
+          'insertDimension': insertDimension.toJson(),
+        if (insertRange != null) 'insertRange': insertRange.toJson(),
+        if (mergeCells != null) 'mergeCells': mergeCells.toJson(),
+        if (moveDimension != null) 'moveDimension': moveDimension.toJson(),
+        if (pasteData != null) 'pasteData': pasteData.toJson(),
+        if (randomizeRange != null) 'randomizeRange': randomizeRange.toJson(),
+        if (refreshDataSource != null)
+          'refreshDataSource': refreshDataSource.toJson(),
+        if (repeatCell != null) 'repeatCell': repeatCell.toJson(),
+        if (setBasicFilter != null) 'setBasicFilter': setBasicFilter.toJson(),
+        if (setDataValidation != null)
+          'setDataValidation': setDataValidation.toJson(),
+        if (sortRange != null) 'sortRange': sortRange.toJson(),
+        if (textToColumns != null) 'textToColumns': textToColumns.toJson(),
+        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace.toJson(),
+        if (unmergeCells != null) 'unmergeCells': unmergeCells.toJson(),
+        if (updateBanding != null) 'updateBanding': updateBanding.toJson(),
+        if (updateBorders != null) 'updateBorders': updateBorders.toJson(),
+        if (updateCells != null) 'updateCells': updateCells.toJson(),
+        if (updateChartSpec != null)
+          'updateChartSpec': updateChartSpec.toJson(),
+        if (updateConditionalFormatRule != null)
+          'updateConditionalFormatRule': updateConditionalFormatRule.toJson(),
+        if (updateDataSource != null)
+          'updateDataSource': updateDataSource.toJson(),
+        if (updateDeveloperMetadata != null)
+          'updateDeveloperMetadata': updateDeveloperMetadata.toJson(),
+        if (updateDimensionGroup != null)
+          'updateDimensionGroup': updateDimensionGroup.toJson(),
+        if (updateDimensionProperties != null)
+          'updateDimensionProperties': updateDimensionProperties.toJson(),
+        if (updateEmbeddedObjectBorder != null)
+          'updateEmbeddedObjectBorder': updateEmbeddedObjectBorder.toJson(),
+        if (updateEmbeddedObjectPosition != null)
+          'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition.toJson(),
+        if (updateFilterView != null)
+          'updateFilterView': updateFilterView.toJson(),
+        if (updateNamedRange != null)
+          'updateNamedRange': updateNamedRange.toJson(),
+        if (updateProtectedRange != null)
+          'updateProtectedRange': updateProtectedRange.toJson(),
+        if (updateSheetProperties != null)
+          'updateSheetProperties': updateSheetProperties.toJson(),
+        if (updateSlicerSpec != null)
+          'updateSlicerSpec': updateSlicerSpec.toJson(),
+        if (updateSpreadsheetProperties != null)
+          'updateSpreadsheetProperties': updateSpreadsheetProperties.toJson(),
+      };
 }
 
 /// A single response from an update.
@@ -12222,82 +10709,44 @@ class Response {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addBanding != null) {
-      _json['addBanding'] = addBanding.toJson();
-    }
-    if (addChart != null) {
-      _json['addChart'] = addChart.toJson();
-    }
-    if (addDataSource != null) {
-      _json['addDataSource'] = addDataSource.toJson();
-    }
-    if (addDimensionGroup != null) {
-      _json['addDimensionGroup'] = addDimensionGroup.toJson();
-    }
-    if (addFilterView != null) {
-      _json['addFilterView'] = addFilterView.toJson();
-    }
-    if (addNamedRange != null) {
-      _json['addNamedRange'] = addNamedRange.toJson();
-    }
-    if (addProtectedRange != null) {
-      _json['addProtectedRange'] = addProtectedRange.toJson();
-    }
-    if (addSheet != null) {
-      _json['addSheet'] = addSheet.toJson();
-    }
-    if (addSlicer != null) {
-      _json['addSlicer'] = addSlicer.toJson();
-    }
-    if (createDeveloperMetadata != null) {
-      _json['createDeveloperMetadata'] = createDeveloperMetadata.toJson();
-    }
-    if (deleteConditionalFormatRule != null) {
-      _json['deleteConditionalFormatRule'] =
-          deleteConditionalFormatRule.toJson();
-    }
-    if (deleteDeveloperMetadata != null) {
-      _json['deleteDeveloperMetadata'] = deleteDeveloperMetadata.toJson();
-    }
-    if (deleteDimensionGroup != null) {
-      _json['deleteDimensionGroup'] = deleteDimensionGroup.toJson();
-    }
-    if (deleteDuplicates != null) {
-      _json['deleteDuplicates'] = deleteDuplicates.toJson();
-    }
-    if (duplicateFilterView != null) {
-      _json['duplicateFilterView'] = duplicateFilterView.toJson();
-    }
-    if (duplicateSheet != null) {
-      _json['duplicateSheet'] = duplicateSheet.toJson();
-    }
-    if (findReplace != null) {
-      _json['findReplace'] = findReplace.toJson();
-    }
-    if (refreshDataSource != null) {
-      _json['refreshDataSource'] = refreshDataSource.toJson();
-    }
-    if (trimWhitespace != null) {
-      _json['trimWhitespace'] = trimWhitespace.toJson();
-    }
-    if (updateConditionalFormatRule != null) {
-      _json['updateConditionalFormatRule'] =
-          updateConditionalFormatRule.toJson();
-    }
-    if (updateDataSource != null) {
-      _json['updateDataSource'] = updateDataSource.toJson();
-    }
-    if (updateDeveloperMetadata != null) {
-      _json['updateDeveloperMetadata'] = updateDeveloperMetadata.toJson();
-    }
-    if (updateEmbeddedObjectPosition != null) {
-      _json['updateEmbeddedObjectPosition'] =
-          updateEmbeddedObjectPosition.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addBanding != null) 'addBanding': addBanding.toJson(),
+        if (addChart != null) 'addChart': addChart.toJson(),
+        if (addDataSource != null) 'addDataSource': addDataSource.toJson(),
+        if (addDimensionGroup != null)
+          'addDimensionGroup': addDimensionGroup.toJson(),
+        if (addFilterView != null) 'addFilterView': addFilterView.toJson(),
+        if (addNamedRange != null) 'addNamedRange': addNamedRange.toJson(),
+        if (addProtectedRange != null)
+          'addProtectedRange': addProtectedRange.toJson(),
+        if (addSheet != null) 'addSheet': addSheet.toJson(),
+        if (addSlicer != null) 'addSlicer': addSlicer.toJson(),
+        if (createDeveloperMetadata != null)
+          'createDeveloperMetadata': createDeveloperMetadata.toJson(),
+        if (deleteConditionalFormatRule != null)
+          'deleteConditionalFormatRule': deleteConditionalFormatRule.toJson(),
+        if (deleteDeveloperMetadata != null)
+          'deleteDeveloperMetadata': deleteDeveloperMetadata.toJson(),
+        if (deleteDimensionGroup != null)
+          'deleteDimensionGroup': deleteDimensionGroup.toJson(),
+        if (deleteDuplicates != null)
+          'deleteDuplicates': deleteDuplicates.toJson(),
+        if (duplicateFilterView != null)
+          'duplicateFilterView': duplicateFilterView.toJson(),
+        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet.toJson(),
+        if (findReplace != null) 'findReplace': findReplace.toJson(),
+        if (refreshDataSource != null)
+          'refreshDataSource': refreshDataSource.toJson(),
+        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace.toJson(),
+        if (updateConditionalFormatRule != null)
+          'updateConditionalFormatRule': updateConditionalFormatRule.toJson(),
+        if (updateDataSource != null)
+          'updateDataSource': updateDataSource.toJson(),
+        if (updateDeveloperMetadata != null)
+          'updateDeveloperMetadata': updateDeveloperMetadata.toJson(),
+        if (updateEmbeddedObjectPosition != null)
+          'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition.toJson(),
+      };
 }
 
 /// Data about each cell in a row.
@@ -12316,13 +10765,10 @@ class RowData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A scorecard chart.
@@ -12421,34 +10867,20 @@ class ScorecardChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregateType != null) {
-      _json['aggregateType'] = aggregateType;
-    }
-    if (baselineValueData != null) {
-      _json['baselineValueData'] = baselineValueData.toJson();
-    }
-    if (baselineValueFormat != null) {
-      _json['baselineValueFormat'] = baselineValueFormat.toJson();
-    }
-    if (customFormatOptions != null) {
-      _json['customFormatOptions'] = customFormatOptions.toJson();
-    }
-    if (keyValueData != null) {
-      _json['keyValueData'] = keyValueData.toJson();
-    }
-    if (keyValueFormat != null) {
-      _json['keyValueFormat'] = keyValueFormat.toJson();
-    }
-    if (numberFormatSource != null) {
-      _json['numberFormatSource'] = numberFormatSource;
-    }
-    if (scaleFactor != null) {
-      _json['scaleFactor'] = scaleFactor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregateType != null) 'aggregateType': aggregateType,
+        if (baselineValueData != null)
+          'baselineValueData': baselineValueData.toJson(),
+        if (baselineValueFormat != null)
+          'baselineValueFormat': baselineValueFormat.toJson(),
+        if (customFormatOptions != null)
+          'customFormatOptions': customFormatOptions.toJson(),
+        if (keyValueData != null) 'keyValueData': keyValueData.toJson(),
+        if (keyValueFormat != null) 'keyValueFormat': keyValueFormat.toJson(),
+        if (numberFormatSource != null)
+          'numberFormatSource': numberFormatSource,
+        if (scaleFactor != null) 'scaleFactor': scaleFactor,
+      };
 }
 
 /// A request to retrieve all developer metadata matching the set of specified
@@ -12472,14 +10904,10 @@ class SearchDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilters != null) {
-      _json['dataFilters'] =
-          dataFilters.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilters != null)
+          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A reply to a developer metadata search request.
@@ -12500,14 +10928,11 @@ class SearchDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matchedDeveloperMetadata != null) {
-      _json['matchedDeveloperMetadata'] =
-          matchedDeveloperMetadata.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matchedDeveloperMetadata != null)
+          'matchedDeveloperMetadata':
+              matchedDeveloperMetadata.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Sets the basic filter associated with a sheet.
@@ -12524,13 +10949,9 @@ class SetBasicFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter.toJson(),
+      };
 }
 
 /// Sets a data validation rule to every cell in the range.
@@ -12557,16 +10978,10 @@ class SetDataValidationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (rule != null) {
-      _json['rule'] = rule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+        if (rule != null) 'rule': rule.toJson(),
+      };
 }
 
 /// A sheet in a spreadsheet.
@@ -12700,55 +11115,34 @@ class Sheet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bandedRanges != null) {
-      _json['bandedRanges'] =
-          bandedRanges.map((value) => value.toJson()).toList();
-    }
-    if (basicFilter != null) {
-      _json['basicFilter'] = basicFilter.toJson();
-    }
-    if (charts != null) {
-      _json['charts'] = charts.map((value) => value.toJson()).toList();
-    }
-    if (columnGroups != null) {
-      _json['columnGroups'] =
-          columnGroups.map((value) => value.toJson()).toList();
-    }
-    if (conditionalFormats != null) {
-      _json['conditionalFormats'] =
-          conditionalFormats.map((value) => value.toJson()).toList();
-    }
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (developerMetadata != null) {
-      _json['developerMetadata'] =
-          developerMetadata.map((value) => value.toJson()).toList();
-    }
-    if (filterViews != null) {
-      _json['filterViews'] =
-          filterViews.map((value) => value.toJson()).toList();
-    }
-    if (merges != null) {
-      _json['merges'] = merges.map((value) => value.toJson()).toList();
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    if (protectedRanges != null) {
-      _json['protectedRanges'] =
-          protectedRanges.map((value) => value.toJson()).toList();
-    }
-    if (rowGroups != null) {
-      _json['rowGroups'] = rowGroups.map((value) => value.toJson()).toList();
-    }
-    if (slicers != null) {
-      _json['slicers'] = slicers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bandedRanges != null)
+          'bandedRanges': bandedRanges.map((value) => value.toJson()).toList(),
+        if (basicFilter != null) 'basicFilter': basicFilter.toJson(),
+        if (charts != null)
+          'charts': charts.map((value) => value.toJson()).toList(),
+        if (columnGroups != null)
+          'columnGroups': columnGroups.map((value) => value.toJson()).toList(),
+        if (conditionalFormats != null)
+          'conditionalFormats':
+              conditionalFormats.map((value) => value.toJson()).toList(),
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (developerMetadata != null)
+          'developerMetadata':
+              developerMetadata.map((value) => value.toJson()).toList(),
+        if (filterViews != null)
+          'filterViews': filterViews.map((value) => value.toJson()).toList(),
+        if (merges != null)
+          'merges': merges.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties.toJson(),
+        if (protectedRanges != null)
+          'protectedRanges':
+              protectedRanges.map((value) => value.toJson()).toList(),
+        if (rowGroups != null)
+          'rowGroups': rowGroups.map((value) => value.toJson()).toList(),
+        if (slicers != null)
+          'slicers': slicers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Properties of a sheet.
@@ -12853,40 +11247,19 @@ class SheetProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceSheetProperties != null) {
-      _json['dataSourceSheetProperties'] = dataSourceSheetProperties.toJson();
-    }
-    if (gridProperties != null) {
-      _json['gridProperties'] = gridProperties.toJson();
-    }
-    if (hidden != null) {
-      _json['hidden'] = hidden;
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (rightToLeft != null) {
-      _json['rightToLeft'] = rightToLeft;
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    if (sheetType != null) {
-      _json['sheetType'] = sheetType;
-    }
-    if (tabColor != null) {
-      _json['tabColor'] = tabColor.toJson();
-    }
-    if (tabColorStyle != null) {
-      _json['tabColorStyle'] = tabColorStyle.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceSheetProperties != null)
+          'dataSourceSheetProperties': dataSourceSheetProperties.toJson(),
+        if (gridProperties != null) 'gridProperties': gridProperties.toJson(),
+        if (hidden != null) 'hidden': hidden,
+        if (index != null) 'index': index,
+        if (rightToLeft != null) 'rightToLeft': rightToLeft,
+        if (sheetId != null) 'sheetId': sheetId,
+        if (sheetType != null) 'sheetType': sheetType,
+        if (tabColor != null) 'tabColor': tabColor.toJson(),
+        if (tabColorStyle != null) 'tabColorStyle': tabColorStyle.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// A slicer in a sheet.
@@ -12920,19 +11293,11 @@ class Slicer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (slicerId != null) {
-      _json['slicerId'] = slicerId;
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+        if (slicerId != null) 'slicerId': slicerId,
+        if (spec != null) 'spec': spec.toJson(),
+      };
 }
 
 /// The specifications of a slicer.
@@ -13013,37 +11378,21 @@ class SlicerSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applyToPivotTables != null) {
-      _json['applyToPivotTables'] = applyToPivotTables;
-    }
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (backgroundColorStyle != null) {
-      _json['backgroundColorStyle'] = backgroundColorStyle.toJson();
-    }
-    if (columnIndex != null) {
-      _json['columnIndex'] = columnIndex;
-    }
-    if (dataRange != null) {
-      _json['dataRange'] = dataRange.toJson();
-    }
-    if (filterCriteria != null) {
-      _json['filterCriteria'] = filterCriteria.toJson();
-    }
-    if (horizontalAlignment != null) {
-      _json['horizontalAlignment'] = horizontalAlignment;
-    }
-    if (textFormat != null) {
-      _json['textFormat'] = textFormat.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applyToPivotTables != null)
+          'applyToPivotTables': applyToPivotTables,
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (backgroundColorStyle != null)
+          'backgroundColorStyle': backgroundColorStyle.toJson(),
+        if (columnIndex != null) 'columnIndex': columnIndex,
+        if (dataRange != null) 'dataRange': dataRange.toJson(),
+        if (filterCriteria != null) 'filterCriteria': filterCriteria.toJson(),
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment,
+        if (textFormat != null) 'textFormat': textFormat.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Sorts data in rows based on a sort order per column.
@@ -13072,16 +11421,11 @@ class SortRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (sortSpecs != null) {
-      _json['sortSpecs'] = sortSpecs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+        if (sortSpecs != null)
+          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A sort order associated with a specific column or row.
@@ -13157,31 +11501,20 @@ class SortSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor.toJson();
-    }
-    if (backgroundColorStyle != null) {
-      _json['backgroundColorStyle'] = backgroundColorStyle.toJson();
-    }
-    if (dataSourceColumnReference != null) {
-      _json['dataSourceColumnReference'] = dataSourceColumnReference.toJson();
-    }
-    if (dimensionIndex != null) {
-      _json['dimensionIndex'] = dimensionIndex;
-    }
-    if (foregroundColor != null) {
-      _json['foregroundColor'] = foregroundColor.toJson();
-    }
-    if (foregroundColorStyle != null) {
-      _json['foregroundColorStyle'] = foregroundColorStyle.toJson();
-    }
-    if (sortOrder != null) {
-      _json['sortOrder'] = sortOrder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null)
+          'backgroundColor': backgroundColor.toJson(),
+        if (backgroundColorStyle != null)
+          'backgroundColorStyle': backgroundColorStyle.toJson(),
+        if (dataSourceColumnReference != null)
+          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
+        if (dimensionIndex != null) 'dimensionIndex': dimensionIndex,
+        if (foregroundColor != null)
+          'foregroundColor': foregroundColor.toJson(),
+        if (foregroundColorStyle != null)
+          'foregroundColorStyle': foregroundColorStyle.toJson(),
+        if (sortOrder != null) 'sortOrder': sortOrder,
+      };
 }
 
 /// A combination of a source range and how to extend that source.
@@ -13218,19 +11551,11 @@ class SourceAndDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (fillLength != null) {
-      _json['fillLength'] = fillLength;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (fillLength != null) 'fillLength': fillLength,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// Resource that represents a spreadsheet.
@@ -13311,38 +11636,23 @@ class Spreadsheet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceSchedules != null) {
-      _json['dataSourceSchedules'] =
-          dataSourceSchedules.map((value) => value.toJson()).toList();
-    }
-    if (dataSources != null) {
-      _json['dataSources'] =
-          dataSources.map((value) => value.toJson()).toList();
-    }
-    if (developerMetadata != null) {
-      _json['developerMetadata'] =
-          developerMetadata.map((value) => value.toJson()).toList();
-    }
-    if (namedRanges != null) {
-      _json['namedRanges'] =
-          namedRanges.map((value) => value.toJson()).toList();
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    if (sheets != null) {
-      _json['sheets'] = sheets.map((value) => value.toJson()).toList();
-    }
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (spreadsheetUrl != null) {
-      _json['spreadsheetUrl'] = spreadsheetUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceSchedules != null)
+          'dataSourceSchedules':
+              dataSourceSchedules.map((value) => value.toJson()).toList(),
+        if (dataSources != null)
+          'dataSources': dataSources.map((value) => value.toJson()).toList(),
+        if (developerMetadata != null)
+          'developerMetadata':
+              developerMetadata.map((value) => value.toJson()).toList(),
+        if (namedRanges != null)
+          'namedRanges': namedRanges.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties.toJson(),
+        if (sheets != null)
+          'sheets': sheets.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (spreadsheetUrl != null) 'spreadsheetUrl': spreadsheetUrl,
+      };
 }
 
 /// Properties of a spreadsheet.
@@ -13420,32 +11730,17 @@ class SpreadsheetProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (autoRecalc != null) {
-      _json['autoRecalc'] = autoRecalc;
-    }
-    if (defaultFormat != null) {
-      _json['defaultFormat'] = defaultFormat.toJson();
-    }
-    if (iterativeCalculationSettings != null) {
-      _json['iterativeCalculationSettings'] =
-          iterativeCalculationSettings.toJson();
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (spreadsheetTheme != null) {
-      _json['spreadsheetTheme'] = spreadsheetTheme.toJson();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (autoRecalc != null) 'autoRecalc': autoRecalc,
+        if (defaultFormat != null) 'defaultFormat': defaultFormat.toJson(),
+        if (iterativeCalculationSettings != null)
+          'iterativeCalculationSettings': iterativeCalculationSettings.toJson(),
+        if (locale != null) 'locale': locale,
+        if (spreadsheetTheme != null)
+          'spreadsheetTheme': spreadsheetTheme.toJson(),
+        if (timeZone != null) 'timeZone': timeZone,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Represents spreadsheet theme
@@ -13472,17 +11767,11 @@ class SpreadsheetTheme {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (primaryFontFamily != null) {
-      _json['primaryFontFamily'] = primaryFontFamily;
-    }
-    if (themeColors != null) {
-      _json['themeColors'] =
-          themeColors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (primaryFontFamily != null) 'primaryFontFamily': primaryFontFamily,
+        if (themeColors != null)
+          'themeColors': themeColors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The format of a run of text in a cell.
@@ -13546,34 +11835,18 @@ class TextFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bold != null) {
-      _json['bold'] = bold;
-    }
-    if (fontFamily != null) {
-      _json['fontFamily'] = fontFamily;
-    }
-    if (fontSize != null) {
-      _json['fontSize'] = fontSize;
-    }
-    if (foregroundColor != null) {
-      _json['foregroundColor'] = foregroundColor.toJson();
-    }
-    if (foregroundColorStyle != null) {
-      _json['foregroundColorStyle'] = foregroundColorStyle.toJson();
-    }
-    if (italic != null) {
-      _json['italic'] = italic;
-    }
-    if (strikethrough != null) {
-      _json['strikethrough'] = strikethrough;
-    }
-    if (underline != null) {
-      _json['underline'] = underline;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bold != null) 'bold': bold,
+        if (fontFamily != null) 'fontFamily': fontFamily,
+        if (fontSize != null) 'fontSize': fontSize,
+        if (foregroundColor != null)
+          'foregroundColor': foregroundColor.toJson(),
+        if (foregroundColorStyle != null)
+          'foregroundColorStyle': foregroundColorStyle.toJson(),
+        if (italic != null) 'italic': italic,
+        if (strikethrough != null) 'strikethrough': strikethrough,
+        if (underline != null) 'underline': underline,
+      };
 }
 
 /// A run of a text format.
@@ -13601,16 +11874,10 @@ class TextFormatRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (format != null) {
-      _json['format'] = format.toJson();
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (format != null) 'format': format.toJson(),
+        if (startIndex != null) 'startIndex': startIndex,
+      };
 }
 
 /// Position settings for text.
@@ -13632,13 +11899,10 @@ class TextPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (horizontalAlignment != null) {
-      _json['horizontalAlignment'] = horizontalAlignment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (horizontalAlignment != null)
+          'horizontalAlignment': horizontalAlignment,
+      };
 }
 
 /// The rotation applied to text in a cell.
@@ -13668,16 +11932,10 @@ class TextRotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (angle != null) {
-      _json['angle'] = angle;
-    }
-    if (vertical != null) {
-      _json['vertical'] = vertical;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (angle != null) 'angle': angle,
+        if (vertical != null) 'vertical': vertical,
+      };
 }
 
 /// Splits a column of text into multiple columns, based on a delimiter in each
@@ -13720,19 +11978,11 @@ class TextToColumnsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delimiter != null) {
-      _json['delimiter'] = delimiter;
-    }
-    if (delimiterType != null) {
-      _json['delimiterType'] = delimiterType;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delimiter != null) 'delimiter': delimiter,
+        if (delimiterType != null) 'delimiterType': delimiterType,
+        if (source != null) 'source': source.toJson(),
+      };
 }
 
 /// A pair mapping a spreadsheet theme color type to the concrete color it
@@ -13767,16 +12017,10 @@ class ThemeColorPair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (colorType != null) {
-      _json['colorType'] = colorType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (colorType != null) 'colorType': colorType,
+      };
 }
 
 /// Represents a time of day.
@@ -13824,22 +12068,12 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hours != null) {
-      _json['hours'] = hours;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hours != null) 'hours': hours,
+        if (minutes != null) 'minutes': minutes,
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// A color scale for a treemap chart.
@@ -13933,34 +12167,20 @@ class TreemapChartColorScale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxValueColor != null) {
-      _json['maxValueColor'] = maxValueColor.toJson();
-    }
-    if (maxValueColorStyle != null) {
-      _json['maxValueColorStyle'] = maxValueColorStyle.toJson();
-    }
-    if (midValueColor != null) {
-      _json['midValueColor'] = midValueColor.toJson();
-    }
-    if (midValueColorStyle != null) {
-      _json['midValueColorStyle'] = midValueColorStyle.toJson();
-    }
-    if (minValueColor != null) {
-      _json['minValueColor'] = minValueColor.toJson();
-    }
-    if (minValueColorStyle != null) {
-      _json['minValueColorStyle'] = minValueColorStyle.toJson();
-    }
-    if (noDataColor != null) {
-      _json['noDataColor'] = noDataColor.toJson();
-    }
-    if (noDataColorStyle != null) {
-      _json['noDataColorStyle'] = noDataColorStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxValueColor != null) 'maxValueColor': maxValueColor.toJson(),
+        if (maxValueColorStyle != null)
+          'maxValueColorStyle': maxValueColorStyle.toJson(),
+        if (midValueColor != null) 'midValueColor': midValueColor.toJson(),
+        if (midValueColorStyle != null)
+          'midValueColorStyle': midValueColorStyle.toJson(),
+        if (minValueColor != null) 'minValueColor': minValueColor.toJson(),
+        if (minValueColorStyle != null)
+          'minValueColorStyle': minValueColorStyle.toJson(),
+        if (noDataColor != null) 'noDataColor': noDataColor.toJson(),
+        if (noDataColorStyle != null)
+          'noDataColorStyle': noDataColorStyle.toJson(),
+      };
 }
 
 /// A Treemap chart.
@@ -14096,49 +12316,22 @@ class TreemapChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (colorData != null) {
-      _json['colorData'] = colorData.toJson();
-    }
-    if (colorScale != null) {
-      _json['colorScale'] = colorScale.toJson();
-    }
-    if (headerColor != null) {
-      _json['headerColor'] = headerColor.toJson();
-    }
-    if (headerColorStyle != null) {
-      _json['headerColorStyle'] = headerColorStyle.toJson();
-    }
-    if (hideTooltips != null) {
-      _json['hideTooltips'] = hideTooltips;
-    }
-    if (hintedLevels != null) {
-      _json['hintedLevels'] = hintedLevels;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.toJson();
-    }
-    if (levels != null) {
-      _json['levels'] = levels;
-    }
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    if (parentLabels != null) {
-      _json['parentLabels'] = parentLabels.toJson();
-    }
-    if (sizeData != null) {
-      _json['sizeData'] = sizeData.toJson();
-    }
-    if (textFormat != null) {
-      _json['textFormat'] = textFormat.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (colorData != null) 'colorData': colorData.toJson(),
+        if (colorScale != null) 'colorScale': colorScale.toJson(),
+        if (headerColor != null) 'headerColor': headerColor.toJson(),
+        if (headerColorStyle != null)
+          'headerColorStyle': headerColorStyle.toJson(),
+        if (hideTooltips != null) 'hideTooltips': hideTooltips,
+        if (hintedLevels != null) 'hintedLevels': hintedLevels,
+        if (labels != null) 'labels': labels.toJson(),
+        if (levels != null) 'levels': levels,
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+        if (parentLabels != null) 'parentLabels': parentLabels.toJson(),
+        if (sizeData != null) 'sizeData': sizeData.toJson(),
+        if (textFormat != null) 'textFormat': textFormat.toJson(),
+      };
 }
 
 /// Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
@@ -14162,13 +12355,9 @@ class TrimWhitespaceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// The result of trimming whitespace in cells.
@@ -14184,13 +12373,9 @@ class TrimWhitespaceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cellsChangedCount != null) {
-      _json['cellsChangedCount'] = cellsChangedCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cellsChangedCount != null) 'cellsChangedCount': cellsChangedCount,
+      };
 }
 
 /// Unmerges cells in the given range.
@@ -14210,13 +12395,9 @@ class UnmergeCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Updates properties of the supplied banded range.
@@ -14243,16 +12424,10 @@ class UpdateBandingRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bandedRange != null) {
-      _json['bandedRange'] = bandedRange.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bandedRange != null) 'bandedRange': bandedRange.toJson(),
+        if (fields != null) 'fields': fields,
+      };
 }
 
 /// Updates the borders of a range.
@@ -14317,31 +12492,16 @@ class UpdateBordersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bottom != null) {
-      _json['bottom'] = bottom.toJson();
-    }
-    if (innerHorizontal != null) {
-      _json['innerHorizontal'] = innerHorizontal.toJson();
-    }
-    if (innerVertical != null) {
-      _json['innerVertical'] = innerVertical.toJson();
-    }
-    if (left != null) {
-      _json['left'] = left.toJson();
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (right != null) {
-      _json['right'] = right.toJson();
-    }
-    if (top != null) {
-      _json['top'] = top.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bottom != null) 'bottom': bottom.toJson(),
+        if (innerHorizontal != null)
+          'innerHorizontal': innerHorizontal.toJson(),
+        if (innerVertical != null) 'innerVertical': innerVertical.toJson(),
+        if (left != null) 'left': left.toJson(),
+        if (range != null) 'range': range.toJson(),
+        if (right != null) 'right': right.toJson(),
+        if (top != null) 'top': top.toJson(),
+      };
 }
 
 /// Updates all cells in a range with new data.
@@ -14390,22 +12550,12 @@ class UpdateCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (start != null) {
-      _json['start'] = start.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (range != null) 'range': range.toJson(),
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (start != null) 'start': start.toJson(),
+      };
 }
 
 /// Updates a chart's specifications.
@@ -14431,16 +12581,10 @@ class UpdateChartSpecRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (chartId != null) {
-      _json['chartId'] = chartId;
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (chartId != null) 'chartId': chartId,
+        if (spec != null) 'spec': spec.toJson(),
+      };
 }
 
 /// Updates a conditional format rule at the given index, or moves a conditional
@@ -14478,22 +12622,12 @@ class UpdateConditionalFormatRuleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (index != null) {
-      _json['index'] = index;
-    }
-    if (newIndex != null) {
-      _json['newIndex'] = newIndex;
-    }
-    if (rule != null) {
-      _json['rule'] = rule.toJson();
-    }
-    if (sheetId != null) {
-      _json['sheetId'] = sheetId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (index != null) 'index': index,
+        if (newIndex != null) 'newIndex': newIndex,
+        if (rule != null) 'rule': rule.toJson(),
+        if (sheetId != null) 'sheetId': sheetId,
+      };
 }
 
 /// The result of updating a conditional format rule.
@@ -14534,22 +12668,12 @@ class UpdateConditionalFormatRuleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (newIndex != null) {
-      _json['newIndex'] = newIndex;
-    }
-    if (newRule != null) {
-      _json['newRule'] = newRule.toJson();
-    }
-    if (oldIndex != null) {
-      _json['oldIndex'] = oldIndex;
-    }
-    if (oldRule != null) {
-      _json['oldRule'] = oldRule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (newIndex != null) 'newIndex': newIndex,
+        if (newRule != null) 'newRule': newRule.toJson(),
+        if (oldIndex != null) 'oldIndex': oldIndex,
+        if (oldRule != null) 'oldRule': oldRule.toJson(),
+      };
 }
 
 /// Updates a data source.
@@ -14580,16 +12704,10 @@ class UpdateDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSource != null) {
-      _json['dataSource'] = dataSource.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSource != null) 'dataSource': dataSource.toJson(),
+        if (fields != null) 'fields': fields,
+      };
 }
 
 /// The response from updating data source.
@@ -14613,16 +12731,11 @@ class UpdateDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataExecutionStatus != null) {
-      _json['dataExecutionStatus'] = dataExecutionStatus.toJson();
-    }
-    if (dataSource != null) {
-      _json['dataSource'] = dataSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataExecutionStatus != null)
+          'dataExecutionStatus': dataExecutionStatus.toJson(),
+        if (dataSource != null) 'dataSource': dataSource.toJson(),
+      };
 }
 
 /// A request to update properties of developer metadata.
@@ -14664,20 +12777,13 @@ class UpdateDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilters != null) {
-      _json['dataFilters'] =
-          dataFilters.map((value) => value.toJson()).toList();
-    }
-    if (developerMetadata != null) {
-      _json['developerMetadata'] = developerMetadata.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilters != null)
+          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+        if (developerMetadata != null)
+          'developerMetadata': developerMetadata.toJson(),
+        if (fields != null) 'fields': fields,
+      };
 }
 
 /// The response from updating developer metadata.
@@ -14696,14 +12802,11 @@ class UpdateDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (developerMetadata != null) {
-      _json['developerMetadata'] =
-          developerMetadata.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (developerMetadata != null)
+          'developerMetadata':
+              developerMetadata.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Updates the state of the specified group.
@@ -14733,16 +12836,10 @@ class UpdateDimensionGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionGroup != null) {
-      _json['dimensionGroup'] = dimensionGroup.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionGroup != null) 'dimensionGroup': dimensionGroup.toJson(),
+        if (fields != null) 'fields': fields,
+      };
 }
 
 /// Updates properties of dimensions within the specified range.
@@ -14783,22 +12880,13 @@ class UpdateDimensionPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSourceSheetRange != null) {
-      _json['dataSourceSheetRange'] = dataSourceSheetRange.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSourceSheetRange != null)
+          'dataSourceSheetRange': dataSourceSheetRange.toJson(),
+        if (fields != null) 'fields': fields,
+        if (properties != null) 'properties': properties.toJson(),
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// Updates an embedded object's border property.
@@ -14831,19 +12919,11 @@ class UpdateEmbeddedObjectBorderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (border != null) {
-      _json['border'] = border.toJson();
-    }
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (border != null) 'border': border.toJson(),
+        if (fields != null) 'fields': fields,
+        if (objectId != null) 'objectId': objectId,
+      };
 }
 
 /// Update an embedded object's position (such as a moving or resizing a chart
@@ -14883,19 +12963,11 @@ class UpdateEmbeddedObjectPositionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (newPosition != null) {
-      _json['newPosition'] = newPosition.toJson();
-    }
-    if (objectId != null) {
-      _json['objectId'] = objectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (newPosition != null) 'newPosition': newPosition.toJson(),
+        if (objectId != null) 'objectId': objectId,
+      };
 }
 
 /// The result of updating an embedded object's position.
@@ -14912,13 +12984,9 @@ class UpdateEmbeddedObjectPositionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (position != null) 'position': position.toJson(),
+      };
 }
 
 /// Updates properties of the filter view.
@@ -14945,16 +13013,10 @@ class UpdateFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (filter != null) 'filter': filter.toJson(),
+      };
 }
 
 /// Updates properties of the named range with the specified namedRangeId.
@@ -14981,16 +13043,10 @@ class UpdateNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (namedRange != null) {
-      _json['namedRange'] = namedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (namedRange != null) 'namedRange': namedRange.toJson(),
+      };
 }
 
 /// Updates an existing protected range with the specified protectedRangeId.
@@ -15017,16 +13073,10 @@ class UpdateProtectedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (protectedRange != null) {
-      _json['protectedRange'] = protectedRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (protectedRange != null) 'protectedRange': protectedRange.toJson(),
+      };
 }
 
 /// Updates properties of the sheet with the specified sheetId.
@@ -15053,16 +13103,10 @@ class UpdateSheetPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (properties != null) 'properties': properties.toJson(),
+      };
 }
 
 /// Updates a slicer's specifications.
@@ -15098,19 +13142,11 @@ class UpdateSlicerSpecRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (slicerId != null) {
-      _json['slicerId'] = slicerId;
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (slicerId != null) 'slicerId': slicerId,
+        if (spec != null) 'spec': spec.toJson(),
+      };
 }
 
 /// Updates properties of a spreadsheet.
@@ -15137,16 +13173,10 @@ class UpdateSpreadsheetPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] = fields;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null) 'fields': fields,
+        if (properties != null) 'properties': properties.toJson(),
+      };
 }
 
 /// The response when updating a range of values by a data filter in a
@@ -15199,28 +13229,14 @@ class UpdateValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataFilter != null) {
-      _json['dataFilter'] = dataFilter.toJson();
-    }
-    if (updatedCells != null) {
-      _json['updatedCells'] = updatedCells;
-    }
-    if (updatedColumns != null) {
-      _json['updatedColumns'] = updatedColumns;
-    }
-    if (updatedData != null) {
-      _json['updatedData'] = updatedData.toJson();
-    }
-    if (updatedRange != null) {
-      _json['updatedRange'] = updatedRange;
-    }
-    if (updatedRows != null) {
-      _json['updatedRows'] = updatedRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataFilter != null) 'dataFilter': dataFilter.toJson(),
+        if (updatedCells != null) 'updatedCells': updatedCells,
+        if (updatedColumns != null) 'updatedColumns': updatedColumns,
+        if (updatedData != null) 'updatedData': updatedData.toJson(),
+        if (updatedRange != null) 'updatedRange': updatedRange,
+        if (updatedRows != null) 'updatedRows': updatedRows,
+      };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -15270,28 +13286,14 @@ class UpdateValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (spreadsheetId != null) {
-      _json['spreadsheetId'] = spreadsheetId;
-    }
-    if (updatedCells != null) {
-      _json['updatedCells'] = updatedCells;
-    }
-    if (updatedColumns != null) {
-      _json['updatedColumns'] = updatedColumns;
-    }
-    if (updatedData != null) {
-      _json['updatedData'] = updatedData.toJson();
-    }
-    if (updatedRange != null) {
-      _json['updatedRange'] = updatedRange;
-    }
-    if (updatedRows != null) {
-      _json['updatedRows'] = updatedRows;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+        if (updatedCells != null) 'updatedCells': updatedCells,
+        if (updatedColumns != null) 'updatedColumns': updatedColumns,
+        if (updatedData != null) 'updatedData': updatedData.toJson(),
+        if (updatedRange != null) 'updatedRange': updatedRange,
+        if (updatedRows != null) 'updatedRows': updatedRows,
+      };
 }
 
 /// Data within a range of the spreadsheet.
@@ -15351,19 +13353,11 @@ class ValueRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (majorDimension != null) {
-      _json['majorDimension'] = majorDimension;
-    }
-    if (range != null) {
-      _json['range'] = range;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (majorDimension != null) 'majorDimension': majorDimension,
+        if (range != null) 'range': range,
+        if (values != null) 'values': values,
+      };
 }
 
 /// Styles for a waterfall chart column.
@@ -15395,19 +13389,11 @@ class WaterfallChartColumnStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (color != null) {
-      _json['color'] = color.toJson();
-    }
-    if (colorStyle != null) {
-      _json['colorStyle'] = colorStyle.toJson();
-    }
-    if (label != null) {
-      _json['label'] = label;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (color != null) 'color': color.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
+        if (label != null) 'label': label,
+      };
 }
 
 /// A custom subtotal column for a waterfall chart series.
@@ -15445,19 +13431,11 @@ class WaterfallChartCustomSubtotal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataIsSubtotal != null) {
-      _json['dataIsSubtotal'] = dataIsSubtotal;
-    }
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (subtotalIndex != null) {
-      _json['subtotalIndex'] = subtotalIndex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataIsSubtotal != null) 'dataIsSubtotal': dataIsSubtotal,
+        if (label != null) 'label': label,
+        if (subtotalIndex != null) 'subtotalIndex': subtotalIndex,
+      };
 }
 
 /// The domain of a waterfall chart.
@@ -15480,16 +13458,10 @@ class WaterfallChartDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data.toJson();
-    }
-    if (reversed != null) {
-      _json['reversed'] = reversed;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data.toJson(),
+        if (reversed != null) 'reversed': reversed,
+      };
 }
 
 /// A single series of data for a waterfall chart.
@@ -15556,32 +13528,21 @@ class WaterfallChartSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customSubtotals != null) {
-      _json['customSubtotals'] =
-          customSubtotals.map((value) => value.toJson()).toList();
-    }
-    if (data != null) {
-      _json['data'] = data.toJson();
-    }
-    if (dataLabel != null) {
-      _json['dataLabel'] = dataLabel.toJson();
-    }
-    if (hideTrailingSubtotal != null) {
-      _json['hideTrailingSubtotal'] = hideTrailingSubtotal;
-    }
-    if (negativeColumnsStyle != null) {
-      _json['negativeColumnsStyle'] = negativeColumnsStyle.toJson();
-    }
-    if (positiveColumnsStyle != null) {
-      _json['positiveColumnsStyle'] = positiveColumnsStyle.toJson();
-    }
-    if (subtotalColumnsStyle != null) {
-      _json['subtotalColumnsStyle'] = subtotalColumnsStyle.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customSubtotals != null)
+          'customSubtotals':
+              customSubtotals.map((value) => value.toJson()).toList(),
+        if (data != null) 'data': data.toJson(),
+        if (dataLabel != null) 'dataLabel': dataLabel.toJson(),
+        if (hideTrailingSubtotal != null)
+          'hideTrailingSubtotal': hideTrailingSubtotal,
+        if (negativeColumnsStyle != null)
+          'negativeColumnsStyle': negativeColumnsStyle.toJson(),
+        if (positiveColumnsStyle != null)
+          'positiveColumnsStyle': positiveColumnsStyle.toJson(),
+        if (subtotalColumnsStyle != null)
+          'subtotalColumnsStyle': subtotalColumnsStyle.toJson(),
+      };
 }
 
 /// A waterfall chart.
@@ -15649,29 +13610,16 @@ class WaterfallChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connectorLineStyle != null) {
-      _json['connectorLineStyle'] = connectorLineStyle.toJson();
-    }
-    if (domain != null) {
-      _json['domain'] = domain.toJson();
-    }
-    if (firstValueIsTotal != null) {
-      _json['firstValueIsTotal'] = firstValueIsTotal;
-    }
-    if (hideConnectorLines != null) {
-      _json['hideConnectorLines'] = hideConnectorLines;
-    }
-    if (series != null) {
-      _json['series'] = series.map((value) => value.toJson()).toList();
-    }
-    if (stackedType != null) {
-      _json['stackedType'] = stackedType;
-    }
-    if (totalDataLabel != null) {
-      _json['totalDataLabel'] = totalDataLabel.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connectorLineStyle != null)
+          'connectorLineStyle': connectorLineStyle.toJson(),
+        if (domain != null) 'domain': domain.toJson(),
+        if (firstValueIsTotal != null) 'firstValueIsTotal': firstValueIsTotal,
+        if (hideConnectorLines != null)
+          'hideConnectorLines': hideConnectorLines,
+        if (series != null)
+          'series': series.map((value) => value.toJson()).toList(),
+        if (stackedType != null) 'stackedType': stackedType,
+        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel.toJson(),
+      };
 }

@@ -218,16 +218,10 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes.toJson(),
+        if (description != null) 'description': description.toJson(),
+      };
 }
 
 /// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
@@ -256,19 +250,11 @@ class AttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (intValue != null) {
-      _json['intValue'] = intValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (intValue != null) 'intValue': intValue,
+        if (stringValue != null) 'stringValue': stringValue.toJson(),
+      };
 }
 
 /// A set of attributes, each in the format `[KEY]:[VALUE]`.
@@ -307,17 +293,13 @@ class Attributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributeMap != null) {
-      _json['attributeMap'] =
-          attributeMap.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (droppedAttributesCount != null) {
-      _json['droppedAttributesCount'] = droppedAttributesCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributeMap != null)
+          'attributeMap': attributeMap
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (droppedAttributesCount != null)
+          'droppedAttributesCount': droppedAttributesCount,
+      };
 }
 
 /// The request message for the `BatchWriteSpans` method.
@@ -341,13 +323,10 @@ class BatchWriteSpansRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (spans != null) {
-      _json['spans'] = spans.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (spans != null)
+          'spans': spans.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -364,10 +343,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A pointer from the current span to another span in the same trace or in a
@@ -413,22 +389,12 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.toJson();
-    }
-    if (spanId != null) {
-      _json['spanId'] = spanId;
-    }
-    if (traceId != null) {
-      _json['traceId'] = traceId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes.toJson(),
+        if (spanId != null) 'spanId': spanId,
+        if (traceId != null) 'traceId': traceId,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A collection of links, which are references from this span to a span in the
@@ -456,16 +422,10 @@ class Links {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (droppedLinksCount != null) {
-      _json['droppedLinksCount'] = droppedLinksCount;
-    }
-    if (link != null) {
-      _json['link'] = link.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (droppedLinksCount != null) 'droppedLinksCount': droppedLinksCount,
+        if (link != null) 'link': link.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An event describing a message sent/received between Spans.
@@ -510,22 +470,14 @@ class MessageEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compressedSizeBytes != null) {
-      _json['compressedSizeBytes'] = compressedSizeBytes;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (uncompressedSizeBytes != null) {
-      _json['uncompressedSizeBytes'] = uncompressedSizeBytes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compressedSizeBytes != null)
+          'compressedSizeBytes': compressedSizeBytes,
+        if (id != null) 'id': id,
+        if (type != null) 'type': type,
+        if (uncompressedSizeBytes != null)
+          'uncompressedSizeBytes': uncompressedSizeBytes,
+      };
 }
 
 /// Binary module.
@@ -551,16 +503,10 @@ class Module {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buildId != null) {
-      _json['buildId'] = buildId.toJson();
-    }
-    if (module != null) {
-      _json['module'] = module.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buildId != null) 'buildId': buildId.toJson(),
+        if (module != null) 'module': module.toJson(),
+      };
 }
 
 /// A span represents a single operation within a trace.
@@ -738,52 +684,23 @@ class Span {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.toJson();
-    }
-    if (childSpanCount != null) {
-      _json['childSpanCount'] = childSpanCount;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (links != null) {
-      _json['links'] = links.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentSpanId != null) {
-      _json['parentSpanId'] = parentSpanId;
-    }
-    if (sameProcessAsParentSpan != null) {
-      _json['sameProcessAsParentSpan'] = sameProcessAsParentSpan;
-    }
-    if (spanId != null) {
-      _json['spanId'] = spanId;
-    }
-    if (spanKind != null) {
-      _json['spanKind'] = spanKind;
-    }
-    if (stackTrace != null) {
-      _json['stackTrace'] = stackTrace.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (timeEvents != null) {
-      _json['timeEvents'] = timeEvents.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes.toJson(),
+        if (childSpanCount != null) 'childSpanCount': childSpanCount,
+        if (displayName != null) 'displayName': displayName.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (links != null) 'links': links.toJson(),
+        if (name != null) 'name': name,
+        if (parentSpanId != null) 'parentSpanId': parentSpanId,
+        if (sameProcessAsParentSpan != null)
+          'sameProcessAsParentSpan': sameProcessAsParentSpan,
+        if (spanId != null) 'spanId': spanId,
+        if (spanKind != null) 'spanKind': spanKind,
+        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status.toJson(),
+        if (timeEvents != null) 'timeEvents': timeEvents.toJson(),
+      };
 }
 
 /// Represents a single stack frame in a stack trace.
@@ -847,31 +764,16 @@ class StackFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnNumber != null) {
-      _json['columnNumber'] = columnNumber;
-    }
-    if (fileName != null) {
-      _json['fileName'] = fileName.toJson();
-    }
-    if (functionName != null) {
-      _json['functionName'] = functionName.toJson();
-    }
-    if (lineNumber != null) {
-      _json['lineNumber'] = lineNumber;
-    }
-    if (loadModule != null) {
-      _json['loadModule'] = loadModule.toJson();
-    }
-    if (originalFunctionName != null) {
-      _json['originalFunctionName'] = originalFunctionName.toJson();
-    }
-    if (sourceVersion != null) {
-      _json['sourceVersion'] = sourceVersion.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnNumber != null) 'columnNumber': columnNumber,
+        if (fileName != null) 'fileName': fileName.toJson(),
+        if (functionName != null) 'functionName': functionName.toJson(),
+        if (lineNumber != null) 'lineNumber': lineNumber,
+        if (loadModule != null) 'loadModule': loadModule.toJson(),
+        if (originalFunctionName != null)
+          'originalFunctionName': originalFunctionName.toJson(),
+        if (sourceVersion != null) 'sourceVersion': sourceVersion.toJson(),
+      };
 }
 
 /// A collection of stack frames, which can be truncated.
@@ -899,16 +801,12 @@ class StackFrames {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (droppedFramesCount != null) {
-      _json['droppedFramesCount'] = droppedFramesCount;
-    }
-    if (frame != null) {
-      _json['frame'] = frame.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (droppedFramesCount != null)
+          'droppedFramesCount': droppedFramesCount,
+        if (frame != null)
+          'frame': frame.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A call stack appearing in a trace.
@@ -939,16 +837,10 @@ class StackTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (stackFrames != null) {
-      _json['stackFrames'] = stackFrames.toJson();
-    }
-    if (stackTraceHashId != null) {
-      _json['stackTraceHashId'] = stackTraceHashId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (stackFrames != null) 'stackFrames': stackFrames.toJson(),
+        if (stackTraceHashId != null) 'stackTraceHashId': stackTraceHashId,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -998,19 +890,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A time-stamped annotation or message event in the Span.
@@ -1040,19 +924,11 @@ class TimeEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotation != null) {
-      _json['annotation'] = annotation.toJson();
-    }
-    if (messageEvent != null) {
-      _json['messageEvent'] = messageEvent.toJson();
-    }
-    if (time != null) {
-      _json['time'] = time;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotation != null) 'annotation': annotation.toJson(),
+        if (messageEvent != null) 'messageEvent': messageEvent.toJson(),
+        if (time != null) 'time': time,
+      };
 }
 
 /// A collection of `TimeEvent`s.
@@ -1092,19 +968,14 @@ class TimeEvents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (droppedAnnotationsCount != null) {
-      _json['droppedAnnotationsCount'] = droppedAnnotationsCount;
-    }
-    if (droppedMessageEventsCount != null) {
-      _json['droppedMessageEventsCount'] = droppedMessageEventsCount;
-    }
-    if (timeEvent != null) {
-      _json['timeEvent'] = timeEvent.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (droppedAnnotationsCount != null)
+          'droppedAnnotationsCount': droppedAnnotationsCount,
+        if (droppedMessageEventsCount != null)
+          'droppedMessageEventsCount': droppedMessageEventsCount,
+        if (timeEvent != null)
+          'timeEvent': timeEvent.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a string that might be shortened to a specified length.
@@ -1134,14 +1005,9 @@ class TruncatableString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (truncatedByteCount != null) {
-      _json['truncatedByteCount'] = truncatedByteCount;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (truncatedByteCount != null)
+          'truncatedByteCount': truncatedByteCount,
+        if (value != null) 'value': value,
+      };
 }

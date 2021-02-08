@@ -1273,23 +1273,15 @@ class AccessApprovalSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enrolledAncestor != null) {
-      _json['enrolledAncestor'] = enrolledAncestor;
-    }
-    if (enrolledServices != null) {
-      _json['enrolledServices'] =
-          enrolledServices.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationEmails != null) {
-      _json['notificationEmails'] = notificationEmails;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor,
+        if (enrolledServices != null)
+          'enrolledServices':
+              enrolledServices.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (notificationEmails != null)
+          'notificationEmails': notificationEmails,
+      };
 }
 
 /// Home office and physical location of the principal.
@@ -1324,17 +1316,12 @@ class AccessLocations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (principalOfficeCountry != null) {
-      _json['principalOfficeCountry'] = principalOfficeCountry;
-    }
-    if (principalPhysicalLocationCountry != null) {
-      _json['principalPhysicalLocationCountry'] =
-          principalPhysicalLocationCountry;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (principalOfficeCountry != null)
+          'principalOfficeCountry': principalOfficeCountry,
+        if (principalPhysicalLocationCountry != null)
+          'principalPhysicalLocationCountry': principalPhysicalLocationCountry,
+      };
 }
 
 class AccessReason {
@@ -1371,16 +1358,10 @@ class AccessReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detail != null) {
-      _json['detail'] = detail;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detail != null) 'detail': detail,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A request for the customer to approve access to a resource.
@@ -1463,38 +1444,22 @@ class ApprovalRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approve != null) {
-      _json['approve'] = approve.toJson();
-    }
-    if (dismiss != null) {
-      _json['dismiss'] = dismiss.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (requestTime != null) {
-      _json['requestTime'] = requestTime;
-    }
-    if (requestedExpiration != null) {
-      _json['requestedExpiration'] = requestedExpiration;
-    }
-    if (requestedLocations != null) {
-      _json['requestedLocations'] = requestedLocations.toJson();
-    }
-    if (requestedReason != null) {
-      _json['requestedReason'] = requestedReason.toJson();
-    }
-    if (requestedResourceName != null) {
-      _json['requestedResourceName'] = requestedResourceName;
-    }
-    if (requestedResourceProperties != null) {
-      _json['requestedResourceProperties'] =
-          requestedResourceProperties.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approve != null) 'approve': approve.toJson(),
+        if (dismiss != null) 'dismiss': dismiss.toJson(),
+        if (name != null) 'name': name,
+        if (requestTime != null) 'requestTime': requestTime,
+        if (requestedExpiration != null)
+          'requestedExpiration': requestedExpiration,
+        if (requestedLocations != null)
+          'requestedLocations': requestedLocations.toJson(),
+        if (requestedReason != null)
+          'requestedReason': requestedReason.toJson(),
+        if (requestedResourceName != null)
+          'requestedResourceName': requestedResourceName,
+        if (requestedResourceProperties != null)
+          'requestedResourceProperties': requestedResourceProperties.toJson(),
+      };
 }
 
 /// Request to approve an ApprovalRequest.
@@ -1510,13 +1475,9 @@ class ApproveApprovalRequestMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime,
+      };
 }
 
 /// A decision that has been made to approve access to a resource.
@@ -1538,16 +1499,10 @@ class ApproveDecision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approveTime != null) {
-      _json['approveTime'] = approveTime;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approveTime != null) 'approveTime': approveTime,
+        if (expireTime != null) 'expireTime': expireTime,
+      };
 }
 
 /// Request to dismiss an approval request.
@@ -1558,10 +1513,7 @@ class DismissApprovalRequestMessage {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A decision that has been made to dismiss an approval request.
@@ -1585,16 +1537,10 @@ class DismissDecision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dismissTime != null) {
-      _json['dismissTime'] = dismissTime;
-    }
-    if (implicit != null) {
-      _json['implicit'] = implicit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dismissTime != null) 'dismissTime': dismissTime,
+        if (implicit != null) 'implicit': implicit,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1611,10 +1557,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents the enrollment of a cloud resource into a specific service.
@@ -1655,16 +1598,10 @@ class EnrolledService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudProduct != null) {
-      _json['cloudProduct'] = cloudProduct;
-    }
-    if (enrollmentLevel != null) {
-      _json['enrollmentLevel'] = enrollmentLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudProduct != null) 'cloudProduct': cloudProduct,
+        if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel,
+      };
 }
 
 /// Response to listing of ApprovalRequest objects.
@@ -1689,17 +1626,12 @@ class ListApprovalRequestsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approvalRequests != null) {
-      _json['approvalRequests'] =
-          approvalRequests.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approvalRequests != null)
+          'approvalRequests':
+              approvalRequests.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The properties associated with the resource of the request.
@@ -1716,11 +1648,8 @@ class ResourceProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludesDescendants != null) {
-      _json['excludesDescendants'] = excludesDescendants;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludesDescendants != null)
+          'excludesDescendants': excludesDescendants,
+      };
 }

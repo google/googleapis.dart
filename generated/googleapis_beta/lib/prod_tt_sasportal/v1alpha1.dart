@@ -4038,16 +4038,10 @@ class SasPortalAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Request for CreateSignedDevice.
@@ -4084,16 +4078,10 @@ class SasPortalCreateSignedDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encodedDevice != null) {
-      _json['encodedDevice'] = encodedDevice;
-    }
-    if (installerId != null) {
-      _json['installerId'] = installerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encodedDevice != null) 'encodedDevice': encodedDevice,
+        if (installerId != null) 'installerId': installerId,
+      };
 }
 
 /// Entity representing a SAS customer.
@@ -4127,19 +4115,11 @@ class SasPortalCustomer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sasUserIds != null) {
-      _json['sasUserIds'] = sasUserIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (sasUserIds != null) 'sasUserIds': sasUserIds,
+      };
 }
 
 /// The Deployment.
@@ -4192,25 +4172,15 @@ class SasPortalDeployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedBillingModes != null) {
-      _json['allowedBillingModes'] = allowedBillingModes;
-    }
-    if (defaultBillingMode != null) {
-      _json['defaultBillingMode'] = defaultBillingMode;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sasUserIds != null) {
-      _json['sasUserIds'] = sasUserIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedBillingModes != null)
+          'allowedBillingModes': allowedBillingModes,
+        if (defaultBillingMode != null)
+          'defaultBillingMode': defaultBillingMode,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (sasUserIds != null) 'sasUserIds': sasUserIds,
+      };
 }
 
 class SasPortalDevice {
@@ -4294,37 +4264,19 @@ class SasPortalDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeConfig != null) {
-      _json['activeConfig'] = activeConfig.toJson();
-    }
-    if (deviceMetadata != null) {
-      _json['deviceMetadata'] = deviceMetadata.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (fccId != null) {
-      _json['fccId'] = fccId;
-    }
-    if (grants != null) {
-      _json['grants'] = grants.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (preloadedConfig != null) {
-      _json['preloadedConfig'] = preloadedConfig.toJson();
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeConfig != null) 'activeConfig': activeConfig.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (fccId != null) 'fccId': fccId,
+        if (grants != null)
+          'grants': grants.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (preloadedConfig != null)
+          'preloadedConfig': preloadedConfig.toJson(),
+        if (serialNumber != null) 'serialNumber': serialNumber,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Information about the device's air interface.
@@ -4363,16 +4315,10 @@ class SasPortalDeviceAirInterface {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (radioTechnology != null) {
-      _json['radioTechnology'] = radioTechnology;
-    }
-    if (supportedSpec != null) {
-      _json['supportedSpec'] = supportedSpec;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (radioTechnology != null) 'radioTechnology': radioTechnology,
+        if (supportedSpec != null) 'supportedSpec': supportedSpec,
+      };
 }
 
 /// Information about the device configuration.
@@ -4459,40 +4405,20 @@ class SasPortalDeviceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (airInterface != null) {
-      _json['airInterface'] = airInterface.toJson();
-    }
-    if (callSign != null) {
-      _json['callSign'] = callSign;
-    }
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (installationParams != null) {
-      _json['installationParams'] = installationParams.toJson();
-    }
-    if (isSigned != null) {
-      _json['isSigned'] = isSigned;
-    }
-    if (measurementCapabilities != null) {
-      _json['measurementCapabilities'] = measurementCapabilities;
-    }
-    if (model != null) {
-      _json['model'] = model.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (airInterface != null) 'airInterface': airInterface.toJson(),
+        if (callSign != null) 'callSign': callSign,
+        if (category != null) 'category': category,
+        if (installationParams != null)
+          'installationParams': installationParams.toJson(),
+        if (isSigned != null) 'isSigned': isSigned,
+        if (measurementCapabilities != null)
+          'measurementCapabilities': measurementCapabilities,
+        if (model != null) 'model': model.toJson(),
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// Device grant.
@@ -4577,34 +4503,17 @@ class SasPortalDeviceGrant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelType != null) {
-      _json['channelType'] = channelType;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (frequencyRange != null) {
-      _json['frequencyRange'] = frequencyRange.toJson();
-    }
-    if (grantId != null) {
-      _json['grantId'] = grantId;
-    }
-    if (maxEirp != null) {
-      _json['maxEirp'] = maxEirp;
-    }
-    if (moveList != null) {
-      _json['moveList'] = moveList.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (suspensionReason != null) {
-      _json['suspensionReason'] = suspensionReason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelType != null) 'channelType': channelType,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (frequencyRange != null) 'frequencyRange': frequencyRange.toJson(),
+        if (grantId != null) 'grantId': grantId,
+        if (maxEirp != null) 'maxEirp': maxEirp,
+        if (moveList != null)
+          'moveList': moveList.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+        if (suspensionReason != null) 'suspensionReason': suspensionReason,
+      };
 }
 
 /// Device data overridable by both SAS Portal and registration requests.
@@ -4615,10 +4524,7 @@ class SasPortalDeviceMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Information about the model of the device.
@@ -4658,25 +4564,13 @@ class SasPortalDeviceModel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (firmwareVersion != null) {
-      _json['firmwareVersion'] = firmwareVersion;
-    }
-    if (hardwareVersion != null) {
-      _json['hardwareVersion'] = hardwareVersion;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (softwareVersion != null) {
-      _json['softwareVersion'] = softwareVersion;
-    }
-    if (vendor != null) {
-      _json['vendor'] = vendor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion,
+        if (hardwareVersion != null) 'hardwareVersion': hardwareVersion,
+        if (name != null) 'name': name,
+        if (softwareVersion != null) 'softwareVersion': softwareVersion,
+        if (vendor != null) 'vendor': vendor,
+      };
 }
 
 /// An entry in a DPA's move list.
@@ -4699,16 +4593,10 @@ class SasPortalDpaMoveList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dpaId != null) {
-      _json['dpaId'] = dpaId;
-    }
-    if (frequencyRange != null) {
-      _json['frequencyRange'] = frequencyRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dpaId != null) 'dpaId': dpaId,
+        if (frequencyRange != null) 'frequencyRange': frequencyRange.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -4725,10 +4613,7 @@ class SasPortalEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Frequency range from `low_frequency` to `high_frequency`.
@@ -4750,16 +4635,10 @@ class SasPortalFrequencyRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (highFrequencyMhz != null) {
-      _json['highFrequencyMhz'] = highFrequencyMhz;
-    }
-    if (lowFrequencyMhz != null) {
-      _json['lowFrequencyMhz'] = lowFrequencyMhz;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz,
+        if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz,
+      };
 }
 
 /// Request for GenerateSecret.
@@ -4770,10 +4649,7 @@ class SasPortalGenerateSecretRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response for GenerateSecret.
@@ -4789,13 +4665,9 @@ class SasPortalGenerateSecretResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (secret != null) {
-      _json['secret'] = secret;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (secret != null) 'secret': secret,
+      };
 }
 
 /// Request message for `GetPolicy` method.
@@ -4813,13 +4685,9 @@ class SasPortalGetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// Information about the device installation parameters.
@@ -4968,52 +4836,23 @@ class SasPortalInstallationParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (antennaAzimuth != null) {
-      _json['antennaAzimuth'] = antennaAzimuth;
-    }
-    if (antennaBeamwidth != null) {
-      _json['antennaBeamwidth'] = antennaBeamwidth;
-    }
-    if (antennaDowntilt != null) {
-      _json['antennaDowntilt'] = antennaDowntilt;
-    }
-    if (antennaGain != null) {
-      _json['antennaGain'] = antennaGain;
-    }
-    if (antennaModel != null) {
-      _json['antennaModel'] = antennaModel;
-    }
-    if (cpeCbsdIndication != null) {
-      _json['cpeCbsdIndication'] = cpeCbsdIndication;
-    }
-    if (eirpCapability != null) {
-      _json['eirpCapability'] = eirpCapability;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (heightType != null) {
-      _json['heightType'] = heightType;
-    }
-    if (horizontalAccuracy != null) {
-      _json['horizontalAccuracy'] = horizontalAccuracy;
-    }
-    if (indoorDeployment != null) {
-      _json['indoorDeployment'] = indoorDeployment;
-    }
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    if (verticalAccuracy != null) {
-      _json['verticalAccuracy'] = verticalAccuracy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth,
+        if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth,
+        if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt,
+        if (antennaGain != null) 'antennaGain': antennaGain,
+        if (antennaModel != null) 'antennaModel': antennaModel,
+        if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication,
+        if (eirpCapability != null) 'eirpCapability': eirpCapability,
+        if (height != null) 'height': height,
+        if (heightType != null) 'heightType': heightType,
+        if (horizontalAccuracy != null)
+          'horizontalAccuracy': horizontalAccuracy,
+        if (indoorDeployment != null) 'indoorDeployment': indoorDeployment,
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+        if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy,
+      };
 }
 
 /// Response for `ListCustomers`.
@@ -5041,16 +4880,11 @@ class SasPortalListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customers != null) {
-      _json['customers'] = customers.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customers != null)
+          'customers': customers.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListDeployments.
@@ -5078,17 +4912,11 @@ class SasPortalListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployments != null) {
-      _json['deployments'] =
-          deployments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployments != null)
+          'deployments': deployments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListDevices.
@@ -5116,16 +4944,11 @@ class SasPortalListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListNodes.
@@ -5153,16 +4976,11 @@ class SasPortalListNodesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nodes != null) {
-      _json['nodes'] = nodes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nodes != null)
+          'nodes': nodes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request for MoveDeployment.
@@ -5181,13 +4999,9 @@ class SasPortalMoveDeploymentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destination != null) {
-      _json['destination'] = destination;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destination != null) 'destination': destination,
+      };
 }
 
 /// Request for MoveDevice.
@@ -5206,13 +5020,9 @@ class SasPortalMoveDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destination != null) {
-      _json['destination'] = destination;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destination != null) 'destination': destination,
+      };
 }
 
 /// Request for MoveNode.
@@ -5231,13 +5041,9 @@ class SasPortalMoveNodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destination != null) {
-      _json['destination'] = destination;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destination != null) 'destination': destination,
+      };
 }
 
 /// The Node.
@@ -5269,19 +5075,11 @@ class SasPortalNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sasUserIds != null) {
-      _json['sasUserIds'] = sasUserIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (sasUserIds != null) 'sasUserIds': sasUserIds,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5360,25 +5158,13 @@ class SasPortalOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Defines an access control policy to the resources.
@@ -5418,17 +5204,11 @@ class SasPortalPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignments != null) {
-      _json['assignments'] =
-          assignments.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignments != null)
+          'assignments': assignments.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+      };
 }
 
 /// Request message for `SetPolicy` method.
@@ -5457,16 +5237,10 @@ class SasPortalSetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// Request for SignDevice.
@@ -5488,13 +5262,9 @@ class SasPortalSignDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (device != null) 'device': device.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5544,19 +5314,11 @@ class SasPortalStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestPermissions` method.
@@ -5582,16 +5344,10 @@ class SasPortalTestPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+        if (resource != null) 'resource': resource,
+      };
 }
 
 /// Response message for `TestPermissions` method.
@@ -5609,13 +5365,9 @@ class SasPortalTestPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Request for UpdateSignedDevice.
@@ -5652,16 +5404,10 @@ class SasPortalUpdateSignedDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encodedDevice != null) {
-      _json['encodedDevice'] = encodedDevice;
-    }
-    if (installerId != null) {
-      _json['installerId'] = installerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encodedDevice != null) 'encodedDevice': encodedDevice,
+        if (installerId != null) 'installerId': installerId,
+      };
 }
 
 /// Request for ValidateInstaller.
@@ -5698,19 +5444,11 @@ class SasPortalValidateInstallerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encodedSecret != null) {
-      _json['encodedSecret'] = encodedSecret;
-    }
-    if (installerId != null) {
-      _json['installerId'] = installerId;
-    }
-    if (secret != null) {
-      _json['secret'] = secret;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encodedSecret != null) 'encodedSecret': encodedSecret,
+        if (installerId != null) 'installerId': installerId,
+        if (secret != null) 'secret': secret,
+      };
 }
 
 /// Response for ValidateInstaller.
@@ -5721,8 +5459,5 @@ class SasPortalValidateInstallerResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }

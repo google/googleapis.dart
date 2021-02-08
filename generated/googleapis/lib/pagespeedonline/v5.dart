@@ -179,19 +179,11 @@ class AuditRefs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (group != null) {
-      _json['group'] = group;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (weight != null) {
-      _json['weight'] = weight;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (group != null) 'group': group,
+        if (id != null) 'id': id,
+        if (weight != null) 'weight': weight,
+      };
 }
 
 /// A proportion of data in the total distribution, bucketed by a min/max
@@ -222,19 +214,11 @@ class Bucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (max != null) {
-      _json['max'] = max;
-    }
-    if (min != null) {
-      _json['min'] = min;
-    }
-    if (proportion != null) {
-      _json['proportion'] = proportion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (max != null) 'max': max,
+        if (min != null) 'min': min,
+        if (proportion != null) 'proportion': proportion,
+      };
 }
 
 /// The categories in a Lighthouse run.
@@ -280,25 +264,13 @@ class Categories {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessibility != null) {
-      _json['accessibility'] = accessibility.toJson();
-    }
-    if (bestPractices != null) {
-      _json['best-practices'] = bestPractices.toJson();
-    }
-    if (performance != null) {
-      _json['performance'] = performance.toJson();
-    }
-    if (pwa != null) {
-      _json['pwa'] = pwa.toJson();
-    }
-    if (seo != null) {
-      _json['seo'] = seo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessibility != null) 'accessibility': accessibility.toJson(),
+        if (bestPractices != null) 'best-practices': bestPractices.toJson(),
+        if (performance != null) 'performance': performance.toJson(),
+        if (pwa != null) 'pwa': pwa.toJson(),
+        if (seo != null) 'seo': seo.toJson(),
+      };
 }
 
 /// Message containing a category
@@ -320,16 +292,10 @@ class CategoryGroupV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Message containing the configuration settings for the Lighthouse run.
@@ -376,25 +342,14 @@ class ConfigSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    if (emulatedFormFactor != null) {
-      _json['emulatedFormFactor'] = emulatedFormFactor;
-    }
-    if (formFactor != null) {
-      _json['formFactor'] = formFactor;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (onlyCategories != null) {
-      _json['onlyCategories'] = onlyCategories;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channel != null) 'channel': channel,
+        if (emulatedFormFactor != null)
+          'emulatedFormFactor': emulatedFormFactor,
+        if (formFactor != null) 'formFactor': formFactor,
+        if (locale != null) 'locale': locale,
+        if (onlyCategories != null) 'onlyCategories': onlyCategories,
+      };
 }
 
 /// Message containing environment configuration for a Lighthouse run.
@@ -422,19 +377,11 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (benchmarkIndex != null) {
-      _json['benchmarkIndex'] = benchmarkIndex;
-    }
-    if (hostUserAgent != null) {
-      _json['hostUserAgent'] = hostUserAgent;
-    }
-    if (networkUserAgent != null) {
-      _json['networkUserAgent'] = networkUserAgent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (benchmarkIndex != null) 'benchmarkIndex': benchmarkIndex,
+        if (hostUserAgent != null) 'hostUserAgent': hostUserAgent,
+        if (networkUserAgent != null) 'networkUserAgent': networkUserAgent,
+      };
 }
 
 /// Message containing the i18n data for the LHR - Version 1.
@@ -453,13 +400,10 @@ class I18n {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rendererFormattedStrings != null) {
-      _json['rendererFormattedStrings'] = rendererFormattedStrings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rendererFormattedStrings != null)
+          'rendererFormattedStrings': rendererFormattedStrings.toJson(),
+      };
 }
 
 /// An audit's result object in a Lighthouse result.
@@ -553,43 +497,19 @@ class LighthouseAuditResultV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (displayValue != null) {
-      _json['displayValue'] = displayValue;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (explanation != null) {
-      _json['explanation'] = explanation;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (numericValue != null) {
-      _json['numericValue'] = numericValue;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (scoreDisplayMode != null) {
-      _json['scoreDisplayMode'] = scoreDisplayMode;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (details != null) 'details': details,
+        if (displayValue != null) 'displayValue': displayValue,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (explanation != null) 'explanation': explanation,
+        if (id != null) 'id': id,
+        if (numericValue != null) 'numericValue': numericValue,
+        if (score != null) 'score': score,
+        if (scoreDisplayMode != null) 'scoreDisplayMode': scoreDisplayMode,
+        if (title != null) 'title': title,
+        if (warnings != null) 'warnings': warnings,
+      };
 }
 
 /// A Lighthouse category.
@@ -643,28 +563,15 @@ class LighthouseCategoryV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditRefs != null) {
-      _json['auditRefs'] = auditRefs.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (manualDescription != null) {
-      _json['manualDescription'] = manualDescription;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditRefs != null)
+          'auditRefs': auditRefs.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description,
+        if (id != null) 'id': id,
+        if (manualDescription != null) 'manualDescription': manualDescription,
+        if (score != null) 'score': score,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The Lighthouse result object.
@@ -795,57 +702,28 @@ class LighthouseResultV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audits != null) {
-      _json['audits'] =
-          audits.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (categories != null) {
-      _json['categories'] = categories.toJson();
-    }
-    if (categoryGroups != null) {
-      _json['categoryGroups'] =
-          categoryGroups.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (configSettings != null) {
-      _json['configSettings'] = configSettings.toJson();
-    }
-    if (environment != null) {
-      _json['environment'] = environment.toJson();
-    }
-    if (fetchTime != null) {
-      _json['fetchTime'] = fetchTime;
-    }
-    if (finalUrl != null) {
-      _json['finalUrl'] = finalUrl;
-    }
-    if (i18n != null) {
-      _json['i18n'] = i18n.toJson();
-    }
-    if (lighthouseVersion != null) {
-      _json['lighthouseVersion'] = lighthouseVersion;
-    }
-    if (requestedUrl != null) {
-      _json['requestedUrl'] = requestedUrl;
-    }
-    if (runWarnings != null) {
-      _json['runWarnings'] = runWarnings;
-    }
-    if (runtimeError != null) {
-      _json['runtimeError'] = runtimeError.toJson();
-    }
-    if (stackPacks != null) {
-      _json['stackPacks'] = stackPacks.map((value) => value.toJson()).toList();
-    }
-    if (timing != null) {
-      _json['timing'] = timing.toJson();
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audits != null)
+          'audits':
+              audits.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (categories != null) 'categories': categories.toJson(),
+        if (categoryGroups != null)
+          'categoryGroups': categoryGroups
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (configSettings != null) 'configSettings': configSettings.toJson(),
+        if (environment != null) 'environment': environment.toJson(),
+        if (fetchTime != null) 'fetchTime': fetchTime,
+        if (finalUrl != null) 'finalUrl': finalUrl,
+        if (i18n != null) 'i18n': i18n.toJson(),
+        if (lighthouseVersion != null) 'lighthouseVersion': lighthouseVersion,
+        if (requestedUrl != null) 'requestedUrl': requestedUrl,
+        if (runWarnings != null) 'runWarnings': runWarnings,
+        if (runtimeError != null) 'runtimeError': runtimeError.toJson(),
+        if (stackPacks != null)
+          'stackPacks': stackPacks.map((value) => value.toJson()).toList(),
+        if (timing != null) 'timing': timing.toJson(),
+        if (userAgent != null) 'userAgent': userAgent,
+      };
 }
 
 /// The CrUX loading experience object that contains CrUX data breakdowns.
@@ -892,26 +770,15 @@ class PagespeedApiLoadingExperienceV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (initialUrl != null) {
-      _json['initial_url'] = initialUrl;
-    }
-    if (metrics != null) {
-      _json['metrics'] =
-          metrics.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (originFallback != null) {
-      _json['origin_fallback'] = originFallback;
-    }
-    if (overallCategory != null) {
-      _json['overall_category'] = overallCategory;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (initialUrl != null) 'initial_url': initialUrl,
+        if (metrics != null)
+          'metrics':
+              metrics.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (originFallback != null) 'origin_fallback': originFallback,
+        if (overallCategory != null) 'overall_category': overallCategory,
+      };
 }
 
 /// The Pagespeed API response object.
@@ -975,34 +842,20 @@ class PagespeedApiPagespeedResponseV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analysisUTCTimestamp != null) {
-      _json['analysisUTCTimestamp'] = analysisUTCTimestamp;
-    }
-    if (captchaResult != null) {
-      _json['captchaResult'] = captchaResult;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (lighthouseResult != null) {
-      _json['lighthouseResult'] = lighthouseResult.toJson();
-    }
-    if (loadingExperience != null) {
-      _json['loadingExperience'] = loadingExperience.toJson();
-    }
-    if (originLoadingExperience != null) {
-      _json['originLoadingExperience'] = originLoadingExperience.toJson();
-    }
-    if (version != null) {
-      _json['version'] = version.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analysisUTCTimestamp != null)
+          'analysisUTCTimestamp': analysisUTCTimestamp,
+        if (captchaResult != null) 'captchaResult': captchaResult,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (lighthouseResult != null)
+          'lighthouseResult': lighthouseResult.toJson(),
+        if (loadingExperience != null)
+          'loadingExperience': loadingExperience.toJson(),
+        if (originLoadingExperience != null)
+          'originLoadingExperience': originLoadingExperience.toJson(),
+        if (version != null) 'version': version.toJson(),
+      };
 }
 
 /// The Pagespeed Version object.
@@ -1024,16 +877,10 @@ class PagespeedVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (major != null) {
-      _json['major'] = major;
-    }
-    if (minor != null) {
-      _json['minor'] = minor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (major != null) 'major': major,
+        if (minor != null) 'minor': minor,
+      };
 }
 
 /// Message holding the formatted strings used in the renderer.
@@ -1146,59 +993,36 @@ class RendererFormattedStrings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditGroupExpandTooltip != null) {
-      _json['auditGroupExpandTooltip'] = auditGroupExpandTooltip;
-    }
-    if (crcInitialNavigation != null) {
-      _json['crcInitialNavigation'] = crcInitialNavigation;
-    }
-    if (crcLongestDurationLabel != null) {
-      _json['crcLongestDurationLabel'] = crcLongestDurationLabel;
-    }
-    if (errorLabel != null) {
-      _json['errorLabel'] = errorLabel;
-    }
-    if (errorMissingAuditInfo != null) {
-      _json['errorMissingAuditInfo'] = errorMissingAuditInfo;
-    }
-    if (labDataTitle != null) {
-      _json['labDataTitle'] = labDataTitle;
-    }
-    if (lsPerformanceCategoryDescription != null) {
-      _json['lsPerformanceCategoryDescription'] =
-          lsPerformanceCategoryDescription;
-    }
-    if (manualAuditsGroupTitle != null) {
-      _json['manualAuditsGroupTitle'] = manualAuditsGroupTitle;
-    }
-    if (notApplicableAuditsGroupTitle != null) {
-      _json['notApplicableAuditsGroupTitle'] = notApplicableAuditsGroupTitle;
-    }
-    if (opportunityResourceColumnLabel != null) {
-      _json['opportunityResourceColumnLabel'] = opportunityResourceColumnLabel;
-    }
-    if (opportunitySavingsColumnLabel != null) {
-      _json['opportunitySavingsColumnLabel'] = opportunitySavingsColumnLabel;
-    }
-    if (passedAuditsGroupTitle != null) {
-      _json['passedAuditsGroupTitle'] = passedAuditsGroupTitle;
-    }
-    if (scorescaleLabel != null) {
-      _json['scorescaleLabel'] = scorescaleLabel;
-    }
-    if (toplevelWarningsMessage != null) {
-      _json['toplevelWarningsMessage'] = toplevelWarningsMessage;
-    }
-    if (varianceDisclaimer != null) {
-      _json['varianceDisclaimer'] = varianceDisclaimer;
-    }
-    if (warningHeader != null) {
-      _json['warningHeader'] = warningHeader;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditGroupExpandTooltip != null)
+          'auditGroupExpandTooltip': auditGroupExpandTooltip,
+        if (crcInitialNavigation != null)
+          'crcInitialNavigation': crcInitialNavigation,
+        if (crcLongestDurationLabel != null)
+          'crcLongestDurationLabel': crcLongestDurationLabel,
+        if (errorLabel != null) 'errorLabel': errorLabel,
+        if (errorMissingAuditInfo != null)
+          'errorMissingAuditInfo': errorMissingAuditInfo,
+        if (labDataTitle != null) 'labDataTitle': labDataTitle,
+        if (lsPerformanceCategoryDescription != null)
+          'lsPerformanceCategoryDescription': lsPerformanceCategoryDescription,
+        if (manualAuditsGroupTitle != null)
+          'manualAuditsGroupTitle': manualAuditsGroupTitle,
+        if (notApplicableAuditsGroupTitle != null)
+          'notApplicableAuditsGroupTitle': notApplicableAuditsGroupTitle,
+        if (opportunityResourceColumnLabel != null)
+          'opportunityResourceColumnLabel': opportunityResourceColumnLabel,
+        if (opportunitySavingsColumnLabel != null)
+          'opportunitySavingsColumnLabel': opportunitySavingsColumnLabel,
+        if (passedAuditsGroupTitle != null)
+          'passedAuditsGroupTitle': passedAuditsGroupTitle,
+        if (scorescaleLabel != null) 'scorescaleLabel': scorescaleLabel,
+        if (toplevelWarningsMessage != null)
+          'toplevelWarningsMessage': toplevelWarningsMessage,
+        if (varianceDisclaimer != null)
+          'varianceDisclaimer': varianceDisclaimer,
+        if (warningHeader != null) 'warningHeader': warningHeader,
+      };
 }
 
 /// Message containing a runtime error config.
@@ -1220,16 +1044,10 @@ class RuntimeError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Message containing Stack Pack information.
@@ -1270,22 +1088,12 @@ class StackPack {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (descriptions != null) {
-      _json['descriptions'] = descriptions;
-    }
-    if (iconDataURL != null) {
-      _json['iconDataURL'] = iconDataURL;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (descriptions != null) 'descriptions': descriptions,
+        if (iconDataURL != null) 'iconDataURL': iconDataURL,
+        if (id != null) 'id': id,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Message containing the performance timing data for the Lighthouse run.
@@ -1301,13 +1109,9 @@ class Timing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (total != null) {
-      _json['total'] = total;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (total != null) 'total': total,
+      };
 }
 
 /// A CrUX metric object for a single metric and form factor.
@@ -1360,27 +1164,14 @@ class UserPageLoadMetricV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (distributions != null) {
-      _json['distributions'] =
-          distributions.map((value) => value.toJson()).toList();
-    }
-    if (formFactor != null) {
-      _json['formFactor'] = formFactor;
-    }
-    if (median != null) {
-      _json['median'] = median;
-    }
-    if (metricId != null) {
-      _json['metricId'] = metricId;
-    }
-    if (percentile != null) {
-      _json['percentile'] = percentile;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (distributions != null)
+          'distributions':
+              distributions.map((value) => value.toJson()).toList(),
+        if (formFactor != null) 'formFactor': formFactor,
+        if (median != null) 'median': median,
+        if (metricId != null) 'metricId': metricId,
+        if (percentile != null) 'percentile': percentile,
+      };
 }

@@ -730,13 +730,10 @@ class BatchCreateRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for TablesService.BatchCreateRows.
@@ -755,13 +752,9 @@ class BatchCreateRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for TablesService.BatchDeleteRows
@@ -785,13 +778,9 @@ class BatchDeleteRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (names != null) {
-      _json['names'] = names;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (names != null) 'names': names,
+      };
 }
 
 /// Request message for TablesService.BatchUpdateRows.
@@ -814,13 +803,10 @@ class BatchUpdateRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for TablesService.BatchUpdateRows.
@@ -839,13 +825,9 @@ class BatchUpdateRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Details on a column in the table.
@@ -918,28 +900,16 @@ class ColumnDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataType != null) {
-      _json['dataType'] = dataType;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    if (lookupDetails != null) {
-      _json['lookupDetails'] = lookupDetails.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (relationshipDetails != null) {
-      _json['relationshipDetails'] = relationshipDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataType != null) 'dataType': dataType,
+        if (id != null) 'id': id,
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+        if (lookupDetails != null) 'lookupDetails': lookupDetails.toJson(),
+        if (name != null) 'name': name,
+        if (relationshipDetails != null)
+          'relationshipDetails': relationshipDetails.toJson(),
+      };
 }
 
 /// Request message for TablesService.CreateRow.
@@ -981,19 +951,11 @@ class CreateRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (row != null) {
-      _json['row'] = row.toJson();
-    }
-    if (view != null) {
-      _json['view'] = view;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parent != null) 'parent': parent,
+        if (row != null) 'row': row.toJson(),
+        if (view != null) 'view': view,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1010,10 +972,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A single item in a labeled column.
@@ -1035,16 +994,10 @@ class LabeledItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Response message for TablesService.ListRows.
@@ -1071,16 +1024,10 @@ class ListRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for TablesService.ListTables.
@@ -1107,16 +1054,11 @@ class ListTablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (tables != null) {
-      _json['tables'] = tables.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (tables != null)
+          'tables': tables.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for TablesService.ListWorkspaces.
@@ -1143,16 +1085,11 @@ class ListWorkspacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (workspaces != null) {
-      _json['workspaces'] = workspaces.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (workspaces != null)
+          'workspaces': workspaces.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Details about a lookup column whose value comes from the associated
@@ -1175,16 +1112,12 @@ class LookupDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (relationshipColumn != null) {
-      _json['relationshipColumn'] = relationshipColumn;
-    }
-    if (relationshipColumnId != null) {
-      _json['relationshipColumnId'] = relationshipColumnId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (relationshipColumn != null)
+          'relationshipColumn': relationshipColumn,
+        if (relationshipColumnId != null)
+          'relationshipColumnId': relationshipColumnId,
+      };
 }
 
 /// Details about a relationship column.
@@ -1200,13 +1133,9 @@ class RelationshipDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (linkedTable != null) {
-      _json['linkedTable'] = linkedTable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (linkedTable != null) 'linkedTable': linkedTable,
+      };
 }
 
 /// A single row in a table.
@@ -1243,16 +1172,10 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (values != null) 'values': values,
+      };
 }
 
 /// A single table.
@@ -1287,19 +1210,12 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns.map((value) => value.toJson()).toList();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null)
+          'columns': columns.map((value) => value.toJson()).toList(),
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Request message for TablesService.UpdateRow.
@@ -1337,19 +1253,11 @@ class UpdateRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (row != null) {
-      _json['row'] = row.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    if (view != null) {
-      _json['view'] = view;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (row != null) 'row': row.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+        if (view != null) 'view': view,
+      };
 }
 
 /// A single workspace.
@@ -1382,17 +1290,10 @@ class Workspace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (tables != null) {
-      _json['tables'] = tables.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (tables != null)
+          'tables': tables.map((value) => value.toJson()).toList(),
+      };
 }

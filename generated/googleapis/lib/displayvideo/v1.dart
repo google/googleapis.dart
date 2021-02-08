@@ -9451,10 +9451,7 @@ class ActivateManualTriggerRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Configuration for custom Active View video viewability metrics.
@@ -9556,25 +9553,14 @@ class ActiveViewVideoViewabilityMetricConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (minimumDuration != null) {
-      _json['minimumDuration'] = minimumDuration;
-    }
-    if (minimumQuartile != null) {
-      _json['minimumQuartile'] = minimumQuartile;
-    }
-    if (minimumViewability != null) {
-      _json['minimumViewability'] = minimumViewability;
-    }
-    if (minimumVolume != null) {
-      _json['minimumVolume'] = minimumVolume;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (minimumDuration != null) 'minimumDuration': minimumDuration,
+        if (minimumQuartile != null) 'minimumQuartile': minimumQuartile,
+        if (minimumViewability != null)
+          'minimumViewability': minimumViewability,
+        if (minimumVolume != null) 'minimumVolume': minimumVolume,
+      };
 }
 
 /// Details of Adloox settings.
@@ -9593,13 +9579,10 @@ class Adloox {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludedAdlooxCategories != null) {
-      _json['excludedAdlooxCategories'] = excludedAdlooxCategories;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludedAdlooxCategories != null)
+          'excludedAdlooxCategories': excludedAdlooxCategories,
+      };
 }
 
 /// A single advertiser in Display & Video 360 (DV360).
@@ -9733,46 +9716,22 @@ class Advertiser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adServerConfig != null) {
-      _json['adServerConfig'] = adServerConfig.toJson();
-    }
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (creativeConfig != null) {
-      _json['creativeConfig'] = creativeConfig.toJson();
-    }
-    if (dataAccessConfig != null) {
-      _json['dataAccessConfig'] = dataAccessConfig.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (generalConfig != null) {
-      _json['generalConfig'] = generalConfig.toJson();
-    }
-    if (integrationDetails != null) {
-      _json['integrationDetails'] = integrationDetails.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    if (servingConfig != null) {
-      _json['servingConfig'] = servingConfig.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adServerConfig != null) 'adServerConfig': adServerConfig.toJson(),
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (creativeConfig != null) 'creativeConfig': creativeConfig.toJson(),
+        if (dataAccessConfig != null)
+          'dataAccessConfig': dataAccessConfig.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (generalConfig != null) 'generalConfig': generalConfig.toJson(),
+        if (integrationDetails != null)
+          'integrationDetails': integrationDetails.toJson(),
+        if (name != null) 'name': name,
+        if (partnerId != null) 'partnerId': partnerId,
+        if (servingConfig != null) 'servingConfig': servingConfig.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Ad server related settings of an advertiser.
@@ -9797,16 +9756,11 @@ class AdvertiserAdServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cmHybridConfig != null) {
-      _json['cmHybridConfig'] = cmHybridConfig.toJson();
-    }
-    if (thirdPartyOnlyConfig != null) {
-      _json['thirdPartyOnlyConfig'] = thirdPartyOnlyConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cmHybridConfig != null) 'cmHybridConfig': cmHybridConfig.toJson(),
+        if (thirdPartyOnlyConfig != null)
+          'thirdPartyOnlyConfig': thirdPartyOnlyConfig.toJson(),
+      };
 }
 
 /// Creatives related settings of an advertiser.
@@ -9856,23 +9810,16 @@ class AdvertiserCreativeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dynamicCreativeEnabled != null) {
-      _json['dynamicCreativeEnabled'] = dynamicCreativeEnabled;
-    }
-    if (iasClientId != null) {
-      _json['iasClientId'] = iasClientId;
-    }
-    if (obaComplianceDisabled != null) {
-      _json['obaComplianceDisabled'] = obaComplianceDisabled;
-    }
-    if (videoCreativeDataSharingAuthorized != null) {
-      _json['videoCreativeDataSharingAuthorized'] =
-          videoCreativeDataSharingAuthorized;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dynamicCreativeEnabled != null)
+          'dynamicCreativeEnabled': dynamicCreativeEnabled,
+        if (iasClientId != null) 'iasClientId': iasClientId,
+        if (obaComplianceDisabled != null)
+          'obaComplianceDisabled': obaComplianceDisabled,
+        if (videoCreativeDataSharingAuthorized != null)
+          'videoCreativeDataSharingAuthorized':
+              videoCreativeDataSharingAuthorized,
+      };
 }
 
 /// Settings that control how advertiser related data may be accessed.
@@ -9891,13 +9838,9 @@ class AdvertiserDataAccessConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sdfConfig != null) {
-      _json['sdfConfig'] = sdfConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sdfConfig != null) 'sdfConfig': sdfConfig.toJson(),
+      };
 }
 
 /// General settings of an advertiser.
@@ -9956,19 +9899,11 @@ class AdvertiserGeneralConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (domainUrl != null) {
-      _json['domainUrl'] = domainUrl;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (domainUrl != null) 'domainUrl': domainUrl,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 /// Structured Data Files (SDF) settings of an advertiser.
@@ -9999,16 +9934,11 @@ class AdvertiserSdfConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (overridePartnerSdfConfig != null) {
-      _json['overridePartnerSdfConfig'] = overridePartnerSdfConfig;
-    }
-    if (sdfConfig != null) {
-      _json['sdfConfig'] = sdfConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (overridePartnerSdfConfig != null)
+          'overridePartnerSdfConfig': overridePartnerSdfConfig,
+        if (sdfConfig != null) 'sdfConfig': sdfConfig.toJson(),
+      };
 }
 
 /// Targeting settings related to ad serving of an advertiser.
@@ -10026,14 +9956,10 @@ class AdvertiserTargetingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptTvFromViewabilityTargeting != null) {
-      _json['exemptTvFromViewabilityTargeting'] =
-          exemptTvFromViewabilityTargeting;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptTvFromViewabilityTargeting != null)
+          'exemptTvFromViewabilityTargeting': exemptTvFromViewabilityTargeting,
+      };
 }
 
 /// Represents a targetable age range.
@@ -10079,16 +10005,10 @@ class AgeRangeAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ageRange != null) {
-      _json['ageRange'] = ageRange;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ageRange != null) 'ageRange': ageRange,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable age range.
@@ -10120,13 +10040,9 @@ class AgeRangeTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ageRange != null) {
-      _json['ageRange'] = ageRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ageRange != null) 'ageRange': ageRange,
+      };
 }
 
 /// Details for assigned app targeting option.
@@ -10165,19 +10081,11 @@ class AppAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appId != null) 'appId': appId,
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+      };
 }
 
 /// Details for assigned app category targeting option.
@@ -10214,19 +10122,11 @@ class AppCategoryAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable collection of apps.
@@ -10249,13 +10149,9 @@ class AppCategoryTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// A single asset.
@@ -10282,16 +10178,10 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (mediaId != null) {
-      _json['mediaId'] = mediaId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (mediaId != null) 'mediaId': mediaId,
+      };
 }
 
 /// Asset association for the creative.
@@ -10400,16 +10290,10 @@ class AssetAssociation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (asset != null) {
-      _json['asset'] = asset.toJson();
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (asset != null) 'asset': asset.toJson(),
+        if (role != null) 'role': role,
+      };
 }
 
 /// An assignment between a targetable inventory source and an inventory source
@@ -10448,19 +10332,12 @@ class AssignedInventorySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedInventorySourceId != null) {
-      _json['assignedInventorySourceId'] = assignedInventorySourceId;
-    }
-    if (inventorySourceId != null) {
-      _json['inventorySourceId'] = inventorySourceId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedInventorySourceId != null)
+          'assignedInventorySourceId': assignedInventorySourceId,
+        if (inventorySourceId != null) 'inventorySourceId': inventorySourceId,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An assignment between a location list and a relevant targeting option.
@@ -10502,19 +10379,12 @@ class AssignedLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedLocationId != null) {
-      _json['assignedLocationId'] = assignedLocationId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedLocationId != null)
+          'assignedLocationId': assignedLocationId,
+        if (name != null) 'name': name,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// A single assigned targeting option, which defines the state of a targeting
@@ -11085,141 +10955,86 @@ class AssignedTargetingOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ageRangeDetails != null) {
-      _json['ageRangeDetails'] = ageRangeDetails.toJson();
-    }
-    if (appCategoryDetails != null) {
-      _json['appCategoryDetails'] = appCategoryDetails.toJson();
-    }
-    if (appDetails != null) {
-      _json['appDetails'] = appDetails.toJson();
-    }
-    if (assignedTargetingOptionId != null) {
-      _json['assignedTargetingOptionId'] = assignedTargetingOptionId;
-    }
-    if (audienceGroupDetails != null) {
-      _json['audienceGroupDetails'] = audienceGroupDetails.toJson();
-    }
-    if (authorizedSellerStatusDetails != null) {
-      _json['authorizedSellerStatusDetails'] =
-          authorizedSellerStatusDetails.toJson();
-    }
-    if (browserDetails != null) {
-      _json['browserDetails'] = browserDetails.toJson();
-    }
-    if (carrierAndIspDetails != null) {
-      _json['carrierAndIspDetails'] = carrierAndIspDetails.toJson();
-    }
-    if (categoryDetails != null) {
-      _json['categoryDetails'] = categoryDetails.toJson();
-    }
-    if (channelDetails != null) {
-      _json['channelDetails'] = channelDetails.toJson();
-    }
-    if (contentInstreamPositionDetails != null) {
-      _json['contentInstreamPositionDetails'] =
-          contentInstreamPositionDetails.toJson();
-    }
-    if (contentOutstreamPositionDetails != null) {
-      _json['contentOutstreamPositionDetails'] =
-          contentOutstreamPositionDetails.toJson();
-    }
-    if (dayAndTimeDetails != null) {
-      _json['dayAndTimeDetails'] = dayAndTimeDetails.toJson();
-    }
-    if (deviceMakeModelDetails != null) {
-      _json['deviceMakeModelDetails'] = deviceMakeModelDetails.toJson();
-    }
-    if (deviceTypeDetails != null) {
-      _json['deviceTypeDetails'] = deviceTypeDetails.toJson();
-    }
-    if (digitalContentLabelExclusionDetails != null) {
-      _json['digitalContentLabelExclusionDetails'] =
-          digitalContentLabelExclusionDetails.toJson();
-    }
-    if (environmentDetails != null) {
-      _json['environmentDetails'] = environmentDetails.toJson();
-    }
-    if (exchangeDetails != null) {
-      _json['exchangeDetails'] = exchangeDetails.toJson();
-    }
-    if (genderDetails != null) {
-      _json['genderDetails'] = genderDetails.toJson();
-    }
-    if (geoRegionDetails != null) {
-      _json['geoRegionDetails'] = geoRegionDetails.toJson();
-    }
-    if (householdIncomeDetails != null) {
-      _json['householdIncomeDetails'] = householdIncomeDetails.toJson();
-    }
-    if (inheritance != null) {
-      _json['inheritance'] = inheritance;
-    }
-    if (inventorySourceDetails != null) {
-      _json['inventorySourceDetails'] = inventorySourceDetails.toJson();
-    }
-    if (inventorySourceGroupDetails != null) {
-      _json['inventorySourceGroupDetails'] =
-          inventorySourceGroupDetails.toJson();
-    }
-    if (keywordDetails != null) {
-      _json['keywordDetails'] = keywordDetails.toJson();
-    }
-    if (languageDetails != null) {
-      _json['languageDetails'] = languageDetails.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (negativeKeywordListDetails != null) {
-      _json['negativeKeywordListDetails'] = negativeKeywordListDetails.toJson();
-    }
-    if (onScreenPositionDetails != null) {
-      _json['onScreenPositionDetails'] = onScreenPositionDetails.toJson();
-    }
-    if (operatingSystemDetails != null) {
-      _json['operatingSystemDetails'] = operatingSystemDetails.toJson();
-    }
-    if (parentalStatusDetails != null) {
-      _json['parentalStatusDetails'] = parentalStatusDetails.toJson();
-    }
-    if (proximityLocationListDetails != null) {
-      _json['proximityLocationListDetails'] =
-          proximityLocationListDetails.toJson();
-    }
-    if (regionalLocationListDetails != null) {
-      _json['regionalLocationListDetails'] =
-          regionalLocationListDetails.toJson();
-    }
-    if (sensitiveCategoryExclusionDetails != null) {
-      _json['sensitiveCategoryExclusionDetails'] =
-          sensitiveCategoryExclusionDetails.toJson();
-    }
-    if (subExchangeDetails != null) {
-      _json['subExchangeDetails'] = subExchangeDetails.toJson();
-    }
-    if (targetingType != null) {
-      _json['targetingType'] = targetingType;
-    }
-    if (thirdPartyVerifierDetails != null) {
-      _json['thirdPartyVerifierDetails'] = thirdPartyVerifierDetails.toJson();
-    }
-    if (urlDetails != null) {
-      _json['urlDetails'] = urlDetails.toJson();
-    }
-    if (userRewardedContentDetails != null) {
-      _json['userRewardedContentDetails'] = userRewardedContentDetails.toJson();
-    }
-    if (videoPlayerSizeDetails != null) {
-      _json['videoPlayerSizeDetails'] = videoPlayerSizeDetails.toJson();
-    }
-    if (viewabilityDetails != null) {
-      _json['viewabilityDetails'] = viewabilityDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ageRangeDetails != null)
+          'ageRangeDetails': ageRangeDetails.toJson(),
+        if (appCategoryDetails != null)
+          'appCategoryDetails': appCategoryDetails.toJson(),
+        if (appDetails != null) 'appDetails': appDetails.toJson(),
+        if (assignedTargetingOptionId != null)
+          'assignedTargetingOptionId': assignedTargetingOptionId,
+        if (audienceGroupDetails != null)
+          'audienceGroupDetails': audienceGroupDetails.toJson(),
+        if (authorizedSellerStatusDetails != null)
+          'authorizedSellerStatusDetails':
+              authorizedSellerStatusDetails.toJson(),
+        if (browserDetails != null) 'browserDetails': browserDetails.toJson(),
+        if (carrierAndIspDetails != null)
+          'carrierAndIspDetails': carrierAndIspDetails.toJson(),
+        if (categoryDetails != null)
+          'categoryDetails': categoryDetails.toJson(),
+        if (channelDetails != null) 'channelDetails': channelDetails.toJson(),
+        if (contentInstreamPositionDetails != null)
+          'contentInstreamPositionDetails':
+              contentInstreamPositionDetails.toJson(),
+        if (contentOutstreamPositionDetails != null)
+          'contentOutstreamPositionDetails':
+              contentOutstreamPositionDetails.toJson(),
+        if (dayAndTimeDetails != null)
+          'dayAndTimeDetails': dayAndTimeDetails.toJson(),
+        if (deviceMakeModelDetails != null)
+          'deviceMakeModelDetails': deviceMakeModelDetails.toJson(),
+        if (deviceTypeDetails != null)
+          'deviceTypeDetails': deviceTypeDetails.toJson(),
+        if (digitalContentLabelExclusionDetails != null)
+          'digitalContentLabelExclusionDetails':
+              digitalContentLabelExclusionDetails.toJson(),
+        if (environmentDetails != null)
+          'environmentDetails': environmentDetails.toJson(),
+        if (exchangeDetails != null)
+          'exchangeDetails': exchangeDetails.toJson(),
+        if (genderDetails != null) 'genderDetails': genderDetails.toJson(),
+        if (geoRegionDetails != null)
+          'geoRegionDetails': geoRegionDetails.toJson(),
+        if (householdIncomeDetails != null)
+          'householdIncomeDetails': householdIncomeDetails.toJson(),
+        if (inheritance != null) 'inheritance': inheritance,
+        if (inventorySourceDetails != null)
+          'inventorySourceDetails': inventorySourceDetails.toJson(),
+        if (inventorySourceGroupDetails != null)
+          'inventorySourceGroupDetails': inventorySourceGroupDetails.toJson(),
+        if (keywordDetails != null) 'keywordDetails': keywordDetails.toJson(),
+        if (languageDetails != null)
+          'languageDetails': languageDetails.toJson(),
+        if (name != null) 'name': name,
+        if (negativeKeywordListDetails != null)
+          'negativeKeywordListDetails': negativeKeywordListDetails.toJson(),
+        if (onScreenPositionDetails != null)
+          'onScreenPositionDetails': onScreenPositionDetails.toJson(),
+        if (operatingSystemDetails != null)
+          'operatingSystemDetails': operatingSystemDetails.toJson(),
+        if (parentalStatusDetails != null)
+          'parentalStatusDetails': parentalStatusDetails.toJson(),
+        if (proximityLocationListDetails != null)
+          'proximityLocationListDetails': proximityLocationListDetails.toJson(),
+        if (regionalLocationListDetails != null)
+          'regionalLocationListDetails': regionalLocationListDetails.toJson(),
+        if (sensitiveCategoryExclusionDetails != null)
+          'sensitiveCategoryExclusionDetails':
+              sensitiveCategoryExclusionDetails.toJson(),
+        if (subExchangeDetails != null)
+          'subExchangeDetails': subExchangeDetails.toJson(),
+        if (targetingType != null) 'targetingType': targetingType,
+        if (thirdPartyVerifierDetails != null)
+          'thirdPartyVerifierDetails': thirdPartyVerifierDetails.toJson(),
+        if (urlDetails != null) 'urlDetails': urlDetails.toJson(),
+        if (userRewardedContentDetails != null)
+          'userRewardedContentDetails': userRewardedContentDetails.toJson(),
+        if (videoPlayerSizeDetails != null)
+          'videoPlayerSizeDetails': videoPlayerSizeDetails.toJson(),
+        if (viewabilityDetails != null)
+          'viewabilityDetails': viewabilityDetails.toJson(),
+      };
 }
 
 /// A single assigned user role, which defines a user's authorized interaction
@@ -11298,22 +11113,13 @@ class AssignedUserRole {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (assignedUserRoleId != null) {
-      _json['assignedUserRoleId'] = assignedUserRoleId;
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    if (userRole != null) {
-      _json['userRole'] = userRole;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (assignedUserRoleId != null)
+          'assignedUserRoleId': assignedUserRoleId,
+        if (partnerId != null) 'partnerId': partnerId,
+        if (userRole != null) 'userRole': userRole,
+      };
 }
 
 /// Assigned audience group targeting option details.
@@ -11403,35 +11209,25 @@ class AudienceGroupAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludedFirstAndThirdPartyAudienceGroup != null) {
-      _json['excludedFirstAndThirdPartyAudienceGroup'] =
-          excludedFirstAndThirdPartyAudienceGroup.toJson();
-    }
-    if (excludedGoogleAudienceGroup != null) {
-      _json['excludedGoogleAudienceGroup'] =
-          excludedGoogleAudienceGroup.toJson();
-    }
-    if (includedCombinedAudienceGroup != null) {
-      _json['includedCombinedAudienceGroup'] =
-          includedCombinedAudienceGroup.toJson();
-    }
-    if (includedCustomListGroup != null) {
-      _json['includedCustomListGroup'] = includedCustomListGroup.toJson();
-    }
-    if (includedFirstAndThirdPartyAudienceGroups != null) {
-      _json['includedFirstAndThirdPartyAudienceGroups'] =
-          includedFirstAndThirdPartyAudienceGroups
-              .map((value) => value.toJson())
-              .toList();
-    }
-    if (includedGoogleAudienceGroup != null) {
-      _json['includedGoogleAudienceGroup'] =
-          includedGoogleAudienceGroup.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludedFirstAndThirdPartyAudienceGroup != null)
+          'excludedFirstAndThirdPartyAudienceGroup':
+              excludedFirstAndThirdPartyAudienceGroup.toJson(),
+        if (excludedGoogleAudienceGroup != null)
+          'excludedGoogleAudienceGroup': excludedGoogleAudienceGroup.toJson(),
+        if (includedCombinedAudienceGroup != null)
+          'includedCombinedAudienceGroup':
+              includedCombinedAudienceGroup.toJson(),
+        if (includedCustomListGroup != null)
+          'includedCustomListGroup': includedCustomListGroup.toJson(),
+        if (includedFirstAndThirdPartyAudienceGroups != null)
+          'includedFirstAndThirdPartyAudienceGroups':
+              includedFirstAndThirdPartyAudienceGroups
+                  .map((value) => value.toJson())
+                  .toList(),
+        if (includedGoogleAudienceGroup != null)
+          'includedGoogleAudienceGroup': includedGoogleAudienceGroup.toJson(),
+      };
 }
 
 /// The length an audio or a video has been played.
@@ -11453,16 +11249,10 @@ class AudioVideoOffset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (percentage != null) {
-      _json['percentage'] = percentage;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (percentage != null) 'percentage': percentage,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// Response message for AdvertiserService.AuditAdvertiser.
@@ -11556,35 +11346,23 @@ class AuditAdvertiserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adGroupCriteriaCount != null) {
-      _json['adGroupCriteriaCount'] = adGroupCriteriaCount;
-    }
-    if (campaignCriteriaCount != null) {
-      _json['campaignCriteriaCount'] = campaignCriteriaCount;
-    }
-    if (channelsCount != null) {
-      _json['channelsCount'] = channelsCount;
-    }
-    if (negativeKeywordListsCount != null) {
-      _json['negativeKeywordListsCount'] = negativeKeywordListsCount;
-    }
-    if (negativelyTargetedChannelsCount != null) {
-      _json['negativelyTargetedChannelsCount'] =
-          negativelyTargetedChannelsCount;
-    }
-    if (usedCampaignsCount != null) {
-      _json['usedCampaignsCount'] = usedCampaignsCount;
-    }
-    if (usedInsertionOrdersCount != null) {
-      _json['usedInsertionOrdersCount'] = usedInsertionOrdersCount;
-    }
-    if (usedLineItemsCount != null) {
-      _json['usedLineItemsCount'] = usedLineItemsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adGroupCriteriaCount != null)
+          'adGroupCriteriaCount': adGroupCriteriaCount,
+        if (campaignCriteriaCount != null)
+          'campaignCriteriaCount': campaignCriteriaCount,
+        if (channelsCount != null) 'channelsCount': channelsCount,
+        if (negativeKeywordListsCount != null)
+          'negativeKeywordListsCount': negativeKeywordListsCount,
+        if (negativelyTargetedChannelsCount != null)
+          'negativelyTargetedChannelsCount': negativelyTargetedChannelsCount,
+        if (usedCampaignsCount != null)
+          'usedCampaignsCount': usedCampaignsCount,
+        if (usedInsertionOrdersCount != null)
+          'usedInsertionOrdersCount': usedInsertionOrdersCount,
+        if (usedLineItemsCount != null)
+          'usedLineItemsCount': usedLineItemsCount,
+      };
 }
 
 /// Represents an assigned authorized seller status.
@@ -11627,16 +11405,11 @@ class AuthorizedSellerStatusAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorizedSellerStatus != null) {
-      _json['authorizedSellerStatus'] = authorizedSellerStatus;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorizedSellerStatus != null)
+          'authorizedSellerStatus': authorizedSellerStatus,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable authorized seller status.
@@ -11669,13 +11442,10 @@ class AuthorizedSellerStatusTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorizedSellerStatus != null) {
-      _json['authorizedSellerStatus'] = authorizedSellerStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorizedSellerStatus != null)
+          'authorizedSellerStatus': authorizedSellerStatus,
+      };
 }
 
 /// Settings that control the bid strategy.
@@ -11726,19 +11496,13 @@ class BiddingStrategy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fixedBid != null) {
-      _json['fixedBid'] = fixedBid.toJson();
-    }
-    if (maximizeSpendAutoBid != null) {
-      _json['maximizeSpendAutoBid'] = maximizeSpendAutoBid.toJson();
-    }
-    if (performanceGoalAutoBid != null) {
-      _json['performanceGoalAutoBid'] = performanceGoalAutoBid.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fixedBid != null) 'fixedBid': fixedBid.toJson(),
+        if (maximizeSpendAutoBid != null)
+          'maximizeSpendAutoBid': maximizeSpendAutoBid.toJson(),
+        if (performanceGoalAutoBid != null)
+          'performanceGoalAutoBid': performanceGoalAutoBid.toJson(),
+      };
 }
 
 /// Details for assigned browser targeting option.
@@ -11777,19 +11541,11 @@ class BrowserAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable browser.
@@ -11810,13 +11566,9 @@ class BrowserTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// Request message for BulkEditAdvertiserAssignedTargetingOptions.
@@ -11856,18 +11608,14 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createRequests != null) {
-      _json['createRequests'] =
-          createRequests.map((value) => value.toJson()).toList();
-    }
-    if (deleteRequests != null) {
-      _json['deleteRequests'] =
-          deleteRequests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createRequests != null)
+          'createRequests':
+              createRequests.map((value) => value.toJson()).toList(),
+        if (deleteRequests != null)
+          'deleteRequests':
+              deleteRequests.map((value) => value.toJson()).toList(),
+      };
 }
 
 class BulkEditAdvertiserAssignedTargetingOptionsResponse {
@@ -11890,15 +11638,12 @@ class BulkEditAdvertiserAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAssignedTargetingOptions != null) {
-      _json['createdAssignedTargetingOptions'] = createdAssignedTargetingOptions
-          .map((value) => value.toJson())
-          .toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAssignedTargetingOptions != null)
+          'createdAssignedTargetingOptions': createdAssignedTargetingOptions
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// Request message for AssignedInventorySourceService.BulkEdit.
@@ -11947,25 +11692,16 @@ class BulkEditAssignedInventorySourcesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (createdAssignedInventorySources != null) {
-      _json['createdAssignedInventorySources'] = createdAssignedInventorySources
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (deletedAssignedInventorySources != null) {
-      _json['deletedAssignedInventorySources'] =
-          deletedAssignedInventorySources;
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (createdAssignedInventorySources != null)
+          'createdAssignedInventorySources': createdAssignedInventorySources
+              .map((value) => value.toJson())
+              .toList(),
+        if (deletedAssignedInventorySources != null)
+          'deletedAssignedInventorySources': deletedAssignedInventorySources,
+        if (partnerId != null) 'partnerId': partnerId,
+      };
 }
 
 /// Response message for AssignedInventorySourceService.BulkEdit.
@@ -11989,14 +11725,11 @@ class BulkEditAssignedInventorySourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedInventorySources != null) {
-      _json['assignedInventorySources'] =
-          assignedInventorySources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedInventorySources != null)
+          'assignedInventorySources':
+              assignedInventorySources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for AssignedLocationService.BulkEditAssignedLocations.
@@ -12027,17 +11760,13 @@ class BulkEditAssignedLocationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAssignedLocations != null) {
-      _json['createdAssignedLocations'] =
-          createdAssignedLocations.map((value) => value.toJson()).toList();
-    }
-    if (deletedAssignedLocations != null) {
-      _json['deletedAssignedLocations'] = deletedAssignedLocations;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAssignedLocations != null)
+          'createdAssignedLocations':
+              createdAssignedLocations.map((value) => value.toJson()).toList(),
+        if (deletedAssignedLocations != null)
+          'deletedAssignedLocations': deletedAssignedLocations,
+      };
 }
 
 /// Response message for AssignedLocationService.BulkEditAssignedLocations.
@@ -12058,14 +11787,11 @@ class BulkEditAssignedLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedLocations != null) {
-      _json['assignedLocations'] =
-          assignedLocations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedLocations != null)
+          'assignedLocations':
+              assignedLocations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for BulkEditAssignedUserRoles.
@@ -12099,17 +11825,13 @@ class BulkEditAssignedUserRolesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAssignedUserRoles != null) {
-      _json['createdAssignedUserRoles'] =
-          createdAssignedUserRoles.map((value) => value.toJson()).toList();
-    }
-    if (deletedAssignedUserRoles != null) {
-      _json['deletedAssignedUserRoles'] = deletedAssignedUserRoles;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAssignedUserRoles != null)
+          'createdAssignedUserRoles':
+              createdAssignedUserRoles.map((value) => value.toJson()).toList(),
+        if (deletedAssignedUserRoles != null)
+          'deletedAssignedUserRoles': deletedAssignedUserRoles,
+      };
 }
 
 class BulkEditAssignedUserRolesResponse {
@@ -12130,14 +11852,11 @@ class BulkEditAssignedUserRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAssignedUserRoles != null) {
-      _json['createdAssignedUserRoles'] =
-          createdAssignedUserRoles.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAssignedUserRoles != null)
+          'createdAssignedUserRoles':
+              createdAssignedUserRoles.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for BulkEditLineItemAssignedTargetingOptions.
@@ -12169,18 +11888,14 @@ class BulkEditLineItemAssignedTargetingOptionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createRequests != null) {
-      _json['createRequests'] =
-          createRequests.map((value) => value.toJson()).toList();
-    }
-    if (deleteRequests != null) {
-      _json['deleteRequests'] =
-          deleteRequests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createRequests != null)
+          'createRequests':
+              createRequests.map((value) => value.toJson()).toList(),
+        if (deleteRequests != null)
+          'deleteRequests':
+              deleteRequests.map((value) => value.toJson()).toList(),
+      };
 }
 
 class BulkEditLineItemAssignedTargetingOptionsResponse {
@@ -12203,15 +11918,12 @@ class BulkEditLineItemAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAssignedTargetingOptions != null) {
-      _json['createdAssignedTargetingOptions'] = createdAssignedTargetingOptions
-          .map((value) => value.toJson())
-          .toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAssignedTargetingOptions != null)
+          'createdAssignedTargetingOptions': createdAssignedTargetingOptions
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// Request message for NegativeKeywordService.BulkEditNegativeKeywords.
@@ -12240,17 +11952,13 @@ class BulkEditNegativeKeywordsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdNegativeKeywords != null) {
-      _json['createdNegativeKeywords'] =
-          createdNegativeKeywords.map((value) => value.toJson()).toList();
-    }
-    if (deletedNegativeKeywords != null) {
-      _json['deletedNegativeKeywords'] = deletedNegativeKeywords;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdNegativeKeywords != null)
+          'createdNegativeKeywords':
+              createdNegativeKeywords.map((value) => value.toJson()).toList(),
+        if (deletedNegativeKeywords != null)
+          'deletedNegativeKeywords': deletedNegativeKeywords,
+      };
 }
 
 /// Response message for NegativeKeywordService.BulkEditNegativeKeywords.
@@ -12271,14 +11979,11 @@ class BulkEditNegativeKeywordsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (negativeKeywords != null) {
-      _json['negativeKeywords'] =
-          negativeKeywords.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (negativeKeywords != null)
+          'negativeKeywords':
+              negativeKeywords.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for BulkEditPartnerAssignedTargetingOptions.
@@ -12314,18 +12019,14 @@ class BulkEditPartnerAssignedTargetingOptionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createRequests != null) {
-      _json['createRequests'] =
-          createRequests.map((value) => value.toJson()).toList();
-    }
-    if (deleteRequests != null) {
-      _json['deleteRequests'] =
-          deleteRequests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createRequests != null)
+          'createRequests':
+              createRequests.map((value) => value.toJson()).toList(),
+        if (deleteRequests != null)
+          'deleteRequests':
+              deleteRequests.map((value) => value.toJson()).toList(),
+      };
 }
 
 class BulkEditPartnerAssignedTargetingOptionsResponse {
@@ -12348,15 +12049,12 @@ class BulkEditPartnerAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createdAssignedTargetingOptions != null) {
-      _json['createdAssignedTargetingOptions'] = createdAssignedTargetingOptions
-          .map((value) => value.toJson())
-          .toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createdAssignedTargetingOptions != null)
+          'createdAssignedTargetingOptions': createdAssignedTargetingOptions
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 /// Request message for SiteService.BulkEditSites.
@@ -12395,23 +12093,13 @@ class BulkEditSitesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (createdSites != null) {
-      _json['createdSites'] =
-          createdSites.map((value) => value.toJson()).toList();
-    }
-    if (deletedSites != null) {
-      _json['deletedSites'] = deletedSites;
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (createdSites != null)
+          'createdSites': createdSites.map((value) => value.toJson()).toList(),
+        if (deletedSites != null) 'deletedSites': deletedSites,
+        if (partnerId != null) 'partnerId': partnerId,
+      };
 }
 
 /// Response message for SiteService.BulkEditSites.
@@ -12432,13 +12120,10 @@ class BulkEditSitesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sites != null) {
-      _json['sites'] = sites.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sites != null)
+          'sites': sites.map((value) => value.toJson()).toList(),
+      };
 }
 
 class BulkListAdvertiserAssignedTargetingOptionsResponse {
@@ -12471,17 +12156,12 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedTargetingOptions != null) {
-      _json['assignedTargetingOptions'] =
-          assignedTargetingOptions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class BulkListLineItemAssignedTargetingOptionsResponse {
@@ -12514,17 +12194,12 @@ class BulkListLineItemAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedTargetingOptions != null) {
-      _json['assignedTargetingOptions'] =
-          assignedTargetingOptions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A single campaign.
@@ -12633,37 +12308,17 @@ class Campaign {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (campaignFlight != null) {
-      _json['campaignFlight'] = campaignFlight.toJson();
-    }
-    if (campaignGoal != null) {
-      _json['campaignGoal'] = campaignGoal.toJson();
-    }
-    if (campaignId != null) {
-      _json['campaignId'] = campaignId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (frequencyCap != null) {
-      _json['frequencyCap'] = frequencyCap.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (campaignFlight != null) 'campaignFlight': campaignFlight.toJson(),
+        if (campaignGoal != null) 'campaignGoal': campaignGoal.toJson(),
+        if (campaignId != null) 'campaignId': campaignId,
+        if (displayName != null) 'displayName': displayName,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (frequencyCap != null) 'frequencyCap': frequencyCap.toJson(),
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Settings that track the planned spend and duration of a campaign.
@@ -12701,16 +12356,11 @@ class CampaignFlight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (plannedDates != null) {
-      _json['plannedDates'] = plannedDates.toJson();
-    }
-    if (plannedSpendAmountMicros != null) {
-      _json['plannedSpendAmountMicros'] = plannedSpendAmountMicros;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (plannedDates != null) 'plannedDates': plannedDates.toJson(),
+        if (plannedSpendAmountMicros != null)
+          'plannedSpendAmountMicros': plannedSpendAmountMicros,
+      };
 }
 
 /// Settings that control the goal of a campaign.
@@ -12751,16 +12401,11 @@ class CampaignGoal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (campaignGoalType != null) {
-      _json['campaignGoalType'] = campaignGoalType;
-    }
-    if (performanceGoal != null) {
-      _json['performanceGoal'] = performanceGoal.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (campaignGoalType != null) 'campaignGoalType': campaignGoalType,
+        if (performanceGoal != null)
+          'performanceGoal': performanceGoal.toJson(),
+      };
 }
 
 /// Details for assigned carrier and ISP targeting option.
@@ -12799,19 +12444,11 @@ class CarrierAndIspAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable carrier or ISP.
@@ -12847,16 +12484,10 @@ class CarrierAndIspTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Assigned category targeting option details.
@@ -12892,19 +12523,11 @@ class CategoryAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable category.
@@ -12925,13 +12548,9 @@ class CategoryTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// A single channel.
@@ -12983,25 +12602,13 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (channelId != null) 'channelId': channelId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (partnerId != null) 'partnerId': partnerId,
+      };
 }
 
 /// Details for assigned channel targeting option.
@@ -13035,16 +12642,10 @@ class ChannelAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (negative != null) 'negative': negative,
+      };
 }
 
 /// Settings for advertisers that use both Campaign Manager 360 (CM360) and
@@ -13111,28 +12712,18 @@ class CmHybridConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cmAccountId != null) {
-      _json['cmAccountId'] = cmAccountId;
-    }
-    if (cmFloodlightConfigId != null) {
-      _json['cmFloodlightConfigId'] = cmFloodlightConfigId;
-    }
-    if (cmFloodlightLinkingAuthorized != null) {
-      _json['cmFloodlightLinkingAuthorized'] = cmFloodlightLinkingAuthorized;
-    }
-    if (cmSyncableSiteIds != null) {
-      _json['cmSyncableSiteIds'] = cmSyncableSiteIds;
-    }
-    if (dv360ToCmCostReportingEnabled != null) {
-      _json['dv360ToCmCostReportingEnabled'] = dv360ToCmCostReportingEnabled;
-    }
-    if (dv360ToCmDataSharingEnabled != null) {
-      _json['dv360ToCmDataSharingEnabled'] = dv360ToCmDataSharingEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cmAccountId != null) 'cmAccountId': cmAccountId,
+        if (cmFloodlightConfigId != null)
+          'cmFloodlightConfigId': cmFloodlightConfigId,
+        if (cmFloodlightLinkingAuthorized != null)
+          'cmFloodlightLinkingAuthorized': cmFloodlightLinkingAuthorized,
+        if (cmSyncableSiteIds != null) 'cmSyncableSiteIds': cmSyncableSiteIds,
+        if (dv360ToCmCostReportingEnabled != null)
+          'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled,
+        if (dv360ToCmDataSharingEnabled != null)
+          'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled,
+      };
 }
 
 /// A Campaign Manager 360 tracking ad.
@@ -13160,19 +12751,11 @@ class CmTrackingAd {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cmAdId != null) {
-      _json['cmAdId'] = cmAdId;
-    }
-    if (cmCreativeId != null) {
-      _json['cmCreativeId'] = cmCreativeId;
-    }
-    if (cmPlacementId != null) {
-      _json['cmPlacementId'] = cmPlacementId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cmAdId != null) 'cmAdId': cmAdId,
+        if (cmCreativeId != null) 'cmCreativeId': cmCreativeId,
+        if (cmPlacementId != null) 'cmPlacementId': cmPlacementId,
+      };
 }
 
 /// Describes a combined audience resource.
@@ -13210,19 +12793,12 @@ class CombinedAudience {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (combinedAudienceId != null) {
-      _json['combinedAudienceId'] = combinedAudienceId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (combinedAudienceId != null)
+          'combinedAudienceId': combinedAudienceId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Details of combined audience group.
@@ -13250,13 +12826,10 @@ class CombinedAudienceGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (settings != null) {
-      _json['settings'] = settings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (settings != null)
+          'settings': settings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Details of combined audience targeting setting.
@@ -13276,13 +12849,10 @@ class CombinedAudienceTargetingSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (combinedAudienceId != null) {
-      _json['combinedAudienceId'] = combinedAudienceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (combinedAudienceId != null)
+          'combinedAudienceId': combinedAudienceId,
+      };
 }
 
 /// Assigned content instream position targeting option details.
@@ -13323,16 +12893,11 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentInstreamPosition != null) {
-      _json['contentInstreamPosition'] = contentInstreamPosition;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentInstreamPosition != null)
+          'contentInstreamPosition': contentInstreamPosition,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable content instream position, which could be used by
@@ -13364,13 +12929,10 @@ class ContentInstreamPositionTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentInstreamPosition != null) {
-      _json['contentInstreamPosition'] = contentInstreamPosition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentInstreamPosition != null)
+          'contentInstreamPosition': contentInstreamPosition,
+      };
 }
 
 /// Assigned content outstream position targeting option details.
@@ -13417,16 +12979,11 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentOutstreamPosition != null) {
-      _json['contentOutstreamPosition'] = contentOutstreamPosition;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentOutstreamPosition != null)
+          'contentOutstreamPosition': contentOutstreamPosition,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable content outstream position, which could be used by
@@ -13464,13 +13021,10 @@ class ContentOutstreamPositionTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentOutstreamPosition != null) {
-      _json['contentOutstreamPosition'] = contentOutstreamPosition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentOutstreamPosition != null)
+          'contentOutstreamPosition': contentOutstreamPosition,
+      };
 }
 
 /// Settings that control how conversions are counted.
@@ -13508,17 +13062,13 @@ class ConversionCountingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (floodlightActivityConfigs != null) {
-      _json['floodlightActivityConfigs'] =
-          floodlightActivityConfigs.map((value) => value.toJson()).toList();
-    }
-    if (postViewCountPercentageMillis != null) {
-      _json['postViewCountPercentageMillis'] = postViewCountPercentageMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (floodlightActivityConfigs != null)
+          'floodlightActivityConfigs':
+              floodlightActivityConfigs.map((value) => value.toJson()).toList(),
+        if (postViewCountPercentageMillis != null)
+          'postViewCountPercentageMillis': postViewCountPercentageMillis,
+      };
 }
 
 /// Counter event of the creative.
@@ -13544,16 +13094,10 @@ class CounterEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (reportingName != null) {
-      _json['reportingName'] = reportingName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (reportingName != null) 'reportingName': reportingName,
+      };
 }
 
 /// A request message for CreateAsset.
@@ -13573,13 +13117,9 @@ class CreateAssetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filename != null) {
-      _json['filename'] = filename;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filename != null) 'filename': filename,
+      };
 }
 
 /// A response message for CreateAsset.
@@ -13596,13 +13136,9 @@ class CreateAssetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (asset != null) {
-      _json['asset'] = asset.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (asset != null) 'asset': asset.toJson(),
+      };
 }
 
 /// A request listing which assigned targeting options of a given targeting type
@@ -13713,17 +13249,12 @@ class CreateAssignedTargetingOptionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedTargetingOptions != null) {
-      _json['assignedTargetingOptions'] =
-          assignedTargetingOptions.map((value) => value.toJson()).toList();
-    }
-    if (targetingType != null) {
-      _json['targetingType'] = targetingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (targetingType != null) 'targetingType': targetingType,
+      };
 }
 
 /// Request message for \[SdfDownloadTaskService.CreateSdfDownloadTask\].
@@ -13795,28 +13326,16 @@ class CreateSdfDownloadTaskRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (idFilter != null) {
-      _json['idFilter'] = idFilter.toJson();
-    }
-    if (inventorySourceFilter != null) {
-      _json['inventorySourceFilter'] = inventorySourceFilter.toJson();
-    }
-    if (parentEntityFilter != null) {
-      _json['parentEntityFilter'] = parentEntityFilter.toJson();
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (idFilter != null) 'idFilter': idFilter.toJson(),
+        if (inventorySourceFilter != null)
+          'inventorySourceFilter': inventorySourceFilter.toJson(),
+        if (parentEntityFilter != null)
+          'parentEntityFilter': parentEntityFilter.toJson(),
+        if (partnerId != null) 'partnerId': partnerId,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A single Creative.
@@ -14465,149 +13984,68 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalDimensions != null) {
-      _json['additionalDimensions'] =
-          additionalDimensions.map((value) => value.toJson()).toList();
-    }
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (appendedTag != null) {
-      _json['appendedTag'] = appendedTag;
-    }
-    if (assets != null) {
-      _json['assets'] = assets.map((value) => value.toJson()).toList();
-    }
-    if (cmPlacementId != null) {
-      _json['cmPlacementId'] = cmPlacementId;
-    }
-    if (cmTrackingAd != null) {
-      _json['cmTrackingAd'] = cmTrackingAd.toJson();
-    }
-    if (companionCreativeIds != null) {
-      _json['companionCreativeIds'] = companionCreativeIds;
-    }
-    if (counterEvents != null) {
-      _json['counterEvents'] =
-          counterEvents.map((value) => value.toJson()).toList();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (creativeAttributes != null) {
-      _json['creativeAttributes'] = creativeAttributes;
-    }
-    if (creativeId != null) {
-      _json['creativeId'] = creativeId;
-    }
-    if (creativeType != null) {
-      _json['creativeType'] = creativeType;
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (dynamic != null) {
-      _json['dynamic'] = dynamic;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (exitEvents != null) {
-      _json['exitEvents'] = exitEvents.map((value) => value.toJson()).toList();
-    }
-    if (expandOnHover != null) {
-      _json['expandOnHover'] = expandOnHover;
-    }
-    if (expandingDirection != null) {
-      _json['expandingDirection'] = expandingDirection;
-    }
-    if (hostingSource != null) {
-      _json['hostingSource'] = hostingSource;
-    }
-    if (html5Video != null) {
-      _json['html5Video'] = html5Video;
-    }
-    if (iasCampaignMonitoring != null) {
-      _json['iasCampaignMonitoring'] = iasCampaignMonitoring;
-    }
-    if (integrationCode != null) {
-      _json['integrationCode'] = integrationCode;
-    }
-    if (jsTrackerUrl != null) {
-      _json['jsTrackerUrl'] = jsTrackerUrl;
-    }
-    if (lineItemIds != null) {
-      _json['lineItemIds'] = lineItemIds;
-    }
-    if (mediaDuration != null) {
-      _json['mediaDuration'] = mediaDuration;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (obaIcon != null) {
-      _json['obaIcon'] = obaIcon.toJson();
-    }
-    if (progressOffset != null) {
-      _json['progressOffset'] = progressOffset.toJson();
-    }
-    if (requireHtml5 != null) {
-      _json['requireHtml5'] = requireHtml5;
-    }
-    if (requireMraid != null) {
-      _json['requireMraid'] = requireMraid;
-    }
-    if (requirePingForAttribution != null) {
-      _json['requirePingForAttribution'] = requirePingForAttribution;
-    }
-    if (reviewStatus != null) {
-      _json['reviewStatus'] = reviewStatus.toJson();
-    }
-    if (skipOffset != null) {
-      _json['skipOffset'] = skipOffset.toJson();
-    }
-    if (skippable != null) {
-      _json['skippable'] = skippable;
-    }
-    if (thirdPartyTag != null) {
-      _json['thirdPartyTag'] = thirdPartyTag;
-    }
-    if (thirdPartyUrls != null) {
-      _json['thirdPartyUrls'] =
-          thirdPartyUrls.map((value) => value.toJson()).toList();
-    }
-    if (timerEvents != null) {
-      _json['timerEvents'] =
-          timerEvents.map((value) => value.toJson()).toList();
-    }
-    if (trackerUrls != null) {
-      _json['trackerUrls'] = trackerUrls;
-    }
-    if (transcodes != null) {
-      _json['transcodes'] = transcodes.map((value) => value.toJson()).toList();
-    }
-    if (universalAdId != null) {
-      _json['universalAdId'] = universalAdId.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (vastTagUrl != null) {
-      _json['vastTagUrl'] = vastTagUrl;
-    }
-    if (vpaid != null) {
-      _json['vpaid'] = vpaid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalDimensions != null)
+          'additionalDimensions':
+              additionalDimensions.map((value) => value.toJson()).toList(),
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (appendedTag != null) 'appendedTag': appendedTag,
+        if (assets != null)
+          'assets': assets.map((value) => value.toJson()).toList(),
+        if (cmPlacementId != null) 'cmPlacementId': cmPlacementId,
+        if (cmTrackingAd != null) 'cmTrackingAd': cmTrackingAd.toJson(),
+        if (companionCreativeIds != null)
+          'companionCreativeIds': companionCreativeIds,
+        if (counterEvents != null)
+          'counterEvents':
+              counterEvents.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime,
+        if (creativeAttributes != null)
+          'creativeAttributes': creativeAttributes,
+        if (creativeId != null) 'creativeId': creativeId,
+        if (creativeType != null) 'creativeType': creativeType,
+        if (dimensions != null) 'dimensions': dimensions.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (dynamic != null) 'dynamic': dynamic,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (exitEvents != null)
+          'exitEvents': exitEvents.map((value) => value.toJson()).toList(),
+        if (expandOnHover != null) 'expandOnHover': expandOnHover,
+        if (expandingDirection != null)
+          'expandingDirection': expandingDirection,
+        if (hostingSource != null) 'hostingSource': hostingSource,
+        if (html5Video != null) 'html5Video': html5Video,
+        if (iasCampaignMonitoring != null)
+          'iasCampaignMonitoring': iasCampaignMonitoring,
+        if (integrationCode != null) 'integrationCode': integrationCode,
+        if (jsTrackerUrl != null) 'jsTrackerUrl': jsTrackerUrl,
+        if (lineItemIds != null) 'lineItemIds': lineItemIds,
+        if (mediaDuration != null) 'mediaDuration': mediaDuration,
+        if (name != null) 'name': name,
+        if (notes != null) 'notes': notes,
+        if (obaIcon != null) 'obaIcon': obaIcon.toJson(),
+        if (progressOffset != null) 'progressOffset': progressOffset.toJson(),
+        if (requireHtml5 != null) 'requireHtml5': requireHtml5,
+        if (requireMraid != null) 'requireMraid': requireMraid,
+        if (requirePingForAttribution != null)
+          'requirePingForAttribution': requirePingForAttribution,
+        if (reviewStatus != null) 'reviewStatus': reviewStatus.toJson(),
+        if (skipOffset != null) 'skipOffset': skipOffset.toJson(),
+        if (skippable != null) 'skippable': skippable,
+        if (thirdPartyTag != null) 'thirdPartyTag': thirdPartyTag,
+        if (thirdPartyUrls != null)
+          'thirdPartyUrls':
+              thirdPartyUrls.map((value) => value.toJson()).toList(),
+        if (timerEvents != null)
+          'timerEvents': timerEvents.map((value) => value.toJson()).toList(),
+        if (trackerUrls != null) 'trackerUrls': trackerUrls,
+        if (transcodes != null)
+          'transcodes': transcodes.map((value) => value.toJson()).toList(),
+        if (universalAdId != null) 'universalAdId': universalAdId.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+        if (vastTagUrl != null) 'vastTagUrl': vastTagUrl,
+        if (vpaid != null) 'vpaid': vpaid,
+      };
 }
 
 /// Creative requirements configuration for the inventory source.
@@ -14685,19 +14123,13 @@ class CreativeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creativeType != null) {
-      _json['creativeType'] = creativeType;
-    }
-    if (displayCreativeConfig != null) {
-      _json['displayCreativeConfig'] = displayCreativeConfig.toJson();
-    }
-    if (videoCreativeConfig != null) {
-      _json['videoCreativeConfig'] = videoCreativeConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creativeType != null) 'creativeType': creativeType,
+        if (displayCreativeConfig != null)
+          'displayCreativeConfig': displayCreativeConfig.toJson(),
+        if (videoCreativeConfig != null)
+          'videoCreativeConfig': videoCreativeConfig.toJson(),
+      };
 }
 
 /// A single custom bidding algorithm.
@@ -14789,31 +14221,17 @@ class CustomBiddingAlgorithm {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (customBiddingAlgorithmId != null) {
-      _json['customBiddingAlgorithmId'] = customBiddingAlgorithmId;
-    }
-    if (customBiddingAlgorithmType != null) {
-      _json['customBiddingAlgorithmType'] = customBiddingAlgorithmType;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (customBiddingAlgorithmId != null)
+          'customBiddingAlgorithmId': customBiddingAlgorithmId,
+        if (customBiddingAlgorithmType != null)
+          'customBiddingAlgorithmType': customBiddingAlgorithmType,
+        if (displayName != null) 'displayName': displayName,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (name != null) 'name': name,
+        if (partnerId != null) 'partnerId': partnerId,
+      };
 }
 
 /// Describes a custom list entity, such as a custom affinity or custom intent
@@ -14852,19 +14270,11 @@ class CustomList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customListId != null) {
-      _json['customListId'] = customListId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customListId != null) 'customListId': customListId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Details of custom list group.
@@ -14890,13 +14300,10 @@ class CustomListGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (settings != null) {
-      _json['settings'] = settings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (settings != null)
+          'settings': settings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Details of custom list targeting setting.
@@ -14916,13 +14323,9 @@ class CustomListTargetingSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customListId != null) {
-      _json['customListId'] = customListId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customListId != null) 'customListId': customListId,
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -14965,19 +14368,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// A date range.
@@ -15005,16 +14400,10 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate.toJson();
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate.toJson(),
+        if (startDate != null) 'startDate': startDate.toJson(),
+      };
 }
 
 /// Representation of a segment of time defined on a specific day of the week
@@ -15081,22 +14470,13 @@ class DayAndTimeAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dayOfWeek != null) {
-      _json['dayOfWeek'] = dayOfWeek;
-    }
-    if (endHour != null) {
-      _json['endHour'] = endHour;
-    }
-    if (startHour != null) {
-      _json['startHour'] = startHour;
-    }
-    if (timeZoneResolution != null) {
-      _json['timeZoneResolution'] = timeZoneResolution;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
+        if (endHour != null) 'endHour': endHour,
+        if (startHour != null) 'startHour': startHour,
+        if (timeZoneResolution != null)
+          'timeZoneResolution': timeZoneResolution,
+      };
 }
 
 /// Request message for ManualTriggerService.DeactivateManualTrigger.
@@ -15107,10 +14487,7 @@ class DeactivateManualTriggerRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A request listing which assigned targeting options of a given targeting type
@@ -15219,16 +14596,11 @@ class DeleteAssignedTargetingOptionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedTargetingOptionIds != null) {
-      _json['assignedTargetingOptionIds'] = assignedTargetingOptionIds;
-    }
-    if (targetingType != null) {
-      _json['targetingType'] = targetingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptionIds != null)
+          'assignedTargetingOptionIds': assignedTargetingOptionIds,
+        if (targetingType != null) 'targetingType': targetingType,
+      };
 }
 
 /// Assigned device make and model targeting option details.
@@ -15264,19 +14636,11 @@ class DeviceMakeModelAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable device make and model.
@@ -15297,13 +14661,9 @@ class DeviceMakeModelTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// Targeting details for device type.
@@ -15340,16 +14700,10 @@ class DeviceTypeAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceType != null) {
-      _json['deviceType'] = deviceType;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceType != null) 'deviceType': deviceType,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable device type.
@@ -15378,13 +14732,9 @@ class DeviceTypeTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceType != null) {
-      _json['deviceType'] = deviceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceType != null) 'deviceType': deviceType,
+      };
 }
 
 /// Targeting details for digital content label.
@@ -15426,16 +14776,11 @@ class DigitalContentLabelAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentRatingTier != null) {
-      _json['contentRatingTier'] = contentRatingTier;
-    }
-    if (excludedTargetingOptionId != null) {
-      _json['excludedTargetingOptionId'] = excludedTargetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentRatingTier != null) 'contentRatingTier': contentRatingTier,
+        if (excludedTargetingOptionId != null)
+          'excludedTargetingOptionId': excludedTargetingOptionId,
+      };
 }
 
 /// Represents a targetable digital content label rating tier.
@@ -15469,13 +14814,9 @@ class DigitalContentLabelTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentRatingTier != null) {
-      _json['contentRatingTier'] = contentRatingTier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentRatingTier != null) 'contentRatingTier': contentRatingTier,
+      };
 }
 
 /// Dimensions.
@@ -15497,16 +14838,10 @@ class Dimensions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (heightPixels != null) {
-      _json['heightPixels'] = heightPixels;
-    }
-    if (widthPixels != null) {
-      _json['widthPixels'] = widthPixels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (heightPixels != null) 'heightPixels': heightPixels,
+        if (widthPixels != null) 'widthPixels': widthPixels,
+      };
 }
 
 /// Details of DoubleVerify settings.
@@ -15571,31 +14906,19 @@ class DoubleVerify {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appStarRating != null) {
-      _json['appStarRating'] = appStarRating.toJson();
-    }
-    if (avoidedAgeRatings != null) {
-      _json['avoidedAgeRatings'] = avoidedAgeRatings;
-    }
-    if (brandSafetyCategories != null) {
-      _json['brandSafetyCategories'] = brandSafetyCategories.toJson();
-    }
-    if (customSegmentId != null) {
-      _json['customSegmentId'] = customSegmentId;
-    }
-    if (displayViewability != null) {
-      _json['displayViewability'] = displayViewability.toJson();
-    }
-    if (fraudInvalidTraffic != null) {
-      _json['fraudInvalidTraffic'] = fraudInvalidTraffic.toJson();
-    }
-    if (videoViewability != null) {
-      _json['videoViewability'] = videoViewability.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appStarRating != null) 'appStarRating': appStarRating.toJson(),
+        if (avoidedAgeRatings != null) 'avoidedAgeRatings': avoidedAgeRatings,
+        if (brandSafetyCategories != null)
+          'brandSafetyCategories': brandSafetyCategories.toJson(),
+        if (customSegmentId != null) 'customSegmentId': customSegmentId,
+        if (displayViewability != null)
+          'displayViewability': displayViewability.toJson(),
+        if (fraudInvalidTraffic != null)
+          'fraudInvalidTraffic': fraudInvalidTraffic.toJson(),
+        if (videoViewability != null)
+          'videoViewability': videoViewability.toJson(),
+      };
 }
 
 /// Details of DoubleVerify star ratings settings.
@@ -15628,16 +14951,11 @@ class DoubleVerifyAppStarRating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (avoidInsufficientStarRating != null) {
-      _json['avoidInsufficientStarRating'] = avoidInsufficientStarRating;
-    }
-    if (avoidedStarRating != null) {
-      _json['avoidedStarRating'] = avoidedStarRating;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (avoidInsufficientStarRating != null)
+          'avoidInsufficientStarRating': avoidInsufficientStarRating,
+        if (avoidedStarRating != null) 'avoidedStarRating': avoidedStarRating,
+      };
 }
 
 /// Settings for brand safety controls.
@@ -15672,21 +14990,14 @@ class DoubleVerifyBrandSafetyCategories {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (avoidUnknownBrandSafetyCategory != null) {
-      _json['avoidUnknownBrandSafetyCategory'] =
-          avoidUnknownBrandSafetyCategory;
-    }
-    if (avoidedHighSeverityCategories != null) {
-      _json['avoidedHighSeverityCategories'] = avoidedHighSeverityCategories;
-    }
-    if (avoidedMediumSeverityCategories != null) {
-      _json['avoidedMediumSeverityCategories'] =
-          avoidedMediumSeverityCategories;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (avoidUnknownBrandSafetyCategory != null)
+          'avoidUnknownBrandSafetyCategory': avoidUnknownBrandSafetyCategory,
+        if (avoidedHighSeverityCategories != null)
+          'avoidedHighSeverityCategories': avoidedHighSeverityCategories,
+        if (avoidedMediumSeverityCategories != null)
+          'avoidedMediumSeverityCategories': avoidedMediumSeverityCategories,
+      };
 }
 
 /// Details of DoubleVerify display viewability settings.
@@ -15738,16 +15049,10 @@ class DoubleVerifyDisplayViewability {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iab != null) {
-      _json['iab'] = iab;
-    }
-    if (viewableDuring != null) {
-      _json['viewableDuring'] = viewableDuring;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iab != null) 'iab': iab,
+        if (viewableDuring != null) 'viewableDuring': viewableDuring,
+      };
 }
 
 /// DoubleVerify Fraud & Invalid Traffic settings.
@@ -15780,16 +15085,12 @@ class DoubleVerifyFraudInvalidTraffic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (avoidInsufficientOption != null) {
-      _json['avoidInsufficientOption'] = avoidInsufficientOption;
-    }
-    if (avoidedFraudOption != null) {
-      _json['avoidedFraudOption'] = avoidedFraudOption;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (avoidInsufficientOption != null)
+          'avoidInsufficientOption': avoidInsufficientOption,
+        if (avoidedFraudOption != null)
+          'avoidedFraudOption': avoidedFraudOption,
+      };
 }
 
 /// Details of DoubleVerify video viewability settings.
@@ -15861,19 +15162,12 @@ class DoubleVerifyVideoViewability {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (playerImpressionRate != null) {
-      _json['playerImpressionRate'] = playerImpressionRate;
-    }
-    if (videoIab != null) {
-      _json['videoIab'] = videoIab;
-    }
-    if (videoViewableRate != null) {
-      _json['videoViewableRate'] = videoViewableRate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (playerImpressionRate != null)
+          'playerImpressionRate': playerImpressionRate,
+        if (videoIab != null) 'videoIab': videoIab,
+        if (videoViewableRate != null) 'videoViewableRate': videoViewableRate,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -15890,10 +15184,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Assigned environment targeting option details.
@@ -15939,16 +15230,10 @@ class EnvironmentAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environment != null) 'environment': environment,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable environment.
@@ -15984,13 +15269,9 @@ class EnvironmentTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environment != null) 'environment': environment,
+      };
 }
 
 /// Details for assigned exchange targeting option.
@@ -16012,13 +15293,9 @@ class ExchangeAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Settings that control which exchanges are enabled for a partner.
@@ -16040,14 +15317,11 @@ class ExchangeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabledExchanges != null) {
-      _json['enabledExchanges'] =
-          enabledExchanges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabledExchanges != null)
+          'enabledExchanges':
+              enabledExchanges.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An enabled exchange in the partner.
@@ -16158,22 +15432,14 @@ class ExchangeConfigEnabledExchange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exchange != null) {
-      _json['exchange'] = exchange;
-    }
-    if (googleAdManagerAgencyId != null) {
-      _json['googleAdManagerAgencyId'] = googleAdManagerAgencyId;
-    }
-    if (googleAdManagerBuyerNetworkId != null) {
-      _json['googleAdManagerBuyerNetworkId'] = googleAdManagerBuyerNetworkId;
-    }
-    if (seatId != null) {
-      _json['seatId'] = seatId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exchange != null) 'exchange': exchange,
+        if (googleAdManagerAgencyId != null)
+          'googleAdManagerAgencyId': googleAdManagerAgencyId,
+        if (googleAdManagerBuyerNetworkId != null)
+          'googleAdManagerBuyerNetworkId': googleAdManagerBuyerNetworkId,
+        if (seatId != null) 'seatId': seatId,
+      };
 }
 
 /// Exchange review status for the creative.
@@ -16267,16 +15533,10 @@ class ExchangeReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exchange != null) {
-      _json['exchange'] = exchange;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exchange != null) 'exchange': exchange,
+        if (status != null) 'status': status,
+      };
 }
 
 /// Represents a targetable exchange.
@@ -16363,13 +15623,9 @@ class ExchangeTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exchange != null) {
-      _json['exchange'] = exchange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exchange != null) 'exchange': exchange,
+      };
 }
 
 /// Exit event of the creative.
@@ -16421,22 +15677,12 @@ class ExitEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (reportingName != null) {
-      _json['reportingName'] = reportingName;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (reportingName != null) 'reportingName': reportingName,
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Describes a first or third party audience list used for targeting.
@@ -16643,55 +15889,32 @@ class FirstAndThirdPartyAudience {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeDisplayAudienceSize != null) {
-      _json['activeDisplayAudienceSize'] = activeDisplayAudienceSize;
-    }
-    if (audienceSource != null) {
-      _json['audienceSource'] = audienceSource;
-    }
-    if (audienceType != null) {
-      _json['audienceType'] = audienceType;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayAudienceSize != null) {
-      _json['displayAudienceSize'] = displayAudienceSize;
-    }
-    if (displayDesktopAudienceSize != null) {
-      _json['displayDesktopAudienceSize'] = displayDesktopAudienceSize;
-    }
-    if (displayMobileAppAudienceSize != null) {
-      _json['displayMobileAppAudienceSize'] = displayMobileAppAudienceSize;
-    }
-    if (displayMobileWebAudienceSize != null) {
-      _json['displayMobileWebAudienceSize'] = displayMobileWebAudienceSize;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (firstAndThirdPartyAudienceId != null) {
-      _json['firstAndThirdPartyAudienceId'] = firstAndThirdPartyAudienceId;
-    }
-    if (firstAndThirdPartyAudienceType != null) {
-      _json['firstAndThirdPartyAudienceType'] = firstAndThirdPartyAudienceType;
-    }
-    if (gmailAudienceSize != null) {
-      _json['gmailAudienceSize'] = gmailAudienceSize;
-    }
-    if (membershipDurationDays != null) {
-      _json['membershipDurationDays'] = membershipDurationDays;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (youtubeAudienceSize != null) {
-      _json['youtubeAudienceSize'] = youtubeAudienceSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeDisplayAudienceSize != null)
+          'activeDisplayAudienceSize': activeDisplayAudienceSize,
+        if (audienceSource != null) 'audienceSource': audienceSource,
+        if (audienceType != null) 'audienceType': audienceType,
+        if (description != null) 'description': description,
+        if (displayAudienceSize != null)
+          'displayAudienceSize': displayAudienceSize,
+        if (displayDesktopAudienceSize != null)
+          'displayDesktopAudienceSize': displayDesktopAudienceSize,
+        if (displayMobileAppAudienceSize != null)
+          'displayMobileAppAudienceSize': displayMobileAppAudienceSize,
+        if (displayMobileWebAudienceSize != null)
+          'displayMobileWebAudienceSize': displayMobileWebAudienceSize,
+        if (displayName != null) 'displayName': displayName,
+        if (firstAndThirdPartyAudienceId != null)
+          'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId,
+        if (firstAndThirdPartyAudienceType != null)
+          'firstAndThirdPartyAudienceType': firstAndThirdPartyAudienceType,
+        if (gmailAudienceSize != null) 'gmailAudienceSize': gmailAudienceSize,
+        if (membershipDurationDays != null)
+          'membershipDurationDays': membershipDurationDays,
+        if (name != null) 'name': name,
+        if (youtubeAudienceSize != null)
+          'youtubeAudienceSize': youtubeAudienceSize,
+      };
 }
 
 /// Details of first and third party audience group.
@@ -16719,13 +15942,10 @@ class FirstAndThirdPartyAudienceGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (settings != null) {
-      _json['settings'] = settings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (settings != null)
+          'settings': settings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Details of first and third party audience targeting setting.
@@ -16788,16 +16008,11 @@ class FirstAndThirdPartyAudienceTargetingSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (firstAndThirdPartyAudienceId != null) {
-      _json['firstAndThirdPartyAudienceId'] = firstAndThirdPartyAudienceId;
-    }
-    if (recency != null) {
-      _json['recency'] = recency;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (firstAndThirdPartyAudienceId != null)
+          'firstAndThirdPartyAudienceId': firstAndThirdPartyAudienceId,
+        if (recency != null) 'recency': recency,
+      };
 }
 
 /// A strategy that uses a fixed bidding price.
@@ -16819,13 +16034,9 @@ class FixedBidStrategy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bidAmountMicros != null) {
-      _json['bidAmountMicros'] = bidAmountMicros;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bidAmountMicros != null) 'bidAmountMicros': bidAmountMicros,
+      };
 }
 
 /// A single Floodlight group.
@@ -16925,31 +16136,16 @@ class FloodlightGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeViewConfig != null) {
-      _json['activeViewConfig'] = activeViewConfig.toJson();
-    }
-    if (customVariables != null) {
-      _json['customVariables'] = customVariables;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (floodlightGroupId != null) {
-      _json['floodlightGroupId'] = floodlightGroupId;
-    }
-    if (lookbackWindow != null) {
-      _json['lookbackWindow'] = lookbackWindow.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (webTagType != null) {
-      _json['webTagType'] = webTagType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeViewConfig != null)
+          'activeViewConfig': activeViewConfig.toJson(),
+        if (customVariables != null) 'customVariables': customVariables,
+        if (displayName != null) 'displayName': displayName,
+        if (floodlightGroupId != null) 'floodlightGroupId': floodlightGroupId,
+        if (lookbackWindow != null) 'lookbackWindow': lookbackWindow.toJson(),
+        if (name != null) 'name': name,
+        if (webTagType != null) 'webTagType': webTagType,
+      };
 }
 
 /// Settings that control the number of times a user may be shown with the same
@@ -17014,22 +16210,12 @@ class FrequencyCap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxImpressions != null) {
-      _json['maxImpressions'] = maxImpressions;
-    }
-    if (timeUnit != null) {
-      _json['timeUnit'] = timeUnit;
-    }
-    if (timeUnitCount != null) {
-      _json['timeUnitCount'] = timeUnitCount;
-    }
-    if (unlimited != null) {
-      _json['unlimited'] = unlimited;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxImpressions != null) 'maxImpressions': maxImpressions,
+        if (timeUnit != null) 'timeUnit': timeUnit,
+        if (timeUnitCount != null) 'timeUnitCount': timeUnitCount,
+        if (unlimited != null) 'unlimited': unlimited,
+      };
 }
 
 /// Details for assigned gender targeting option.
@@ -17066,16 +16252,10 @@ class GenderAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gender != null) {
-      _json['gender'] = gender;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gender != null) 'gender': gender,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable gender.
@@ -17103,13 +16283,9 @@ class GenderTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gender != null) {
-      _json['gender'] = gender;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gender != null) 'gender': gender,
+      };
 }
 
 /// Details for assigned geographic region targeting option.
@@ -17192,22 +16368,12 @@ class GeoRegionAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (geoRegionType != null) {
-      _json['geoRegionType'] = geoRegionType;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (geoRegionType != null) 'geoRegionType': geoRegionType,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Search terms for geo region targeting options.
@@ -17225,13 +16391,9 @@ class GeoRegionSearchTerms {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (geoRegionQuery != null) {
-      _json['geoRegionQuery'] = geoRegionQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (geoRegionQuery != null) 'geoRegionQuery': geoRegionQuery,
+      };
 }
 
 /// Represents a targetable geographic region.
@@ -17299,16 +16461,10 @@ class GeoRegionTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (geoRegionType != null) {
-      _json['geoRegionType'] = geoRegionType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (geoRegionType != null) 'geoRegionType': geoRegionType,
+      };
 }
 
 /// Describes a Google audience resource.
@@ -17370,22 +16526,13 @@ class GoogleAudience {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (googleAudienceId != null) {
-      _json['googleAudienceId'] = googleAudienceId;
-    }
-    if (googleAudienceType != null) {
-      _json['googleAudienceType'] = googleAudienceType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (googleAudienceId != null) 'googleAudienceId': googleAudienceId,
+        if (googleAudienceType != null)
+          'googleAudienceType': googleAudienceType,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Details of Google audience group.
@@ -17411,13 +16558,10 @@ class GoogleAudienceGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (settings != null) {
-      _json['settings'] = settings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (settings != null)
+          'settings': settings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Details of Google audience targeting setting.
@@ -17437,13 +16581,9 @@ class GoogleAudienceTargetingSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleAudienceId != null) {
-      _json['googleAudienceId'] = googleAudienceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleAudienceId != null) 'googleAudienceId': googleAudienceId,
+      };
 }
 
 /// Media resource.
@@ -17459,13 +16599,9 @@ class GoogleBytestreamMedia {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// Details for assigned household income targeting option.
@@ -17513,16 +16649,10 @@ class HouseholdIncomeAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (householdIncome != null) {
-      _json['householdIncome'] = householdIncome;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (householdIncome != null) 'householdIncome': householdIncome,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable household income.
@@ -17561,13 +16691,9 @@ class HouseholdIncomeTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (householdIncome != null) {
-      _json['householdIncome'] = householdIncome;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (householdIncome != null) 'householdIncome': householdIncome,
+      };
 }
 
 /// A filtering option that filters entities by their entity IDs.
@@ -17643,28 +16769,14 @@ class IdFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adGroupAdIds != null) {
-      _json['adGroupAdIds'] = adGroupAdIds;
-    }
-    if (adGroupIds != null) {
-      _json['adGroupIds'] = adGroupIds;
-    }
-    if (campaignIds != null) {
-      _json['campaignIds'] = campaignIds;
-    }
-    if (insertionOrderIds != null) {
-      _json['insertionOrderIds'] = insertionOrderIds;
-    }
-    if (lineItemIds != null) {
-      _json['lineItemIds'] = lineItemIds;
-    }
-    if (mediaProductIds != null) {
-      _json['mediaProductIds'] = mediaProductIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adGroupAdIds != null) 'adGroupAdIds': adGroupAdIds,
+        if (adGroupIds != null) 'adGroupIds': adGroupIds,
+        if (campaignIds != null) 'campaignIds': campaignIds,
+        if (insertionOrderIds != null) 'insertionOrderIds': insertionOrderIds,
+        if (lineItemIds != null) 'lineItemIds': lineItemIds,
+        if (mediaProductIds != null) 'mediaProductIds': mediaProductIds,
+      };
 }
 
 /// A single insertion order.
@@ -17834,56 +16946,27 @@ class InsertionOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (bidStrategy != null) {
-      _json['bidStrategy'] = bidStrategy.toJson();
-    }
-    if (budget != null) {
-      _json['budget'] = budget.toJson();
-    }
-    if (campaignId != null) {
-      _json['campaignId'] = campaignId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (frequencyCap != null) {
-      _json['frequencyCap'] = frequencyCap.toJson();
-    }
-    if (insertionOrderId != null) {
-      _json['insertionOrderId'] = insertionOrderId;
-    }
-    if (insertionOrderType != null) {
-      _json['insertionOrderType'] = insertionOrderType;
-    }
-    if (integrationDetails != null) {
-      _json['integrationDetails'] = integrationDetails.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pacing != null) {
-      _json['pacing'] = pacing.toJson();
-    }
-    if (partnerCosts != null) {
-      _json['partnerCosts'] =
-          partnerCosts.map((value) => value.toJson()).toList();
-    }
-    if (performanceGoal != null) {
-      _json['performanceGoal'] = performanceGoal.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (bidStrategy != null) 'bidStrategy': bidStrategy.toJson(),
+        if (budget != null) 'budget': budget.toJson(),
+        if (campaignId != null) 'campaignId': campaignId,
+        if (displayName != null) 'displayName': displayName,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (frequencyCap != null) 'frequencyCap': frequencyCap.toJson(),
+        if (insertionOrderId != null) 'insertionOrderId': insertionOrderId,
+        if (insertionOrderType != null)
+          'insertionOrderType': insertionOrderType,
+        if (integrationDetails != null)
+          'integrationDetails': integrationDetails.toJson(),
+        if (name != null) 'name': name,
+        if (pacing != null) 'pacing': pacing.toJson(),
+        if (partnerCosts != null)
+          'partnerCosts': partnerCosts.map((value) => value.toJson()).toList(),
+        if (performanceGoal != null)
+          'performanceGoal': performanceGoal.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Settings that control how insertion order budget is allocated.
@@ -17945,20 +17028,13 @@ class InsertionOrderBudget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (automationType != null) {
-      _json['automationType'] = automationType;
-    }
-    if (budgetSegments != null) {
-      _json['budgetSegments'] =
-          budgetSegments.map((value) => value.toJson()).toList();
-    }
-    if (budgetUnit != null) {
-      _json['budgetUnit'] = budgetUnit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (automationType != null) 'automationType': automationType,
+        if (budgetSegments != null)
+          'budgetSegments':
+              budgetSegments.map((value) => value.toJson()).toList(),
+        if (budgetUnit != null) 'budgetUnit': budgetUnit,
+      };
 }
 
 /// Settings that control the budget of a single budget segment.
@@ -18011,22 +17087,13 @@ class InsertionOrderBudgetSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (budgetAmountMicros != null) {
-      _json['budgetAmountMicros'] = budgetAmountMicros;
-    }
-    if (campaignBudgetId != null) {
-      _json['campaignBudgetId'] = campaignBudgetId;
-    }
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (budgetAmountMicros != null)
+          'budgetAmountMicros': budgetAmountMicros,
+        if (campaignBudgetId != null) 'campaignBudgetId': campaignBudgetId,
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (description != null) 'description': description,
+      };
 }
 
 /// Details of Integral Ad Science settings.
@@ -18197,52 +17264,30 @@ class IntegralAdScience {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customSegmentId != null) {
-      _json['customSegmentId'] = customSegmentId;
-    }
-    if (displayViewability != null) {
-      _json['displayViewability'] = displayViewability;
-    }
-    if (excludeUnrateable != null) {
-      _json['excludeUnrateable'] = excludeUnrateable;
-    }
-    if (excludedAdFraudRisk != null) {
-      _json['excludedAdFraudRisk'] = excludedAdFraudRisk;
-    }
-    if (excludedAdultRisk != null) {
-      _json['excludedAdultRisk'] = excludedAdultRisk;
-    }
-    if (excludedAlcoholRisk != null) {
-      _json['excludedAlcoholRisk'] = excludedAlcoholRisk;
-    }
-    if (excludedDrugsRisk != null) {
-      _json['excludedDrugsRisk'] = excludedDrugsRisk;
-    }
-    if (excludedGamblingRisk != null) {
-      _json['excludedGamblingRisk'] = excludedGamblingRisk;
-    }
-    if (excludedHateSpeechRisk != null) {
-      _json['excludedHateSpeechRisk'] = excludedHateSpeechRisk;
-    }
-    if (excludedIllegalDownloadsRisk != null) {
-      _json['excludedIllegalDownloadsRisk'] = excludedIllegalDownloadsRisk;
-    }
-    if (excludedOffensiveLanguageRisk != null) {
-      _json['excludedOffensiveLanguageRisk'] = excludedOffensiveLanguageRisk;
-    }
-    if (excludedViolenceRisk != null) {
-      _json['excludedViolenceRisk'] = excludedViolenceRisk;
-    }
-    if (traqScoreOption != null) {
-      _json['traqScoreOption'] = traqScoreOption;
-    }
-    if (videoViewability != null) {
-      _json['videoViewability'] = videoViewability;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customSegmentId != null) 'customSegmentId': customSegmentId,
+        if (displayViewability != null)
+          'displayViewability': displayViewability,
+        if (excludeUnrateable != null) 'excludeUnrateable': excludeUnrateable,
+        if (excludedAdFraudRisk != null)
+          'excludedAdFraudRisk': excludedAdFraudRisk,
+        if (excludedAdultRisk != null) 'excludedAdultRisk': excludedAdultRisk,
+        if (excludedAlcoholRisk != null)
+          'excludedAlcoholRisk': excludedAlcoholRisk,
+        if (excludedDrugsRisk != null) 'excludedDrugsRisk': excludedDrugsRisk,
+        if (excludedGamblingRisk != null)
+          'excludedGamblingRisk': excludedGamblingRisk,
+        if (excludedHateSpeechRisk != null)
+          'excludedHateSpeechRisk': excludedHateSpeechRisk,
+        if (excludedIllegalDownloadsRisk != null)
+          'excludedIllegalDownloadsRisk': excludedIllegalDownloadsRisk,
+        if (excludedOffensiveLanguageRisk != null)
+          'excludedOffensiveLanguageRisk': excludedOffensiveLanguageRisk,
+        if (excludedViolenceRisk != null)
+          'excludedViolenceRisk': excludedViolenceRisk,
+        if (traqScoreOption != null) 'traqScoreOption': traqScoreOption,
+        if (videoViewability != null) 'videoViewability': videoViewability,
+      };
 }
 
 /// Integration details of an entry.
@@ -18270,16 +17315,10 @@ class IntegrationDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (integrationCode != null) {
-      _json['integrationCode'] = integrationCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (details != null) 'details': details,
+        if (integrationCode != null) 'integrationCode': integrationCode,
+      };
 }
 
 /// An inventory source.
@@ -18489,53 +17528,25 @@ class InventorySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commitment != null) {
-      _json['commitment'] = commitment;
-    }
-    if (creativeConfigs != null) {
-      _json['creativeConfigs'] =
-          creativeConfigs.map((value) => value.toJson()).toList();
-    }
-    if (dealId != null) {
-      _json['dealId'] = dealId;
-    }
-    if (deliveryMethod != null) {
-      _json['deliveryMethod'] = deliveryMethod;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (exchange != null) {
-      _json['exchange'] = exchange;
-    }
-    if (inventorySourceId != null) {
-      _json['inventorySourceId'] = inventorySourceId;
-    }
-    if (inventorySourceType != null) {
-      _json['inventorySourceType'] = inventorySourceType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (publisherName != null) {
-      _json['publisherName'] = publisherName;
-    }
-    if (rateDetails != null) {
-      _json['rateDetails'] = rateDetails.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (timeRange != null) {
-      _json['timeRange'] = timeRange.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commitment != null) 'commitment': commitment,
+        if (creativeConfigs != null)
+          'creativeConfigs':
+              creativeConfigs.map((value) => value.toJson()).toList(),
+        if (dealId != null) 'dealId': dealId,
+        if (deliveryMethod != null) 'deliveryMethod': deliveryMethod,
+        if (displayName != null) 'displayName': displayName,
+        if (exchange != null) 'exchange': exchange,
+        if (inventorySourceId != null) 'inventorySourceId': inventorySourceId,
+        if (inventorySourceType != null)
+          'inventorySourceType': inventorySourceType,
+        if (name != null) 'name': name,
+        if (publisherName != null) 'publisherName': publisherName,
+        if (rateDetails != null) 'rateDetails': rateDetails.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (timeRange != null) 'timeRange': timeRange.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Targeting details for inventory source.
@@ -18559,13 +17570,9 @@ class InventorySourceAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inventorySourceId != null) {
-      _json['inventorySourceId'] = inventorySourceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inventorySourceId != null) 'inventorySourceId': inventorySourceId,
+      };
 }
 
 /// The configuration for display creatives.
@@ -18583,13 +17590,9 @@ class InventorySourceDisplayCreativeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creativeSize != null) {
-      _json['creativeSize'] = creativeSize.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creativeSize != null) 'creativeSize': creativeSize.toJson(),
+      };
 }
 
 /// A filtering option for filtering on Inventory Source entities.
@@ -18611,13 +17614,10 @@ class InventorySourceFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inventorySourceIds != null) {
-      _json['inventorySourceIds'] = inventorySourceIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inventorySourceIds != null)
+          'inventorySourceIds': inventorySourceIds,
+      };
 }
 
 /// A collection of targetable inventory sources.
@@ -18655,19 +17655,12 @@ class InventorySourceGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (inventorySourceGroupId != null) {
-      _json['inventorySourceGroupId'] = inventorySourceGroupId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (inventorySourceGroupId != null)
+          'inventorySourceGroupId': inventorySourceGroupId,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Targeting details for inventory source group.
@@ -18691,13 +17684,10 @@ class InventorySourceGroupAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inventorySourceGroupId != null) {
-      _json['inventorySourceGroupId'] = inventorySourceGroupId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inventorySourceGroupId != null)
+          'inventorySourceGroupId': inventorySourceGroupId,
+      };
 }
 
 /// The status related settings of the inventory source.
@@ -18795,25 +17785,13 @@ class InventorySourceStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configStatus != null) {
-      _json['configStatus'] = configStatus;
-    }
-    if (entityPauseReason != null) {
-      _json['entityPauseReason'] = entityPauseReason;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (sellerPauseReason != null) {
-      _json['sellerPauseReason'] = sellerPauseReason;
-    }
-    if (sellerStatus != null) {
-      _json['sellerStatus'] = sellerStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configStatus != null) 'configStatus': configStatus,
+        if (entityPauseReason != null) 'entityPauseReason': entityPauseReason,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (sellerPauseReason != null) 'sellerPauseReason': sellerPauseReason,
+        if (sellerStatus != null) 'sellerStatus': sellerStatus,
+      };
 }
 
 /// The configuration for video creatives.
@@ -18830,13 +17808,9 @@ class InventorySourceVideoCreativeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+      };
 }
 
 /// Details for assigned keyword targeting option.
@@ -18867,16 +17841,10 @@ class KeywordAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyword != null) {
-      _json['keyword'] = keyword;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyword != null) 'keyword': keyword,
+        if (negative != null) 'negative': negative,
+      };
 }
 
 /// Details for assigned language targeting option.
@@ -18915,19 +17883,11 @@ class LanguageAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable language.
@@ -18948,13 +17908,9 @@ class LanguageTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// A single line item.
@@ -19215,80 +18171,37 @@ class LineItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (bidStrategy != null) {
-      _json['bidStrategy'] = bidStrategy.toJson();
-    }
-    if (budget != null) {
-      _json['budget'] = budget.toJson();
-    }
-    if (campaignId != null) {
-      _json['campaignId'] = campaignId;
-    }
-    if (conversionCounting != null) {
-      _json['conversionCounting'] = conversionCounting.toJson();
-    }
-    if (creativeIds != null) {
-      _json['creativeIds'] = creativeIds;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (flight != null) {
-      _json['flight'] = flight.toJson();
-    }
-    if (frequencyCap != null) {
-      _json['frequencyCap'] = frequencyCap.toJson();
-    }
-    if (insertionOrderId != null) {
-      _json['insertionOrderId'] = insertionOrderId;
-    }
-    if (integrationDetails != null) {
-      _json['integrationDetails'] = integrationDetails.toJson();
-    }
-    if (inventorySourceIds != null) {
-      _json['inventorySourceIds'] = inventorySourceIds;
-    }
-    if (lineItemId != null) {
-      _json['lineItemId'] = lineItemId;
-    }
-    if (lineItemType != null) {
-      _json['lineItemType'] = lineItemType;
-    }
-    if (mobileApp != null) {
-      _json['mobileApp'] = mobileApp.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pacing != null) {
-      _json['pacing'] = pacing.toJson();
-    }
-    if (partnerCosts != null) {
-      _json['partnerCosts'] =
-          partnerCosts.map((value) => value.toJson()).toList();
-    }
-    if (partnerRevenueModel != null) {
-      _json['partnerRevenueModel'] = partnerRevenueModel.toJson();
-    }
-    if (targetingExpansion != null) {
-      _json['targetingExpansion'] = targetingExpansion.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (warningMessages != null) {
-      _json['warningMessages'] = warningMessages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (bidStrategy != null) 'bidStrategy': bidStrategy.toJson(),
+        if (budget != null) 'budget': budget.toJson(),
+        if (campaignId != null) 'campaignId': campaignId,
+        if (conversionCounting != null)
+          'conversionCounting': conversionCounting.toJson(),
+        if (creativeIds != null) 'creativeIds': creativeIds,
+        if (displayName != null) 'displayName': displayName,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (flight != null) 'flight': flight.toJson(),
+        if (frequencyCap != null) 'frequencyCap': frequencyCap.toJson(),
+        if (insertionOrderId != null) 'insertionOrderId': insertionOrderId,
+        if (integrationDetails != null)
+          'integrationDetails': integrationDetails.toJson(),
+        if (inventorySourceIds != null)
+          'inventorySourceIds': inventorySourceIds,
+        if (lineItemId != null) 'lineItemId': lineItemId,
+        if (lineItemType != null) 'lineItemType': lineItemType,
+        if (mobileApp != null) 'mobileApp': mobileApp.toJson(),
+        if (name != null) 'name': name,
+        if (pacing != null) 'pacing': pacing.toJson(),
+        if (partnerCosts != null)
+          'partnerCosts': partnerCosts.map((value) => value.toJson()).toList(),
+        if (partnerRevenueModel != null)
+          'partnerRevenueModel': partnerRevenueModel.toJson(),
+        if (targetingExpansion != null)
+          'targetingExpansion': targetingExpansion.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+        if (warningMessages != null) 'warningMessages': warningMessages,
+      };
 }
 
 /// Settings that control how budget is allocated.
@@ -19350,19 +18263,12 @@ class LineItemBudget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (budgetAllocationType != null) {
-      _json['budgetAllocationType'] = budgetAllocationType;
-    }
-    if (budgetUnit != null) {
-      _json['budgetUnit'] = budgetUnit;
-    }
-    if (maxAmount != null) {
-      _json['maxAmount'] = maxAmount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (budgetAllocationType != null)
+          'budgetAllocationType': budgetAllocationType,
+        if (budgetUnit != null) 'budgetUnit': budgetUnit,
+        if (maxAmount != null) 'maxAmount': maxAmount,
+      };
 }
 
 /// Settings that control the active duration of a line item.
@@ -19414,19 +18320,11 @@ class LineItemFlight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (flightDateType != null) {
-      _json['flightDateType'] = flightDateType;
-    }
-    if (triggerId != null) {
-      _json['triggerId'] = triggerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (flightDateType != null) 'flightDateType': flightDateType,
+        if (triggerId != null) 'triggerId': triggerId,
+      };
 }
 
 /// Response message for ListAdvertiserAssignedTargetingOptions.
@@ -19460,17 +18358,12 @@ class ListAdvertiserAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedTargetingOptions != null) {
-      _json['assignedTargetingOptions'] =
-          assignedTargetingOptions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListAdvertisersResponse {
@@ -19499,17 +18392,11 @@ class ListAdvertisersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertisers != null) {
-      _json['advertisers'] =
-          advertisers.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertisers != null)
+          'advertisers': advertisers.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for
@@ -19543,17 +18430,12 @@ class ListAssignedInventorySourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedInventorySources != null) {
-      _json['assignedInventorySources'] =
-          assignedInventorySources.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedInventorySources != null)
+          'assignedInventorySources':
+              assignedInventorySources.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for AssignedLocationService.ListAssignedLocations.
@@ -19583,17 +18465,12 @@ class ListAssignedLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedLocations != null) {
-      _json['assignedLocations'] =
-          assignedLocations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedLocations != null)
+          'assignedLocations':
+              assignedLocations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListCampaignsResponse {
@@ -19622,16 +18499,11 @@ class ListCampaignsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (campaigns != null) {
-      _json['campaigns'] = campaigns.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (campaigns != null)
+          'campaigns': campaigns.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListChannelsResponse {
@@ -19660,16 +18532,11 @@ class ListChannelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channels != null) {
-      _json['channels'] = channels.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channels != null)
+          'channels': channels.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListCombinedAudiencesResponse {
@@ -19698,17 +18565,12 @@ class ListCombinedAudiencesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (combinedAudiences != null) {
-      _json['combinedAudiences'] =
-          combinedAudiences.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (combinedAudiences != null)
+          'combinedAudiences':
+              combinedAudiences.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListCreativesResponse {
@@ -19738,16 +18600,11 @@ class ListCreativesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creatives != null) {
-      _json['creatives'] = creatives.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creatives != null)
+          'creatives': creatives.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListCustomBiddingAlgorithmsResponse {
@@ -19778,17 +18635,12 @@ class ListCustomBiddingAlgorithmsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customBiddingAlgorithms != null) {
-      _json['customBiddingAlgorithms'] =
-          customBiddingAlgorithms.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customBiddingAlgorithms != null)
+          'customBiddingAlgorithms':
+              customBiddingAlgorithms.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListCustomListsResponse {
@@ -19817,17 +18669,11 @@ class ListCustomListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customLists != null) {
-      _json['customLists'] =
-          customLists.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customLists != null)
+          'customLists': customLists.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListFirstAndThirdPartyAudiencesResponse {
@@ -19860,17 +18706,13 @@ class ListFirstAndThirdPartyAudiencesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (firstAndThirdPartyAudiences != null) {
-      _json['firstAndThirdPartyAudiences'] =
-          firstAndThirdPartyAudiences.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (firstAndThirdPartyAudiences != null)
+          'firstAndThirdPartyAudiences': firstAndThirdPartyAudiences
+              .map((value) => value.toJson())
+              .toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListGoogleAudiencesResponse {
@@ -19899,17 +18741,12 @@ class ListGoogleAudiencesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleAudiences != null) {
-      _json['googleAudiences'] =
-          googleAudiences.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleAudiences != null)
+          'googleAudiences':
+              googleAudiences.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListInsertionOrdersResponse {
@@ -19938,17 +18775,12 @@ class ListInsertionOrdersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (insertionOrders != null) {
-      _json['insertionOrders'] =
-          insertionOrders.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (insertionOrders != null)
+          'insertionOrders':
+              insertionOrders.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for InventorySourceGroupService.ListInventorySourceGroups.
@@ -19978,17 +18810,12 @@ class ListInventorySourceGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inventorySourceGroups != null) {
-      _json['inventorySourceGroups'] =
-          inventorySourceGroups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inventorySourceGroups != null)
+          'inventorySourceGroups':
+              inventorySourceGroups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListInventorySourcesResponse {
@@ -20017,17 +18844,12 @@ class ListInventorySourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inventorySources != null) {
-      _json['inventorySources'] =
-          inventorySources.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inventorySources != null)
+          'inventorySources':
+              inventorySources.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for ListLineItemAssignedTargetingOptions.
@@ -20061,17 +18883,12 @@ class ListLineItemAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedTargetingOptions != null) {
-      _json['assignedTargetingOptions'] =
-          assignedTargetingOptions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListLineItemsResponse {
@@ -20100,16 +18917,11 @@ class ListLineItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lineItems != null) {
-      _json['lineItems'] = lineItems.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lineItems != null)
+          'lineItems': lineItems.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListLocationListsResponse {
@@ -20138,17 +18950,12 @@ class ListLocationListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locationLists != null) {
-      _json['locationLists'] =
-          locationLists.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locationLists != null)
+          'locationLists':
+              locationLists.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListManualTriggersResponse {
@@ -20177,17 +18984,12 @@ class ListManualTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (manualTriggers != null) {
-      _json['manualTriggers'] =
-          manualTriggers.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (manualTriggers != null)
+          'manualTriggers':
+              manualTriggers.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for NegativeKeywordListService.ListNegativeKeywordLists.
@@ -20217,17 +19019,12 @@ class ListNegativeKeywordListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (negativeKeywordLists != null) {
-      _json['negativeKeywordLists'] =
-          negativeKeywordLists.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (negativeKeywordLists != null)
+          'negativeKeywordLists':
+              negativeKeywordLists.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for NegativeKeywordService.ListNegativeKeywords.
@@ -20257,17 +19054,12 @@ class ListNegativeKeywordsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (negativeKeywords != null) {
-      _json['negativeKeywords'] =
-          negativeKeywords.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (negativeKeywords != null)
+          'negativeKeywords':
+              negativeKeywords.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListPartnerAssignedTargetingOptionsResponse {
@@ -20300,17 +19092,12 @@ class ListPartnerAssignedTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedTargetingOptions != null) {
-      _json['assignedTargetingOptions'] =
-          assignedTargetingOptions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedTargetingOptions != null)
+          'assignedTargetingOptions':
+              assignedTargetingOptions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListPartnersResponse {
@@ -20339,16 +19126,11 @@ class ListPartnersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (partners != null) {
-      _json['partners'] = partners.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (partners != null)
+          'partners': partners.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for SiteService.ListSites.
@@ -20378,16 +19160,11 @@ class ListSitesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sites != null) {
-      _json['sites'] = sites.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sites != null)
+          'sites': sites.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for ListTargetingOptions.
@@ -20417,17 +19194,12 @@ class ListTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (targetingOptions != null) {
-      _json['targetingOptions'] =
-          targetingOptions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (targetingOptions != null)
+          'targetingOptions':
+              targetingOptions.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListUsersResponse {
@@ -20457,16 +19229,11 @@ class ListUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (users != null) {
-      _json['users'] = users.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (users != null)
+          'users': users.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A list of locations used for targeting.
@@ -20528,25 +19295,13 @@ class LocationList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (locationListId != null) {
-      _json['locationListId'] = locationListId;
-    }
-    if (locationType != null) {
-      _json['locationType'] = locationType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (displayName != null) 'displayName': displayName,
+        if (locationListId != null) 'locationListId': locationListId,
+        if (locationType != null) 'locationType': locationType,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Specifies how many days into the past to look when determining whether to
@@ -20571,16 +19326,10 @@ class LookbackWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clickDays != null) {
-      _json['clickDays'] = clickDays;
-    }
-    if (impressionDays != null) {
-      _json['impressionDays'] = impressionDays;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clickDays != null) 'clickDays': clickDays,
+        if (impressionDays != null) 'impressionDays': impressionDays,
+      };
 }
 
 /// A single manual trigger in Display & Video 360.
@@ -20660,31 +19409,17 @@ class ManualTrigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activationDurationMinutes != null) {
-      _json['activationDurationMinutes'] = activationDurationMinutes;
-    }
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (latestActivationTime != null) {
-      _json['latestActivationTime'] = latestActivationTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (triggerId != null) {
-      _json['triggerId'] = triggerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activationDurationMinutes != null)
+          'activationDurationMinutes': activationDurationMinutes,
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (displayName != null) 'displayName': displayName,
+        if (latestActivationTime != null)
+          'latestActivationTime': latestActivationTime,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (triggerId != null) 'triggerId': triggerId,
+      };
 }
 
 /// A strategy that automatically adjusts the bid to optimize a specified
@@ -20742,19 +19477,14 @@ class MaximizeSpendBidStrategy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customBiddingAlgorithmId != null) {
-      _json['customBiddingAlgorithmId'] = customBiddingAlgorithmId;
-    }
-    if (maxAverageCpmBidAmountMicros != null) {
-      _json['maxAverageCpmBidAmountMicros'] = maxAverageCpmBidAmountMicros;
-    }
-    if (performanceGoalType != null) {
-      _json['performanceGoalType'] = performanceGoalType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customBiddingAlgorithmId != null)
+          'customBiddingAlgorithmId': customBiddingAlgorithmId,
+        if (maxAverageCpmBidAmountMicros != null)
+          'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros,
+        if (performanceGoalType != null)
+          'performanceGoalType': performanceGoalType,
+      };
 }
 
 /// Measurement settings of a partner.
@@ -20778,16 +19508,12 @@ class MeasurementConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dv360ToCmCostReportingEnabled != null) {
-      _json['dv360ToCmCostReportingEnabled'] = dv360ToCmCostReportingEnabled;
-    }
-    if (dv360ToCmDataSharingEnabled != null) {
-      _json['dv360ToCmDataSharingEnabled'] = dv360ToCmDataSharingEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dv360ToCmCostReportingEnabled != null)
+          'dv360ToCmCostReportingEnabled': dv360ToCmCostReportingEnabled,
+        if (dv360ToCmDataSharingEnabled != null)
+          'dv360ToCmDataSharingEnabled': dv360ToCmDataSharingEnabled,
+      };
 }
 
 /// A mobile app promoted by a mobile app install line item.
@@ -20837,22 +19563,12 @@ class MobileApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    if (publisher != null) {
-      _json['publisher'] = publisher;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appId != null) 'appId': appId,
+        if (displayName != null) 'displayName': displayName,
+        if (platform != null) 'platform': platform,
+        if (publisher != null) 'publisher': publisher,
+      };
 }
 
 /// Represents an amount of money with its currency type.
@@ -20888,19 +19604,11 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }
 
 /// A negatively targeted keyword that belongs to a negative keyword list.
@@ -20932,16 +19640,10 @@ class NegativeKeyword {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keywordValue != null) {
-      _json['keywordValue'] = keywordValue;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keywordValue != null) 'keywordValue': keywordValue,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A list of negative keywords used for targeting.
@@ -20987,22 +19689,13 @@ class NegativeKeywordList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (negativeKeywordListId != null) {
-      _json['negativeKeywordListId'] = negativeKeywordListId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (negativeKeywordListId != null)
+          'negativeKeywordListId': negativeKeywordListId,
+      };
 }
 
 /// Targeting details for negative keyword list.
@@ -21026,13 +19719,10 @@ class NegativeKeywordListAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (negativeKeywordListId != null) {
-      _json['negativeKeywordListId'] = negativeKeywordListId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (negativeKeywordListId != null)
+          'negativeKeywordListId': negativeKeywordListId,
+      };
 }
 
 /// OBA Icon for a Creative
@@ -21117,34 +19807,16 @@ class ObaIcon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clickTrackingUrl != null) {
-      _json['clickTrackingUrl'] = clickTrackingUrl;
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.toJson();
-    }
-    if (landingPageUrl != null) {
-      _json['landingPageUrl'] = landingPageUrl;
-    }
-    if (position != null) {
-      _json['position'] = position;
-    }
-    if (program != null) {
-      _json['program'] = program;
-    }
-    if (resourceMimeType != null) {
-      _json['resourceMimeType'] = resourceMimeType;
-    }
-    if (resourceUrl != null) {
-      _json['resourceUrl'] = resourceUrl;
-    }
-    if (viewTrackingUrl != null) {
-      _json['viewTrackingUrl'] = viewTrackingUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl,
+        if (dimensions != null) 'dimensions': dimensions.toJson(),
+        if (landingPageUrl != null) 'landingPageUrl': landingPageUrl,
+        if (position != null) 'position': position,
+        if (program != null) 'program': program,
+        if (resourceMimeType != null) 'resourceMimeType': resourceMimeType,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+        if (viewTrackingUrl != null) 'viewTrackingUrl': viewTrackingUrl,
+      };
 }
 
 /// On screen position targeting option details.
@@ -21181,16 +19853,10 @@ class OnScreenPositionAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (onScreenPosition != null) {
-      _json['onScreenPosition'] = onScreenPosition;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (onScreenPosition != null) 'onScreenPosition': onScreenPosition,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable on screen position, which could be used by display
@@ -21219,13 +19885,9 @@ class OnScreenPositionTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (onScreenPosition != null) {
-      _json['onScreenPosition'] = onScreenPosition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (onScreenPosition != null) 'onScreenPosition': onScreenPosition,
+      };
 }
 
 /// Assigned operating system targeting option details.
@@ -21261,19 +19923,11 @@ class OperatingSystemAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (negative != null) 'negative': negative,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable operating system.
@@ -21294,13 +19948,9 @@ class OperatingSystemTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -21379,25 +20029,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Settings that control the rate at which a budget is spent.
@@ -21470,22 +20108,13 @@ class Pacing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dailyMaxImpressions != null) {
-      _json['dailyMaxImpressions'] = dailyMaxImpressions;
-    }
-    if (dailyMaxMicros != null) {
-      _json['dailyMaxMicros'] = dailyMaxMicros;
-    }
-    if (pacingPeriod != null) {
-      _json['pacingPeriod'] = pacingPeriod;
-    }
-    if (pacingType != null) {
-      _json['pacingType'] = pacingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dailyMaxImpressions != null)
+          'dailyMaxImpressions': dailyMaxImpressions,
+        if (dailyMaxMicros != null) 'dailyMaxMicros': dailyMaxMicros,
+        if (pacingPeriod != null) 'pacingPeriod': pacingPeriod,
+        if (pacingType != null) 'pacingType': pacingType,
+      };
 }
 
 /// A filtering option that filters on selected file types belonging to a chosen
@@ -21550,19 +20179,11 @@ class ParentEntityFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileType != null) {
-      _json['fileType'] = fileType;
-    }
-    if (filterIds != null) {
-      _json['filterIds'] = filterIds;
-    }
-    if (filterType != null) {
-      _json['filterType'] = filterType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileType != null) 'fileType': fileType,
+        if (filterIds != null) 'filterIds': filterIds,
+        if (filterType != null) 'filterType': filterType,
+      };
 }
 
 /// Details for assigned parental status targeting option.
@@ -21600,16 +20221,10 @@ class ParentalStatusAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parentalStatus != null) {
-      _json['parentalStatus'] = parentalStatus;
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parentalStatus != null) 'parentalStatus': parentalStatus,
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable parental status.
@@ -21638,13 +20253,9 @@ class ParentalStatusTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parentalStatus != null) {
-      _json['parentalStatus'] = parentalStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parentalStatus != null) 'parentalStatus': parentalStatus,
+      };
 }
 
 /// A single partner in Display & Video 360 (DV360).
@@ -21739,37 +20350,18 @@ class Partner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adServerConfig != null) {
-      _json['adServerConfig'] = adServerConfig.toJson();
-    }
-    if (dataAccessConfig != null) {
-      _json['dataAccessConfig'] = dataAccessConfig.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entityStatus != null) {
-      _json['entityStatus'] = entityStatus;
-    }
-    if (exchangeConfig != null) {
-      _json['exchangeConfig'] = exchangeConfig.toJson();
-    }
-    if (generalConfig != null) {
-      _json['generalConfig'] = generalConfig.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (partnerId != null) {
-      _json['partnerId'] = partnerId;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adServerConfig != null) 'adServerConfig': adServerConfig.toJson(),
+        if (dataAccessConfig != null)
+          'dataAccessConfig': dataAccessConfig.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (entityStatus != null) 'entityStatus': entityStatus,
+        if (exchangeConfig != null) 'exchangeConfig': exchangeConfig.toJson(),
+        if (generalConfig != null) 'generalConfig': generalConfig.toJson(),
+        if (name != null) 'name': name,
+        if (partnerId != null) 'partnerId': partnerId,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Ad server related settings of a partner.
@@ -21786,13 +20378,10 @@ class PartnerAdServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (measurementConfig != null) {
-      _json['measurementConfig'] = measurementConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (measurementConfig != null)
+          'measurementConfig': measurementConfig.toJson(),
+      };
 }
 
 /// Settings that control a partner cost.
@@ -21919,25 +20508,14 @@ class PartnerCost {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (costType != null) {
-      _json['costType'] = costType;
-    }
-    if (feeAmount != null) {
-      _json['feeAmount'] = feeAmount;
-    }
-    if (feePercentageMillis != null) {
-      _json['feePercentageMillis'] = feePercentageMillis;
-    }
-    if (feeType != null) {
-      _json['feeType'] = feeType;
-    }
-    if (invoiceType != null) {
-      _json['invoiceType'] = invoiceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (costType != null) 'costType': costType,
+        if (feeAmount != null) 'feeAmount': feeAmount,
+        if (feePercentageMillis != null)
+          'feePercentageMillis': feePercentageMillis,
+        if (feeType != null) 'feeType': feeType,
+        if (invoiceType != null) 'invoiceType': invoiceType,
+      };
 }
 
 /// Settings that control how partner related data may be accessed.
@@ -21956,13 +20534,9 @@ class PartnerDataAccessConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sdfConfig != null) {
-      _json['sdfConfig'] = sdfConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sdfConfig != null) 'sdfConfig': sdfConfig.toJson(),
+      };
 }
 
 /// General settings of a partner.
@@ -21991,16 +20565,10 @@ class PartnerGeneralConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 /// Settings that control how partner revenue is calculated.
@@ -22047,16 +20615,10 @@ class PartnerRevenueModel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (markupAmount != null) {
-      _json['markupAmount'] = markupAmount;
-    }
-    if (markupType != null) {
-      _json['markupType'] = markupType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (markupAmount != null) 'markupAmount': markupAmount,
+        if (markupType != null) 'markupType': markupType,
+      };
 }
 
 /// Settings that control the performance goal of a campaign or insertion order.
@@ -22125,23 +20687,16 @@ class PerformanceGoal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (performanceGoalAmountMicros != null) {
-      _json['performanceGoalAmountMicros'] = performanceGoalAmountMicros;
-    }
-    if (performanceGoalPercentageMicros != null) {
-      _json['performanceGoalPercentageMicros'] =
-          performanceGoalPercentageMicros;
-    }
-    if (performanceGoalString != null) {
-      _json['performanceGoalString'] = performanceGoalString;
-    }
-    if (performanceGoalType != null) {
-      _json['performanceGoalType'] = performanceGoalType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (performanceGoalAmountMicros != null)
+          'performanceGoalAmountMicros': performanceGoalAmountMicros,
+        if (performanceGoalPercentageMicros != null)
+          'performanceGoalPercentageMicros': performanceGoalPercentageMicros,
+        if (performanceGoalString != null)
+          'performanceGoalString': performanceGoalString,
+        if (performanceGoalType != null)
+          'performanceGoalType': performanceGoalType,
+      };
 }
 
 /// A strategy that automatically adjusts the bid to meet or beat a specified
@@ -22233,22 +20788,16 @@ class PerformanceGoalBidStrategy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customBiddingAlgorithmId != null) {
-      _json['customBiddingAlgorithmId'] = customBiddingAlgorithmId;
-    }
-    if (maxAverageCpmBidAmountMicros != null) {
-      _json['maxAverageCpmBidAmountMicros'] = maxAverageCpmBidAmountMicros;
-    }
-    if (performanceGoalAmountMicros != null) {
-      _json['performanceGoalAmountMicros'] = performanceGoalAmountMicros;
-    }
-    if (performanceGoalType != null) {
-      _json['performanceGoalType'] = performanceGoalType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customBiddingAlgorithmId != null)
+          'customBiddingAlgorithmId': customBiddingAlgorithmId,
+        if (maxAverageCpmBidAmountMicros != null)
+          'maxAverageCpmBidAmountMicros': maxAverageCpmBidAmountMicros,
+        if (performanceGoalAmountMicros != null)
+          'performanceGoalAmountMicros': performanceGoalAmountMicros,
+        if (performanceGoalType != null)
+          'performanceGoalType': performanceGoalType,
+      };
 }
 
 /// Targeting details for proximity location list.
@@ -22294,16 +20843,12 @@ class ProximityLocationListAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (proximityLocationListId != null) {
-      _json['proximityLocationListId'] = proximityLocationListId;
-    }
-    if (proximityRadiusRange != null) {
-      _json['proximityRadiusRange'] = proximityRadiusRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (proximityLocationListId != null)
+          'proximityLocationListId': proximityLocationListId,
+        if (proximityRadiusRange != null)
+          'proximityRadiusRange': proximityRadiusRange,
+      };
 }
 
 /// Publisher review status for the creative.
@@ -22331,16 +20876,10 @@ class PublisherReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publisherName != null) {
-      _json['publisherName'] = publisherName;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publisherName != null) 'publisherName': publisherName,
+        if (status != null) 'status': status,
+      };
 }
 
 /// The rate related settings of the inventory source.
@@ -22394,22 +20933,13 @@ class RateDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inventorySourceRateType != null) {
-      _json['inventorySourceRateType'] = inventorySourceRateType;
-    }
-    if (minimumSpend != null) {
-      _json['minimumSpend'] = minimumSpend.toJson();
-    }
-    if (rate != null) {
-      _json['rate'] = rate.toJson();
-    }
-    if (unitsPurchased != null) {
-      _json['unitsPurchased'] = unitsPurchased;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inventorySourceRateType != null)
+          'inventorySourceRateType': inventorySourceRateType,
+        if (minimumSpend != null) 'minimumSpend': minimumSpend.toJson(),
+        if (rate != null) 'rate': rate.toJson(),
+        if (unitsPurchased != null) 'unitsPurchased': unitsPurchased,
+      };
 }
 
 /// Targeting details for regional location list.
@@ -22439,16 +20969,11 @@ class RegionalLocationListAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (regionalLocationListId != null) {
-      _json['regionalLocationListId'] = regionalLocationListId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (negative != null) 'negative': negative,
+        if (regionalLocationListId != null)
+          'regionalLocationListId': regionalLocationListId,
+      };
 }
 
 /// Review statuses for the creative.
@@ -22523,28 +21048,20 @@ class ReviewStatusInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (approvalStatus != null) {
-      _json['approvalStatus'] = approvalStatus;
-    }
-    if (contentAndPolicyReviewStatus != null) {
-      _json['contentAndPolicyReviewStatus'] = contentAndPolicyReviewStatus;
-    }
-    if (creativeAndLandingPageReviewStatus != null) {
-      _json['creativeAndLandingPageReviewStatus'] =
-          creativeAndLandingPageReviewStatus;
-    }
-    if (exchangeReviewStatuses != null) {
-      _json['exchangeReviewStatuses'] =
-          exchangeReviewStatuses.map((value) => value.toJson()).toList();
-    }
-    if (publisherReviewStatuses != null) {
-      _json['publisherReviewStatuses'] =
-          publisherReviewStatuses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (approvalStatus != null) 'approvalStatus': approvalStatus,
+        if (contentAndPolicyReviewStatus != null)
+          'contentAndPolicyReviewStatus': contentAndPolicyReviewStatus,
+        if (creativeAndLandingPageReviewStatus != null)
+          'creativeAndLandingPageReviewStatus':
+              creativeAndLandingPageReviewStatus,
+        if (exchangeReviewStatuses != null)
+          'exchangeReviewStatuses':
+              exchangeReviewStatuses.map((value) => value.toJson()).toList(),
+        if (publisherReviewStatuses != null)
+          'publisherReviewStatuses':
+              publisherReviewStatuses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Structured Data File (SDF) related settings.
@@ -22580,16 +21097,10 @@ class SdfConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adminEmail != null) {
-      _json['adminEmail'] = adminEmail;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adminEmail != null) 'adminEmail': adminEmail,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Type for the response returned by
@@ -22612,13 +21123,9 @@ class SdfDownloadTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// Type for the metadata returned by
@@ -22658,19 +21165,11 @@ class SdfDownloadTaskMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request message for SearchTargetingOptions.
@@ -22716,22 +21215,13 @@ class SearchTargetingOptionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (geoRegionSearchTerms != null) {
-      _json['geoRegionSearchTerms'] = geoRegionSearchTerms.toJson();
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (geoRegionSearchTerms != null)
+          'geoRegionSearchTerms': geoRegionSearchTerms.toJson(),
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// Response message for SearchTargetingOptionsResponse.
@@ -22761,17 +21251,12 @@ class SearchTargetingOptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (targetingOptions != null) {
-      _json['targetingOptions'] =
-          targetingOptions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (targetingOptions != null)
+          'targetingOptions':
+              targetingOptions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Targeting details for sensitive category.
@@ -22852,16 +21337,11 @@ class SensitiveCategoryAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludedTargetingOptionId != null) {
-      _json['excludedTargetingOptionId'] = excludedTargetingOptionId;
-    }
-    if (sensitiveCategory != null) {
-      _json['sensitiveCategory'] = sensitiveCategory;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludedTargetingOptionId != null)
+          'excludedTargetingOptionId': excludedTargetingOptionId,
+        if (sensitiveCategory != null) 'sensitiveCategory': sensitiveCategory,
+      };
 }
 
 /// Represents a targetable sensitive category.
@@ -22934,13 +21414,9 @@ class SensitiveCategoryTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sensitiveCategory != null) {
-      _json['sensitiveCategory'] = sensitiveCategory;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sensitiveCategory != null) 'sensitiveCategory': sensitiveCategory,
+      };
 }
 
 /// A single site.
@@ -22970,16 +21446,10 @@ class Site {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (urlOrAppId != null) {
-      _json['urlOrAppId'] = urlOrAppId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (urlOrAppId != null) 'urlOrAppId': urlOrAppId,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -23029,19 +21499,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Details for assigned sub-exchange targeting option.
@@ -23063,13 +21525,9 @@ class SubExchangeAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+      };
 }
 
 /// Represents a targetable sub-exchange.
@@ -23090,13 +21548,9 @@ class SubExchangeTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// Settings that control the targeting expansion of the line item.
@@ -23142,16 +21596,12 @@ class TargetingExpansionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludeFirstPartyAudience != null) {
-      _json['excludeFirstPartyAudience'] = excludeFirstPartyAudience;
-    }
-    if (targetingExpansionLevel != null) {
-      _json['targetingExpansionLevel'] = targetingExpansionLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludeFirstPartyAudience != null)
+          'excludeFirstPartyAudience': excludeFirstPartyAudience,
+        if (targetingExpansionLevel != null)
+          'targetingExpansionLevel': targetingExpansionLevel,
+      };
 }
 
 /// Represents a single targeting option, which is a targetable concept in
@@ -23461,97 +21911,62 @@ class TargetingOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ageRangeDetails != null) {
-      _json['ageRangeDetails'] = ageRangeDetails.toJson();
-    }
-    if (appCategoryDetails != null) {
-      _json['appCategoryDetails'] = appCategoryDetails.toJson();
-    }
-    if (authorizedSellerStatusDetails != null) {
-      _json['authorizedSellerStatusDetails'] =
-          authorizedSellerStatusDetails.toJson();
-    }
-    if (browserDetails != null) {
-      _json['browserDetails'] = browserDetails.toJson();
-    }
-    if (carrierAndIspDetails != null) {
-      _json['carrierAndIspDetails'] = carrierAndIspDetails.toJson();
-    }
-    if (categoryDetails != null) {
-      _json['categoryDetails'] = categoryDetails.toJson();
-    }
-    if (contentInstreamPositionDetails != null) {
-      _json['contentInstreamPositionDetails'] =
-          contentInstreamPositionDetails.toJson();
-    }
-    if (contentOutstreamPositionDetails != null) {
-      _json['contentOutstreamPositionDetails'] =
-          contentOutstreamPositionDetails.toJson();
-    }
-    if (deviceMakeModelDetails != null) {
-      _json['deviceMakeModelDetails'] = deviceMakeModelDetails.toJson();
-    }
-    if (deviceTypeDetails != null) {
-      _json['deviceTypeDetails'] = deviceTypeDetails.toJson();
-    }
-    if (digitalContentLabelDetails != null) {
-      _json['digitalContentLabelDetails'] = digitalContentLabelDetails.toJson();
-    }
-    if (environmentDetails != null) {
-      _json['environmentDetails'] = environmentDetails.toJson();
-    }
-    if (exchangeDetails != null) {
-      _json['exchangeDetails'] = exchangeDetails.toJson();
-    }
-    if (genderDetails != null) {
-      _json['genderDetails'] = genderDetails.toJson();
-    }
-    if (geoRegionDetails != null) {
-      _json['geoRegionDetails'] = geoRegionDetails.toJson();
-    }
-    if (householdIncomeDetails != null) {
-      _json['householdIncomeDetails'] = householdIncomeDetails.toJson();
-    }
-    if (languageDetails != null) {
-      _json['languageDetails'] = languageDetails.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (onScreenPositionDetails != null) {
-      _json['onScreenPositionDetails'] = onScreenPositionDetails.toJson();
-    }
-    if (operatingSystemDetails != null) {
-      _json['operatingSystemDetails'] = operatingSystemDetails.toJson();
-    }
-    if (parentalStatusDetails != null) {
-      _json['parentalStatusDetails'] = parentalStatusDetails.toJson();
-    }
-    if (sensitiveCategoryDetails != null) {
-      _json['sensitiveCategoryDetails'] = sensitiveCategoryDetails.toJson();
-    }
-    if (subExchangeDetails != null) {
-      _json['subExchangeDetails'] = subExchangeDetails.toJson();
-    }
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    if (targetingType != null) {
-      _json['targetingType'] = targetingType;
-    }
-    if (userRewardedContentDetails != null) {
-      _json['userRewardedContentDetails'] = userRewardedContentDetails.toJson();
-    }
-    if (videoPlayerSizeDetails != null) {
-      _json['videoPlayerSizeDetails'] = videoPlayerSizeDetails.toJson();
-    }
-    if (viewabilityDetails != null) {
-      _json['viewabilityDetails'] = viewabilityDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ageRangeDetails != null)
+          'ageRangeDetails': ageRangeDetails.toJson(),
+        if (appCategoryDetails != null)
+          'appCategoryDetails': appCategoryDetails.toJson(),
+        if (authorizedSellerStatusDetails != null)
+          'authorizedSellerStatusDetails':
+              authorizedSellerStatusDetails.toJson(),
+        if (browserDetails != null) 'browserDetails': browserDetails.toJson(),
+        if (carrierAndIspDetails != null)
+          'carrierAndIspDetails': carrierAndIspDetails.toJson(),
+        if (categoryDetails != null)
+          'categoryDetails': categoryDetails.toJson(),
+        if (contentInstreamPositionDetails != null)
+          'contentInstreamPositionDetails':
+              contentInstreamPositionDetails.toJson(),
+        if (contentOutstreamPositionDetails != null)
+          'contentOutstreamPositionDetails':
+              contentOutstreamPositionDetails.toJson(),
+        if (deviceMakeModelDetails != null)
+          'deviceMakeModelDetails': deviceMakeModelDetails.toJson(),
+        if (deviceTypeDetails != null)
+          'deviceTypeDetails': deviceTypeDetails.toJson(),
+        if (digitalContentLabelDetails != null)
+          'digitalContentLabelDetails': digitalContentLabelDetails.toJson(),
+        if (environmentDetails != null)
+          'environmentDetails': environmentDetails.toJson(),
+        if (exchangeDetails != null)
+          'exchangeDetails': exchangeDetails.toJson(),
+        if (genderDetails != null) 'genderDetails': genderDetails.toJson(),
+        if (geoRegionDetails != null)
+          'geoRegionDetails': geoRegionDetails.toJson(),
+        if (householdIncomeDetails != null)
+          'householdIncomeDetails': householdIncomeDetails.toJson(),
+        if (languageDetails != null)
+          'languageDetails': languageDetails.toJson(),
+        if (name != null) 'name': name,
+        if (onScreenPositionDetails != null)
+          'onScreenPositionDetails': onScreenPositionDetails.toJson(),
+        if (operatingSystemDetails != null)
+          'operatingSystemDetails': operatingSystemDetails.toJson(),
+        if (parentalStatusDetails != null)
+          'parentalStatusDetails': parentalStatusDetails.toJson(),
+        if (sensitiveCategoryDetails != null)
+          'sensitiveCategoryDetails': sensitiveCategoryDetails.toJson(),
+        if (subExchangeDetails != null)
+          'subExchangeDetails': subExchangeDetails.toJson(),
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+        if (targetingType != null) 'targetingType': targetingType,
+        if (userRewardedContentDetails != null)
+          'userRewardedContentDetails': userRewardedContentDetails.toJson(),
+        if (videoPlayerSizeDetails != null)
+          'videoPlayerSizeDetails': videoPlayerSizeDetails.toJson(),
+        if (viewabilityDetails != null)
+          'viewabilityDetails': viewabilityDetails.toJson(),
+      };
 }
 
 /// Settings for advertisers that use third-party ad servers only.
@@ -23570,13 +21985,10 @@ class ThirdPartyOnlyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pixelOrderIdReportingEnabled != null) {
-      _json['pixelOrderIdReportingEnabled'] = pixelOrderIdReportingEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pixelOrderIdReportingEnabled != null)
+          'pixelOrderIdReportingEnabled': pixelOrderIdReportingEnabled,
+      };
 }
 
 /// Tracking URLs from third parties to track interactions with an audio or a
@@ -23637,16 +22049,10 @@ class ThirdPartyUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Assigned third party verifier targeting option details.
@@ -23680,19 +22086,12 @@ class ThirdPartyVerifierAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adloox != null) {
-      _json['adloox'] = adloox.toJson();
-    }
-    if (doubleVerify != null) {
-      _json['doubleVerify'] = doubleVerify.toJson();
-    }
-    if (integralAdScience != null) {
-      _json['integralAdScience'] = integralAdScience.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adloox != null) 'adloox': adloox.toJson(),
+        if (doubleVerify != null) 'doubleVerify': doubleVerify.toJson(),
+        if (integralAdScience != null)
+          'integralAdScience': integralAdScience.toJson(),
+      };
 }
 
 /// A time range.
@@ -23718,16 +22117,10 @@ class TimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Timer event of the creative.
@@ -23753,16 +22146,10 @@ class TimerEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (reportingName != null) {
-      _json['reportingName'] = reportingName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (reportingName != null) 'reportingName': reportingName,
+      };
 }
 
 /// Settings that control the behavior of a single Floodlight activity config.
@@ -23804,19 +22191,14 @@ class TrackingFloodlightActivityConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (floodlightActivityId != null) {
-      _json['floodlightActivityId'] = floodlightActivityId;
-    }
-    if (postClickLookbackWindowDays != null) {
-      _json['postClickLookbackWindowDays'] = postClickLookbackWindowDays;
-    }
-    if (postViewLookbackWindowDays != null) {
-      _json['postViewLookbackWindowDays'] = postViewLookbackWindowDays;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (floodlightActivityId != null)
+          'floodlightActivityId': floodlightActivityId,
+        if (postClickLookbackWindowDays != null)
+          'postClickLookbackWindowDays': postClickLookbackWindowDays,
+        if (postViewLookbackWindowDays != null)
+          'postViewLookbackWindowDays': postViewLookbackWindowDays,
+      };
 }
 
 /// Represents information about the transcoded audio or video file.
@@ -23883,37 +22265,17 @@ class Transcode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioBitRateKbps != null) {
-      _json['audioBitRateKbps'] = audioBitRateKbps;
-    }
-    if (audioSampleRateHz != null) {
-      _json['audioSampleRateHz'] = audioSampleRateHz;
-    }
-    if (bitRateKbps != null) {
-      _json['bitRateKbps'] = bitRateKbps;
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.toJson();
-    }
-    if (fileSizeBytes != null) {
-      _json['fileSizeBytes'] = fileSizeBytes;
-    }
-    if (frameRate != null) {
-      _json['frameRate'] = frameRate;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (transcoded != null) {
-      _json['transcoded'] = transcoded;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioBitRateKbps != null) 'audioBitRateKbps': audioBitRateKbps,
+        if (audioSampleRateHz != null) 'audioSampleRateHz': audioSampleRateHz,
+        if (bitRateKbps != null) 'bitRateKbps': bitRateKbps,
+        if (dimensions != null) 'dimensions': dimensions.toJson(),
+        if (fileSizeBytes != null) 'fileSizeBytes': fileSizeBytes,
+        if (frameRate != null) 'frameRate': frameRate,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (name != null) 'name': name,
+        if (transcoded != null) 'transcoded': transcoded,
+      };
 }
 
 /// A creative identifier provided by a registry that is unique across all
@@ -23951,16 +22313,10 @@ class UniversalAdId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (registry != null) {
-      _json['registry'] = registry;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (registry != null) 'registry': registry,
+      };
 }
 
 /// Details for assigned URL targeting option.
@@ -23991,16 +22347,10 @@ class UrlAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (negative != null) {
-      _json['negative'] = negative;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (negative != null) 'negative': negative,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A single user in Display & Video 360.
@@ -24058,26 +22408,15 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignedUserRoles != null) {
-      _json['assignedUserRoles'] =
-          assignedUserRoles.map((value) => value.toJson()).toList();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignedUserRoles != null)
+          'assignedUserRoles':
+              assignedUserRoles.map((value) => value.toJson()).toList(),
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (name != null) 'name': name,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// User rewarded content targeting option details.
@@ -24114,16 +22453,11 @@ class UserRewardedContentAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    if (userRewardedContent != null) {
-      _json['userRewardedContent'] = userRewardedContent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+        if (userRewardedContent != null)
+          'userRewardedContent': userRewardedContent,
+      };
 }
 
 /// Represents a targetable user rewarded content status for video ads only.
@@ -24151,13 +22485,10 @@ class UserRewardedContentTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (userRewardedContent != null) {
-      _json['userRewardedContent'] = userRewardedContent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (userRewardedContent != null)
+          'userRewardedContent': userRewardedContent,
+      };
 }
 
 /// Video player size targeting option details.
@@ -24202,16 +22533,10 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    if (videoPlayerSize != null) {
-      _json['videoPlayerSize'] = videoPlayerSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+        if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize,
+      };
 }
 
 /// Represents a targetable video player size.
@@ -24245,13 +22570,9 @@ class VideoPlayerSizeTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (videoPlayerSize != null) {
-      _json['videoPlayerSize'] = videoPlayerSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (videoPlayerSize != null) 'videoPlayerSize': videoPlayerSize,
+      };
 }
 
 /// Assigned viewability targeting option details.
@@ -24304,16 +22625,10 @@ class ViewabilityAssignedTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetingOptionId != null) {
-      _json['targetingOptionId'] = targetingOptionId;
-    }
-    if (viewability != null) {
-      _json['viewability'] = viewability;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetingOptionId != null) 'targetingOptionId': targetingOptionId,
+        if (viewability != null) 'viewability': viewability,
+      };
 }
 
 /// Represents a targetable viewability.
@@ -24356,11 +22671,7 @@ class ViewabilityTargetingOptionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (viewability != null) {
-      _json['viewability'] = viewability;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (viewability != null) 'viewability': viewability,
+      };
 }

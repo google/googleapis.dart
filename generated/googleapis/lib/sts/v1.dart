@@ -245,31 +245,16 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audience != null) {
-      _json['audience'] = audience;
-    }
-    if (grantType != null) {
-      _json['grantType'] = grantType;
-    }
-    if (options != null) {
-      _json['options'] = options;
-    }
-    if (requestedTokenType != null) {
-      _json['requestedTokenType'] = requestedTokenType;
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    if (subjectToken != null) {
-      _json['subjectToken'] = subjectToken;
-    }
-    if (subjectTokenType != null) {
-      _json['subjectTokenType'] = subjectTokenType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audience != null) 'audience': audience,
+        if (grantType != null) 'grantType': grantType,
+        if (options != null) 'options': options,
+        if (requestedTokenType != null)
+          'requestedTokenType': requestedTokenType,
+        if (scope != null) 'scope': scope,
+        if (subjectToken != null) 'subjectToken': subjectToken,
+        if (subjectTokenType != null) 'subjectTokenType': subjectTokenType,
+      };
 }
 
 /// Response message for ExchangeToken.
@@ -317,20 +302,10 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessToken != null) {
-      _json['access_token'] = accessToken;
-    }
-    if (expiresIn != null) {
-      _json['expires_in'] = expiresIn;
-    }
-    if (issuedTokenType != null) {
-      _json['issued_token_type'] = issuedTokenType;
-    }
-    if (tokenType != null) {
-      _json['token_type'] = tokenType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessToken != null) 'access_token': accessToken,
+        if (expiresIn != null) 'expires_in': expiresIn,
+        if (issuedTokenType != null) 'issued_token_type': issuedTokenType,
+        if (tokenType != null) 'token_type': tokenType,
+      };
 }

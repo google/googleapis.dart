@@ -996,16 +996,11 @@ class Capacity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publishMibPerSec != null) {
-      _json['publishMibPerSec'] = publishMibPerSec;
-    }
-    if (subscribeMibPerSec != null) {
-      _json['subscribeMibPerSec'] = subscribeMibPerSec;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publishMibPerSec != null) 'publishMibPerSec': publishMibPerSec,
+        if (subscribeMibPerSec != null)
+          'subscribeMibPerSec': subscribeMibPerSec,
+      };
 }
 
 /// Compute the current head cursor for a partition.
@@ -1023,13 +1018,9 @@ class ComputeHeadCursorRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (partition != null) {
-      _json['partition'] = partition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (partition != null) 'partition': partition,
+      };
 }
 
 /// Response containing the head cursor for the requested topic and partition.
@@ -1046,13 +1037,9 @@ class ComputeHeadCursorResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headCursor != null) {
-      _json['headCursor'] = headCursor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headCursor != null) 'headCursor': headCursor.toJson(),
+      };
 }
 
 /// Compute statistics about a range of messages in a given topic and partition.
@@ -1088,19 +1075,11 @@ class ComputeMessageStatsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endCursor != null) {
-      _json['endCursor'] = endCursor.toJson();
-    }
-    if (partition != null) {
-      _json['partition'] = partition;
-    }
-    if (startCursor != null) {
-      _json['startCursor'] = startCursor.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endCursor != null) 'endCursor': endCursor.toJson(),
+        if (partition != null) 'partition': partition,
+        if (startCursor != null) 'startCursor': startCursor.toJson(),
+      };
 }
 
 /// Response containing stats for messages in the requested topic and partition.
@@ -1141,22 +1120,13 @@ class ComputeMessageStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (messageBytes != null) {
-      _json['messageBytes'] = messageBytes;
-    }
-    if (messageCount != null) {
-      _json['messageCount'] = messageCount;
-    }
-    if (minimumEventTime != null) {
-      _json['minimumEventTime'] = minimumEventTime;
-    }
-    if (minimumPublishTime != null) {
-      _json['minimumPublishTime'] = minimumPublishTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (messageBytes != null) 'messageBytes': messageBytes,
+        if (messageCount != null) 'messageCount': messageCount,
+        if (minimumEventTime != null) 'minimumEventTime': minimumEventTime,
+        if (minimumPublishTime != null)
+          'minimumPublishTime': minimumPublishTime,
+      };
 }
 
 /// A cursor that describes the position of a message within a topic partition.
@@ -1174,13 +1144,9 @@ class Cursor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (offset != null) 'offset': offset,
+      };
 }
 
 /// The settings for a subscription's message delivery.
@@ -1204,13 +1170,10 @@ class DeliveryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deliveryRequirement != null) {
-      _json['deliveryRequirement'] = deliveryRequirement;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deliveryRequirement != null)
+          'deliveryRequirement': deliveryRequirement,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1227,10 +1190,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response for ListPartitionCursors
@@ -1257,17 +1217,12 @@ class ListPartitionCursorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (partitionCursors != null) {
-      _json['partitionCursors'] =
-          partitionCursors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (partitionCursors != null)
+          'partitionCursors':
+              partitionCursors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for ListSubscriptions.
@@ -1297,17 +1252,12 @@ class ListSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (subscriptions != null) {
-      _json['subscriptions'] =
-          subscriptions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (subscriptions != null)
+          'subscriptions':
+              subscriptions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for ListTopicSubscriptions.
@@ -1336,16 +1286,10 @@ class ListTopicSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (subscriptions != null) {
-      _json['subscriptions'] = subscriptions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (subscriptions != null) 'subscriptions': subscriptions,
+      };
 }
 
 /// Response for ListTopics.
@@ -1375,16 +1319,11 @@ class ListTopicsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (topics != null) {
-      _json['topics'] = topics.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (topics != null)
+          'topics': topics.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The settings for a topic's partitions.
@@ -1421,19 +1360,11 @@ class PartitionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (capacity != null) {
-      _json['capacity'] = capacity.toJson();
-    }
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (scale != null) {
-      _json['scale'] = scale;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (capacity != null) 'capacity': capacity.toJson(),
+        if (count != null) 'count': count,
+        if (scale != null) 'scale': scale,
+      };
 }
 
 /// A pair of a Cursor and the partition it is for.
@@ -1456,16 +1387,10 @@ class PartitionCursor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cursor != null) {
-      _json['cursor'] = cursor.toJson();
-    }
-    if (partition != null) {
-      _json['partition'] = partition;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cursor != null) 'cursor': cursor.toJson(),
+        if (partition != null) 'partition': partition,
+      };
 }
 
 /// The settings for a topic's message retention.
@@ -1494,16 +1419,10 @@ class RetentionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (perPartitionBytes != null) {
-      _json['perPartitionBytes'] = perPartitionBytes;
-    }
-    if (period != null) {
-      _json['period'] = period;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (perPartitionBytes != null) 'perPartitionBytes': perPartitionBytes,
+        if (period != null) 'period': period,
+      };
 }
 
 /// Metadata about a subscription resource.
@@ -1538,19 +1457,11 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deliveryConfig != null) {
-      _json['deliveryConfig'] = deliveryConfig.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (topic != null) {
-      _json['topic'] = topic;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deliveryConfig != null) 'deliveryConfig': deliveryConfig.toJson(),
+        if (name != null) 'name': name,
+        if (topic != null) 'topic': topic,
+      };
 }
 
 /// Metadata about a topic resource.
@@ -1583,19 +1494,13 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (partitionConfig != null) {
-      _json['partitionConfig'] = partitionConfig.toJson();
-    }
-    if (retentionConfig != null) {
-      _json['retentionConfig'] = retentionConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (partitionConfig != null)
+          'partitionConfig': partitionConfig.toJson(),
+        if (retentionConfig != null)
+          'retentionConfig': retentionConfig.toJson(),
+      };
 }
 
 /// Response for GetTopicPartitions.
@@ -1611,11 +1516,7 @@ class TopicPartitions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (partitionCount != null) {
-      _json['partitionCount'] = partitionCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (partitionCount != null) 'partitionCount': partitionCount,
+      };
 }

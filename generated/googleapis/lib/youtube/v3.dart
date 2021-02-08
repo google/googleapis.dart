@@ -5953,23 +5953,15 @@ class AbuseReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (abuseTypes != null) {
-      _json['abuseTypes'] = abuseTypes.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (relatedEntities != null) {
-      _json['relatedEntities'] =
-          relatedEntities.map((value) => value.toJson()).toList();
-    }
-    if (subject != null) {
-      _json['subject'] = subject.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (abuseTypes != null)
+          'abuseTypes': abuseTypes.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description,
+        if (relatedEntities != null)
+          'relatedEntities':
+              relatedEntities.map((value) => value.toJson()).toList(),
+        if (subject != null) 'subject': subject.toJson(),
+      };
 }
 
 class AbuseType {
@@ -5983,13 +5975,9 @@ class AbuseType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 /// Rights management policy for YouTube resources.
@@ -6015,16 +6003,10 @@ class AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowed != null) {
-      _json['allowed'] = allowed;
-    }
-    if (exception != null) {
-      _json['exception'] = exception;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowed != null) 'allowed': allowed,
+        if (exception != null) 'exception': exception,
+      };
 }
 
 /// An *activity* resource contains information about an action that a
@@ -6080,25 +6062,13 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 /// Details about the content of an activity: the video that was shared, the
@@ -6215,43 +6185,19 @@ class ActivityContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bulletin != null) {
-      _json['bulletin'] = bulletin.toJson();
-    }
-    if (channelItem != null) {
-      _json['channelItem'] = channelItem.toJson();
-    }
-    if (comment != null) {
-      _json['comment'] = comment.toJson();
-    }
-    if (favorite != null) {
-      _json['favorite'] = favorite.toJson();
-    }
-    if (like != null) {
-      _json['like'] = like.toJson();
-    }
-    if (playlistItem != null) {
-      _json['playlistItem'] = playlistItem.toJson();
-    }
-    if (promotedItem != null) {
-      _json['promotedItem'] = promotedItem.toJson();
-    }
-    if (recommendation != null) {
-      _json['recommendation'] = recommendation.toJson();
-    }
-    if (social != null) {
-      _json['social'] = social.toJson();
-    }
-    if (subscription != null) {
-      _json['subscription'] = subscription.toJson();
-    }
-    if (upload != null) {
-      _json['upload'] = upload.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bulletin != null) 'bulletin': bulletin.toJson(),
+        if (channelItem != null) 'channelItem': channelItem.toJson(),
+        if (comment != null) 'comment': comment.toJson(),
+        if (favorite != null) 'favorite': favorite.toJson(),
+        if (like != null) 'like': like.toJson(),
+        if (playlistItem != null) 'playlistItem': playlistItem.toJson(),
+        if (promotedItem != null) 'promotedItem': promotedItem.toJson(),
+        if (recommendation != null) 'recommendation': recommendation.toJson(),
+        if (social != null) 'social': social.toJson(),
+        if (subscription != null) 'subscription': subscription.toJson(),
+        if (upload != null) 'upload': upload.toJson(),
+      };
 }
 
 /// Details about a channel bulletin post.
@@ -6271,13 +6217,9 @@ class ActivityContentDetailsBulletin {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Details about a resource which was added to a channel.
@@ -6295,13 +6237,9 @@ class ActivityContentDetailsChannelItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Information about a resource that received a comment.
@@ -6319,13 +6257,9 @@ class ActivityContentDetailsComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Information about a video that was marked as a favorite video.
@@ -6343,13 +6277,9 @@ class ActivityContentDetailsFavorite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Information about a resource that received a positive (like) rating.
@@ -6367,13 +6297,9 @@ class ActivityContentDetailsLike {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Information about a new playlist item.
@@ -6403,19 +6329,11 @@ class ActivityContentDetailsPlaylistItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (playlistId != null) {
-      _json['playlistId'] = playlistId;
-    }
-    if (playlistItemId != null) {
-      _json['playlistItemId'] = playlistItemId;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (playlistId != null) 'playlistId': playlistId,
+        if (playlistItemId != null) 'playlistItemId': playlistItemId,
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Details about a resource which is being promoted.
@@ -6504,40 +6422,19 @@ class ActivityContentDetailsPromotedItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adTag != null) {
-      _json['adTag'] = adTag;
-    }
-    if (clickTrackingUrl != null) {
-      _json['clickTrackingUrl'] = clickTrackingUrl;
-    }
-    if (creativeViewUrl != null) {
-      _json['creativeViewUrl'] = creativeViewUrl;
-    }
-    if (ctaType != null) {
-      _json['ctaType'] = ctaType;
-    }
-    if (customCtaButtonText != null) {
-      _json['customCtaButtonText'] = customCtaButtonText;
-    }
-    if (descriptionText != null) {
-      _json['descriptionText'] = descriptionText;
-    }
-    if (destinationUrl != null) {
-      _json['destinationUrl'] = destinationUrl;
-    }
-    if (forecastingUrl != null) {
-      _json['forecastingUrl'] = forecastingUrl;
-    }
-    if (impressionUrl != null) {
-      _json['impressionUrl'] = impressionUrl;
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adTag != null) 'adTag': adTag,
+        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl,
+        if (creativeViewUrl != null) 'creativeViewUrl': creativeViewUrl,
+        if (ctaType != null) 'ctaType': ctaType,
+        if (customCtaButtonText != null)
+          'customCtaButtonText': customCtaButtonText,
+        if (descriptionText != null) 'descriptionText': descriptionText,
+        if (destinationUrl != null) 'destinationUrl': destinationUrl,
+        if (forecastingUrl != null) 'forecastingUrl': forecastingUrl,
+        if (impressionUrl != null) 'impressionUrl': impressionUrl,
+        if (videoId != null) 'videoId': videoId,
+      };
 }
 
 /// Information that identifies the recommended resource.
@@ -6574,19 +6471,11 @@ class ActivityContentDetailsRecommendation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    if (seedResourceId != null) {
-      _json['seedResourceId'] = seedResourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reason != null) 'reason': reason,
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+        if (seedResourceId != null) 'seedResourceId': seedResourceId.toJson(),
+      };
 }
 
 /// Details about a social network post.
@@ -6633,25 +6522,13 @@ class ActivityContentDetailsSocial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (author != null) {
-      _json['author'] = author;
-    }
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (referenceUrl != null) {
-      _json['referenceUrl'] = referenceUrl;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (author != null) 'author': author,
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (referenceUrl != null) 'referenceUrl': referenceUrl,
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about a channel that a user subscribed to.
@@ -6669,13 +6546,9 @@ class ActivityContentDetailsSubscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Information about the uploaded video.
@@ -6691,13 +6564,9 @@ class ActivityContentDetailsUpload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (videoId != null) 'videoId': videoId,
+      };
 }
 
 class ActivityListResponse {
@@ -6765,37 +6634,19 @@ class ActivityListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about an activity, including title, description, thumbnails,
@@ -6884,34 +6735,16 @@ class ActivitySnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelTitle != null) {
-      _json['channelTitle'] = channelTitle;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (groupId != null) {
-      _json['groupId'] = groupId;
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (channelTitle != null) 'channelTitle': channelTitle,
+        if (description != null) 'description': description,
+        if (groupId != null) 'groupId': groupId,
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A *caption* resource represents a YouTube caption track.
@@ -6950,22 +6783,12 @@ class Caption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class CaptionListResponse {
@@ -7009,25 +6832,14 @@ class CaptionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about a caption track, such as its language and name.
@@ -7162,49 +6974,21 @@ class CaptionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioTrackType != null) {
-      _json['audioTrackType'] = audioTrackType;
-    }
-    if (failureReason != null) {
-      _json['failureReason'] = failureReason;
-    }
-    if (isAutoSynced != null) {
-      _json['isAutoSynced'] = isAutoSynced;
-    }
-    if (isCC != null) {
-      _json['isCC'] = isCC;
-    }
-    if (isDraft != null) {
-      _json['isDraft'] = isDraft;
-    }
-    if (isEasyReader != null) {
-      _json['isEasyReader'] = isEasyReader;
-    }
-    if (isLarge != null) {
-      _json['isLarge'] = isLarge;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (lastUpdated != null) {
-      _json['lastUpdated'] = (lastUpdated).toIso8601String();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (trackKind != null) {
-      _json['trackKind'] = trackKind;
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioTrackType != null) 'audioTrackType': audioTrackType,
+        if (failureReason != null) 'failureReason': failureReason,
+        if (isAutoSynced != null) 'isAutoSynced': isAutoSynced,
+        if (isCC != null) 'isCC': isCC,
+        if (isDraft != null) 'isDraft': isDraft,
+        if (isEasyReader != null) 'isEasyReader': isEasyReader,
+        if (isLarge != null) 'isLarge': isLarge,
+        if (language != null) 'language': language,
+        if (lastUpdated != null) 'lastUpdated': (lastUpdated).toIso8601String(),
+        if (name != null) 'name': name,
+        if (status != null) 'status': status,
+        if (trackKind != null) 'trackKind': trackKind,
+        if (videoId != null) 'videoId': videoId,
+      };
 }
 
 /// Brief description of the live stream cdn settings.
@@ -7264,25 +7048,13 @@ class CdnSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (frameRate != null) {
-      _json['frameRate'] = frameRate;
-    }
-    if (ingestionInfo != null) {
-      _json['ingestionInfo'] = ingestionInfo.toJson();
-    }
-    if (ingestionType != null) {
-      _json['ingestionType'] = ingestionType;
-    }
-    if (resolution != null) {
-      _json['resolution'] = resolution;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (format != null) 'format': format,
+        if (frameRate != null) 'frameRate': frameRate,
+        if (ingestionInfo != null) 'ingestionInfo': ingestionInfo.toJson(),
+        if (ingestionType != null) 'ingestionType': ingestionType,
+        if (resolution != null) 'resolution': resolution,
+      };
 }
 
 /// A *channel* resource contains information about a YouTube channel.
@@ -7397,50 +7169,26 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditDetails != null) {
-      _json['auditDetails'] = auditDetails.toJson();
-    }
-    if (brandingSettings != null) {
-      _json['brandingSettings'] = brandingSettings.toJson();
-    }
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (contentOwnerDetails != null) {
-      _json['contentOwnerDetails'] = contentOwnerDetails.toJson();
-    }
-    if (conversionPings != null) {
-      _json['conversionPings'] = conversionPings.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (localizations != null) {
-      _json['localizations'] =
-          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (statistics != null) {
-      _json['statistics'] = statistics.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (topicDetails != null) {
-      _json['topicDetails'] = topicDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditDetails != null) 'auditDetails': auditDetails.toJson(),
+        if (brandingSettings != null)
+          'brandingSettings': brandingSettings.toJson(),
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (contentOwnerDetails != null)
+          'contentOwnerDetails': contentOwnerDetails.toJson(),
+        if (conversionPings != null)
+          'conversionPings': conversionPings.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (localizations != null)
+          'localizations': localizations
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (statistics != null) 'statistics': statistics.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (topicDetails != null) 'topicDetails': topicDetails.toJson(),
+      };
 }
 
 /// The auditDetails object encapsulates channel data that is relevant for
@@ -7472,20 +7220,14 @@ class ChannelAuditDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (communityGuidelinesGoodStanding != null) {
-      _json['communityGuidelinesGoodStanding'] =
-          communityGuidelinesGoodStanding;
-    }
-    if (contentIdClaimsGoodStanding != null) {
-      _json['contentIdClaimsGoodStanding'] = contentIdClaimsGoodStanding;
-    }
-    if (copyrightStrikesGoodStanding != null) {
-      _json['copyrightStrikesGoodStanding'] = copyrightStrikesGoodStanding;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (communityGuidelinesGoodStanding != null)
+          'communityGuidelinesGoodStanding': communityGuidelinesGoodStanding,
+        if (contentIdClaimsGoodStanding != null)
+          'contentIdClaimsGoodStanding': contentIdClaimsGoodStanding,
+        if (copyrightStrikesGoodStanding != null)
+          'copyrightStrikesGoodStanding': copyrightStrikesGoodStanding,
+      };
 }
 
 /// A channel banner returned as the response to a channel_banner.insert call.
@@ -7514,19 +7256,11 @@ class ChannelBannerResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Branding properties of a YouTube channel.
@@ -7566,22 +7300,13 @@ class ChannelBrandingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channel != null) {
-      _json['channel'] = channel.toJson();
-    }
-    if (hints != null) {
-      _json['hints'] = hints.map((value) => value.toJson()).toList();
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (watch != null) {
-      _json['watch'] = watch.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channel != null) 'channel': channel.toJson(),
+        if (hints != null)
+          'hints': hints.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image.toJson(),
+        if (watch != null) 'watch': watch.toJson(),
+      };
 }
 
 class ChannelContentDetailsRelatedPlaylists {
@@ -7635,25 +7360,13 @@ class ChannelContentDetailsRelatedPlaylists {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (favorites != null) {
-      _json['favorites'] = favorites;
-    }
-    if (likes != null) {
-      _json['likes'] = likes;
-    }
-    if (uploads != null) {
-      _json['uploads'] = uploads;
-    }
-    if (watchHistory != null) {
-      _json['watchHistory'] = watchHistory;
-    }
-    if (watchLater != null) {
-      _json['watchLater'] = watchLater;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (favorites != null) 'favorites': favorites,
+        if (likes != null) 'likes': likes,
+        if (uploads != null) 'uploads': uploads,
+        if (watchHistory != null) 'watchHistory': watchHistory,
+        if (watchLater != null) 'watchLater': watchLater,
+      };
 }
 
 /// Details about the content of a channel.
@@ -7669,13 +7382,10 @@ class ChannelContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (relatedPlaylists != null) {
-      _json['relatedPlaylists'] = relatedPlaylists.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (relatedPlaylists != null)
+          'relatedPlaylists': relatedPlaylists.toJson(),
+      };
 }
 
 /// The contentOwnerDetails object encapsulates channel data that is relevant
@@ -7698,16 +7408,10 @@ class ChannelContentOwnerDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentOwner != null) {
-      _json['contentOwner'] = contentOwner;
-    }
-    if (timeLinked != null) {
-      _json['timeLinked'] = (timeLinked).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentOwner != null) 'contentOwner': contentOwner,
+        if (timeLinked != null) 'timeLinked': (timeLinked).toIso8601String(),
+      };
 }
 
 /// Pings that the app shall fire (authenticated by biscotti cookie).
@@ -7743,16 +7447,10 @@ class ChannelConversionPing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context;
-    }
-    if (conversionUrl != null) {
-      _json['conversionUrl'] = conversionUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context,
+        if (conversionUrl != null) 'conversionUrl': conversionUrl,
+      };
 }
 
 /// The conversionPings object encapsulates information about conversion pings
@@ -7775,13 +7473,10 @@ class ChannelConversionPings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pings != null) {
-      _json['pings'] = pings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pings != null)
+          'pings': pings.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ChannelListResponse {
@@ -7849,37 +7544,19 @@ class ChannelListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Channel localization setting
@@ -7901,16 +7578,10 @@ class ChannelLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (title != null) 'title': title,
+      };
 }
 
 class ChannelProfileDetails {
@@ -7943,22 +7614,12 @@ class ChannelProfileDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelUrl != null) {
-      _json['channelUrl'] = channelUrl;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (profileImageUrl != null) {
-      _json['profileImageUrl'] = profileImageUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (channelUrl != null) 'channelUrl': channelUrl,
+        if (displayName != null) 'displayName': displayName,
+        if (profileImageUrl != null) 'profileImageUrl': profileImageUrl,
+      };
 }
 
 class ChannelSection {
@@ -8025,32 +7686,17 @@ class ChannelSection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (localizations != null) {
-      _json['localizations'] =
-          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (targeting != null) {
-      _json['targeting'] = targeting.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (localizations != null)
+          'localizations': localizations
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (targeting != null) 'targeting': targeting.toJson(),
+      };
 }
 
 /// Details about a channelsection, including playlists and channels.
@@ -8078,16 +7724,10 @@ class ChannelSectionContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channels != null) {
-      _json['channels'] = channels;
-    }
-    if (playlists != null) {
-      _json['playlists'] = playlists;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channels != null) 'channels': channels,
+        if (playlists != null) 'playlists': playlists,
+      };
 }
 
 class ChannelSectionListResponse {
@@ -8131,25 +7771,14 @@ class ChannelSectionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// ChannelSection localization setting
@@ -8165,13 +7794,9 @@ class ChannelSectionLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (title != null) 'title': title,
+      };
 }
 
 /// Basic details about a channel section, including title, style and position.
@@ -8247,31 +7872,15 @@ class ChannelSectionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage;
-    }
-    if (localized != null) {
-      _json['localized'] = localized.toJson();
-    }
-    if (position != null) {
-      _json['position'] = position;
-    }
-    if (style != null) {
-      _json['style'] = style;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+        if (localized != null) 'localized': localized.toJson(),
+        if (position != null) 'position': position,
+        if (style != null) 'style': style,
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+      };
 }
 
 /// ChannelSection targeting setting.
@@ -8305,19 +7914,11 @@ class ChannelSectionTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (countries != null) {
-      _json['countries'] = countries;
-    }
-    if (languages != null) {
-      _json['languages'] = languages;
-    }
-    if (regions != null) {
-      _json['regions'] = regions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (countries != null) 'countries': countries,
+        if (languages != null) 'languages': languages,
+        if (regions != null) 'regions': regions,
+      };
 }
 
 /// Branding properties for the channel view.
@@ -8414,52 +8015,27 @@ class ChannelSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (country != null) {
-      _json['country'] = country;
-    }
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage;
-    }
-    if (defaultTab != null) {
-      _json['defaultTab'] = defaultTab;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (featuredChannelsTitle != null) {
-      _json['featuredChannelsTitle'] = featuredChannelsTitle;
-    }
-    if (featuredChannelsUrls != null) {
-      _json['featuredChannelsUrls'] = featuredChannelsUrls;
-    }
-    if (keywords != null) {
-      _json['keywords'] = keywords;
-    }
-    if (moderateComments != null) {
-      _json['moderateComments'] = moderateComments;
-    }
-    if (profileColor != null) {
-      _json['profileColor'] = profileColor;
-    }
-    if (showBrowseView != null) {
-      _json['showBrowseView'] = showBrowseView;
-    }
-    if (showRelatedChannels != null) {
-      _json['showRelatedChannels'] = showRelatedChannels;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (trackingAnalyticsAccountId != null) {
-      _json['trackingAnalyticsAccountId'] = trackingAnalyticsAccountId;
-    }
-    if (unsubscribedTrailer != null) {
-      _json['unsubscribedTrailer'] = unsubscribedTrailer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (country != null) 'country': country,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+        if (defaultTab != null) 'defaultTab': defaultTab,
+        if (description != null) 'description': description,
+        if (featuredChannelsTitle != null)
+          'featuredChannelsTitle': featuredChannelsTitle,
+        if (featuredChannelsUrls != null)
+          'featuredChannelsUrls': featuredChannelsUrls,
+        if (keywords != null) 'keywords': keywords,
+        if (moderateComments != null) 'moderateComments': moderateComments,
+        if (profileColor != null) 'profileColor': profileColor,
+        if (showBrowseView != null) 'showBrowseView': showBrowseView,
+        if (showRelatedChannels != null)
+          'showRelatedChannels': showRelatedChannels,
+        if (title != null) 'title': title,
+        if (trackingAnalyticsAccountId != null)
+          'trackingAnalyticsAccountId': trackingAnalyticsAccountId,
+        if (unsubscribedTrailer != null)
+          'unsubscribedTrailer': unsubscribedTrailer,
+      };
 }
 
 /// Basic details about a channel, including title, description and thumbnails.
@@ -8531,34 +8107,16 @@ class ChannelSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (country != null) {
-      _json['country'] = country;
-    }
-    if (customUrl != null) {
-      _json['customUrl'] = customUrl;
-    }
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (localized != null) {
-      _json['localized'] = localized.toJson();
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (country != null) 'country': country,
+        if (customUrl != null) 'customUrl': customUrl,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+        if (description != null) 'description': description,
+        if (localized != null) 'localized': localized.toJson(),
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Statistics about a channel: number of subscribers, number of videos in the
@@ -8599,25 +8157,14 @@ class ChannelStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commentCount != null) {
-      _json['commentCount'] = commentCount;
-    }
-    if (hiddenSubscriberCount != null) {
-      _json['hiddenSubscriberCount'] = hiddenSubscriberCount;
-    }
-    if (subscriberCount != null) {
-      _json['subscriberCount'] = subscriberCount;
-    }
-    if (videoCount != null) {
-      _json['videoCount'] = videoCount;
-    }
-    if (viewCount != null) {
-      _json['viewCount'] = viewCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commentCount != null) 'commentCount': commentCount,
+        if (hiddenSubscriberCount != null)
+          'hiddenSubscriberCount': hiddenSubscriberCount,
+        if (subscriberCount != null) 'subscriberCount': subscriberCount,
+        if (videoCount != null) 'videoCount': videoCount,
+        if (viewCount != null) 'viewCount': viewCount,
+      };
 }
 
 /// JSON template for the status part of a channel.
@@ -8667,25 +8214,14 @@ class ChannelStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isLinked != null) {
-      _json['isLinked'] = isLinked;
-    }
-    if (longUploadsStatus != null) {
-      _json['longUploadsStatus'] = longUploadsStatus;
-    }
-    if (madeForKids != null) {
-      _json['madeForKids'] = madeForKids;
-    }
-    if (privacyStatus != null) {
-      _json['privacyStatus'] = privacyStatus;
-    }
-    if (selfDeclaredMadeForKids != null) {
-      _json['selfDeclaredMadeForKids'] = selfDeclaredMadeForKids;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isLinked != null) 'isLinked': isLinked,
+        if (longUploadsStatus != null) 'longUploadsStatus': longUploadsStatus,
+        if (madeForKids != null) 'madeForKids': madeForKids,
+        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+        if (selfDeclaredMadeForKids != null)
+          'selfDeclaredMadeForKids': selfDeclaredMadeForKids,
+      };
 }
 
 /// Information specific to a store on a merchandising platform linked to a
@@ -8708,16 +8244,10 @@ class ChannelToStoreLinkDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (storeName != null) {
-      _json['storeName'] = storeName;
-    }
-    if (storeUrl != null) {
-      _json['storeUrl'] = storeUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (storeName != null) 'storeName': storeName,
+        if (storeUrl != null) 'storeUrl': storeUrl,
+      };
 }
 
 /// Freebase topic information related to the channel.
@@ -8746,16 +8276,10 @@ class ChannelTopicDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (topicCategories != null) {
-      _json['topicCategories'] = topicCategories;
-    }
-    if (topicIds != null) {
-      _json['topicIds'] = topicIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (topicCategories != null) 'topicCategories': topicCategories,
+        if (topicIds != null) 'topicIds': topicIds,
+      };
 }
 
 /// A *comment* represents a single YouTube comment.
@@ -8792,22 +8316,12 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class CommentListResponse {
@@ -8870,34 +8384,18 @@ class CommentListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about a comment, such as its author and text.
@@ -9022,55 +8520,25 @@ class CommentSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorChannelId != null) {
-      _json['authorChannelId'] = authorChannelId.toJson();
-    }
-    if (authorChannelUrl != null) {
-      _json['authorChannelUrl'] = authorChannelUrl;
-    }
-    if (authorDisplayName != null) {
-      _json['authorDisplayName'] = authorDisplayName;
-    }
-    if (authorProfileImageUrl != null) {
-      _json['authorProfileImageUrl'] = authorProfileImageUrl;
-    }
-    if (canRate != null) {
-      _json['canRate'] = canRate;
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (likeCount != null) {
-      _json['likeCount'] = likeCount;
-    }
-    if (moderationStatus != null) {
-      _json['moderationStatus'] = moderationStatus;
-    }
-    if (parentId != null) {
-      _json['parentId'] = parentId;
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (textDisplay != null) {
-      _json['textDisplay'] = textDisplay;
-    }
-    if (textOriginal != null) {
-      _json['textOriginal'] = textOriginal;
-    }
-    if (updatedAt != null) {
-      _json['updatedAt'] = (updatedAt).toIso8601String();
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    if (viewerRating != null) {
-      _json['viewerRating'] = viewerRating;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorChannelId != null)
+          'authorChannelId': authorChannelId.toJson(),
+        if (authorChannelUrl != null) 'authorChannelUrl': authorChannelUrl,
+        if (authorDisplayName != null) 'authorDisplayName': authorDisplayName,
+        if (authorProfileImageUrl != null)
+          'authorProfileImageUrl': authorProfileImageUrl,
+        if (canRate != null) 'canRate': canRate,
+        if (channelId != null) 'channelId': channelId,
+        if (likeCount != null) 'likeCount': likeCount,
+        if (moderationStatus != null) 'moderationStatus': moderationStatus,
+        if (parentId != null) 'parentId': parentId,
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (textDisplay != null) 'textDisplay': textDisplay,
+        if (textOriginal != null) 'textOriginal': textOriginal,
+        if (updatedAt != null) 'updatedAt': (updatedAt).toIso8601String(),
+        if (videoId != null) 'videoId': videoId,
+        if (viewerRating != null) 'viewerRating': viewerRating,
+      };
 }
 
 /// The id of the author's YouTube channel, if any.
@@ -9085,13 +8553,9 @@ class CommentSnippetAuthorChannelId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+      };
 }
 
 /// A *comment thread* represents information that applies to a top level
@@ -9140,25 +8604,13 @@ class CommentThread {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (replies != null) {
-      _json['replies'] = replies.toJson();
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (replies != null) 'replies': replies.toJson(),
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class CommentThreadListResponse {
@@ -9221,34 +8673,18 @@ class CommentThreadListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Comments written in (direct or indirect) reply to the top level comment.
@@ -9271,13 +8707,10 @@ class CommentThreadReplies {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comments != null) {
-      _json['comments'] = comments.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comments != null)
+          'comments': comments.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Basic details about a comment thread.
@@ -9333,28 +8766,15 @@ class CommentThreadSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canReply != null) {
-      _json['canReply'] = canReply;
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (isPublic != null) {
-      _json['isPublic'] = isPublic;
-    }
-    if (topLevelComment != null) {
-      _json['topLevelComment'] = topLevelComment.toJson();
-    }
-    if (totalReplyCount != null) {
-      _json['totalReplyCount'] = totalReplyCount;
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canReply != null) 'canReply': canReply,
+        if (channelId != null) 'channelId': channelId,
+        if (isPublic != null) 'isPublic': isPublic,
+        if (topLevelComment != null)
+          'topLevelComment': topLevelComment.toJson(),
+        if (totalReplyCount != null) 'totalReplyCount': totalReplyCount,
+        if (videoId != null) 'videoId': videoId,
+      };
 }
 
 /// Ratings schemes.
@@ -10480,223 +9900,82 @@ class ContentRating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acbRating != null) {
-      _json['acbRating'] = acbRating;
-    }
-    if (agcomRating != null) {
-      _json['agcomRating'] = agcomRating;
-    }
-    if (anatelRating != null) {
-      _json['anatelRating'] = anatelRating;
-    }
-    if (bbfcRating != null) {
-      _json['bbfcRating'] = bbfcRating;
-    }
-    if (bfvcRating != null) {
-      _json['bfvcRating'] = bfvcRating;
-    }
-    if (bmukkRating != null) {
-      _json['bmukkRating'] = bmukkRating;
-    }
-    if (catvRating != null) {
-      _json['catvRating'] = catvRating;
-    }
-    if (catvfrRating != null) {
-      _json['catvfrRating'] = catvfrRating;
-    }
-    if (cbfcRating != null) {
-      _json['cbfcRating'] = cbfcRating;
-    }
-    if (cccRating != null) {
-      _json['cccRating'] = cccRating;
-    }
-    if (cceRating != null) {
-      _json['cceRating'] = cceRating;
-    }
-    if (chfilmRating != null) {
-      _json['chfilmRating'] = chfilmRating;
-    }
-    if (chvrsRating != null) {
-      _json['chvrsRating'] = chvrsRating;
-    }
-    if (cicfRating != null) {
-      _json['cicfRating'] = cicfRating;
-    }
-    if (cnaRating != null) {
-      _json['cnaRating'] = cnaRating;
-    }
-    if (cncRating != null) {
-      _json['cncRating'] = cncRating;
-    }
-    if (csaRating != null) {
-      _json['csaRating'] = csaRating;
-    }
-    if (cscfRating != null) {
-      _json['cscfRating'] = cscfRating;
-    }
-    if (czfilmRating != null) {
-      _json['czfilmRating'] = czfilmRating;
-    }
-    if (djctqRating != null) {
-      _json['djctqRating'] = djctqRating;
-    }
-    if (djctqRatingReasons != null) {
-      _json['djctqRatingReasons'] = djctqRatingReasons;
-    }
-    if (ecbmctRating != null) {
-      _json['ecbmctRating'] = ecbmctRating;
-    }
-    if (eefilmRating != null) {
-      _json['eefilmRating'] = eefilmRating;
-    }
-    if (egfilmRating != null) {
-      _json['egfilmRating'] = egfilmRating;
-    }
-    if (eirinRating != null) {
-      _json['eirinRating'] = eirinRating;
-    }
-    if (fcbmRating != null) {
-      _json['fcbmRating'] = fcbmRating;
-    }
-    if (fcoRating != null) {
-      _json['fcoRating'] = fcoRating;
-    }
-    if (fmocRating != null) {
-      _json['fmocRating'] = fmocRating;
-    }
-    if (fpbRating != null) {
-      _json['fpbRating'] = fpbRating;
-    }
-    if (fpbRatingReasons != null) {
-      _json['fpbRatingReasons'] = fpbRatingReasons;
-    }
-    if (fskRating != null) {
-      _json['fskRating'] = fskRating;
-    }
-    if (grfilmRating != null) {
-      _json['grfilmRating'] = grfilmRating;
-    }
-    if (icaaRating != null) {
-      _json['icaaRating'] = icaaRating;
-    }
-    if (ifcoRating != null) {
-      _json['ifcoRating'] = ifcoRating;
-    }
-    if (ilfilmRating != null) {
-      _json['ilfilmRating'] = ilfilmRating;
-    }
-    if (incaaRating != null) {
-      _json['incaaRating'] = incaaRating;
-    }
-    if (kfcbRating != null) {
-      _json['kfcbRating'] = kfcbRating;
-    }
-    if (kijkwijzerRating != null) {
-      _json['kijkwijzerRating'] = kijkwijzerRating;
-    }
-    if (kmrbRating != null) {
-      _json['kmrbRating'] = kmrbRating;
-    }
-    if (lsfRating != null) {
-      _json['lsfRating'] = lsfRating;
-    }
-    if (mccaaRating != null) {
-      _json['mccaaRating'] = mccaaRating;
-    }
-    if (mccypRating != null) {
-      _json['mccypRating'] = mccypRating;
-    }
-    if (mcstRating != null) {
-      _json['mcstRating'] = mcstRating;
-    }
-    if (mdaRating != null) {
-      _json['mdaRating'] = mdaRating;
-    }
-    if (medietilsynetRating != null) {
-      _json['medietilsynetRating'] = medietilsynetRating;
-    }
-    if (mekuRating != null) {
-      _json['mekuRating'] = mekuRating;
-    }
-    if (menaMpaaRating != null) {
-      _json['menaMpaaRating'] = menaMpaaRating;
-    }
-    if (mibacRating != null) {
-      _json['mibacRating'] = mibacRating;
-    }
-    if (mocRating != null) {
-      _json['mocRating'] = mocRating;
-    }
-    if (moctwRating != null) {
-      _json['moctwRating'] = moctwRating;
-    }
-    if (mpaaRating != null) {
-      _json['mpaaRating'] = mpaaRating;
-    }
-    if (mpaatRating != null) {
-      _json['mpaatRating'] = mpaatRating;
-    }
-    if (mtrcbRating != null) {
-      _json['mtrcbRating'] = mtrcbRating;
-    }
-    if (nbcRating != null) {
-      _json['nbcRating'] = nbcRating;
-    }
-    if (nbcplRating != null) {
-      _json['nbcplRating'] = nbcplRating;
-    }
-    if (nfrcRating != null) {
-      _json['nfrcRating'] = nfrcRating;
-    }
-    if (nfvcbRating != null) {
-      _json['nfvcbRating'] = nfvcbRating;
-    }
-    if (nkclvRating != null) {
-      _json['nkclvRating'] = nkclvRating;
-    }
-    if (nmcRating != null) {
-      _json['nmcRating'] = nmcRating;
-    }
-    if (oflcRating != null) {
-      _json['oflcRating'] = oflcRating;
-    }
-    if (pefilmRating != null) {
-      _json['pefilmRating'] = pefilmRating;
-    }
-    if (rcnofRating != null) {
-      _json['rcnofRating'] = rcnofRating;
-    }
-    if (resorteviolenciaRating != null) {
-      _json['resorteviolenciaRating'] = resorteviolenciaRating;
-    }
-    if (rtcRating != null) {
-      _json['rtcRating'] = rtcRating;
-    }
-    if (rteRating != null) {
-      _json['rteRating'] = rteRating;
-    }
-    if (russiaRating != null) {
-      _json['russiaRating'] = russiaRating;
-    }
-    if (skfilmRating != null) {
-      _json['skfilmRating'] = skfilmRating;
-    }
-    if (smaisRating != null) {
-      _json['smaisRating'] = smaisRating;
-    }
-    if (smsaRating != null) {
-      _json['smsaRating'] = smsaRating;
-    }
-    if (tvpgRating != null) {
-      _json['tvpgRating'] = tvpgRating;
-    }
-    if (ytRating != null) {
-      _json['ytRating'] = ytRating;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acbRating != null) 'acbRating': acbRating,
+        if (agcomRating != null) 'agcomRating': agcomRating,
+        if (anatelRating != null) 'anatelRating': anatelRating,
+        if (bbfcRating != null) 'bbfcRating': bbfcRating,
+        if (bfvcRating != null) 'bfvcRating': bfvcRating,
+        if (bmukkRating != null) 'bmukkRating': bmukkRating,
+        if (catvRating != null) 'catvRating': catvRating,
+        if (catvfrRating != null) 'catvfrRating': catvfrRating,
+        if (cbfcRating != null) 'cbfcRating': cbfcRating,
+        if (cccRating != null) 'cccRating': cccRating,
+        if (cceRating != null) 'cceRating': cceRating,
+        if (chfilmRating != null) 'chfilmRating': chfilmRating,
+        if (chvrsRating != null) 'chvrsRating': chvrsRating,
+        if (cicfRating != null) 'cicfRating': cicfRating,
+        if (cnaRating != null) 'cnaRating': cnaRating,
+        if (cncRating != null) 'cncRating': cncRating,
+        if (csaRating != null) 'csaRating': csaRating,
+        if (cscfRating != null) 'cscfRating': cscfRating,
+        if (czfilmRating != null) 'czfilmRating': czfilmRating,
+        if (djctqRating != null) 'djctqRating': djctqRating,
+        if (djctqRatingReasons != null)
+          'djctqRatingReasons': djctqRatingReasons,
+        if (ecbmctRating != null) 'ecbmctRating': ecbmctRating,
+        if (eefilmRating != null) 'eefilmRating': eefilmRating,
+        if (egfilmRating != null) 'egfilmRating': egfilmRating,
+        if (eirinRating != null) 'eirinRating': eirinRating,
+        if (fcbmRating != null) 'fcbmRating': fcbmRating,
+        if (fcoRating != null) 'fcoRating': fcoRating,
+        if (fmocRating != null) 'fmocRating': fmocRating,
+        if (fpbRating != null) 'fpbRating': fpbRating,
+        if (fpbRatingReasons != null) 'fpbRatingReasons': fpbRatingReasons,
+        if (fskRating != null) 'fskRating': fskRating,
+        if (grfilmRating != null) 'grfilmRating': grfilmRating,
+        if (icaaRating != null) 'icaaRating': icaaRating,
+        if (ifcoRating != null) 'ifcoRating': ifcoRating,
+        if (ilfilmRating != null) 'ilfilmRating': ilfilmRating,
+        if (incaaRating != null) 'incaaRating': incaaRating,
+        if (kfcbRating != null) 'kfcbRating': kfcbRating,
+        if (kijkwijzerRating != null) 'kijkwijzerRating': kijkwijzerRating,
+        if (kmrbRating != null) 'kmrbRating': kmrbRating,
+        if (lsfRating != null) 'lsfRating': lsfRating,
+        if (mccaaRating != null) 'mccaaRating': mccaaRating,
+        if (mccypRating != null) 'mccypRating': mccypRating,
+        if (mcstRating != null) 'mcstRating': mcstRating,
+        if (mdaRating != null) 'mdaRating': mdaRating,
+        if (medietilsynetRating != null)
+          'medietilsynetRating': medietilsynetRating,
+        if (mekuRating != null) 'mekuRating': mekuRating,
+        if (menaMpaaRating != null) 'menaMpaaRating': menaMpaaRating,
+        if (mibacRating != null) 'mibacRating': mibacRating,
+        if (mocRating != null) 'mocRating': mocRating,
+        if (moctwRating != null) 'moctwRating': moctwRating,
+        if (mpaaRating != null) 'mpaaRating': mpaaRating,
+        if (mpaatRating != null) 'mpaatRating': mpaatRating,
+        if (mtrcbRating != null) 'mtrcbRating': mtrcbRating,
+        if (nbcRating != null) 'nbcRating': nbcRating,
+        if (nbcplRating != null) 'nbcplRating': nbcplRating,
+        if (nfrcRating != null) 'nfrcRating': nfrcRating,
+        if (nfvcbRating != null) 'nfvcbRating': nfvcbRating,
+        if (nkclvRating != null) 'nkclvRating': nkclvRating,
+        if (nmcRating != null) 'nmcRating': nmcRating,
+        if (oflcRating != null) 'oflcRating': oflcRating,
+        if (pefilmRating != null) 'pefilmRating': pefilmRating,
+        if (rcnofRating != null) 'rcnofRating': rcnofRating,
+        if (resorteviolenciaRating != null)
+          'resorteviolenciaRating': resorteviolenciaRating,
+        if (rtcRating != null) 'rtcRating': rtcRating,
+        if (rteRating != null) 'rteRating': rteRating,
+        if (russiaRating != null) 'russiaRating': russiaRating,
+        if (skfilmRating != null) 'skfilmRating': skfilmRating,
+        if (smaisRating != null) 'smaisRating': smaisRating,
+        if (smsaRating != null) 'smsaRating': smsaRating,
+        if (tvpgRating != null) 'tvpgRating': tvpgRating,
+        if (ytRating != null) 'ytRating': ytRating,
+      };
 }
 
 class Entity {
@@ -10718,19 +9997,11 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (typeId != null) {
-      _json['typeId'] = typeId;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (typeId != null) 'typeId': typeId,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Geographical coordinates of a point, in WGS84.
@@ -10758,19 +10029,11 @@ class GeoPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (altitude != null) {
-      _json['altitude'] = altitude;
-    }
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (altitude != null) 'altitude': altitude,
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }
 
 /// An *i18nLanguage* resource identifies a UI language currently supported by
@@ -10809,22 +10072,12 @@ class I18nLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class I18nLanguageListResponse {
@@ -10871,25 +10124,14 @@ class I18nLanguageListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about an i18n language, such as language code and
@@ -10912,16 +10154,10 @@ class I18nLanguageSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hl != null) {
-      _json['hl'] = hl;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hl != null) 'hl': hl,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A *i18nRegion* resource identifies a region where YouTube is available.
@@ -10959,22 +10195,12 @@ class I18nRegion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class I18nRegionListResponse {
@@ -11021,25 +10247,14 @@ class I18nRegionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about an i18n region, such as region code and human-readable
@@ -11062,16 +10277,10 @@ class I18nRegionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gl != null) {
-      _json['gl'] = gl;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gl != null) 'gl': gl,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Branding properties for images associated with the channel.
@@ -11261,78 +10470,49 @@ class ImageSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundImageUrl != null) {
-      _json['backgroundImageUrl'] = backgroundImageUrl.toJson();
-    }
-    if (bannerExternalUrl != null) {
-      _json['bannerExternalUrl'] = bannerExternalUrl;
-    }
-    if (bannerImageUrl != null) {
-      _json['bannerImageUrl'] = bannerImageUrl;
-    }
-    if (bannerMobileExtraHdImageUrl != null) {
-      _json['bannerMobileExtraHdImageUrl'] = bannerMobileExtraHdImageUrl;
-    }
-    if (bannerMobileHdImageUrl != null) {
-      _json['bannerMobileHdImageUrl'] = bannerMobileHdImageUrl;
-    }
-    if (bannerMobileImageUrl != null) {
-      _json['bannerMobileImageUrl'] = bannerMobileImageUrl;
-    }
-    if (bannerMobileLowImageUrl != null) {
-      _json['bannerMobileLowImageUrl'] = bannerMobileLowImageUrl;
-    }
-    if (bannerMobileMediumHdImageUrl != null) {
-      _json['bannerMobileMediumHdImageUrl'] = bannerMobileMediumHdImageUrl;
-    }
-    if (bannerTabletExtraHdImageUrl != null) {
-      _json['bannerTabletExtraHdImageUrl'] = bannerTabletExtraHdImageUrl;
-    }
-    if (bannerTabletHdImageUrl != null) {
-      _json['bannerTabletHdImageUrl'] = bannerTabletHdImageUrl;
-    }
-    if (bannerTabletImageUrl != null) {
-      _json['bannerTabletImageUrl'] = bannerTabletImageUrl;
-    }
-    if (bannerTabletLowImageUrl != null) {
-      _json['bannerTabletLowImageUrl'] = bannerTabletLowImageUrl;
-    }
-    if (bannerTvHighImageUrl != null) {
-      _json['bannerTvHighImageUrl'] = bannerTvHighImageUrl;
-    }
-    if (bannerTvImageUrl != null) {
-      _json['bannerTvImageUrl'] = bannerTvImageUrl;
-    }
-    if (bannerTvLowImageUrl != null) {
-      _json['bannerTvLowImageUrl'] = bannerTvLowImageUrl;
-    }
-    if (bannerTvMediumImageUrl != null) {
-      _json['bannerTvMediumImageUrl'] = bannerTvMediumImageUrl;
-    }
-    if (largeBrandedBannerImageImapScript != null) {
-      _json['largeBrandedBannerImageImapScript'] =
-          largeBrandedBannerImageImapScript.toJson();
-    }
-    if (largeBrandedBannerImageUrl != null) {
-      _json['largeBrandedBannerImageUrl'] = largeBrandedBannerImageUrl.toJson();
-    }
-    if (smallBrandedBannerImageImapScript != null) {
-      _json['smallBrandedBannerImageImapScript'] =
-          smallBrandedBannerImageImapScript.toJson();
-    }
-    if (smallBrandedBannerImageUrl != null) {
-      _json['smallBrandedBannerImageUrl'] = smallBrandedBannerImageUrl.toJson();
-    }
-    if (trackingImageUrl != null) {
-      _json['trackingImageUrl'] = trackingImageUrl;
-    }
-    if (watchIconImageUrl != null) {
-      _json['watchIconImageUrl'] = watchIconImageUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundImageUrl != null)
+          'backgroundImageUrl': backgroundImageUrl.toJson(),
+        if (bannerExternalUrl != null) 'bannerExternalUrl': bannerExternalUrl,
+        if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl,
+        if (bannerMobileExtraHdImageUrl != null)
+          'bannerMobileExtraHdImageUrl': bannerMobileExtraHdImageUrl,
+        if (bannerMobileHdImageUrl != null)
+          'bannerMobileHdImageUrl': bannerMobileHdImageUrl,
+        if (bannerMobileImageUrl != null)
+          'bannerMobileImageUrl': bannerMobileImageUrl,
+        if (bannerMobileLowImageUrl != null)
+          'bannerMobileLowImageUrl': bannerMobileLowImageUrl,
+        if (bannerMobileMediumHdImageUrl != null)
+          'bannerMobileMediumHdImageUrl': bannerMobileMediumHdImageUrl,
+        if (bannerTabletExtraHdImageUrl != null)
+          'bannerTabletExtraHdImageUrl': bannerTabletExtraHdImageUrl,
+        if (bannerTabletHdImageUrl != null)
+          'bannerTabletHdImageUrl': bannerTabletHdImageUrl,
+        if (bannerTabletImageUrl != null)
+          'bannerTabletImageUrl': bannerTabletImageUrl,
+        if (bannerTabletLowImageUrl != null)
+          'bannerTabletLowImageUrl': bannerTabletLowImageUrl,
+        if (bannerTvHighImageUrl != null)
+          'bannerTvHighImageUrl': bannerTvHighImageUrl,
+        if (bannerTvImageUrl != null) 'bannerTvImageUrl': bannerTvImageUrl,
+        if (bannerTvLowImageUrl != null)
+          'bannerTvLowImageUrl': bannerTvLowImageUrl,
+        if (bannerTvMediumImageUrl != null)
+          'bannerTvMediumImageUrl': bannerTvMediumImageUrl,
+        if (largeBrandedBannerImageImapScript != null)
+          'largeBrandedBannerImageImapScript':
+              largeBrandedBannerImageImapScript.toJson(),
+        if (largeBrandedBannerImageUrl != null)
+          'largeBrandedBannerImageUrl': largeBrandedBannerImageUrl.toJson(),
+        if (smallBrandedBannerImageImapScript != null)
+          'smallBrandedBannerImageImapScript':
+              smallBrandedBannerImageImapScript.toJson(),
+        if (smallBrandedBannerImageUrl != null)
+          'smallBrandedBannerImageUrl': smallBrandedBannerImageUrl.toJson(),
+        if (trackingImageUrl != null) 'trackingImageUrl': trackingImageUrl,
+        if (watchIconImageUrl != null) 'watchIconImageUrl': watchIconImageUrl,
+      };
 }
 
 /// Describes information necessary for ingesting an RTMP or an HTTP stream.
@@ -11387,25 +10567,16 @@ class IngestionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupIngestionAddress != null) {
-      _json['backupIngestionAddress'] = backupIngestionAddress;
-    }
-    if (ingestionAddress != null) {
-      _json['ingestionAddress'] = ingestionAddress;
-    }
-    if (rtmpsBackupIngestionAddress != null) {
-      _json['rtmpsBackupIngestionAddress'] = rtmpsBackupIngestionAddress;
-    }
-    if (rtmpsIngestionAddress != null) {
-      _json['rtmpsIngestionAddress'] = rtmpsIngestionAddress;
-    }
-    if (streamName != null) {
-      _json['streamName'] = streamName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupIngestionAddress != null)
+          'backupIngestionAddress': backupIngestionAddress,
+        if (ingestionAddress != null) 'ingestionAddress': ingestionAddress,
+        if (rtmpsBackupIngestionAddress != null)
+          'rtmpsBackupIngestionAddress': rtmpsBackupIngestionAddress,
+        if (rtmpsIngestionAddress != null)
+          'rtmpsIngestionAddress': rtmpsIngestionAddress,
+        if (streamName != null) 'streamName': streamName,
+      };
 }
 
 /// LINT.IfChange Describes an invideo branding.
@@ -11461,25 +10632,13 @@ class InvideoBranding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageBytes != null) {
-      _json['imageBytes'] = imageBytes;
-    }
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (position != null) {
-      _json['position'] = position.toJson();
-    }
-    if (targetChannelId != null) {
-      _json['targetChannelId'] = targetChannelId;
-    }
-    if (timing != null) {
-      _json['timing'] = timing.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageBytes != null) 'imageBytes': imageBytes,
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (position != null) 'position': position.toJson(),
+        if (targetChannelId != null) 'targetChannelId': targetChannelId,
+        if (timing != null) 'timing': timing.toJson(),
+      };
 }
 
 /// Describes the spatial position of a visual widget inside a video.
@@ -11510,16 +10669,10 @@ class InvideoPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cornerPosition != null) {
-      _json['cornerPosition'] = cornerPosition;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cornerPosition != null) 'cornerPosition': cornerPosition,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Describes a temporal position of a visual widget inside a video.
@@ -11561,19 +10714,11 @@ class InvideoTiming {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (durationMs != null) {
-      _json['durationMs'] = durationMs;
-    }
-    if (offsetMs != null) {
-      _json['offsetMs'] = offsetMs;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (durationMs != null) 'durationMs': durationMs,
+        if (offsetMs != null) 'offsetMs': offsetMs,
+        if (type != null) 'type': type,
+      };
 }
 
 class LanguageTag {
@@ -11587,13 +10732,9 @@ class LanguageTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+      };
 }
 
 class LevelDetails {
@@ -11608,13 +10749,9 @@ class LevelDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+      };
 }
 
 /// A *liveBroadcast* resource represents an event that will be streamed, via
@@ -11681,31 +10818,15 @@ class LiveBroadcast {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (statistics != null) {
-      _json['statistics'] = statistics.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (statistics != null) 'statistics': statistics.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Detailed settings of a broadcast.
@@ -11900,62 +11021,30 @@ class LiveBroadcastContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundStreamId != null) {
-      _json['boundStreamId'] = boundStreamId;
-    }
-    if (boundStreamLastUpdateTimeMs != null) {
-      _json['boundStreamLastUpdateTimeMs'] =
-          (boundStreamLastUpdateTimeMs).toIso8601String();
-    }
-    if (closedCaptionsType != null) {
-      _json['closedCaptionsType'] = closedCaptionsType;
-    }
-    if (enableAutoStart != null) {
-      _json['enableAutoStart'] = enableAutoStart;
-    }
-    if (enableAutoStop != null) {
-      _json['enableAutoStop'] = enableAutoStop;
-    }
-    if (enableClosedCaptions != null) {
-      _json['enableClosedCaptions'] = enableClosedCaptions;
-    }
-    if (enableContentEncryption != null) {
-      _json['enableContentEncryption'] = enableContentEncryption;
-    }
-    if (enableDvr != null) {
-      _json['enableDvr'] = enableDvr;
-    }
-    if (enableEmbed != null) {
-      _json['enableEmbed'] = enableEmbed;
-    }
-    if (enableLowLatency != null) {
-      _json['enableLowLatency'] = enableLowLatency;
-    }
-    if (latencyPreference != null) {
-      _json['latencyPreference'] = latencyPreference;
-    }
-    if (mesh != null) {
-      _json['mesh'] = mesh;
-    }
-    if (monitorStream != null) {
-      _json['monitorStream'] = monitorStream.toJson();
-    }
-    if (projection != null) {
-      _json['projection'] = projection;
-    }
-    if (recordFromStart != null) {
-      _json['recordFromStart'] = recordFromStart;
-    }
-    if (startWithSlate != null) {
-      _json['startWithSlate'] = startWithSlate;
-    }
-    if (stereoLayout != null) {
-      _json['stereoLayout'] = stereoLayout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundStreamId != null) 'boundStreamId': boundStreamId,
+        if (boundStreamLastUpdateTimeMs != null)
+          'boundStreamLastUpdateTimeMs':
+              (boundStreamLastUpdateTimeMs).toIso8601String(),
+        if (closedCaptionsType != null)
+          'closedCaptionsType': closedCaptionsType,
+        if (enableAutoStart != null) 'enableAutoStart': enableAutoStart,
+        if (enableAutoStop != null) 'enableAutoStop': enableAutoStop,
+        if (enableClosedCaptions != null)
+          'enableClosedCaptions': enableClosedCaptions,
+        if (enableContentEncryption != null)
+          'enableContentEncryption': enableContentEncryption,
+        if (enableDvr != null) 'enableDvr': enableDvr,
+        if (enableEmbed != null) 'enableEmbed': enableEmbed,
+        if (enableLowLatency != null) 'enableLowLatency': enableLowLatency,
+        if (latencyPreference != null) 'latencyPreference': latencyPreference,
+        if (mesh != null) 'mesh': mesh,
+        if (monitorStream != null) 'monitorStream': monitorStream.toJson(),
+        if (projection != null) 'projection': projection,
+        if (recordFromStart != null) 'recordFromStart': recordFromStart,
+        if (startWithSlate != null) 'startWithSlate': startWithSlate,
+        if (stereoLayout != null) 'stereoLayout': stereoLayout,
+      };
 }
 
 class LiveBroadcastListResponse {
@@ -12025,37 +11114,19 @@ class LiveBroadcastListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic broadcast information.
@@ -12156,43 +11227,24 @@ class LiveBroadcastSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actualEndTime != null) {
-      _json['actualEndTime'] = (actualEndTime).toIso8601String();
-    }
-    if (actualStartTime != null) {
-      _json['actualStartTime'] = (actualStartTime).toIso8601String();
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (isDefaultBroadcast != null) {
-      _json['isDefaultBroadcast'] = isDefaultBroadcast;
-    }
-    if (liveChatId != null) {
-      _json['liveChatId'] = liveChatId;
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (scheduledEndTime != null) {
-      _json['scheduledEndTime'] = (scheduledEndTime).toIso8601String();
-    }
-    if (scheduledStartTime != null) {
-      _json['scheduledStartTime'] = (scheduledStartTime).toIso8601String();
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actualEndTime != null)
+          'actualEndTime': (actualEndTime).toIso8601String(),
+        if (actualStartTime != null)
+          'actualStartTime': (actualStartTime).toIso8601String(),
+        if (channelId != null) 'channelId': channelId,
+        if (description != null) 'description': description,
+        if (isDefaultBroadcast != null)
+          'isDefaultBroadcast': isDefaultBroadcast,
+        if (liveChatId != null) 'liveChatId': liveChatId,
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (scheduledEndTime != null)
+          'scheduledEndTime': (scheduledEndTime).toIso8601String(),
+        if (scheduledStartTime != null)
+          'scheduledStartTime': (scheduledStartTime).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Statistics about the live broadcast.
@@ -12217,13 +11269,9 @@ class LiveBroadcastStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (totalChatCount != null) {
-      _json['totalChatCount'] = totalChatCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (totalChatCount != null) 'totalChatCount': totalChatCount,
+      };
 }
 
 /// Live broadcast state.
@@ -12308,28 +11356,16 @@ class LiveBroadcastStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lifeCycleStatus != null) {
-      _json['lifeCycleStatus'] = lifeCycleStatus;
-    }
-    if (liveBroadcastPriority != null) {
-      _json['liveBroadcastPriority'] = liveBroadcastPriority;
-    }
-    if (madeForKids != null) {
-      _json['madeForKids'] = madeForKids;
-    }
-    if (privacyStatus != null) {
-      _json['privacyStatus'] = privacyStatus;
-    }
-    if (recordingStatus != null) {
-      _json['recordingStatus'] = recordingStatus;
-    }
-    if (selfDeclaredMadeForKids != null) {
-      _json['selfDeclaredMadeForKids'] = selfDeclaredMadeForKids;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lifeCycleStatus != null) 'lifeCycleStatus': lifeCycleStatus,
+        if (liveBroadcastPriority != null)
+          'liveBroadcastPriority': liveBroadcastPriority,
+        if (madeForKids != null) 'madeForKids': madeForKids,
+        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+        if (recordingStatus != null) 'recordingStatus': recordingStatus,
+        if (selfDeclaredMadeForKids != null)
+          'selfDeclaredMadeForKids': selfDeclaredMadeForKids,
+      };
 }
 
 /// A `__liveChatBan__` resource represents a ban for a YouTube live chat.
@@ -12366,22 +11402,12 @@ class LiveChatBan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class LiveChatBanSnippet {
@@ -12417,22 +11443,14 @@ class LiveChatBanSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (banDurationSeconds != null) {
-      _json['banDurationSeconds'] = banDurationSeconds;
-    }
-    if (bannedUserDetails != null) {
-      _json['bannedUserDetails'] = bannedUserDetails.toJson();
-    }
-    if (liveChatId != null) {
-      _json['liveChatId'] = liveChatId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (banDurationSeconds != null)
+          'banDurationSeconds': banDurationSeconds,
+        if (bannedUserDetails != null)
+          'bannedUserDetails': bannedUserDetails.toJson(),
+        if (liveChatId != null) 'liveChatId': liveChatId,
+        if (type != null) 'type': type,
+      };
 }
 
 class LiveChatFanFundingEventDetails {
@@ -12465,22 +11483,13 @@ class LiveChatFanFundingEventDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (amountDisplayString != null) {
-      _json['amountDisplayString'] = amountDisplayString;
-    }
-    if (amountMicros != null) {
-      _json['amountMicros'] = amountMicros;
-    }
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    if (userComment != null) {
-      _json['userComment'] = userComment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (amountDisplayString != null)
+          'amountDisplayString': amountDisplayString,
+        if (amountMicros != null) 'amountMicros': amountMicros,
+        if (currency != null) 'currency': currency,
+        if (userComment != null) 'userComment': userComment,
+      };
 }
 
 /// A *liveChatMessage* resource represents a chat message in a YouTube Live
@@ -12526,25 +11535,13 @@ class LiveChatMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorDetails != null) {
-      _json['authorDetails'] = authorDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorDetails != null) 'authorDetails': authorDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class LiveChatMessageAuthorDetails {
@@ -12601,34 +11598,16 @@ class LiveChatMessageAuthorDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelUrl != null) {
-      _json['channelUrl'] = channelUrl;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (isChatModerator != null) {
-      _json['isChatModerator'] = isChatModerator;
-    }
-    if (isChatOwner != null) {
-      _json['isChatOwner'] = isChatOwner;
-    }
-    if (isChatSponsor != null) {
-      _json['isChatSponsor'] = isChatSponsor;
-    }
-    if (isVerified != null) {
-      _json['isVerified'] = isVerified;
-    }
-    if (profileImageUrl != null) {
-      _json['profileImageUrl'] = profileImageUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (channelUrl != null) 'channelUrl': channelUrl,
+        if (displayName != null) 'displayName': displayName,
+        if (isChatModerator != null) 'isChatModerator': isChatModerator,
+        if (isChatOwner != null) 'isChatOwner': isChatOwner,
+        if (isChatSponsor != null) 'isChatSponsor': isChatSponsor,
+        if (isVerified != null) 'isVerified': isVerified,
+        if (profileImageUrl != null) 'profileImageUrl': profileImageUrl,
+      };
 }
 
 class LiveChatMessageDeletedDetails {
@@ -12642,13 +11621,9 @@ class LiveChatMessageDeletedDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deletedMessageId != null) {
-      _json['deletedMessageId'] = deletedMessageId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deletedMessageId != null) 'deletedMessageId': deletedMessageId,
+      };
 }
 
 class LiveChatMessageListResponse {
@@ -12718,40 +11693,21 @@ class LiveChatMessageListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (offlineAt != null) {
-      _json['offlineAt'] = (offlineAt).toIso8601String();
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (pollingIntervalMillis != null) {
-      _json['pollingIntervalMillis'] = pollingIntervalMillis;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (offlineAt != null) 'offlineAt': (offlineAt).toIso8601String(),
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (pollingIntervalMillis != null)
+          'pollingIntervalMillis': pollingIntervalMillis,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 class LiveChatMessageRetractedDetails {
@@ -12765,13 +11721,10 @@ class LiveChatMessageRetractedDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (retractedMessageId != null) {
-      _json['retractedMessageId'] = retractedMessageId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (retractedMessageId != null)
+          'retractedMessageId': retractedMessageId,
+      };
 }
 
 class LiveChatMessageSnippet {
@@ -12890,49 +11843,28 @@ class LiveChatMessageSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorChannelId != null) {
-      _json['authorChannelId'] = authorChannelId;
-    }
-    if (displayMessage != null) {
-      _json['displayMessage'] = displayMessage;
-    }
-    if (fanFundingEventDetails != null) {
-      _json['fanFundingEventDetails'] = fanFundingEventDetails.toJson();
-    }
-    if (hasDisplayContent != null) {
-      _json['hasDisplayContent'] = hasDisplayContent;
-    }
-    if (liveChatId != null) {
-      _json['liveChatId'] = liveChatId;
-    }
-    if (messageDeletedDetails != null) {
-      _json['messageDeletedDetails'] = messageDeletedDetails.toJson();
-    }
-    if (messageRetractedDetails != null) {
-      _json['messageRetractedDetails'] = messageRetractedDetails.toJson();
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (superChatDetails != null) {
-      _json['superChatDetails'] = superChatDetails.toJson();
-    }
-    if (superStickerDetails != null) {
-      _json['superStickerDetails'] = superStickerDetails.toJson();
-    }
-    if (textMessageDetails != null) {
-      _json['textMessageDetails'] = textMessageDetails.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (userBannedDetails != null) {
-      _json['userBannedDetails'] = userBannedDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorChannelId != null) 'authorChannelId': authorChannelId,
+        if (displayMessage != null) 'displayMessage': displayMessage,
+        if (fanFundingEventDetails != null)
+          'fanFundingEventDetails': fanFundingEventDetails.toJson(),
+        if (hasDisplayContent != null) 'hasDisplayContent': hasDisplayContent,
+        if (liveChatId != null) 'liveChatId': liveChatId,
+        if (messageDeletedDetails != null)
+          'messageDeletedDetails': messageDeletedDetails.toJson(),
+        if (messageRetractedDetails != null)
+          'messageRetractedDetails': messageRetractedDetails.toJson(),
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (superChatDetails != null)
+          'superChatDetails': superChatDetails.toJson(),
+        if (superStickerDetails != null)
+          'superStickerDetails': superStickerDetails.toJson(),
+        if (textMessageDetails != null)
+          'textMessageDetails': textMessageDetails.toJson(),
+        if (type != null) 'type': type,
+        if (userBannedDetails != null)
+          'userBannedDetails': userBannedDetails.toJson(),
+      };
 }
 
 /// A *liveChatModerator* resource represents a moderator for a YouTube live
@@ -12973,22 +11905,12 @@ class LiveChatModerator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class LiveChatModeratorListResponse {
@@ -13058,37 +11980,19 @@ class LiveChatModeratorListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 class LiveChatModeratorSnippet {
@@ -13110,16 +12014,11 @@ class LiveChatModeratorSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (liveChatId != null) {
-      _json['liveChatId'] = liveChatId;
-    }
-    if (moderatorDetails != null) {
-      _json['moderatorDetails'] = moderatorDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (liveChatId != null) 'liveChatId': liveChatId,
+        if (moderatorDetails != null)
+          'moderatorDetails': moderatorDetails.toJson(),
+      };
 }
 
 class LiveChatSuperChatDetails {
@@ -13160,25 +12059,14 @@ class LiveChatSuperChatDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (amountDisplayString != null) {
-      _json['amountDisplayString'] = amountDisplayString;
-    }
-    if (amountMicros != null) {
-      _json['amountMicros'] = amountMicros;
-    }
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    if (userComment != null) {
-      _json['userComment'] = userComment;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (amountDisplayString != null)
+          'amountDisplayString': amountDisplayString,
+        if (amountMicros != null) 'amountMicros': amountMicros,
+        if (currency != null) 'currency': currency,
+        if (tier != null) 'tier': tier,
+        if (userComment != null) 'userComment': userComment,
+      };
 }
 
 class LiveChatSuperStickerDetails {
@@ -13220,25 +12108,15 @@ class LiveChatSuperStickerDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (amountDisplayString != null) {
-      _json['amountDisplayString'] = amountDisplayString;
-    }
-    if (amountMicros != null) {
-      _json['amountMicros'] = amountMicros;
-    }
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    if (superStickerMetadata != null) {
-      _json['superStickerMetadata'] = superStickerMetadata.toJson();
-    }
-    if (tier != null) {
-      _json['tier'] = tier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (amountDisplayString != null)
+          'amountDisplayString': amountDisplayString,
+        if (amountMicros != null) 'amountMicros': amountMicros,
+        if (currency != null) 'currency': currency,
+        if (superStickerMetadata != null)
+          'superStickerMetadata': superStickerMetadata.toJson(),
+        if (tier != null) 'tier': tier,
+      };
 }
 
 class LiveChatTextMessageDetails {
@@ -13253,13 +12131,9 @@ class LiveChatTextMessageDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (messageText != null) {
-      _json['messageText'] = messageText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (messageText != null) 'messageText': messageText,
+      };
 }
 
 class LiveChatUserBannedMessageDetails {
@@ -13292,19 +12166,13 @@ class LiveChatUserBannedMessageDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (banDurationSeconds != null) {
-      _json['banDurationSeconds'] = banDurationSeconds;
-    }
-    if (banType != null) {
-      _json['banType'] = banType;
-    }
-    if (bannedUserDetails != null) {
-      _json['bannedUserDetails'] = bannedUserDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (banDurationSeconds != null)
+          'banDurationSeconds': banDurationSeconds,
+        if (banType != null) 'banType': banType,
+        if (bannedUserDetails != null)
+          'bannedUserDetails': bannedUserDetails.toJson(),
+      };
 }
 
 /// A live stream describes a live ingestion point.
@@ -13368,31 +12236,15 @@ class LiveStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cdn != null) {
-      _json['cdn'] = cdn.toJson();
-    }
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cdn != null) 'cdn': cdn.toJson(),
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 class LiveStreamConfigurationIssue {
@@ -13464,22 +12316,12 @@ class LiveStreamConfigurationIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (reason != null) 'reason': reason,
+        if (severity != null) 'severity': severity,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Detailed settings of a stream.
@@ -13515,16 +12357,11 @@ class LiveStreamContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (closedCaptionsIngestionUrl != null) {
-      _json['closedCaptionsIngestionUrl'] = closedCaptionsIngestionUrl;
-    }
-    if (isReusable != null) {
-      _json['isReusable'] = isReusable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (closedCaptionsIngestionUrl != null)
+          'closedCaptionsIngestionUrl': closedCaptionsIngestionUrl,
+        if (isReusable != null) 'isReusable': isReusable,
+      };
 }
 
 class LiveStreamHealthStatus {
@@ -13561,20 +12398,14 @@ class LiveStreamHealthStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configurationIssues != null) {
-      _json['configurationIssues'] =
-          configurationIssues.map((value) => value.toJson()).toList();
-    }
-    if (lastUpdateTimeSeconds != null) {
-      _json['lastUpdateTimeSeconds'] = lastUpdateTimeSeconds;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configurationIssues != null)
+          'configurationIssues':
+              configurationIssues.map((value) => value.toJson()).toList(),
+        if (lastUpdateTimeSeconds != null)
+          'lastUpdateTimeSeconds': lastUpdateTimeSeconds,
+        if (status != null) 'status': status,
+      };
 }
 
 class LiveStreamListResponse {
@@ -13642,37 +12473,19 @@ class LiveStreamListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 class LiveStreamSnippet {
@@ -13714,25 +12527,13 @@ class LiveStreamSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (isDefaultStream != null) {
-      _json['isDefaultStream'] = isDefaultStream;
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (description != null) 'description': description,
+        if (isDefaultStream != null) 'isDefaultStream': isDefaultStream,
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Brief description of the live stream status.
@@ -13761,16 +12562,10 @@ class LiveStreamStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (healthStatus != null) {
-      _json['healthStatus'] = healthStatus.toJson();
-    }
-    if (streamStatus != null) {
-      _json['streamStatus'] = streamStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (healthStatus != null) 'healthStatus': healthStatus.toJson(),
+        if (streamStatus != null) 'streamStatus': streamStatus,
+      };
 }
 
 class LocalizedProperty {
@@ -13798,19 +12593,13 @@ class LocalizedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (default_ != null) {
-      _json['default'] = default_;
-    }
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage.toJson();
-    }
-    if (localized != null) {
-      _json['localized'] = localized.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (default_ != null) 'default': default_,
+        if (defaultLanguage != null)
+          'defaultLanguage': defaultLanguage.toJson(),
+        if (localized != null)
+          'localized': localized.map((value) => value.toJson()).toList(),
+      };
 }
 
 class LocalizedString {
@@ -13828,16 +12617,10 @@ class LocalizedString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (language != null) 'language': language,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A *member* resource represents a member for a YouTube channel.
@@ -13871,19 +12654,11 @@ class Member {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class MemberListResponse {
@@ -13944,34 +12719,18 @@ class MemberListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 class MemberSnippet {
@@ -14000,19 +12759,12 @@ class MemberSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creatorChannelId != null) {
-      _json['creatorChannelId'] = creatorChannelId;
-    }
-    if (memberDetails != null) {
-      _json['memberDetails'] = memberDetails.toJson();
-    }
-    if (membershipsDetails != null) {
-      _json['membershipsDetails'] = membershipsDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creatorChannelId != null) 'creatorChannelId': creatorChannelId,
+        if (memberDetails != null) 'memberDetails': memberDetails.toJson(),
+        if (membershipsDetails != null)
+          'membershipsDetails': membershipsDetails.toJson(),
+      };
 }
 
 class MembershipsDetails {
@@ -14065,27 +12817,20 @@ class MembershipsDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessibleLevels != null) {
-      _json['accessibleLevels'] = accessibleLevels;
-    }
-    if (highestAccessibleLevel != null) {
-      _json['highestAccessibleLevel'] = highestAccessibleLevel;
-    }
-    if (highestAccessibleLevelDisplayName != null) {
-      _json['highestAccessibleLevelDisplayName'] =
-          highestAccessibleLevelDisplayName;
-    }
-    if (membershipsDuration != null) {
-      _json['membershipsDuration'] = membershipsDuration.toJson();
-    }
-    if (membershipsDurationAtLevels != null) {
-      _json['membershipsDurationAtLevels'] =
-          membershipsDurationAtLevels.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessibleLevels != null) 'accessibleLevels': accessibleLevels,
+        if (highestAccessibleLevel != null)
+          'highestAccessibleLevel': highestAccessibleLevel,
+        if (highestAccessibleLevelDisplayName != null)
+          'highestAccessibleLevelDisplayName':
+              highestAccessibleLevelDisplayName,
+        if (membershipsDuration != null)
+          'membershipsDuration': membershipsDuration.toJson(),
+        if (membershipsDurationAtLevels != null)
+          'membershipsDurationAtLevels': membershipsDurationAtLevels
+              .map((value) => value.toJson())
+              .toList(),
+      };
 }
 
 class MembershipsDuration {
@@ -14109,16 +12854,11 @@ class MembershipsDuration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (memberSince != null) {
-      _json['memberSince'] = memberSince;
-    }
-    if (memberTotalDurationMonths != null) {
-      _json['memberTotalDurationMonths'] = memberTotalDurationMonths;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (memberSince != null) 'memberSince': memberSince,
+        if (memberTotalDurationMonths != null)
+          'memberTotalDurationMonths': memberTotalDurationMonths,
+      };
 }
 
 class MembershipsDurationAtLevel {
@@ -14148,19 +12888,12 @@ class MembershipsDurationAtLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (level != null) {
-      _json['level'] = level;
-    }
-    if (memberSince != null) {
-      _json['memberSince'] = memberSince;
-    }
-    if (memberTotalDurationMonths != null) {
-      _json['memberTotalDurationMonths'] = memberTotalDurationMonths;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (level != null) 'level': level,
+        if (memberSince != null) 'memberSince': memberSince,
+        if (memberTotalDurationMonths != null)
+          'memberTotalDurationMonths': memberTotalDurationMonths,
+      };
 }
 
 /// A *membershipsLevel* resource represents an offer made by YouTube creators
@@ -14202,22 +12935,12 @@ class MembershipsLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class MembershipsLevelListResponse {
@@ -14261,25 +12984,14 @@ class MembershipsLevelListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 class MembershipsLevelSnippet {
@@ -14301,16 +13013,10 @@ class MembershipsLevelSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creatorChannelId != null) {
-      _json['creatorChannelId'] = creatorChannelId;
-    }
-    if (levelDetails != null) {
-      _json['levelDetails'] = levelDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creatorChannelId != null) 'creatorChannelId': creatorChannelId,
+        if (levelDetails != null) 'levelDetails': levelDetails.toJson(),
+      };
 }
 
 /// Settings and Info of the monitor stream
@@ -14348,19 +13054,13 @@ class MonitorStreamInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (broadcastStreamDelayMs != null) {
-      _json['broadcastStreamDelayMs'] = broadcastStreamDelayMs;
-    }
-    if (embedHtml != null) {
-      _json['embedHtml'] = embedHtml;
-    }
-    if (enableMonitorStream != null) {
-      _json['enableMonitorStream'] = enableMonitorStream;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (broadcastStreamDelayMs != null)
+          'broadcastStreamDelayMs': broadcastStreamDelayMs,
+        if (embedHtml != null) 'embedHtml': embedHtml,
+        if (enableMonitorStream != null)
+          'enableMonitorStream': enableMonitorStream,
+      };
 }
 
 /// Paging details for lists of resources, including total number of items
@@ -14383,16 +13083,10 @@ class PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resultsPerPage != null) {
-      _json['resultsPerPage'] = resultsPerPage;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resultsPerPage != null) 'resultsPerPage': resultsPerPage,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// A *playlist* resource represents a YouTube playlist.
@@ -14481,35 +13175,18 @@ class Playlist {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (localizations != null) {
-      _json['localizations'] =
-          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (player != null) {
-      _json['player'] = player.toJson();
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (localizations != null)
+          'localizations': localizations
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (player != null) 'player': player.toJson(),
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 class PlaylistContentDetails {
@@ -14524,13 +13201,9 @@ class PlaylistContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (itemCount != null) {
-      _json['itemCount'] = itemCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (itemCount != null) 'itemCount': itemCount,
+      };
 }
 
 /// A *playlistItem* resource identifies another resource, such as a video, that
@@ -14602,28 +13275,14 @@ class PlaylistItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 class PlaylistItemContentDetails {
@@ -14676,25 +13335,14 @@ class PlaylistItemContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endAt != null) {
-      _json['endAt'] = endAt;
-    }
-    if (note != null) {
-      _json['note'] = note;
-    }
-    if (startAt != null) {
-      _json['startAt'] = startAt;
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    if (videoPublishedAt != null) {
-      _json['videoPublishedAt'] = (videoPublishedAt).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endAt != null) 'endAt': endAt,
+        if (note != null) 'note': note,
+        if (startAt != null) 'startAt': startAt,
+        if (videoId != null) 'videoId': videoId,
+        if (videoPublishedAt != null)
+          'videoPublishedAt': (videoPublishedAt).toIso8601String(),
+      };
 }
 
 class PlaylistItemListResponse {
@@ -14764,37 +13412,19 @@ class PlaylistItemListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about a playlist, including title, description and thumbnails.
@@ -14872,37 +13502,17 @@ class PlaylistItemSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelTitle != null) {
-      _json['channelTitle'] = channelTitle;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (playlistId != null) {
-      _json['playlistId'] = playlistId;
-    }
-    if (position != null) {
-      _json['position'] = position;
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (channelTitle != null) 'channelTitle': channelTitle,
+        if (description != null) 'description': description,
+        if (playlistId != null) 'playlistId': playlistId,
+        if (position != null) 'position': position,
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Information about the playlist item's privacy status.
@@ -14922,13 +13532,9 @@ class PlaylistItemStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (privacyStatus != null) {
-      _json['privacyStatus'] = privacyStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+      };
 }
 
 class PlaylistListResponse {
@@ -14998,37 +13604,19 @@ class PlaylistListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Playlist localization setting
@@ -15050,16 +13638,10 @@ class PlaylistLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (title != null) 'title': title,
+      };
 }
 
 class PlaylistPlayer {
@@ -15074,13 +13656,9 @@ class PlaylistPlayer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (embedHtml != null) {
-      _json['embedHtml'] = embedHtml;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (embedHtml != null) 'embedHtml': embedHtml,
+      };
 }
 
 /// Basic details about a playlist, including title, description and thumbnails.
@@ -15153,37 +13731,17 @@ class PlaylistSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelTitle != null) {
-      _json['channelTitle'] = channelTitle;
-    }
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (localized != null) {
-      _json['localized'] = localized.toJson();
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (channelTitle != null) 'channelTitle': channelTitle,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+        if (description != null) 'description': description,
+        if (localized != null) 'localized': localized.toJson(),
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (tags != null) 'tags': tags,
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 class PlaylistStatus {
@@ -15202,13 +13760,9 @@ class PlaylistStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (privacyStatus != null) {
-      _json['privacyStatus'] = privacyStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+      };
 }
 
 /// A pair Property / Value.
@@ -15230,16 +13784,10 @@ class PropertyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (property != null) {
-      _json['property'] = property;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (property != null) 'property': property,
+        if (value != null) 'value': value,
+      };
 }
 
 class RelatedEntity {
@@ -15254,13 +13802,9 @@ class RelatedEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+      };
 }
 
 /// A resource id is a generic reference that points to another YouTube
@@ -15307,22 +13851,12 @@ class ResourceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (playlistId != null) {
-      _json['playlistId'] = playlistId;
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (kind != null) 'kind': kind,
+        if (playlistId != null) 'playlistId': playlistId,
+        if (videoId != null) 'videoId': videoId,
+      };
 }
 
 class SearchListResponse {
@@ -15396,40 +13930,20 @@ class SearchListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (regionCode != null) 'regionCode': regionCode,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// A search result contains information about a YouTube video, channel, or
@@ -15476,22 +13990,12 @@ class SearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id.toJson(),
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 /// Basic details about a search result, including title, description and
@@ -15560,31 +14064,16 @@ class SearchResultSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelTitle != null) {
-      _json['channelTitle'] = channelTitle;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (liveBroadcastContent != null) {
-      _json['liveBroadcastContent'] = liveBroadcastContent;
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (channelTitle != null) 'channelTitle': channelTitle,
+        if (description != null) 'description': description,
+        if (liveBroadcastContent != null)
+          'liveBroadcastContent': liveBroadcastContent,
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// A *subscription* resource contains information about a YouTube user
@@ -15642,28 +14131,15 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (subscriberSnippet != null) {
-      _json['subscriberSnippet'] = subscriberSnippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (subscriberSnippet != null)
+          'subscriberSnippet': subscriberSnippet.toJson(),
+      };
 }
 
 /// Details about the content to witch a subscription refers.
@@ -15696,19 +14172,11 @@ class SubscriptionContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activityType != null) {
-      _json['activityType'] = activityType;
-    }
-    if (newItemCount != null) {
-      _json['newItemCount'] = newItemCount;
-    }
-    if (totalItemCount != null) {
-      _json['totalItemCount'] = totalItemCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activityType != null) 'activityType': activityType,
+        if (newItemCount != null) 'newItemCount': newItemCount,
+        if (totalItemCount != null) 'totalItemCount': totalItemCount,
+      };
 }
 
 class SubscriptionListResponse {
@@ -15776,37 +14244,19 @@ class SubscriptionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about a subscription, including title, description and
@@ -15866,31 +14316,15 @@ class SubscriptionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelTitle != null) {
-      _json['channelTitle'] = channelTitle;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (channelTitle != null) 'channelTitle': channelTitle,
+        if (description != null) 'description': description,
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Basic details about a subscription's subscriber including title,
@@ -15926,22 +14360,12 @@ class SubscriptionSubscriberSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelId != null) 'channelId': channelId,
+        if (description != null) 'description': description,
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// A `__superChatEvent__` resource represents a Super Chat purchase on a
@@ -15979,22 +14403,12 @@ class SuperChatEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class SuperChatEventListResponse {
@@ -16055,34 +14469,18 @@ class SuperChatEventListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 class SuperChatEventSnippet {
@@ -16162,40 +14560,21 @@ class SuperChatEventSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (amountMicros != null) {
-      _json['amountMicros'] = amountMicros;
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (commentText != null) {
-      _json['commentText'] = commentText;
-    }
-    if (createdAt != null) {
-      _json['createdAt'] = (createdAt).toIso8601String();
-    }
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    if (displayString != null) {
-      _json['displayString'] = displayString;
-    }
-    if (isSuperStickerEvent != null) {
-      _json['isSuperStickerEvent'] = isSuperStickerEvent;
-    }
-    if (messageType != null) {
-      _json['messageType'] = messageType;
-    }
-    if (superStickerMetadata != null) {
-      _json['superStickerMetadata'] = superStickerMetadata.toJson();
-    }
-    if (supporterDetails != null) {
-      _json['supporterDetails'] = supporterDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (amountMicros != null) 'amountMicros': amountMicros,
+        if (channelId != null) 'channelId': channelId,
+        if (commentText != null) 'commentText': commentText,
+        if (createdAt != null) 'createdAt': (createdAt).toIso8601String(),
+        if (currency != null) 'currency': currency,
+        if (displayString != null) 'displayString': displayString,
+        if (isSuperStickerEvent != null)
+          'isSuperStickerEvent': isSuperStickerEvent,
+        if (messageType != null) 'messageType': messageType,
+        if (superStickerMetadata != null)
+          'superStickerMetadata': superStickerMetadata.toJson(),
+        if (supporterDetails != null)
+          'supporterDetails': supporterDetails.toJson(),
+      };
 }
 
 class SuperStickerMetadata {
@@ -16226,19 +14605,11 @@ class SuperStickerMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (altText != null) {
-      _json['altText'] = altText;
-    }
-    if (altTextLanguage != null) {
-      _json['altTextLanguage'] = altTextLanguage;
-    }
-    if (stickerId != null) {
-      _json['stickerId'] = stickerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (altText != null) 'altText': altText,
+        if (altTextLanguage != null) 'altTextLanguage': altTextLanguage,
+        if (stickerId != null) 'stickerId': stickerId,
+      };
 }
 
 class TestItem {
@@ -16261,19 +14632,11 @@ class TestItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gaia != null) {
-      _json['gaia'] = gaia;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gaia != null) 'gaia': gaia,
+        if (id != null) 'id': id,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class TestItemTestItemSnippet {
@@ -16283,10 +14646,7 @@ class TestItemTestItemSnippet {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A *third party account link* resource represents a link between a YouTube
@@ -16333,25 +14693,13 @@ class ThirdPartyLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (linkingToken != null) {
-      _json['linkingToken'] = linkingToken;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (kind != null) 'kind': kind,
+        if (linkingToken != null) 'linkingToken': linkingToken,
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Basic information about a third party account link, including its type and
@@ -16381,16 +14729,11 @@ class ThirdPartyLinkSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelToStoreLink != null) {
-      _json['channelToStoreLink'] = channelToStoreLink.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (channelToStoreLink != null)
+          'channelToStoreLink': channelToStoreLink.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// The third-party link status object contains information about the status of
@@ -16412,13 +14755,9 @@ class ThirdPartyLinkStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (linkStatus != null) {
-      _json['linkStatus'] = linkStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (linkStatus != null) 'linkStatus': linkStatus,
+      };
 }
 
 /// A thumbnail is an image representing a YouTube resource.
@@ -16446,19 +14785,11 @@ class Thumbnail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (height != null) 'height': height,
+        if (url != null) 'url': url,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Internal representation of thumbnails for a YouTube resource.
@@ -16503,25 +14834,13 @@ class ThumbnailDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (default_ != null) {
-      _json['default'] = default_.toJson();
-    }
-    if (high != null) {
-      _json['high'] = high.toJson();
-    }
-    if (maxres != null) {
-      _json['maxres'] = maxres.toJson();
-    }
-    if (medium != null) {
-      _json['medium'] = medium.toJson();
-    }
-    if (standard != null) {
-      _json['standard'] = standard.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (default_ != null) 'default': default_.toJson(),
+        if (high != null) 'high': high.toJson(),
+        if (maxres != null) 'maxres': maxres.toJson(),
+        if (medium != null) 'medium': medium.toJson(),
+        if (standard != null) 'standard': standard.toJson(),
+      };
 }
 
 class ThumbnailSetResponse {
@@ -16565,25 +14884,14 @@ class ThumbnailSetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Stub token pagination template to suppress results.
@@ -16594,10 +14902,7 @@ class TokenPagination {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A *video* resource represents a YouTube video.
@@ -16781,65 +15086,32 @@ class Video {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ageGating != null) {
-      _json['ageGating'] = ageGating.toJson();
-    }
-    if (contentDetails != null) {
-      _json['contentDetails'] = contentDetails.toJson();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (fileDetails != null) {
-      _json['fileDetails'] = fileDetails.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (liveStreamingDetails != null) {
-      _json['liveStreamingDetails'] = liveStreamingDetails.toJson();
-    }
-    if (localizations != null) {
-      _json['localizations'] =
-          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (monetizationDetails != null) {
-      _json['monetizationDetails'] = monetizationDetails.toJson();
-    }
-    if (player != null) {
-      _json['player'] = player.toJson();
-    }
-    if (processingDetails != null) {
-      _json['processingDetails'] = processingDetails.toJson();
-    }
-    if (projectDetails != null) {
-      _json['projectDetails'] = projectDetails.toJson();
-    }
-    if (recordingDetails != null) {
-      _json['recordingDetails'] = recordingDetails.toJson();
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    if (statistics != null) {
-      _json['statistics'] = statistics.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    if (suggestions != null) {
-      _json['suggestions'] = suggestions.toJson();
-    }
-    if (topicDetails != null) {
-      _json['topicDetails'] = topicDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ageGating != null) 'ageGating': ageGating.toJson(),
+        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+        if (etag != null) 'etag': etag,
+        if (fileDetails != null) 'fileDetails': fileDetails.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (liveStreamingDetails != null)
+          'liveStreamingDetails': liveStreamingDetails.toJson(),
+        if (localizations != null)
+          'localizations': localizations
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (monetizationDetails != null)
+          'monetizationDetails': monetizationDetails.toJson(),
+        if (player != null) 'player': player.toJson(),
+        if (processingDetails != null)
+          'processingDetails': processingDetails.toJson(),
+        if (projectDetails != null) 'projectDetails': projectDetails.toJson(),
+        if (recordingDetails != null)
+          'recordingDetails': recordingDetails.toJson(),
+        if (snippet != null) 'snippet': snippet.toJson(),
+        if (statistics != null) 'statistics': statistics.toJson(),
+        if (status != null) 'status': status.toJson(),
+        if (suggestions != null) 'suggestions': suggestions.toJson(),
+        if (topicDetails != null) 'topicDetails': topicDetails.toJson(),
+      };
 }
 
 class VideoAbuseReport {
@@ -16884,25 +15156,13 @@ class VideoAbuseReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comments != null) {
-      _json['comments'] = comments;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (reasonId != null) {
-      _json['reasonId'] = reasonId;
-    }
-    if (secondaryReasonId != null) {
-      _json['secondaryReasonId'] = secondaryReasonId;
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comments != null) 'comments': comments,
+        if (language != null) 'language': language,
+        if (reasonId != null) 'reasonId': reasonId,
+        if (secondaryReasonId != null) 'secondaryReasonId': secondaryReasonId,
+        if (videoId != null) 'videoId': videoId,
+      };
 }
 
 /// A `__videoAbuseReportReason__` resource identifies a reason that a video
@@ -16942,22 +15202,12 @@ class VideoAbuseReportReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class VideoAbuseReportReasonListResponse {
@@ -17002,25 +15252,14 @@ class VideoAbuseReportReasonListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about a video category, such as its localized title.
@@ -17048,17 +15287,12 @@ class VideoAbuseReportReasonSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (secondaryReasons != null) {
-      _json['secondaryReasons'] =
-          secondaryReasons.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (label != null) 'label': label,
+        if (secondaryReasons != null)
+          'secondaryReasons':
+              secondaryReasons.map((value) => value.toJson()).toList(),
+      };
 }
 
 class VideoAbuseReportSecondaryReason {
@@ -17079,16 +15313,10 @@ class VideoAbuseReportSecondaryReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (label != null) {
-      _json['label'] = label;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (label != null) 'label': label,
+      };
 }
 
 class VideoAgeGating {
@@ -17127,19 +15355,11 @@ class VideoAgeGating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alcoholContent != null) {
-      _json['alcoholContent'] = alcoholContent;
-    }
-    if (restricted != null) {
-      _json['restricted'] = restricted;
-    }
-    if (videoGameRating != null) {
-      _json['videoGameRating'] = videoGameRating;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alcoholContent != null) 'alcoholContent': alcoholContent,
+        if (restricted != null) 'restricted': restricted,
+        if (videoGameRating != null) 'videoGameRating': videoGameRating,
+      };
 }
 
 /// A *videoCategory* resource identifies a category that has been or could be
@@ -17178,22 +15398,12 @@ class VideoCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (snippet != null) 'snippet': snippet.toJson(),
+      };
 }
 
 class VideoCategoryListResponse {
@@ -17266,37 +15476,19 @@ class VideoCategoryListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Basic details about a video category, such as its localized title.
@@ -17323,19 +15515,11 @@ class VideoCategorySnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (assignable != null) {
-      _json['assignable'] = assignable;
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (assignable != null) 'assignable': assignable,
+        if (channelId != null) 'channelId': channelId,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Details about the content of a YouTube Video.
@@ -17437,40 +15621,21 @@ class VideoContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caption != null) {
-      _json['caption'] = caption;
-    }
-    if (contentRating != null) {
-      _json['contentRating'] = contentRating.toJson();
-    }
-    if (countryRestriction != null) {
-      _json['countryRestriction'] = countryRestriction.toJson();
-    }
-    if (definition != null) {
-      _json['definition'] = definition;
-    }
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (hasCustomThumbnail != null) {
-      _json['hasCustomThumbnail'] = hasCustomThumbnail;
-    }
-    if (licensedContent != null) {
-      _json['licensedContent'] = licensedContent;
-    }
-    if (projection != null) {
-      _json['projection'] = projection;
-    }
-    if (regionRestriction != null) {
-      _json['regionRestriction'] = regionRestriction.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caption != null) 'caption': caption,
+        if (contentRating != null) 'contentRating': contentRating.toJson(),
+        if (countryRestriction != null)
+          'countryRestriction': countryRestriction.toJson(),
+        if (definition != null) 'definition': definition,
+        if (dimension != null) 'dimension': dimension,
+        if (duration != null) 'duration': duration,
+        if (hasCustomThumbnail != null)
+          'hasCustomThumbnail': hasCustomThumbnail,
+        if (licensedContent != null) 'licensedContent': licensedContent,
+        if (projection != null) 'projection': projection,
+        if (regionRestriction != null)
+          'regionRestriction': regionRestriction.toJson(),
+      };
 }
 
 /// DEPRECATED Region restriction of the video.
@@ -17505,16 +15670,10 @@ class VideoContentDetailsRegionRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowed != null) {
-      _json['allowed'] = allowed;
-    }
-    if (blocked != null) {
-      _json['blocked'] = blocked;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowed != null) 'allowed': allowed,
+        if (blocked != null) 'blocked': blocked,
+      };
 }
 
 /// Describes original video file properties, including technical details about
@@ -17615,39 +15774,19 @@ class VideoFileDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioStreams != null) {
-      _json['audioStreams'] =
-          audioStreams.map((value) => value.toJson()).toList();
-    }
-    if (bitrateBps != null) {
-      _json['bitrateBps'] = bitrateBps;
-    }
-    if (container != null) {
-      _json['container'] = container;
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (durationMs != null) {
-      _json['durationMs'] = durationMs;
-    }
-    if (fileName != null) {
-      _json['fileName'] = fileName;
-    }
-    if (fileSize != null) {
-      _json['fileSize'] = fileSize;
-    }
-    if (fileType != null) {
-      _json['fileType'] = fileType;
-    }
-    if (videoStreams != null) {
-      _json['videoStreams'] =
-          videoStreams.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioStreams != null)
+          'audioStreams': audioStreams.map((value) => value.toJson()).toList(),
+        if (bitrateBps != null) 'bitrateBps': bitrateBps,
+        if (container != null) 'container': container,
+        if (creationTime != null) 'creationTime': creationTime,
+        if (durationMs != null) 'durationMs': durationMs,
+        if (fileName != null) 'fileName': fileName,
+        if (fileSize != null) 'fileSize': fileSize,
+        if (fileType != null) 'fileType': fileType,
+        if (videoStreams != null)
+          'videoStreams': videoStreams.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information about an audio stream.
@@ -17683,22 +15822,12 @@ class VideoFileDetailsAudioStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bitrateBps != null) {
-      _json['bitrateBps'] = bitrateBps;
-    }
-    if (channelCount != null) {
-      _json['channelCount'] = channelCount;
-    }
-    if (codec != null) {
-      _json['codec'] = codec;
-    }
-    if (vendor != null) {
-      _json['vendor'] = vendor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bitrateBps != null) 'bitrateBps': bitrateBps,
+        if (channelCount != null) 'channelCount': channelCount,
+        if (codec != null) 'codec': codec,
+        if (vendor != null) 'vendor': vendor,
+      };
 }
 
 /// Information about a video stream.
@@ -17769,34 +15898,16 @@ class VideoFileDetailsVideoStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aspectRatio != null) {
-      _json['aspectRatio'] = aspectRatio;
-    }
-    if (bitrateBps != null) {
-      _json['bitrateBps'] = bitrateBps;
-    }
-    if (codec != null) {
-      _json['codec'] = codec;
-    }
-    if (frameRateFps != null) {
-      _json['frameRateFps'] = frameRateFps;
-    }
-    if (heightPixels != null) {
-      _json['heightPixels'] = heightPixels;
-    }
-    if (rotation != null) {
-      _json['rotation'] = rotation;
-    }
-    if (vendor != null) {
-      _json['vendor'] = vendor;
-    }
-    if (widthPixels != null) {
-      _json['widthPixels'] = widthPixels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aspectRatio != null) 'aspectRatio': aspectRatio,
+        if (bitrateBps != null) 'bitrateBps': bitrateBps,
+        if (codec != null) 'codec': codec,
+        if (frameRateFps != null) 'frameRateFps': frameRateFps,
+        if (heightPixels != null) 'heightPixels': heightPixels,
+        if (rotation != null) 'rotation': rotation,
+        if (vendor != null) 'vendor': vendor,
+        if (widthPixels != null) 'widthPixels': widthPixels,
+      };
 }
 
 class VideoListResponse {
@@ -17864,37 +15975,19 @@ class VideoListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Details about the live streaming metadata.
@@ -17964,28 +16057,18 @@ class VideoLiveStreamingDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeLiveChatId != null) {
-      _json['activeLiveChatId'] = activeLiveChatId;
-    }
-    if (actualEndTime != null) {
-      _json['actualEndTime'] = (actualEndTime).toIso8601String();
-    }
-    if (actualStartTime != null) {
-      _json['actualStartTime'] = (actualStartTime).toIso8601String();
-    }
-    if (concurrentViewers != null) {
-      _json['concurrentViewers'] = concurrentViewers;
-    }
-    if (scheduledEndTime != null) {
-      _json['scheduledEndTime'] = (scheduledEndTime).toIso8601String();
-    }
-    if (scheduledStartTime != null) {
-      _json['scheduledStartTime'] = (scheduledStartTime).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeLiveChatId != null) 'activeLiveChatId': activeLiveChatId,
+        if (actualEndTime != null)
+          'actualEndTime': (actualEndTime).toIso8601String(),
+        if (actualStartTime != null)
+          'actualStartTime': (actualStartTime).toIso8601String(),
+        if (concurrentViewers != null) 'concurrentViewers': concurrentViewers,
+        if (scheduledEndTime != null)
+          'scheduledEndTime': (scheduledEndTime).toIso8601String(),
+        if (scheduledStartTime != null)
+          'scheduledStartTime': (scheduledStartTime).toIso8601String(),
+      };
 }
 
 /// Localized versions of certain video properties (e.g. title).
@@ -18007,16 +16090,10 @@ class VideoLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Details about monetization of a YouTube Video.
@@ -18033,13 +16110,9 @@ class VideoMonetizationDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (access != null) {
-      _json['access'] = access.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (access != null) 'access': access.toJson(),
+      };
 }
 
 /// Player to be used for a video playback.
@@ -18066,19 +16139,11 @@ class VideoPlayer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (embedHeight != null) {
-      _json['embedHeight'] = embedHeight;
-    }
-    if (embedHtml != null) {
-      _json['embedHtml'] = embedHtml;
-    }
-    if (embedWidth != null) {
-      _json['embedWidth'] = embedWidth;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (embedHeight != null) 'embedHeight': embedHeight,
+        if (embedHtml != null) 'embedHtml': embedHtml,
+        if (embedWidth != null) 'embedWidth': embedWidth,
+      };
 }
 
 /// Describes processing status and progress and availability of some other
@@ -18182,34 +16247,23 @@ class VideoProcessingDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (editorSuggestionsAvailability != null) {
-      _json['editorSuggestionsAvailability'] = editorSuggestionsAvailability;
-    }
-    if (fileDetailsAvailability != null) {
-      _json['fileDetailsAvailability'] = fileDetailsAvailability;
-    }
-    if (processingFailureReason != null) {
-      _json['processingFailureReason'] = processingFailureReason;
-    }
-    if (processingIssuesAvailability != null) {
-      _json['processingIssuesAvailability'] = processingIssuesAvailability;
-    }
-    if (processingProgress != null) {
-      _json['processingProgress'] = processingProgress.toJson();
-    }
-    if (processingStatus != null) {
-      _json['processingStatus'] = processingStatus;
-    }
-    if (tagSuggestionsAvailability != null) {
-      _json['tagSuggestionsAvailability'] = tagSuggestionsAvailability;
-    }
-    if (thumbnailsAvailability != null) {
-      _json['thumbnailsAvailability'] = thumbnailsAvailability;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (editorSuggestionsAvailability != null)
+          'editorSuggestionsAvailability': editorSuggestionsAvailability,
+        if (fileDetailsAvailability != null)
+          'fileDetailsAvailability': fileDetailsAvailability,
+        if (processingFailureReason != null)
+          'processingFailureReason': processingFailureReason,
+        if (processingIssuesAvailability != null)
+          'processingIssuesAvailability': processingIssuesAvailability,
+        if (processingProgress != null)
+          'processingProgress': processingProgress.toJson(),
+        if (processingStatus != null) 'processingStatus': processingStatus,
+        if (tagSuggestionsAvailability != null)
+          'tagSuggestionsAvailability': tagSuggestionsAvailability,
+        if (thumbnailsAvailability != null)
+          'thumbnailsAvailability': thumbnailsAvailability,
+      };
 }
 
 /// Video processing progress and completion time estimate.
@@ -18249,19 +16303,11 @@ class VideoProcessingDetailsProcessingProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (partsProcessed != null) {
-      _json['partsProcessed'] = partsProcessed;
-    }
-    if (partsTotal != null) {
-      _json['partsTotal'] = partsTotal;
-    }
-    if (timeLeftMs != null) {
-      _json['timeLeftMs'] = timeLeftMs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (partsProcessed != null) 'partsProcessed': partsProcessed,
+        if (partsTotal != null) 'partsTotal': partsTotal,
+        if (timeLeftMs != null) 'timeLeftMs': timeLeftMs,
+      };
 }
 
 /// b/157517979: This part was never populated after it was added.
@@ -18282,10 +16328,7 @@ class VideoProjectDetails {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Basic details about rating of a video.
@@ -18311,16 +16354,10 @@ class VideoRating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rating != null) {
-      _json['rating'] = rating;
-    }
-    if (videoId != null) {
-      _json['videoId'] = videoId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rating != null) 'rating': rating,
+        if (videoId != null) 'videoId': videoId,
+      };
 }
 
 class VideoRatingListResponse {
@@ -18364,25 +16401,14 @@ class VideoRatingListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (eventId != null) 'eventId': eventId,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (visitorId != null) 'visitorId': visitorId,
+      };
 }
 
 /// Recording information associated with the video.
@@ -18412,19 +16438,13 @@ class VideoRecordingDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (locationDescription != null) {
-      _json['locationDescription'] = locationDescription;
-    }
-    if (recordingDate != null) {
-      _json['recordingDate'] = (recordingDate).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (location != null) 'location': location.toJson(),
+        if (locationDescription != null)
+          'locationDescription': locationDescription,
+        if (recordingDate != null)
+          'recordingDate': (recordingDate).toIso8601String(),
+      };
 }
 
 /// Basic details about a video, including title, description, uploader,
@@ -18533,46 +16553,22 @@ class VideoSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryId != null) {
-      _json['categoryId'] = categoryId;
-    }
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (channelTitle != null) {
-      _json['channelTitle'] = channelTitle;
-    }
-    if (defaultAudioLanguage != null) {
-      _json['defaultAudioLanguage'] = defaultAudioLanguage;
-    }
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (liveBroadcastContent != null) {
-      _json['liveBroadcastContent'] = liveBroadcastContent;
-    }
-    if (localized != null) {
-      _json['localized'] = localized.toJson();
-    }
-    if (publishedAt != null) {
-      _json['publishedAt'] = (publishedAt).toIso8601String();
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (thumbnails != null) {
-      _json['thumbnails'] = thumbnails.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryId != null) 'categoryId': categoryId,
+        if (channelId != null) 'channelId': channelId,
+        if (channelTitle != null) 'channelTitle': channelTitle,
+        if (defaultAudioLanguage != null)
+          'defaultAudioLanguage': defaultAudioLanguage,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+        if (description != null) 'description': description,
+        if (liveBroadcastContent != null)
+          'liveBroadcastContent': liveBroadcastContent,
+        if (localized != null) 'localized': localized.toJson(),
+        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+        if (tags != null) 'tags': tags,
+        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// Statistics about the video, such as the number of times the video was viewed
@@ -18616,25 +16612,13 @@ class VideoStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commentCount != null) {
-      _json['commentCount'] = commentCount;
-    }
-    if (dislikeCount != null) {
-      _json['dislikeCount'] = dislikeCount;
-    }
-    if (favoriteCount != null) {
-      _json['favoriteCount'] = favoriteCount;
-    }
-    if (likeCount != null) {
-      _json['likeCount'] = likeCount;
-    }
-    if (viewCount != null) {
-      _json['viewCount'] = viewCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commentCount != null) 'commentCount': commentCount,
+        if (dislikeCount != null) 'dislikeCount': dislikeCount,
+        if (favoriteCount != null) 'favoriteCount': favoriteCount,
+        if (likeCount != null) 'likeCount': likeCount,
+        if (viewCount != null) 'viewCount': viewCount,
+      };
 }
 
 /// Basic details about a video category, such as its localized title.
@@ -18749,40 +16733,20 @@ class VideoStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (embeddable != null) {
-      _json['embeddable'] = embeddable;
-    }
-    if (failureReason != null) {
-      _json['failureReason'] = failureReason;
-    }
-    if (license != null) {
-      _json['license'] = license;
-    }
-    if (madeForKids != null) {
-      _json['madeForKids'] = madeForKids;
-    }
-    if (privacyStatus != null) {
-      _json['privacyStatus'] = privacyStatus;
-    }
-    if (publicStatsViewable != null) {
-      _json['publicStatsViewable'] = publicStatsViewable;
-    }
-    if (publishAt != null) {
-      _json['publishAt'] = (publishAt).toIso8601String();
-    }
-    if (rejectionReason != null) {
-      _json['rejectionReason'] = rejectionReason;
-    }
-    if (selfDeclaredMadeForKids != null) {
-      _json['selfDeclaredMadeForKids'] = selfDeclaredMadeForKids;
-    }
-    if (uploadStatus != null) {
-      _json['uploadStatus'] = uploadStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (embeddable != null) 'embeddable': embeddable,
+        if (failureReason != null) 'failureReason': failureReason,
+        if (license != null) 'license': license,
+        if (madeForKids != null) 'madeForKids': madeForKids,
+        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+        if (publicStatsViewable != null)
+          'publicStatsViewable': publicStatsViewable,
+        if (publishAt != null) 'publishAt': (publishAt).toIso8601String(),
+        if (rejectionReason != null) 'rejectionReason': rejectionReason,
+        if (selfDeclaredMadeForKids != null)
+          'selfDeclaredMadeForKids': selfDeclaredMadeForKids,
+        if (uploadStatus != null) 'uploadStatus': uploadStatus,
+      };
 }
 
 /// Specifies suggestions on how to improve video content, including encoding
@@ -18849,26 +16813,16 @@ class VideoSuggestions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (editorSuggestions != null) {
-      _json['editorSuggestions'] = editorSuggestions;
-    }
-    if (processingErrors != null) {
-      _json['processingErrors'] = processingErrors;
-    }
-    if (processingHints != null) {
-      _json['processingHints'] = processingHints;
-    }
-    if (processingWarnings != null) {
-      _json['processingWarnings'] = processingWarnings;
-    }
-    if (tagSuggestions != null) {
-      _json['tagSuggestions'] =
-          tagSuggestions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (editorSuggestions != null) 'editorSuggestions': editorSuggestions,
+        if (processingErrors != null) 'processingErrors': processingErrors,
+        if (processingHints != null) 'processingHints': processingHints,
+        if (processingWarnings != null)
+          'processingWarnings': processingWarnings,
+        if (tagSuggestions != null)
+          'tagSuggestions':
+              tagSuggestions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single tag suggestion with it's relevance information.
@@ -18897,16 +16851,10 @@ class VideoSuggestionsTagSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categoryRestricts != null) {
-      _json['categoryRestricts'] = categoryRestricts;
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categoryRestricts != null) 'categoryRestricts': categoryRestricts,
+        if (tag != null) 'tag': tag,
+      };
 }
 
 /// Freebase topic information related to the video.
@@ -18950,19 +16898,11 @@ class VideoTopicDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (relevantTopicIds != null) {
-      _json['relevantTopicIds'] = relevantTopicIds;
-    }
-    if (topicCategories != null) {
-      _json['topicCategories'] = topicCategories;
-    }
-    if (topicIds != null) {
-      _json['topicIds'] = topicIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (relevantTopicIds != null) 'relevantTopicIds': relevantTopicIds,
+        if (topicCategories != null) 'topicCategories': topicCategories,
+        if (topicIds != null) 'topicIds': topicIds,
+      };
 }
 
 /// Branding properties for the watch.
@@ -18993,17 +16933,10 @@ class WatchSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor;
-    }
-    if (featuredPlaylistId != null) {
-      _json['featuredPlaylistId'] = featuredPlaylistId;
-    }
-    if (textColor != null) {
-      _json['textColor'] = textColor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundColor != null) 'backgroundColor': backgroundColor,
+        if (featuredPlaylistId != null)
+          'featuredPlaylistId': featuredPlaylistId,
+        if (textColor != null) 'textColor': textColor,
+      };
 }

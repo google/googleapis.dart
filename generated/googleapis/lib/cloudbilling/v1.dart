@@ -843,19 +843,12 @@ class AggregationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregationCount != null) {
-      _json['aggregationCount'] = aggregationCount;
-    }
-    if (aggregationInterval != null) {
-      _json['aggregationInterval'] = aggregationInterval;
-    }
-    if (aggregationLevel != null) {
-      _json['aggregationLevel'] = aggregationLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregationCount != null) 'aggregationCount': aggregationCount,
+        if (aggregationInterval != null)
+          'aggregationInterval': aggregationInterval,
+        if (aggregationLevel != null) 'aggregationLevel': aggregationLevel,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -899,17 +892,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -946,16 +934,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// A billing account in the
@@ -1012,22 +994,13 @@ class BillingAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (masterBillingAccount != null) {
-      _json['masterBillingAccount'] = masterBillingAccount;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (open != null) {
-      _json['open'] = open;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (masterBillingAccount != null)
+          'masterBillingAccount': masterBillingAccount,
+        if (name != null) 'name': name,
+        if (open != null) 'open': open,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1096,19 +1069,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Represents the category hierarchy of a SKU.
@@ -1148,22 +1113,13 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceFamily != null) {
-      _json['resourceFamily'] = resourceFamily;
-    }
-    if (resourceGroup != null) {
-      _json['resourceGroup'] = resourceGroup;
-    }
-    if (serviceDisplayName != null) {
-      _json['serviceDisplayName'] = serviceDisplayName;
-    }
-    if (usageType != null) {
-      _json['usageType'] = usageType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceFamily != null) 'resourceFamily': resourceFamily,
+        if (resourceGroup != null) 'resourceGroup': resourceGroup,
+        if (serviceDisplayName != null)
+          'serviceDisplayName': serviceDisplayName,
+        if (usageType != null) 'usageType': usageType,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1227,22 +1183,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Encapsulates the geographic taxonomy data for a sku.
@@ -1275,16 +1221,10 @@ class GeoTaxonomy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (regions != null) {
-      _json['regions'] = regions;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (regions != null) 'regions': regions,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Response message for `ListBillingAccounts`.
@@ -1313,17 +1253,12 @@ class ListBillingAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (billingAccounts != null) {
-      _json['billingAccounts'] =
-          billingAccounts.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (billingAccounts != null)
+          'billingAccounts':
+              billingAccounts.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Request message for `ListProjectBillingInfoResponse`.
@@ -1353,17 +1288,12 @@ class ListProjectBillingInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (projectBillingInfo != null) {
-      _json['projectBillingInfo'] =
-          projectBillingInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (projectBillingInfo != null)
+          'projectBillingInfo':
+              projectBillingInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for `ListServices`.
@@ -1392,16 +1322,11 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (services != null) {
-      _json['services'] = services.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (services != null)
+          'services': services.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for `ListSkus`.
@@ -1430,16 +1355,10 @@ class ListSkusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (skus != null) {
-      _json['skus'] = skus.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (skus != null) 'skus': skus.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents an amount of money with its currency type.
@@ -1475,19 +1394,11 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1594,23 +1505,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Expresses a mathematical pricing formula.
@@ -1695,32 +1597,19 @@ class PricingExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (baseUnit != null) {
-      _json['baseUnit'] = baseUnit;
-    }
-    if (baseUnitConversionFactor != null) {
-      _json['baseUnitConversionFactor'] = baseUnitConversionFactor;
-    }
-    if (baseUnitDescription != null) {
-      _json['baseUnitDescription'] = baseUnitDescription;
-    }
-    if (displayQuantity != null) {
-      _json['displayQuantity'] = displayQuantity;
-    }
-    if (tieredRates != null) {
-      _json['tieredRates'] =
-          tieredRates.map((value) => value.toJson()).toList();
-    }
-    if (usageUnit != null) {
-      _json['usageUnit'] = usageUnit;
-    }
-    if (usageUnitDescription != null) {
-      _json['usageUnitDescription'] = usageUnitDescription;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (baseUnit != null) 'baseUnit': baseUnit,
+        if (baseUnitConversionFactor != null)
+          'baseUnitConversionFactor': baseUnitConversionFactor,
+        if (baseUnitDescription != null)
+          'baseUnitDescription': baseUnitDescription,
+        if (displayQuantity != null) 'displayQuantity': displayQuantity,
+        if (tieredRates != null)
+          'tieredRates': tieredRates.map((value) => value.toJson()).toList(),
+        if (usageUnit != null) 'usageUnit': usageUnit,
+        if (usageUnitDescription != null)
+          'usageUnitDescription': usageUnitDescription,
+      };
 }
 
 /// Represents the pricing information for a SKU at a single point of time.
@@ -1780,25 +1669,16 @@ class PricingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregationInfo != null) {
-      _json['aggregationInfo'] = aggregationInfo.toJson();
-    }
-    if (currencyConversionRate != null) {
-      _json['currencyConversionRate'] = currencyConversionRate;
-    }
-    if (effectiveTime != null) {
-      _json['effectiveTime'] = effectiveTime;
-    }
-    if (pricingExpression != null) {
-      _json['pricingExpression'] = pricingExpression.toJson();
-    }
-    if (summary != null) {
-      _json['summary'] = summary;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregationInfo != null)
+          'aggregationInfo': aggregationInfo.toJson(),
+        if (currencyConversionRate != null)
+          'currencyConversionRate': currencyConversionRate,
+        if (effectiveTime != null) 'effectiveTime': effectiveTime,
+        if (pricingExpression != null)
+          'pricingExpression': pricingExpression.toJson(),
+        if (summary != null) 'summary': summary,
+      };
 }
 
 /// Encapsulation of billing information for a Google Cloud Console project.
@@ -1852,22 +1732,13 @@ class ProjectBillingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (billingAccountName != null) {
-      _json['billingAccountName'] = billingAccountName;
-    }
-    if (billingEnabled != null) {
-      _json['billingEnabled'] = billingEnabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (billingAccountName != null)
+          'billingAccountName': billingAccountName,
+        if (billingEnabled != null) 'billingEnabled': billingEnabled,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Encapsulates a single service in Google Cloud Platform.
@@ -1907,22 +1778,13 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (businessEntityName != null) {
-      _json['businessEntityName'] = businessEntityName;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (serviceId != null) {
-      _json['serviceId'] = serviceId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (businessEntityName != null)
+          'businessEntityName': businessEntityName,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (serviceId != null) 'serviceId': serviceId,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1952,16 +1814,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Encapsulates a single SKU in Google Cloud Platform
@@ -2036,35 +1892,18 @@ class Sku {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (geoTaxonomy != null) {
-      _json['geoTaxonomy'] = geoTaxonomy.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pricingInfo != null) {
-      _json['pricingInfo'] =
-          pricingInfo.map((value) => value.toJson()).toList();
-    }
-    if (serviceProviderName != null) {
-      _json['serviceProviderName'] = serviceProviderName;
-    }
-    if (serviceRegions != null) {
-      _json['serviceRegions'] = serviceRegions;
-    }
-    if (skuId != null) {
-      _json['skuId'] = skuId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category.toJson(),
+        if (description != null) 'description': description,
+        if (geoTaxonomy != null) 'geoTaxonomy': geoTaxonomy.toJson(),
+        if (name != null) 'name': name,
+        if (pricingInfo != null)
+          'pricingInfo': pricingInfo.map((value) => value.toJson()).toList(),
+        if (serviceProviderName != null)
+          'serviceProviderName': serviceProviderName,
+        if (serviceRegions != null) 'serviceRegions': serviceRegions,
+        if (skuId != null) 'skuId': skuId,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -2086,13 +1925,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -2111,13 +1946,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// The price rate indicating starting usage and its corresponding price.
@@ -2145,14 +1976,8 @@ class TierRate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (startUsageAmount != null) {
-      _json['startUsageAmount'] = startUsageAmount;
-    }
-    if (unitPrice != null) {
-      _json['unitPrice'] = unitPrice.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (startUsageAmount != null) 'startUsageAmount': startUsageAmount,
+        if (unitPrice != null) 'unitPrice': unitPrice.toJson(),
+      };
 }

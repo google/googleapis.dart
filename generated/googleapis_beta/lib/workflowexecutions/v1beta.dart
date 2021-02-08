@@ -334,10 +334,7 @@ class CancelExecutionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Error describes why the execution was abnormally terminated.
@@ -366,19 +363,11 @@ class Error {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (stackTrace != null) {
-      _json['stackTrace'] = stackTrace.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context,
+        if (payload != null) 'payload': payload,
+        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
+      };
 }
 
 /// A running instance of a
@@ -471,34 +460,17 @@ class Execution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (argument != null) {
-      _json['argument'] = argument;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (result != null) {
-      _json['result'] = result;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (workflowRevisionId != null) {
-      _json['workflowRevisionId'] = workflowRevisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (argument != null) 'argument': argument,
+        if (endTime != null) 'endTime': endTime,
+        if (error != null) 'error': error.toJson(),
+        if (name != null) 'name': name,
+        if (result != null) 'result': result,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+        if (workflowRevisionId != null)
+          'workflowRevisionId': workflowRevisionId,
+      };
 }
 
 /// Response for the ListExecutions method.
@@ -525,16 +497,11 @@ class ListExecutionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executions != null) {
-      _json['executions'] = executions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executions != null)
+          'executions': executions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A collection of stack elements (frames) where an error occurred.
@@ -553,13 +520,10 @@ class StackTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (elements != null) {
-      _json['elements'] = elements.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (elements != null)
+          'elements': elements.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single stack element (frame) where an error occurred.
@@ -594,20 +558,10 @@ class StackTraceElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (column != null) {
-      _json['column'] = column;
-    }
-    if (line != null) {
-      _json['line'] = line;
-    }
-    if (routine != null) {
-      _json['routine'] = routine;
-    }
-    if (step != null) {
-      _json['step'] = step;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (column != null) 'column': column,
+        if (line != null) 'line': line,
+        if (routine != null) 'routine': routine,
+        if (step != null) 'step': step,
+      };
 }

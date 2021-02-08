@@ -2609,25 +2609,15 @@ class AppProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (multiClusterRoutingUseAny != null) {
-      _json['multiClusterRoutingUseAny'] = multiClusterRoutingUseAny.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (singleClusterRouting != null) {
-      _json['singleClusterRouting'] = singleClusterRouting.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (multiClusterRoutingUseAny != null)
+          'multiClusterRoutingUseAny': multiClusterRoutingUseAny.toJson(),
+        if (name != null) 'name': name,
+        if (singleClusterRouting != null)
+          'singleClusterRouting': singleClusterRouting.toJson(),
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2671,17 +2661,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2718,16 +2703,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// A backup of a Cloud Bigtable table.
@@ -2816,31 +2795,15 @@ class Backup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sizeBytes != null) {
-      _json['sizeBytes'] = sizeBytes;
-    }
-    if (sourceTable != null) {
-      _json['sourceTable'] = sourceTable;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (name != null) 'name': name,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes,
+        if (sourceTable != null) 'sourceTable': sourceTable,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Information about a backup.
@@ -2886,22 +2849,12 @@ class BackupInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backup != null) {
-      _json['backup'] = backup;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (sourceTable != null) {
-      _json['sourceTable'] = sourceTable;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backup != null) 'backup': backup,
+        if (endTime != null) 'endTime': endTime,
+        if (sourceTable != null) 'sourceTable': sourceTable,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -2970,19 +2923,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Request message for
@@ -3001,13 +2946,9 @@ class CheckConsistencyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consistencyToken != null) {
-      _json['consistencyToken'] = consistencyToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consistencyToken != null) 'consistencyToken': consistencyToken,
+      };
 }
 
 /// Response message for
@@ -3027,13 +2968,9 @@ class CheckConsistencyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consistent != null) {
-      _json['consistent'] = consistent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consistent != null) 'consistent': consistent,
+      };
 }
 
 /// A resizable group of nodes in a particular cloud location, capable of
@@ -3110,25 +3047,14 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultStorageType != null) {
-      _json['defaultStorageType'] = defaultStorageType;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (serveNodes != null) {
-      _json['serveNodes'] = serveNodes;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultStorageType != null)
+          'defaultStorageType': defaultStorageType,
+        if (location != null) 'location': location,
+        if (name != null) 'name': name,
+        if (serveNodes != null) 'serveNodes': serveNodes,
+        if (state != null) 'state': state,
+      };
 }
 
 /// The state of a table's data in a particular cluster.
@@ -3162,13 +3088,9 @@ class ClusterState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (replicationState != null) {
-      _json['replicationState'] = replicationState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (replicationState != null) 'replicationState': replicationState,
+      };
 }
 
 /// A set of columns within a table which share a common configuration.
@@ -3189,13 +3111,9 @@ class ColumnFamily {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcRule != null) {
-      _json['gcRule'] = gcRule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcRule != null) 'gcRule': gcRule.toJson(),
+      };
 }
 
 /// Metadata type for the operation returned by CreateBackup.
@@ -3229,22 +3147,12 @@ class CreateBackupMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sourceTable != null) {
-      _json['sourceTable'] = sourceTable;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (name != null) 'name': name,
+        if (sourceTable != null) 'sourceTable': sourceTable,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// The metadata for the Operation returned by CreateCluster.
@@ -3291,23 +3199,15 @@ class CreateClusterMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finishTime != null) {
-      _json['finishTime'] = finishTime;
-    }
-    if (originalRequest != null) {
-      _json['originalRequest'] = originalRequest.toJson();
-    }
-    if (requestTime != null) {
-      _json['requestTime'] = requestTime;
-    }
-    if (tables != null) {
-      _json['tables'] =
-          tables.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finishTime != null) 'finishTime': finishTime,
+        if (originalRequest != null)
+          'originalRequest': originalRequest.toJson(),
+        if (requestTime != null) 'requestTime': requestTime,
+        if (tables != null)
+          'tables':
+              tables.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Request message for BigtableInstanceAdmin.CreateCluster.
@@ -3348,19 +3248,11 @@ class CreateClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cluster != null) {
-      _json['cluster'] = cluster.toJson();
-    }
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cluster != null) 'cluster': cluster.toJson(),
+        if (clusterId != null) 'clusterId': clusterId,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 /// The metadata for the Operation returned by CreateInstance.
@@ -3389,19 +3281,12 @@ class CreateInstanceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finishTime != null) {
-      _json['finishTime'] = finishTime;
-    }
-    if (originalRequest != null) {
-      _json['originalRequest'] = originalRequest.toJson();
-    }
-    if (requestTime != null) {
-      _json['requestTime'] = requestTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finishTime != null) 'finishTime': finishTime,
+        if (originalRequest != null)
+          'originalRequest': originalRequest.toJson(),
+        if (requestTime != null) 'requestTime': requestTime,
+      };
 }
 
 /// Request message for BigtableInstanceAdmin.CreateInstance.
@@ -3461,23 +3346,14 @@ class CreateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusters != null) {
-      _json['clusters'] =
-          clusters.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (instance != null) {
-      _json['instance'] = instance.toJson();
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusters != null)
+          'clusters':
+              clusters.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (instance != null) 'instance': instance.toJson(),
+        if (instanceId != null) 'instanceId': instanceId,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 /// Request message for google.bigtable.admin.v2.BigtableTableAdmin.CreateTable
@@ -3526,20 +3402,13 @@ class CreateTableRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (initialSplits != null) {
-      _json['initialSplits'] =
-          initialSplits.map((value) => value.toJson()).toList();
-    }
-    if (table != null) {
-      _json['table'] = table.toJson();
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (initialSplits != null)
+          'initialSplits':
+              initialSplits.map((value) => value.toJson()).toList(),
+        if (table != null) 'table': table.toJson(),
+        if (tableId != null) 'tableId': tableId,
+      };
 }
 
 /// Request message for google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange
@@ -3572,16 +3441,11 @@ class DropRowRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deleteAllDataFromTable != null) {
-      _json['deleteAllDataFromTable'] = deleteAllDataFromTable;
-    }
-    if (rowKeyPrefix != null) {
-      _json['rowKeyPrefix'] = rowKeyPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deleteAllDataFromTable != null)
+          'deleteAllDataFromTable': deleteAllDataFromTable,
+        if (rowKeyPrefix != null) 'rowKeyPrefix': rowKeyPrefix,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3598,10 +3462,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3665,22 +3526,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Added to the error payload.
@@ -3698,13 +3549,10 @@ class FailureTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frames != null) {
-      _json['frames'] = frames.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frames != null)
+          'frames': frames.map((value) => value.toJson()).toList(),
+      };
 }
 
 class Frame {
@@ -3726,19 +3574,11 @@ class Frame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetName != null) {
-      _json['targetName'] = targetName;
-    }
-    if (workflowGuid != null) {
-      _json['workflowGuid'] = workflowGuid;
-    }
-    if (zoneId != null) {
-      _json['zoneId'] = zoneId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetName != null) 'targetName': targetName,
+        if (workflowGuid != null) 'workflowGuid': workflowGuid,
+        if (zoneId != null) 'zoneId': zoneId,
+      };
 }
 
 /// Rule for determining which cells to delete during garbage collection.
@@ -3777,22 +3617,12 @@ class GcRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (intersection != null) {
-      _json['intersection'] = intersection.toJson();
-    }
-    if (maxAge != null) {
-      _json['maxAge'] = maxAge;
-    }
-    if (maxNumVersions != null) {
-      _json['maxNumVersions'] = maxNumVersions;
-    }
-    if (union != null) {
-      _json['union'] = union.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (intersection != null) 'intersection': intersection.toJson(),
+        if (maxAge != null) 'maxAge': maxAge,
+        if (maxNumVersions != null) 'maxNumVersions': maxNumVersions,
+        if (union != null) 'union': union.toJson(),
+      };
 }
 
 /// Request message for
@@ -3804,10 +3634,7 @@ class GenerateConsistencyTokenRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response message for
@@ -3824,13 +3651,9 @@ class GenerateConsistencyTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consistencyToken != null) {
-      _json['consistencyToken'] = consistencyToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consistencyToken != null) 'consistencyToken': consistencyToken,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -3848,13 +3671,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -3879,13 +3698,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// A collection of Bigtable Tables and the resources that serve them.
@@ -3971,25 +3787,13 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A GcRule which deletes cells matching all of the given rules.
@@ -4008,13 +3812,10 @@ class Intersection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rules != null) {
-      _json['rules'] = rules.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rules != null)
+          'rules': rules.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for BigtableInstanceAdmin.ListAppProfiles.
@@ -4054,20 +3855,12 @@ class ListAppProfilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appProfiles != null) {
-      _json['appProfiles'] =
-          appProfiles.map((value) => value.toJson()).toList();
-    }
-    if (failedLocations != null) {
-      _json['failedLocations'] = failedLocations;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appProfiles != null)
+          'appProfiles': appProfiles.map((value) => value.toJson()).toList(),
+        if (failedLocations != null) 'failedLocations': failedLocations,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response for ListBackups.
@@ -4093,16 +3886,11 @@ class ListBackupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backups != null) {
-      _json['backups'] = backups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backups != null)
+          'backups': backups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for BigtableInstanceAdmin.ListClusters.
@@ -4140,19 +3928,12 @@ class ListClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusters != null) {
-      _json['clusters'] = clusters.map((value) => value.toJson()).toList();
-    }
-    if (failedLocations != null) {
-      _json['failedLocations'] = failedLocations;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusters != null)
+          'clusters': clusters.map((value) => value.toJson()).toList(),
+        if (failedLocations != null) 'failedLocations': failedLocations,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for BigtableInstanceAdmin.ListInstances.
@@ -4191,19 +3972,12 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (failedLocations != null) {
-      _json['failedLocations'] = failedLocations;
-    }
-    if (instances != null) {
-      _json['instances'] = instances.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (failedLocations != null) 'failedLocations': failedLocations,
+        if (instances != null)
+          'instances': instances.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4228,16 +4002,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -4262,16 +4031,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListTables
@@ -4299,16 +4063,11 @@ class ListTablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (tables != null) {
-      _json['tables'] = tables.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (tables != null)
+          'tables': tables.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -4373,25 +4132,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A create, update, or delete of a particular column family.
@@ -4430,22 +4177,12 @@ class Modification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (create != null) {
-      _json['create'] = create.toJson();
-    }
-    if (drop != null) {
-      _json['drop'] = drop;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (update != null) {
-      _json['update'] = update.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (create != null) 'create': create.toJson(),
+        if (drop != null) 'drop': drop,
+        if (id != null) 'id': id,
+        if (update != null) 'update': update.toJson(),
+      };
 }
 
 /// Request message for
@@ -4471,14 +4208,11 @@ class ModifyColumnFamiliesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (modifications != null) {
-      _json['modifications'] =
-          modifications.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (modifications != null)
+          'modifications':
+              modifications.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Read/write requests are routed to the nearest cluster in the instance, and
@@ -4494,10 +4228,7 @@ class MultiClusterRoutingUseAny {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4576,25 +4307,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Encapsulates progress related information for a Cloud Bigtable long running
@@ -4626,19 +4345,11 @@ class OperationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Metadata type for the long-running operation used to track the progress of
@@ -4665,16 +4376,10 @@ class OptimizeRestoredTableMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (progress != null) {
-      _json['progress'] = progress.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (progress != null) 'progress': progress.toJson(),
+      };
 }
 
 /// Request message for BigtableInstanceAdmin.PartialUpdateInstance.
@@ -4703,16 +4408,10 @@ class PartialUpdateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instance != null) {
-      _json['instance'] = instance.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instance != null) 'instance': instance.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4819,23 +4518,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Information about a table restore.
@@ -4863,16 +4553,10 @@ class RestoreInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupInfo != null) {
-      _json['backupInfo'] = backupInfo.toJson();
-    }
-    if (sourceType != null) {
-      _json['sourceType'] = sourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupInfo != null) 'backupInfo': backupInfo.toJson(),
+        if (sourceType != null) 'sourceType': sourceType,
+      };
 }
 
 /// Metadata type for the long-running operation returned by RestoreTable.
@@ -4926,25 +4610,14 @@ class RestoreTableMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backupInfo != null) {
-      _json['backupInfo'] = backupInfo.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (optimizeTableOperationName != null) {
-      _json['optimizeTableOperationName'] = optimizeTableOperationName;
-    }
-    if (progress != null) {
-      _json['progress'] = progress.toJson();
-    }
-    if (sourceType != null) {
-      _json['sourceType'] = sourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backupInfo != null) 'backupInfo': backupInfo.toJson(),
+        if (name != null) 'name': name,
+        if (optimizeTableOperationName != null)
+          'optimizeTableOperationName': optimizeTableOperationName,
+        if (progress != null) 'progress': progress.toJson(),
+        if (sourceType != null) 'sourceType': sourceType,
+      };
 }
 
 /// The request for RestoreTable.
@@ -4973,16 +4646,10 @@ class RestoreTableRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backup != null) {
-      _json['backup'] = backup;
-    }
-    if (tableId != null) {
-      _json['tableId'] = tableId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backup != null) 'backup': backup,
+        if (tableId != null) 'tableId': tableId,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -5012,16 +4679,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Unconditionally routes all read/write requests to a specific cluster.
@@ -5050,16 +4711,11 @@ class SingleClusterRouting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowTransactionalWrites != null) {
-      _json['allowTransactionalWrites'] = allowTransactionalWrites;
-    }
-    if (clusterId != null) {
-      _json['clusterId'] = clusterId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowTransactionalWrites != null)
+          'allowTransactionalWrites': allowTransactionalWrites,
+        if (clusterId != null) 'clusterId': clusterId,
+      };
 }
 
 /// An initial split point for a newly created table.
@@ -5081,13 +4737,9 @@ class Split {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5137,19 +4789,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A collection of user data indexed by row, column, and timestamp.
@@ -5236,27 +4880,17 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterStates != null) {
-      _json['clusterStates'] =
-          clusterStates.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (columnFamilies != null) {
-      _json['columnFamilies'] =
-          columnFamilies.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (granularity != null) {
-      _json['granularity'] = granularity;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (restoreInfo != null) {
-      _json['restoreInfo'] = restoreInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterStates != null)
+          'clusterStates': clusterStates
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (columnFamilies != null)
+          'columnFamilies': columnFamilies
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (granularity != null) 'granularity': granularity,
+        if (name != null) 'name': name,
+        if (restoreInfo != null) 'restoreInfo': restoreInfo.toJson(),
+      };
 }
 
 /// Progress info for copying a table's data to the new cluster.
@@ -5295,19 +4929,13 @@ class TableProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (estimatedCopiedBytes != null) {
-      _json['estimatedCopiedBytes'] = estimatedCopiedBytes;
-    }
-    if (estimatedSizeBytes != null) {
-      _json['estimatedSizeBytes'] = estimatedSizeBytes;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (estimatedCopiedBytes != null)
+          'estimatedCopiedBytes': estimatedCopiedBytes,
+        if (estimatedSizeBytes != null)
+          'estimatedSizeBytes': estimatedSizeBytes,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -5329,13 +4957,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -5354,13 +4978,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// A GcRule which deletes cells matching any of the given rules.
@@ -5379,13 +4999,10 @@ class Union {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (rules != null) {
-      _json['rules'] = rules.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (rules != null)
+          'rules': rules.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The metadata for the Operation returned by UpdateAppProfile.
@@ -5396,10 +5013,7 @@ class UpdateAppProfileMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The metadata for the Operation returned by UpdateCluster.
@@ -5428,19 +5042,12 @@ class UpdateClusterMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finishTime != null) {
-      _json['finishTime'] = finishTime;
-    }
-    if (originalRequest != null) {
-      _json['originalRequest'] = originalRequest.toJson();
-    }
-    if (requestTime != null) {
-      _json['requestTime'] = requestTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finishTime != null) 'finishTime': finishTime,
+        if (originalRequest != null)
+          'originalRequest': originalRequest.toJson(),
+        if (requestTime != null) 'requestTime': requestTime,
+      };
 }
 
 /// The metadata for the Operation returned by UpdateInstance.
@@ -5469,17 +5076,10 @@ class UpdateInstanceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (finishTime != null) {
-      _json['finishTime'] = finishTime;
-    }
-    if (originalRequest != null) {
-      _json['originalRequest'] = originalRequest.toJson();
-    }
-    if (requestTime != null) {
-      _json['requestTime'] = requestTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (finishTime != null) 'finishTime': finishTime,
+        if (originalRequest != null)
+          'originalRequest': originalRequest.toJson(),
+        if (requestTime != null) 'requestTime': requestTime,
+      };
 }

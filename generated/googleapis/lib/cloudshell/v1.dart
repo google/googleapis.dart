@@ -550,10 +550,7 @@ class AddPublicKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for AddPublicKey.
@@ -574,13 +571,9 @@ class AddPublicKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+      };
 }
 
 /// Response message for AddPublicKey.
@@ -596,13 +589,9 @@ class AddPublicKeyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+      };
 }
 
 /// Message included in the metadata field of operations returned from
@@ -614,10 +603,7 @@ class AuthorizeEnvironmentMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for AuthorizeEnvironment.
@@ -648,19 +634,11 @@ class AuthorizeEnvironmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessToken != null) {
-      _json['accessToken'] = accessToken;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    if (idToken != null) {
-      _json['idToken'] = idToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken,
+        if (expireTime != null) 'expireTime': expireTime,
+        if (idToken != null) 'idToken': idToken,
+      };
 }
 
 /// Response message for AuthorizeEnvironment.
@@ -671,10 +649,7 @@ class AuthorizeEnvironmentResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request message for Operations.CancelOperation.
@@ -685,10 +660,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Message included in the metadata field of operations returned from
@@ -700,10 +672,7 @@ class CreateEnvironmentMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Message included in the metadata field of operations returned from
@@ -715,10 +684,7 @@ class DeleteEnvironmentMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -735,10 +701,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A Cloud Shell environment, which is defined as the combination of a Docker
@@ -851,37 +814,17 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dockerImage != null) {
-      _json['dockerImage'] = dockerImage;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (publicKeys != null) {
-      _json['publicKeys'] = publicKeys;
-    }
-    if (sshHost != null) {
-      _json['sshHost'] = sshHost;
-    }
-    if (sshPort != null) {
-      _json['sshPort'] = sshPort;
-    }
-    if (sshUsername != null) {
-      _json['sshUsername'] = sshUsername;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (webHost != null) {
-      _json['webHost'] = webHost;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dockerImage != null) 'dockerImage': dockerImage,
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (publicKeys != null) 'publicKeys': publicKeys,
+        if (sshHost != null) 'sshHost': sshHost,
+        if (sshPort != null) 'sshPort': sshPort,
+        if (sshUsername != null) 'sshUsername': sshUsername,
+        if (state != null) 'state': state,
+        if (webHost != null) 'webHost': webHost,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -906,16 +849,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -994,25 +932,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Message included in the metadata field of operations returned from
@@ -1024,10 +950,7 @@ class RemovePublicKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message for RemovePublicKey.
@@ -1043,13 +966,9 @@ class RemovePublicKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+      };
 }
 
 /// Response message for RemovePublicKey.
@@ -1060,10 +979,7 @@ class RemovePublicKeyResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Message included in the metadata field of operations returned from
@@ -1096,13 +1012,9 @@ class StartEnvironmentMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (state != null) 'state': state,
+      };
 }
 
 /// Request message for StartEnvironment.
@@ -1131,16 +1043,10 @@ class StartEnvironmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessToken != null) {
-      _json['accessToken'] = accessToken;
-    }
-    if (publicKeys != null) {
-      _json['publicKeys'] = publicKeys;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken,
+        if (publicKeys != null) 'publicKeys': publicKeys,
+      };
 }
 
 /// Message included in the response field of operations returned from
@@ -1158,13 +1064,9 @@ class StartEnvironmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environment != null) {
-      _json['environment'] = environment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environment != null) 'environment': environment.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1214,17 +1116,9 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

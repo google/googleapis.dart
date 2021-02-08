@@ -976,16 +976,10 @@ class AcceleratorType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1002,10 +996,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response for ListAcceleratorTypes.
@@ -1038,20 +1029,13 @@ class ListAcceleratorTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorTypes != null) {
-      _json['acceleratorTypes'] =
-          acceleratorTypes.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorTypes != null)
+          'acceleratorTypes':
+              acceleratorTypes.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1076,16 +1060,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response for ListNodes.
@@ -1118,19 +1097,12 @@ class ListNodesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nodes != null) {
-      _json['nodes'] = nodes.map((value) => value.toJson()).toList();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nodes != null)
+          'nodes': nodes.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1155,16 +1127,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for ListTensorFlowVersions.
@@ -1197,20 +1164,13 @@ class ListTensorFlowVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (tensorflowVersions != null) {
-      _json['tensorflowVersions'] =
-          tensorflowVersions.map((value) => value.toJson()).toList();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (tensorflowVersions != null)
+          'tensorflowVersions':
+              tensorflowVersions.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1275,25 +1235,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A network endpoint over which a TPU worker can be reached.
@@ -1315,16 +1263,10 @@ class NetworkEndpoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (port != null) 'port': port,
+      };
 }
 
 /// A TPU instance.
@@ -1538,65 +1480,31 @@ class Node {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acceleratorType != null) {
-      _json['acceleratorType'] = acceleratorType;
-    }
-    if (cidrBlock != null) {
-      _json['cidrBlock'] = cidrBlock;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (health != null) {
-      _json['health'] = health;
-    }
-    if (healthDescription != null) {
-      _json['healthDescription'] = healthDescription;
-    }
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (networkEndpoints != null) {
-      _json['networkEndpoints'] =
-          networkEndpoints.map((value) => value.toJson()).toList();
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (schedulingConfig != null) {
-      _json['schedulingConfig'] = schedulingConfig.toJson();
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (symptoms != null) {
-      _json['symptoms'] = symptoms.map((value) => value.toJson()).toList();
-    }
-    if (tensorflowVersion != null) {
-      _json['tensorflowVersion'] = tensorflowVersion;
-    }
-    if (useServiceNetworking != null) {
-      _json['useServiceNetworking'] = useServiceNetworking;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acceleratorType != null) 'acceleratorType': acceleratorType,
+        if (cidrBlock != null) 'cidrBlock': cidrBlock,
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (health != null) 'health': health,
+        if (healthDescription != null) 'healthDescription': healthDescription,
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (network != null) 'network': network,
+        if (networkEndpoints != null)
+          'networkEndpoints':
+              networkEndpoints.map((value) => value.toJson()).toList(),
+        if (port != null) 'port': port,
+        if (schedulingConfig != null)
+          'schedulingConfig': schedulingConfig.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (state != null) 'state': state,
+        if (symptoms != null)
+          'symptoms': symptoms.map((value) => value.toJson()).toList(),
+        if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion,
+        if (useServiceNetworking != null)
+          'useServiceNetworking': useServiceNetworking,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1675,25 +1583,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -1763,31 +1659,15 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (cancelRequested != null) {
-      _json['cancelRequested'] = cancelRequested;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (statusDetail != null) {
-      _json['statusDetail'] = statusDetail;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (statusDetail != null) 'statusDetail': statusDetail,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// Request for ReimageNode.
@@ -1803,13 +1683,9 @@ class ReimageNodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tensorflowVersion != null) {
-      _json['tensorflowVersion'] = tensorflowVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion,
+      };
 }
 
 /// Sets the scheduling options for this node.
@@ -1831,16 +1707,10 @@ class SchedulingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (preemptible != null) {
-      _json['preemptible'] = preemptible;
-    }
-    if (reserved != null) {
-      _json['reserved'] = reserved;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (preemptible != null) 'preemptible': preemptible,
+        if (reserved != null) 'reserved': reserved,
+      };
 }
 
 /// Request for StartNode.
@@ -1851,10 +1721,7 @@ class StartNodeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1904,19 +1771,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request for StopNode.
@@ -1927,10 +1786,7 @@ class StopNodeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A Symptom instance.
@@ -1972,22 +1828,12 @@ class Symptom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (symptomType != null) {
-      _json['symptomType'] = symptomType;
-    }
-    if (workerId != null) {
-      _json['workerId'] = workerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (details != null) 'details': details,
+        if (symptomType != null) 'symptomType': symptomType,
+        if (workerId != null) 'workerId': workerId,
+      };
 }
 
 /// A tensorflow version that a Node can be configured with.
@@ -2009,14 +1855,8 @@ class TensorFlowVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (version != null) 'version': version,
+      };
 }

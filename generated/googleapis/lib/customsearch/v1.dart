@@ -821,22 +821,12 @@ class PromotionBodyLines {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (htmlTitle != null) {
-      _json['htmlTitle'] = htmlTitle;
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (htmlTitle != null) 'htmlTitle': htmlTitle,
+        if (link != null) 'link': link,
+        if (title != null) 'title': title,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Image belonging to a promotion.
@@ -864,19 +854,11 @@ class PromotionImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (height != null) 'height': height,
+        if (source != null) 'source': source,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Promotion result.
@@ -930,28 +912,15 @@ class Promotion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bodyLines != null) {
-      _json['bodyLines'] = bodyLines.map((value) => value.toJson()).toList();
-    }
-    if (displayLink != null) {
-      _json['displayLink'] = displayLink;
-    }
-    if (htmlTitle != null) {
-      _json['htmlTitle'] = htmlTitle;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bodyLines != null)
+          'bodyLines': bodyLines.map((value) => value.toJson()).toList(),
+        if (displayLink != null) 'displayLink': displayLink,
+        if (htmlTitle != null) 'htmlTitle': htmlTitle,
+        if (image != null) 'image': image.toJson(),
+        if (link != null) 'link': link,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Image belonging to a custom search result.
@@ -1003,31 +972,15 @@ class ResultImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (byteSize != null) {
-      _json['byteSize'] = byteSize;
-    }
-    if (contextLink != null) {
-      _json['contextLink'] = contextLink;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (thumbnailHeight != null) {
-      _json['thumbnailHeight'] = thumbnailHeight;
-    }
-    if (thumbnailLink != null) {
-      _json['thumbnailLink'] = thumbnailLink;
-    }
-    if (thumbnailWidth != null) {
-      _json['thumbnailWidth'] = thumbnailWidth;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (byteSize != null) 'byteSize': byteSize,
+        if (contextLink != null) 'contextLink': contextLink,
+        if (height != null) 'height': height,
+        if (thumbnailHeight != null) 'thumbnailHeight': thumbnailHeight,
+        if (thumbnailLink != null) 'thumbnailLink': thumbnailLink,
+        if (thumbnailWidth != null) 'thumbnailWidth': thumbnailWidth,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Refinement label associated with a custom search result.
@@ -1059,19 +1012,11 @@ class ResultLabels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labelWithOp != null) {
-      _json['label_with_op'] = labelWithOp;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labelWithOp != null) 'label_with_op': labelWithOp,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A custom search result.
@@ -1190,55 +1135,24 @@ class Result {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheId != null) {
-      _json['cacheId'] = cacheId;
-    }
-    if (displayLink != null) {
-      _json['displayLink'] = displayLink;
-    }
-    if (fileFormat != null) {
-      _json['fileFormat'] = fileFormat;
-    }
-    if (formattedUrl != null) {
-      _json['formattedUrl'] = formattedUrl;
-    }
-    if (htmlFormattedUrl != null) {
-      _json['htmlFormattedUrl'] = htmlFormattedUrl;
-    }
-    if (htmlSnippet != null) {
-      _json['htmlSnippet'] = htmlSnippet;
-    }
-    if (htmlTitle != null) {
-      _json['htmlTitle'] = htmlTitle;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (mime != null) {
-      _json['mime'] = mime;
-    }
-    if (pagemap != null) {
-      _json['pagemap'] = pagemap;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheId != null) 'cacheId': cacheId,
+        if (displayLink != null) 'displayLink': displayLink,
+        if (fileFormat != null) 'fileFormat': fileFormat,
+        if (formattedUrl != null) 'formattedUrl': formattedUrl,
+        if (htmlFormattedUrl != null) 'htmlFormattedUrl': htmlFormattedUrl,
+        if (htmlSnippet != null) 'htmlSnippet': htmlSnippet,
+        if (htmlTitle != null) 'htmlTitle': htmlTitle,
+        if (image != null) 'image': image.toJson(),
+        if (kind != null) 'kind': kind,
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+        if (link != null) 'link': link,
+        if (mime != null) 'mime': mime,
+        if (pagemap != null) 'pagemap': pagemap,
+        if (snippet != null) 'snippet': snippet,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Custom search request metadata.
@@ -1572,118 +1486,45 @@ class SearchQueriesNextPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (cr != null) {
-      _json['cr'] = cr;
-    }
-    if (cx != null) {
-      _json['cx'] = cx;
-    }
-    if (dateRestrict != null) {
-      _json['dateRestrict'] = dateRestrict;
-    }
-    if (disableCnTwTranslation != null) {
-      _json['disableCnTwTranslation'] = disableCnTwTranslation;
-    }
-    if (exactTerms != null) {
-      _json['exactTerms'] = exactTerms;
-    }
-    if (excludeTerms != null) {
-      _json['excludeTerms'] = excludeTerms;
-    }
-    if (fileType != null) {
-      _json['fileType'] = fileType;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (gl != null) {
-      _json['gl'] = gl;
-    }
-    if (googleHost != null) {
-      _json['googleHost'] = googleHost;
-    }
-    if (highRange != null) {
-      _json['highRange'] = highRange;
-    }
-    if (hl != null) {
-      _json['hl'] = hl;
-    }
-    if (hq != null) {
-      _json['hq'] = hq;
-    }
-    if (imgColorType != null) {
-      _json['imgColorType'] = imgColorType;
-    }
-    if (imgDominantColor != null) {
-      _json['imgDominantColor'] = imgDominantColor;
-    }
-    if (imgSize != null) {
-      _json['imgSize'] = imgSize;
-    }
-    if (imgType != null) {
-      _json['imgType'] = imgType;
-    }
-    if (inputEncoding != null) {
-      _json['inputEncoding'] = inputEncoding;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (linkSite != null) {
-      _json['linkSite'] = linkSite;
-    }
-    if (lowRange != null) {
-      _json['lowRange'] = lowRange;
-    }
-    if (orTerms != null) {
-      _json['orTerms'] = orTerms;
-    }
-    if (outputEncoding != null) {
-      _json['outputEncoding'] = outputEncoding;
-    }
-    if (relatedSite != null) {
-      _json['relatedSite'] = relatedSite;
-    }
-    if (rights != null) {
-      _json['rights'] = rights;
-    }
-    if (safe != null) {
-      _json['safe'] = safe;
-    }
-    if (searchTerms != null) {
-      _json['searchTerms'] = searchTerms;
-    }
-    if (searchType != null) {
-      _json['searchType'] = searchType;
-    }
-    if (siteSearch != null) {
-      _json['siteSearch'] = siteSearch;
-    }
-    if (siteSearchFilter != null) {
-      _json['siteSearchFilter'] = siteSearchFilter;
-    }
-    if (sort != null) {
-      _json['sort'] = sort;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (startPage != null) {
-      _json['startPage'] = startPage;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (cr != null) 'cr': cr,
+        if (cx != null) 'cx': cx,
+        if (dateRestrict != null) 'dateRestrict': dateRestrict,
+        if (disableCnTwTranslation != null)
+          'disableCnTwTranslation': disableCnTwTranslation,
+        if (exactTerms != null) 'exactTerms': exactTerms,
+        if (excludeTerms != null) 'excludeTerms': excludeTerms,
+        if (fileType != null) 'fileType': fileType,
+        if (filter != null) 'filter': filter,
+        if (gl != null) 'gl': gl,
+        if (googleHost != null) 'googleHost': googleHost,
+        if (highRange != null) 'highRange': highRange,
+        if (hl != null) 'hl': hl,
+        if (hq != null) 'hq': hq,
+        if (imgColorType != null) 'imgColorType': imgColorType,
+        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor,
+        if (imgSize != null) 'imgSize': imgSize,
+        if (imgType != null) 'imgType': imgType,
+        if (inputEncoding != null) 'inputEncoding': inputEncoding,
+        if (language != null) 'language': language,
+        if (linkSite != null) 'linkSite': linkSite,
+        if (lowRange != null) 'lowRange': lowRange,
+        if (orTerms != null) 'orTerms': orTerms,
+        if (outputEncoding != null) 'outputEncoding': outputEncoding,
+        if (relatedSite != null) 'relatedSite': relatedSite,
+        if (rights != null) 'rights': rights,
+        if (safe != null) 'safe': safe,
+        if (searchTerms != null) 'searchTerms': searchTerms,
+        if (searchType != null) 'searchType': searchType,
+        if (siteSearch != null) 'siteSearch': siteSearch,
+        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter,
+        if (sort != null) 'sort': sort,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (startPage != null) 'startPage': startPage,
+        if (title != null) 'title': title,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// Custom search request metadata.
@@ -2017,118 +1858,45 @@ class SearchQueriesPreviousPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (cr != null) {
-      _json['cr'] = cr;
-    }
-    if (cx != null) {
-      _json['cx'] = cx;
-    }
-    if (dateRestrict != null) {
-      _json['dateRestrict'] = dateRestrict;
-    }
-    if (disableCnTwTranslation != null) {
-      _json['disableCnTwTranslation'] = disableCnTwTranslation;
-    }
-    if (exactTerms != null) {
-      _json['exactTerms'] = exactTerms;
-    }
-    if (excludeTerms != null) {
-      _json['excludeTerms'] = excludeTerms;
-    }
-    if (fileType != null) {
-      _json['fileType'] = fileType;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (gl != null) {
-      _json['gl'] = gl;
-    }
-    if (googleHost != null) {
-      _json['googleHost'] = googleHost;
-    }
-    if (highRange != null) {
-      _json['highRange'] = highRange;
-    }
-    if (hl != null) {
-      _json['hl'] = hl;
-    }
-    if (hq != null) {
-      _json['hq'] = hq;
-    }
-    if (imgColorType != null) {
-      _json['imgColorType'] = imgColorType;
-    }
-    if (imgDominantColor != null) {
-      _json['imgDominantColor'] = imgDominantColor;
-    }
-    if (imgSize != null) {
-      _json['imgSize'] = imgSize;
-    }
-    if (imgType != null) {
-      _json['imgType'] = imgType;
-    }
-    if (inputEncoding != null) {
-      _json['inputEncoding'] = inputEncoding;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (linkSite != null) {
-      _json['linkSite'] = linkSite;
-    }
-    if (lowRange != null) {
-      _json['lowRange'] = lowRange;
-    }
-    if (orTerms != null) {
-      _json['orTerms'] = orTerms;
-    }
-    if (outputEncoding != null) {
-      _json['outputEncoding'] = outputEncoding;
-    }
-    if (relatedSite != null) {
-      _json['relatedSite'] = relatedSite;
-    }
-    if (rights != null) {
-      _json['rights'] = rights;
-    }
-    if (safe != null) {
-      _json['safe'] = safe;
-    }
-    if (searchTerms != null) {
-      _json['searchTerms'] = searchTerms;
-    }
-    if (searchType != null) {
-      _json['searchType'] = searchType;
-    }
-    if (siteSearch != null) {
-      _json['siteSearch'] = siteSearch;
-    }
-    if (siteSearchFilter != null) {
-      _json['siteSearchFilter'] = siteSearchFilter;
-    }
-    if (sort != null) {
-      _json['sort'] = sort;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (startPage != null) {
-      _json['startPage'] = startPage;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (cr != null) 'cr': cr,
+        if (cx != null) 'cx': cx,
+        if (dateRestrict != null) 'dateRestrict': dateRestrict,
+        if (disableCnTwTranslation != null)
+          'disableCnTwTranslation': disableCnTwTranslation,
+        if (exactTerms != null) 'exactTerms': exactTerms,
+        if (excludeTerms != null) 'excludeTerms': excludeTerms,
+        if (fileType != null) 'fileType': fileType,
+        if (filter != null) 'filter': filter,
+        if (gl != null) 'gl': gl,
+        if (googleHost != null) 'googleHost': googleHost,
+        if (highRange != null) 'highRange': highRange,
+        if (hl != null) 'hl': hl,
+        if (hq != null) 'hq': hq,
+        if (imgColorType != null) 'imgColorType': imgColorType,
+        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor,
+        if (imgSize != null) 'imgSize': imgSize,
+        if (imgType != null) 'imgType': imgType,
+        if (inputEncoding != null) 'inputEncoding': inputEncoding,
+        if (language != null) 'language': language,
+        if (linkSite != null) 'linkSite': linkSite,
+        if (lowRange != null) 'lowRange': lowRange,
+        if (orTerms != null) 'orTerms': orTerms,
+        if (outputEncoding != null) 'outputEncoding': outputEncoding,
+        if (relatedSite != null) 'relatedSite': relatedSite,
+        if (rights != null) 'rights': rights,
+        if (safe != null) 'safe': safe,
+        if (searchTerms != null) 'searchTerms': searchTerms,
+        if (searchType != null) 'searchType': searchType,
+        if (siteSearch != null) 'siteSearch': siteSearch,
+        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter,
+        if (sort != null) 'sort': sort,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (startPage != null) 'startPage': startPage,
+        if (title != null) 'title': title,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// Custom search request metadata.
@@ -2462,118 +2230,45 @@ class SearchQueriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (cr != null) {
-      _json['cr'] = cr;
-    }
-    if (cx != null) {
-      _json['cx'] = cx;
-    }
-    if (dateRestrict != null) {
-      _json['dateRestrict'] = dateRestrict;
-    }
-    if (disableCnTwTranslation != null) {
-      _json['disableCnTwTranslation'] = disableCnTwTranslation;
-    }
-    if (exactTerms != null) {
-      _json['exactTerms'] = exactTerms;
-    }
-    if (excludeTerms != null) {
-      _json['excludeTerms'] = excludeTerms;
-    }
-    if (fileType != null) {
-      _json['fileType'] = fileType;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (gl != null) {
-      _json['gl'] = gl;
-    }
-    if (googleHost != null) {
-      _json['googleHost'] = googleHost;
-    }
-    if (highRange != null) {
-      _json['highRange'] = highRange;
-    }
-    if (hl != null) {
-      _json['hl'] = hl;
-    }
-    if (hq != null) {
-      _json['hq'] = hq;
-    }
-    if (imgColorType != null) {
-      _json['imgColorType'] = imgColorType;
-    }
-    if (imgDominantColor != null) {
-      _json['imgDominantColor'] = imgDominantColor;
-    }
-    if (imgSize != null) {
-      _json['imgSize'] = imgSize;
-    }
-    if (imgType != null) {
-      _json['imgType'] = imgType;
-    }
-    if (inputEncoding != null) {
-      _json['inputEncoding'] = inputEncoding;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (linkSite != null) {
-      _json['linkSite'] = linkSite;
-    }
-    if (lowRange != null) {
-      _json['lowRange'] = lowRange;
-    }
-    if (orTerms != null) {
-      _json['orTerms'] = orTerms;
-    }
-    if (outputEncoding != null) {
-      _json['outputEncoding'] = outputEncoding;
-    }
-    if (relatedSite != null) {
-      _json['relatedSite'] = relatedSite;
-    }
-    if (rights != null) {
-      _json['rights'] = rights;
-    }
-    if (safe != null) {
-      _json['safe'] = safe;
-    }
-    if (searchTerms != null) {
-      _json['searchTerms'] = searchTerms;
-    }
-    if (searchType != null) {
-      _json['searchType'] = searchType;
-    }
-    if (siteSearch != null) {
-      _json['siteSearch'] = siteSearch;
-    }
-    if (siteSearchFilter != null) {
-      _json['siteSearchFilter'] = siteSearchFilter;
-    }
-    if (sort != null) {
-      _json['sort'] = sort;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (startPage != null) {
-      _json['startPage'] = startPage;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (cr != null) 'cr': cr,
+        if (cx != null) 'cx': cx,
+        if (dateRestrict != null) 'dateRestrict': dateRestrict,
+        if (disableCnTwTranslation != null)
+          'disableCnTwTranslation': disableCnTwTranslation,
+        if (exactTerms != null) 'exactTerms': exactTerms,
+        if (excludeTerms != null) 'excludeTerms': excludeTerms,
+        if (fileType != null) 'fileType': fileType,
+        if (filter != null) 'filter': filter,
+        if (gl != null) 'gl': gl,
+        if (googleHost != null) 'googleHost': googleHost,
+        if (highRange != null) 'highRange': highRange,
+        if (hl != null) 'hl': hl,
+        if (hq != null) 'hq': hq,
+        if (imgColorType != null) 'imgColorType': imgColorType,
+        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor,
+        if (imgSize != null) 'imgSize': imgSize,
+        if (imgType != null) 'imgType': imgType,
+        if (inputEncoding != null) 'inputEncoding': inputEncoding,
+        if (language != null) 'language': language,
+        if (linkSite != null) 'linkSite': linkSite,
+        if (lowRange != null) 'lowRange': lowRange,
+        if (orTerms != null) 'orTerms': orTerms,
+        if (outputEncoding != null) 'outputEncoding': outputEncoding,
+        if (relatedSite != null) 'relatedSite': relatedSite,
+        if (rights != null) 'rights': rights,
+        if (safe != null) 'safe': safe,
+        if (searchTerms != null) 'searchTerms': searchTerms,
+        if (searchType != null) 'searchType': searchType,
+        if (siteSearch != null) 'siteSearch': siteSearch,
+        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter,
+        if (sort != null) 'sort': sort,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (startPage != null) 'startPage': startPage,
+        if (title != null) 'title': title,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// Query metadata for the previous, current, and next pages of results.
@@ -2611,20 +2306,14 @@ class SearchQueries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPage != null) {
-      _json['nextPage'] = nextPage.map((value) => value.toJson()).toList();
-    }
-    if (previousPage != null) {
-      _json['previousPage'] =
-          previousPage.map((value) => value.toJson()).toList();
-    }
-    if (request != null) {
-      _json['request'] = request.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPage != null)
+          'nextPage': nextPage.map((value) => value.toJson()).toList(),
+        if (previousPage != null)
+          'previousPage': previousPage.map((value) => value.toJson()).toList(),
+        if (request != null)
+          'request': request.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata about a search operation.
@@ -2659,22 +2348,14 @@ class SearchSearchInformation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedSearchTime != null) {
-      _json['formattedSearchTime'] = formattedSearchTime;
-    }
-    if (formattedTotalResults != null) {
-      _json['formattedTotalResults'] = formattedTotalResults;
-    }
-    if (searchTime != null) {
-      _json['searchTime'] = searchTime;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedSearchTime != null)
+          'formattedSearchTime': formattedSearchTime,
+        if (formattedTotalResults != null)
+          'formattedTotalResults': formattedTotalResults,
+        if (searchTime != null) 'searchTime': searchTime,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// Spell correction information for a query.
@@ -2696,16 +2377,11 @@ class SearchSpelling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (correctedQuery != null) {
-      _json['correctedQuery'] = correctedQuery;
-    }
-    if (htmlCorrectedQuery != null) {
-      _json['htmlCorrectedQuery'] = htmlCorrectedQuery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (correctedQuery != null) 'correctedQuery': correctedQuery,
+        if (htmlCorrectedQuery != null)
+          'htmlCorrectedQuery': htmlCorrectedQuery,
+      };
 }
 
 /// OpenSearch template and URL.
@@ -2730,16 +2406,10 @@ class SearchUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (template != null) {
-      _json['template'] = template;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (template != null) 'template': template,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Response to a custom search request.
@@ -2827,32 +2497,17 @@ class Search {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (context != null) {
-      _json['context'] = context;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (promotions != null) {
-      _json['promotions'] = promotions.map((value) => value.toJson()).toList();
-    }
-    if (queries != null) {
-      _json['queries'] = queries.toJson();
-    }
-    if (searchInformation != null) {
-      _json['searchInformation'] = searchInformation.toJson();
-    }
-    if (spelling != null) {
-      _json['spelling'] = spelling.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (context != null) 'context': context,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (promotions != null)
+          'promotions': promotions.map((value) => value.toJson()).toList(),
+        if (queries != null) 'queries': queries.toJson(),
+        if (searchInformation != null)
+          'searchInformation': searchInformation.toJson(),
+        if (spelling != null) 'spelling': spelling.toJson(),
+        if (url != null) 'url': url.toJson(),
+      };
 }

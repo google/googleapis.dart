@@ -144,19 +144,11 @@ class Bin {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (density != null) {
-      _json['density'] = density;
-    }
-    if (end != null) {
-      _json['end'] = end;
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (density != null) 'density': density,
+        if (end != null) 'end': end,
+        if (start != null) 'start': start,
+      };
 }
 
 /// Key defines all the dimensions that identify this record as unique.
@@ -212,22 +204,13 @@ class Key {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effectiveConnectionType != null) {
-      _json['effectiveConnectionType'] = effectiveConnectionType;
-    }
-    if (formFactor != null) {
-      _json['formFactor'] = formFactor;
-    }
-    if (origin != null) {
-      _json['origin'] = origin;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effectiveConnectionType != null)
+          'effectiveConnectionType': effectiveConnectionType,
+        if (formFactor != null) 'formFactor': formFactor,
+        if (origin != null) 'origin': origin,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A `metric` is a set of user experience data for a single web performance
@@ -263,16 +246,11 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (histogram != null) {
-      _json['histogram'] = histogram.map((value) => value.toJson()).toList();
-    }
-    if (percentiles != null) {
-      _json['percentiles'] = percentiles.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (histogram != null)
+          'histogram': histogram.map((value) => value.toJson()).toList(),
+        if (percentiles != null) 'percentiles': percentiles.toJson(),
+      };
 }
 
 /// Percentiles contains synthetic values of a metric at a given statistical
@@ -295,13 +273,9 @@ class Percentiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (p75 != null) {
-      _json['p75'] = p75;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (p75 != null) 'p75': p75,
+      };
 }
 
 /// Request payload sent by a physical web client.
@@ -372,25 +346,14 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (effectiveConnectionType != null) {
-      _json['effectiveConnectionType'] = effectiveConnectionType;
-    }
-    if (formFactor != null) {
-      _json['formFactor'] = formFactor;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    if (origin != null) {
-      _json['origin'] = origin;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (effectiveConnectionType != null)
+          'effectiveConnectionType': effectiveConnectionType,
+        if (formFactor != null) 'formFactor': formFactor,
+        if (metrics != null) 'metrics': metrics,
+        if (origin != null) 'origin': origin,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Response payload sent back to a physical web client.
@@ -421,16 +384,11 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (record != null) {
-      _json['record'] = record.toJson();
-    }
-    if (urlNormalizationDetails != null) {
-      _json['urlNormalizationDetails'] = urlNormalizationDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (record != null) 'record': record.toJson(),
+        if (urlNormalizationDetails != null)
+          'urlNormalizationDetails': urlNormalizationDetails.toJson(),
+      };
 }
 
 /// Record is a single Chrome UX report data record.
@@ -467,17 +425,12 @@ class Record {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key.toJson();
-    }
-    if (metrics != null) {
-      _json['metrics'] =
-          metrics.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key.toJson(),
+        if (metrics != null)
+          'metrics':
+              metrics.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Object representing the normalization actions taken to normalize a url to
@@ -506,14 +459,8 @@ class UrlNormalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedUrl != null) {
-      _json['normalizedUrl'] = normalizedUrl;
-    }
-    if (originalUrl != null) {
-      _json['originalUrl'] = originalUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedUrl != null) 'normalizedUrl': normalizedUrl,
+        if (originalUrl != null) 'originalUrl': originalUrl,
+      };
 }

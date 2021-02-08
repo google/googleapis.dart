@@ -587,17 +587,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -634,16 +629,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -712,19 +701,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Credential info for the Cloud SQL.
@@ -746,16 +727,10 @@ class CloudSqlCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (password != null) 'password': password,
+        if (username != null) 'username': username,
+      };
 }
 
 /// Connection properties specific to the Cloud SQL.
@@ -796,22 +771,12 @@ class CloudSqlProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (credential != null) {
-      _json['credential'] = credential.toJson();
-    }
-    if (database != null) {
-      _json['database'] = database;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (credential != null) 'credential': credential.toJson(),
+        if (database != null) 'database': database,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Configuration parameters to establish connection with an external data
@@ -872,31 +837,15 @@ class Connection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudSql != null) {
-      _json['cloudSql'] = cloudSql.toJson();
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (friendlyName != null) {
-      _json['friendlyName'] = friendlyName;
-    }
-    if (hasCredential != null) {
-      _json['hasCredential'] = hasCredential;
-    }
-    if (lastModifiedTime != null) {
-      _json['lastModifiedTime'] = lastModifiedTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudSql != null) 'cloudSql': cloudSql.toJson(),
+        if (creationTime != null) 'creationTime': creationTime,
+        if (description != null) 'description': description,
+        if (friendlyName != null) 'friendlyName': friendlyName,
+        if (hasCredential != null) 'hasCredential': hasCredential,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Credential to use with a connection.
@@ -913,13 +862,9 @@ class ConnectionCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudSql != null) {
-      _json['cloudSql'] = cloudSql.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudSql != null) 'cloudSql': cloudSql.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -936,10 +881,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1003,22 +945,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -1036,13 +968,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -1067,13 +995,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// The response for ConnectionService.ListConnections.
@@ -1098,17 +1023,11 @@ class ListConnectionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connections != null) {
-      _json['connections'] =
-          connections.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connections != null)
+          'connections': connections.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1215,23 +1134,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1261,16 +1171,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -1292,13 +1196,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -1317,11 +1217,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }

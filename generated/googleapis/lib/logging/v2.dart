@@ -8511,17 +8511,12 @@ class BigQueryOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (usePartitionedTables != null) {
-      _json['usePartitionedTables'] = usePartitionedTables;
-    }
-    if (usesTimestampColumnPartitioning != null) {
-      _json['usesTimestampColumnPartitioning'] =
-          usesTimestampColumnPartitioning;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (usePartitionedTables != null)
+          'usePartitionedTables': usePartitionedTables,
+        if (usesTimestampColumnPartitioning != null)
+          'usesTimestampColumnPartitioning': usesTimestampColumnPartitioning,
+      };
 }
 
 /// BucketOptions describes the bucket boundaries used to create a histogram for
@@ -8566,19 +8561,13 @@ class BucketOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (explicitBuckets != null) {
-      _json['explicitBuckets'] = explicitBuckets.toJson();
-    }
-    if (exponentialBuckets != null) {
-      _json['exponentialBuckets'] = exponentialBuckets.toJson();
-    }
-    if (linearBuckets != null) {
-      _json['linearBuckets'] = linearBuckets.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (explicitBuckets != null)
+          'explicitBuckets': explicitBuckets.toJson(),
+        if (exponentialBuckets != null)
+          'exponentialBuckets': exponentialBuckets.toJson(),
+        if (linearBuckets != null) 'linearBuckets': linearBuckets.toJson(),
+      };
 }
 
 /// Describes the customer-managed encryption key (CMEK) settings associated
@@ -8642,19 +8631,11 @@ class CmekSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (serviceAccountId != null) {
-      _json['serviceAccountId'] = serviceAccountId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+        if (name != null) 'name': name,
+        if (serviceAccountId != null) 'serviceAccountId': serviceAccountId,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -8671,10 +8652,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
@@ -8699,13 +8677,9 @@ class Explicit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bounds != null) {
-      _json['bounds'] = bounds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bounds != null) 'bounds': bounds,
+      };
 }
 
 /// Specifies an exponential sequence of buckets that have a width that is
@@ -8739,19 +8713,11 @@ class Exponential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (growthFactor != null) {
-      _json['growthFactor'] = growthFactor;
-    }
-    if (numFiniteBuckets != null) {
-      _json['numFiniteBuckets'] = numFiniteBuckets;
-    }
-    if (scale != null) {
-      _json['scale'] = scale;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (growthFactor != null) 'growthFactor': growthFactor,
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
+        if (scale != null) 'scale': scale,
+      };
 }
 
 /// A common proto for logging HTTP requests.
@@ -8884,55 +8850,24 @@ class HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheFillBytes != null) {
-      _json['cacheFillBytes'] = cacheFillBytes;
-    }
-    if (cacheHit != null) {
-      _json['cacheHit'] = cacheHit;
-    }
-    if (cacheLookup != null) {
-      _json['cacheLookup'] = cacheLookup;
-    }
-    if (cacheValidatedWithOriginServer != null) {
-      _json['cacheValidatedWithOriginServer'] = cacheValidatedWithOriginServer;
-    }
-    if (latency != null) {
-      _json['latency'] = latency;
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    if (referer != null) {
-      _json['referer'] = referer;
-    }
-    if (remoteIp != null) {
-      _json['remoteIp'] = remoteIp;
-    }
-    if (requestMethod != null) {
-      _json['requestMethod'] = requestMethod;
-    }
-    if (requestSize != null) {
-      _json['requestSize'] = requestSize;
-    }
-    if (requestUrl != null) {
-      _json['requestUrl'] = requestUrl;
-    }
-    if (responseSize != null) {
-      _json['responseSize'] = responseSize;
-    }
-    if (serverIp != null) {
-      _json['serverIp'] = serverIp;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes,
+        if (cacheHit != null) 'cacheHit': cacheHit,
+        if (cacheLookup != null) 'cacheLookup': cacheLookup,
+        if (cacheValidatedWithOriginServer != null)
+          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer,
+        if (latency != null) 'latency': latency,
+        if (protocol != null) 'protocol': protocol,
+        if (referer != null) 'referer': referer,
+        if (remoteIp != null) 'remoteIp': remoteIp,
+        if (requestMethod != null) 'requestMethod': requestMethod,
+        if (requestSize != null) 'requestSize': requestSize,
+        if (requestUrl != null) 'requestUrl': requestUrl,
+        if (responseSize != null) 'responseSize': responseSize,
+        if (serverIp != null) 'serverIp': serverIp,
+        if (status != null) 'status': status,
+        if (userAgent != null) 'userAgent': userAgent,
+      };
 }
 
 /// A description of a label.
@@ -8964,19 +8899,11 @@ class LabelDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (valueType != null) {
-      _json['valueType'] = valueType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (key != null) 'key': key,
+        if (valueType != null) 'valueType': valueType,
+      };
 }
 
 /// Specifies a linear sequence of buckets that all have the same width (except
@@ -9010,19 +8937,11 @@ class Linear {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numFiniteBuckets != null) {
-      _json['numFiniteBuckets'] = numFiniteBuckets;
-    }
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
+        if (offset != null) 'offset': offset,
+        if (width != null) 'width': width,
+      };
 }
 
 /// The response from ListBuckets.
@@ -9051,16 +8970,11 @@ class ListBucketsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buckets != null) {
-      _json['buckets'] = buckets.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buckets != null)
+          'buckets': buckets.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Result returned from ListExclusions.
@@ -9089,16 +9003,11 @@ class ListExclusionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exclusions != null) {
-      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exclusions != null)
+          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -9123,16 +9032,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The parameters to ListLogEntries.
@@ -9228,28 +9132,14 @@ class ListLogEntriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (orderBy != null) {
-      _json['orderBy'] = orderBy;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (projectIds != null) {
-      _json['projectIds'] = projectIds;
-    }
-    if (resourceNames != null) {
-      _json['resourceNames'] = resourceNames;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+        if (orderBy != null) 'orderBy': orderBy,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (projectIds != null) 'projectIds': projectIds,
+        if (resourceNames != null) 'resourceNames': resourceNames,
+      };
 }
 
 /// Result returned from ListLogEntries.
@@ -9287,16 +9177,11 @@ class ListLogEntriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Result returned from ListLogMetrics.
@@ -9325,16 +9210,11 @@ class ListLogMetricsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Result returned from ListLogs.
@@ -9365,16 +9245,10 @@ class ListLogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (logNames != null) {
-      _json['logNames'] = logNames;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (logNames != null) 'logNames': logNames,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Result returned from ListMonitoredResourceDescriptors.
@@ -9404,17 +9278,12 @@ class ListMonitoredResourceDescriptorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (resourceDescriptors != null) {
-      _json['resourceDescriptors'] =
-          resourceDescriptors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (resourceDescriptors != null)
+          'resourceDescriptors':
+              resourceDescriptors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Result returned from ListSinks.
@@ -9443,16 +9312,11 @@ class ListSinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (sinks != null) {
-      _json['sinks'] = sinks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (sinks != null)
+          'sinks': sinks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response from ListViews.
@@ -9481,16 +9345,11 @@ class ListViewsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (views != null) {
-      _json['views'] = views.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (views != null)
+          'views': views.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -9555,25 +9414,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Describes a repository of logs.
@@ -9655,31 +9502,15 @@ class LogBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (lifecycleState != null) {
-      _json['lifecycleState'] = lifecycleState;
-    }
-    if (locked != null) {
-      _json['locked'] = locked;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (retentionDays != null) {
-      _json['retentionDays'] = retentionDays;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState,
+        if (locked != null) 'locked': locked,
+        if (name != null) 'name': name,
+        if (retentionDays != null) 'retentionDays': retentionDays,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// An individual entry in a log.
@@ -9932,61 +9763,25 @@ class LogEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (httpRequest != null) {
-      _json['httpRequest'] = httpRequest.toJson();
-    }
-    if (insertId != null) {
-      _json['insertId'] = insertId;
-    }
-    if (jsonPayload != null) {
-      _json['jsonPayload'] = jsonPayload;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (logName != null) {
-      _json['logName'] = logName;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (operation != null) {
-      _json['operation'] = operation.toJson();
-    }
-    if (protoPayload != null) {
-      _json['protoPayload'] = protoPayload;
-    }
-    if (receiveTimestamp != null) {
-      _json['receiveTimestamp'] = receiveTimestamp;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (sourceLocation != null) {
-      _json['sourceLocation'] = sourceLocation.toJson();
-    }
-    if (spanId != null) {
-      _json['spanId'] = spanId;
-    }
-    if (textPayload != null) {
-      _json['textPayload'] = textPayload;
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (trace != null) {
-      _json['trace'] = trace;
-    }
-    if (traceSampled != null) {
-      _json['traceSampled'] = traceSampled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
+        if (insertId != null) 'insertId': insertId,
+        if (jsonPayload != null) 'jsonPayload': jsonPayload,
+        if (labels != null) 'labels': labels,
+        if (logName != null) 'logName': logName,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (operation != null) 'operation': operation.toJson(),
+        if (protoPayload != null) 'protoPayload': protoPayload,
+        if (receiveTimestamp != null) 'receiveTimestamp': receiveTimestamp,
+        if (resource != null) 'resource': resource.toJson(),
+        if (severity != null) 'severity': severity,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation.toJson(),
+        if (spanId != null) 'spanId': spanId,
+        if (textPayload != null) 'textPayload': textPayload,
+        if (timestamp != null) 'timestamp': timestamp,
+        if (trace != null) 'trace': trace,
+        if (traceSampled != null) 'traceSampled': traceSampled,
+      };
 }
 
 /// Additional information about a potentially long-running operation with which
@@ -10036,22 +9831,12 @@ class LogEntryOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (first != null) {
-      _json['first'] = first;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (last != null) {
-      _json['last'] = last;
-    }
-    if (producer != null) {
-      _json['producer'] = producer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (first != null) 'first': first,
+        if (id != null) 'id': id,
+        if (last != null) 'last': last,
+        if (producer != null) 'producer': producer,
+      };
 }
 
 /// Additional information about the source code location that produced the log
@@ -10097,19 +9882,11 @@ class LogEntrySourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (file != null) {
-      _json['file'] = file;
-    }
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (line != null) {
-      _json['line'] = line;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (file != null) 'file': file,
+        if (function != null) 'function': function,
+        if (line != null) 'line': line,
+      };
 }
 
 /// Specifies a set of log entries that are not to be stored in Logging.
@@ -10191,28 +9968,14 @@ class LogExclusion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (disabled != null) 'disabled': disabled,
+        if (filter != null) 'filter': filter,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Application log line emitted while processing a request.
@@ -10260,22 +10023,12 @@ class LogLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (logMessage != null) {
-      _json['logMessage'] = logMessage;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (sourceLocation != null) {
-      _json['sourceLocation'] = sourceLocation.toJson();
-    }
-    if (time != null) {
-      _json['time'] = time;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (logMessage != null) 'logMessage': logMessage,
+        if (severity != null) 'severity': severity,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation.toJson(),
+        if (time != null) 'time': time,
+      };
 }
 
 /// Describes a logs-based metric.
@@ -10446,40 +10199,19 @@ class LogMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketOptions != null) {
-      _json['bucketOptions'] = bucketOptions.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (labelExtractors != null) {
-      _json['labelExtractors'] = labelExtractors;
-    }
-    if (metricDescriptor != null) {
-      _json['metricDescriptor'] = metricDescriptor.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (valueExtractor != null) {
-      _json['valueExtractor'] = valueExtractor;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketOptions != null) 'bucketOptions': bucketOptions.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (filter != null) 'filter': filter,
+        if (labelExtractors != null) 'labelExtractors': labelExtractors,
+        if (metricDescriptor != null)
+          'metricDescriptor': metricDescriptor.toJson(),
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (valueExtractor != null) 'valueExtractor': valueExtractor,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Describes a sink used to export log entries to one of the following
@@ -10645,46 +10377,23 @@ class LogSink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryOptions != null) {
-      _json['bigqueryOptions'] = bigqueryOptions.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (destination != null) {
-      _json['destination'] = destination;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (exclusions != null) {
-      _json['exclusions'] = exclusions.map((value) => value.toJson()).toList();
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (includeChildren != null) {
-      _json['includeChildren'] = includeChildren;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (outputVersionFormat != null) {
-      _json['outputVersionFormat'] = outputVersionFormat;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (writerIdentity != null) {
-      _json['writerIdentity'] = writerIdentity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryOptions != null)
+          'bigqueryOptions': bigqueryOptions.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (destination != null) 'destination': destination,
+        if (disabled != null) 'disabled': disabled,
+        if (exclusions != null)
+          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+        if (filter != null) 'filter': filter,
+        if (includeChildren != null) 'includeChildren': includeChildren,
+        if (name != null) 'name': name,
+        if (outputVersionFormat != null)
+          'outputVersionFormat': outputVersionFormat,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (writerIdentity != null) 'writerIdentity': writerIdentity,
+      };
 }
 
 /// Describes a view over logs in a bucket.
@@ -10737,25 +10446,13 @@ class LogView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (filter != null) 'filter': filter,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Defines a metric type and its schema.
@@ -10967,43 +10664,21 @@ class MetricDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    if (launchStage != null) {
-      _json['launchStage'] = launchStage;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (metricKind != null) {
-      _json['metricKind'] = metricKind;
-    }
-    if (monitoredResourceTypes != null) {
-      _json['monitoredResourceTypes'] = monitoredResourceTypes;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    if (valueType != null) {
-      _json['valueType'] = valueType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (metricKind != null) 'metricKind': metricKind,
+        if (monitoredResourceTypes != null)
+          'monitoredResourceTypes': monitoredResourceTypes,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+        if (unit != null) 'unit': unit,
+        if (valueType != null) 'valueType': valueType,
+      };
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
@@ -11072,19 +10747,11 @@ class MetricDescriptorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ingestDelay != null) {
-      _json['ingestDelay'] = ingestDelay;
-    }
-    if (launchStage != null) {
-      _json['launchStage'] = launchStage;
-    }
-    if (samplePeriod != null) {
-      _json['samplePeriod'] = samplePeriod;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ingestDelay != null) 'ingestDelay': ingestDelay,
+        if (launchStage != null) 'launchStage': launchStage,
+        if (samplePeriod != null) 'samplePeriod': samplePeriod,
+      };
 }
 
 /// An object representing a resource that can be used for monitoring, logging,
@@ -11135,16 +10802,10 @@ class MonitoredResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (type != null) 'type': type,
+      };
 }
 
 /// An object that describes the schema of a MonitoredResource object using a
@@ -11262,28 +10923,15 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    if (launchStage != null) {
-      _json['launchStage'] = launchStage;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage,
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Auxiliary metadata for a MonitoredResource object.
@@ -11338,16 +10986,10 @@ class MonitoredResourceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (systemLabels != null) {
-      _json['systemLabels'] = systemLabels;
-    }
-    if (userLabels != null) {
-      _json['userLabels'] = userLabels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (systemLabels != null) 'systemLabels': systemLabels,
+        if (userLabels != null) 'userLabels': userLabels,
+      };
 }
 
 /// Complete log information about a single HTTP request to an App Engine
@@ -11592,110 +11234,43 @@ class RequestLog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appEngineRelease != null) {
-      _json['appEngineRelease'] = appEngineRelease;
-    }
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (cost != null) {
-      _json['cost'] = cost;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (finished != null) {
-      _json['finished'] = finished;
-    }
-    if (first != null) {
-      _json['first'] = first;
-    }
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (httpVersion != null) {
-      _json['httpVersion'] = httpVersion;
-    }
-    if (instanceId != null) {
-      _json['instanceId'] = instanceId;
-    }
-    if (instanceIndex != null) {
-      _json['instanceIndex'] = instanceIndex;
-    }
-    if (ip != null) {
-      _json['ip'] = ip;
-    }
-    if (latency != null) {
-      _json['latency'] = latency;
-    }
-    if (line != null) {
-      _json['line'] = line.map((value) => value.toJson()).toList();
-    }
-    if (megaCycles != null) {
-      _json['megaCycles'] = megaCycles;
-    }
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (moduleId != null) {
-      _json['moduleId'] = moduleId;
-    }
-    if (nickname != null) {
-      _json['nickname'] = nickname;
-    }
-    if (pendingTime != null) {
-      _json['pendingTime'] = pendingTime;
-    }
-    if (referrer != null) {
-      _json['referrer'] = referrer;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (responseSize != null) {
-      _json['responseSize'] = responseSize;
-    }
-    if (sourceReference != null) {
-      _json['sourceReference'] =
-          sourceReference.map((value) => value.toJson()).toList();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (taskName != null) {
-      _json['taskName'] = taskName;
-    }
-    if (taskQueueName != null) {
-      _json['taskQueueName'] = taskQueueName;
-    }
-    if (traceId != null) {
-      _json['traceId'] = traceId;
-    }
-    if (traceSampled != null) {
-      _json['traceSampled'] = traceSampled;
-    }
-    if (urlMapEntry != null) {
-      _json['urlMapEntry'] = urlMapEntry;
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    if (versionId != null) {
-      _json['versionId'] = versionId;
-    }
-    if (wasLoadingRequest != null) {
-      _json['wasLoadingRequest'] = wasLoadingRequest;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appEngineRelease != null) 'appEngineRelease': appEngineRelease,
+        if (appId != null) 'appId': appId,
+        if (cost != null) 'cost': cost,
+        if (endTime != null) 'endTime': endTime,
+        if (finished != null) 'finished': finished,
+        if (first != null) 'first': first,
+        if (host != null) 'host': host,
+        if (httpVersion != null) 'httpVersion': httpVersion,
+        if (instanceId != null) 'instanceId': instanceId,
+        if (instanceIndex != null) 'instanceIndex': instanceIndex,
+        if (ip != null) 'ip': ip,
+        if (latency != null) 'latency': latency,
+        if (line != null) 'line': line.map((value) => value.toJson()).toList(),
+        if (megaCycles != null) 'megaCycles': megaCycles,
+        if (method != null) 'method': method,
+        if (moduleId != null) 'moduleId': moduleId,
+        if (nickname != null) 'nickname': nickname,
+        if (pendingTime != null) 'pendingTime': pendingTime,
+        if (referrer != null) 'referrer': referrer,
+        if (requestId != null) 'requestId': requestId,
+        if (resource != null) 'resource': resource,
+        if (responseSize != null) 'responseSize': responseSize,
+        if (sourceReference != null)
+          'sourceReference':
+              sourceReference.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status,
+        if (taskName != null) 'taskName': taskName,
+        if (taskQueueName != null) 'taskQueueName': taskQueueName,
+        if (traceId != null) 'traceId': traceId,
+        if (traceSampled != null) 'traceSampled': traceSampled,
+        if (urlMapEntry != null) 'urlMapEntry': urlMapEntry,
+        if (userAgent != null) 'userAgent': userAgent,
+        if (versionId != null) 'versionId': versionId,
+        if (wasLoadingRequest != null) 'wasLoadingRequest': wasLoadingRequest,
+      };
 }
 
 /// Specifies a location in a source code file.
@@ -11732,19 +11307,11 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (file != null) {
-      _json['file'] = file;
-    }
-    if (functionName != null) {
-      _json['functionName'] = functionName;
-    }
-    if (line != null) {
-      _json['line'] = line;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (file != null) 'file': file,
+        if (functionName != null) 'functionName': functionName,
+        if (line != null) 'line': line,
+      };
 }
 
 /// A reference to a particular snapshot of the source tree used to build and
@@ -11773,16 +11340,10 @@ class SourceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (repository != null) {
-      _json['repository'] = repository;
-    }
-    if (revisionId != null) {
-      _json['revisionId'] = revisionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (repository != null) 'repository': repository,
+        if (revisionId != null) 'revisionId': revisionId,
+      };
 }
 
 /// Information about entries that were omitted from the session.
@@ -11812,16 +11373,10 @@ class SuppressionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (suppressedCount != null) {
-      _json['suppressedCount'] = suppressedCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reason != null) 'reason': reason,
+        if (suppressedCount != null) 'suppressedCount': suppressedCount,
+      };
 }
 
 /// The parameters to TailLogEntries.
@@ -11875,19 +11430,11 @@ class TailLogEntriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bufferWindow != null) {
-      _json['bufferWindow'] = bufferWindow;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (resourceNames != null) {
-      _json['resourceNames'] = resourceNames;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bufferWindow != null) 'bufferWindow': bufferWindow,
+        if (filter != null) 'filter': filter,
+        if (resourceNames != null) 'resourceNames': resourceNames,
+      };
 }
 
 /// Result returned from TailLogEntries.
@@ -11924,17 +11471,13 @@ class TailLogEntriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    if (suppressionInfo != null) {
-      _json['suppressionInfo'] =
-          suppressionInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+        if (suppressionInfo != null)
+          'suppressionInfo':
+              suppressionInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The parameters to UndeleteBucket.
@@ -11945,10 +11488,7 @@ class UndeleteBucketRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The parameters to WriteLogEntries.
@@ -12065,28 +11605,15 @@ class WriteLogEntriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dryRun != null) {
-      _json['dryRun'] = dryRun;
-    }
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (logName != null) {
-      _json['logName'] = logName;
-    }
-    if (partialSuccess != null) {
-      _json['partialSuccess'] = partialSuccess;
-    }
-    if (resource != null) {
-      _json['resource'] = resource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun,
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels,
+        if (logName != null) 'logName': logName,
+        if (partialSuccess != null) 'partialSuccess': partialSuccess,
+        if (resource != null) 'resource': resource.toJson(),
+      };
 }
 
 /// Result returned from WriteLogEntries.
@@ -12097,8 +11624,5 @@ class WriteLogEntriesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }

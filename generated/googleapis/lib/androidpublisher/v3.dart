@@ -4000,16 +4000,10 @@ class Apk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (binary != null) {
-      _json['binary'] = binary.toJson();
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (binary != null) 'binary': binary.toJson(),
+        if (versionCode != null) 'versionCode': versionCode,
+      };
 }
 
 /// Represents the binary payload of an APK.
@@ -4033,16 +4027,10 @@ class ApkBinary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sha1 != null) {
-      _json['sha1'] = sha1;
-    }
-    if (sha256 != null) {
-      _json['sha256'] = sha256;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sha1 != null) 'sha1': sha1,
+        if (sha256 != null) 'sha256': sha256,
+      };
 }
 
 /// Request to create a new externally hosted APK.
@@ -4059,13 +4047,10 @@ class ApksAddExternallyHostedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (externallyHostedApk != null) {
-      _json['externallyHostedApk'] = externallyHostedApk.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (externallyHostedApk != null)
+          'externallyHostedApk': externallyHostedApk.toJson(),
+      };
 }
 
 /// Response for creating a new externally hosted APK.
@@ -4082,13 +4067,10 @@ class ApksAddExternallyHostedResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (externallyHostedApk != null) {
-      _json['externallyHostedApk'] = externallyHostedApk.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (externallyHostedApk != null)
+          'externallyHostedApk': externallyHostedApk.toJson(),
+      };
 }
 
 /// Response listing all APKs.
@@ -4113,16 +4095,10 @@ class ApksListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apks != null) {
-      _json['apks'] = apks.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apks != null) 'apks': apks.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// The app details.
@@ -4158,22 +4134,12 @@ class AppDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactEmail != null) {
-      _json['contactEmail'] = contactEmail;
-    }
-    if (contactPhone != null) {
-      _json['contactPhone'] = contactPhone;
-    }
-    if (contactWebsite != null) {
-      _json['contactWebsite'] = contactWebsite;
-    }
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactEmail != null) 'contactEmail': contactEmail,
+        if (contactPhone != null) 'contactPhone': contactPhone,
+        if (contactWebsite != null) 'contactWebsite': contactWebsite,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+      };
 }
 
 /// An app edit.
@@ -4204,16 +4170,10 @@ class AppEdit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expiryTimeSeconds != null) {
-      _json['expiryTimeSeconds'] = expiryTimeSeconds;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expiryTimeSeconds != null) 'expiryTimeSeconds': expiryTimeSeconds,
+        if (id != null) 'id': id,
+      };
 }
 
 /// Information about a bundle.
@@ -4246,19 +4206,11 @@ class Bundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sha1 != null) {
-      _json['sha1'] = sha1;
-    }
-    if (sha256 != null) {
-      _json['sha256'] = sha256;
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sha1 != null) 'sha1': sha1,
+        if (sha256 != null) 'sha256': sha256,
+        if (versionCode != null) 'versionCode': versionCode,
+      };
 }
 
 /// Response listing all bundles.
@@ -4283,16 +4235,11 @@ class BundlesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bundles != null) {
-      _json['bundles'] = bundles.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bundles != null)
+          'bundles': bundles.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// An entry of conversation between user and developer.
@@ -4316,16 +4263,11 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (developerComment != null) {
-      _json['developerComment'] = developerComment.toJson();
-    }
-    if (userComment != null) {
-      _json['userComment'] = userComment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (developerComment != null)
+          'developerComment': developerComment.toJson(),
+        if (userComment != null) 'userComment': userComment.toJson(),
+      };
 }
 
 /// Country targeting specification.
@@ -4350,16 +4292,11 @@ class CountryTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (countries != null) {
-      _json['countries'] = countries;
-    }
-    if (includeRestOfWorld != null) {
-      _json['includeRestOfWorld'] = includeRestOfWorld;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (countries != null) 'countries': countries,
+        if (includeRestOfWorld != null)
+          'includeRestOfWorld': includeRestOfWorld,
+      };
 }
 
 /// Represents a deobfuscation file.
@@ -4380,13 +4317,9 @@ class DeobfuscationFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (symbolType != null) {
-      _json['symbolType'] = symbolType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (symbolType != null) 'symbolType': symbolType,
+      };
 }
 
 /// Responses for the upload.
@@ -4403,13 +4336,10 @@ class DeobfuscationFilesUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deobfuscationFile != null) {
-      _json['deobfuscationFile'] = deobfuscationFile.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deobfuscationFile != null)
+          'deobfuscationFile': deobfuscationFile.toJson(),
+      };
 }
 
 /// Developer entry from conversation between user and developer.
@@ -4432,16 +4362,10 @@ class DeveloperComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastModified != null) {
-      _json['lastModified'] = lastModified.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastModified != null) 'lastModified': lastModified.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// Characteristics of the user's device.
@@ -4517,43 +4441,19 @@ class DeviceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cpuMake != null) {
-      _json['cpuMake'] = cpuMake;
-    }
-    if (cpuModel != null) {
-      _json['cpuModel'] = cpuModel;
-    }
-    if (deviceClass != null) {
-      _json['deviceClass'] = deviceClass;
-    }
-    if (glEsVersion != null) {
-      _json['glEsVersion'] = glEsVersion;
-    }
-    if (manufacturer != null) {
-      _json['manufacturer'] = manufacturer;
-    }
-    if (nativePlatform != null) {
-      _json['nativePlatform'] = nativePlatform;
-    }
-    if (productName != null) {
-      _json['productName'] = productName;
-    }
-    if (ramMb != null) {
-      _json['ramMb'] = ramMb;
-    }
-    if (screenDensityDpi != null) {
-      _json['screenDensityDpi'] = screenDensityDpi;
-    }
-    if (screenHeightPx != null) {
-      _json['screenHeightPx'] = screenHeightPx;
-    }
-    if (screenWidthPx != null) {
-      _json['screenWidthPx'] = screenWidthPx;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cpuMake != null) 'cpuMake': cpuMake,
+        if (cpuModel != null) 'cpuModel': cpuModel,
+        if (deviceClass != null) 'deviceClass': deviceClass,
+        if (glEsVersion != null) 'glEsVersion': glEsVersion,
+        if (manufacturer != null) 'manufacturer': manufacturer,
+        if (nativePlatform != null) 'nativePlatform': nativePlatform,
+        if (productName != null) 'productName': productName,
+        if (ramMb != null) 'ramMb': ramMb,
+        if (screenDensityDpi != null) 'screenDensityDpi': screenDensityDpi,
+        if (screenHeightPx != null) 'screenHeightPx': screenHeightPx,
+        if (screenWidthPx != null) 'screenWidthPx': screenWidthPx,
+      };
 }
 
 /// The device spec used to generate a system APK.
@@ -4588,19 +4488,11 @@ class DeviceSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (screenDensity != null) {
-      _json['screenDensity'] = screenDensity;
-    }
-    if (supportedAbis != null) {
-      _json['supportedAbis'] = supportedAbis;
-    }
-    if (supportedLocales != null) {
-      _json['supportedLocales'] = supportedLocales;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (screenDensity != null) 'screenDensity': screenDensity,
+        if (supportedAbis != null) 'supportedAbis': supportedAbis,
+        if (supportedLocales != null) 'supportedLocales': supportedLocales,
+      };
 }
 
 /// An expansion file.
@@ -4629,16 +4521,10 @@ class ExpansionFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileSize != null) {
-      _json['fileSize'] = fileSize;
-    }
-    if (referencesVersion != null) {
-      _json['referencesVersion'] = referencesVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileSize != null) 'fileSize': fileSize,
+        if (referencesVersion != null) 'referencesVersion': referencesVersion,
+      };
 }
 
 /// Response for uploading an expansion file.
@@ -4655,13 +4541,9 @@ class ExpansionFilesUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expansionFile != null) {
-      _json['expansionFile'] = expansionFile.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expansionFile != null) 'expansionFile': expansionFile.toJson(),
+      };
 }
 
 /// Defines an APK available for this application that is hosted externally and
@@ -4778,56 +4660,27 @@ class ExternallyHostedApk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationLabel != null) {
-      _json['applicationLabel'] = applicationLabel;
-    }
-    if (certificateBase64s != null) {
-      _json['certificateBase64s'] = certificateBase64s;
-    }
-    if (externallyHostedUrl != null) {
-      _json['externallyHostedUrl'] = externallyHostedUrl;
-    }
-    if (fileSha1Base64 != null) {
-      _json['fileSha1Base64'] = fileSha1Base64;
-    }
-    if (fileSha256Base64 != null) {
-      _json['fileSha256Base64'] = fileSha256Base64;
-    }
-    if (fileSize != null) {
-      _json['fileSize'] = fileSize;
-    }
-    if (iconBase64 != null) {
-      _json['iconBase64'] = iconBase64;
-    }
-    if (maximumSdk != null) {
-      _json['maximumSdk'] = maximumSdk;
-    }
-    if (minimumSdk != null) {
-      _json['minimumSdk'] = minimumSdk;
-    }
-    if (nativeCodes != null) {
-      _json['nativeCodes'] = nativeCodes;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (usesFeatures != null) {
-      _json['usesFeatures'] = usesFeatures;
-    }
-    if (usesPermissions != null) {
-      _json['usesPermissions'] =
-          usesPermissions.map((value) => value.toJson()).toList();
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    if (versionName != null) {
-      _json['versionName'] = versionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationLabel != null) 'applicationLabel': applicationLabel,
+        if (certificateBase64s != null)
+          'certificateBase64s': certificateBase64s,
+        if (externallyHostedUrl != null)
+          'externallyHostedUrl': externallyHostedUrl,
+        if (fileSha1Base64 != null) 'fileSha1Base64': fileSha1Base64,
+        if (fileSha256Base64 != null) 'fileSha256Base64': fileSha256Base64,
+        if (fileSize != null) 'fileSize': fileSize,
+        if (iconBase64 != null) 'iconBase64': iconBase64,
+        if (maximumSdk != null) 'maximumSdk': maximumSdk,
+        if (minimumSdk != null) 'minimumSdk': minimumSdk,
+        if (nativeCodes != null) 'nativeCodes': nativeCodes,
+        if (packageName != null) 'packageName': packageName,
+        if (usesFeatures != null) 'usesFeatures': usesFeatures,
+        if (usesPermissions != null)
+          'usesPermissions':
+              usesPermissions.map((value) => value.toJson()).toList(),
+        if (versionCode != null) 'versionCode': versionCode,
+        if (versionName != null) 'versionName': versionName,
+      };
 }
 
 /// An uploaded image.
@@ -4863,22 +4716,12 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (sha1 != null) {
-      _json['sha1'] = sha1;
-    }
-    if (sha256 != null) {
-      _json['sha256'] = sha256;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (sha1 != null) 'sha1': sha1,
+        if (sha256 != null) 'sha256': sha256,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Response for deleting all images.
@@ -4897,13 +4740,10 @@ class ImagesDeleteAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deleted != null) {
-      _json['deleted'] = deleted.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deleted != null)
+          'deleted': deleted.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response listing all images.
@@ -4922,13 +4762,10 @@ class ImagesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (images != null) {
-      _json['images'] = images.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (images != null)
+          'images': images.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response for uploading an image.
@@ -4945,13 +4782,9 @@ class ImagesUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (image != null) 'image': image.toJson(),
+      };
 }
 
 /// An in-app product.
@@ -5073,45 +4906,24 @@ class InAppProduct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultLanguage != null) {
-      _json['defaultLanguage'] = defaultLanguage;
-    }
-    if (defaultPrice != null) {
-      _json['defaultPrice'] = defaultPrice.toJson();
-    }
-    if (gracePeriod != null) {
-      _json['gracePeriod'] = gracePeriod;
-    }
-    if (listings != null) {
-      _json['listings'] =
-          listings.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (prices != null) {
-      _json['prices'] =
-          prices.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (purchaseType != null) {
-      _json['purchaseType'] = purchaseType;
-    }
-    if (sku != null) {
-      _json['sku'] = sku;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (subscriptionPeriod != null) {
-      _json['subscriptionPeriod'] = subscriptionPeriod;
-    }
-    if (trialPeriod != null) {
-      _json['trialPeriod'] = trialPeriod;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+        if (defaultPrice != null) 'defaultPrice': defaultPrice.toJson(),
+        if (gracePeriod != null) 'gracePeriod': gracePeriod,
+        if (listings != null)
+          'listings':
+              listings.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (packageName != null) 'packageName': packageName,
+        if (prices != null)
+          'prices':
+              prices.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (purchaseType != null) 'purchaseType': purchaseType,
+        if (sku != null) 'sku': sku,
+        if (status != null) 'status': status,
+        if (subscriptionPeriod != null)
+          'subscriptionPeriod': subscriptionPeriod,
+        if (trialPeriod != null) 'trialPeriod': trialPeriod,
+      };
 }
 
 /// Store listing of a single in-app product.
@@ -5141,19 +4953,11 @@ class InAppProductListing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (benefits != null) {
-      _json['benefits'] = benefits;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (benefits != null) 'benefits': benefits,
+        if (description != null) 'description': description,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Response listing all in-app products.
@@ -5192,23 +4996,14 @@ class InappproductsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inappproduct != null) {
-      _json['inappproduct'] =
-          inappproduct.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inappproduct != null)
+          'inappproduct': inappproduct.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+      };
 }
 
 /// An artifact resource which gets created when uploading an APK or Android App
@@ -5242,19 +5037,12 @@ class InternalAppSharingArtifact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certificateFingerprint != null) {
-      _json['certificateFingerprint'] = certificateFingerprint;
-    }
-    if (downloadUrl != null) {
-      _json['downloadUrl'] = downloadUrl;
-    }
-    if (sha256 != null) {
-      _json['sha256'] = sha256;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certificateFingerprint != null)
+          'certificateFingerprint': certificateFingerprint,
+        if (downloadUrl != null) 'downloadUrl': downloadUrl,
+        if (sha256 != null) 'sha256': sha256,
+      };
 }
 
 /// Contains the introductory price information for a subscription.
@@ -5301,22 +5089,16 @@ class IntroductoryPriceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (introductoryPriceAmountMicros != null) {
-      _json['introductoryPriceAmountMicros'] = introductoryPriceAmountMicros;
-    }
-    if (introductoryPriceCurrencyCode != null) {
-      _json['introductoryPriceCurrencyCode'] = introductoryPriceCurrencyCode;
-    }
-    if (introductoryPriceCycles != null) {
-      _json['introductoryPriceCycles'] = introductoryPriceCycles;
-    }
-    if (introductoryPricePeriod != null) {
-      _json['introductoryPricePeriod'] = introductoryPricePeriod;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (introductoryPriceAmountMicros != null)
+          'introductoryPriceAmountMicros': introductoryPriceAmountMicros,
+        if (introductoryPriceCurrencyCode != null)
+          'introductoryPriceCurrencyCode': introductoryPriceCurrencyCode,
+        if (introductoryPriceCycles != null)
+          'introductoryPriceCycles': introductoryPriceCycles,
+        if (introductoryPricePeriod != null)
+          'introductoryPricePeriod': introductoryPricePeriod,
+      };
 }
 
 /// A localized store listing.
@@ -5359,25 +5141,13 @@ class Listing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fullDescription != null) {
-      _json['fullDescription'] = fullDescription;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (shortDescription != null) {
-      _json['shortDescription'] = shortDescription;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (video != null) {
-      _json['video'] = video;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fullDescription != null) 'fullDescription': fullDescription,
+        if (language != null) 'language': language,
+        if (shortDescription != null) 'shortDescription': shortDescription,
+        if (title != null) 'title': title,
+        if (video != null) 'video': video,
+      };
 }
 
 /// Response listing all localized listings.
@@ -5402,16 +5172,11 @@ class ListingsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (listings != null) {
-      _json['listings'] = listings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (listings != null)
+          'listings': listings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Release notes specification, i.e. language and text.
@@ -5434,16 +5199,10 @@ class LocalizedText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (language != null) 'language': language,
+        if (text != null) 'text': text,
+      };
 }
 
 /// Information about the current page.
@@ -5477,19 +5236,11 @@ class PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resultPerPage != null) {
-      _json['resultPerPage'] = resultPerPage;
-    }
-    if (startIndex != null) {
-      _json['startIndex'] = startIndex;
-    }
-    if (totalResults != null) {
-      _json['totalResults'] = totalResults;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resultPerPage != null) 'resultPerPage': resultPerPage,
+        if (startIndex != null) 'startIndex': startIndex,
+        if (totalResults != null) 'totalResults': totalResults,
+      };
 }
 
 /// Definition of a price, i.e. currency and units.
@@ -5513,16 +5264,10 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    if (priceMicros != null) {
-      _json['priceMicros'] = priceMicros;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currency != null) 'currency': currency,
+        if (priceMicros != null) 'priceMicros': priceMicros,
+      };
 }
 
 /// A ProductPurchase resource indicates the status of a user's inapp product
@@ -5644,52 +5389,26 @@ class ProductPurchase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acknowledgementState != null) {
-      _json['acknowledgementState'] = acknowledgementState;
-    }
-    if (consumptionState != null) {
-      _json['consumptionState'] = consumptionState;
-    }
-    if (developerPayload != null) {
-      _json['developerPayload'] = developerPayload;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (obfuscatedExternalAccountId != null) {
-      _json['obfuscatedExternalAccountId'] = obfuscatedExternalAccountId;
-    }
-    if (obfuscatedExternalProfileId != null) {
-      _json['obfuscatedExternalProfileId'] = obfuscatedExternalProfileId;
-    }
-    if (orderId != null) {
-      _json['orderId'] = orderId;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (purchaseState != null) {
-      _json['purchaseState'] = purchaseState;
-    }
-    if (purchaseTimeMillis != null) {
-      _json['purchaseTimeMillis'] = purchaseTimeMillis;
-    }
-    if (purchaseToken != null) {
-      _json['purchaseToken'] = purchaseToken;
-    }
-    if (purchaseType != null) {
-      _json['purchaseType'] = purchaseType;
-    }
-    if (quantity != null) {
-      _json['quantity'] = quantity;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acknowledgementState != null)
+          'acknowledgementState': acknowledgementState,
+        if (consumptionState != null) 'consumptionState': consumptionState,
+        if (developerPayload != null) 'developerPayload': developerPayload,
+        if (kind != null) 'kind': kind,
+        if (obfuscatedExternalAccountId != null)
+          'obfuscatedExternalAccountId': obfuscatedExternalAccountId,
+        if (obfuscatedExternalProfileId != null)
+          'obfuscatedExternalProfileId': obfuscatedExternalProfileId,
+        if (orderId != null) 'orderId': orderId,
+        if (productId != null) 'productId': productId,
+        if (purchaseState != null) 'purchaseState': purchaseState,
+        if (purchaseTimeMillis != null)
+          'purchaseTimeMillis': purchaseTimeMillis,
+        if (purchaseToken != null) 'purchaseToken': purchaseToken,
+        if (purchaseType != null) 'purchaseType': purchaseType,
+        if (quantity != null) 'quantity': quantity,
+        if (regionCode != null) 'regionCode': regionCode,
+      };
 }
 
 /// Request for the product.purchases.acknowledge API.
@@ -5705,13 +5424,9 @@ class ProductPurchasesAcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (developerPayload != null) {
-      _json['developerPayload'] = developerPayload;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (developerPayload != null) 'developerPayload': developerPayload,
+      };
 }
 
 /// An Android app review.
@@ -5742,19 +5457,12 @@ class Review {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorName != null) {
-      _json['authorName'] = authorName;
-    }
-    if (comments != null) {
-      _json['comments'] = comments.map((value) => value.toJson()).toList();
-    }
-    if (reviewId != null) {
-      _json['reviewId'] = reviewId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorName != null) 'authorName': authorName,
+        if (comments != null)
+          'comments': comments.map((value) => value.toJson()).toList(),
+        if (reviewId != null) 'reviewId': reviewId,
+      };
 }
 
 /// The result of replying/updating a reply to review.
@@ -5777,16 +5485,10 @@ class ReviewReplyResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastEdited != null) {
-      _json['lastEdited'] = lastEdited.toJson();
-    }
-    if (replyText != null) {
-      _json['replyText'] = replyText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastEdited != null) 'lastEdited': lastEdited.toJson(),
+        if (replyText != null) 'replyText': replyText,
+      };
 }
 
 /// Response listing reviews.
@@ -5819,19 +5521,13 @@ class ReviewsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (reviews != null) {
-      _json['reviews'] = reviews.map((value) => value.toJson()).toList();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (reviews != null)
+          'reviews': reviews.map((value) => value.toJson()).toList(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+      };
 }
 
 /// Request to reply to review or update existing reply.
@@ -5850,13 +5546,9 @@ class ReviewsReplyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (replyText != null) {
-      _json['replyText'] = replyText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (replyText != null) 'replyText': replyText,
+      };
 }
 
 /// Response on status of replying to a review.
@@ -5873,13 +5565,9 @@ class ReviewsReplyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result.toJson(),
+      };
 }
 
 /// Information provided by the user when they complete the subscription
@@ -5907,16 +5595,12 @@ class SubscriptionCancelSurveyResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cancelSurveyReason != null) {
-      _json['cancelSurveyReason'] = cancelSurveyReason;
-    }
-    if (userInputCancelReason != null) {
-      _json['userInputCancelReason'] = userInputCancelReason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cancelSurveyReason != null)
+          'cancelSurveyReason': cancelSurveyReason,
+        if (userInputCancelReason != null)
+          'userInputCancelReason': userInputCancelReason,
+      };
 }
 
 /// A SubscriptionDeferralInfo contains the data needed to defer a subscription
@@ -5947,16 +5631,12 @@ class SubscriptionDeferralInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (desiredExpiryTimeMillis != null) {
-      _json['desiredExpiryTimeMillis'] = desiredExpiryTimeMillis;
-    }
-    if (expectedExpiryTimeMillis != null) {
-      _json['expectedExpiryTimeMillis'] = expectedExpiryTimeMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (desiredExpiryTimeMillis != null)
+          'desiredExpiryTimeMillis': desiredExpiryTimeMillis,
+        if (expectedExpiryTimeMillis != null)
+          'expectedExpiryTimeMillis': expectedExpiryTimeMillis,
+      };
 }
 
 /// Contains the price change information for a subscription that can be used to
@@ -5992,16 +5672,10 @@ class SubscriptionPriceChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (newPrice != null) {
-      _json['newPrice'] = newPrice.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (newPrice != null) 'newPrice': newPrice.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// A SubscriptionPurchase resource indicates the status of a user's
@@ -6279,97 +5953,45 @@ class SubscriptionPurchase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (acknowledgementState != null) {
-      _json['acknowledgementState'] = acknowledgementState;
-    }
-    if (autoRenewing != null) {
-      _json['autoRenewing'] = autoRenewing;
-    }
-    if (autoResumeTimeMillis != null) {
-      _json['autoResumeTimeMillis'] = autoResumeTimeMillis;
-    }
-    if (cancelReason != null) {
-      _json['cancelReason'] = cancelReason;
-    }
-    if (cancelSurveyResult != null) {
-      _json['cancelSurveyResult'] = cancelSurveyResult.toJson();
-    }
-    if (countryCode != null) {
-      _json['countryCode'] = countryCode;
-    }
-    if (developerPayload != null) {
-      _json['developerPayload'] = developerPayload;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (expiryTimeMillis != null) {
-      _json['expiryTimeMillis'] = expiryTimeMillis;
-    }
-    if (externalAccountId != null) {
-      _json['externalAccountId'] = externalAccountId;
-    }
-    if (familyName != null) {
-      _json['familyName'] = familyName;
-    }
-    if (givenName != null) {
-      _json['givenName'] = givenName;
-    }
-    if (introductoryPriceInfo != null) {
-      _json['introductoryPriceInfo'] = introductoryPriceInfo.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (linkedPurchaseToken != null) {
-      _json['linkedPurchaseToken'] = linkedPurchaseToken;
-    }
-    if (obfuscatedExternalAccountId != null) {
-      _json['obfuscatedExternalAccountId'] = obfuscatedExternalAccountId;
-    }
-    if (obfuscatedExternalProfileId != null) {
-      _json['obfuscatedExternalProfileId'] = obfuscatedExternalProfileId;
-    }
-    if (orderId != null) {
-      _json['orderId'] = orderId;
-    }
-    if (paymentState != null) {
-      _json['paymentState'] = paymentState;
-    }
-    if (priceAmountMicros != null) {
-      _json['priceAmountMicros'] = priceAmountMicros;
-    }
-    if (priceChange != null) {
-      _json['priceChange'] = priceChange.toJson();
-    }
-    if (priceCurrencyCode != null) {
-      _json['priceCurrencyCode'] = priceCurrencyCode;
-    }
-    if (profileId != null) {
-      _json['profileId'] = profileId;
-    }
-    if (profileName != null) {
-      _json['profileName'] = profileName;
-    }
-    if (promotionCode != null) {
-      _json['promotionCode'] = promotionCode;
-    }
-    if (promotionType != null) {
-      _json['promotionType'] = promotionType;
-    }
-    if (purchaseType != null) {
-      _json['purchaseType'] = purchaseType;
-    }
-    if (startTimeMillis != null) {
-      _json['startTimeMillis'] = startTimeMillis;
-    }
-    if (userCancellationTimeMillis != null) {
-      _json['userCancellationTimeMillis'] = userCancellationTimeMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (acknowledgementState != null)
+          'acknowledgementState': acknowledgementState,
+        if (autoRenewing != null) 'autoRenewing': autoRenewing,
+        if (autoResumeTimeMillis != null)
+          'autoResumeTimeMillis': autoResumeTimeMillis,
+        if (cancelReason != null) 'cancelReason': cancelReason,
+        if (cancelSurveyResult != null)
+          'cancelSurveyResult': cancelSurveyResult.toJson(),
+        if (countryCode != null) 'countryCode': countryCode,
+        if (developerPayload != null) 'developerPayload': developerPayload,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (expiryTimeMillis != null) 'expiryTimeMillis': expiryTimeMillis,
+        if (externalAccountId != null) 'externalAccountId': externalAccountId,
+        if (familyName != null) 'familyName': familyName,
+        if (givenName != null) 'givenName': givenName,
+        if (introductoryPriceInfo != null)
+          'introductoryPriceInfo': introductoryPriceInfo.toJson(),
+        if (kind != null) 'kind': kind,
+        if (linkedPurchaseToken != null)
+          'linkedPurchaseToken': linkedPurchaseToken,
+        if (obfuscatedExternalAccountId != null)
+          'obfuscatedExternalAccountId': obfuscatedExternalAccountId,
+        if (obfuscatedExternalProfileId != null)
+          'obfuscatedExternalProfileId': obfuscatedExternalProfileId,
+        if (orderId != null) 'orderId': orderId,
+        if (paymentState != null) 'paymentState': paymentState,
+        if (priceAmountMicros != null) 'priceAmountMicros': priceAmountMicros,
+        if (priceChange != null) 'priceChange': priceChange.toJson(),
+        if (priceCurrencyCode != null) 'priceCurrencyCode': priceCurrencyCode,
+        if (profileId != null) 'profileId': profileId,
+        if (profileName != null) 'profileName': profileName,
+        if (promotionCode != null) 'promotionCode': promotionCode,
+        if (promotionType != null) 'promotionType': promotionType,
+        if (purchaseType != null) 'purchaseType': purchaseType,
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
+        if (userCancellationTimeMillis != null)
+          'userCancellationTimeMillis': userCancellationTimeMillis,
+      };
 }
 
 /// Request for the purchases.subscriptions.acknowledge API.
@@ -6385,13 +6007,9 @@ class SubscriptionPurchasesAcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (developerPayload != null) {
-      _json['developerPayload'] = developerPayload;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (developerPayload != null) 'developerPayload': developerPayload,
+      };
 }
 
 /// Request for the purchases.subscriptions.defer API.
@@ -6408,13 +6026,9 @@ class SubscriptionPurchasesDeferRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deferralInfo != null) {
-      _json['deferralInfo'] = deferralInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deferralInfo != null) 'deferralInfo': deferralInfo.toJson(),
+      };
 }
 
 /// Response for the purchases.subscriptions.defer API.
@@ -6430,13 +6044,10 @@ class SubscriptionPurchasesDeferResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (newExpiryTimeMillis != null) {
-      _json['newExpiryTimeMillis'] = newExpiryTimeMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (newExpiryTimeMillis != null)
+          'newExpiryTimeMillis': newExpiryTimeMillis,
+      };
 }
 
 /// Response to list previously created system APK variants.
@@ -6455,13 +6066,10 @@ class SystemApksListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (variants != null) {
-      _json['variants'] = variants.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (variants != null)
+          'variants': variants.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The testers of an app.
@@ -6481,13 +6089,9 @@ class Testers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleGroups != null) {
-      _json['googleGroups'] = googleGroups;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleGroups != null) 'googleGroups': googleGroups,
+      };
 }
 
 /// A Timestamp represents a point in time independent of any time zone or local
@@ -6515,16 +6119,10 @@ class Timestamp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// Pagination information returned by a List operation when token pagination is
@@ -6555,16 +6153,10 @@ class TokenPagination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (previousPageToken != null) {
-      _json['previousPageToken'] = previousPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (previousPageToken != null) 'previousPageToken': previousPageToken,
+      };
 }
 
 /// A track configuration.
@@ -6593,16 +6185,11 @@ class Track {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (releases != null) {
-      _json['releases'] = releases.map((value) => value.toJson()).toList();
-    }
-    if (track != null) {
-      _json['track'] = track;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (releases != null)
+          'releases': releases.map((value) => value.toJson()).toList(),
+        if (track != null) 'track': track,
+      };
 }
 
 /// A release within a track.
@@ -6684,32 +6271,18 @@ class TrackRelease {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (countryTargeting != null) {
-      _json['countryTargeting'] = countryTargeting.toJson();
-    }
-    if (inAppUpdatePriority != null) {
-      _json['inAppUpdatePriority'] = inAppUpdatePriority;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (releaseNotes != null) {
-      _json['releaseNotes'] =
-          releaseNotes.map((value) => value.toJson()).toList();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (userFraction != null) {
-      _json['userFraction'] = userFraction;
-    }
-    if (versionCodes != null) {
-      _json['versionCodes'] = versionCodes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (countryTargeting != null)
+          'countryTargeting': countryTargeting.toJson(),
+        if (inAppUpdatePriority != null)
+          'inAppUpdatePriority': inAppUpdatePriority,
+        if (name != null) 'name': name,
+        if (releaseNotes != null)
+          'releaseNotes': releaseNotes.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status,
+        if (userFraction != null) 'userFraction': userFraction,
+        if (versionCodes != null) 'versionCodes': versionCodes,
+      };
 }
 
 /// Response listing all tracks.
@@ -6734,16 +6307,11 @@ class TracksListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (tracks != null) {
-      _json['tracks'] = tracks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (tracks != null)
+          'tracks': tracks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// User entry from conversation between user and developer.
@@ -6847,46 +6415,20 @@ class UserComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidOsVersion != null) {
-      _json['androidOsVersion'] = androidOsVersion;
-    }
-    if (appVersionCode != null) {
-      _json['appVersionCode'] = appVersionCode;
-    }
-    if (appVersionName != null) {
-      _json['appVersionName'] = appVersionName;
-    }
-    if (device != null) {
-      _json['device'] = device;
-    }
-    if (deviceMetadata != null) {
-      _json['deviceMetadata'] = deviceMetadata.toJson();
-    }
-    if (lastModified != null) {
-      _json['lastModified'] = lastModified.toJson();
-    }
-    if (originalText != null) {
-      _json['originalText'] = originalText;
-    }
-    if (reviewerLanguage != null) {
-      _json['reviewerLanguage'] = reviewerLanguage;
-    }
-    if (starRating != null) {
-      _json['starRating'] = starRating;
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    if (thumbsDownCount != null) {
-      _json['thumbsDownCount'] = thumbsDownCount;
-    }
-    if (thumbsUpCount != null) {
-      _json['thumbsUpCount'] = thumbsUpCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidOsVersion != null) 'androidOsVersion': androidOsVersion,
+        if (appVersionCode != null) 'appVersionCode': appVersionCode,
+        if (appVersionName != null) 'appVersionName': appVersionName,
+        if (device != null) 'device': device,
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+        if (lastModified != null) 'lastModified': lastModified.toJson(),
+        if (originalText != null) 'originalText': originalText,
+        if (reviewerLanguage != null) 'reviewerLanguage': reviewerLanguage,
+        if (starRating != null) 'starRating': starRating,
+        if (text != null) 'text': text,
+        if (thumbsDownCount != null) 'thumbsDownCount': thumbsDownCount,
+        if (thumbsUpCount != null) 'thumbsUpCount': thumbsUpCount,
+      };
 }
 
 /// A permission used by this APK.
@@ -6908,16 +6450,10 @@ class UsesPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxSdkVersion != null) {
-      _json['maxSdkVersion'] = maxSdkVersion;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion,
+        if (name != null) 'name': name,
+      };
 }
 
 /// APK that is suitable for inclusion in a system image.
@@ -6944,16 +6480,10 @@ class Variant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceSpec != null) {
-      _json['deviceSpec'] = deviceSpec.toJson();
-    }
-    if (variantId != null) {
-      _json['variantId'] = variantId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceSpec != null) 'deviceSpec': deviceSpec.toJson(),
+        if (variantId != null) 'variantId': variantId,
+      };
 }
 
 /// A VoidedPurchase resource indicates a purchase that was either
@@ -7018,31 +6548,16 @@ class VoidedPurchase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (orderId != null) {
-      _json['orderId'] = orderId;
-    }
-    if (purchaseTimeMillis != null) {
-      _json['purchaseTimeMillis'] = purchaseTimeMillis;
-    }
-    if (purchaseToken != null) {
-      _json['purchaseToken'] = purchaseToken;
-    }
-    if (voidedReason != null) {
-      _json['voidedReason'] = voidedReason;
-    }
-    if (voidedSource != null) {
-      _json['voidedSource'] = voidedSource;
-    }
-    if (voidedTimeMillis != null) {
-      _json['voidedTimeMillis'] = voidedTimeMillis;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (orderId != null) 'orderId': orderId,
+        if (purchaseTimeMillis != null)
+          'purchaseTimeMillis': purchaseTimeMillis,
+        if (purchaseToken != null) 'purchaseToken': purchaseToken,
+        if (voidedReason != null) 'voidedReason': voidedReason,
+        if (voidedSource != null) 'voidedSource': voidedSource,
+        if (voidedTimeMillis != null) 'voidedTimeMillis': voidedTimeMillis,
+      };
 }
 
 /// Response for the voidedpurchases.list API.
@@ -7073,18 +6588,12 @@ class VoidedPurchasesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (voidedPurchases != null) {
-      _json['voidedPurchases'] =
-          voidedPurchases.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+        if (tokenPagination != null)
+          'tokenPagination': tokenPagination.toJson(),
+        if (voidedPurchases != null)
+          'voidedPurchases':
+              voidedPurchases.map((value) => value.toJson()).toList(),
+      };
 }

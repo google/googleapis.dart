@@ -380,13 +380,9 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleAuto != null) {
-      _json['googleAuto'] = googleAuto.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleAuto != null) 'googleAuto': googleAuto.toJson(),
+      };
 }
 
 /// A single Android device.
@@ -436,22 +432,12 @@ class AndroidDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidModelId != null) {
-      _json['androidModelId'] = androidModelId;
-    }
-    if (androidVersionId != null) {
-      _json['androidVersionId'] = androidVersionId;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (orientation != null) {
-      _json['orientation'] = orientation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidModelId != null) 'androidModelId': androidModelId,
+        if (androidVersionId != null) 'androidVersionId': androidVersionId,
+        if (locale != null) 'locale': locale,
+        if (orientation != null) 'orientation': orientation,
+      };
 }
 
 /// The currently supported Android devices.
@@ -486,19 +472,14 @@ class AndroidDeviceCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (models != null) {
-      _json['models'] = models.map((value) => value.toJson()).toList();
-    }
-    if (runtimeConfiguration != null) {
-      _json['runtimeConfiguration'] = runtimeConfiguration.toJson();
-    }
-    if (versions != null) {
-      _json['versions'] = versions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (models != null)
+          'models': models.map((value) => value.toJson()).toList(),
+        if (runtimeConfiguration != null)
+          'runtimeConfiguration': runtimeConfiguration.toJson(),
+        if (versions != null)
+          'versions': versions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A list of Android device configurations in which the test is to be executed.
@@ -519,14 +500,11 @@ class AndroidDeviceList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidDevices != null) {
-      _json['androidDevices'] =
-          androidDevices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidDevices != null)
+          'androidDevices':
+              androidDevices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A test of an Android application that can control an Android component
@@ -630,37 +608,18 @@ class AndroidInstrumentationTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appApk != null) {
-      _json['appApk'] = appApk.toJson();
-    }
-    if (appBundle != null) {
-      _json['appBundle'] = appBundle.toJson();
-    }
-    if (appPackageId != null) {
-      _json['appPackageId'] = appPackageId;
-    }
-    if (orchestratorOption != null) {
-      _json['orchestratorOption'] = orchestratorOption;
-    }
-    if (shardingOption != null) {
-      _json['shardingOption'] = shardingOption.toJson();
-    }
-    if (testApk != null) {
-      _json['testApk'] = testApk.toJson();
-    }
-    if (testPackageId != null) {
-      _json['testPackageId'] = testPackageId;
-    }
-    if (testRunnerClass != null) {
-      _json['testRunnerClass'] = testRunnerClass;
-    }
-    if (testTargets != null) {
-      _json['testTargets'] = testTargets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appApk != null) 'appApk': appApk.toJson(),
+        if (appBundle != null) 'appBundle': appBundle.toJson(),
+        if (appPackageId != null) 'appPackageId': appPackageId,
+        if (orchestratorOption != null)
+          'orchestratorOption': orchestratorOption,
+        if (shardingOption != null) 'shardingOption': shardingOption.toJson(),
+        if (testApk != null) 'testApk': testApk.toJson(),
+        if (testPackageId != null) 'testPackageId': testPackageId,
+        if (testRunnerClass != null) 'testRunnerClass': testRunnerClass,
+        if (testTargets != null) 'testTargets': testTargets,
+      };
 }
 
 /// A set of Android device configuration permutations is defined by the the
@@ -723,22 +682,12 @@ class AndroidMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidModelIds != null) {
-      _json['androidModelIds'] = androidModelIds;
-    }
-    if (androidVersionIds != null) {
-      _json['androidVersionIds'] = androidVersionIds;
-    }
-    if (locales != null) {
-      _json['locales'] = locales;
-    }
-    if (orientations != null) {
-      _json['orientations'] = orientations;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidModelIds != null) 'androidModelIds': androidModelIds,
+        if (androidVersionIds != null) 'androidVersionIds': androidVersionIds,
+        if (locales != null) 'locales': locales,
+        if (orientations != null) 'orientations': orientations,
+      };
 }
 
 /// A description of an Android device tests may be run on.
@@ -881,55 +830,25 @@ class AndroidModel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (brand != null) {
-      _json['brand'] = brand;
-    }
-    if (codename != null) {
-      _json['codename'] = codename;
-    }
-    if (form != null) {
-      _json['form'] = form;
-    }
-    if (formFactor != null) {
-      _json['formFactor'] = formFactor;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (lowFpsVideoRecording != null) {
-      _json['lowFpsVideoRecording'] = lowFpsVideoRecording;
-    }
-    if (manufacturer != null) {
-      _json['manufacturer'] = manufacturer;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (screenDensity != null) {
-      _json['screenDensity'] = screenDensity;
-    }
-    if (screenX != null) {
-      _json['screenX'] = screenX;
-    }
-    if (screenY != null) {
-      _json['screenY'] = screenY;
-    }
-    if (supportedAbis != null) {
-      _json['supportedAbis'] = supportedAbis;
-    }
-    if (supportedVersionIds != null) {
-      _json['supportedVersionIds'] = supportedVersionIds;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (thumbnailUrl != null) {
-      _json['thumbnailUrl'] = thumbnailUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (brand != null) 'brand': brand,
+        if (codename != null) 'codename': codename,
+        if (form != null) 'form': form,
+        if (formFactor != null) 'formFactor': formFactor,
+        if (id != null) 'id': id,
+        if (lowFpsVideoRecording != null)
+          'lowFpsVideoRecording': lowFpsVideoRecording,
+        if (manufacturer != null) 'manufacturer': manufacturer,
+        if (name != null) 'name': name,
+        if (screenDensity != null) 'screenDensity': screenDensity,
+        if (screenX != null) 'screenX': screenX,
+        if (screenY != null) 'screenY': screenY,
+        if (supportedAbis != null) 'supportedAbis': supportedAbis,
+        if (supportedVersionIds != null)
+          'supportedVersionIds': supportedVersionIds,
+        if (tags != null) 'tags': tags,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
+      };
 }
 
 /// A test of an android application that explores the application on a virtual
@@ -1020,39 +939,22 @@ class AndroidRoboTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appApk != null) {
-      _json['appApk'] = appApk.toJson();
-    }
-    if (appBundle != null) {
-      _json['appBundle'] = appBundle.toJson();
-    }
-    if (appInitialActivity != null) {
-      _json['appInitialActivity'] = appInitialActivity;
-    }
-    if (appPackageId != null) {
-      _json['appPackageId'] = appPackageId;
-    }
-    if (maxDepth != null) {
-      _json['maxDepth'] = maxDepth;
-    }
-    if (maxSteps != null) {
-      _json['maxSteps'] = maxSteps;
-    }
-    if (roboDirectives != null) {
-      _json['roboDirectives'] =
-          roboDirectives.map((value) => value.toJson()).toList();
-    }
-    if (roboScript != null) {
-      _json['roboScript'] = roboScript.toJson();
-    }
-    if (startingIntents != null) {
-      _json['startingIntents'] =
-          startingIntents.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appApk != null) 'appApk': appApk.toJson(),
+        if (appBundle != null) 'appBundle': appBundle.toJson(),
+        if (appInitialActivity != null)
+          'appInitialActivity': appInitialActivity,
+        if (appPackageId != null) 'appPackageId': appPackageId,
+        if (maxDepth != null) 'maxDepth': maxDepth,
+        if (maxSteps != null) 'maxSteps': maxSteps,
+        if (roboDirectives != null)
+          'roboDirectives':
+              roboDirectives.map((value) => value.toJson()).toList(),
+        if (roboScript != null) 'roboScript': roboScript.toJson(),
+        if (startingIntents != null)
+          'startingIntents':
+              startingIntents.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Android configuration that can be selected at the time a test is run.
@@ -1080,17 +982,12 @@ class AndroidRuntimeConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locales != null) {
-      _json['locales'] = locales.map((value) => value.toJson()).toList();
-    }
-    if (orientations != null) {
-      _json['orientations'] =
-          orientations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locales != null)
+          'locales': locales.map((value) => value.toJson()).toList(),
+        if (orientations != null)
+          'orientations': orientations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A test of an Android Application with a Test Loop.
@@ -1149,25 +1046,13 @@ class AndroidTestLoop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appApk != null) {
-      _json['appApk'] = appApk.toJson();
-    }
-    if (appBundle != null) {
-      _json['appBundle'] = appBundle.toJson();
-    }
-    if (appPackageId != null) {
-      _json['appPackageId'] = appPackageId;
-    }
-    if (scenarioLabels != null) {
-      _json['scenarioLabels'] = scenarioLabels;
-    }
-    if (scenarios != null) {
-      _json['scenarios'] = scenarios;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appApk != null) 'appApk': appApk.toJson(),
+        if (appBundle != null) 'appBundle': appBundle.toJson(),
+        if (appPackageId != null) 'appPackageId': appPackageId,
+        if (scenarioLabels != null) 'scenarioLabels': scenarioLabels,
+        if (scenarios != null) 'scenarios': scenarios,
+      };
 }
 
 /// A version of the Android OS.
@@ -1233,31 +1118,15 @@ class AndroidVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiLevel != null) {
-      _json['apiLevel'] = apiLevel;
-    }
-    if (codeName != null) {
-      _json['codeName'] = codeName;
-    }
-    if (distribution != null) {
-      _json['distribution'] = distribution.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (releaseDate != null) {
-      _json['releaseDate'] = releaseDate.toJson();
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (versionString != null) {
-      _json['versionString'] = versionString;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiLevel != null) 'apiLevel': apiLevel,
+        if (codeName != null) 'codeName': codeName,
+        if (distribution != null) 'distribution': distribution.toJson(),
+        if (id != null) 'id': id,
+        if (releaseDate != null) 'releaseDate': releaseDate.toJson(),
+        if (tags != null) 'tags': tags,
+        if (versionString != null) 'versionString': versionString,
+      };
 }
 
 /// An Android package file to install.
@@ -1282,16 +1151,10 @@ class Apk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (location != null) 'location': location.toJson(),
+        if (packageName != null) 'packageName': packageName,
+      };
 }
 
 /// Android application details based on application manifest and apk archive
@@ -1308,13 +1171,9 @@ class ApkDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apkManifest != null) {
-      _json['apkManifest'] = apkManifest.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apkManifest != null) 'apkManifest': apkManifest.toJson(),
+      };
 }
 
 /// An Android app manifest.
@@ -1371,32 +1230,17 @@ class ApkManifest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationLabel != null) {
-      _json['applicationLabel'] = applicationLabel;
-    }
-    if (intentFilters != null) {
-      _json['intentFilters'] =
-          intentFilters.map((value) => value.toJson()).toList();
-    }
-    if (maxSdkVersion != null) {
-      _json['maxSdkVersion'] = maxSdkVersion;
-    }
-    if (minSdkVersion != null) {
-      _json['minSdkVersion'] = minSdkVersion;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (targetSdkVersion != null) {
-      _json['targetSdkVersion'] = targetSdkVersion;
-    }
-    if (usesPermission != null) {
-      _json['usesPermission'] = usesPermission;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationLabel != null) 'applicationLabel': applicationLabel,
+        if (intentFilters != null)
+          'intentFilters':
+              intentFilters.map((value) => value.toJson()).toList(),
+        if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion,
+        if (minSdkVersion != null) 'minSdkVersion': minSdkVersion,
+        if (packageName != null) 'packageName': packageName,
+        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion,
+        if (usesPermission != null) 'usesPermission': usesPermission,
+      };
 }
 
 /// An Android App Bundle file format, containing a BundleConfig.pb file, a base
@@ -1417,13 +1261,9 @@ class AppBundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bundleLocation != null) {
-      _json['bundleLocation'] = bundleLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bundleLocation != null) 'bundleLocation': bundleLocation.toJson(),
+      };
 }
 
 /// Response containing the current state of the specified test matrix.
@@ -1469,13 +1309,9 @@ class CancelTestMatrixResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (testState != null) {
-      _json['testState'] = testState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (testState != null) 'testState': testState,
+      };
 }
 
 /// Information about the client which invoked the test.
@@ -1502,17 +1338,12 @@ class ClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientInfoDetails != null) {
-      _json['clientInfoDetails'] =
-          clientInfoDetails.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientInfoDetails != null)
+          'clientInfoDetails':
+              clientInfoDetails.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Key-value pair of detailed information about the client which invoked the
@@ -1541,16 +1372,10 @@ class ClientInfoDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -1593,19 +1418,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// A single device file description.
@@ -1629,16 +1446,10 @@ class DeviceFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (obbFile != null) {
-      _json['obbFile'] = obbFile.toJson();
-    }
-    if (regularFile != null) {
-      _json['regularFile'] = regularFile.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (obbFile != null) 'obbFile': obbFile.toJson(),
+        if (regularFile != null) 'regularFile': regularFile.toJson(),
+      };
 }
 
 /// A single device IP block
@@ -1674,19 +1485,11 @@ class DeviceIpBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addedDate != null) {
-      _json['addedDate'] = addedDate.toJson();
-    }
-    if (block != null) {
-      _json['block'] = block;
-    }
-    if (form != null) {
-      _json['form'] = form;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addedDate != null) 'addedDate': addedDate.toJson(),
+        if (block != null) 'block': block,
+        if (form != null) 'form': form,
+      };
 }
 
 /// List of IP blocks used by the Firebase Test Lab
@@ -1705,13 +1508,10 @@ class DeviceIpBlockCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipBlocks != null) {
-      _json['ipBlocks'] = ipBlocks.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipBlocks != null)
+          'ipBlocks': ipBlocks.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Data about the relative number of devices running a given configuration of
@@ -1738,16 +1538,10 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (marketShare != null) {
-      _json['marketShare'] = marketShare;
-    }
-    if (measurementTime != null) {
-      _json['measurementTime'] = measurementTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (marketShare != null) 'marketShare': marketShare,
+        if (measurementTime != null) 'measurementTime': measurementTime,
+      };
 }
 
 /// The environment in which the test is run.
@@ -1771,16 +1565,10 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidDevice != null) {
-      _json['androidDevice'] = androidDevice.toJson();
-    }
-    if (iosDevice != null) {
-      _json['iosDevice'] = iosDevice.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidDevice != null) 'androidDevice': androidDevice.toJson(),
+        if (iosDevice != null) 'iosDevice': iosDevice.toJson(),
+      };
 }
 
 /// The matrix of environments in which the test is to be executed.
@@ -1812,19 +1600,12 @@ class EnvironmentMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidDeviceList != null) {
-      _json['androidDeviceList'] = androidDeviceList.toJson();
-    }
-    if (androidMatrix != null) {
-      _json['androidMatrix'] = androidMatrix.toJson();
-    }
-    if (iosDeviceList != null) {
-      _json['iosDeviceList'] = iosDeviceList.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidDeviceList != null)
+          'androidDeviceList': androidDeviceList.toJson(),
+        if (androidMatrix != null) 'androidMatrix': androidMatrix.toJson(),
+        if (iosDeviceList != null) 'iosDeviceList': iosDeviceList.toJson(),
+      };
 }
 
 /// A key-value pair passed as an environment variable to the test.
@@ -1846,16 +1627,10 @@ class EnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A reference to a file, used for user inputs.
@@ -1874,13 +1649,9 @@ class FileReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsPath != null) {
-      _json['gcsPath'] = gcsPath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsPath != null) 'gcsPath': gcsPath,
+      };
 }
 
 /// Response containing the details of the specified Android application APK.
@@ -1897,13 +1668,9 @@ class GetApkDetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apkDetail != null) {
-      _json['apkDetail'] = apkDetail.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apkDetail != null) 'apkDetail': apkDetail.toJson(),
+      };
 }
 
 /// Enables automatic Google account login.
@@ -1920,10 +1687,7 @@ class GoogleAuto {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A storage location within Google cloud storage (GCS).
@@ -1945,13 +1709,9 @@ class GoogleCloudStorage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsPath != null) {
-      _json['gcsPath'] = gcsPath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsPath != null) 'gcsPath': gcsPath,
+      };
 }
 
 /// The section of an tag.
@@ -1985,19 +1745,11 @@ class IntentFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionNames != null) {
-      _json['actionNames'] = actionNames;
-    }
-    if (categoryNames != null) {
-      _json['categoryNames'] = categoryNames;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionNames != null) 'actionNames': actionNames,
+        if (categoryNames != null) 'categoryNames': categoryNames,
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// A single iOS device.
@@ -2047,22 +1799,12 @@ class IosDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iosModelId != null) {
-      _json['iosModelId'] = iosModelId;
-    }
-    if (iosVersionId != null) {
-      _json['iosVersionId'] = iosVersionId;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (orientation != null) {
-      _json['orientation'] = orientation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iosModelId != null) 'iosModelId': iosModelId,
+        if (iosVersionId != null) 'iosVersionId': iosVersionId,
+        if (locale != null) 'locale': locale,
+        if (orientation != null) 'orientation': orientation,
+      };
 }
 
 /// The currently supported iOS devices.
@@ -2106,23 +1848,17 @@ class IosDeviceCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (models != null) {
-      _json['models'] = models.map((value) => value.toJson()).toList();
-    }
-    if (runtimeConfiguration != null) {
-      _json['runtimeConfiguration'] = runtimeConfiguration.toJson();
-    }
-    if (versions != null) {
-      _json['versions'] = versions.map((value) => value.toJson()).toList();
-    }
-    if (xcodeVersions != null) {
-      _json['xcodeVersions'] =
-          xcodeVersions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (models != null)
+          'models': models.map((value) => value.toJson()).toList(),
+        if (runtimeConfiguration != null)
+          'runtimeConfiguration': runtimeConfiguration.toJson(),
+        if (versions != null)
+          'versions': versions.map((value) => value.toJson()).toList(),
+        if (xcodeVersions != null)
+          'xcodeVersions':
+              xcodeVersions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A file or directory to install on the device before the test starts.
@@ -2154,19 +1890,11 @@ class IosDeviceFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bundleId != null) {
-      _json['bundleId'] = bundleId;
-    }
-    if (content != null) {
-      _json['content'] = content.toJson();
-    }
-    if (devicePath != null) {
-      _json['devicePath'] = devicePath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId,
+        if (content != null) 'content': content.toJson(),
+        if (devicePath != null) 'devicePath': devicePath,
+      };
 }
 
 /// A list of iOS device configurations in which the test is to be executed.
@@ -2187,13 +1915,10 @@ class IosDeviceList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iosDevices != null) {
-      _json['iosDevices'] = iosDevices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iosDevices != null)
+          'iosDevices': iosDevices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A description of an iOS device tests may be run on.
@@ -2278,37 +2003,19 @@ class IosModel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceCapabilities != null) {
-      _json['deviceCapabilities'] = deviceCapabilities;
-    }
-    if (formFactor != null) {
-      _json['formFactor'] = formFactor;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (screenDensity != null) {
-      _json['screenDensity'] = screenDensity;
-    }
-    if (screenX != null) {
-      _json['screenX'] = screenX;
-    }
-    if (screenY != null) {
-      _json['screenY'] = screenY;
-    }
-    if (supportedVersionIds != null) {
-      _json['supportedVersionIds'] = supportedVersionIds;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceCapabilities != null)
+          'deviceCapabilities': deviceCapabilities,
+        if (formFactor != null) 'formFactor': formFactor,
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (screenDensity != null) 'screenDensity': screenDensity,
+        if (screenX != null) 'screenX': screenX,
+        if (screenY != null) 'screenY': screenY,
+        if (supportedVersionIds != null)
+          'supportedVersionIds': supportedVersionIds,
+        if (tags != null) 'tags': tags,
+      };
 }
 
 /// iOS configuration that can be selected at the time a test is run.
@@ -2336,17 +2043,12 @@ class IosRuntimeConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locales != null) {
-      _json['locales'] = locales.map((value) => value.toJson()).toList();
-    }
-    if (orientations != null) {
-      _json['orientations'] =
-          orientations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locales != null)
+          'locales': locales.map((value) => value.toJson()).toList(),
+        if (orientations != null)
+          'orientations': orientations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A test of an iOS application that implements one or more game loop
@@ -2387,19 +2089,11 @@ class IosTestLoop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appBundleId != null) {
-      _json['appBundleId'] = appBundleId;
-    }
-    if (appIpa != null) {
-      _json['appIpa'] = appIpa.toJson();
-    }
-    if (scenarios != null) {
-      _json['scenarios'] = scenarios;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appBundleId != null) 'appBundleId': appBundleId,
+        if (appIpa != null) 'appIpa': appIpa.toJson(),
+        if (scenarios != null) 'scenarios': scenarios,
+      };
 }
 
 /// A description of how to set up an iOS device prior to running the test.
@@ -2451,24 +2145,17 @@ class IosTestSetup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalIpas != null) {
-      _json['additionalIpas'] =
-          additionalIpas.map((value) => value.toJson()).toList();
-    }
-    if (networkProfile != null) {
-      _json['networkProfile'] = networkProfile;
-    }
-    if (pullDirectories != null) {
-      _json['pullDirectories'] =
-          pullDirectories.map((value) => value.toJson()).toList();
-    }
-    if (pushFiles != null) {
-      _json['pushFiles'] = pushFiles.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalIpas != null)
+          'additionalIpas':
+              additionalIpas.map((value) => value.toJson()).toList(),
+        if (networkProfile != null) 'networkProfile': networkProfile,
+        if (pullDirectories != null)
+          'pullDirectories':
+              pullDirectories.map((value) => value.toJson()).toList(),
+        if (pushFiles != null)
+          'pushFiles': pushFiles.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An iOS version.
@@ -2521,25 +2208,14 @@ class IosVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (majorVersion != null) {
-      _json['majorVersion'] = majorVersion;
-    }
-    if (minorVersion != null) {
-      _json['minorVersion'] = minorVersion;
-    }
-    if (supportedXcodeVersionIds != null) {
-      _json['supportedXcodeVersionIds'] = supportedXcodeVersionIds;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (majorVersion != null) 'majorVersion': majorVersion,
+        if (minorVersion != null) 'minorVersion': minorVersion,
+        if (supportedXcodeVersionIds != null)
+          'supportedXcodeVersionIds': supportedXcodeVersionIds,
+        if (tags != null) 'tags': tags,
+      };
 }
 
 /// A test of an iOS application that uses the XCTest framework.
@@ -2607,25 +2283,14 @@ class IosXcTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appBundleId != null) {
-      _json['appBundleId'] = appBundleId;
-    }
-    if (testSpecialEntitlements != null) {
-      _json['testSpecialEntitlements'] = testSpecialEntitlements;
-    }
-    if (testsZip != null) {
-      _json['testsZip'] = testsZip.toJson();
-    }
-    if (xcodeVersion != null) {
-      _json['xcodeVersion'] = xcodeVersion;
-    }
-    if (xctestrun != null) {
-      _json['xctestrun'] = xctestrun.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appBundleId != null) 'appBundleId': appBundleId,
+        if (testSpecialEntitlements != null)
+          'testSpecialEntitlements': testSpecialEntitlements,
+        if (testsZip != null) 'testsZip': testsZip.toJson(),
+        if (xcodeVersion != null) 'xcodeVersion': xcodeVersion,
+        if (xctestrun != null) 'xctestrun': xctestrun.toJson(),
+      };
 }
 
 /// Specifies an intent that starts the main launcher activity.
@@ -2636,10 +2301,7 @@ class LauncherActivityIntent {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A location/region designation for language.
@@ -2683,22 +2345,12 @@ class Locale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (region != null) 'region': region,
+        if (tags != null) 'tags': tags,
+      };
 }
 
 /// Shards test cases into the specified groups of packages, classes, and/or
@@ -2727,14 +2379,11 @@ class ManualSharding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (testTargetsForShard != null) {
-      _json['testTargetsForShard'] =
-          testTargetsForShard.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (testTargetsForShard != null)
+          'testTargetsForShard':
+              testTargetsForShard.map((value) => value.toJson()).toList(),
+      };
 }
 
 class NetworkConfiguration {
@@ -2763,19 +2412,11 @@ class NetworkConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (downRule != null) {
-      _json['downRule'] = downRule.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (upRule != null) {
-      _json['upRule'] = upRule.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (downRule != null) 'downRule': downRule.toJson(),
+        if (id != null) 'id': id,
+        if (upRule != null) 'upRule': upRule.toJson(),
+      };
 }
 
 class NetworkConfigurationCatalog {
@@ -2792,14 +2433,11 @@ class NetworkConfigurationCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configurations != null) {
-      _json['configurations'] =
-          configurations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configurations != null)
+          'configurations':
+              configurations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An opaque binary blob file to install on the device before the test starts.
@@ -2828,16 +2466,10 @@ class ObbFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (obb != null) {
-      _json['obb'] = obb.toJson();
-    }
-    if (obbFileName != null) {
-      _json['obbFileName'] = obbFileName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (obb != null) 'obb': obb.toJson(),
+        if (obbFileName != null) 'obbFileName': obbFileName,
+      };
 }
 
 /// Screen orientation of the device.
@@ -2873,19 +2505,11 @@ class Orientation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (tags != null) 'tags': tags,
+      };
 }
 
 /// The currently provided software environment on the devices under test.
@@ -2904,13 +2528,10 @@ class ProvidedSoftwareCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (orchestratorVersion != null) {
-      _json['orchestratorVersion'] = orchestratorVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (orchestratorVersion != null)
+          'orchestratorVersion': orchestratorVersion,
+      };
 }
 
 /// A file or directory to install on the device before the test starts.
@@ -2948,16 +2569,10 @@ class RegularFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.toJson();
-    }
-    if (devicePath != null) {
-      _json['devicePath'] = devicePath;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content.toJson(),
+        if (devicePath != null) 'devicePath': devicePath,
+      };
 }
 
 /// Locations where the results of running the test are stored.
@@ -3001,22 +2616,15 @@ class ResultStorage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (googleCloudStorage != null) {
-      _json['googleCloudStorage'] = googleCloudStorage.toJson();
-    }
-    if (resultsUrl != null) {
-      _json['resultsUrl'] = resultsUrl;
-    }
-    if (toolResultsExecution != null) {
-      _json['toolResultsExecution'] = toolResultsExecution.toJson();
-    }
-    if (toolResultsHistory != null) {
-      _json['toolResultsHistory'] = toolResultsHistory.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (googleCloudStorage != null)
+          'googleCloudStorage': googleCloudStorage.toJson(),
+        if (resultsUrl != null) 'resultsUrl': resultsUrl,
+        if (toolResultsExecution != null)
+          'toolResultsExecution': toolResultsExecution.toJson(),
+        if (toolResultsHistory != null)
+          'toolResultsHistory': toolResultsHistory.toJson(),
+      };
 }
 
 /// Directs Robo to interact with a specific UI element if it is encountered
@@ -3065,19 +2673,11 @@ class RoboDirective {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionType != null) {
-      _json['actionType'] = actionType;
-    }
-    if (inputText != null) {
-      _json['inputText'] = inputText;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionType != null) 'actionType': actionType,
+        if (inputText != null) 'inputText': inputText,
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// Message for specifying the start activities to crawl.
@@ -3107,19 +2707,12 @@ class RoboStartingIntent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (launcherActivity != null) {
-      _json['launcherActivity'] = launcherActivity.toJson();
-    }
-    if (startActivity != null) {
-      _json['startActivity'] = startActivity.toJson();
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (launcherActivity != null)
+          'launcherActivity': launcherActivity.toJson(),
+        if (startActivity != null) 'startActivity': startActivity.toJson(),
+        if (timeout != null) 'timeout': timeout,
+      };
 }
 
 /// Details about the shard.
@@ -3156,19 +2749,12 @@ class Shard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numShards != null) {
-      _json['numShards'] = numShards;
-    }
-    if (shardIndex != null) {
-      _json['shardIndex'] = shardIndex;
-    }
-    if (testTargetsForShard != null) {
-      _json['testTargetsForShard'] = testTargetsForShard.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numShards != null) 'numShards': numShards,
+        if (shardIndex != null) 'shardIndex': shardIndex,
+        if (testTargetsForShard != null)
+          'testTargetsForShard': testTargetsForShard.toJson(),
+      };
 }
 
 /// Options for enabling sharding.
@@ -3193,16 +2779,11 @@ class ShardingOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (manualSharding != null) {
-      _json['manualSharding'] = manualSharding.toJson();
-    }
-    if (uniformSharding != null) {
-      _json['uniformSharding'] = uniformSharding.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (manualSharding != null) 'manualSharding': manualSharding.toJson(),
+        if (uniformSharding != null)
+          'uniformSharding': uniformSharding.toJson(),
+      };
 }
 
 /// A starting intent specified by an action, uri, and categories.
@@ -3234,19 +2815,11 @@ class StartActivityIntent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (categories != null) {
-      _json['categories'] = categories;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (action != null) 'action': action,
+        if (categories != null) 'categories': categories,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 class SystraceSetup {
@@ -3263,13 +2836,9 @@ class SystraceSetup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (durationSeconds != null) {
-      _json['durationSeconds'] = durationSeconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (durationSeconds != null) 'durationSeconds': durationSeconds,
+      };
 }
 
 /// Additional details about the progress of the running test.
@@ -3301,16 +2870,10 @@ class TestDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (progressMessages != null) {
-      _json['progressMessages'] = progressMessages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (progressMessages != null) 'progressMessages': progressMessages,
+      };
 }
 
 /// A description of a test environment.
@@ -3356,26 +2919,18 @@ class TestEnvironmentCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidDeviceCatalog != null) {
-      _json['androidDeviceCatalog'] = androidDeviceCatalog.toJson();
-    }
-    if (deviceIpBlockCatalog != null) {
-      _json['deviceIpBlockCatalog'] = deviceIpBlockCatalog.toJson();
-    }
-    if (iosDeviceCatalog != null) {
-      _json['iosDeviceCatalog'] = iosDeviceCatalog.toJson();
-    }
-    if (networkConfigurationCatalog != null) {
-      _json['networkConfigurationCatalog'] =
-          networkConfigurationCatalog.toJson();
-    }
-    if (softwareCatalog != null) {
-      _json['softwareCatalog'] = softwareCatalog.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidDeviceCatalog != null)
+          'androidDeviceCatalog': androidDeviceCatalog.toJson(),
+        if (deviceIpBlockCatalog != null)
+          'deviceIpBlockCatalog': deviceIpBlockCatalog.toJson(),
+        if (iosDeviceCatalog != null)
+          'iosDeviceCatalog': iosDeviceCatalog.toJson(),
+        if (networkConfigurationCatalog != null)
+          'networkConfigurationCatalog': networkConfigurationCatalog.toJson(),
+        if (softwareCatalog != null)
+          'softwareCatalog': softwareCatalog.toJson(),
+      };
 }
 
 /// A single test executed in a single environment.
@@ -3497,40 +3052,20 @@ class TestExecution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environment != null) {
-      _json['environment'] = environment.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (matrixId != null) {
-      _json['matrixId'] = matrixId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (shard != null) {
-      _json['shard'] = shard.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (testDetails != null) {
-      _json['testDetails'] = testDetails.toJson();
-    }
-    if (testSpecification != null) {
-      _json['testSpecification'] = testSpecification.toJson();
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (toolResultsStep != null) {
-      _json['toolResultsStep'] = toolResultsStep.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environment != null) 'environment': environment.toJson(),
+        if (id != null) 'id': id,
+        if (matrixId != null) 'matrixId': matrixId,
+        if (projectId != null) 'projectId': projectId,
+        if (shard != null) 'shard': shard.toJson(),
+        if (state != null) 'state': state,
+        if (testDetails != null) 'testDetails': testDetails.toJson(),
+        if (testSpecification != null)
+          'testSpecification': testSpecification.toJson(),
+        if (timestamp != null) 'timestamp': timestamp,
+        if (toolResultsStep != null)
+          'toolResultsStep': toolResultsStep.toJson(),
+      };
 }
 
 /// TestMatrix captures all details about a test.
@@ -3772,50 +3307,26 @@ class TestMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientInfo != null) {
-      _json['clientInfo'] = clientInfo.toJson();
-    }
-    if (environmentMatrix != null) {
-      _json['environmentMatrix'] = environmentMatrix.toJson();
-    }
-    if (failFast != null) {
-      _json['failFast'] = failFast;
-    }
-    if (flakyTestAttempts != null) {
-      _json['flakyTestAttempts'] = flakyTestAttempts;
-    }
-    if (invalidMatrixDetails != null) {
-      _json['invalidMatrixDetails'] = invalidMatrixDetails;
-    }
-    if (outcomeSummary != null) {
-      _json['outcomeSummary'] = outcomeSummary;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (resultStorage != null) {
-      _json['resultStorage'] = resultStorage.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (testExecutions != null) {
-      _json['testExecutions'] =
-          testExecutions.map((value) => value.toJson()).toList();
-    }
-    if (testMatrixId != null) {
-      _json['testMatrixId'] = testMatrixId;
-    }
-    if (testSpecification != null) {
-      _json['testSpecification'] = testSpecification.toJson();
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
+        if (environmentMatrix != null)
+          'environmentMatrix': environmentMatrix.toJson(),
+        if (failFast != null) 'failFast': failFast,
+        if (flakyTestAttempts != null) 'flakyTestAttempts': flakyTestAttempts,
+        if (invalidMatrixDetails != null)
+          'invalidMatrixDetails': invalidMatrixDetails,
+        if (outcomeSummary != null) 'outcomeSummary': outcomeSummary,
+        if (projectId != null) 'projectId': projectId,
+        if (resultStorage != null) 'resultStorage': resultStorage.toJson(),
+        if (state != null) 'state': state,
+        if (testExecutions != null)
+          'testExecutions':
+              testExecutions.map((value) => value.toJson()).toList(),
+        if (testMatrixId != null) 'testMatrixId': testMatrixId,
+        if (testSpecification != null)
+          'testSpecification': testSpecification.toJson(),
+        if (timestamp != null) 'timestamp': timestamp,
+      };
 }
 
 /// A description of how to set up the Android device prior to running the test.
@@ -3904,37 +3415,22 @@ class TestSetup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.toJson();
-    }
-    if (additionalApks != null) {
-      _json['additionalApks'] =
-          additionalApks.map((value) => value.toJson()).toList();
-    }
-    if (directoriesToPull != null) {
-      _json['directoriesToPull'] = directoriesToPull;
-    }
-    if (dontAutograntPermissions != null) {
-      _json['dontAutograntPermissions'] = dontAutograntPermissions;
-    }
-    if (environmentVariables != null) {
-      _json['environmentVariables'] =
-          environmentVariables.map((value) => value.toJson()).toList();
-    }
-    if (filesToPush != null) {
-      _json['filesToPush'] =
-          filesToPush.map((value) => value.toJson()).toList();
-    }
-    if (networkProfile != null) {
-      _json['networkProfile'] = networkProfile;
-    }
-    if (systrace != null) {
-      _json['systrace'] = systrace.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account.toJson(),
+        if (additionalApks != null)
+          'additionalApks':
+              additionalApks.map((value) => value.toJson()).toList(),
+        if (directoriesToPull != null) 'directoriesToPull': directoriesToPull,
+        if (dontAutograntPermissions != null)
+          'dontAutograntPermissions': dontAutograntPermissions,
+        if (environmentVariables != null)
+          'environmentVariables':
+              environmentVariables.map((value) => value.toJson()).toList(),
+        if (filesToPush != null)
+          'filesToPush': filesToPush.map((value) => value.toJson()).toList(),
+        if (networkProfile != null) 'networkProfile': networkProfile,
+        if (systrace != null) 'systrace': systrace.toJson(),
+      };
 }
 
 /// A description of how to run the test.
@@ -4021,40 +3517,23 @@ class TestSpecification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidInstrumentationTest != null) {
-      _json['androidInstrumentationTest'] = androidInstrumentationTest.toJson();
-    }
-    if (androidRoboTest != null) {
-      _json['androidRoboTest'] = androidRoboTest.toJson();
-    }
-    if (androidTestLoop != null) {
-      _json['androidTestLoop'] = androidTestLoop.toJson();
-    }
-    if (disablePerformanceMetrics != null) {
-      _json['disablePerformanceMetrics'] = disablePerformanceMetrics;
-    }
-    if (disableVideoRecording != null) {
-      _json['disableVideoRecording'] = disableVideoRecording;
-    }
-    if (iosTestLoop != null) {
-      _json['iosTestLoop'] = iosTestLoop.toJson();
-    }
-    if (iosTestSetup != null) {
-      _json['iosTestSetup'] = iosTestSetup.toJson();
-    }
-    if (iosXcTest != null) {
-      _json['iosXcTest'] = iosXcTest.toJson();
-    }
-    if (testSetup != null) {
-      _json['testSetup'] = testSetup.toJson();
-    }
-    if (testTimeout != null) {
-      _json['testTimeout'] = testTimeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidInstrumentationTest != null)
+          'androidInstrumentationTest': androidInstrumentationTest.toJson(),
+        if (androidRoboTest != null)
+          'androidRoboTest': androidRoboTest.toJson(),
+        if (androidTestLoop != null)
+          'androidTestLoop': androidTestLoop.toJson(),
+        if (disablePerformanceMetrics != null)
+          'disablePerformanceMetrics': disablePerformanceMetrics,
+        if (disableVideoRecording != null)
+          'disableVideoRecording': disableVideoRecording,
+        if (iosTestLoop != null) 'iosTestLoop': iosTestLoop.toJson(),
+        if (iosTestSetup != null) 'iosTestSetup': iosTestSetup.toJson(),
+        if (iosXcTest != null) 'iosXcTest': iosXcTest.toJson(),
+        if (testSetup != null) 'testSetup': testSetup.toJson(),
+        if (testTimeout != null) 'testTimeout': testTimeout,
+      };
 }
 
 /// Test targets for a shard.
@@ -4076,13 +3555,9 @@ class TestTargetsForShard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (testTargets != null) {
-      _json['testTargets'] = testTargets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (testTargets != null) 'testTargets': testTargets,
+      };
 }
 
 /// Represents a tool results execution resource.
@@ -4118,19 +3593,11 @@ class ToolResultsExecution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executionId != null) {
-      _json['executionId'] = executionId;
-    }
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executionId != null) 'executionId': executionId,
+        if (historyId != null) 'historyId': historyId,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Represents a tool results history resource.
@@ -4156,16 +3623,10 @@ class ToolResultsHistory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (historyId != null) 'historyId': historyId,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Represents a tool results step resource.
@@ -4209,22 +3670,12 @@ class ToolResultsStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (executionId != null) {
-      _json['executionId'] = executionId;
-    }
-    if (historyId != null) {
-      _json['historyId'] = historyId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (stepId != null) {
-      _json['stepId'] = stepId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (executionId != null) 'executionId': executionId,
+        if (historyId != null) 'historyId': historyId,
+        if (projectId != null) 'projectId': projectId,
+        if (stepId != null) 'stepId': stepId,
+      };
 }
 
 /// Network emulation parameters.
@@ -4265,25 +3716,14 @@ class TrafficRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bandwidth != null) {
-      _json['bandwidth'] = bandwidth;
-    }
-    if (burst != null) {
-      _json['burst'] = burst;
-    }
-    if (delay != null) {
-      _json['delay'] = delay;
-    }
-    if (packetDuplicationRatio != null) {
-      _json['packetDuplicationRatio'] = packetDuplicationRatio;
-    }
-    if (packetLossRatio != null) {
-      _json['packetLossRatio'] = packetLossRatio;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bandwidth != null) 'bandwidth': bandwidth,
+        if (burst != null) 'burst': burst,
+        if (delay != null) 'delay': delay,
+        if (packetDuplicationRatio != null)
+          'packetDuplicationRatio': packetDuplicationRatio,
+        if (packetLossRatio != null) 'packetLossRatio': packetLossRatio,
+      };
 }
 
 /// Uniformly shards test cases given a total number of shards.
@@ -4308,13 +3748,9 @@ class UniformSharding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numShards != null) {
-      _json['numShards'] = numShards;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numShards != null) 'numShards': numShards,
+      };
 }
 
 /// An Xcode version that an iOS version is compatible with.
@@ -4342,14 +3778,8 @@ class XcodeVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (tags != null) 'tags': tags,
+        if (version != null) 'version': version,
+      };
 }

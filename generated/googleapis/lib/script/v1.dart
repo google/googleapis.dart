@@ -1122,16 +1122,11 @@ class Content {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (files != null) {
-      _json['files'] = files.map((value) => value.toJson()).toList();
-    }
-    if (scriptId != null) {
-      _json['scriptId'] = scriptId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (files != null)
+          'files': files.map((value) => value.toJson()).toList(),
+        if (scriptId != null) 'scriptId': scriptId,
+      };
 }
 
 /// Request to create a script project.
@@ -1156,16 +1151,10 @@ class CreateProjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parentId != null) {
-      _json['parentId'] = parentId;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parentId != null) 'parentId': parentId,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Representation of a single script deployment.
@@ -1203,23 +1192,14 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deploymentConfig != null) {
-      _json['deploymentConfig'] = deploymentConfig.toJson();
-    }
-    if (deploymentId != null) {
-      _json['deploymentId'] = deploymentId;
-    }
-    if (entryPoints != null) {
-      _json['entryPoints'] =
-          entryPoints.map((value) => value.toJson()).toList();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deploymentConfig != null)
+          'deploymentConfig': deploymentConfig.toJson(),
+        if (deploymentId != null) 'deploymentId': deploymentId,
+        if (entryPoints != null)
+          'entryPoints': entryPoints.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Metadata the defines how a deployment is configured.
@@ -1253,22 +1233,12 @@ class DeploymentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (manifestFileName != null) {
-      _json['manifestFileName'] = manifestFileName;
-    }
-    if (scriptId != null) {
-      _json['scriptId'] = scriptId;
-    }
-    if (versionNumber != null) {
-      _json['versionNumber'] = versionNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (manifestFileName != null) 'manifestFileName': manifestFileName,
+        if (scriptId != null) 'scriptId': scriptId,
+        if (versionNumber != null) 'versionNumber': versionNumber,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1285,10 +1255,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A configuration that defines how a deployment is accessed externally.
@@ -1330,22 +1297,12 @@ class EntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addOn != null) {
-      _json['addOn'] = addOn.toJson();
-    }
-    if (entryPointType != null) {
-      _json['entryPointType'] = entryPointType;
-    }
-    if (executionApi != null) {
-      _json['executionApi'] = executionApi.toJson();
-    }
-    if (webApp != null) {
-      _json['webApp'] = webApp.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addOn != null) 'addOn': addOn.toJson(),
+        if (entryPointType != null) 'entryPointType': entryPointType,
+        if (executionApi != null) 'executionApi': executionApi.toJson(),
+        if (webApp != null) 'webApp': webApp.toJson(),
+      };
 }
 
 /// The response for executing or debugging a function in an Apps Script
@@ -1363,13 +1320,9 @@ class ExecuteStreamResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result.toJson(),
+      };
 }
 
 /// An object that provides information about the nature of an error resulting
@@ -1412,20 +1365,13 @@ class ExecutionError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (errorType != null) {
-      _json['errorType'] = errorType;
-    }
-    if (scriptStackTraceElements != null) {
-      _json['scriptStackTraceElements'] =
-          scriptStackTraceElements.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (errorType != null) 'errorType': errorType,
+        if (scriptStackTraceElements != null)
+          'scriptStackTraceElements':
+              scriptStackTraceElements.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A request to run the function in a script.
@@ -1492,22 +1438,12 @@ class ExecutionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devMode != null) {
-      _json['devMode'] = devMode;
-    }
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    if (sessionState != null) {
-      _json['sessionState'] = sessionState;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devMode != null) 'devMode': devMode,
+        if (function != null) 'function': function,
+        if (parameters != null) 'parameters': parameters,
+        if (sessionState != null) 'sessionState': sessionState,
+      };
 }
 
 /// An object that provides the return value of a function executed using the
@@ -1535,13 +1471,9 @@ class ExecutionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result,
+      };
 }
 
 /// An individual file within a script project.
@@ -1618,31 +1550,15 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (functionSet != null) {
-      _json['functionSet'] = functionSet.toJson();
-    }
-    if (lastModifyUser != null) {
-      _json['lastModifyUser'] = lastModifyUser.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (functionSet != null) 'functionSet': functionSet.toJson(),
+        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser.toJson(),
+        if (name != null) 'name': name,
+        if (source != null) 'source': source,
+        if (type != null) 'type': type,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// An add-on entry point.
@@ -1692,28 +1608,14 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addOnType != null) {
-      _json['addOnType'] = addOnType;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (helpUrl != null) {
-      _json['helpUrl'] = helpUrl;
-    }
-    if (postInstallTipUrl != null) {
-      _json['postInstallTipUrl'] = postInstallTipUrl;
-    }
-    if (reportIssueUrl != null) {
-      _json['reportIssueUrl'] = reportIssueUrl;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addOnType != null) 'addOnType': addOnType,
+        if (description != null) 'description': description,
+        if (helpUrl != null) 'helpUrl': helpUrl,
+        if (postInstallTipUrl != null) 'postInstallTipUrl': postInstallTipUrl,
+        if (reportIssueUrl != null) 'reportIssueUrl': reportIssueUrl,
+        if (title != null) 'title': title,
+      };
 }
 
 /// API executable entry point configuration.
@@ -1739,13 +1641,9 @@ class GoogleAppsScriptTypeExecutionApiConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (access != null) {
-      _json['access'] = access;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (access != null) 'access': access,
+      };
 }
 
 /// An API executable entry point.
@@ -1762,13 +1660,10 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entryPointConfig != null) {
-      _json['entryPointConfig'] = entryPointConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entryPointConfig != null)
+          'entryPointConfig': entryPointConfig.toJson(),
+      };
 }
 
 /// Represents a function in a script project.
@@ -1784,13 +1679,9 @@ class GoogleAppsScriptTypeFunction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// A set of functions.
@@ -1812,13 +1703,10 @@ class GoogleAppsScriptTypeFunctionSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Representation of a single script process execution that was started from
@@ -1902,31 +1790,15 @@ class GoogleAppsScriptTypeProcess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (functionName != null) {
-      _json['functionName'] = functionName;
-    }
-    if (processStatus != null) {
-      _json['processStatus'] = processStatus;
-    }
-    if (processType != null) {
-      _json['processType'] = processType;
-    }
-    if (projectName != null) {
-      _json['projectName'] = projectName;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (userAccessLevel != null) {
-      _json['userAccessLevel'] = userAccessLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (duration != null) 'duration': duration,
+        if (functionName != null) 'functionName': functionName,
+        if (processStatus != null) 'processStatus': processStatus,
+        if (processType != null) 'processType': processType,
+        if (projectName != null) 'projectName': projectName,
+        if (startTime != null) 'startTime': startTime,
+        if (userAccessLevel != null) 'userAccessLevel': userAccessLevel,
+      };
 }
 
 /// A simple user profile resource.
@@ -1960,22 +1832,12 @@ class GoogleAppsScriptTypeUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (photoUrl != null) {
-      _json['photoUrl'] = photoUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domain != null) 'domain': domain,
+        if (email != null) 'email': email,
+        if (name != null) 'name': name,
+        if (photoUrl != null) 'photoUrl': photoUrl,
+      };
 }
 
 /// Web app entry point configuration.
@@ -2012,16 +1874,10 @@ class GoogleAppsScriptTypeWebAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (access != null) {
-      _json['access'] = access;
-    }
-    if (executeAs != null) {
-      _json['executeAs'] = executeAs;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (access != null) 'access': access,
+        if (executeAs != null) 'executeAs': executeAs,
+      };
 }
 
 /// A web application entry point.
@@ -2044,16 +1900,11 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entryPointConfig != null) {
-      _json['entryPointConfig'] = entryPointConfig.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entryPointConfig != null)
+          'entryPointConfig': entryPointConfig.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Response with the list of deployments for the specified Apps Script project.
@@ -2079,17 +1930,11 @@ class ListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployments != null) {
-      _json['deployments'] =
-          deployments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployments != null)
+          'deployments': deployments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response with the list of Process resources.
@@ -2117,16 +1962,11 @@ class ListScriptProcessesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (processes != null) {
-      _json['processes'] = processes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (processes != null)
+          'processes': processes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response with the list of Process resources.
@@ -2154,16 +1994,11 @@ class ListUserProcessesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (processes != null) {
-      _json['processes'] = processes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (processes != null)
+          'processes': processes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// `ListValue` is a wrapper around a repeated field of values.
@@ -2182,13 +2017,10 @@ class ListValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response with the list of the versions for the specified script project.
@@ -2215,16 +2047,11 @@ class ListVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (versions != null) {
-      _json['versions'] = versions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (versions != null)
+          'versions': versions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Resource containing usage stats for a given script, based on the supplied
@@ -2262,22 +2089,16 @@ class Metrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (activeUsers != null) {
-      _json['activeUsers'] =
-          activeUsers.map((value) => value.toJson()).toList();
-    }
-    if (failedExecutions != null) {
-      _json['failedExecutions'] =
-          failedExecutions.map((value) => value.toJson()).toList();
-    }
-    if (totalExecutions != null) {
-      _json['totalExecutions'] =
-          totalExecutions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (activeUsers != null)
+          'activeUsers': activeUsers.map((value) => value.toJson()).toList(),
+        if (failedExecutions != null)
+          'failedExecutions':
+              failedExecutions.map((value) => value.toJson()).toList(),
+        if (totalExecutions != null)
+          'totalExecutions':
+              totalExecutions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metrics value that holds number of executions counted.
@@ -2305,19 +2126,11 @@ class MetricsValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A representation of an execution of an Apps Script function started with
@@ -2382,19 +2195,11 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (response != null) 'response': response,
+      };
 }
 
 /// The script project resource.
@@ -2451,31 +2256,15 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (creator != null) {
-      _json['creator'] = creator.toJson();
-    }
-    if (lastModifyUser != null) {
-      _json['lastModifyUser'] = lastModifyUser.toJson();
-    }
-    if (parentId != null) {
-      _json['parentId'] = parentId;
-    }
-    if (scriptId != null) {
-      _json['scriptId'] = scriptId;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (creator != null) 'creator': creator.toJson(),
+        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser.toJson(),
+        if (parentId != null) 'parentId': parentId,
+        if (scriptId != null) 'scriptId': scriptId,
+        if (title != null) 'title': title,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The result of an execution.
@@ -2492,13 +2281,9 @@ class ScriptExecutionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (returnValue != null) {
-      _json['returnValue'] = returnValue.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (returnValue != null) 'returnValue': returnValue.toJson(),
+      };
 }
 
 /// A stack trace through the script that shows where the execution failed.
@@ -2520,16 +2305,10 @@ class ScriptStackTraceElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (lineNumber != null) {
-      _json['lineNumber'] = lineNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (function != null) 'function': function,
+        if (lineNumber != null) 'lineNumber': lineNumber,
+      };
 }
 
 /// If a `run` call succeeds but the script function (or Apps Script itself)
@@ -2578,19 +2357,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// `Struct` represents a structured data value, consisting of fields which map
@@ -2612,14 +2383,11 @@ class Struct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fields != null) {
-      _json['fields'] =
-          fields.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fields != null)
+          'fields':
+              fields.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Request with deployment information to update an existing deployment.
@@ -2636,13 +2404,10 @@ class UpdateDeploymentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deploymentConfig != null) {
-      _json['deploymentConfig'] = deploymentConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deploymentConfig != null)
+          'deploymentConfig': deploymentConfig.toJson(),
+      };
 }
 
 /// `Value` represents a dynamically typed value which is the outcome of an
@@ -2728,37 +2493,17 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (bytesValue != null) {
-      _json['bytesValue'] = bytesValue;
-    }
-    if (dateValue != null) {
-      _json['dateValue'] = dateValue;
-    }
-    if (listValue != null) {
-      _json['listValue'] = listValue.toJson();
-    }
-    if (nullValue != null) {
-      _json['nullValue'] = nullValue;
-    }
-    if (numberValue != null) {
-      _json['numberValue'] = numberValue;
-    }
-    if (protoValue != null) {
-      _json['protoValue'] = protoValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    if (structValue != null) {
-      _json['structValue'] = structValue.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (bytesValue != null) 'bytesValue': bytesValue,
+        if (dateValue != null) 'dateValue': dateValue,
+        if (listValue != null) 'listValue': listValue.toJson(),
+        if (nullValue != null) 'nullValue': nullValue,
+        if (numberValue != null) 'numberValue': numberValue,
+        if (protoValue != null) 'protoValue': protoValue,
+        if (stringValue != null) 'stringValue': stringValue,
+        if (structValue != null) 'structValue': structValue.toJson(),
+      };
 }
 
 /// A resource representing a script project version.
@@ -2799,20 +2544,10 @@ class Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (scriptId != null) {
-      _json['scriptId'] = scriptId;
-    }
-    if (versionNumber != null) {
-      _json['versionNumber'] = versionNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (scriptId != null) 'scriptId': scriptId,
+        if (versionNumber != null) 'versionNumber': versionNumber,
+      };
 }

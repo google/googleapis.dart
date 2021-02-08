@@ -158,13 +158,10 @@ class PublishUrlNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (urlNotificationMetadata != null) {
-      _json['urlNotificationMetadata'] = urlNotificationMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (urlNotificationMetadata != null)
+          'urlNotificationMetadata': urlNotificationMetadata.toJson(),
+      };
 }
 
 /// `UrlNotification` is the resource used in all Indexing API calls.
@@ -203,19 +200,11 @@ class UrlNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notifyTime != null) {
-      _json['notifyTime'] = notifyTime;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notifyTime != null) 'notifyTime': notifyTime,
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Summary of the most recent Indexing API notifications successfully received,
@@ -246,17 +235,9 @@ class UrlNotificationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latestRemove != null) {
-      _json['latestRemove'] = latestRemove.toJson();
-    }
-    if (latestUpdate != null) {
-      _json['latestUpdate'] = latestUpdate.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latestRemove != null) 'latestRemove': latestRemove.toJson(),
+        if (latestUpdate != null) 'latestUpdate': latestUpdate.toJson(),
+        if (url != null) 'url': url,
+      };
 }

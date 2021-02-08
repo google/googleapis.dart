@@ -2820,25 +2820,14 @@ class Acl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+      };
 }
 
 /// The scope of the rule.
@@ -2871,16 +2860,10 @@ class AclRuleScope {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 class AclRule {
@@ -2932,25 +2915,13 @@ class AclRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (scope != null) {
-      _json['scope'] = scope.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (role != null) 'role': role,
+        if (scope != null) 'scope': scope.toJson(),
+      };
 }
 
 class Calendar {
@@ -3018,34 +2989,17 @@ class Calendar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conferenceProperties != null) {
-      _json['conferenceProperties'] = conferenceProperties.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (summary != null) {
-      _json['summary'] = summary;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conferenceProperties != null)
+          'conferenceProperties': conferenceProperties.toJson(),
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (location != null) 'location': location,
+        if (summary != null) 'summary': summary,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 class CalendarList {
@@ -3094,25 +3048,14 @@ class CalendarList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+      };
 }
 
 /// The notifications that the authenticated user is receiving for this
@@ -3132,14 +3075,11 @@ class CalendarListEntryNotificationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notifications != null) {
-      _json['notifications'] =
-          notifications.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notifications != null)
+          'notifications':
+              notifications.map((value) => value.toJson()).toList(),
+      };
 }
 
 class CalendarListEntry {
@@ -3312,68 +3252,31 @@ class CalendarListEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessRole != null) {
-      _json['accessRole'] = accessRole;
-    }
-    if (backgroundColor != null) {
-      _json['backgroundColor'] = backgroundColor;
-    }
-    if (colorId != null) {
-      _json['colorId'] = colorId;
-    }
-    if (conferenceProperties != null) {
-      _json['conferenceProperties'] = conferenceProperties.toJson();
-    }
-    if (defaultReminders != null) {
-      _json['defaultReminders'] =
-          defaultReminders.map((value) => value.toJson()).toList();
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (foregroundColor != null) {
-      _json['foregroundColor'] = foregroundColor;
-    }
-    if (hidden != null) {
-      _json['hidden'] = hidden;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (notificationSettings != null) {
-      _json['notificationSettings'] = notificationSettings.toJson();
-    }
-    if (primary != null) {
-      _json['primary'] = primary;
-    }
-    if (selected != null) {
-      _json['selected'] = selected;
-    }
-    if (summary != null) {
-      _json['summary'] = summary;
-    }
-    if (summaryOverride != null) {
-      _json['summaryOverride'] = summaryOverride;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessRole != null) 'accessRole': accessRole,
+        if (backgroundColor != null) 'backgroundColor': backgroundColor,
+        if (colorId != null) 'colorId': colorId,
+        if (conferenceProperties != null)
+          'conferenceProperties': conferenceProperties.toJson(),
+        if (defaultReminders != null)
+          'defaultReminders':
+              defaultReminders.map((value) => value.toJson()).toList(),
+        if (deleted != null) 'deleted': deleted,
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (foregroundColor != null) 'foregroundColor': foregroundColor,
+        if (hidden != null) 'hidden': hidden,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (location != null) 'location': location,
+        if (notificationSettings != null)
+          'notificationSettings': notificationSettings.toJson(),
+        if (primary != null) 'primary': primary,
+        if (selected != null) 'selected': selected,
+        if (summary != null) 'summary': summary,
+        if (summaryOverride != null) 'summaryOverride': summaryOverride,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 class CalendarNotification {
@@ -3409,16 +3312,10 @@ class CalendarNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (method != null) 'method': method,
+        if (type != null) 'type': type,
+      };
 }
 
 class Channel {
@@ -3506,40 +3403,18 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (expiration != null) {
-      _json['expiration'] = expiration;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (expiration != null) 'expiration': expiration,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (params != null) 'params': params,
+        if (payload != null) 'payload': payload,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (resourceUri != null) 'resourceUri': resourceUri,
+        if (token != null) 'token': token,
+        if (type != null) 'type': type,
+      };
 }
 
 class ColorDefinition {
@@ -3561,16 +3436,10 @@ class ColorDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (background != null) {
-      _json['background'] = background;
-    }
-    if (foreground != null) {
-      _json['foreground'] = foreground;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (background != null) 'background': background,
+        if (foreground != null) 'foreground': foreground,
+      };
 }
 
 class Colors {
@@ -3626,24 +3495,15 @@ class Colors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (calendar != null) {
-      _json['calendar'] =
-          calendar.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (event != null) {
-      _json['event'] =
-          event.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (calendar != null)
+          'calendar':
+              calendar.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (event != null)
+          'event': event.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kind != null) 'kind': kind,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+      };
 }
 
 class ConferenceData {
@@ -3733,32 +3593,17 @@ class ConferenceData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conferenceId != null) {
-      _json['conferenceId'] = conferenceId;
-    }
-    if (conferenceSolution != null) {
-      _json['conferenceSolution'] = conferenceSolution.toJson();
-    }
-    if (createRequest != null) {
-      _json['createRequest'] = createRequest.toJson();
-    }
-    if (entryPoints != null) {
-      _json['entryPoints'] =
-          entryPoints.map((value) => value.toJson()).toList();
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (parameters != null) {
-      _json['parameters'] = parameters.toJson();
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conferenceId != null) 'conferenceId': conferenceId,
+        if (conferenceSolution != null)
+          'conferenceSolution': conferenceSolution.toJson(),
+        if (createRequest != null) 'createRequest': createRequest.toJson(),
+        if (entryPoints != null)
+          'entryPoints': entryPoints.map((value) => value.toJson()).toList(),
+        if (notes != null) 'notes': notes,
+        if (parameters != null) 'parameters': parameters.toJson(),
+        if (signature != null) 'signature': signature,
+      };
 }
 
 class ConferenceParameters {
@@ -3774,13 +3619,10 @@ class ConferenceParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addOnParameters != null) {
-      _json['addOnParameters'] = addOnParameters.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addOnParameters != null)
+          'addOnParameters': addOnParameters.toJson(),
+      };
 }
 
 class ConferenceParametersAddOnParameters {
@@ -3801,13 +3643,9 @@ class ConferenceParametersAddOnParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (parameters != null) {
-      _json['parameters'] = parameters;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (parameters != null) 'parameters': parameters,
+      };
 }
 
 class ConferenceProperties {
@@ -3829,13 +3667,10 @@ class ConferenceProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedConferenceSolutionTypes != null) {
-      _json['allowedConferenceSolutionTypes'] = allowedConferenceSolutionTypes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedConferenceSolutionTypes != null)
+          'allowedConferenceSolutionTypes': allowedConferenceSolutionTypes,
+      };
 }
 
 class ConferenceRequestStatus {
@@ -3858,13 +3693,9 @@ class ConferenceRequestStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (statusCode != null) {
-      _json['statusCode'] = statusCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (statusCode != null) 'statusCode': statusCode,
+      };
 }
 
 class ConferenceSolution {
@@ -3895,19 +3726,11 @@ class ConferenceSolution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iconUri != null) {
-      _json['iconUri'] = iconUri;
-    }
-    if (key != null) {
-      _json['key'] = key.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iconUri != null) 'iconUri': iconUri,
+        if (key != null) 'key': key.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 class ConferenceSolutionKey {
@@ -3932,13 +3755,9 @@ class ConferenceSolutionKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+      };
 }
 
 class CreateConferenceRequest {
@@ -3972,19 +3791,12 @@ class CreateConferenceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conferenceSolutionKey != null) {
-      _json['conferenceSolutionKey'] = conferenceSolutionKey.toJson();
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conferenceSolutionKey != null)
+          'conferenceSolutionKey': conferenceSolutionKey.toJson(),
+        if (requestId != null) 'requestId': requestId,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 class EntryPoint {
@@ -4123,40 +3935,19 @@ class EntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessCode != null) {
-      _json['accessCode'] = accessCode;
-    }
-    if (entryPointFeatures != null) {
-      _json['entryPointFeatures'] = entryPointFeatures;
-    }
-    if (entryPointType != null) {
-      _json['entryPointType'] = entryPointType;
-    }
-    if (label != null) {
-      _json['label'] = label;
-    }
-    if (meetingCode != null) {
-      _json['meetingCode'] = meetingCode;
-    }
-    if (passcode != null) {
-      _json['passcode'] = passcode;
-    }
-    if (password != null) {
-      _json['password'] = password;
-    }
-    if (pin != null) {
-      _json['pin'] = pin;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessCode != null) 'accessCode': accessCode,
+        if (entryPointFeatures != null)
+          'entryPointFeatures': entryPointFeatures,
+        if (entryPointType != null) 'entryPointType': entryPointType,
+        if (label != null) 'label': label,
+        if (meetingCode != null) 'meetingCode': meetingCode,
+        if (passcode != null) 'passcode': passcode,
+        if (password != null) 'password': password,
+        if (pin != null) 'pin': pin,
+        if (regionCode != null) 'regionCode': regionCode,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 class Error {
@@ -4187,16 +3978,10 @@ class Error {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domain != null) 'domain': domain,
+        if (reason != null) 'reason': reason,
+      };
 }
 
 /// The creator of the event.
@@ -4237,22 +4022,12 @@ class EventCreator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (self != null) {
-      _json['self'] = self;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (id != null) 'id': id,
+        if (self != null) 'self': self,
+      };
 }
 
 /// Extended properties of the event.
@@ -4288,16 +4063,10 @@ class EventExtendedProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (private != null) {
-      _json['private'] = private;
-    }
-    if (shared != null) {
-      _json['shared'] = shared;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (private != null) 'private': private,
+        if (shared != null) 'shared': shared,
+      };
 }
 
 /// A gadget that extends this event.
@@ -4382,34 +4151,16 @@ class EventGadget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (display != null) {
-      _json['display'] = display;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (iconLink != null) {
-      _json['iconLink'] = iconLink;
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (preferences != null) {
-      _json['preferences'] = preferences;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (display != null) 'display': display,
+        if (height != null) 'height': height,
+        if (iconLink != null) 'iconLink': iconLink,
+        if (link != null) 'link': link,
+        if (preferences != null) 'preferences': preferences,
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+        if (width != null) 'width': width,
+      };
 }
 
 /// The organizer of the event.
@@ -4455,22 +4206,12 @@ class EventOrganizer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (self != null) {
-      _json['self'] = self;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (id != null) 'id': id,
+        if (self != null) 'self': self,
+      };
 }
 
 /// Information about the event's reminders for the authenticated user.
@@ -4499,16 +4240,11 @@ class EventReminders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (overrides != null) {
-      _json['overrides'] = overrides.map((value) => value.toJson()).toList();
-    }
-    if (useDefault != null) {
-      _json['useDefault'] = useDefault;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (overrides != null)
+          'overrides': overrides.map((value) => value.toJson()).toList(),
+        if (useDefault != null) 'useDefault': useDefault,
+      };
 }
 
 /// Source from which the event was created.
@@ -4537,16 +4273,10 @@ class EventSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (title != null) 'title': title,
+        if (url != null) 'url': url,
+      };
 }
 
 class Event {
@@ -4963,128 +4693,54 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (anyoneCanAddSelf != null) {
-      _json['anyoneCanAddSelf'] = anyoneCanAddSelf;
-    }
-    if (attachments != null) {
-      _json['attachments'] =
-          attachments.map((value) => value.toJson()).toList();
-    }
-    if (attendees != null) {
-      _json['attendees'] = attendees.map((value) => value.toJson()).toList();
-    }
-    if (attendeesOmitted != null) {
-      _json['attendeesOmitted'] = attendeesOmitted;
-    }
-    if (colorId != null) {
-      _json['colorId'] = colorId;
-    }
-    if (conferenceData != null) {
-      _json['conferenceData'] = conferenceData.toJson();
-    }
-    if (created != null) {
-      _json['created'] = (created).toIso8601String();
-    }
-    if (creator != null) {
-      _json['creator'] = creator.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (end != null) {
-      _json['end'] = end.toJson();
-    }
-    if (endTimeUnspecified != null) {
-      _json['endTimeUnspecified'] = endTimeUnspecified;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventType != null) {
-      _json['eventType'] = eventType;
-    }
-    if (extendedProperties != null) {
-      _json['extendedProperties'] = extendedProperties.toJson();
-    }
-    if (gadget != null) {
-      _json['gadget'] = gadget.toJson();
-    }
-    if (guestsCanInviteOthers != null) {
-      _json['guestsCanInviteOthers'] = guestsCanInviteOthers;
-    }
-    if (guestsCanModify != null) {
-      _json['guestsCanModify'] = guestsCanModify;
-    }
-    if (guestsCanSeeOtherGuests != null) {
-      _json['guestsCanSeeOtherGuests'] = guestsCanSeeOtherGuests;
-    }
-    if (hangoutLink != null) {
-      _json['hangoutLink'] = hangoutLink;
-    }
-    if (htmlLink != null) {
-      _json['htmlLink'] = htmlLink;
-    }
-    if (iCalUID != null) {
-      _json['iCalUID'] = iCalUID;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (locked != null) {
-      _json['locked'] = locked;
-    }
-    if (organizer != null) {
-      _json['organizer'] = organizer.toJson();
-    }
-    if (originalStartTime != null) {
-      _json['originalStartTime'] = originalStartTime.toJson();
-    }
-    if (privateCopy != null) {
-      _json['privateCopy'] = privateCopy;
-    }
-    if (recurrence != null) {
-      _json['recurrence'] = recurrence;
-    }
-    if (recurringEventId != null) {
-      _json['recurringEventId'] = recurringEventId;
-    }
-    if (reminders != null) {
-      _json['reminders'] = reminders.toJson();
-    }
-    if (sequence != null) {
-      _json['sequence'] = sequence;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (start != null) {
-      _json['start'] = start.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (summary != null) {
-      _json['summary'] = summary;
-    }
-    if (transparency != null) {
-      _json['transparency'] = transparency;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    if (visibility != null) {
-      _json['visibility'] = visibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (anyoneCanAddSelf != null) 'anyoneCanAddSelf': anyoneCanAddSelf,
+        if (attachments != null)
+          'attachments': attachments.map((value) => value.toJson()).toList(),
+        if (attendees != null)
+          'attendees': attendees.map((value) => value.toJson()).toList(),
+        if (attendeesOmitted != null) 'attendeesOmitted': attendeesOmitted,
+        if (colorId != null) 'colorId': colorId,
+        if (conferenceData != null) 'conferenceData': conferenceData.toJson(),
+        if (created != null) 'created': (created).toIso8601String(),
+        if (creator != null) 'creator': creator.toJson(),
+        if (description != null) 'description': description,
+        if (end != null) 'end': end.toJson(),
+        if (endTimeUnspecified != null)
+          'endTimeUnspecified': endTimeUnspecified,
+        if (etag != null) 'etag': etag,
+        if (eventType != null) 'eventType': eventType,
+        if (extendedProperties != null)
+          'extendedProperties': extendedProperties.toJson(),
+        if (gadget != null) 'gadget': gadget.toJson(),
+        if (guestsCanInviteOthers != null)
+          'guestsCanInviteOthers': guestsCanInviteOthers,
+        if (guestsCanModify != null) 'guestsCanModify': guestsCanModify,
+        if (guestsCanSeeOtherGuests != null)
+          'guestsCanSeeOtherGuests': guestsCanSeeOtherGuests,
+        if (hangoutLink != null) 'hangoutLink': hangoutLink,
+        if (htmlLink != null) 'htmlLink': htmlLink,
+        if (iCalUID != null) 'iCalUID': iCalUID,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (location != null) 'location': location,
+        if (locked != null) 'locked': locked,
+        if (organizer != null) 'organizer': organizer.toJson(),
+        if (originalStartTime != null)
+          'originalStartTime': originalStartTime.toJson(),
+        if (privateCopy != null) 'privateCopy': privateCopy,
+        if (recurrence != null) 'recurrence': recurrence,
+        if (recurringEventId != null) 'recurringEventId': recurringEventId,
+        if (reminders != null) 'reminders': reminders.toJson(),
+        if (sequence != null) 'sequence': sequence,
+        if (source != null) 'source': source.toJson(),
+        if (start != null) 'start': start.toJson(),
+        if (status != null) 'status': status,
+        if (summary != null) 'summary': summary,
+        if (transparency != null) 'transparency': transparency,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+        if (visibility != null) 'visibility': visibility,
+      };
 }
 
 class EventAttachment {
@@ -5132,25 +4788,13 @@ class EventAttachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileId != null) {
-      _json['fileId'] = fileId;
-    }
-    if (fileUrl != null) {
-      _json['fileUrl'] = fileUrl;
-    }
-    if (iconLink != null) {
-      _json['iconLink'] = iconLink;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileId != null) 'fileId': fileId,
+        if (fileUrl != null) 'fileUrl': fileUrl,
+        if (iconLink != null) 'iconLink': iconLink,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (title != null) 'title': title,
+      };
 }
 
 class EventAttendee {
@@ -5248,40 +4892,18 @@ class EventAttendee {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalGuests != null) {
-      _json['additionalGuests'] = additionalGuests;
-    }
-    if (comment != null) {
-      _json['comment'] = comment;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (optional != null) {
-      _json['optional'] = optional;
-    }
-    if (organizer != null) {
-      _json['organizer'] = organizer;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (responseStatus != null) {
-      _json['responseStatus'] = responseStatus;
-    }
-    if (self != null) {
-      _json['self'] = self;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalGuests != null) 'additionalGuests': additionalGuests,
+        if (comment != null) 'comment': comment,
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+        if (id != null) 'id': id,
+        if (optional != null) 'optional': optional,
+        if (organizer != null) 'organizer': organizer,
+        if (resource != null) 'resource': resource,
+        if (responseStatus != null) 'responseStatus': responseStatus,
+        if (self != null) 'self': self,
+      };
 }
 
 class EventDateTime {
@@ -5316,20 +4938,13 @@ class EventDateTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] =
-          "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
-    }
-    if (dateTime != null) {
-      _json['dateTime'] = (dateTime).toIso8601String();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null)
+          'date':
+              "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}",
+        if (dateTime != null) 'dateTime': (dateTime).toIso8601String(),
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 class EventReminder {
@@ -5359,16 +4974,10 @@ class EventReminder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (method != null) 'method': method,
+        if (minutes != null) 'minutes': minutes,
+      };
 }
 
 class Events {
@@ -5480,44 +5089,22 @@ class Events {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessRole != null) {
-      _json['accessRole'] = accessRole;
-    }
-    if (defaultReminders != null) {
-      _json['defaultReminders'] =
-          defaultReminders.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    if (summary != null) {
-      _json['summary'] = summary;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (updated != null) {
-      _json['updated'] = (updated).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessRole != null) 'accessRole': accessRole,
+        if (defaultReminders != null)
+          'defaultReminders':
+              defaultReminders.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description,
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+        if (summary != null) 'summary': summary,
+        if (timeZone != null) 'timeZone': timeZone,
+        if (updated != null) 'updated': (updated).toIso8601String(),
+      };
 }
 
 class FreeBusyCalendar {
@@ -5544,16 +5131,11 @@ class FreeBusyCalendar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (busy != null) {
-      _json['busy'] = busy.map((value) => value.toJson()).toList();
-    }
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (busy != null) 'busy': busy.map((value) => value.toJson()).toList(),
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 class FreeBusyGroup {
@@ -5579,16 +5161,11 @@ class FreeBusyGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (calendars != null) {
-      _json['calendars'] = calendars;
-    }
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (calendars != null) 'calendars': calendars,
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 class FreeBusyRequest {
@@ -5644,28 +5221,16 @@ class FreeBusyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (calendarExpansionMax != null) {
-      _json['calendarExpansionMax'] = calendarExpansionMax;
-    }
-    if (groupExpansionMax != null) {
-      _json['groupExpansionMax'] = groupExpansionMax;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (timeMax != null) {
-      _json['timeMax'] = (timeMax).toIso8601String();
-    }
-    if (timeMin != null) {
-      _json['timeMin'] = (timeMin).toIso8601String();
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (calendarExpansionMax != null)
+          'calendarExpansionMax': calendarExpansionMax,
+        if (groupExpansionMax != null) 'groupExpansionMax': groupExpansionMax,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (timeMax != null) 'timeMax': (timeMax).toIso8601String(),
+        if (timeMin != null) 'timeMin': (timeMin).toIso8601String(),
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 class FreeBusyRequestItem {
@@ -5680,13 +5245,9 @@ class FreeBusyRequestItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 class FreeBusyResponse {
@@ -5738,27 +5299,17 @@ class FreeBusyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (calendars != null) {
-      _json['calendars'] =
-          calendars.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (groups != null) {
-      _json['groups'] =
-          groups.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (timeMax != null) {
-      _json['timeMax'] = (timeMax).toIso8601String();
-    }
-    if (timeMin != null) {
-      _json['timeMin'] = (timeMin).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (calendars != null)
+          'calendars':
+              calendars.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (groups != null)
+          'groups':
+              groups.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kind != null) 'kind': kind,
+        if (timeMax != null) 'timeMax': (timeMax).toIso8601String(),
+        if (timeMin != null) 'timeMin': (timeMin).toIso8601String(),
+      };
 }
 
 class Setting {
@@ -5794,22 +5345,12 @@ class Setting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (value != null) 'value': value,
+      };
 }
 
 class Settings {
@@ -5858,25 +5399,14 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+      };
 }
 
 class TimePeriod {
@@ -5897,14 +5427,8 @@ class TimePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (end != null) {
-      _json['end'] = (end).toIso8601String();
-    }
-    if (start != null) {
-      _json['start'] = (start).toIso8601String();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (end != null) 'end': (end).toIso8601String(),
+        if (start != null) 'start': (start).toIso8601String(),
+      };
 }

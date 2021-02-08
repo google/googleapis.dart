@@ -358,28 +358,14 @@ class AnalysisIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (charLength != null) {
-      _json['charLength'] = charLength;
-    }
-    if (charStart != null) {
-      _json['charStart'] = charStart;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (line != null) {
-      _json['line'] = line;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (charLength != null) 'charLength': charLength,
+        if (charStart != null) 'charStart': charStart,
+        if (kind != null) 'kind': kind,
+        if (line != null) 'line': line,
+        if (location != null) 'location': location,
+        if (message != null) 'message': message,
+      };
 }
 
 class AnalysisResults {
@@ -396,13 +382,10 @@ class AnalysisResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (issues != null) {
-      _json['issues'] = issues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (issues != null)
+          'issues': issues.map((value) => value.toJson()).toList(),
+      };
 }
 
 class CompileResponse {
@@ -416,13 +399,9 @@ class CompileResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result,
+      };
 }
 
 class DocumentResponse {
@@ -441,13 +420,9 @@ class DocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (info != null) {
-      _json['info'] = info;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (info != null) 'info': info,
+      };
 }
 
 class SourceRequest {
@@ -465,14 +440,8 @@ class SourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (offset != null) 'offset': offset,
+        if (source != null) 'source': source,
+      };
 }

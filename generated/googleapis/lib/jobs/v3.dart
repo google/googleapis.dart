@@ -1002,19 +1002,11 @@ class ApplicationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emails != null) {
-      _json['emails'] = emails;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (uris != null) {
-      _json['uris'] = uris;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emails != null) 'emails': emails,
+        if (instruction != null) 'instruction': instruction,
+        if (uris != null) 'uris': uris,
+      };
 }
 
 /// Input only.
@@ -1039,13 +1031,9 @@ class BatchDeleteJobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+      };
 }
 
 /// Represents starting and ending value of a range in double.
@@ -1067,16 +1055,10 @@ class BucketRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (from != null) {
-      _json['from'] = from;
-    }
-    if (to != null) {
-      _json['to'] = to;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (from != null) 'from': from,
+        if (to != null) 'to': to,
+      };
 }
 
 /// Represents count of jobs within one bucket.
@@ -1100,16 +1082,10 @@ class BucketizedCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (range != null) 'range': range.toJson(),
+      };
 }
 
 /// An event issued when an end user interacts with the application that
@@ -1193,28 +1169,14 @@ class ClientEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (extraInfo != null) {
-      _json['extraInfo'] = extraInfo;
-    }
-    if (jobEvent != null) {
-      _json['jobEvent'] = jobEvent.toJson();
-    }
-    if (parentEventId != null) {
-      _json['parentEventId'] = parentEventId;
-    }
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (eventId != null) 'eventId': eventId,
+        if (extraInfo != null) 'extraInfo': extraInfo,
+        if (jobEvent != null) 'jobEvent': jobEvent.toJson(),
+        if (parentEventId != null) 'parentEventId': parentEventId,
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Input only.
@@ -1302,28 +1264,16 @@ class CommuteFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowImpreciseAddresses != null) {
-      _json['allowImpreciseAddresses'] = allowImpreciseAddresses;
-    }
-    if (commuteMethod != null) {
-      _json['commuteMethod'] = commuteMethod;
-    }
-    if (departureTime != null) {
-      _json['departureTime'] = departureTime.toJson();
-    }
-    if (roadTraffic != null) {
-      _json['roadTraffic'] = roadTraffic;
-    }
-    if (startCoordinates != null) {
-      _json['startCoordinates'] = startCoordinates.toJson();
-    }
-    if (travelDuration != null) {
-      _json['travelDuration'] = travelDuration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowImpreciseAddresses != null)
+          'allowImpreciseAddresses': allowImpreciseAddresses,
+        if (commuteMethod != null) 'commuteMethod': commuteMethod,
+        if (departureTime != null) 'departureTime': departureTime.toJson(),
+        if (roadTraffic != null) 'roadTraffic': roadTraffic,
+        if (startCoordinates != null)
+          'startCoordinates': startCoordinates.toJson(),
+        if (travelDuration != null) 'travelDuration': travelDuration,
+      };
 }
 
 /// Commute details related to this job.
@@ -1352,16 +1302,10 @@ class CommuteInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobLocation != null) {
-      _json['jobLocation'] = jobLocation.toJson();
-    }
-    if (travelDuration != null) {
-      _json['travelDuration'] = travelDuration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobLocation != null) 'jobLocation': jobLocation.toJson(),
+        if (travelDuration != null) 'travelDuration': travelDuration,
+      };
 }
 
 /// A Company resource represents a company in the service.
@@ -1518,50 +1462,24 @@ class Company {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (careerSiteUri != null) {
-      _json['careerSiteUri'] = careerSiteUri;
-    }
-    if (derivedInfo != null) {
-      _json['derivedInfo'] = derivedInfo.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (eeoText != null) {
-      _json['eeoText'] = eeoText;
-    }
-    if (externalId != null) {
-      _json['externalId'] = externalId;
-    }
-    if (headquartersAddress != null) {
-      _json['headquartersAddress'] = headquartersAddress;
-    }
-    if (hiringAgency != null) {
-      _json['hiringAgency'] = hiringAgency;
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (keywordSearchableJobCustomAttributes != null) {
-      _json['keywordSearchableJobCustomAttributes'] =
-          keywordSearchableJobCustomAttributes;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (suspended != null) {
-      _json['suspended'] = suspended;
-    }
-    if (websiteUri != null) {
-      _json['websiteUri'] = websiteUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (careerSiteUri != null) 'careerSiteUri': careerSiteUri,
+        if (derivedInfo != null) 'derivedInfo': derivedInfo.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (eeoText != null) 'eeoText': eeoText,
+        if (externalId != null) 'externalId': externalId,
+        if (headquartersAddress != null)
+          'headquartersAddress': headquartersAddress,
+        if (hiringAgency != null) 'hiringAgency': hiringAgency,
+        if (imageUri != null) 'imageUri': imageUri,
+        if (keywordSearchableJobCustomAttributes != null)
+          'keywordSearchableJobCustomAttributes':
+              keywordSearchableJobCustomAttributes,
+        if (name != null) 'name': name,
+        if (size != null) 'size': size,
+        if (suspended != null) 'suspended': suspended,
+        if (websiteUri != null) 'websiteUri': websiteUri,
+      };
 }
 
 /// Derived details about the company.
@@ -1579,13 +1497,10 @@ class CompanyDerivedInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headquartersLocation != null) {
-      _json['headquartersLocation'] = headquartersLocation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headquartersLocation != null)
+          'headquartersLocation': headquartersLocation.toJson(),
+      };
 }
 
 /// A compensation entry that represents one component of compensation, such as
@@ -1685,28 +1600,15 @@ class CompensationEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (amount != null) {
-      _json['amount'] = amount.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expectedUnitsPerYear != null) {
-      _json['expectedUnitsPerYear'] = expectedUnitsPerYear;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (amount != null) 'amount': amount.toJson(),
+        if (description != null) 'description': description,
+        if (expectedUnitsPerYear != null)
+          'expectedUnitsPerYear': expectedUnitsPerYear,
+        if (range != null) 'range': range.toJson(),
+        if (type != null) 'type': type,
+        if (unit != null) 'unit': unit,
+      };
 }
 
 /// Input only.
@@ -1776,23 +1678,14 @@ class CompensationFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeJobsWithUnspecifiedCompensationRange != null) {
-      _json['includeJobsWithUnspecifiedCompensationRange'] =
-          includeJobsWithUnspecifiedCompensationRange;
-    }
-    if (range != null) {
-      _json['range'] = range.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeJobsWithUnspecifiedCompensationRange != null)
+          'includeJobsWithUnspecifiedCompensationRange':
+              includeJobsWithUnspecifiedCompensationRange,
+        if (range != null) 'range': range.toJson(),
+        if (type != null) 'type': type,
+        if (units != null) 'units': units,
+      };
 }
 
 /// Input only.
@@ -1834,16 +1727,11 @@ class CompensationHistogramRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketingOption != null) {
-      _json['bucketingOption'] = bucketingOption.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketingOption != null)
+          'bucketingOption': bucketingOption.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Compensation based histogram result.
@@ -1877,16 +1765,10 @@ class CompensationHistogramResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Job compensation details.
@@ -1938,21 +1820,16 @@ class CompensationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annualizedBaseCompensationRange != null) {
-      _json['annualizedBaseCompensationRange'] =
-          annualizedBaseCompensationRange.toJson();
-    }
-    if (annualizedTotalCompensationRange != null) {
-      _json['annualizedTotalCompensationRange'] =
-          annualizedTotalCompensationRange.toJson();
-    }
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annualizedBaseCompensationRange != null)
+          'annualizedBaseCompensationRange':
+              annualizedBaseCompensationRange.toJson(),
+        if (annualizedTotalCompensationRange != null)
+          'annualizedTotalCompensationRange':
+              annualizedTotalCompensationRange.toJson(),
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Compensation range.
@@ -1986,16 +1863,12 @@ class CompensationRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maxCompensation != null) {
-      _json['maxCompensation'] = maxCompensation.toJson();
-    }
-    if (minCompensation != null) {
-      _json['minCompensation'] = minCompensation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maxCompensation != null)
+          'maxCompensation': maxCompensation.toJson(),
+        if (minCompensation != null)
+          'minCompensation': minCompensation.toJson(),
+      };
 }
 
 /// Response of auto-complete query.
@@ -2024,17 +1897,12 @@ class CompleteQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (completionResults != null) {
-      _json['completionResults'] =
-          completionResults.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (completionResults != null)
+          'completionResults':
+              completionResults.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+      };
 }
 
 /// Resource that represents completion results.
@@ -2069,19 +1937,11 @@ class CompletionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (suggestion != null) {
-      _json['suggestion'] = suggestion;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri,
+        if (suggestion != null) 'suggestion': suggestion,
+        if (type != null) 'type': type,
+      };
 }
 
 /// The report event request.
@@ -2101,13 +1961,9 @@ class CreateClientEventRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientEvent != null) {
-      _json['clientEvent'] = clientEvent.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientEvent != null) 'clientEvent': clientEvent.toJson(),
+      };
 }
 
 /// Input only.
@@ -2128,13 +1984,9 @@ class CreateCompanyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (company != null) {
-      _json['company'] = company.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (company != null) 'company': company.toJson(),
+      };
 }
 
 /// Input only.
@@ -2154,13 +2006,9 @@ class CreateJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (job != null) {
-      _json['job'] = job.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (job != null) 'job': job.toJson(),
+      };
 }
 
 /// Custom attribute values that are either filterable or non-filterable.
@@ -2211,19 +2059,11 @@ class CustomAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filterable != null) {
-      _json['filterable'] = filterable;
-    }
-    if (longValues != null) {
-      _json['longValues'] = longValues;
-    }
-    if (stringValues != null) {
-      _json['stringValues'] = stringValues;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filterable != null) 'filterable': filterable,
+        if (longValues != null) 'longValues': longValues,
+        if (stringValues != null) 'stringValues': stringValues,
+      };
 }
 
 /// Custom attributes histogram request.
@@ -2268,20 +2108,14 @@ class CustomAttributeHistogramRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (longValueHistogramBucketingOption != null) {
-      _json['longValueHistogramBucketingOption'] =
-          longValueHistogramBucketingOption.toJson();
-    }
-    if (stringValueHistogram != null) {
-      _json['stringValueHistogram'] = stringValueHistogram;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (longValueHistogramBucketingOption != null)
+          'longValueHistogramBucketingOption':
+              longValueHistogramBucketingOption.toJson(),
+        if (stringValueHistogram != null)
+          'stringValueHistogram': stringValueHistogram,
+      };
 }
 
 /// Custom attribute histogram result.
@@ -2323,19 +2157,13 @@ class CustomAttributeHistogramResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (longValueHistogramResult != null) {
-      _json['longValueHistogramResult'] = longValueHistogramResult.toJson();
-    }
-    if (stringValueHistogramResult != null) {
-      _json['stringValueHistogramResult'] = stringValueHistogramResult;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (longValueHistogramResult != null)
+          'longValueHistogramResult': longValueHistogramResult.toJson(),
+        if (stringValueHistogramResult != null)
+          'stringValueHistogramResult': stringValueHistogramResult,
+      };
 }
 
 /// Device information collected from the job seeker, candidate, or other entity
@@ -2379,16 +2207,10 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceType != null) {
-      _json['deviceType'] = deviceType;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceType != null) 'deviceType': deviceType,
+        if (id != null) 'id': id,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2405,10 +2227,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Input only.
@@ -2461,22 +2280,18 @@ class HistogramFacets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compensationHistogramFacets != null) {
-      _json['compensationHistogramFacets'] =
-          compensationHistogramFacets.map((value) => value.toJson()).toList();
-    }
-    if (customAttributeHistogramFacets != null) {
-      _json['customAttributeHistogramFacets'] = customAttributeHistogramFacets
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (simpleHistogramFacets != null) {
-      _json['simpleHistogramFacets'] = simpleHistogramFacets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compensationHistogramFacets != null)
+          'compensationHistogramFacets': compensationHistogramFacets
+              .map((value) => value.toJson())
+              .toList(),
+        if (customAttributeHistogramFacets != null)
+          'customAttributeHistogramFacets': customAttributeHistogramFacets
+              .map((value) => value.toJson())
+              .toList(),
+        if (simpleHistogramFacets != null)
+          'simpleHistogramFacets': simpleHistogramFacets,
+      };
 }
 
 /// Result of a histogram call.
@@ -2550,16 +2365,10 @@ class HistogramResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (searchType != null) {
-      _json['searchType'] = searchType;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (searchType != null) 'searchType': searchType,
+        if (values != null) 'values': values,
+      };
 }
 
 /// Histogram results that match HistogramFacets specified in SearchJobsRequest.
@@ -2605,23 +2414,19 @@ class HistogramResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compensationHistogramResults != null) {
-      _json['compensationHistogramResults'] =
-          compensationHistogramResults.map((value) => value.toJson()).toList();
-    }
-    if (customAttributeHistogramResults != null) {
-      _json['customAttributeHistogramResults'] = customAttributeHistogramResults
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (simpleHistogramResults != null) {
-      _json['simpleHistogramResults'] =
-          simpleHistogramResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compensationHistogramResults != null)
+          'compensationHistogramResults': compensationHistogramResults
+              .map((value) => value.toJson())
+              .toList(),
+        if (customAttributeHistogramResults != null)
+          'customAttributeHistogramResults': customAttributeHistogramResults
+              .map((value) => value.toJson())
+              .toList(),
+        if (simpleHistogramResults != null)
+          'simpleHistogramResults':
+              simpleHistogramResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Job resource represents a job posting (also referred to as a "job listing"
@@ -3043,101 +2848,45 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addresses != null) {
-      _json['addresses'] = addresses;
-    }
-    if (applicationInfo != null) {
-      _json['applicationInfo'] = applicationInfo.toJson();
-    }
-    if (companyDisplayName != null) {
-      _json['companyDisplayName'] = companyDisplayName;
-    }
-    if (companyName != null) {
-      _json['companyName'] = companyName;
-    }
-    if (compensationInfo != null) {
-      _json['compensationInfo'] = compensationInfo.toJson();
-    }
-    if (customAttributes != null) {
-      _json['customAttributes'] = customAttributes
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (degreeTypes != null) {
-      _json['degreeTypes'] = degreeTypes;
-    }
-    if (department != null) {
-      _json['department'] = department;
-    }
-    if (derivedInfo != null) {
-      _json['derivedInfo'] = derivedInfo.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (employmentTypes != null) {
-      _json['employmentTypes'] = employmentTypes;
-    }
-    if (incentives != null) {
-      _json['incentives'] = incentives;
-    }
-    if (jobBenefits != null) {
-      _json['jobBenefits'] = jobBenefits;
-    }
-    if (jobEndTime != null) {
-      _json['jobEndTime'] = jobEndTime;
-    }
-    if (jobLevel != null) {
-      _json['jobLevel'] = jobLevel;
-    }
-    if (jobStartTime != null) {
-      _json['jobStartTime'] = jobStartTime;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (postingCreateTime != null) {
-      _json['postingCreateTime'] = postingCreateTime;
-    }
-    if (postingExpireTime != null) {
-      _json['postingExpireTime'] = postingExpireTime;
-    }
-    if (postingPublishTime != null) {
-      _json['postingPublishTime'] = postingPublishTime;
-    }
-    if (postingRegion != null) {
-      _json['postingRegion'] = postingRegion;
-    }
-    if (postingUpdateTime != null) {
-      _json['postingUpdateTime'] = postingUpdateTime;
-    }
-    if (processingOptions != null) {
-      _json['processingOptions'] = processingOptions.toJson();
-    }
-    if (promotionValue != null) {
-      _json['promotionValue'] = promotionValue;
-    }
-    if (qualifications != null) {
-      _json['qualifications'] = qualifications;
-    }
-    if (requisitionId != null) {
-      _json['requisitionId'] = requisitionId;
-    }
-    if (responsibilities != null) {
-      _json['responsibilities'] = responsibilities;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (visibility != null) {
-      _json['visibility'] = visibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addresses != null) 'addresses': addresses,
+        if (applicationInfo != null)
+          'applicationInfo': applicationInfo.toJson(),
+        if (companyDisplayName != null)
+          'companyDisplayName': companyDisplayName,
+        if (companyName != null) 'companyName': companyName,
+        if (compensationInfo != null)
+          'compensationInfo': compensationInfo.toJson(),
+        if (customAttributes != null)
+          'customAttributes': customAttributes
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (degreeTypes != null) 'degreeTypes': degreeTypes,
+        if (department != null) 'department': department,
+        if (derivedInfo != null) 'derivedInfo': derivedInfo.toJson(),
+        if (description != null) 'description': description,
+        if (employmentTypes != null) 'employmentTypes': employmentTypes,
+        if (incentives != null) 'incentives': incentives,
+        if (jobBenefits != null) 'jobBenefits': jobBenefits,
+        if (jobEndTime != null) 'jobEndTime': jobEndTime,
+        if (jobLevel != null) 'jobLevel': jobLevel,
+        if (jobStartTime != null) 'jobStartTime': jobStartTime,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (name != null) 'name': name,
+        if (postingCreateTime != null) 'postingCreateTime': postingCreateTime,
+        if (postingExpireTime != null) 'postingExpireTime': postingExpireTime,
+        if (postingPublishTime != null)
+          'postingPublishTime': postingPublishTime,
+        if (postingRegion != null) 'postingRegion': postingRegion,
+        if (postingUpdateTime != null) 'postingUpdateTime': postingUpdateTime,
+        if (processingOptions != null)
+          'processingOptions': processingOptions.toJson(),
+        if (promotionValue != null) 'promotionValue': promotionValue,
+        if (qualifications != null) 'qualifications': qualifications,
+        if (requisitionId != null) 'requisitionId': requisitionId,
+        if (responsibilities != null) 'responsibilities': responsibilities,
+        if (title != null) 'title': title,
+        if (visibility != null) 'visibility': visibility,
+      };
 }
 
 /// Derived details about the job posting.
@@ -3168,16 +2917,11 @@ class JobDerivedInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobCategories != null) {
-      _json['jobCategories'] = jobCategories;
-    }
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobCategories != null) 'jobCategories': jobCategories,
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An event issued when a job seeker interacts with the application that
@@ -3275,16 +3019,10 @@ class JobEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobs != null) {
-      _json['jobs'] = jobs;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobs != null) 'jobs': jobs,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Input only.
@@ -3488,50 +3226,27 @@ class JobQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commuteFilter != null) {
-      _json['commuteFilter'] = commuteFilter.toJson();
-    }
-    if (companyDisplayNames != null) {
-      _json['companyDisplayNames'] = companyDisplayNames;
-    }
-    if (companyNames != null) {
-      _json['companyNames'] = companyNames;
-    }
-    if (compensationFilter != null) {
-      _json['compensationFilter'] = compensationFilter.toJson();
-    }
-    if (customAttributeFilter != null) {
-      _json['customAttributeFilter'] = customAttributeFilter;
-    }
-    if (disableSpellCheck != null) {
-      _json['disableSpellCheck'] = disableSpellCheck;
-    }
-    if (employmentTypes != null) {
-      _json['employmentTypes'] = employmentTypes;
-    }
-    if (jobCategories != null) {
-      _json['jobCategories'] = jobCategories;
-    }
-    if (languageCodes != null) {
-      _json['languageCodes'] = languageCodes;
-    }
-    if (locationFilters != null) {
-      _json['locationFilters'] =
-          locationFilters.map((value) => value.toJson()).toList();
-    }
-    if (publishTimeRange != null) {
-      _json['publishTimeRange'] = publishTimeRange.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (queryLanguageCode != null) {
-      _json['queryLanguageCode'] = queryLanguageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commuteFilter != null) 'commuteFilter': commuteFilter.toJson(),
+        if (companyDisplayNames != null)
+          'companyDisplayNames': companyDisplayNames,
+        if (companyNames != null) 'companyNames': companyNames,
+        if (compensationFilter != null)
+          'compensationFilter': compensationFilter.toJson(),
+        if (customAttributeFilter != null)
+          'customAttributeFilter': customAttributeFilter,
+        if (disableSpellCheck != null) 'disableSpellCheck': disableSpellCheck,
+        if (employmentTypes != null) 'employmentTypes': employmentTypes,
+        if (jobCategories != null) 'jobCategories': jobCategories,
+        if (languageCodes != null) 'languageCodes': languageCodes,
+        if (locationFilters != null)
+          'locationFilters':
+              locationFilters.map((value) => value.toJson()).toList(),
+        if (publishTimeRange != null)
+          'publishTimeRange': publishTimeRange.toJson(),
+        if (query != null) 'query': query,
+        if (queryLanguageCode != null) 'queryLanguageCode': queryLanguageCode,
+      };
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -3561,16 +3276,10 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }
 
 /// The List companies response object.
@@ -3605,19 +3314,12 @@ class ListCompaniesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (companies != null) {
-      _json['companies'] = companies.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (companies != null)
+          'companies': companies.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// List jobs response.
@@ -3655,19 +3357,11 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jobs != null) {
-      _json['jobs'] = jobs.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A resource that represents a location with full geographic information.
@@ -3736,22 +3430,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latLng != null) {
-      _json['latLng'] = latLng.toJson();
-    }
-    if (locationType != null) {
-      _json['locationType'] = locationType;
-    }
-    if (postalAddress != null) {
-      _json['postalAddress'] = postalAddress.toJson();
-    }
-    if (radiusInMiles != null) {
-      _json['radiusInMiles'] = radiusInMiles;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latLng != null) 'latLng': latLng.toJson(),
+        if (locationType != null) 'locationType': locationType,
+        if (postalAddress != null) 'postalAddress': postalAddress.toJson(),
+        if (radiusInMiles != null) 'radiusInMiles': radiusInMiles,
+      };
 }
 
 /// Input only.
@@ -3836,25 +3520,14 @@ class LocationFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (distanceInMiles != null) {
-      _json['distanceInMiles'] = distanceInMiles;
-    }
-    if (latLng != null) {
-      _json['latLng'] = latLng.toJson();
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (telecommutePreference != null) {
-      _json['telecommutePreference'] = telecommutePreference;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (distanceInMiles != null) 'distanceInMiles': distanceInMiles,
+        if (latLng != null) 'latLng': latLng.toJson(),
+        if (regionCode != null) 'regionCode': regionCode,
+        if (telecommutePreference != null)
+          'telecommutePreference': telecommutePreference,
+      };
 }
 
 /// Job entry with metadata inside SearchJobsResponse.
@@ -3905,25 +3578,13 @@ class MatchingJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commuteInfo != null) {
-      _json['commuteInfo'] = commuteInfo.toJson();
-    }
-    if (job != null) {
-      _json['job'] = job.toJson();
-    }
-    if (jobSummary != null) {
-      _json['jobSummary'] = jobSummary;
-    }
-    if (jobTitleSnippet != null) {
-      _json['jobTitleSnippet'] = jobTitleSnippet;
-    }
-    if (searchTextSnippet != null) {
-      _json['searchTextSnippet'] = searchTextSnippet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commuteInfo != null) 'commuteInfo': commuteInfo.toJson(),
+        if (job != null) 'job': job.toJson(),
+        if (jobSummary != null) 'jobSummary': jobSummary,
+        if (jobTitleSnippet != null) 'jobTitleSnippet': jobTitleSnippet,
+        if (searchTextSnippet != null) 'searchTextSnippet': searchTextSnippet,
+      };
 }
 
 /// Message representing input to a Mendel server for debug forcing.
@@ -3957,14 +3618,11 @@ class MendelDebugInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namespacedDebugInput != null) {
-      _json['namespacedDebugInput'] = namespacedDebugInput
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namespacedDebugInput != null)
+          'namespacedDebugInput': namespacedDebugInput
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Represents an amount of money with its currency type.
@@ -4000,19 +3658,11 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }
 
 /// Next ID: 15
@@ -4196,54 +3846,32 @@ class NamespacedDebugInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (absolutelyForcedExpNames != null) {
-      _json['absolutelyForcedExpNames'] = absolutelyForcedExpNames;
-    }
-    if (absolutelyForcedExpTags != null) {
-      _json['absolutelyForcedExpTags'] = absolutelyForcedExpTags;
-    }
-    if (absolutelyForcedExps != null) {
-      _json['absolutelyForcedExps'] = absolutelyForcedExps;
-    }
-    if (conditionallyForcedExpNames != null) {
-      _json['conditionallyForcedExpNames'] = conditionallyForcedExpNames;
-    }
-    if (conditionallyForcedExpTags != null) {
-      _json['conditionallyForcedExpTags'] = conditionallyForcedExpTags;
-    }
-    if (conditionallyForcedExps != null) {
-      _json['conditionallyForcedExps'] = conditionallyForcedExps;
-    }
-    if (disableAutomaticEnrollmentSelection != null) {
-      _json['disableAutomaticEnrollmentSelection'] =
-          disableAutomaticEnrollmentSelection;
-    }
-    if (disableExpNames != null) {
-      _json['disableExpNames'] = disableExpNames;
-    }
-    if (disableExpTags != null) {
-      _json['disableExpTags'] = disableExpTags;
-    }
-    if (disableExps != null) {
-      _json['disableExps'] = disableExps;
-    }
-    if (disableManualEnrollmentSelection != null) {
-      _json['disableManualEnrollmentSelection'] =
-          disableManualEnrollmentSelection;
-    }
-    if (disableOrganicSelection != null) {
-      _json['disableOrganicSelection'] = disableOrganicSelection;
-    }
-    if (forcedFlags != null) {
-      _json['forcedFlags'] = forcedFlags;
-    }
-    if (forcedRollouts != null) {
-      _json['forcedRollouts'] = forcedRollouts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (absolutelyForcedExpNames != null)
+          'absolutelyForcedExpNames': absolutelyForcedExpNames,
+        if (absolutelyForcedExpTags != null)
+          'absolutelyForcedExpTags': absolutelyForcedExpTags,
+        if (absolutelyForcedExps != null)
+          'absolutelyForcedExps': absolutelyForcedExps,
+        if (conditionallyForcedExpNames != null)
+          'conditionallyForcedExpNames': conditionallyForcedExpNames,
+        if (conditionallyForcedExpTags != null)
+          'conditionallyForcedExpTags': conditionallyForcedExpTags,
+        if (conditionallyForcedExps != null)
+          'conditionallyForcedExps': conditionallyForcedExps,
+        if (disableAutomaticEnrollmentSelection != null)
+          'disableAutomaticEnrollmentSelection':
+              disableAutomaticEnrollmentSelection,
+        if (disableExpNames != null) 'disableExpNames': disableExpNames,
+        if (disableExpTags != null) 'disableExpTags': disableExpTags,
+        if (disableExps != null) 'disableExps': disableExps,
+        if (disableManualEnrollmentSelection != null)
+          'disableManualEnrollmentSelection': disableManualEnrollmentSelection,
+        if (disableOrganicSelection != null)
+          'disableOrganicSelection': disableOrganicSelection,
+        if (forcedFlags != null) 'forcedFlags': forcedFlags,
+        if (forcedRollouts != null) 'forcedRollouts': forcedRollouts,
+      };
 }
 
 /// Input only.
@@ -4279,16 +3907,10 @@ class NumericBucketingOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketBounds != null) {
-      _json['bucketBounds'] = bucketBounds;
-    }
-    if (requiresMinMax != null) {
-      _json['requiresMinMax'] = requiresMinMax;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketBounds != null) 'bucketBounds': bucketBounds,
+        if (requiresMinMax != null) 'requiresMinMax': requiresMinMax,
+      };
 }
 
 /// Custom numeric bucketing result.
@@ -4329,19 +3951,12 @@ class NumericBucketingResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (counts != null) {
-      _json['counts'] = counts.map((value) => value.toJson()).toList();
-    }
-    if (maxValue != null) {
-      _json['maxValue'] = maxValue;
-    }
-    if (minValue != null) {
-      _json['minValue'] = minValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (counts != null)
+          'counts': counts.map((value) => value.toJson()).toList(),
+        if (maxValue != null) 'maxValue': maxValue,
+        if (minValue != null) 'minValue': minValue,
+      };
 }
 
 /// Represents a postal address, e.g. for postal delivery or payments addresses.
@@ -4507,43 +4122,20 @@ class PostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressLines != null) {
-      _json['addressLines'] = addressLines;
-    }
-    if (administrativeArea != null) {
-      _json['administrativeArea'] = administrativeArea;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (locality != null) {
-      _json['locality'] = locality;
-    }
-    if (organization != null) {
-      _json['organization'] = organization;
-    }
-    if (postalCode != null) {
-      _json['postalCode'] = postalCode;
-    }
-    if (recipients != null) {
-      _json['recipients'] = recipients;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (revision != null) {
-      _json['revision'] = revision;
-    }
-    if (sortingCode != null) {
-      _json['sortingCode'] = sortingCode;
-    }
-    if (sublocality != null) {
-      _json['sublocality'] = sublocality;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (locality != null) 'locality': locality,
+        if (organization != null) 'organization': organization,
+        if (postalCode != null) 'postalCode': postalCode,
+        if (recipients != null) 'recipients': recipients,
+        if (regionCode != null) 'regionCode': regionCode,
+        if (revision != null) 'revision': revision,
+        if (sortingCode != null) 'sortingCode': sortingCode,
+        if (sublocality != null) 'sublocality': sublocality,
+      };
 }
 
 /// Input only.
@@ -4583,16 +4175,11 @@ class ProcessingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableStreetAddressResolution != null) {
-      _json['disableStreetAddressResolution'] = disableStreetAddressResolution;
-    }
-    if (htmlSanitization != null) {
-      _json['htmlSanitization'] = htmlSanitization;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableStreetAddressResolution != null)
+          'disableStreetAddressResolution': disableStreetAddressResolution,
+        if (htmlSanitization != null) 'htmlSanitization': htmlSanitization,
+      };
 }
 
 /// Input only.
@@ -4663,22 +4250,12 @@ class RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceInfo != null) {
-      _json['deviceInfo'] = deviceInfo.toJson();
-    }
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (sessionId != null) {
-      _json['sessionId'] = sessionId;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceInfo != null) 'deviceInfo': deviceInfo.toJson(),
+        if (domain != null) 'domain': domain,
+        if (sessionId != null) 'sessionId': sessionId,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// Additional information returned to client, such as debugging information.
@@ -4698,13 +4275,9 @@ class ResponseMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestId != null) {
-      _json['requestId'] = requestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestId != null) 'requestId': requestId,
+      };
 }
 
 /// Input only.
@@ -4923,49 +4496,26 @@ class SearchJobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableKeywordMatch != null) {
-      _json['disableKeywordMatch'] = disableKeywordMatch;
-    }
-    if (diversificationLevel != null) {
-      _json['diversificationLevel'] = diversificationLevel;
-    }
-    if (enableBroadening != null) {
-      _json['enableBroadening'] = enableBroadening;
-    }
-    if (histogramFacets != null) {
-      _json['histogramFacets'] = histogramFacets.toJson();
-    }
-    if (jobQuery != null) {
-      _json['jobQuery'] = jobQuery.toJson();
-    }
-    if (jobView != null) {
-      _json['jobView'] = jobView;
-    }
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (orderBy != null) {
-      _json['orderBy'] = orderBy;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (requestMetadata != null) {
-      _json['requestMetadata'] = requestMetadata.toJson();
-    }
-    if (requirePreciseResultSize != null) {
-      _json['requirePreciseResultSize'] = requirePreciseResultSize;
-    }
-    if (searchMode != null) {
-      _json['searchMode'] = searchMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableKeywordMatch != null)
+          'disableKeywordMatch': disableKeywordMatch,
+        if (diversificationLevel != null)
+          'diversificationLevel': diversificationLevel,
+        if (enableBroadening != null) 'enableBroadening': enableBroadening,
+        if (histogramFacets != null)
+          'histogramFacets': histogramFacets.toJson(),
+        if (jobQuery != null) 'jobQuery': jobQuery.toJson(),
+        if (jobView != null) 'jobView': jobView,
+        if (offset != null) 'offset': offset,
+        if (orderBy != null) 'orderBy': orderBy,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (requestMetadata != null)
+          'requestMetadata': requestMetadata.toJson(),
+        if (requirePreciseResultSize != null)
+          'requirePreciseResultSize': requirePreciseResultSize,
+        if (searchMode != null) 'searchMode': searchMode,
+      };
 }
 
 /// Response for SearchJob method.
@@ -5059,39 +4609,24 @@ class SearchJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (broadenedQueryJobsCount != null) {
-      _json['broadenedQueryJobsCount'] = broadenedQueryJobsCount;
-    }
-    if (estimatedTotalSize != null) {
-      _json['estimatedTotalSize'] = estimatedTotalSize;
-    }
-    if (histogramResults != null) {
-      _json['histogramResults'] = histogramResults.toJson();
-    }
-    if (locationFilters != null) {
-      _json['locationFilters'] =
-          locationFilters.map((value) => value.toJson()).toList();
-    }
-    if (matchingJobs != null) {
-      _json['matchingJobs'] =
-          matchingJobs.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (spellCorrection != null) {
-      _json['spellCorrection'] = spellCorrection.toJson();
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (broadenedQueryJobsCount != null)
+          'broadenedQueryJobsCount': broadenedQueryJobsCount,
+        if (estimatedTotalSize != null)
+          'estimatedTotalSize': estimatedTotalSize,
+        if (histogramResults != null)
+          'histogramResults': histogramResults.toJson(),
+        if (locationFilters != null)
+          'locationFilters':
+              locationFilters.map((value) => value.toJson()).toList(),
+        if (matchingJobs != null)
+          'matchingJobs': matchingJobs.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (spellCorrection != null)
+          'spellCorrection': spellCorrection.toJson(),
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Spell check result.
@@ -5115,16 +4650,10 @@ class SpellingCorrection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (corrected != null) {
-      _json['corrected'] = corrected;
-    }
-    if (correctedText != null) {
-      _json['correctedText'] = correctedText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (corrected != null) 'corrected': corrected,
+        if (correctedText != null) 'correctedText': correctedText,
+      };
 }
 
 /// Represents a time of day.
@@ -5172,22 +4701,12 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hours != null) {
-      _json['hours'] = hours;
-    }
-    if (minutes != null) {
-      _json['minutes'] = minutes;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (seconds != null) {
-      _json['seconds'] = seconds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hours != null) 'hours': hours,
+        if (minutes != null) 'minutes': minutes,
+        if (nanos != null) 'nanos': nanos,
+        if (seconds != null) 'seconds': seconds,
+      };
 }
 
 /// Message representing a period of time between two timestamps.
@@ -5209,16 +4728,10 @@ class TimestampRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Input only.
@@ -5250,16 +4763,10 @@ class UpdateCompanyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (company != null) {
-      _json['company'] = company.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (company != null) 'company': company.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// Input only.
@@ -5290,14 +4797,8 @@ class UpdateJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (job != null) {
-      _json['job'] = job.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (job != null) 'job': job.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }

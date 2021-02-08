@@ -1473,17 +1473,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1520,16 +1515,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1598,19 +1587,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 class ConfigFile {
@@ -1625,13 +1606,9 @@ class ConfigFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+      };
 }
 
 class Deployment {
@@ -1763,46 +1740,21 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (insertTime != null) {
-      _json['insertTime'] = insertTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    if (manifest != null) {
-      _json['manifest'] = manifest;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operation != null) {
-      _json['operation'] = operation.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (target != null) {
-      _json['target'] = target.toJson();
-    }
-    if (update != null) {
-      _json['update'] = update.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (fingerprint != null) 'fingerprint': fingerprint,
+        if (id != null) 'id': id,
+        if (insertTime != null) 'insertTime': insertTime,
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+        if (manifest != null) 'manifest': manifest,
+        if (name != null) 'name': name,
+        if (operation != null) 'operation': operation.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (target != null) 'target': target.toJson(),
+        if (update != null) 'update': update.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Label object for Deployments
@@ -1824,16 +1776,10 @@ class DeploymentLabelEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 class DeploymentUpdate {
@@ -1876,19 +1822,12 @@ class DeploymentUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.map((value) => value.toJson()).toList();
-    }
-    if (manifest != null) {
-      _json['manifest'] = manifest;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (labels != null)
+          'labels': labels.map((value) => value.toJson()).toList(),
+        if (manifest != null) 'manifest': manifest,
+      };
 }
 
 /// Label object for DeploymentUpdate
@@ -1910,16 +1849,10 @@ class DeploymentUpdateLabelEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 class DeploymentsCancelPreviewRequest {
@@ -1950,13 +1883,9 @@ class DeploymentsCancelPreviewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fingerprint != null) 'fingerprint': fingerprint,
+      };
 }
 
 /// A response containing a partial list of deployments and a page token used to
@@ -1986,17 +1915,11 @@ class DeploymentsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployments != null) {
-      _json['deployments'] =
-          deployments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployments != null)
+          'deployments': deployments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class DeploymentsStopRequest {
@@ -2027,13 +1950,9 @@ class DeploymentsStopRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fingerprint != null) {
-      _json['fingerprint'] = fingerprint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fingerprint != null) 'fingerprint': fingerprint,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2097,22 +2016,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 class GlobalSetPolicyRequest {
@@ -2157,19 +2066,12 @@ class GlobalSetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 class ImportFile {
@@ -2190,16 +2092,10 @@ class ImportFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (name != null) 'name': name,
+      };
 }
 
 class Manifest {
@@ -2289,40 +2185,20 @@ class Manifest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (expandedConfig != null) {
-      _json['expandedConfig'] = expandedConfig;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (imports != null) {
-      _json['imports'] = imports.map((value) => value.toJson()).toList();
-    }
-    if (insertTime != null) {
-      _json['insertTime'] = insertTime;
-    }
-    if (layout != null) {
-      _json['layout'] = layout;
-    }
-    if (manifestSizeBytes != null) {
-      _json['manifestSizeBytes'] = manifestSizeBytes;
-    }
-    if (manifestSizeLimitBytes != null) {
-      _json['manifestSizeLimitBytes'] = manifestSizeLimitBytes;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (expandedConfig != null) 'expandedConfig': expandedConfig,
+        if (id != null) 'id': id,
+        if (imports != null)
+          'imports': imports.map((value) => value.toJson()).toList(),
+        if (insertTime != null) 'insertTime': insertTime,
+        if (layout != null) 'layout': layout,
+        if (manifestSizeBytes != null) 'manifestSizeBytes': manifestSizeBytes,
+        if (manifestSizeLimitBytes != null)
+          'manifestSizeLimitBytes': manifestSizeLimitBytes,
+        if (name != null) 'name': name,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A response containing a partial list of manifests and a page token used to
@@ -2352,16 +2228,11 @@ class ManifestsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (manifests != null) {
-      _json['manifests'] = manifests.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (manifests != null)
+          'manifests': manifests.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class OperationErrorErrors {
@@ -2396,19 +2267,11 @@ class OperationErrorErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (location != null) 'location': location,
+        if (message != null) 'message': message,
+      };
 }
 
 /// If errors are generated during processing of the operation, this field will
@@ -2432,13 +2295,10 @@ class OperationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 class OperationWarningsData {
@@ -2470,16 +2330,10 @@ class OperationWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 class OperationWarnings {
@@ -2568,19 +2422,11 @@ class OperationWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents an Operation resource.
@@ -2826,79 +2672,33 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientOperationId != null) {
-      _json['clientOperationId'] = clientOperationId;
-    }
-    if (creationTimestamp != null) {
-      _json['creationTimestamp'] = creationTimestamp;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (httpErrorMessage != null) {
-      _json['httpErrorMessage'] = httpErrorMessage;
-    }
-    if (httpErrorStatusCode != null) {
-      _json['httpErrorStatusCode'] = httpErrorStatusCode;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (insertTime != null) {
-      _json['insertTime'] = insertTime;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (progress != null) {
-      _json['progress'] = progress;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (targetId != null) {
-      _json['targetId'] = targetId;
-    }
-    if (targetLink != null) {
-      _json['targetLink'] = targetLink;
-    }
-    if (user != null) {
-      _json['user'] = user;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientOperationId != null) 'clientOperationId': clientOperationId,
+        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp,
+        if (description != null) 'description': description,
+        if (endTime != null) 'endTime': endTime,
+        if (error != null) 'error': error.toJson(),
+        if (httpErrorMessage != null) 'httpErrorMessage': httpErrorMessage,
+        if (httpErrorStatusCode != null)
+          'httpErrorStatusCode': httpErrorStatusCode,
+        if (id != null) 'id': id,
+        if (insertTime != null) 'insertTime': insertTime,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (operationType != null) 'operationType': operationType,
+        if (progress != null) 'progress': progress,
+        if (region != null) 'region': region,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (targetId != null) 'targetId': targetId,
+        if (targetLink != null) 'targetLink': targetLink,
+        if (user != null) 'user': user,
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// A response containing a partial list of operations and a page token used to
@@ -2928,16 +2728,11 @@ class OperationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3044,23 +2839,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 class ResourceWarningsData {
@@ -3092,16 +2878,10 @@ class ResourceWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 class ResourceWarnings {
@@ -3190,19 +2970,11 @@ class ResourceWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message,
+      };
 }
 
 class Resource {
@@ -3315,46 +3087,21 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessControl != null) {
-      _json['accessControl'] = accessControl.toJson();
-    }
-    if (finalProperties != null) {
-      _json['finalProperties'] = finalProperties;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (insertTime != null) {
-      _json['insertTime'] = insertTime;
-    }
-    if (manifest != null) {
-      _json['manifest'] = manifest;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (update != null) {
-      _json['update'] = update.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessControl != null) 'accessControl': accessControl.toJson(),
+        if (finalProperties != null) 'finalProperties': finalProperties,
+        if (id != null) 'id': id,
+        if (insertTime != null) 'insertTime': insertTime,
+        if (manifest != null) 'manifest': manifest,
+        if (name != null) 'name': name,
+        if (properties != null) 'properties': properties,
+        if (type != null) 'type': type,
+        if (update != null) 'update': update.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+        if (url != null) 'url': url,
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The access controls set on the resource.
@@ -3370,13 +3117,9 @@ class ResourceAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcpIamPolicy != null) {
-      _json['gcpIamPolicy'] = gcpIamPolicy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcpIamPolicy != null) 'gcpIamPolicy': gcpIamPolicy,
+      };
 }
 
 class ResourceUpdateErrorErrors {
@@ -3411,19 +3154,11 @@ class ResourceUpdateErrorErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (location != null) 'location': location,
+        if (message != null) 'message': message,
+      };
 }
 
 /// If errors are generated during update of the resource, this field will be
@@ -3448,13 +3183,10 @@ class ResourceUpdateError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errors != null) {
-      _json['errors'] = errors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errors != null)
+          'errors': errors.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ResourceUpdateWarningsData {
@@ -3486,16 +3218,10 @@ class ResourceUpdateWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 class ResourceUpdateWarnings {
@@ -3585,19 +3311,11 @@ class ResourceUpdateWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (data != null) {
-      _json['data'] = data.map((value) => value.toJson()).toList();
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message,
+      };
 }
 
 class ResourceUpdate {
@@ -3698,34 +3416,17 @@ class ResourceUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessControl != null) {
-      _json['accessControl'] = accessControl.toJson();
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (finalProperties != null) {
-      _json['finalProperties'] = finalProperties;
-    }
-    if (intent != null) {
-      _json['intent'] = intent;
-    }
-    if (manifest != null) {
-      _json['manifest'] = manifest;
-    }
-    if (properties != null) {
-      _json['properties'] = properties;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessControl != null) 'accessControl': accessControl.toJson(),
+        if (error != null) 'error': error.toJson(),
+        if (finalProperties != null) 'finalProperties': finalProperties,
+        if (intent != null) 'intent': intent,
+        if (manifest != null) 'manifest': manifest,
+        if (properties != null) 'properties': properties,
+        if (state != null) 'state': state,
+        if (warnings != null)
+          'warnings': warnings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A response containing a partial list of resources and a page token used to
@@ -3751,16 +3452,11 @@ class ResourcesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+      };
 }
 
 class TargetConfiguration {
@@ -3788,16 +3484,11 @@ class TargetConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (imports != null) {
-      _json['imports'] = imports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (imports != null)
+          'imports': imports.map((value) => value.toJson()).toList(),
+      };
 }
 
 class TestPermissionsRequest {
@@ -3816,13 +3507,9 @@ class TestPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 class TestPermissionsResponse {
@@ -3840,13 +3527,9 @@ class TestPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// A resource type supported by Deployment Manager.
@@ -3893,25 +3576,13 @@ class Type {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (insertTime != null) {
-      _json['insertTime'] = insertTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operation != null) {
-      _json['operation'] = operation.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (insertTime != null) 'insertTime': insertTime,
+        if (name != null) 'name': name,
+        if (operation != null) 'operation': operation.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A response that returns all Types supported by Deployment Manager
@@ -3938,14 +3609,9 @@ class TypesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (types != null) {
-      _json['types'] = types.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (types != null)
+          'types': types.map((value) => value.toJson()).toList(),
+      };
 }

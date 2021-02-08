@@ -249,10 +249,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Describes a Compute Engine resource that is being managed by a running
@@ -289,22 +286,12 @@ class ComputeEngine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (diskNames != null) {
-      _json['diskNames'] = diskNames;
-    }
-    if (instanceName != null) {
-      _json['instanceName'] = instanceName;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (diskNames != null) 'diskNames': diskNames,
+        if (instanceName != null) 'instanceName': instanceName,
+        if (machineType != null) 'machineType': machineType,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// An event generated when a container is forcibly terminated by the worker.
@@ -323,13 +310,9 @@ class ContainerKilledEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+      };
 }
 
 /// An event generated when a container starts.
@@ -370,19 +353,11 @@ class ContainerStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (portMappings != null) {
-      _json['portMappings'] = portMappings;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (portMappings != null) 'portMappings': portMappings,
+      };
 }
 
 /// An event generated when a container exits.
@@ -417,19 +392,11 @@ class ContainerStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    if (exitStatus != null) {
-      _json['exitStatus'] = exitStatus;
-    }
-    if (stderr != null) {
-      _json['stderr'] = stderr;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+        if (exitStatus != null) 'exitStatus': exitStatus,
+        if (stderr != null) 'stderr': stderr,
+      };
 }
 
 /// An event generated whenever a resource limitation or transient error delays
@@ -462,16 +429,10 @@ class DelayedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cause != null) {
-      _json['cause'] = cause;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cause != null) 'cause': cause,
+        if (metrics != null) 'metrics': metrics,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -488,10 +449,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Carries information about events that occur during pipeline execution.
@@ -531,19 +489,11 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (details != null) 'details': details,
+        if (timestamp != null) 'timestamp': timestamp,
+      };
 }
 
 /// An event generated when the execution of a pipeline has failed.
@@ -647,16 +597,10 @@ class FailedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cause != null) {
-      _json['cause'] = cause;
-    }
-    if (code != null) {
-      _json['code'] = code;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cause != null) 'cause': cause,
+        if (code != null) 'code': code,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -681,16 +625,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -758,25 +697,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// An event that occurred during an Operation.
@@ -807,19 +734,11 @@ class OperationEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Metadata describing an Operation.
@@ -922,37 +841,18 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (events != null) {
-      _json['events'] = events.map((value) => value.toJson()).toList();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (request != null) {
-      _json['request'] = request;
-    }
-    if (runtimeMetadata != null) {
-      _json['runtimeMetadata'] = runtimeMetadata;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (events != null)
+          'events': events.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels,
+        if (projectId != null) 'projectId': projectId,
+        if (request != null) 'request': request,
+        if (runtimeMetadata != null) 'runtimeMetadata': runtimeMetadata,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// An event generated when the worker starts pulling an image.
@@ -968,13 +868,9 @@ class PullStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri,
+      };
 }
 
 /// An event generated when the worker stops pulling an image.
@@ -990,13 +886,9 @@ class PullStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri,
+      };
 }
 
 /// The response to the RunPipeline method, returned in the operation's result
@@ -1008,10 +900,7 @@ class RunPipelineResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Runtime metadata that will be populated in the runtimeMetadata field of the
@@ -1029,13 +918,9 @@ class RuntimeMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (computeEngine != null) {
-      _json['computeEngine'] = computeEngine.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (computeEngine != null) 'computeEngine': computeEngine.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1085,19 +970,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// An event generated when the execution of a container results in a non-zero
@@ -1123,16 +1000,10 @@ class UnexpectedExitStatusEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    if (exitStatus != null) {
-      _json['exitStatus'] = exitStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+        if (exitStatus != null) 'exitStatus': exitStatus,
+      };
 }
 
 /// An event generated after a worker VM has been assigned to run the pipeline.
@@ -1160,19 +1031,11 @@ class WorkerAssignedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instance != null) 'instance': instance,
+        if (machineType != null) 'machineType': machineType,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// An event generated when the worker VM that was assigned to the pipeline has
@@ -1195,14 +1058,8 @@ class WorkerReleasedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instance != null) 'instance': instance,
+        if (zone != null) 'zone': zone,
+      };
 }

@@ -1337,19 +1337,11 @@ class ArtifactObjects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (paths != null) {
-      _json['paths'] = paths;
-    }
-    if (timing != null) {
-      _json['timing'] = timing.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (location != null) 'location': location,
+        if (paths != null) 'paths': paths,
+        if (timing != null) 'timing': timing.toJson(),
+      };
 }
 
 /// An artifact that was uploaded during a build.
@@ -1379,16 +1371,11 @@ class ArtifactResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileHash != null) {
-      _json['fileHash'] = fileHash.map((value) => value.toJson()).toList();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileHash != null)
+          'fileHash': fileHash.map((value) => value.toJson()).toList(),
+        if (location != null) 'location': location,
+      };
 }
 
 /// Artifacts produced by a build that should be uploaded upon successful
@@ -1427,16 +1414,10 @@ class Artifacts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (images != null) {
-      _json['images'] = images;
-    }
-    if (objects != null) {
-      _json['objects'] = objects.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (images != null) 'images': images,
+        if (objects != null) 'objects': objects.toJson(),
+      };
 }
 
 /// A build resource in the Cloud Build API.
@@ -1721,89 +1702,40 @@ class Build {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (artifacts != null) {
-      _json['artifacts'] = artifacts.toJson();
-    }
-    if (availableSecrets != null) {
-      _json['availableSecrets'] = availableSecrets.toJson();
-    }
-    if (buildTriggerId != null) {
-      _json['buildTriggerId'] = buildTriggerId;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (finishTime != null) {
-      _json['finishTime'] = finishTime;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (images != null) {
-      _json['images'] = images;
-    }
-    if (logUrl != null) {
-      _json['logUrl'] = logUrl;
-    }
-    if (logsBucket != null) {
-      _json['logsBucket'] = logsBucket;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (queueTtl != null) {
-      _json['queueTtl'] = queueTtl;
-    }
-    if (results != null) {
-      _json['results'] = results.toJson();
-    }
-    if (secrets != null) {
-      _json['secrets'] = secrets.map((value) => value.toJson()).toList();
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (sourceProvenance != null) {
-      _json['sourceProvenance'] = sourceProvenance.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (statusDetail != null) {
-      _json['statusDetail'] = statusDetail;
-    }
-    if (steps != null) {
-      _json['steps'] = steps.map((value) => value.toJson()).toList();
-    }
-    if (substitutions != null) {
-      _json['substitutions'] = substitutions;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    if (timing != null) {
-      _json['timing'] =
-          timing.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (artifacts != null) 'artifacts': artifacts.toJson(),
+        if (availableSecrets != null)
+          'availableSecrets': availableSecrets.toJson(),
+        if (buildTriggerId != null) 'buildTriggerId': buildTriggerId,
+        if (createTime != null) 'createTime': createTime,
+        if (finishTime != null) 'finishTime': finishTime,
+        if (id != null) 'id': id,
+        if (images != null) 'images': images,
+        if (logUrl != null) 'logUrl': logUrl,
+        if (logsBucket != null) 'logsBucket': logsBucket,
+        if (name != null) 'name': name,
+        if (options != null) 'options': options.toJson(),
+        if (projectId != null) 'projectId': projectId,
+        if (queueTtl != null) 'queueTtl': queueTtl,
+        if (results != null) 'results': results.toJson(),
+        if (secrets != null)
+          'secrets': secrets.map((value) => value.toJson()).toList(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (source != null) 'source': source.toJson(),
+        if (sourceProvenance != null)
+          'sourceProvenance': sourceProvenance.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status,
+        if (statusDetail != null) 'statusDetail': statusDetail,
+        if (steps != null)
+          'steps': steps.map((value) => value.toJson()).toList(),
+        if (substitutions != null) 'substitutions': substitutions,
+        if (tags != null) 'tags': tags,
+        if (timeout != null) 'timeout': timeout,
+        if (timing != null)
+          'timing':
+              timing.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// Metadata for build operations.
@@ -1820,13 +1752,9 @@ class BuildOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (build != null) {
-      _json['build'] = build.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (build != null) 'build': build.toJson(),
+      };
 }
 
 /// Optional arguments to enable specific features of builds.
@@ -1982,46 +1910,26 @@ class BuildOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (diskSizeGb != null) {
-      _json['diskSizeGb'] = diskSizeGb;
-    }
-    if (dynamicSubstitutions != null) {
-      _json['dynamicSubstitutions'] = dynamicSubstitutions;
-    }
-    if (env != null) {
-      _json['env'] = env;
-    }
-    if (logStreamingOption != null) {
-      _json['logStreamingOption'] = logStreamingOption;
-    }
-    if (logging != null) {
-      _json['logging'] = logging;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (requestedVerifyOption != null) {
-      _json['requestedVerifyOption'] = requestedVerifyOption;
-    }
-    if (secretEnv != null) {
-      _json['secretEnv'] = secretEnv;
-    }
-    if (sourceProvenanceHash != null) {
-      _json['sourceProvenanceHash'] = sourceProvenanceHash;
-    }
-    if (substitutionOption != null) {
-      _json['substitutionOption'] = substitutionOption;
-    }
-    if (volumes != null) {
-      _json['volumes'] = volumes.map((value) => value.toJson()).toList();
-    }
-    if (workerPool != null) {
-      _json['workerPool'] = workerPool;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+        if (dynamicSubstitutions != null)
+          'dynamicSubstitutions': dynamicSubstitutions,
+        if (env != null) 'env': env,
+        if (logStreamingOption != null)
+          'logStreamingOption': logStreamingOption,
+        if (logging != null) 'logging': logging,
+        if (machineType != null) 'machineType': machineType,
+        if (requestedVerifyOption != null)
+          'requestedVerifyOption': requestedVerifyOption,
+        if (secretEnv != null) 'secretEnv': secretEnv,
+        if (sourceProvenanceHash != null)
+          'sourceProvenanceHash': sourceProvenanceHash,
+        if (substitutionOption != null)
+          'substitutionOption': substitutionOption,
+        if (volumes != null)
+          'volumes': volumes.map((value) => value.toJson()).toList(),
+        if (workerPool != null) 'workerPool': workerPool,
+      };
 }
 
 /// A step in the build pipeline.
@@ -2192,49 +2100,22 @@ class BuildStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (args != null) {
-      _json['args'] = args;
-    }
-    if (dir != null) {
-      _json['dir'] = dir;
-    }
-    if (entrypoint != null) {
-      _json['entrypoint'] = entrypoint;
-    }
-    if (env != null) {
-      _json['env'] = env;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pullTiming != null) {
-      _json['pullTiming'] = pullTiming.toJson();
-    }
-    if (secretEnv != null) {
-      _json['secretEnv'] = secretEnv;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    if (timing != null) {
-      _json['timing'] = timing.toJson();
-    }
-    if (volumes != null) {
-      _json['volumes'] = volumes.map((value) => value.toJson()).toList();
-    }
-    if (waitFor != null) {
-      _json['waitFor'] = waitFor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (args != null) 'args': args,
+        if (dir != null) 'dir': dir,
+        if (entrypoint != null) 'entrypoint': entrypoint,
+        if (env != null) 'env': env,
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (pullTiming != null) 'pullTiming': pullTiming.toJson(),
+        if (secretEnv != null) 'secretEnv': secretEnv,
+        if (status != null) 'status': status,
+        if (timeout != null) 'timeout': timeout,
+        if (timing != null) 'timing': timing.toJson(),
+        if (volumes != null)
+          'volumes': volumes.map((value) => value.toJson()).toList(),
+        if (waitFor != null) 'waitFor': waitFor,
+      };
 }
 
 /// Configuration for an automated build in response to source repository
@@ -2373,49 +2254,22 @@ class BuildTrigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (build != null) {
-      _json['build'] = build.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (filename != null) {
-      _json['filename'] = filename;
-    }
-    if (github != null) {
-      _json['github'] = github.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (ignoredFiles != null) {
-      _json['ignoredFiles'] = ignoredFiles;
-    }
-    if (includedFiles != null) {
-      _json['includedFiles'] = includedFiles;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (substitutions != null) {
-      _json['substitutions'] = substitutions;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    if (triggerTemplate != null) {
-      _json['triggerTemplate'] = triggerTemplate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (build != null) 'build': build.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (disabled != null) 'disabled': disabled,
+        if (filename != null) 'filename': filename,
+        if (github != null) 'github': github.toJson(),
+        if (id != null) 'id': id,
+        if (ignoredFiles != null) 'ignoredFiles': ignoredFiles,
+        if (includedFiles != null) 'includedFiles': includedFiles,
+        if (name != null) 'name': name,
+        if (substitutions != null) 'substitutions': substitutions,
+        if (tags != null) 'tags': tags,
+        if (triggerTemplate != null)
+          'triggerTemplate': triggerTemplate.toJson(),
+      };
 }
 
 /// An image built by the pipeline.
@@ -2447,19 +2301,11 @@ class BuiltImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pushTiming != null) {
-      _json['pushTiming'] = pushTiming.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest,
+        if (name != null) 'name': name,
+        if (pushTiming != null) 'pushTiming': pushTiming.toJson(),
+      };
 }
 
 /// Request to cancel an ongoing build.
@@ -2493,19 +2339,11 @@ class CancelBuildRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2516,10 +2354,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2536,10 +2371,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Container message for hashes of byte content of files, used in
@@ -2559,13 +2391,10 @@ class FileHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileHash != null) {
-      _json['fileHash'] = fileHash.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileHash != null)
+          'fileHash': fileHash.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// GitHubEventsConfig describes the configuration of a trigger that creates a
@@ -2617,25 +2446,13 @@ class GitHubEventsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (installationId != null) {
-      _json['installationId'] = installationId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (owner != null) {
-      _json['owner'] = owner;
-    }
-    if (pullRequest != null) {
-      _json['pullRequest'] = pullRequest.toJson();
-    }
-    if (push != null) {
-      _json['push'] = push.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (installationId != null) 'installationId': installationId,
+        if (name != null) 'name': name,
+        if (owner != null) 'owner': owner,
+        if (pullRequest != null) 'pullRequest': pullRequest.toJson(),
+        if (push != null) 'push': push.toJson(),
+      };
 }
 
 /// HTTPDelivery is the delivery configuration for an HTTP notification.
@@ -2651,13 +2468,9 @@ class HTTPDelivery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Container message for hash values.
@@ -2689,16 +2502,10 @@ class Hash {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -2763,19 +2570,11 @@ class HttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (data != null) 'data': data,
+        if (extensions != null) 'extensions': extensions,
+      };
 }
 
 /// Pairs a set of secret environment variables mapped to encrypted values with
@@ -2811,16 +2610,10 @@ class InlineSecret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (envMap != null) {
-      _json['envMap'] = envMap;
-    }
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (envMap != null) 'envMap': envMap,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
 }
 
 /// Response containing existing `BuildTriggers`.
@@ -2845,16 +2638,11 @@ class ListBuildTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (triggers != null) {
-      _json['triggers'] = triggers.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (triggers != null)
+          'triggers': triggers.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response including listed builds.
@@ -2881,16 +2669,11 @@ class ListBuildsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (builds != null) {
-      _json['builds'] = builds.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (builds != null)
+          'builds': builds.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Notification is the container which holds the data that is relevant to this
@@ -2947,25 +2730,13 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (httpDelivery != null) {
-      _json['httpDelivery'] = httpDelivery.toJson();
-    }
-    if (slackDelivery != null) {
-      _json['slackDelivery'] = slackDelivery.toJson();
-    }
-    if (smtpDelivery != null) {
-      _json['smtpDelivery'] = smtpDelivery.toJson();
-    }
-    if (structDelivery != null) {
-      _json['structDelivery'] = structDelivery;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+        if (httpDelivery != null) 'httpDelivery': httpDelivery.toJson(),
+        if (slackDelivery != null) 'slackDelivery': slackDelivery.toJson(),
+        if (smtpDelivery != null) 'smtpDelivery': smtpDelivery.toJson(),
+        if (structDelivery != null) 'structDelivery': structDelivery,
+      };
 }
 
 /// NotifierConfig is the top-level configuration message.
@@ -3001,22 +2772,12 @@ class NotifierConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (spec != null) {
-      _json['spec'] = spec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (kind != null) 'kind': kind,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (spec != null) 'spec': spec.toJson(),
+      };
 }
 
 /// NotifierMetadata contains the data which can be used to reference or
@@ -3044,16 +2805,10 @@ class NotifierMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notifier != null) {
-      _json['notifier'] = notifier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (notifier != null) 'notifier': notifier,
+      };
 }
 
 /// NotifierSecret is the container that maps a secret name (reference) to its
@@ -3082,16 +2837,10 @@ class NotifierSecret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// NotifierSecretRef contains the reference to a secret stored in the
@@ -3109,13 +2858,9 @@ class NotifierSecretRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (secretRef != null) {
-      _json['secretRef'] = secretRef;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (secretRef != null) 'secretRef': secretRef,
+      };
 }
 
 /// NotifierSpec is the configuration container for notifications.
@@ -3141,16 +2886,11 @@ class NotifierSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notification != null) {
-      _json['notification'] = notification.toJson();
-    }
-    if (secrets != null) {
-      _json['secrets'] = secrets.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notification != null) 'notification': notification.toJson(),
+        if (secrets != null)
+          'secrets': secrets.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3229,25 +2969,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// PullRequestFilter contains filter properties for matching GitHub Pull
@@ -3288,19 +3016,11 @@ class PullRequestFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (branch != null) {
-      _json['branch'] = branch;
-    }
-    if (commentControl != null) {
-      _json['commentControl'] = commentControl;
-    }
-    if (invertRegex != null) {
-      _json['invertRegex'] = invertRegex;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (branch != null) 'branch': branch,
+        if (commentControl != null) 'commentControl': commentControl,
+        if (invertRegex != null) 'invertRegex': invertRegex,
+      };
 }
 
 /// Push contains filter properties for matching GitHub git pushes.
@@ -3335,19 +3055,11 @@ class PushFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (branch != null) {
-      _json['branch'] = branch;
-    }
-    if (invertRegex != null) {
-      _json['invertRegex'] = invertRegex;
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (branch != null) 'branch': branch,
+        if (invertRegex != null) 'invertRegex': invertRegex,
+        if (tag != null) 'tag': tag,
+      };
 }
 
 /// ReceiveTriggerWebhookResponse \[Experimental\] is the response object for
@@ -3359,10 +3071,7 @@ class ReceiveTriggerWebhookResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Location of the source in a Google Cloud Source Repository.
@@ -3441,34 +3150,16 @@ class RepoSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (branchName != null) {
-      _json['branchName'] = branchName;
-    }
-    if (commitSha != null) {
-      _json['commitSha'] = commitSha;
-    }
-    if (dir != null) {
-      _json['dir'] = dir;
-    }
-    if (invertRegex != null) {
-      _json['invertRegex'] = invertRegex;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (repoName != null) {
-      _json['repoName'] = repoName;
-    }
-    if (substitutions != null) {
-      _json['substitutions'] = substitutions;
-    }
-    if (tagName != null) {
-      _json['tagName'] = tagName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (branchName != null) 'branchName': branchName,
+        if (commitSha != null) 'commitSha': commitSha,
+        if (dir != null) 'dir': dir,
+        if (invertRegex != null) 'invertRegex': invertRegex,
+        if (projectId != null) 'projectId': projectId,
+        if (repoName != null) 'repoName': repoName,
+        if (substitutions != null) 'substitutions': substitutions,
+        if (tagName != null) 'tagName': tagName,
+      };
 }
 
 /// Artifacts created by the build pipeline.
@@ -3532,28 +3223,15 @@ class Results {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (artifactManifest != null) {
-      _json['artifactManifest'] = artifactManifest;
-    }
-    if (artifactTiming != null) {
-      _json['artifactTiming'] = artifactTiming.toJson();
-    }
-    if (buildStepImages != null) {
-      _json['buildStepImages'] = buildStepImages;
-    }
-    if (buildStepOutputs != null) {
-      _json['buildStepOutputs'] = buildStepOutputs;
-    }
-    if (images != null) {
-      _json['images'] = images.map((value) => value.toJson()).toList();
-    }
-    if (numArtifacts != null) {
-      _json['numArtifacts'] = numArtifacts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (artifactManifest != null) 'artifactManifest': artifactManifest,
+        if (artifactTiming != null) 'artifactTiming': artifactTiming.toJson(),
+        if (buildStepImages != null) 'buildStepImages': buildStepImages,
+        if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs,
+        if (images != null)
+          'images': images.map((value) => value.toJson()).toList(),
+        if (numArtifacts != null) 'numArtifacts': numArtifacts,
+      };
 }
 
 /// Specifies a build to retry.
@@ -3587,19 +3265,11 @@ class RetryBuildRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// SMTPDelivery is the delivery configuration for an SMTP (email) notification.
@@ -3651,28 +3321,15 @@ class SMTPDelivery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fromAddress != null) {
-      _json['fromAddress'] = fromAddress;
-    }
-    if (password != null) {
-      _json['password'] = password.toJson();
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    if (recipientAddresses != null) {
-      _json['recipientAddresses'] = recipientAddresses;
-    }
-    if (senderAddress != null) {
-      _json['senderAddress'] = senderAddress;
-    }
-    if (server != null) {
-      _json['server'] = server;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fromAddress != null) 'fromAddress': fromAddress,
+        if (password != null) 'password': password.toJson(),
+        if (port != null) 'port': port,
+        if (recipientAddresses != null)
+          'recipientAddresses': recipientAddresses,
+        if (senderAddress != null) 'senderAddress': senderAddress,
+        if (server != null) 'server': server,
+      };
 }
 
 /// Pairs a set of secret environment variables containing encrypted values with
@@ -3710,16 +3367,10 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    if (secretEnv != null) {
-      _json['secretEnv'] = secretEnv;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+        if (secretEnv != null) 'secretEnv': secretEnv,
+      };
 }
 
 /// Pairs a secret environment variable with a SecretVersion in Secret Manager.
@@ -3746,16 +3397,10 @@ class SecretManagerSecret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (env != null) {
-      _json['env'] = env;
-    }
-    if (versionName != null) {
-      _json['versionName'] = versionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (env != null) 'env': env,
+        if (versionName != null) 'versionName': versionName,
+      };
 }
 
 /// Secrets and secret environment variables.
@@ -3784,17 +3429,13 @@ class Secrets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inline != null) {
-      _json['inline'] = inline.map((value) => value.toJson()).toList();
-    }
-    if (secretManager != null) {
-      _json['secretManager'] =
-          secretManager.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inline != null)
+          'inline': inline.map((value) => value.toJson()).toList(),
+        if (secretManager != null)
+          'secretManager':
+              secretManager.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// SlackDelivery is the delivery configuration for delivering Slack messages
@@ -3816,13 +3457,9 @@ class SlackDelivery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (webhookUri != null) {
-      _json['webhookUri'] = webhookUri.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (webhookUri != null) 'webhookUri': webhookUri.toJson(),
+      };
 }
 
 /// Location of the source in a supported storage service.
@@ -3847,16 +3484,10 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (repoSource != null) {
-      _json['repoSource'] = repoSource.toJson();
-    }
-    if (storageSource != null) {
-      _json['storageSource'] = storageSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (repoSource != null) 'repoSource': repoSource.toJson(),
+        if (storageSource != null) 'storageSource': storageSource.toJson(),
+      };
 }
 
 /// Provenance of the source.
@@ -3909,20 +3540,15 @@ class SourceProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fileHashes != null) {
-      _json['fileHashes'] =
-          fileHashes.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (resolvedRepoSource != null) {
-      _json['resolvedRepoSource'] = resolvedRepoSource.toJson();
-    }
-    if (resolvedStorageSource != null) {
-      _json['resolvedStorageSource'] = resolvedStorageSource.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fileHashes != null)
+          'fileHashes':
+              fileHashes.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (resolvedRepoSource != null)
+          'resolvedRepoSource': resolvedRepoSource.toJson(),
+        if (resolvedStorageSource != null)
+          'resolvedStorageSource': resolvedStorageSource.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3972,19 +3598,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Location of the source in an archive file in Google Cloud Storage.
@@ -4018,19 +3636,11 @@ class StorageSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucket != null) {
-      _json['bucket'] = bucket;
-    }
-    if (generation != null) {
-      _json['generation'] = generation;
-    }
-    if (object != null) {
-      _json['object'] = object;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucket != null) 'bucket': bucket,
+        if (generation != null) 'generation': generation,
+        if (object != null) 'object': object,
+      };
 }
 
 /// Start and end times for a build execution phase.
@@ -4052,16 +3662,10 @@ class TimeSpan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Volume describes a Docker container volume which is mounted into build steps
@@ -4091,14 +3695,8 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (path != null) 'path': path,
+      };
 }

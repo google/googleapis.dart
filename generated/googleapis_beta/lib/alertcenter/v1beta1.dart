@@ -673,16 +673,10 @@ class AccountWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (loginDetails != null) {
-      _json['loginDetails'] = loginDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (loginDetails != null) 'loginDetails': loginDetails.toJson(),
+      };
 }
 
 /// Alerts from G Suite Security Center rules service configured by admin.
@@ -779,46 +773,20 @@ class ActivityRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionNames != null) {
-      _json['actionNames'] = actionNames;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (query != null) {
-      _json['query'] = query;
-    }
-    if (supersededAlerts != null) {
-      _json['supersededAlerts'] = supersededAlerts;
-    }
-    if (supersedingAlert != null) {
-      _json['supersedingAlert'] = supersedingAlert;
-    }
-    if (threshold != null) {
-      _json['threshold'] = threshold;
-    }
-    if (triggerSource != null) {
-      _json['triggerSource'] = triggerSource;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (windowSize != null) {
-      _json['windowSize'] = windowSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionNames != null) 'actionNames': actionNames,
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (query != null) 'query': query,
+        if (supersededAlerts != null) 'supersededAlerts': supersededAlerts,
+        if (supersedingAlert != null) 'supersedingAlert': supersedingAlert,
+        if (threshold != null) 'threshold': threshold,
+        if (triggerSource != null) 'triggerSource': triggerSource,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (windowSize != null) 'windowSize': windowSize,
+      };
 }
 
 /// An alert affecting a customer.
@@ -965,49 +933,22 @@ class Alert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alertId != null) {
-      _json['alertId'] = alertId;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (securityInvestigationToolLink != null) {
-      _json['securityInvestigationToolLink'] = securityInvestigationToolLink;
-    }
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alertId != null) 'alertId': alertId,
+        if (createTime != null) 'createTime': createTime,
+        if (customerId != null) 'customerId': customerId,
+        if (data != null) 'data': data,
+        if (deleted != null) 'deleted': deleted,
+        if (endTime != null) 'endTime': endTime,
+        if (etag != null) 'etag': etag,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (securityInvestigationToolLink != null)
+          'securityInvestigationToolLink': securityInvestigationToolLink,
+        if (source != null) 'source': source,
+        if (startTime != null) 'startTime': startTime,
+        if (type != null) 'type': type,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// A customer feedback about an alert.
@@ -1070,28 +1011,14 @@ class AlertFeedback {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alertId != null) {
-      _json['alertId'] = alertId;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (feedbackId != null) {
-      _json['feedbackId'] = feedbackId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alertId != null) 'alertId': alertId,
+        if (createTime != null) 'createTime': createTime,
+        if (customerId != null) 'customerId': customerId,
+        if (email != null) 'email': email,
+        if (feedbackId != null) 'feedbackId': feedbackId,
+        if (type != null) 'type': type,
+      };
 }
 
 /// An alert metadata.
@@ -1168,31 +1095,15 @@ class AlertMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alertId != null) {
-      _json['alertId'] = alertId;
-    }
-    if (assignee != null) {
-      _json['assignee'] = assignee;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alertId != null) 'alertId': alertId,
+        if (assignee != null) 'assignee': assignee,
+        if (customerId != null) 'customerId': customerId,
+        if (etag != null) 'etag': etag,
+        if (severity != null) 'severity': severity,
+        if (status != null) 'status': status,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Alerts from App Maker to notify admins to set up default SQL instance.
@@ -1211,14 +1122,10 @@ class AppMakerSqlSetupNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestInfo != null) {
-      _json['requestInfo'] =
-          requestInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestInfo != null)
+          'requestInfo': requestInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Attachment with application-specific information about an alert.
@@ -1234,13 +1141,9 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (csv != null) {
-      _json['csv'] = csv.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (csv != null) 'csv': csv.toJson(),
+      };
 }
 
 /// Alert for setting the domain or IP that malicious email comes from as
@@ -1280,22 +1183,14 @@ class BadWhitelist {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domainId != null) {
-      _json['domainId'] = domainId.toJson();
-    }
-    if (maliciousEntity != null) {
-      _json['maliciousEntity'] = maliciousEntity.toJson();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (sourceIp != null) {
-      _json['sourceIp'] = sourceIp;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domainId != null) 'domainId': domainId.toJson(),
+        if (maliciousEntity != null)
+          'maliciousEntity': maliciousEntity.toJson(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (sourceIp != null) 'sourceIp': sourceIp,
+      };
 }
 
 /// A request to perform batch delete on alerts.
@@ -1324,16 +1219,10 @@ class BatchDeleteAlertsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alertId != null) {
-      _json['alertId'] = alertId;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alertId != null) 'alertId': alertId,
+        if (customerId != null) 'customerId': customerId,
+      };
 }
 
 /// Response to batch delete operation on alerts.
@@ -1364,17 +1253,12 @@ class BatchDeleteAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (failedAlertStatus != null) {
-      _json['failedAlertStatus'] = failedAlertStatus
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (successAlertIds != null) {
-      _json['successAlertIds'] = successAlertIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (failedAlertStatus != null)
+          'failedAlertStatus': failedAlertStatus
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (successAlertIds != null) 'successAlertIds': successAlertIds,
+      };
 }
 
 /// A request to perform batch undelete on alerts.
@@ -1403,16 +1287,10 @@ class BatchUndeleteAlertsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alertId != null) {
-      _json['alertId'] = alertId;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alertId != null) 'alertId': alertId,
+        if (customerId != null) 'customerId': customerId,
+      };
 }
 
 /// Response to batch undelete operation on alerts.
@@ -1443,17 +1321,12 @@ class BatchUndeleteAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (failedAlertStatus != null) {
-      _json['failedAlertStatus'] = failedAlertStatus
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (successAlertIds != null) {
-      _json['successAlertIds'] = successAlertIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (failedAlertStatus != null)
+          'failedAlertStatus': failedAlertStatus
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (successAlertIds != null) 'successAlertIds': successAlertIds,
+      };
 }
 
 /// A reference to a Cloud Pubsub topic.
@@ -1488,16 +1361,10 @@ class CloudPubsubTopic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (payloadFormat != null) {
-      _json['payloadFormat'] = payloadFormat;
-    }
-    if (topicName != null) {
-      _json['topicName'] = topicName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (payloadFormat != null) 'payloadFormat': payloadFormat,
+        if (topicName != null) 'topicName': topicName,
+      };
 }
 
 /// A representation of a CSV file attachment, as a list of column headers and a
@@ -1526,16 +1393,11 @@ class Csv {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataRows != null) {
-      _json['dataRows'] = dataRows.map((value) => value.toJson()).toList();
-    }
-    if (headers != null) {
-      _json['headers'] = headers;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataRows != null)
+          'dataRows': dataRows.map((value) => value.toJson()).toList(),
+        if (headers != null) 'headers': headers,
+      };
 }
 
 /// A representation of a single data row in a CSV file.
@@ -1554,13 +1416,9 @@ class CsvRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entries != null) {
-      _json['entries'] = entries;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entries != null) 'entries': entries,
+      };
 }
 
 /// A mobile device compromised alert.
@@ -1590,16 +1448,11 @@ class DeviceCompromised {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (events != null) {
-      _json['events'] = events.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (events != null)
+          'events': events.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Detailed information of a single MDM device compromised event.
@@ -1655,31 +1508,16 @@ class DeviceCompromisedSecurityDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceCompromisedState != null) {
-      _json['deviceCompromisedState'] = deviceCompromisedState;
-    }
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceModel != null) {
-      _json['deviceModel'] = deviceModel;
-    }
-    if (deviceType != null) {
-      _json['deviceType'] = deviceType;
-    }
-    if (iosVendorId != null) {
-      _json['iosVendorId'] = iosVendorId;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceCompromisedState != null)
+          'deviceCompromisedState': deviceCompromisedState,
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceModel != null) 'deviceModel': deviceModel,
+        if (deviceType != null) 'deviceType': deviceType,
+        if (iosVendorId != null) 'iosVendorId': iosVendorId,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (serialNumber != null) 'serialNumber': serialNumber,
+      };
 }
 
 /// Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.
@@ -1701,13 +1539,10 @@ class DlpRuleViolation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ruleViolationInfo != null) {
-      _json['ruleViolationInfo'] = ruleViolationInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ruleViolationInfo != null)
+          'ruleViolationInfo': ruleViolationInfo.toJson(),
+      };
 }
 
 /// Domain ID of Gmail phishing alerts.
@@ -1723,13 +1558,10 @@ class DomainId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerPrimaryDomain != null) {
-      _json['customerPrimaryDomain'] = customerPrimaryDomain;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerPrimaryDomain != null)
+          'customerPrimaryDomain': customerPrimaryDomain,
+      };
 }
 
 /// A takeout operation for the entire domain was initiated by an admin.
@@ -1753,16 +1585,10 @@ class DomainWideTakeoutInitiated {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (takeoutRequestId != null) {
-      _json['takeoutRequestId'] = takeoutRequestId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (takeoutRequestId != null) 'takeoutRequestId': takeoutRequestId,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1779,10 +1605,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Details of a message in phishing spike alert.
@@ -1842,34 +1665,19 @@ class GmailMessageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attachmentsSha256Hash != null) {
-      _json['attachmentsSha256Hash'] = attachmentsSha256Hash;
-    }
-    if (date != null) {
-      _json['date'] = date;
-    }
-    if (md5HashMessageBody != null) {
-      _json['md5HashMessageBody'] = md5HashMessageBody;
-    }
-    if (md5HashSubject != null) {
-      _json['md5HashSubject'] = md5HashSubject;
-    }
-    if (messageBodySnippet != null) {
-      _json['messageBodySnippet'] = messageBodySnippet;
-    }
-    if (messageId != null) {
-      _json['messageId'] = messageId;
-    }
-    if (recipient != null) {
-      _json['recipient'] = recipient;
-    }
-    if (subjectText != null) {
-      _json['subjectText'] = subjectText;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attachmentsSha256Hash != null)
+          'attachmentsSha256Hash': attachmentsSha256Hash,
+        if (date != null) 'date': date,
+        if (md5HashMessageBody != null)
+          'md5HashMessageBody': md5HashMessageBody,
+        if (md5HashSubject != null) 'md5HashSubject': md5HashSubject,
+        if (messageBodySnippet != null)
+          'messageBodySnippet': messageBodySnippet,
+        if (messageId != null) 'messageId': messageId,
+        if (recipient != null) 'recipient': recipient,
+        if (subjectText != null) 'subjectText': subjectText,
+      };
 }
 
 /// An incident reported by Google Operations for a G Suite application.
@@ -1920,25 +1728,14 @@ class GoogleOperations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (affectedUserEmails != null) {
-      _json['affectedUserEmails'] = affectedUserEmails;
-    }
-    if (attachmentData != null) {
-      _json['attachmentData'] = attachmentData.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (header != null) {
-      _json['header'] = header;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (affectedUserEmails != null)
+          'affectedUserEmails': affectedUserEmails,
+        if (attachmentData != null) 'attachmentData': attachmentData.toJson(),
+        if (description != null) 'description': description,
+        if (header != null) 'header': header,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Response message for an alert feedback listing request.
@@ -1959,13 +1756,10 @@ class ListAlertFeedbackResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feedback != null) {
-      _json['feedback'] = feedback.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feedback != null)
+          'feedback': feedback.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for an alert listing request.
@@ -1994,16 +1788,11 @@ class ListAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alerts != null) {
-      _json['alerts'] = alerts.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alerts != null)
+          'alerts': alerts.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The details of the login action.
@@ -2032,16 +1821,10 @@ class LoginDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (loginTime != null) {
-      _json['loginTime'] = loginTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (loginTime != null) 'loginTime': loginTime,
+      };
 }
 
 /// Proto for all phishing alerts with common payload.
@@ -2095,25 +1878,15 @@ class MailPhishing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domainId != null) {
-      _json['domainId'] = domainId.toJson();
-    }
-    if (isInternal != null) {
-      _json['isInternal'] = isInternal;
-    }
-    if (maliciousEntity != null) {
-      _json['maliciousEntity'] = maliciousEntity.toJson();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    if (systemActionType != null) {
-      _json['systemActionType'] = systemActionType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domainId != null) 'domainId': domainId.toJson(),
+        if (isInternal != null) 'isInternal': isInternal,
+        if (maliciousEntity != null)
+          'maliciousEntity': maliciousEntity.toJson(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+        if (systemActionType != null) 'systemActionType': systemActionType,
+      };
 }
 
 /// Entity whose actions triggered a Gmail phishing alert.
@@ -2142,19 +1915,11 @@ class MaliciousEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (fromHeader != null) {
-      _json['fromHeader'] = fromHeader;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (entity != null) 'entity': entity.toJson(),
+        if (fromHeader != null) 'fromHeader': fromHeader,
+      };
 }
 
 /// Proto that contains match information from the condition part of the rule.
@@ -2178,16 +1943,12 @@ class MatchInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (predefinedDetector != null) {
-      _json['predefinedDetector'] = predefinedDetector.toJson();
-    }
-    if (userDefinedDetector != null) {
-      _json['userDefinedDetector'] = userDefinedDetector.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (predefinedDetector != null)
+          'predefinedDetector': predefinedDetector.toJson(),
+        if (userDefinedDetector != null)
+          'userDefinedDetector': userDefinedDetector.toJson(),
+      };
 }
 
 /// Settings for callback notifications.
@@ -2207,13 +1968,10 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudPubsubTopic != null) {
-      _json['cloudPubsubTopic'] = cloudPubsubTopic.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudPubsubTopic != null)
+          'cloudPubsubTopic': cloudPubsubTopic.toJson(),
+      };
 }
 
 /// Alert for a spike in user reported phishing.
@@ -2256,22 +2014,14 @@ class PhishingSpike {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (domainId != null) {
-      _json['domainId'] = domainId.toJson();
-    }
-    if (isInternal != null) {
-      _json['isInternal'] = isInternal;
-    }
-    if (maliciousEntity != null) {
-      _json['maliciousEntity'] = maliciousEntity.toJson();
-    }
-    if (messages != null) {
-      _json['messages'] = messages.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (domainId != null) 'domainId': domainId.toJson(),
+        if (isInternal != null) 'isInternal': isInternal,
+        if (maliciousEntity != null)
+          'maliciousEntity': maliciousEntity.toJson(),
+        if (messages != null)
+          'messages': messages.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Detector provided by Google.
@@ -2287,13 +2037,9 @@ class PredefinedDetectorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (detectorName != null) {
-      _json['detectorName'] = detectorName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (detectorName != null) 'detectorName': detectorName,
+      };
 }
 
 /// Requests for one application that needs default SQL setup.
@@ -2328,19 +2074,11 @@ class RequestInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appDeveloperEmail != null) {
-      _json['appDeveloperEmail'] = appDeveloperEmail;
-    }
-    if (appKey != null) {
-      _json['appKey'] = appKey;
-    }
-    if (numberOfRequests != null) {
-      _json['numberOfRequests'] = numberOfRequests;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appDeveloperEmail != null) 'appDeveloperEmail': appDeveloperEmail,
+        if (appKey != null) 'appKey': appKey,
+        if (numberOfRequests != null) 'numberOfRequests': numberOfRequests,
+      };
 }
 
 /// Proto that contains resource information.
@@ -2362,16 +2100,10 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (documentId != null) {
-      _json['documentId'] = documentId;
-    }
-    if (resourceTitle != null) {
-      _json['resourceTitle'] = resourceTitle;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (documentId != null) 'documentId': documentId,
+        if (resourceTitle != null) 'resourceTitle': resourceTitle,
+      };
 }
 
 /// Proto that contains rule information.
@@ -2393,16 +2125,10 @@ class RuleInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// Common alert information about violated rules that are configured by G Suite
@@ -2493,37 +2219,21 @@ class RuleViolationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataSource != null) {
-      _json['dataSource'] = dataSource;
-    }
-    if (matchInfo != null) {
-      _json['matchInfo'] = matchInfo.map((value) => value.toJson()).toList();
-    }
-    if (recipients != null) {
-      _json['recipients'] = recipients;
-    }
-    if (resourceInfo != null) {
-      _json['resourceInfo'] = resourceInfo.toJson();
-    }
-    if (ruleInfo != null) {
-      _json['ruleInfo'] = ruleInfo.toJson();
-    }
-    if (suppressedActionTypes != null) {
-      _json['suppressedActionTypes'] = suppressedActionTypes;
-    }
-    if (trigger != null) {
-      _json['trigger'] = trigger;
-    }
-    if (triggeredActionTypes != null) {
-      _json['triggeredActionTypes'] = triggeredActionTypes;
-    }
-    if (triggeringUserEmail != null) {
-      _json['triggeringUserEmail'] = triggeringUserEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataSource != null) 'dataSource': dataSource,
+        if (matchInfo != null)
+          'matchInfo': matchInfo.map((value) => value.toJson()).toList(),
+        if (recipients != null) 'recipients': recipients,
+        if (resourceInfo != null) 'resourceInfo': resourceInfo.toJson(),
+        if (ruleInfo != null) 'ruleInfo': ruleInfo.toJson(),
+        if (suppressedActionTypes != null)
+          'suppressedActionTypes': suppressedActionTypes,
+        if (trigger != null) 'trigger': trigger,
+        if (triggeredActionTypes != null)
+          'triggeredActionTypes': triggeredActionTypes,
+        if (triggeringUserEmail != null)
+          'triggeringUserEmail': triggeringUserEmail,
+      };
 }
 
 /// Customer-level settings.
@@ -2542,14 +2252,11 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (notifications != null) {
-      _json['notifications'] =
-          notifications.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (notifications != null)
+          'notifications':
+              notifications.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A state-sponsored attack alert.
@@ -2567,13 +2274,9 @@ class StateSponsoredAttack {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2623,19 +2326,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A mobile suspicious activity alert.
@@ -2665,16 +2360,11 @@ class SuspiciousActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (events != null) {
-      _json['events'] = events.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (events != null)
+          'events': events.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Detailed information of a single MDM suspicious activity event.
@@ -2740,37 +2430,17 @@ class SuspiciousActivitySecurityDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceModel != null) {
-      _json['deviceModel'] = deviceModel;
-    }
-    if (deviceProperty != null) {
-      _json['deviceProperty'] = deviceProperty;
-    }
-    if (deviceType != null) {
-      _json['deviceType'] = deviceType;
-    }
-    if (iosVendorId != null) {
-      _json['iosVendorId'] = iosVendorId;
-    }
-    if (newValue != null) {
-      _json['newValue'] = newValue;
-    }
-    if (oldValue != null) {
-      _json['oldValue'] = oldValue;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceModel != null) 'deviceModel': deviceModel,
+        if (deviceProperty != null) 'deviceProperty': deviceProperty,
+        if (deviceType != null) 'deviceType': deviceType,
+        if (iosVendorId != null) 'iosVendorId': iosVendorId,
+        if (newValue != null) 'newValue': newValue,
+        if (oldValue != null) 'oldValue': oldValue,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (serialNumber != null) 'serialNumber': serialNumber,
+      };
 }
 
 /// A request to undelete a specific alert that was marked for deletion.
@@ -2791,13 +2461,9 @@ class UndeleteAlertRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerId != null) 'customerId': customerId,
+      };
 }
 
 /// A user.
@@ -2819,16 +2485,10 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+      };
 }
 
 /// Detector defined by administrators.
@@ -2850,14 +2510,8 @@ class UserDefinedDetectorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }

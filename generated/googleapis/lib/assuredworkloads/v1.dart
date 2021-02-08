@@ -527,22 +527,12 @@ class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (complianceRegime != null) {
-      _json['complianceRegime'] = complianceRegime;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (complianceRegime != null) 'complianceRegime': complianceRegime,
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 /// Response of ListWorkloads endpoint.
@@ -570,16 +560,11 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (workloads != null) {
-      _json['workloads'] = workloads.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (workloads != null)
+          'workloads': workloads.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An Workload object for managing highly regulated workloads of cloud
@@ -717,40 +702,20 @@ class GoogleCloudAssuredworkloadsV1Workload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (billingAccount != null) {
-      _json['billingAccount'] = billingAccount;
-    }
-    if (complianceRegime != null) {
-      _json['complianceRegime'] = complianceRegime;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kmsSettings != null) {
-      _json['kmsSettings'] = kmsSettings.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (provisionedResourcesParent != null) {
-      _json['provisionedResourcesParent'] = provisionedResourcesParent;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount,
+        if (complianceRegime != null) 'complianceRegime': complianceRegime,
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (etag != null) 'etag': etag,
+        if (kmsSettings != null) 'kmsSettings': kmsSettings.toJson(),
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (provisionedResourcesParent != null)
+          'provisionedResourcesParent': provisionedResourcesParent,
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Settings specific to the Key Management Service.
@@ -783,16 +748,10 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextRotationTime != null) {
-      _json['nextRotationTime'] = nextRotationTime;
-    }
-    if (rotationPeriod != null) {
-      _json['rotationPeriod'] = rotationPeriod;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod,
+      };
 }
 
 /// Represent the resources that are children of this Workload.
@@ -820,16 +779,10 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId,
+        if (resourceType != null) 'resourceType': resourceType,
+      };
 }
 
 /// Operation metadata to give request details of CreateWorkload.
@@ -881,22 +834,12 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (complianceRegime != null) {
-      _json['complianceRegime'] = complianceRegime;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (complianceRegime != null) 'complianceRegime': complianceRegime,
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 /// An Workload object for managing highly regulated workloads of cloud
@@ -1087,52 +1030,26 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (billingAccount != null) {
-      _json['billingAccount'] = billingAccount;
-    }
-    if (cjisSettings != null) {
-      _json['cjisSettings'] = cjisSettings.toJson();
-    }
-    if (complianceRegime != null) {
-      _json['complianceRegime'] = complianceRegime;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (fedrampHighSettings != null) {
-      _json['fedrampHighSettings'] = fedrampHighSettings.toJson();
-    }
-    if (fedrampModerateSettings != null) {
-      _json['fedrampModerateSettings'] = fedrampModerateSettings.toJson();
-    }
-    if (il4Settings != null) {
-      _json['il4Settings'] = il4Settings.toJson();
-    }
-    if (kmsSettings != null) {
-      _json['kmsSettings'] = kmsSettings.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (provisionedResourcesParent != null) {
-      _json['provisionedResourcesParent'] = provisionedResourcesParent;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount,
+        if (cjisSettings != null) 'cjisSettings': cjisSettings.toJson(),
+        if (complianceRegime != null) 'complianceRegime': complianceRegime,
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (etag != null) 'etag': etag,
+        if (fedrampHighSettings != null)
+          'fedrampHighSettings': fedrampHighSettings.toJson(),
+        if (fedrampModerateSettings != null)
+          'fedrampModerateSettings': fedrampModerateSettings.toJson(),
+        if (il4Settings != null) 'il4Settings': il4Settings.toJson(),
+        if (kmsSettings != null) 'kmsSettings': kmsSettings.toJson(),
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (provisionedResourcesParent != null)
+          'provisionedResourcesParent': provisionedResourcesParent,
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Settings specific to resources needed for CJIS.
@@ -1155,13 +1072,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsSettings != null) {
-      _json['kmsSettings'] = kmsSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsSettings != null) 'kmsSettings': kmsSettings.toJson(),
+      };
 }
 
 /// Settings specific to resources needed for FedRAMP High.
@@ -1184,13 +1097,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsSettings != null) {
-      _json['kmsSettings'] = kmsSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsSettings != null) 'kmsSettings': kmsSettings.toJson(),
+      };
 }
 
 /// Settings specific to resources needed for FedRAMP Moderate.
@@ -1213,13 +1122,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsSettings != null) {
-      _json['kmsSettings'] = kmsSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsSettings != null) 'kmsSettings': kmsSettings.toJson(),
+      };
 }
 
 /// Settings specific to resources needed for IL4.
@@ -1242,13 +1147,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsSettings != null) {
-      _json['kmsSettings'] = kmsSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsSettings != null) 'kmsSettings': kmsSettings.toJson(),
+      };
 }
 
 /// Settings specific to the Key Management Service.
@@ -1282,16 +1183,10 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextRotationTime != null) {
-      _json['nextRotationTime'] = nextRotationTime;
-    }
-    if (rotationPeriod != null) {
-      _json['rotationPeriod'] = rotationPeriod;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod,
+      };
 }
 
 /// Represent the resources that are children of this Workload.
@@ -1320,16 +1215,10 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (resourceType != null) {
-      _json['resourceType'] = resourceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId,
+        if (resourceType != null) 'resourceType': resourceType,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1355,16 +1244,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1443,25 +1327,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1478,10 +1350,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1531,17 +1400,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

@@ -327,19 +327,11 @@ class GenerateAccessTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegates != null) {
-      _json['delegates'] = delegates;
-    }
-    if (lifetime != null) {
-      _json['lifetime'] = lifetime;
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegates != null) 'delegates': delegates,
+        if (lifetime != null) 'lifetime': lifetime,
+        if (scope != null) 'scope': scope,
+      };
 }
 
 class GenerateAccessTokenResponse {
@@ -362,16 +354,10 @@ class GenerateAccessTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessToken != null) {
-      _json['accessToken'] = accessToken;
-    }
-    if (expireTime != null) {
-      _json['expireTime'] = expireTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken,
+        if (expireTime != null) 'expireTime': expireTime,
+      };
 }
 
 class GenerateIdTokenRequest {
@@ -415,19 +401,11 @@ class GenerateIdTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audience != null) {
-      _json['audience'] = audience;
-    }
-    if (delegates != null) {
-      _json['delegates'] = delegates;
-    }
-    if (includeEmail != null) {
-      _json['includeEmail'] = includeEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audience != null) 'audience': audience,
+        if (delegates != null) 'delegates': delegates,
+        if (includeEmail != null) 'includeEmail': includeEmail,
+      };
 }
 
 class GenerateIdTokenResponse {
@@ -442,13 +420,9 @@ class GenerateIdTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (token != null) 'token': token,
+      };
 }
 
 class SignBlobRequest {
@@ -488,16 +462,10 @@ class SignBlobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegates != null) {
-      _json['delegates'] = delegates;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegates != null) 'delegates': delegates,
+        if (payload != null) 'payload': payload,
+      };
 }
 
 class SignBlobResponse {
@@ -540,16 +508,10 @@ class SignBlobResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyId != null) {
-      _json['keyId'] = keyId;
-    }
-    if (signedBlob != null) {
-      _json['signedBlob'] = signedBlob;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyId != null) 'keyId': keyId,
+        if (signedBlob != null) 'signedBlob': signedBlob,
+      };
 }
 
 class SignJwtRequest {
@@ -588,16 +550,10 @@ class SignJwtRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegates != null) {
-      _json['delegates'] = delegates;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegates != null) 'delegates': delegates,
+        if (payload != null) 'payload': payload,
+      };
 }
 
 class SignJwtResponse {
@@ -635,14 +591,8 @@ class SignJwtResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keyId != null) {
-      _json['keyId'] = keyId;
-    }
-    if (signedJwt != null) {
-      _json['signedJwt'] = signedJwt;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keyId != null) 'keyId': keyId,
+        if (signedJwt != null) 'signedJwt': signedJwt,
+      };
 }

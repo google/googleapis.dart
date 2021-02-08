@@ -428,32 +428,18 @@ class GoogleCloudBillingBudgetsV1Budget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (amount != null) {
-      _json['amount'] = amount.toJson();
-    }
-    if (budgetFilter != null) {
-      _json['budgetFilter'] = budgetFilter.toJson();
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (notificationsRule != null) {
-      _json['notificationsRule'] = notificationsRule.toJson();
-    }
-    if (thresholdRules != null) {
-      _json['thresholdRules'] =
-          thresholdRules.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (amount != null) 'amount': amount.toJson(),
+        if (budgetFilter != null) 'budgetFilter': budgetFilter.toJson(),
+        if (displayName != null) 'displayName': displayName,
+        if (etag != null) 'etag': etag,
+        if (name != null) 'name': name,
+        if (notificationsRule != null)
+          'notificationsRule': notificationsRule.toJson(),
+        if (thresholdRules != null)
+          'thresholdRules':
+              thresholdRules.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The budgeted amount for each usage period.
@@ -482,16 +468,12 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastPeriodAmount != null) {
-      _json['lastPeriodAmount'] = lastPeriodAmount.toJson();
-    }
-    if (specifiedAmount != null) {
-      _json['specifiedAmount'] = specifiedAmount.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastPeriodAmount != null)
+          'lastPeriodAmount': lastPeriodAmount.toJson(),
+        if (specifiedAmount != null)
+          'specifiedAmount': specifiedAmount.toJson(),
+      };
 }
 
 /// A filter for a budget, limiting the scope of the cost to calculate.
@@ -602,28 +584,15 @@ class GoogleCloudBillingBudgetsV1Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creditTypes != null) {
-      _json['creditTypes'] = creditTypes;
-    }
-    if (creditTypesTreatment != null) {
-      _json['creditTypesTreatment'] = creditTypesTreatment;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (projects != null) {
-      _json['projects'] = projects;
-    }
-    if (services != null) {
-      _json['services'] = services;
-    }
-    if (subaccounts != null) {
-      _json['subaccounts'] = subaccounts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creditTypes != null) 'creditTypes': creditTypes,
+        if (creditTypesTreatment != null)
+          'creditTypesTreatment': creditTypesTreatment,
+        if (labels != null) 'labels': labels,
+        if (projects != null) 'projects': projects,
+        if (services != null) 'services': services,
+        if (subaccounts != null) 'subaccounts': subaccounts,
+      };
 }
 
 /// Describes a budget amount targeted to last period's spend.
@@ -638,10 +607,7 @@ class GoogleCloudBillingBudgetsV1LastPeriodAmount {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response for ListBudgets
@@ -668,16 +634,11 @@ class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (budgets != null) {
-      _json['budgets'] = budgets.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (budgets != null)
+          'budgets': budgets.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// NotificationsRule defines notifications that are sent based on budget spend
@@ -751,22 +712,14 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disableDefaultIamRecipients != null) {
-      _json['disableDefaultIamRecipients'] = disableDefaultIamRecipients;
-    }
-    if (monitoringNotificationChannels != null) {
-      _json['monitoringNotificationChannels'] = monitoringNotificationChannels;
-    }
-    if (pubsubTopic != null) {
-      _json['pubsubTopic'] = pubsubTopic;
-    }
-    if (schemaVersion != null) {
-      _json['schemaVersion'] = schemaVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disableDefaultIamRecipients != null)
+          'disableDefaultIamRecipients': disableDefaultIamRecipients,
+        if (monitoringNotificationChannels != null)
+          'monitoringNotificationChannels': monitoringNotificationChannels,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+        if (schemaVersion != null) 'schemaVersion': schemaVersion,
+      };
 }
 
 /// ThresholdRule contains a definition of a threshold which triggers an alert
@@ -810,16 +763,10 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (spendBasis != null) {
-      _json['spendBasis'] = spendBasis;
-    }
-    if (thresholdPercent != null) {
-      _json['thresholdPercent'] = thresholdPercent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (spendBasis != null) 'spendBasis': spendBasis,
+        if (thresholdPercent != null) 'thresholdPercent': thresholdPercent,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -836,10 +783,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents an amount of money with its currency type.
@@ -875,17 +819,9 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }

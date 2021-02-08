@@ -507,25 +507,13 @@ class ApiDataRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clicks != null) {
-      _json['clicks'] = clicks;
-    }
-    if (ctr != null) {
-      _json['ctr'] = ctr;
-    }
-    if (impressions != null) {
-      _json['impressions'] = impressions;
-    }
-    if (keys != null) {
-      _json['keys'] = keys;
-    }
-    if (position != null) {
-      _json['position'] = position;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clicks != null) 'clicks': clicks,
+        if (ctr != null) 'ctr': ctr,
+        if (impressions != null) 'impressions': impressions,
+        if (keys != null) 'keys': keys,
+        if (position != null) 'position': position,
+      };
 }
 
 class ApiDimensionFilter {
@@ -547,19 +535,11 @@ class ApiDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimension != null) 'dimension': dimension,
+        if (expression != null) 'expression': expression,
+        if (operator != null) 'operator': operator,
+      };
 }
 
 class ApiDimensionFilterGroup {
@@ -580,16 +560,11 @@ class ApiDimensionFilterGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filters != null) {
-      _json['filters'] = filters.map((value) => value.toJson()).toList();
-    }
-    if (groupType != null) {
-      _json['groupType'] = groupType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filters != null)
+          'filters': filters.map((value) => value.toJson()).toList(),
+        if (groupType != null) 'groupType': groupType,
+      };
 }
 
 class SearchAnalyticsQueryRequest {
@@ -706,38 +681,19 @@ class SearchAnalyticsQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregationType != null) {
-      _json['aggregationType'] = aggregationType;
-    }
-    if (dataState != null) {
-      _json['dataState'] = dataState;
-    }
-    if (dimensionFilterGroups != null) {
-      _json['dimensionFilterGroups'] =
-          dimensionFilterGroups.map((value) => value.toJson()).toList();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions;
-    }
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (rowLimit != null) {
-      _json['rowLimit'] = rowLimit;
-    }
-    if (searchType != null) {
-      _json['searchType'] = searchType;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    if (startRow != null) {
-      _json['startRow'] = startRow;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregationType != null) 'aggregationType': aggregationType,
+        if (dataState != null) 'dataState': dataState,
+        if (dimensionFilterGroups != null)
+          'dimensionFilterGroups':
+              dimensionFilterGroups.map((value) => value.toJson()).toList(),
+        if (dimensions != null) 'dimensions': dimensions,
+        if (endDate != null) 'endDate': endDate,
+        if (rowLimit != null) 'rowLimit': rowLimit,
+        if (searchType != null) 'searchType': searchType,
+        if (startDate != null) 'startDate': startDate,
+        if (startRow != null) 'startRow': startRow,
+      };
 }
 
 /// A list of rows, one per result, grouped by key.
@@ -765,16 +721,11 @@ class SearchAnalyticsQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responseAggregationType != null) {
-      _json['responseAggregationType'] = responseAggregationType;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responseAggregationType != null)
+          'responseAggregationType': responseAggregationType,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List of sitemaps.
@@ -793,13 +744,10 @@ class SitemapsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sitemap != null) {
-      _json['sitemap'] = sitemap.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sitemap != null)
+          'sitemap': sitemap.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// List of sites with access level information.
@@ -820,13 +768,10 @@ class SitesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (siteEntry != null) {
-      _json['siteEntry'] = siteEntry.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (siteEntry != null)
+          'siteEntry': siteEntry.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Contains permission level information about a Search Console site.
@@ -850,16 +795,10 @@ class WmxSite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissionLevel != null) {
-      _json['permissionLevel'] = permissionLevel;
-    }
-    if (siteUrl != null) {
-      _json['siteUrl'] = siteUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissionLevel != null) 'permissionLevel': permissionLevel,
+        if (siteUrl != null) 'siteUrl': siteUrl,
+      };
 }
 
 /// Contains detailed information about a specific URL submitted as a sitemap.
@@ -939,37 +878,20 @@ class WmxSitemap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contents != null) {
-      _json['contents'] = contents.map((value) => value.toJson()).toList();
-    }
-    if (errors != null) {
-      _json['errors'] = errors;
-    }
-    if (isPending != null) {
-      _json['isPending'] = isPending;
-    }
-    if (isSitemapsIndex != null) {
-      _json['isSitemapsIndex'] = isSitemapsIndex;
-    }
-    if (lastDownloaded != null) {
-      _json['lastDownloaded'] = (lastDownloaded).toIso8601String();
-    }
-    if (lastSubmitted != null) {
-      _json['lastSubmitted'] = (lastSubmitted).toIso8601String();
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (warnings != null) {
-      _json['warnings'] = warnings;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contents != null)
+          'contents': contents.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors,
+        if (isPending != null) 'isPending': isPending,
+        if (isSitemapsIndex != null) 'isSitemapsIndex': isSitemapsIndex,
+        if (lastDownloaded != null)
+          'lastDownloaded': (lastDownloaded).toIso8601String(),
+        if (lastSubmitted != null)
+          'lastSubmitted': (lastSubmitted).toIso8601String(),
+        if (path != null) 'path': path,
+        if (type != null) 'type': type,
+        if (warnings != null) 'warnings': warnings,
+      };
 }
 
 /// Information about the various content types in the sitemap.
@@ -1000,17 +922,9 @@ class WmxSitemapContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexed != null) {
-      _json['indexed'] = indexed;
-    }
-    if (submitted != null) {
-      _json['submitted'] = submitted;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexed != null) 'indexed': indexed,
+        if (submitted != null) 'submitted': submitted,
+        if (type != null) 'type': type,
+      };
 }

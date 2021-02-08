@@ -244,31 +244,15 @@ class Tokeninfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audience != null) {
-      _json['audience'] = audience;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (expiresIn != null) {
-      _json['expires_in'] = expiresIn;
-    }
-    if (issuedTo != null) {
-      _json['issued_to'] = issuedTo;
-    }
-    if (scope != null) {
-      _json['scope'] = scope;
-    }
-    if (userId != null) {
-      _json['user_id'] = userId;
-    }
-    if (verifiedEmail != null) {
-      _json['verified_email'] = verifiedEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audience != null) 'audience': audience,
+        if (email != null) 'email': email,
+        if (expiresIn != null) 'expires_in': expiresIn,
+        if (issuedTo != null) 'issued_to': issuedTo,
+        if (scope != null) 'scope': scope,
+        if (userId != null) 'user_id': userId,
+        if (verifiedEmail != null) 'verified_email': verifiedEmail,
+      };
 }
 
 class Userinfo {
@@ -345,41 +329,17 @@ class Userinfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (familyName != null) {
-      _json['family_name'] = familyName;
-    }
-    if (gender != null) {
-      _json['gender'] = gender;
-    }
-    if (givenName != null) {
-      _json['given_name'] = givenName;
-    }
-    if (hd != null) {
-      _json['hd'] = hd;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (picture != null) {
-      _json['picture'] = picture;
-    }
-    if (verifiedEmail != null) {
-      _json['verified_email'] = verifiedEmail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (familyName != null) 'family_name': familyName,
+        if (gender != null) 'gender': gender,
+        if (givenName != null) 'given_name': givenName,
+        if (hd != null) 'hd': hd,
+        if (id != null) 'id': id,
+        if (link != null) 'link': link,
+        if (locale != null) 'locale': locale,
+        if (name != null) 'name': name,
+        if (picture != null) 'picture': picture,
+        if (verifiedEmail != null) 'verified_email': verifiedEmail,
+      };
 }

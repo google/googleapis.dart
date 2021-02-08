@@ -77,10 +77,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class WrapRequest {
@@ -98,16 +95,10 @@ class WrapRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (age != null) {
-      _json['age'] = age;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (age != null) 'age': age,
+        if (name != null) 'name': name,
+      };
 }
 
 class WrapResponse {
@@ -121,11 +112,7 @@ class WrapResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (result != null) 'result': result,
+      };
 }

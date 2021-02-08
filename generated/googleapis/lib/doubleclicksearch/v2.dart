@@ -586,28 +586,15 @@ class Availability {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (agencyId != null) {
-      _json['agencyId'] = agencyId;
-    }
-    if (availabilityTimestamp != null) {
-      _json['availabilityTimestamp'] = availabilityTimestamp;
-    }
-    if (segmentationId != null) {
-      _json['segmentationId'] = segmentationId;
-    }
-    if (segmentationName != null) {
-      _json['segmentationName'] = segmentationName;
-    }
-    if (segmentationType != null) {
-      _json['segmentationType'] = segmentationType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (agencyId != null) 'agencyId': agencyId,
+        if (availabilityTimestamp != null)
+          'availabilityTimestamp': availabilityTimestamp,
+        if (segmentationId != null) 'segmentationId': segmentationId,
+        if (segmentationName != null) 'segmentationName': segmentationName,
+        if (segmentationType != null) 'segmentationType': segmentationType,
+      };
 }
 
 /// A conversion containing data relevant to DoubleClick Search.
@@ -859,111 +846,47 @@ class Conversion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adGroupId != null) {
-      _json['adGroupId'] = adGroupId;
-    }
-    if (adId != null) {
-      _json['adId'] = adId;
-    }
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (agencyId != null) {
-      _json['agencyId'] = agencyId;
-    }
-    if (attributionModel != null) {
-      _json['attributionModel'] = attributionModel;
-    }
-    if (campaignId != null) {
-      _json['campaignId'] = campaignId;
-    }
-    if (channel != null) {
-      _json['channel'] = channel;
-    }
-    if (clickId != null) {
-      _json['clickId'] = clickId;
-    }
-    if (conversionId != null) {
-      _json['conversionId'] = conversionId;
-    }
-    if (conversionModifiedTimestamp != null) {
-      _json['conversionModifiedTimestamp'] = conversionModifiedTimestamp;
-    }
-    if (conversionTimestamp != null) {
-      _json['conversionTimestamp'] = conversionTimestamp;
-    }
-    if (countMillis != null) {
-      _json['countMillis'] = countMillis;
-    }
-    if (criterionId != null) {
-      _json['criterionId'] = criterionId;
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (customDimension != null) {
-      _json['customDimension'] =
-          customDimension.map((value) => value.toJson()).toList();
-    }
-    if (customMetric != null) {
-      _json['customMetric'] =
-          customMetric.map((value) => value.toJson()).toList();
-    }
-    if (deviceType != null) {
-      _json['deviceType'] = deviceType;
-    }
-    if (dsConversionId != null) {
-      _json['dsConversionId'] = dsConversionId;
-    }
-    if (engineAccountId != null) {
-      _json['engineAccountId'] = engineAccountId;
-    }
-    if (floodlightOrderId != null) {
-      _json['floodlightOrderId'] = floodlightOrderId;
-    }
-    if (inventoryAccountId != null) {
-      _json['inventoryAccountId'] = inventoryAccountId;
-    }
-    if (productCountry != null) {
-      _json['productCountry'] = productCountry;
-    }
-    if (productGroupId != null) {
-      _json['productGroupId'] = productGroupId;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (productLanguage != null) {
-      _json['productLanguage'] = productLanguage;
-    }
-    if (quantityMillis != null) {
-      _json['quantityMillis'] = quantityMillis;
-    }
-    if (revenueMicros != null) {
-      _json['revenueMicros'] = revenueMicros;
-    }
-    if (segmentationId != null) {
-      _json['segmentationId'] = segmentationId;
-    }
-    if (segmentationName != null) {
-      _json['segmentationName'] = segmentationName;
-    }
-    if (segmentationType != null) {
-      _json['segmentationType'] = segmentationType;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (storeId != null) {
-      _json['storeId'] = storeId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adGroupId != null) 'adGroupId': adGroupId,
+        if (adId != null) 'adId': adId,
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (agencyId != null) 'agencyId': agencyId,
+        if (attributionModel != null) 'attributionModel': attributionModel,
+        if (campaignId != null) 'campaignId': campaignId,
+        if (channel != null) 'channel': channel,
+        if (clickId != null) 'clickId': clickId,
+        if (conversionId != null) 'conversionId': conversionId,
+        if (conversionModifiedTimestamp != null)
+          'conversionModifiedTimestamp': conversionModifiedTimestamp,
+        if (conversionTimestamp != null)
+          'conversionTimestamp': conversionTimestamp,
+        if (countMillis != null) 'countMillis': countMillis,
+        if (criterionId != null) 'criterionId': criterionId,
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (customDimension != null)
+          'customDimension':
+              customDimension.map((value) => value.toJson()).toList(),
+        if (customMetric != null)
+          'customMetric': customMetric.map((value) => value.toJson()).toList(),
+        if (deviceType != null) 'deviceType': deviceType,
+        if (dsConversionId != null) 'dsConversionId': dsConversionId,
+        if (engineAccountId != null) 'engineAccountId': engineAccountId,
+        if (floodlightOrderId != null) 'floodlightOrderId': floodlightOrderId,
+        if (inventoryAccountId != null)
+          'inventoryAccountId': inventoryAccountId,
+        if (productCountry != null) 'productCountry': productCountry,
+        if (productGroupId != null) 'productGroupId': productGroupId,
+        if (productId != null) 'productId': productId,
+        if (productLanguage != null) 'productLanguage': productLanguage,
+        if (quantityMillis != null) 'quantityMillis': quantityMillis,
+        if (revenueMicros != null) 'revenueMicros': revenueMicros,
+        if (segmentationId != null) 'segmentationId': segmentationId,
+        if (segmentationName != null) 'segmentationName': segmentationName,
+        if (segmentationType != null) 'segmentationType': segmentationType,
+        if (state != null) 'state': state,
+        if (storeId != null) 'storeId': storeId,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A list of conversions.
@@ -990,16 +913,11 @@ class ConversionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conversion != null) {
-      _json['conversion'] = conversion.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conversion != null)
+          'conversion': conversion.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// A message containing the custom dimension.
@@ -1021,16 +939,10 @@ class CustomDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A message containing the custom metric.
@@ -1052,16 +964,10 @@ class CustomMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 class ReportFiles {
@@ -1082,16 +988,10 @@ class ReportFiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (byteCount != null) {
-      _json['byteCount'] = byteCount;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (byteCount != null) 'byteCount': byteCount,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A DoubleClick Search report.
@@ -1188,37 +1088,20 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (files != null) {
-      _json['files'] = files.map((value) => value.toJson()).toList();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isReportReady != null) {
-      _json['isReportReady'] = isReportReady;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (request != null) {
-      _json['request'] = request.toJson();
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    if (rows != null) {
-      _json['rows'] = rows;
-    }
-    if (statisticsCurrencyCode != null) {
-      _json['statisticsCurrencyCode'] = statisticsCurrencyCode;
-    }
-    if (statisticsTimeZone != null) {
-      _json['statisticsTimeZone'] = statisticsTimeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (files != null)
+          'files': files.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id,
+        if (isReportReady != null) 'isReportReady': isReportReady,
+        if (kind != null) 'kind': kind,
+        if (request != null) 'request': request.toJson(),
+        if (rowCount != null) 'rowCount': rowCount,
+        if (rows != null) 'rows': rows,
+        if (statisticsCurrencyCode != null)
+          'statisticsCurrencyCode': statisticsCurrencyCode,
+        if (statisticsTimeZone != null)
+          'statisticsTimeZone': statisticsTimeZone,
+      };
 }
 
 /// A request object used to create a DoubleClick Search report.
@@ -1322,40 +1205,20 @@ class ReportApiColumnSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columnName != null) {
-      _json['columnName'] = columnName;
-    }
-    if (customDimensionName != null) {
-      _json['customDimensionName'] = customDimensionName;
-    }
-    if (customMetricName != null) {
-      _json['customMetricName'] = customMetricName;
-    }
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (groupByColumn != null) {
-      _json['groupByColumn'] = groupByColumn;
-    }
-    if (headerText != null) {
-      _json['headerText'] = headerText;
-    }
-    if (platformSource != null) {
-      _json['platformSource'] = platformSource;
-    }
-    if (productReportPerspective != null) {
-      _json['productReportPerspective'] = productReportPerspective;
-    }
-    if (savedColumnName != null) {
-      _json['savedColumnName'] = savedColumnName;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columnName != null) 'columnName': columnName,
+        if (customDimensionName != null)
+          'customDimensionName': customDimensionName,
+        if (customMetricName != null) 'customMetricName': customMetricName,
+        if (endDate != null) 'endDate': endDate,
+        if (groupByColumn != null) 'groupByColumn': groupByColumn,
+        if (headerText != null) 'headerText': headerText,
+        if (platformSource != null) 'platformSource': platformSource,
+        if (productReportPerspective != null)
+          'productReportPerspective': productReportPerspective,
+        if (savedColumnName != null) 'savedColumnName': savedColumnName,
+        if (startDate != null) 'startDate': startDate,
+      };
 }
 
 class ReportRequestFilters {
@@ -1393,19 +1256,11 @@ class ReportRequestFilters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (column != null) {
-      _json['column'] = column.toJson();
-    }
-    if (operator != null) {
-      _json['operator'] = operator;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (column != null) 'column': column.toJson(),
+        if (operator != null) 'operator': operator,
+        if (values != null) 'values': values,
+      };
 }
 
 class ReportRequestOrderBy {
@@ -1429,16 +1284,10 @@ class ReportRequestOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (column != null) {
-      _json['column'] = column.toJson();
-    }
-    if (sortOrder != null) {
-      _json['sortOrder'] = sortOrder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (column != null) 'column': column.toJson(),
+        if (sortOrder != null) 'sortOrder': sortOrder,
+      };
 }
 
 /// The reportScope is a set of IDs that are used to determine which subset of
@@ -1494,31 +1343,15 @@ class ReportRequestReportScope {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adGroupId != null) {
-      _json['adGroupId'] = adGroupId;
-    }
-    if (adId != null) {
-      _json['adId'] = adId;
-    }
-    if (advertiserId != null) {
-      _json['advertiserId'] = advertiserId;
-    }
-    if (agencyId != null) {
-      _json['agencyId'] = agencyId;
-    }
-    if (campaignId != null) {
-      _json['campaignId'] = campaignId;
-    }
-    if (engineAccountId != null) {
-      _json['engineAccountId'] = engineAccountId;
-    }
-    if (keywordId != null) {
-      _json['keywordId'] = keywordId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adGroupId != null) 'adGroupId': adGroupId,
+        if (adId != null) 'adId': adId,
+        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (agencyId != null) 'agencyId': agencyId,
+        if (campaignId != null) 'campaignId': campaignId,
+        if (engineAccountId != null) 'engineAccountId': engineAccountId,
+        if (keywordId != null) 'keywordId': keywordId,
+      };
 }
 
 /// If metrics are requested in a report, this argument will be used to restrict
@@ -1559,23 +1392,14 @@ class ReportRequestTimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (changedAttributesSinceTimestamp != null) {
-      _json['changedAttributesSinceTimestamp'] =
-          changedAttributesSinceTimestamp;
-    }
-    if (changedMetricsSinceTimestamp != null) {
-      _json['changedMetricsSinceTimestamp'] = changedMetricsSinceTimestamp;
-    }
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (changedAttributesSinceTimestamp != null)
+          'changedAttributesSinceTimestamp': changedAttributesSinceTimestamp,
+        if (changedMetricsSinceTimestamp != null)
+          'changedMetricsSinceTimestamp': changedMetricsSinceTimestamp,
+        if (endDate != null) 'endDate': endDate,
+        if (startDate != null) 'startDate': startDate,
+      };
 }
 
 /// A request object used to create a DoubleClick Search report.
@@ -1725,52 +1549,29 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (columns != null) {
-      _json['columns'] = columns.map((value) => value.toJson()).toList();
-    }
-    if (downloadFormat != null) {
-      _json['downloadFormat'] = downloadFormat;
-    }
-    if (filters != null) {
-      _json['filters'] = filters.map((value) => value.toJson()).toList();
-    }
-    if (includeDeletedEntities != null) {
-      _json['includeDeletedEntities'] = includeDeletedEntities;
-    }
-    if (includeRemovedEntities != null) {
-      _json['includeRemovedEntities'] = includeRemovedEntities;
-    }
-    if (maxRowsPerFile != null) {
-      _json['maxRowsPerFile'] = maxRowsPerFile;
-    }
-    if (orderBy != null) {
-      _json['orderBy'] = orderBy.map((value) => value.toJson()).toList();
-    }
-    if (reportScope != null) {
-      _json['reportScope'] = reportScope.toJson();
-    }
-    if (reportType != null) {
-      _json['reportType'] = reportType;
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    if (startRow != null) {
-      _json['startRow'] = startRow;
-    }
-    if (statisticsCurrency != null) {
-      _json['statisticsCurrency'] = statisticsCurrency;
-    }
-    if (timeRange != null) {
-      _json['timeRange'] = timeRange.toJson();
-    }
-    if (verifySingleTimeZone != null) {
-      _json['verifySingleTimeZone'] = verifySingleTimeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (columns != null)
+          'columns': columns.map((value) => value.toJson()).toList(),
+        if (downloadFormat != null) 'downloadFormat': downloadFormat,
+        if (filters != null)
+          'filters': filters.map((value) => value.toJson()).toList(),
+        if (includeDeletedEntities != null)
+          'includeDeletedEntities': includeDeletedEntities,
+        if (includeRemovedEntities != null)
+          'includeRemovedEntities': includeRemovedEntities,
+        if (maxRowsPerFile != null) 'maxRowsPerFile': maxRowsPerFile,
+        if (orderBy != null)
+          'orderBy': orderBy.map((value) => value.toJson()).toList(),
+        if (reportScope != null) 'reportScope': reportScope.toJson(),
+        if (reportType != null) 'reportType': reportType,
+        if (rowCount != null) 'rowCount': rowCount,
+        if (startRow != null) 'startRow': startRow,
+        if (statisticsCurrency != null)
+          'statisticsCurrency': statisticsCurrency,
+        if (timeRange != null) 'timeRange': timeRange.toJson(),
+        if (verifySingleTimeZone != null)
+          'verifySingleTimeZone': verifySingleTimeZone,
+      };
 }
 
 /// A row in a DoubleClick Search report.
@@ -1838,19 +1639,11 @@ class SavedColumn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (savedColumnName != null) {
-      _json['savedColumnName'] = savedColumnName;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (savedColumnName != null) 'savedColumnName': savedColumnName,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A list of saved columns.
@@ -1881,16 +1674,11 @@ class SavedColumnList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// The request to update availability.
@@ -1909,14 +1697,11 @@ class UpdateAvailabilityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availabilities != null) {
-      _json['availabilities'] =
-          availabilities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availabilities != null)
+          'availabilities':
+              availabilities.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response to a update availability request.
@@ -1935,12 +1720,9 @@ class UpdateAvailabilityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (availabilities != null) {
-      _json['availabilities'] =
-          availabilities.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (availabilities != null)
+          'availabilities':
+              availabilities.map((value) => value.toJson()).toList(),
+      };
 }

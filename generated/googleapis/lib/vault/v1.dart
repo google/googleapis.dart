@@ -1830,16 +1830,10 @@ class AccountCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.toJson();
-    }
-    if (count != null) {
-      _json['count'] = count;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account.toJson(),
+        if (count != null) 'count': count,
+      };
 }
 
 /// An error that occurred when querying a specific account
@@ -1871,16 +1865,10 @@ class AccountCountError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.toJson();
-    }
-    if (errorType != null) {
-      _json['errorType'] = errorType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account.toJson(),
+        if (errorType != null) 'errorType': errorType,
+      };
 }
 
 /// Accounts to search
@@ -1898,13 +1886,9 @@ class AccountInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (emails != null) {
-      _json['emails'] = emails;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (emails != null) 'emails': emails,
+      };
 }
 
 /// A status detailing the status of each account creation, and the HeldAccount,
@@ -1931,16 +1915,10 @@ class AddHeldAccountResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (account != null) {
-      _json['account'] = account.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (account != null) 'account': account.toJson(),
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Add a list of accounts to a hold.
@@ -1970,16 +1948,10 @@ class AddHeldAccountsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountIds != null) {
-      _json['accountIds'] = accountIds;
-    }
-    if (emails != null) {
-      _json['emails'] = emails;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountIds != null) 'accountIds': accountIds,
+        if (emails != null) 'emails': emails,
+      };
 }
 
 /// Response for batch create held accounts.
@@ -1998,13 +1970,10 @@ class AddHeldAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Add an account with the permission specified.
@@ -2040,19 +2009,12 @@ class AddMatterPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ccMe != null) {
-      _json['ccMe'] = ccMe;
-    }
-    if (matterPermission != null) {
-      _json['matterPermission'] = matterPermission.toJson();
-    }
-    if (sendEmails != null) {
-      _json['sendEmails'] = sendEmails;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ccMe != null) 'ccMe': ccMe,
+        if (matterPermission != null)
+          'matterPermission': matterPermission.toJson(),
+        if (sendEmails != null) 'sendEmails': sendEmails,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2063,10 +2025,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Close a matter by ID.
@@ -2077,10 +2036,7 @@ class CloseMatterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response to a CloseMatterRequest.
@@ -2097,13 +2053,9 @@ class CloseMatterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matter != null) {
-      _json['matter'] = matter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matter != null) 'matter': matter.toJson(),
+      };
 }
 
 /// An export file on cloud storage
@@ -2142,22 +2094,12 @@ class CloudStorageFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketName != null) {
-      _json['bucketName'] = bucketName;
-    }
-    if (md5Hash != null) {
-      _json['md5Hash'] = md5Hash;
-    }
-    if (objectName != null) {
-      _json['objectName'] = objectName;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName,
+        if (md5Hash != null) 'md5Hash': md5Hash,
+        if (objectName != null) 'objectName': objectName,
+        if (size != null) 'size': size,
+      };
 }
 
 /// Export sink for cloud storage files.
@@ -2178,13 +2120,10 @@ class CloudStorageSink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (files != null) {
-      _json['files'] = files.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (files != null)
+          'files': files.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Corpus specific queries.
@@ -2239,25 +2178,14 @@ class CorpusQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (driveQuery != null) {
-      _json['driveQuery'] = driveQuery.toJson();
-    }
-    if (groupsQuery != null) {
-      _json['groupsQuery'] = groupsQuery.toJson();
-    }
-    if (hangoutsChatQuery != null) {
-      _json['hangoutsChatQuery'] = hangoutsChatQuery.toJson();
-    }
-    if (mailQuery != null) {
-      _json['mailQuery'] = mailQuery.toJson();
-    }
-    if (voiceQuery != null) {
-      _json['voiceQuery'] = voiceQuery.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (driveQuery != null) 'driveQuery': driveQuery.toJson(),
+        if (groupsQuery != null) 'groupsQuery': groupsQuery.toJson(),
+        if (hangoutsChatQuery != null)
+          'hangoutsChatQuery': hangoutsChatQuery.toJson(),
+        if (mailQuery != null) 'mailQuery': mailQuery.toJson(),
+        if (voiceQuery != null) 'voiceQuery': voiceQuery.toJson(),
+      };
 }
 
 /// Long running operation metadata for CountArtifacts.
@@ -2294,22 +2222,12 @@ class CountArtifactsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (matterId != null) {
-      _json['matterId'] = matterId;
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (matterId != null) 'matterId': matterId,
+        if (query != null) 'query': query.toJson(),
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Count artifacts request.
@@ -2338,16 +2256,10 @@ class CountArtifactsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (view != null) {
-      _json['view'] = view;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (query != null) 'query': query.toJson(),
+        if (view != null) 'view': view,
+      };
 }
 
 /// Definition of the response for method CountArtifacts.
@@ -2379,19 +2291,13 @@ class CountArtifactsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groupsCountResult != null) {
-      _json['groupsCountResult'] = groupsCountResult.toJson();
-    }
-    if (mailCountResult != null) {
-      _json['mailCountResult'] = mailCountResult.toJson();
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groupsCountResult != null)
+          'groupsCountResult': groupsCountResult.toJson(),
+        if (mailCountResult != null)
+          'mailCountResult': mailCountResult.toJson(),
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// The options for Drive export.
@@ -2408,13 +2314,9 @@ class DriveExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeAccessInfo != null) {
-      _json['includeAccessInfo'] = includeAccessInfo;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeAccessInfo != null) 'includeAccessInfo': includeAccessInfo,
+      };
 }
 
 /// Drive search advanced options
@@ -2444,19 +2346,12 @@ class DriveOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeSharedDrives != null) {
-      _json['includeSharedDrives'] = includeSharedDrives;
-    }
-    if (includeTeamDrives != null) {
-      _json['includeTeamDrives'] = includeTeamDrives;
-    }
-    if (versionDate != null) {
-      _json['versionDate'] = versionDate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeSharedDrives != null)
+          'includeSharedDrives': includeSharedDrives,
+        if (includeTeamDrives != null) 'includeTeamDrives': includeTeamDrives,
+        if (versionDate != null) 'versionDate': versionDate,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2473,10 +2368,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An export
@@ -2570,40 +2462,19 @@ class Export {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudStorageSink != null) {
-      _json['cloudStorageSink'] = cloudStorageSink.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (exportOptions != null) {
-      _json['exportOptions'] = exportOptions.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (matterId != null) {
-      _json['matterId'] = matterId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (requester != null) {
-      _json['requester'] = requester.toJson();
-    }
-    if (stats != null) {
-      _json['stats'] = stats.toJson();
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudStorageSink != null)
+          'cloudStorageSink': cloudStorageSink.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (exportOptions != null) 'exportOptions': exportOptions.toJson(),
+        if (id != null) 'id': id,
+        if (matterId != null) 'matterId': matterId,
+        if (name != null) 'name': name,
+        if (query != null) 'query': query.toJson(),
+        if (requester != null) 'requester': requester.toJson(),
+        if (stats != null) 'stats': stats.toJson(),
+        if (status != null) 'status': status,
+      };
 }
 
 /// Export advanced options
@@ -2660,28 +2531,15 @@ class ExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (driveOptions != null) {
-      _json['driveOptions'] = driveOptions.toJson();
-    }
-    if (groupsOptions != null) {
-      _json['groupsOptions'] = groupsOptions.toJson();
-    }
-    if (hangoutsChatOptions != null) {
-      _json['hangoutsChatOptions'] = hangoutsChatOptions.toJson();
-    }
-    if (mailOptions != null) {
-      _json['mailOptions'] = mailOptions.toJson();
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (voiceOptions != null) {
-      _json['voiceOptions'] = voiceOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (driveOptions != null) 'driveOptions': driveOptions.toJson(),
+        if (groupsOptions != null) 'groupsOptions': groupsOptions.toJson(),
+        if (hangoutsChatOptions != null)
+          'hangoutsChatOptions': hangoutsChatOptions.toJson(),
+        if (mailOptions != null) 'mailOptions': mailOptions.toJson(),
+        if (region != null) 'region': region,
+        if (voiceOptions != null) 'voiceOptions': voiceOptions.toJson(),
+      };
 }
 
 /// Stats of an export.
@@ -2709,19 +2567,13 @@ class ExportStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exportedArtifactCount != null) {
-      _json['exportedArtifactCount'] = exportedArtifactCount;
-    }
-    if (sizeInBytes != null) {
-      _json['sizeInBytes'] = sizeInBytes;
-    }
-    if (totalArtifactCount != null) {
-      _json['totalArtifactCount'] = totalArtifactCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exportedArtifactCount != null)
+          'exportedArtifactCount': exportedArtifactCount,
+        if (sizeInBytes != null) 'sizeInBytes': sizeInBytes,
+        if (totalArtifactCount != null)
+          'totalArtifactCount': totalArtifactCount,
+      };
 }
 
 /// Groups specific count metrics.
@@ -2773,27 +2625,20 @@ class GroupsCountResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountCountErrors != null) {
-      _json['accountCountErrors'] =
-          accountCountErrors.map((value) => value.toJson()).toList();
-    }
-    if (accountCounts != null) {
-      _json['accountCounts'] =
-          accountCounts.map((value) => value.toJson()).toList();
-    }
-    if (matchingAccountsCount != null) {
-      _json['matchingAccountsCount'] = matchingAccountsCount;
-    }
-    if (nonQueryableAccounts != null) {
-      _json['nonQueryableAccounts'] = nonQueryableAccounts;
-    }
-    if (queriedAccountsCount != null) {
-      _json['queriedAccountsCount'] = queriedAccountsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountCountErrors != null)
+          'accountCountErrors':
+              accountCountErrors.map((value) => value.toJson()).toList(),
+        if (accountCounts != null)
+          'accountCounts':
+              accountCounts.map((value) => value.toJson()).toList(),
+        if (matchingAccountsCount != null)
+          'matchingAccountsCount': matchingAccountsCount,
+        if (nonQueryableAccounts != null)
+          'nonQueryableAccounts': nonQueryableAccounts,
+        if (queriedAccountsCount != null)
+          'queriedAccountsCount': queriedAccountsCount,
+      };
 }
 
 /// The options for groups export.
@@ -2813,13 +2658,9 @@ class GroupsExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exportFormat != null) {
-      _json['exportFormat'] = exportFormat;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat,
+      };
 }
 
 /// The options for hangouts chat export.
@@ -2839,13 +2680,9 @@ class HangoutsChatExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exportFormat != null) {
-      _json['exportFormat'] = exportFormat;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat,
+      };
 }
 
 /// Accounts to search
@@ -2863,13 +2700,9 @@ class HangoutsChatInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (roomId != null) {
-      _json['roomId'] = roomId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (roomId != null) 'roomId': roomId,
+      };
 }
 
 /// Hangouts chat search advanced options
@@ -2885,13 +2718,9 @@ class HangoutsChatOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeRooms != null) {
-      _json['includeRooms'] = includeRooms;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeRooms != null) 'includeRooms': includeRooms,
+      };
 }
 
 /// An account being held in a particular hold.
@@ -2942,25 +2771,13 @@ class HeldAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (firstName != null) {
-      _json['firstName'] = firstName;
-    }
-    if (holdTime != null) {
-      _json['holdTime'] = holdTime;
-    }
-    if (lastName != null) {
-      _json['lastName'] = lastName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (email != null) 'email': email,
+        if (firstName != null) 'firstName': firstName,
+        if (holdTime != null) 'holdTime': holdTime,
+        if (lastName != null) 'lastName': lastName,
+      };
 }
 
 /// Query options for Drive holds.
@@ -2982,16 +2799,12 @@ class HeldDriveQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeSharedDriveFiles != null) {
-      _json['includeSharedDriveFiles'] = includeSharedDriveFiles;
-    }
-    if (includeTeamDriveFiles != null) {
-      _json['includeTeamDriveFiles'] = includeTeamDriveFiles;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeSharedDriveFiles != null)
+          'includeSharedDriveFiles': includeSharedDriveFiles,
+        if (includeTeamDriveFiles != null)
+          'includeTeamDriveFiles': includeTeamDriveFiles,
+      };
 }
 
 /// Query options for group holds.
@@ -3025,19 +2838,11 @@ class HeldGroupsQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (terms != null) {
-      _json['terms'] = terms;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+        if (terms != null) 'terms': terms,
+      };
 }
 
 /// Query options for hangouts chat holds.
@@ -3053,13 +2858,9 @@ class HeldHangoutsChatQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeRooms != null) {
-      _json['includeRooms'] = includeRooms;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeRooms != null) 'includeRooms': includeRooms,
+      };
 }
 
 /// Query options for mail holds.
@@ -3093,19 +2894,11 @@ class HeldMailQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (terms != null) {
-      _json['terms'] = terms;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+        if (terms != null) 'terms': terms,
+      };
 }
 
 /// A organizational unit being held in a particular hold.
@@ -3131,16 +2924,10 @@ class HeldOrgUnit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (holdTime != null) {
-      _json['holdTime'] = holdTime;
-    }
-    if (orgUnitId != null) {
-      _json['orgUnitId'] = orgUnitId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (holdTime != null) 'holdTime': holdTime,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId,
+      };
 }
 
 /// Query options for Voice holds.
@@ -3160,13 +2947,9 @@ class HeldVoiceQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coveredData != null) {
-      _json['coveredData'] = coveredData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coveredData != null) 'coveredData': coveredData,
+      };
 }
 
 /// Represents a hold within Vault.
@@ -3243,31 +3026,16 @@ class Hold {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accounts != null) {
-      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
-    }
-    if (corpus != null) {
-      _json['corpus'] = corpus;
-    }
-    if (holdId != null) {
-      _json['holdId'] = holdId;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (orgUnit != null) {
-      _json['orgUnit'] = orgUnit.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accounts != null)
+          'accounts': accounts.map((value) => value.toJson()).toList(),
+        if (corpus != null) 'corpus': corpus,
+        if (holdId != null) 'holdId': holdId,
+        if (name != null) 'name': name,
+        if (orgUnit != null) 'orgUnit': orgUnit.toJson(),
+        if (query != null) 'query': query.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The holds for a matter.
@@ -3292,16 +3060,11 @@ class ListExportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exports != null) {
-      _json['exports'] = exports.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exports != null)
+          'exports': exports.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Returns a list of held accounts for a hold.
@@ -3320,13 +3083,10 @@ class ListHeldAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accounts != null) {
-      _json['accounts'] = accounts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accounts != null)
+          'accounts': accounts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The holds for a matter.
@@ -3353,16 +3113,11 @@ class ListHoldsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (holds != null) {
-      _json['holds'] = holds.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (holds != null)
+          'holds': holds.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Provides the list of matters.
@@ -3387,16 +3142,11 @@ class ListMattersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matters != null) {
-      _json['matters'] = matters.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matters != null)
+          'matters': matters.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -3421,16 +3171,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Definition of the response for method ListSaveQuery.
@@ -3457,17 +3202,11 @@ class ListSavedQueriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (savedQueries != null) {
-      _json['savedQueries'] =
-          savedQueries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (savedQueries != null)
+          'savedQueries': savedQueries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Mail specific count metrics.
@@ -3519,27 +3258,20 @@ class MailCountResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountCountErrors != null) {
-      _json['accountCountErrors'] =
-          accountCountErrors.map((value) => value.toJson()).toList();
-    }
-    if (accountCounts != null) {
-      _json['accountCounts'] =
-          accountCounts.map((value) => value.toJson()).toList();
-    }
-    if (matchingAccountsCount != null) {
-      _json['matchingAccountsCount'] = matchingAccountsCount;
-    }
-    if (nonQueryableAccounts != null) {
-      _json['nonQueryableAccounts'] = nonQueryableAccounts;
-    }
-    if (queriedAccountsCount != null) {
-      _json['queriedAccountsCount'] = queriedAccountsCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountCountErrors != null)
+          'accountCountErrors':
+              accountCountErrors.map((value) => value.toJson()).toList(),
+        if (accountCounts != null)
+          'accountCounts':
+              accountCounts.map((value) => value.toJson()).toList(),
+        if (matchingAccountsCount != null)
+          'matchingAccountsCount': matchingAccountsCount,
+        if (nonQueryableAccounts != null)
+          'nonQueryableAccounts': nonQueryableAccounts,
+        if (queriedAccountsCount != null)
+          'queriedAccountsCount': queriedAccountsCount,
+      };
 }
 
 /// The options for mail export.
@@ -3566,16 +3298,11 @@ class MailExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exportFormat != null) {
-      _json['exportFormat'] = exportFormat;
-    }
-    if (showConfidentialModeContent != null) {
-      _json['showConfidentialModeContent'] = showConfidentialModeContent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat,
+        if (showConfidentialModeContent != null)
+          'showConfidentialModeContent': showConfidentialModeContent,
+      };
 }
 
 /// Mail search advanced options
@@ -3591,13 +3318,9 @@ class MailOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludeDrafts != null) {
-      _json['excludeDrafts'] = excludeDrafts;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludeDrafts != null) 'excludeDrafts': excludeDrafts,
+      };
 }
 
 /// Represents a matter.
@@ -3650,26 +3373,15 @@ class Matter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (matterId != null) {
-      _json['matterId'] = matterId;
-    }
-    if (matterPermissions != null) {
-      _json['matterPermissions'] =
-          matterPermissions.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (matterId != null) 'matterId': matterId,
+        if (matterPermissions != null)
+          'matterPermissions':
+              matterPermissions.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Currently each matter only has one owner, and all others are collaborators.
@@ -3698,16 +3410,10 @@ class MatterPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+        if (role != null) 'role': role,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3786,25 +3492,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Org Unit to search
@@ -3820,13 +3514,9 @@ class OrgUnitInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (orgUnitId != null) {
-      _json['orgUnitId'] = orgUnitId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (orgUnitId != null) 'orgUnitId': orgUnitId,
+      };
 }
 
 /// A query definition relevant for search & export.
@@ -4012,61 +3702,28 @@ class Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountInfo != null) {
-      _json['accountInfo'] = accountInfo.toJson();
-    }
-    if (corpus != null) {
-      _json['corpus'] = corpus;
-    }
-    if (dataScope != null) {
-      _json['dataScope'] = dataScope;
-    }
-    if (driveOptions != null) {
-      _json['driveOptions'] = driveOptions.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (hangoutsChatInfo != null) {
-      _json['hangoutsChatInfo'] = hangoutsChatInfo.toJson();
-    }
-    if (hangoutsChatOptions != null) {
-      _json['hangoutsChatOptions'] = hangoutsChatOptions.toJson();
-    }
-    if (mailOptions != null) {
-      _json['mailOptions'] = mailOptions.toJson();
-    }
-    if (method != null) {
-      _json['method'] = method;
-    }
-    if (orgUnitInfo != null) {
-      _json['orgUnitInfo'] = orgUnitInfo.toJson();
-    }
-    if (searchMethod != null) {
-      _json['searchMethod'] = searchMethod;
-    }
-    if (sharedDriveInfo != null) {
-      _json['sharedDriveInfo'] = sharedDriveInfo.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (teamDriveInfo != null) {
-      _json['teamDriveInfo'] = teamDriveInfo.toJson();
-    }
-    if (terms != null) {
-      _json['terms'] = terms;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    if (voiceOptions != null) {
-      _json['voiceOptions'] = voiceOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountInfo != null) 'accountInfo': accountInfo.toJson(),
+        if (corpus != null) 'corpus': corpus,
+        if (dataScope != null) 'dataScope': dataScope,
+        if (driveOptions != null) 'driveOptions': driveOptions.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (hangoutsChatInfo != null)
+          'hangoutsChatInfo': hangoutsChatInfo.toJson(),
+        if (hangoutsChatOptions != null)
+          'hangoutsChatOptions': hangoutsChatOptions.toJson(),
+        if (mailOptions != null) 'mailOptions': mailOptions.toJson(),
+        if (method != null) 'method': method,
+        if (orgUnitInfo != null) 'orgUnitInfo': orgUnitInfo.toJson(),
+        if (searchMethod != null) 'searchMethod': searchMethod,
+        if (sharedDriveInfo != null)
+          'sharedDriveInfo': sharedDriveInfo.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (teamDriveInfo != null) 'teamDriveInfo': teamDriveInfo.toJson(),
+        if (terms != null) 'terms': terms,
+        if (timeZone != null) 'timeZone': timeZone,
+        if (voiceOptions != null) 'voiceOptions': voiceOptions.toJson(),
+      };
 }
 
 /// Remove a list of accounts from a hold.
@@ -4084,13 +3741,9 @@ class RemoveHeldAccountsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountIds != null) {
-      _json['accountIds'] = accountIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountIds != null) 'accountIds': accountIds,
+      };
 }
 
 /// Response for batch delete held accounts.
@@ -4111,13 +3764,10 @@ class RemoveHeldAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (statuses != null) {
-      _json['statuses'] = statuses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (statuses != null)
+          'statuses': statuses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Remove an account as a matter collaborator.
@@ -4133,13 +3783,9 @@ class RemoveMatterPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountId != null) {
-      _json['accountId'] = accountId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountId != null) 'accountId': accountId,
+      };
 }
 
 /// Reopen a matter by ID.
@@ -4150,10 +3796,7 @@ class ReopenMatterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response to a ReopenMatterRequest.
@@ -4170,13 +3813,9 @@ class ReopenMatterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matter != null) {
-      _json['matter'] = matter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matter != null) 'matter': matter.toJson(),
+      };
 }
 
 /// Definition of the saved query.
@@ -4225,25 +3864,13 @@ class SavedQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (matterId != null) {
-      _json['matterId'] = matterId;
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (savedQueryId != null) {
-      _json['savedQueryId'] = savedQueryId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (displayName != null) 'displayName': displayName,
+        if (matterId != null) 'matterId': matterId,
+        if (query != null) 'query': query.toJson(),
+        if (savedQueryId != null) 'savedQueryId': savedQueryId,
+      };
 }
 
 /// Shared drives to search
@@ -4261,13 +3888,9 @@ class SharedDriveInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sharedDriveIds != null) {
-      _json['sharedDriveIds'] = sharedDriveIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sharedDriveIds != null) 'sharedDriveIds': sharedDriveIds,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4317,19 +3940,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Team Drives to search
@@ -4347,13 +3962,9 @@ class TeamDriveInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (teamDriveIds != null) {
-      _json['teamDriveIds'] = teamDriveIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (teamDriveIds != null) 'teamDriveIds': teamDriveIds,
+      };
 }
 
 /// Undelete a matter by ID.
@@ -4364,10 +3975,7 @@ class UndeleteMatterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// User's information.
@@ -4389,16 +3997,10 @@ class UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (email != null) {
-      _json['email'] = email;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (email != null) 'email': email,
+      };
 }
 
 /// The options for voice export.
@@ -4418,13 +4020,9 @@ class VoiceExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exportFormat != null) {
-      _json['exportFormat'] = exportFormat;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat,
+      };
 }
 
 /// Voice search options
@@ -4442,11 +4040,7 @@ class VoiceOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (coveredData != null) {
-      _json['coveredData'] = coveredData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (coveredData != null) 'coveredData': coveredData,
+      };
 }

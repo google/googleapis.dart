@@ -1472,22 +1472,13 @@ class ClaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    if (deviceMetadata != null) {
-      _json['deviceMetadata'] = deviceMetadata.toJson();
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerId != null) 'customerId': customerId,
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+        if (sectionType != null) 'sectionType': sectionType,
+      };
 }
 
 /// Response message containing device id of the claim.
@@ -1510,16 +1501,10 @@ class ClaimDeviceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceName != null) {
-      _json['deviceName'] = deviceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceName != null) 'deviceName': deviceName,
+      };
 }
 
 /// Request to claim devices asynchronously in batch.
@@ -1543,13 +1528,10 @@ class ClaimDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claims != null) {
-      _json['claims'] = claims.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claims != null)
+          'claims': claims.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A reseller, vendor, or customer in the zero-touch reseller and customer
@@ -1642,28 +1624,14 @@ class Company {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adminEmails != null) {
-      _json['adminEmails'] = adminEmails;
-    }
-    if (companyId != null) {
-      _json['companyId'] = companyId;
-    }
-    if (companyName != null) {
-      _json['companyName'] = companyName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (ownerEmails != null) {
-      _json['ownerEmails'] = ownerEmails;
-    }
-    if (termsStatus != null) {
-      _json['termsStatus'] = termsStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adminEmails != null) 'adminEmails': adminEmails,
+        if (companyId != null) 'companyId': companyId,
+        if (companyName != null) 'companyName': companyName,
+        if (name != null) 'name': name,
+        if (ownerEmails != null) 'ownerEmails': ownerEmails,
+        if (termsStatus != null) 'termsStatus': termsStatus,
+      };
 }
 
 /// A configuration collects the provisioning options for Android devices.
@@ -1786,40 +1754,18 @@ class Configuration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (companyName != null) {
-      _json['companyName'] = companyName;
-    }
-    if (configurationId != null) {
-      _json['configurationId'] = configurationId;
-    }
-    if (configurationName != null) {
-      _json['configurationName'] = configurationName;
-    }
-    if (contactEmail != null) {
-      _json['contactEmail'] = contactEmail;
-    }
-    if (contactPhone != null) {
-      _json['contactPhone'] = contactPhone;
-    }
-    if (customMessage != null) {
-      _json['customMessage'] = customMessage;
-    }
-    if (dpcExtras != null) {
-      _json['dpcExtras'] = dpcExtras;
-    }
-    if (dpcResourcePath != null) {
-      _json['dpcResourcePath'] = dpcResourcePath;
-    }
-    if (isDefault != null) {
-      _json['isDefault'] = isDefault;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (companyName != null) 'companyName': companyName,
+        if (configurationId != null) 'configurationId': configurationId,
+        if (configurationName != null) 'configurationName': configurationName,
+        if (contactEmail != null) 'contactEmail': contactEmail,
+        if (contactPhone != null) 'contactPhone': contactPhone,
+        if (customMessage != null) 'customMessage': customMessage,
+        if (dpcExtras != null) 'dpcExtras': dpcExtras,
+        if (dpcResourcePath != null) 'dpcResourcePath': dpcResourcePath,
+        if (isDefault != null) 'isDefault': isDefault,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Request message to create a customer.
@@ -1842,13 +1788,9 @@ class CreateCustomerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customer != null) {
-      _json['customer'] = customer.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customer != null) 'customer': customer.toJson(),
+      };
 }
 
 /// Request message for customer to assign a configuration to device.
@@ -1876,16 +1818,10 @@ class CustomerApplyConfigurationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configuration != null) {
-      _json['configuration'] = configuration;
-    }
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configuration != null) 'configuration': configuration,
+        if (device != null) 'device': device.toJson(),
+      };
 }
 
 /// Response message of customer's listing configuration.
@@ -1904,14 +1840,11 @@ class CustomerListConfigurationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configurations != null) {
-      _json['configurations'] =
-          configurations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configurations != null)
+          'configurations':
+              configurations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for listing my customers.
@@ -1938,16 +1871,11 @@ class CustomerListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customers != null) {
-      _json['customers'] = customers.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customers != null)
+          'customers': customers.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message of customer's liting devices.
@@ -1974,16 +1902,11 @@ class CustomerListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message of customer's listing DPCs.
@@ -2003,13 +1926,9 @@ class CustomerListDpcsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dpcs != null) {
-      _json['dpcs'] = dpcs.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dpcs != null) 'dpcs': dpcs.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for customer to remove the configuration from device.
@@ -2028,13 +1947,9 @@ class CustomerRemoveConfigurationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (device != null) 'device': device.toJson(),
+      };
 }
 
 /// Request message for customer to unclaim a device.
@@ -2053,13 +1968,9 @@ class CustomerUnclaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (device != null) {
-      _json['device'] = device.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (device != null) 'device': device.toJson(),
+      };
 }
 
 /// An Android device registered for zero-touch enrollment.
@@ -2132,28 +2043,16 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claims != null) {
-      _json['claims'] = claims.map((value) => value.toJson()).toList();
-    }
-    if (configuration != null) {
-      _json['configuration'] = configuration;
-    }
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    if (deviceMetadata != null) {
-      _json['deviceMetadata'] = deviceMetadata.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claims != null)
+          'claims': claims.map((value) => value.toJson()).toList(),
+        if (configuration != null) 'configuration': configuration,
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// A record of a device claimed by a reseller for a customer.
@@ -2207,25 +2106,15 @@ class DeviceClaim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ownerCompanyId != null) {
-      _json['ownerCompanyId'] = ownerCompanyId;
-    }
-    if (resellerId != null) {
-      _json['resellerId'] = resellerId;
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    if (vacationModeExpireTime != null) {
-      _json['vacationModeExpireTime'] = vacationModeExpireTime;
-    }
-    if (vacationModeStartTime != null) {
-      _json['vacationModeStartTime'] = vacationModeStartTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ownerCompanyId != null) 'ownerCompanyId': ownerCompanyId,
+        if (resellerId != null) 'resellerId': resellerId,
+        if (sectionType != null) 'sectionType': sectionType,
+        if (vacationModeExpireTime != null)
+          'vacationModeExpireTime': vacationModeExpireTime,
+        if (vacationModeStartTime != null)
+          'vacationModeStartTime': vacationModeStartTime,
+      };
 }
 
 /// Encapsulates hardware and product IDs to identify a manufactured device.
@@ -2280,25 +2169,13 @@ class DeviceIdentifier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imei != null) {
-      _json['imei'] = imei;
-    }
-    if (manufacturer != null) {
-      _json['manufacturer'] = manufacturer;
-    }
-    if (meid != null) {
-      _json['meid'] = meid;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imei != null) 'imei': imei,
+        if (manufacturer != null) 'manufacturer': manufacturer,
+        if (meid != null) 'meid': meid,
+        if (model != null) 'model': model,
+        if (serialNumber != null) 'serialNumber': serialNumber,
+      };
 }
 
 /// Metadata entries that can be attached to a `Device`.
@@ -2323,13 +2200,9 @@ class DeviceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entries != null) {
-      _json['entries'] = entries;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entries != null) 'entries': entries,
+      };
 }
 
 /// A `DeviceReference` is an API abstraction that lets you supply a _device_
@@ -2360,16 +2233,11 @@ class DeviceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+      };
 }
 
 /// Tracks the status of a long-running operation to asynchronously update a
@@ -2414,19 +2282,11 @@ class DevicesLongRunningOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devicesCount != null) {
-      _json['devicesCount'] = devicesCount;
-    }
-    if (processingStatus != null) {
-      _json['processingStatus'] = processingStatus;
-    }
-    if (progress != null) {
-      _json['progress'] = progress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devicesCount != null) 'devicesCount': devicesCount,
+        if (processingStatus != null) 'processingStatus': processingStatus,
+        if (progress != null) 'progress': progress,
+      };
 }
 
 /// Tracks the status of a long-running operation to claim, unclaim, or attach
@@ -2461,17 +2321,12 @@ class DevicesLongRunningOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (perDeviceStatus != null) {
-      _json['perDeviceStatus'] =
-          perDeviceStatus.map((value) => value.toJson()).toList();
-    }
-    if (successCount != null) {
-      _json['successCount'] = successCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (perDeviceStatus != null)
+          'perDeviceStatus':
+              perDeviceStatus.map((value) => value.toJson()).toList(),
+        if (successCount != null) 'successCount': successCount,
+      };
 }
 
 /// An EMM's DPC
@@ -2520,19 +2375,11 @@ class Dpc {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dpcName != null) {
-      _json['dpcName'] = dpcName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dpcName != null) 'dpcName': dpcName,
+        if (name != null) 'name': name,
+        if (packageName != null) 'packageName': packageName,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2549,10 +2396,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request to find devices.
@@ -2587,19 +2431,12 @@ class FindDevicesByDeviceIdentifierRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+        if (limit != null) 'limit': limit,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// Response containing found devices.
@@ -2632,19 +2469,12 @@ class FindDevicesByDeviceIdentifierResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Request to find devices by customers.
@@ -2692,22 +2522,12 @@ class FindDevicesByOwnerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerId != null) 'customerId': customerId,
+        if (limit != null) 'limit': limit,
+        if (pageToken != null) 'pageToken': pageToken,
+        if (sectionType != null) 'sectionType': sectionType,
+      };
 }
 
 /// Response containing found devices.
@@ -2740,19 +2560,12 @@ class FindDevicesByOwnerResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Response message of all customers related to this partner.
@@ -2785,19 +2598,12 @@ class ListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customers != null) {
-      _json['customers'] = customers.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customers != null)
+          'customers': customers.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Response message to list customers of the vendor.
@@ -2830,19 +2636,12 @@ class ListVendorCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customers != null) {
-      _json['customers'] = customers.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customers != null)
+          'customers': customers.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// Response message to list vendors of the partner.
@@ -2878,19 +2677,12 @@ class ListVendorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    if (vendors != null) {
-      _json['vendors'] = vendors.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (totalSize != null) 'totalSize': totalSize,
+        if (vendors != null)
+          'vendors': vendors.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2965,25 +2757,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A task for each device in the operation.
@@ -3023,22 +2803,12 @@ class OperationPerDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (claim != null) {
-      _json['claim'] = claim.toJson();
-    }
-    if (result != null) {
-      _json['result'] = result.toJson();
-    }
-    if (unclaim != null) {
-      _json['unclaim'] = unclaim.toJson();
-    }
-    if (updateMetadata != null) {
-      _json['updateMetadata'] = updateMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (claim != null) 'claim': claim.toJson(),
+        if (result != null) 'result': result.toJson(),
+        if (unclaim != null) 'unclaim': unclaim.toJson(),
+        if (updateMetadata != null) 'updateMetadata': updateMetadata.toJson(),
+      };
 }
 
 /// Identifies one claim request.
@@ -3086,22 +2856,13 @@ class PartnerClaim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    if (deviceMetadata != null) {
-      _json['deviceMetadata'] = deviceMetadata.toJson();
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customerId != null) 'customerId': customerId,
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+        if (sectionType != null) 'sectionType': sectionType,
+      };
 }
 
 /// Identifies one unclaim request.
@@ -3159,25 +2920,15 @@ class PartnerUnclaim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    if (vacationModeDays != null) {
-      _json['vacationModeDays'] = vacationModeDays;
-    }
-    if (vacationModeExpireTime != null) {
-      _json['vacationModeExpireTime'] = vacationModeExpireTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+        if (sectionType != null) 'sectionType': sectionType,
+        if (vacationModeDays != null) 'vacationModeDays': vacationModeDays,
+        if (vacationModeExpireTime != null)
+          'vacationModeExpireTime': vacationModeExpireTime,
+      };
 }
 
 /// Captures the processing status for each device in the operation.
@@ -3224,22 +2975,12 @@ class PerDeviceStatusInBatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (errorIdentifier != null) {
-      _json['errorIdentifier'] = errorIdentifier;
-    }
-    if (errorMessage != null) {
-      _json['errorMessage'] = errorMessage;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (errorIdentifier != null) 'errorIdentifier': errorIdentifier,
+        if (errorMessage != null) 'errorMessage': errorMessage,
+        if (status != null) 'status': status,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3289,19 +3030,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message to unclaim a device.
@@ -3355,25 +3088,15 @@ class UnclaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    if (sectionType != null) {
-      _json['sectionType'] = sectionType;
-    }
-    if (vacationModeDays != null) {
-      _json['vacationModeDays'] = vacationModeDays;
-    }
-    if (vacationModeExpireTime != null) {
-      _json['vacationModeExpireTime'] = vacationModeExpireTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+        if (sectionType != null) 'sectionType': sectionType,
+        if (vacationModeDays != null) 'vacationModeDays': vacationModeDays,
+        if (vacationModeExpireTime != null)
+          'vacationModeExpireTime': vacationModeExpireTime,
+      };
 }
 
 /// Request to unclaim devices asynchronously in batch.
@@ -3394,13 +3117,10 @@ class UnclaimDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (unclaims != null) {
-      _json['unclaims'] = unclaims.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (unclaims != null)
+          'unclaims': unclaims.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request to update device metadata in batch.
@@ -3422,13 +3142,10 @@ class UpdateDeviceMetadataInBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (updates != null) {
-      _json['updates'] = updates.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (updates != null)
+          'updates': updates.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request to set metadata for a device.
@@ -3447,13 +3164,9 @@ class UpdateDeviceMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceMetadata != null) {
-      _json['deviceMetadata'] = deviceMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+      };
 }
 
 /// Identifies metadata updates to one device.
@@ -3489,17 +3202,10 @@ class UpdateMetadataArguments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceId != null) {
-      _json['deviceId'] = deviceId;
-    }
-    if (deviceIdentifier != null) {
-      _json['deviceIdentifier'] = deviceIdentifier.toJson();
-    }
-    if (deviceMetadata != null) {
-      _json['deviceMetadata'] = deviceMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId,
+        if (deviceIdentifier != null)
+          'deviceIdentifier': deviceIdentifier.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+      };
 }

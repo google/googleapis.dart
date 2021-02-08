@@ -268,16 +268,10 @@ class CreateProfileRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployment != null) {
-      _json['deployment'] = deployment.toJson();
-    }
-    if (profileType != null) {
-      _json['profileType'] = profileType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployment != null) 'deployment': deployment.toJson(),
+        if (profileType != null) 'profileType': profileType,
+      };
 }
 
 /// Deployment contains the deployment identification information.
@@ -328,19 +322,11 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (projectId != null) 'projectId': projectId,
+        if (target != null) 'target': target,
+      };
 }
 
 /// Profile resource.
@@ -433,26 +419,12 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deployment != null) {
-      _json['deployment'] = deployment.toJson();
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (profileBytes != null) {
-      _json['profileBytes'] = profileBytes;
-    }
-    if (profileType != null) {
-      _json['profileType'] = profileType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deployment != null) 'deployment': deployment.toJson(),
+        if (duration != null) 'duration': duration,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (profileBytes != null) 'profileBytes': profileBytes,
+        if (profileType != null) 'profileType': profileType,
+      };
 }

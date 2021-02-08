@@ -1516,46 +1516,20 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (city != null) {
-      _json['city'] = city;
-    }
-    if (country != null) {
-      _json['country'] = country;
-    }
-    if (countryCode != null) {
-      _json['countryCode'] = countryCode;
-    }
-    if (extendedAddress != null) {
-      _json['extendedAddress'] = extendedAddress;
-    }
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (formattedValue != null) {
-      _json['formattedValue'] = formattedValue;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (poBox != null) {
-      _json['poBox'] = poBox;
-    }
-    if (postalCode != null) {
-      _json['postalCode'] = postalCode;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (streetAddress != null) {
-      _json['streetAddress'] = streetAddress;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (city != null) 'city': city,
+        if (country != null) 'country': country,
+        if (countryCode != null) 'countryCode': countryCode,
+        if (extendedAddress != null) 'extendedAddress': extendedAddress,
+        if (formattedType != null) 'formattedType': formattedType,
+        if (formattedValue != null) 'formattedValue': formattedValue,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (poBox != null) 'poBox': poBox,
+        if (postalCode != null) 'postalCode': postalCode,
+        if (region != null) 'region': region,
+        if (streetAddress != null) 'streetAddress': streetAddress,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A person's age range.
@@ -1583,16 +1557,10 @@ class AgeRangeType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ageRange != null) {
-      _json['ageRange'] = ageRange;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ageRange != null) 'ageRange': ageRange,
+        if (metadata != null) 'metadata': metadata.toJson(),
+      };
 }
 
 /// The response to a batch get contact groups request.
@@ -1611,13 +1579,10 @@ class BatchGetContactGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A person's short biography.
@@ -1650,19 +1615,11 @@ class Biography {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contentType != null) {
-      _json['contentType'] = contentType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contentType != null) 'contentType': contentType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's birthday.
@@ -1695,19 +1652,11 @@ class Birthday {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// **DEPRECATED**: No data will be returned A person's bragging rights.
@@ -1730,16 +1679,10 @@ class BraggingRights {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's calendar URL.
@@ -1780,22 +1723,12 @@ class CalendarUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Arbitrary client data that is populated by clients.
@@ -1826,19 +1759,11 @@ class ClientData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// A contact group.
@@ -1936,37 +1861,19 @@ class ContactGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientData != null) {
-      _json['clientData'] = clientData.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (formattedName != null) {
-      _json['formattedName'] = formattedName;
-    }
-    if (groupType != null) {
-      _json['groupType'] = groupType;
-    }
-    if (memberCount != null) {
-      _json['memberCount'] = memberCount;
-    }
-    if (memberResourceNames != null) {
-      _json['memberResourceNames'] = memberResourceNames;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientData != null)
+          'clientData': clientData.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (formattedName != null) 'formattedName': formattedName,
+        if (groupType != null) 'groupType': groupType,
+        if (memberCount != null) 'memberCount': memberCount,
+        if (memberResourceNames != null)
+          'memberResourceNames': memberResourceNames,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (name != null) 'name': name,
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// A Google contact group membership.
@@ -1997,16 +1904,11 @@ class ContactGroupMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactGroupId != null) {
-      _json['contactGroupId'] = contactGroupId;
-    }
-    if (contactGroupResourceName != null) {
-      _json['contactGroupResourceName'] = contactGroupResourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactGroupId != null) 'contactGroupId': contactGroupId,
+        if (contactGroupResourceName != null)
+          'contactGroupResourceName': contactGroupResourceName,
+      };
 }
 
 /// The metadata about a contact group.
@@ -2036,16 +1938,10 @@ class ContactGroupMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deleted != null) 'deleted': deleted,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The response for a specific contact group.
@@ -2075,19 +1971,12 @@ class ContactGroupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactGroup != null) {
-      _json['contactGroup'] = contactGroup.toJson();
-    }
-    if (requestedResourceName != null) {
-      _json['requestedResourceName'] = requestedResourceName;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactGroup != null) 'contactGroup': contactGroup.toJson(),
+        if (requestedResourceName != null)
+          'requestedResourceName': requestedResourceName,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// A request to copy an "Other contact" to my contacts group.
@@ -2137,19 +2026,11 @@ class CopyOtherContactToMyContactsGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (copyMask != null) {
-      _json['copyMask'] = copyMask;
-    }
-    if (readMask != null) {
-      _json['readMask'] = readMask;
-    }
-    if (sources != null) {
-      _json['sources'] = sources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (copyMask != null) 'copyMask': copyMask,
+        if (readMask != null) 'readMask': readMask,
+        if (sources != null) 'sources': sources,
+      };
 }
 
 /// A person's cover photo.
@@ -2182,19 +2063,11 @@ class CoverPhoto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (default_ != null) {
-      _json['default'] = default_;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (default_ != null) 'default': default_,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// A request to create a new contact group.
@@ -2224,16 +2097,10 @@ class CreateContactGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactGroup != null) {
-      _json['contactGroup'] = contactGroup.toJson();
-    }
-    if (readGroupFields != null) {
-      _json['readGroupFields'] = readGroupFields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactGroup != null) 'contactGroup': contactGroup.toJson(),
+        if (readGroupFields != null) 'readGroupFields': readGroupFields,
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -2276,19 +2143,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// The response for deleteing a contact's photo.
@@ -2306,13 +2165,9 @@ class DeleteContactPhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (person != null) {
-      _json['person'] = person.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (person != null) 'person': person.toJson(),
+      };
 }
 
 /// A G Suite Domain membership.
@@ -2328,13 +2183,9 @@ class DomainMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inViewerDomain != null) {
-      _json['inViewerDomain'] = inViewerDomain;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inViewerDomain != null) 'inViewerDomain': inViewerDomain,
+      };
 }
 
 /// A person's email address.
@@ -2381,25 +2232,13 @@ class EmailAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2416,10 +2255,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An event related to the person.
@@ -2461,22 +2297,12 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (date != null) {
-      _json['date'] = date.toJson();
-    }
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (date != null) 'date': date.toJson(),
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// An identifier from an external entity related to the person.
@@ -2517,22 +2343,12 @@ class ExternalId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Metadata about a field.
@@ -2567,19 +2383,11 @@ class FieldMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (primary != null) {
-      _json['primary'] = primary;
-    }
-    if (source != null) {
-      _json['source'] = source.toJson();
-    }
-    if (verified != null) {
-      _json['verified'] = verified;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (primary != null) 'primary': primary,
+        if (source != null) 'source': source.toJson(),
+        if (verified != null) 'verified': verified,
+      };
 }
 
 /// The name that should be used to sort the person in a list.
@@ -2602,16 +2410,10 @@ class FileAs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's gender.
@@ -2657,22 +2459,12 @@ class Gender {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressMeAs != null) {
-      _json['addressMeAs'] = addressMeAs;
-    }
-    if (formattedValue != null) {
-      _json['formattedValue'] = formattedValue;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressMeAs != null) 'addressMeAs': addressMeAs,
+        if (formattedValue != null) 'formattedValue': formattedValue,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// The response to a get request for a list of people by resource name.
@@ -2691,13 +2483,10 @@ class GetPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (responses != null) {
-      _json['responses'] = responses.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (responses != null)
+          'responses': responses.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Arbitrary client data that is populated by clients.
@@ -2721,16 +2510,10 @@ class GroupClientData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's instant messaging client.
@@ -2790,28 +2573,14 @@ class ImClient {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedProtocol != null) {
-      _json['formattedProtocol'] = formattedProtocol;
-    }
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (username != null) {
-      _json['username'] = username;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedProtocol != null) 'formattedProtocol': formattedProtocol,
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (protocol != null) 'protocol': protocol,
+        if (type != null) 'type': type,
+        if (username != null) 'username': username,
+      };
 }
 
 /// One of the person's interests.
@@ -2834,16 +2603,10 @@ class Interest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// The response to a request for the authenticated user's connections.
@@ -2893,26 +2656,14 @@ class ListConnectionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (connections != null) {
-      _json['connections'] =
-          connections.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    if (totalItems != null) {
-      _json['totalItems'] = totalItems;
-    }
-    if (totalPeople != null) {
-      _json['totalPeople'] = totalPeople;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (connections != null)
+          'connections': connections.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+        if (totalItems != null) 'totalItems': totalItems,
+        if (totalPeople != null) 'totalPeople': totalPeople,
+      };
 }
 
 /// The response to a list contact groups request.
@@ -2951,23 +2702,14 @@ class ListContactGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactGroups != null) {
-      _json['contactGroups'] =
-          contactGroups.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    if (totalItems != null) {
-      _json['totalItems'] = totalItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactGroups != null)
+          'contactGroups':
+              contactGroups.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+        if (totalItems != null) 'totalItems': totalItems,
+      };
 }
 
 /// The response to a request for the authenticated user's domain directory.
@@ -3003,19 +2745,12 @@ class ListDirectoryPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    if (people != null) {
-      _json['people'] = people.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+        if (people != null)
+          'people': people.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response to a request for the authenticated user's "Other contacts".
@@ -3054,20 +2789,13 @@ class ListOtherContactsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (nextSyncToken != null) {
-      _json['nextSyncToken'] = nextSyncToken;
-    }
-    if (otherContacts != null) {
-      _json['otherContacts'] =
-          otherContacts.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+        if (otherContacts != null)
+          'otherContacts':
+              otherContacts.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A person's locale preference.
@@ -3091,16 +2819,10 @@ class Locale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's location.
@@ -3162,34 +2884,16 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (buildingId != null) {
-      _json['buildingId'] = buildingId;
-    }
-    if (current != null) {
-      _json['current'] = current;
-    }
-    if (deskCode != null) {
-      _json['deskCode'] = deskCode;
-    }
-    if (floor != null) {
-      _json['floor'] = floor;
-    }
-    if (floorSection != null) {
-      _json['floorSection'] = floorSection;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (buildingId != null) 'buildingId': buildingId,
+        if (current != null) 'current': current,
+        if (deskCode != null) 'deskCode': deskCode,
+        if (floor != null) 'floor': floor,
+        if (floorSection != null) 'floorSection': floorSection,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's membership in a group.
@@ -3225,19 +2929,13 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactGroupMembership != null) {
-      _json['contactGroupMembership'] = contactGroupMembership.toJson();
-    }
-    if (domainMembership != null) {
-      _json['domainMembership'] = domainMembership.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactGroupMembership != null)
+          'contactGroupMembership': contactGroupMembership.toJson(),
+        if (domainMembership != null)
+          'domainMembership': domainMembership.toJson(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+      };
 }
 
 /// A person's miscellaneous keyword.
@@ -3288,22 +2986,12 @@ class MiscKeyword {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A request to modify an existing contact group's members.
@@ -3344,16 +3032,12 @@ class ModifyContactGroupMembersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceNamesToAdd != null) {
-      _json['resourceNamesToAdd'] = resourceNamesToAdd;
-    }
-    if (resourceNamesToRemove != null) {
-      _json['resourceNamesToRemove'] = resourceNamesToRemove;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceNamesToAdd != null)
+          'resourceNamesToAdd': resourceNamesToAdd,
+        if (resourceNamesToRemove != null)
+          'resourceNamesToRemove': resourceNamesToRemove,
+      };
 }
 
 /// The response to a modify contact group members request.
@@ -3381,17 +3065,13 @@ class ModifyContactGroupMembersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canNotRemoveLastContactGroupResourceNames != null) {
-      _json['canNotRemoveLastContactGroupResourceNames'] =
-          canNotRemoveLastContactGroupResourceNames;
-    }
-    if (notFoundResourceNames != null) {
-      _json['notFoundResourceNames'] = notFoundResourceNames;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canNotRemoveLastContactGroupResourceNames != null)
+          'canNotRemoveLastContactGroupResourceNames':
+              canNotRemoveLastContactGroupResourceNames,
+        if (notFoundResourceNames != null)
+          'notFoundResourceNames': notFoundResourceNames,
+      };
 }
 
 /// A person's name.
@@ -3501,55 +3181,28 @@ class Name {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (displayNameLastFirst != null) {
-      _json['displayNameLastFirst'] = displayNameLastFirst;
-    }
-    if (familyName != null) {
-      _json['familyName'] = familyName;
-    }
-    if (givenName != null) {
-      _json['givenName'] = givenName;
-    }
-    if (honorificPrefix != null) {
-      _json['honorificPrefix'] = honorificPrefix;
-    }
-    if (honorificSuffix != null) {
-      _json['honorificSuffix'] = honorificSuffix;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (middleName != null) {
-      _json['middleName'] = middleName;
-    }
-    if (phoneticFamilyName != null) {
-      _json['phoneticFamilyName'] = phoneticFamilyName;
-    }
-    if (phoneticFullName != null) {
-      _json['phoneticFullName'] = phoneticFullName;
-    }
-    if (phoneticGivenName != null) {
-      _json['phoneticGivenName'] = phoneticGivenName;
-    }
-    if (phoneticHonorificPrefix != null) {
-      _json['phoneticHonorificPrefix'] = phoneticHonorificPrefix;
-    }
-    if (phoneticHonorificSuffix != null) {
-      _json['phoneticHonorificSuffix'] = phoneticHonorificSuffix;
-    }
-    if (phoneticMiddleName != null) {
-      _json['phoneticMiddleName'] = phoneticMiddleName;
-    }
-    if (unstructuredName != null) {
-      _json['unstructuredName'] = unstructuredName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (displayNameLastFirst != null)
+          'displayNameLastFirst': displayNameLastFirst,
+        if (familyName != null) 'familyName': familyName,
+        if (givenName != null) 'givenName': givenName,
+        if (honorificPrefix != null) 'honorificPrefix': honorificPrefix,
+        if (honorificSuffix != null) 'honorificSuffix': honorificSuffix,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (middleName != null) 'middleName': middleName,
+        if (phoneticFamilyName != null)
+          'phoneticFamilyName': phoneticFamilyName,
+        if (phoneticFullName != null) 'phoneticFullName': phoneticFullName,
+        if (phoneticGivenName != null) 'phoneticGivenName': phoneticGivenName,
+        if (phoneticHonorificPrefix != null)
+          'phoneticHonorificPrefix': phoneticHonorificPrefix,
+        if (phoneticHonorificSuffix != null)
+          'phoneticHonorificSuffix': phoneticHonorificSuffix,
+        if (phoneticMiddleName != null)
+          'phoneticMiddleName': phoneticMiddleName,
+        if (unstructuredName != null) 'unstructuredName': unstructuredName,
+      };
 }
 
 /// A person's nickname.
@@ -3588,19 +3241,11 @@ class Nickname {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's occupation.
@@ -3623,16 +3268,10 @@ class Occupation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's past or current organization.
@@ -3740,52 +3379,22 @@ class Organization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (current != null) {
-      _json['current'] = current;
-    }
-    if (department != null) {
-      _json['department'] = department;
-    }
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (endDate != null) {
-      _json['endDate'] = endDate.toJson();
-    }
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (jobDescription != null) {
-      _json['jobDescription'] = jobDescription;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (phoneticName != null) {
-      _json['phoneticName'] = phoneticName;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate.toJson();
-    }
-    if (symbol != null) {
-      _json['symbol'] = symbol;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (current != null) 'current': current,
+        if (department != null) 'department': department,
+        if (domain != null) 'domain': domain,
+        if (endDate != null) 'endDate': endDate.toJson(),
+        if (formattedType != null) 'formattedType': formattedType,
+        if (jobDescription != null) 'jobDescription': jobDescription,
+        if (location != null) 'location': location,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (name != null) 'name': name,
+        if (phoneticName != null) 'phoneticName': phoneticName,
+        if (startDate != null) 'startDate': startDate.toJson(),
+        if (symbol != null) 'symbol': symbol,
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about a person merged from various data sources such as the
@@ -4170,139 +3779,84 @@ class Person {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addresses != null) {
-      _json['addresses'] = addresses.map((value) => value.toJson()).toList();
-    }
-    if (ageRange != null) {
-      _json['ageRange'] = ageRange;
-    }
-    if (ageRanges != null) {
-      _json['ageRanges'] = ageRanges.map((value) => value.toJson()).toList();
-    }
-    if (biographies != null) {
-      _json['biographies'] =
-          biographies.map((value) => value.toJson()).toList();
-    }
-    if (birthdays != null) {
-      _json['birthdays'] = birthdays.map((value) => value.toJson()).toList();
-    }
-    if (braggingRights != null) {
-      _json['braggingRights'] =
-          braggingRights.map((value) => value.toJson()).toList();
-    }
-    if (calendarUrls != null) {
-      _json['calendarUrls'] =
-          calendarUrls.map((value) => value.toJson()).toList();
-    }
-    if (clientData != null) {
-      _json['clientData'] = clientData.map((value) => value.toJson()).toList();
-    }
-    if (coverPhotos != null) {
-      _json['coverPhotos'] =
-          coverPhotos.map((value) => value.toJson()).toList();
-    }
-    if (emailAddresses != null) {
-      _json['emailAddresses'] =
-          emailAddresses.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (events != null) {
-      _json['events'] = events.map((value) => value.toJson()).toList();
-    }
-    if (externalIds != null) {
-      _json['externalIds'] =
-          externalIds.map((value) => value.toJson()).toList();
-    }
-    if (fileAses != null) {
-      _json['fileAses'] = fileAses.map((value) => value.toJson()).toList();
-    }
-    if (genders != null) {
-      _json['genders'] = genders.map((value) => value.toJson()).toList();
-    }
-    if (imClients != null) {
-      _json['imClients'] = imClients.map((value) => value.toJson()).toList();
-    }
-    if (interests != null) {
-      _json['interests'] = interests.map((value) => value.toJson()).toList();
-    }
-    if (locales != null) {
-      _json['locales'] = locales.map((value) => value.toJson()).toList();
-    }
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (memberships != null) {
-      _json['memberships'] =
-          memberships.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (miscKeywords != null) {
-      _json['miscKeywords'] =
-          miscKeywords.map((value) => value.toJson()).toList();
-    }
-    if (names != null) {
-      _json['names'] = names.map((value) => value.toJson()).toList();
-    }
-    if (nicknames != null) {
-      _json['nicknames'] = nicknames.map((value) => value.toJson()).toList();
-    }
-    if (occupations != null) {
-      _json['occupations'] =
-          occupations.map((value) => value.toJson()).toList();
-    }
-    if (organizations != null) {
-      _json['organizations'] =
-          organizations.map((value) => value.toJson()).toList();
-    }
-    if (phoneNumbers != null) {
-      _json['phoneNumbers'] =
-          phoneNumbers.map((value) => value.toJson()).toList();
-    }
-    if (photos != null) {
-      _json['photos'] = photos.map((value) => value.toJson()).toList();
-    }
-    if (relations != null) {
-      _json['relations'] = relations.map((value) => value.toJson()).toList();
-    }
-    if (relationshipInterests != null) {
-      _json['relationshipInterests'] =
-          relationshipInterests.map((value) => value.toJson()).toList();
-    }
-    if (relationshipStatuses != null) {
-      _json['relationshipStatuses'] =
-          relationshipStatuses.map((value) => value.toJson()).toList();
-    }
-    if (residences != null) {
-      _json['residences'] = residences.map((value) => value.toJson()).toList();
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    if (sipAddresses != null) {
-      _json['sipAddresses'] =
-          sipAddresses.map((value) => value.toJson()).toList();
-    }
-    if (skills != null) {
-      _json['skills'] = skills.map((value) => value.toJson()).toList();
-    }
-    if (taglines != null) {
-      _json['taglines'] = taglines.map((value) => value.toJson()).toList();
-    }
-    if (urls != null) {
-      _json['urls'] = urls.map((value) => value.toJson()).toList();
-    }
-    if (userDefined != null) {
-      _json['userDefined'] =
-          userDefined.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addresses != null)
+          'addresses': addresses.map((value) => value.toJson()).toList(),
+        if (ageRange != null) 'ageRange': ageRange,
+        if (ageRanges != null)
+          'ageRanges': ageRanges.map((value) => value.toJson()).toList(),
+        if (biographies != null)
+          'biographies': biographies.map((value) => value.toJson()).toList(),
+        if (birthdays != null)
+          'birthdays': birthdays.map((value) => value.toJson()).toList(),
+        if (braggingRights != null)
+          'braggingRights':
+              braggingRights.map((value) => value.toJson()).toList(),
+        if (calendarUrls != null)
+          'calendarUrls': calendarUrls.map((value) => value.toJson()).toList(),
+        if (clientData != null)
+          'clientData': clientData.map((value) => value.toJson()).toList(),
+        if (coverPhotos != null)
+          'coverPhotos': coverPhotos.map((value) => value.toJson()).toList(),
+        if (emailAddresses != null)
+          'emailAddresses':
+              emailAddresses.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (events != null)
+          'events': events.map((value) => value.toJson()).toList(),
+        if (externalIds != null)
+          'externalIds': externalIds.map((value) => value.toJson()).toList(),
+        if (fileAses != null)
+          'fileAses': fileAses.map((value) => value.toJson()).toList(),
+        if (genders != null)
+          'genders': genders.map((value) => value.toJson()).toList(),
+        if (imClients != null)
+          'imClients': imClients.map((value) => value.toJson()).toList(),
+        if (interests != null)
+          'interests': interests.map((value) => value.toJson()).toList(),
+        if (locales != null)
+          'locales': locales.map((value) => value.toJson()).toList(),
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (memberships != null)
+          'memberships': memberships.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (miscKeywords != null)
+          'miscKeywords': miscKeywords.map((value) => value.toJson()).toList(),
+        if (names != null)
+          'names': names.map((value) => value.toJson()).toList(),
+        if (nicknames != null)
+          'nicknames': nicknames.map((value) => value.toJson()).toList(),
+        if (occupations != null)
+          'occupations': occupations.map((value) => value.toJson()).toList(),
+        if (organizations != null)
+          'organizations':
+              organizations.map((value) => value.toJson()).toList(),
+        if (phoneNumbers != null)
+          'phoneNumbers': phoneNumbers.map((value) => value.toJson()).toList(),
+        if (photos != null)
+          'photos': photos.map((value) => value.toJson()).toList(),
+        if (relations != null)
+          'relations': relations.map((value) => value.toJson()).toList(),
+        if (relationshipInterests != null)
+          'relationshipInterests':
+              relationshipInterests.map((value) => value.toJson()).toList(),
+        if (relationshipStatuses != null)
+          'relationshipStatuses':
+              relationshipStatuses.map((value) => value.toJson()).toList(),
+        if (residences != null)
+          'residences': residences.map((value) => value.toJson()).toList(),
+        if (resourceName != null) 'resourceName': resourceName,
+        if (sipAddresses != null)
+          'sipAddresses': sipAddresses.map((value) => value.toJson()).toList(),
+        if (skills != null)
+          'skills': skills.map((value) => value.toJson()).toList(),
+        if (taglines != null)
+          'taglines': taglines.map((value) => value.toJson()).toList(),
+        if (urls != null) 'urls': urls.map((value) => value.toJson()).toList(),
+        if (userDefined != null)
+          'userDefined': userDefined.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The metadata about a person.
@@ -4374,25 +3928,16 @@ class PersonMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (linkedPeopleResourceNames != null) {
-      _json['linkedPeopleResourceNames'] = linkedPeopleResourceNames;
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (previousResourceNames != null) {
-      _json['previousResourceNames'] = previousResourceNames;
-    }
-    if (sources != null) {
-      _json['sources'] = sources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deleted != null) 'deleted': deleted,
+        if (linkedPeopleResourceNames != null)
+          'linkedPeopleResourceNames': linkedPeopleResourceNames,
+        if (objectType != null) 'objectType': objectType,
+        if (previousResourceNames != null)
+          'previousResourceNames': previousResourceNames,
+        if (sources != null)
+          'sources': sources.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response for a single person
@@ -4434,22 +3979,13 @@ class PersonResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (httpStatusCode != null) {
-      _json['httpStatusCode'] = httpStatusCode;
-    }
-    if (person != null) {
-      _json['person'] = person.toJson();
-    }
-    if (requestedResourceName != null) {
-      _json['requestedResourceName'] = requestedResourceName;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (httpStatusCode != null) 'httpStatusCode': httpStatusCode,
+        if (person != null) 'person': person.toJson(),
+        if (requestedResourceName != null)
+          'requestedResourceName': requestedResourceName,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// A person's phone number.
@@ -4501,25 +4037,13 @@ class PhoneNumber {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canonicalForm != null) {
-      _json['canonicalForm'] = canonicalForm;
-    }
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canonicalForm != null) 'canonicalForm': canonicalForm,
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A person's photo.
@@ -4556,19 +4080,11 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (default_ != null) {
-      _json['default'] = default_;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (default_ != null) 'default': default_,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// The metadata about a profile.
@@ -4600,16 +4116,10 @@ class ProfileMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (userTypes != null) {
-      _json['userTypes'] = userTypes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (objectType != null) 'objectType': objectType,
+        if (userTypes != null) 'userTypes': userTypes,
+      };
 }
 
 /// A person's relation to another person.
@@ -4652,22 +4162,12 @@ class Relation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (person != null) {
-      _json['person'] = person;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (person != null) 'person': person,
+        if (type != null) 'type': type,
+      };
 }
 
 /// **DEPRECATED**: No data will be returned A person's relationship interest .
@@ -4703,19 +4203,11 @@ class RelationshipInterest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedValue != null) {
-      _json['formattedValue'] = formattedValue;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedValue != null) 'formattedValue': formattedValue,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// **DEPRECATED**: No data will be returned A person's relationship status.
@@ -4751,19 +4243,11 @@ class RelationshipStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedValue != null) {
-      _json['formattedValue'] = formattedValue;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedValue != null) 'formattedValue': formattedValue,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// **DEPRECATED**: Please use `person.locations` instead.
@@ -4795,19 +4279,11 @@ class Residence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (current != null) {
-      _json['current'] = current;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (current != null) 'current': current,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// The response to a request for people in the authenticated user's domain
@@ -4841,19 +4317,12 @@ class SearchDirectoryPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (people != null) {
-      _json['people'] = people.map((value) => value.toJson()).toList();
-    }
-    if (totalSize != null) {
-      _json['totalSize'] = totalSize;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (people != null)
+          'people': people.map((value) => value.toJson()).toList(),
+        if (totalSize != null) 'totalSize': totalSize,
+      };
 }
 
 /// A person's SIP address.
@@ -4899,22 +4368,12 @@ class SipAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A skill that the person has.
@@ -4937,16 +4396,10 @@ class Skill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// The source of a field.
@@ -5013,25 +4466,14 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (profileMetadata != null) {
-      _json['profileMetadata'] = profileMetadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (profileMetadata != null)
+          'profileMetadata': profileMetadata.toJson(),
+        if (type != null) 'type': type,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5081,19 +4523,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// **DEPRECATED**: No data will be returned A brief one-line description of the
@@ -5117,16 +4551,10 @@ class Tagline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// A request to update an existing user contact group.
@@ -5171,19 +4599,11 @@ class UpdateContactGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactGroup != null) {
-      _json['contactGroup'] = contactGroup.toJson();
-    }
-    if (readGroupFields != null) {
-      _json['readGroupFields'] = readGroupFields;
-    }
-    if (updateGroupFields != null) {
-      _json['updateGroupFields'] = updateGroupFields;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactGroup != null) 'contactGroup': contactGroup.toJson(),
+        if (readGroupFields != null) 'readGroupFields': readGroupFields,
+        if (updateGroupFields != null) 'updateGroupFields': updateGroupFields,
+      };
 }
 
 /// A request to update an existing contact's photo.
@@ -5240,19 +4660,11 @@ class UpdateContactPhotoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (personFields != null) {
-      _json['personFields'] = personFields;
-    }
-    if (photoBytes != null) {
-      _json['photoBytes'] = photoBytes;
-    }
-    if (sources != null) {
-      _json['sources'] = sources;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (personFields != null) 'personFields': personFields,
+        if (photoBytes != null) 'photoBytes': photoBytes,
+        if (sources != null) 'sources': sources,
+      };
 }
 
 /// The response for updating a contact's photo.
@@ -5270,13 +4682,9 @@ class UpdateContactPhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (person != null) {
-      _json['person'] = person.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (person != null) 'person': person.toJson(),
+      };
 }
 
 /// A person's associated URLs.
@@ -5318,22 +4726,12 @@ class Url {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (formattedType != null) {
-      _json['formattedType'] = formattedType;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Arbitrary user data that is populated by the end users.
@@ -5362,17 +4760,9 @@ class UserDefined {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (value != null) 'value': value,
+      };
 }

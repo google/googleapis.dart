@@ -5015,16 +5015,10 @@ class AboutAdditionalRoleInfoRoleSets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalRoles != null) {
-      _json['additionalRoles'] = additionalRoles;
-    }
-    if (primaryRole != null) {
-      _json['primaryRole'] = primaryRole;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalRoles != null) 'additionalRoles': additionalRoles,
+        if (primaryRole != null) 'primaryRole': primaryRole,
+      };
 }
 
 class AboutAdditionalRoleInfo {
@@ -5049,16 +5043,11 @@ class AboutAdditionalRoleInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (roleSets != null) {
-      _json['roleSets'] = roleSets.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (roleSets != null)
+          'roleSets': roleSets.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type,
+      };
 }
 
 class AboutDriveThemes {
@@ -5085,19 +5074,12 @@ class AboutDriveThemes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundImageLink != null) {
-      _json['backgroundImageLink'] = backgroundImageLink;
-    }
-    if (colorRgb != null) {
-      _json['colorRgb'] = colorRgb;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundImageLink != null)
+          'backgroundImageLink': backgroundImageLink,
+        if (colorRgb != null) 'colorRgb': colorRgb,
+        if (id != null) 'id': id,
+      };
 }
 
 class AboutExportFormats {
@@ -5120,16 +5102,10 @@ class AboutExportFormats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (targets != null) {
-      _json['targets'] = targets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (source != null) 'source': source,
+        if (targets != null) 'targets': targets,
+      };
 }
 
 class AboutFeatures {
@@ -5150,16 +5126,10 @@ class AboutFeatures {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (featureName != null) {
-      _json['featureName'] = featureName;
-    }
-    if (featureRate != null) {
-      _json['featureRate'] = featureRate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (featureName != null) 'featureName': featureName,
+        if (featureRate != null) 'featureRate': featureRate,
+      };
 }
 
 class AboutImportFormats {
@@ -5182,16 +5152,10 @@ class AboutImportFormats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (source != null) {
-      _json['source'] = source;
-    }
-    if (targets != null) {
-      _json['targets'] = targets;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (source != null) 'source': source,
+        if (targets != null) 'targets': targets,
+      };
 }
 
 class AboutMaxUploadSizes {
@@ -5212,16 +5176,10 @@ class AboutMaxUploadSizes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (size != null) 'size': size,
+        if (type != null) 'type': type,
+      };
 }
 
 class AboutQuotaBytesByService {
@@ -5242,16 +5200,10 @@ class AboutQuotaBytesByService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bytesUsed != null) {
-      _json['bytesUsed'] = bytesUsed;
-    }
-    if (serviceName != null) {
-      _json['serviceName'] = serviceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bytesUsed != null) 'bytesUsed': bytesUsed,
+        if (serviceName != null) 'serviceName': serviceName,
+      };
 }
 
 class AboutTeamDriveThemes {
@@ -5278,19 +5230,12 @@ class AboutTeamDriveThemes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundImageLink != null) {
-      _json['backgroundImageLink'] = backgroundImageLink;
-    }
-    if (colorRgb != null) {
-      _json['colorRgb'] = colorRgb;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundImageLink != null)
+          'backgroundImageLink': backgroundImageLink,
+        if (colorRgb != null) 'colorRgb': colorRgb,
+        if (id != null) 'id': id,
+      };
 }
 
 /// An item with user information and settings.
@@ -5516,101 +5461,57 @@ class About {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalRoleInfo != null) {
-      _json['additionalRoleInfo'] =
-          additionalRoleInfo.map((value) => value.toJson()).toList();
-    }
-    if (canCreateDrives != null) {
-      _json['canCreateDrives'] = canCreateDrives;
-    }
-    if (canCreateTeamDrives != null) {
-      _json['canCreateTeamDrives'] = canCreateTeamDrives;
-    }
-    if (domainSharingPolicy != null) {
-      _json['domainSharingPolicy'] = domainSharingPolicy;
-    }
-    if (driveThemes != null) {
-      _json['driveThemes'] =
-          driveThemes.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (exportFormats != null) {
-      _json['exportFormats'] =
-          exportFormats.map((value) => value.toJson()).toList();
-    }
-    if (features != null) {
-      _json['features'] = features.map((value) => value.toJson()).toList();
-    }
-    if (folderColorPalette != null) {
-      _json['folderColorPalette'] = folderColorPalette;
-    }
-    if (importFormats != null) {
-      _json['importFormats'] =
-          importFormats.map((value) => value.toJson()).toList();
-    }
-    if (isCurrentAppInstalled != null) {
-      _json['isCurrentAppInstalled'] = isCurrentAppInstalled;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (largestChangeId != null) {
-      _json['largestChangeId'] = largestChangeId;
-    }
-    if (maxUploadSizes != null) {
-      _json['maxUploadSizes'] =
-          maxUploadSizes.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permissionId != null) {
-      _json['permissionId'] = permissionId;
-    }
-    if (quotaBytesByService != null) {
-      _json['quotaBytesByService'] =
-          quotaBytesByService.map((value) => value.toJson()).toList();
-    }
-    if (quotaBytesTotal != null) {
-      _json['quotaBytesTotal'] = quotaBytesTotal;
-    }
-    if (quotaBytesUsed != null) {
-      _json['quotaBytesUsed'] = quotaBytesUsed;
-    }
-    if (quotaBytesUsedAggregate != null) {
-      _json['quotaBytesUsedAggregate'] = quotaBytesUsedAggregate;
-    }
-    if (quotaBytesUsedInTrash != null) {
-      _json['quotaBytesUsedInTrash'] = quotaBytesUsedInTrash;
-    }
-    if (quotaType != null) {
-      _json['quotaType'] = quotaType;
-    }
-    if (remainingChangeIds != null) {
-      _json['remainingChangeIds'] = remainingChangeIds;
-    }
-    if (rootFolderId != null) {
-      _json['rootFolderId'] = rootFolderId;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (teamDriveThemes != null) {
-      _json['teamDriveThemes'] =
-          teamDriveThemes.map((value) => value.toJson()).toList();
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalRoleInfo != null)
+          'additionalRoleInfo':
+              additionalRoleInfo.map((value) => value.toJson()).toList(),
+        if (canCreateDrives != null) 'canCreateDrives': canCreateDrives,
+        if (canCreateTeamDrives != null)
+          'canCreateTeamDrives': canCreateTeamDrives,
+        if (domainSharingPolicy != null)
+          'domainSharingPolicy': domainSharingPolicy,
+        if (driveThemes != null)
+          'driveThemes': driveThemes.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (exportFormats != null)
+          'exportFormats':
+              exportFormats.map((value) => value.toJson()).toList(),
+        if (features != null)
+          'features': features.map((value) => value.toJson()).toList(),
+        if (folderColorPalette != null)
+          'folderColorPalette': folderColorPalette,
+        if (importFormats != null)
+          'importFormats':
+              importFormats.map((value) => value.toJson()).toList(),
+        if (isCurrentAppInstalled != null)
+          'isCurrentAppInstalled': isCurrentAppInstalled,
+        if (kind != null) 'kind': kind,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (largestChangeId != null) 'largestChangeId': largestChangeId,
+        if (maxUploadSizes != null)
+          'maxUploadSizes':
+              maxUploadSizes.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (permissionId != null) 'permissionId': permissionId,
+        if (quotaBytesByService != null)
+          'quotaBytesByService':
+              quotaBytesByService.map((value) => value.toJson()).toList(),
+        if (quotaBytesTotal != null) 'quotaBytesTotal': quotaBytesTotal,
+        if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed,
+        if (quotaBytesUsedAggregate != null)
+          'quotaBytesUsedAggregate': quotaBytesUsedAggregate,
+        if (quotaBytesUsedInTrash != null)
+          'quotaBytesUsedInTrash': quotaBytesUsedInTrash,
+        if (quotaType != null) 'quotaType': quotaType,
+        if (remainingChangeIds != null)
+          'remainingChangeIds': remainingChangeIds,
+        if (rootFolderId != null) 'rootFolderId': rootFolderId,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (teamDriveThemes != null)
+          'teamDriveThemes':
+              teamDriveThemes.map((value) => value.toJson()).toList(),
+        if (user != null) 'user': user.toJson(),
+      };
 }
 
 class AppIcons {
@@ -5644,19 +5545,11 @@ class AppIcons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (category != null) {
-      _json['category'] = category;
-    }
-    if (iconUrl != null) {
-      _json['iconUrl'] = iconUrl;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (category != null) 'category': category,
+        if (iconUrl != null) 'iconUrl': iconUrl,
+        if (size != null) 'size': size,
+      };
 }
 
 /// The apps resource provides a list of the apps that a user has installed,
@@ -5834,82 +5727,38 @@ class App {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorized != null) {
-      _json['authorized'] = authorized;
-    }
-    if (createInFolderTemplate != null) {
-      _json['createInFolderTemplate'] = createInFolderTemplate;
-    }
-    if (createUrl != null) {
-      _json['createUrl'] = createUrl;
-    }
-    if (hasDriveWideScope != null) {
-      _json['hasDriveWideScope'] = hasDriveWideScope;
-    }
-    if (icons != null) {
-      _json['icons'] = icons.map((value) => value.toJson()).toList();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (installed != null) {
-      _json['installed'] = installed;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (longDescription != null) {
-      _json['longDescription'] = longDescription;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (objectType != null) {
-      _json['objectType'] = objectType;
-    }
-    if (openUrlTemplate != null) {
-      _json['openUrlTemplate'] = openUrlTemplate;
-    }
-    if (primaryFileExtensions != null) {
-      _json['primaryFileExtensions'] = primaryFileExtensions;
-    }
-    if (primaryMimeTypes != null) {
-      _json['primaryMimeTypes'] = primaryMimeTypes;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (productUrl != null) {
-      _json['productUrl'] = productUrl;
-    }
-    if (secondaryFileExtensions != null) {
-      _json['secondaryFileExtensions'] = secondaryFileExtensions;
-    }
-    if (secondaryMimeTypes != null) {
-      _json['secondaryMimeTypes'] = secondaryMimeTypes;
-    }
-    if (shortDescription != null) {
-      _json['shortDescription'] = shortDescription;
-    }
-    if (supportsCreate != null) {
-      _json['supportsCreate'] = supportsCreate;
-    }
-    if (supportsImport != null) {
-      _json['supportsImport'] = supportsImport;
-    }
-    if (supportsMultiOpen != null) {
-      _json['supportsMultiOpen'] = supportsMultiOpen;
-    }
-    if (supportsOfflineCreate != null) {
-      _json['supportsOfflineCreate'] = supportsOfflineCreate;
-    }
-    if (useByDefault != null) {
-      _json['useByDefault'] = useByDefault;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (authorized != null) 'authorized': authorized,
+        if (createInFolderTemplate != null)
+          'createInFolderTemplate': createInFolderTemplate,
+        if (createUrl != null) 'createUrl': createUrl,
+        if (hasDriveWideScope != null) 'hasDriveWideScope': hasDriveWideScope,
+        if (icons != null)
+          'icons': icons.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id,
+        if (installed != null) 'installed': installed,
+        if (kind != null) 'kind': kind,
+        if (longDescription != null) 'longDescription': longDescription,
+        if (name != null) 'name': name,
+        if (objectType != null) 'objectType': objectType,
+        if (openUrlTemplate != null) 'openUrlTemplate': openUrlTemplate,
+        if (primaryFileExtensions != null)
+          'primaryFileExtensions': primaryFileExtensions,
+        if (primaryMimeTypes != null) 'primaryMimeTypes': primaryMimeTypes,
+        if (productId != null) 'productId': productId,
+        if (productUrl != null) 'productUrl': productUrl,
+        if (secondaryFileExtensions != null)
+          'secondaryFileExtensions': secondaryFileExtensions,
+        if (secondaryMimeTypes != null)
+          'secondaryMimeTypes': secondaryMimeTypes,
+        if (shortDescription != null) 'shortDescription': shortDescription,
+        if (supportsCreate != null) 'supportsCreate': supportsCreate,
+        if (supportsImport != null) 'supportsImport': supportsImport,
+        if (supportsMultiOpen != null) 'supportsMultiOpen': supportsMultiOpen,
+        if (supportsOfflineCreate != null)
+          'supportsOfflineCreate': supportsOfflineCreate,
+        if (useByDefault != null) 'useByDefault': useByDefault,
+      };
 }
 
 /// A list of third-party applications which the user has installed or given
@@ -5957,25 +5806,14 @@ class AppList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultAppIds != null) {
-      _json['defaultAppIds'] = defaultAppIds;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultAppIds != null) 'defaultAppIds': defaultAppIds,
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// Representation of a change to a file or shared drive.
@@ -6076,49 +5914,22 @@ class Change {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (changeType != null) {
-      _json['changeType'] = changeType;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (drive != null) {
-      _json['drive'] = drive.toJson();
-    }
-    if (driveId != null) {
-      _json['driveId'] = driveId;
-    }
-    if (file != null) {
-      _json['file'] = file.toJson();
-    }
-    if (fileId != null) {
-      _json['fileId'] = fileId;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (modificationDate != null) {
-      _json['modificationDate'] = (modificationDate).toIso8601String();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (teamDrive != null) {
-      _json['teamDrive'] = teamDrive.toJson();
-    }
-    if (teamDriveId != null) {
-      _json['teamDriveId'] = teamDriveId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (changeType != null) 'changeType': changeType,
+        if (deleted != null) 'deleted': deleted,
+        if (drive != null) 'drive': drive.toJson(),
+        if (driveId != null) 'driveId': driveId,
+        if (file != null) 'file': file.toJson(),
+        if (fileId != null) 'fileId': fileId,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (modificationDate != null)
+          'modificationDate': (modificationDate).toIso8601String(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
+        if (teamDriveId != null) 'teamDriveId': teamDriveId,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A list of changes for a user.
@@ -6189,34 +6000,17 @@ class ChangeList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (largestChangeId != null) {
-      _json['largestChangeId'] = largestChangeId;
-    }
-    if (newStartPageToken != null) {
-      _json['newStartPageToken'] = newStartPageToken;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (largestChangeId != null) 'largestChangeId': largestChangeId,
+        if (newStartPageToken != null) 'newStartPageToken': newStartPageToken,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// An notification channel used to watch for resource changes.
@@ -6305,40 +6099,18 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (address != null) {
-      _json['address'] = address;
-    }
-    if (expiration != null) {
-      _json['expiration'] = expiration;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    if (payload != null) {
-      _json['payload'] = payload;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (resourceUri != null) {
-      _json['resourceUri'] = resourceUri;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (address != null) 'address': address,
+        if (expiration != null) 'expiration': expiration,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (params != null) 'params': params,
+        if (payload != null) 'payload': payload,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (resourceUri != null) 'resourceUri': resourceUri,
+        if (token != null) 'token': token,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A list of children of a file.
@@ -6394,28 +6166,15 @@ class ChildList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A reference to a folder's child.
@@ -6449,22 +6208,12 @@ class ChildReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (childLink != null) {
-      _json['childLink'] = childLink;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (childLink != null) 'childLink': childLink,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// The context of the file which is being commented on.
@@ -6489,16 +6238,10 @@ class CommentContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A comment on a file in Google Drive.
@@ -6619,55 +6362,25 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (anchor != null) {
-      _json['anchor'] = anchor;
-    }
-    if (author != null) {
-      _json['author'] = author.toJson();
-    }
-    if (commentId != null) {
-      _json['commentId'] = commentId;
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (context != null) {
-      _json['context'] = context.toJson();
-    }
-    if (createdDate != null) {
-      _json['createdDate'] = (createdDate).toIso8601String();
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (fileId != null) {
-      _json['fileId'] = fileId;
-    }
-    if (fileTitle != null) {
-      _json['fileTitle'] = fileTitle;
-    }
-    if (htmlContent != null) {
-      _json['htmlContent'] = htmlContent;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (modifiedDate != null) {
-      _json['modifiedDate'] = (modifiedDate).toIso8601String();
-    }
-    if (replies != null) {
-      _json['replies'] = replies.map((value) => value.toJson()).toList();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (anchor != null) 'anchor': anchor,
+        if (author != null) 'author': author.toJson(),
+        if (commentId != null) 'commentId': commentId,
+        if (content != null) 'content': content,
+        if (context != null) 'context': context.toJson(),
+        if (createdDate != null) 'createdDate': (createdDate).toIso8601String(),
+        if (deleted != null) 'deleted': deleted,
+        if (fileId != null) 'fileId': fileId,
+        if (fileTitle != null) 'fileTitle': fileTitle,
+        if (htmlContent != null) 'htmlContent': htmlContent,
+        if (kind != null) 'kind': kind,
+        if (modifiedDate != null)
+          'modifiedDate': (modifiedDate).toIso8601String(),
+        if (replies != null)
+          'replies': replies.map((value) => value.toJson()).toList(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (status != null) 'status': status,
+      };
 }
 
 /// A list of comments on a file in Google Drive.
@@ -6717,25 +6430,14 @@ class CommentList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A comment on a file in Google Drive.
@@ -6814,37 +6516,18 @@ class CommentReply {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (author != null) {
-      _json['author'] = author.toJson();
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (createdDate != null) {
-      _json['createdDate'] = (createdDate).toIso8601String();
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (htmlContent != null) {
-      _json['htmlContent'] = htmlContent;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (modifiedDate != null) {
-      _json['modifiedDate'] = (modifiedDate).toIso8601String();
-    }
-    if (replyId != null) {
-      _json['replyId'] = replyId;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (author != null) 'author': author.toJson(),
+        if (content != null) 'content': content,
+        if (createdDate != null) 'createdDate': (createdDate).toIso8601String(),
+        if (deleted != null) 'deleted': deleted,
+        if (htmlContent != null) 'htmlContent': htmlContent,
+        if (kind != null) 'kind': kind,
+        if (modifiedDate != null)
+          'modifiedDate': (modifiedDate).toIso8601String(),
+        if (replyId != null) 'replyId': replyId,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// A list of replies to a comment on a file in Google Drive.
@@ -6894,25 +6577,14 @@ class CommentReplyList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A restriction for accessing the content of the file.
@@ -6967,25 +6639,15 @@ class ContentRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (readOnly != null) {
-      _json['readOnly'] = readOnly;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (restrictingUser != null) {
-      _json['restrictingUser'] = restrictingUser.toJson();
-    }
-    if (restrictionDate != null) {
-      _json['restrictionDate'] = (restrictionDate).toIso8601String();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (readOnly != null) 'readOnly': readOnly,
+        if (reason != null) 'reason': reason,
+        if (restrictingUser != null)
+          'restrictingUser': restrictingUser.toJson(),
+        if (restrictionDate != null)
+          'restrictionDate': (restrictionDate).toIso8601String(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// An image file and cropping parameters from which a background image for this
@@ -7039,22 +6701,12 @@ class DriveBackgroundImageFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    if (xCoordinate != null) {
-      _json['xCoordinate'] = xCoordinate;
-    }
-    if (yCoordinate != null) {
-      _json['yCoordinate'] = yCoordinate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (width != null) 'width': width,
+        if (xCoordinate != null) 'xCoordinate': xCoordinate,
+        if (yCoordinate != null) 'yCoordinate': yCoordinate,
+      };
 }
 
 /// Capabilities the current user has on this shared drive.
@@ -7187,67 +6839,33 @@ class DriveCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canAddChildren != null) {
-      _json['canAddChildren'] = canAddChildren;
-    }
-    if (canChangeCopyRequiresWriterPermissionRestriction != null) {
-      _json['canChangeCopyRequiresWriterPermissionRestriction'] =
-          canChangeCopyRequiresWriterPermissionRestriction;
-    }
-    if (canChangeDomainUsersOnlyRestriction != null) {
-      _json['canChangeDomainUsersOnlyRestriction'] =
-          canChangeDomainUsersOnlyRestriction;
-    }
-    if (canChangeDriveBackground != null) {
-      _json['canChangeDriveBackground'] = canChangeDriveBackground;
-    }
-    if (canChangeDriveMembersOnlyRestriction != null) {
-      _json['canChangeDriveMembersOnlyRestriction'] =
-          canChangeDriveMembersOnlyRestriction;
-    }
-    if (canComment != null) {
-      _json['canComment'] = canComment;
-    }
-    if (canCopy != null) {
-      _json['canCopy'] = canCopy;
-    }
-    if (canDeleteChildren != null) {
-      _json['canDeleteChildren'] = canDeleteChildren;
-    }
-    if (canDeleteDrive != null) {
-      _json['canDeleteDrive'] = canDeleteDrive;
-    }
-    if (canDownload != null) {
-      _json['canDownload'] = canDownload;
-    }
-    if (canEdit != null) {
-      _json['canEdit'] = canEdit;
-    }
-    if (canListChildren != null) {
-      _json['canListChildren'] = canListChildren;
-    }
-    if (canManageMembers != null) {
-      _json['canManageMembers'] = canManageMembers;
-    }
-    if (canReadRevisions != null) {
-      _json['canReadRevisions'] = canReadRevisions;
-    }
-    if (canRename != null) {
-      _json['canRename'] = canRename;
-    }
-    if (canRenameDrive != null) {
-      _json['canRenameDrive'] = canRenameDrive;
-    }
-    if (canShare != null) {
-      _json['canShare'] = canShare;
-    }
-    if (canTrashChildren != null) {
-      _json['canTrashChildren'] = canTrashChildren;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canAddChildren != null) 'canAddChildren': canAddChildren,
+        if (canChangeCopyRequiresWriterPermissionRestriction != null)
+          'canChangeCopyRequiresWriterPermissionRestriction':
+              canChangeCopyRequiresWriterPermissionRestriction,
+        if (canChangeDomainUsersOnlyRestriction != null)
+          'canChangeDomainUsersOnlyRestriction':
+              canChangeDomainUsersOnlyRestriction,
+        if (canChangeDriveBackground != null)
+          'canChangeDriveBackground': canChangeDriveBackground,
+        if (canChangeDriveMembersOnlyRestriction != null)
+          'canChangeDriveMembersOnlyRestriction':
+              canChangeDriveMembersOnlyRestriction,
+        if (canComment != null) 'canComment': canComment,
+        if (canCopy != null) 'canCopy': canCopy,
+        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren,
+        if (canDeleteDrive != null) 'canDeleteDrive': canDeleteDrive,
+        if (canDownload != null) 'canDownload': canDownload,
+        if (canEdit != null) 'canEdit': canEdit,
+        if (canListChildren != null) 'canListChildren': canListChildren,
+        if (canManageMembers != null) 'canManageMembers': canManageMembers,
+        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions,
+        if (canRename != null) 'canRename': canRename,
+        if (canRenameDrive != null) 'canRenameDrive': canRenameDrive,
+        if (canShare != null) 'canShare': canShare,
+        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren,
+      };
 }
 
 /// A set of restrictions that apply to this shared drive or items inside this
@@ -7293,22 +6911,14 @@ class DriveRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adminManagedRestrictions != null) {
-      _json['adminManagedRestrictions'] = adminManagedRestrictions;
-    }
-    if (copyRequiresWriterPermission != null) {
-      _json['copyRequiresWriterPermission'] = copyRequiresWriterPermission;
-    }
-    if (domainUsersOnly != null) {
-      _json['domainUsersOnly'] = domainUsersOnly;
-    }
-    if (driveMembersOnly != null) {
-      _json['driveMembersOnly'] = driveMembersOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adminManagedRestrictions != null)
+          'adminManagedRestrictions': adminManagedRestrictions,
+        if (copyRequiresWriterPermission != null)
+          'copyRequiresWriterPermission': copyRequiresWriterPermission,
+        if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly,
+        if (driveMembersOnly != null) 'driveMembersOnly': driveMembersOnly,
+      };
 }
 
 /// Representation of a shared drive.
@@ -7403,43 +7013,21 @@ class Drive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundImageFile != null) {
-      _json['backgroundImageFile'] = backgroundImageFile.toJson();
-    }
-    if (backgroundImageLink != null) {
-      _json['backgroundImageLink'] = backgroundImageLink;
-    }
-    if (capabilities != null) {
-      _json['capabilities'] = capabilities.toJson();
-    }
-    if (colorRgb != null) {
-      _json['colorRgb'] = colorRgb;
-    }
-    if (createdDate != null) {
-      _json['createdDate'] = (createdDate).toIso8601String();
-    }
-    if (hidden != null) {
-      _json['hidden'] = hidden;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (restrictions != null) {
-      _json['restrictions'] = restrictions.toJson();
-    }
-    if (themeId != null) {
-      _json['themeId'] = themeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundImageFile != null)
+          'backgroundImageFile': backgroundImageFile.toJson(),
+        if (backgroundImageLink != null)
+          'backgroundImageLink': backgroundImageLink,
+        if (capabilities != null) 'capabilities': capabilities.toJson(),
+        if (colorRgb != null) 'colorRgb': colorRgb,
+        if (createdDate != null) 'createdDate': (createdDate).toIso8601String(),
+        if (hidden != null) 'hidden': hidden,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (restrictions != null) 'restrictions': restrictions.toJson(),
+        if (themeId != null) 'themeId': themeId,
+      };
 }
 
 /// A list of shared drives.
@@ -7477,19 +7065,12 @@ class DriveList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Capabilities the current user has on this file.
@@ -7769,113 +7350,59 @@ class FileCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canAddChildren != null) {
-      _json['canAddChildren'] = canAddChildren;
-    }
-    if (canAddFolderFromAnotherDrive != null) {
-      _json['canAddFolderFromAnotherDrive'] = canAddFolderFromAnotherDrive;
-    }
-    if (canAddMyDriveParent != null) {
-      _json['canAddMyDriveParent'] = canAddMyDriveParent;
-    }
-    if (canChangeCopyRequiresWriterPermission != null) {
-      _json['canChangeCopyRequiresWriterPermission'] =
-          canChangeCopyRequiresWriterPermission;
-    }
-    if (canChangeRestrictedDownload != null) {
-      _json['canChangeRestrictedDownload'] = canChangeRestrictedDownload;
-    }
-    if (canComment != null) {
-      _json['canComment'] = canComment;
-    }
-    if (canCopy != null) {
-      _json['canCopy'] = canCopy;
-    }
-    if (canDelete != null) {
-      _json['canDelete'] = canDelete;
-    }
-    if (canDeleteChildren != null) {
-      _json['canDeleteChildren'] = canDeleteChildren;
-    }
-    if (canDownload != null) {
-      _json['canDownload'] = canDownload;
-    }
-    if (canEdit != null) {
-      _json['canEdit'] = canEdit;
-    }
-    if (canListChildren != null) {
-      _json['canListChildren'] = canListChildren;
-    }
-    if (canModifyContent != null) {
-      _json['canModifyContent'] = canModifyContent;
-    }
-    if (canModifyContentRestriction != null) {
-      _json['canModifyContentRestriction'] = canModifyContentRestriction;
-    }
-    if (canMoveChildrenOutOfDrive != null) {
-      _json['canMoveChildrenOutOfDrive'] = canMoveChildrenOutOfDrive;
-    }
-    if (canMoveChildrenOutOfTeamDrive != null) {
-      _json['canMoveChildrenOutOfTeamDrive'] = canMoveChildrenOutOfTeamDrive;
-    }
-    if (canMoveChildrenWithinDrive != null) {
-      _json['canMoveChildrenWithinDrive'] = canMoveChildrenWithinDrive;
-    }
-    if (canMoveChildrenWithinTeamDrive != null) {
-      _json['canMoveChildrenWithinTeamDrive'] = canMoveChildrenWithinTeamDrive;
-    }
-    if (canMoveItemIntoTeamDrive != null) {
-      _json['canMoveItemIntoTeamDrive'] = canMoveItemIntoTeamDrive;
-    }
-    if (canMoveItemOutOfDrive != null) {
-      _json['canMoveItemOutOfDrive'] = canMoveItemOutOfDrive;
-    }
-    if (canMoveItemOutOfTeamDrive != null) {
-      _json['canMoveItemOutOfTeamDrive'] = canMoveItemOutOfTeamDrive;
-    }
-    if (canMoveItemWithinDrive != null) {
-      _json['canMoveItemWithinDrive'] = canMoveItemWithinDrive;
-    }
-    if (canMoveItemWithinTeamDrive != null) {
-      _json['canMoveItemWithinTeamDrive'] = canMoveItemWithinTeamDrive;
-    }
-    if (canMoveTeamDriveItem != null) {
-      _json['canMoveTeamDriveItem'] = canMoveTeamDriveItem;
-    }
-    if (canReadDrive != null) {
-      _json['canReadDrive'] = canReadDrive;
-    }
-    if (canReadRevisions != null) {
-      _json['canReadRevisions'] = canReadRevisions;
-    }
-    if (canReadTeamDrive != null) {
-      _json['canReadTeamDrive'] = canReadTeamDrive;
-    }
-    if (canRemoveChildren != null) {
-      _json['canRemoveChildren'] = canRemoveChildren;
-    }
-    if (canRemoveMyDriveParent != null) {
-      _json['canRemoveMyDriveParent'] = canRemoveMyDriveParent;
-    }
-    if (canRename != null) {
-      _json['canRename'] = canRename;
-    }
-    if (canShare != null) {
-      _json['canShare'] = canShare;
-    }
-    if (canTrash != null) {
-      _json['canTrash'] = canTrash;
-    }
-    if (canTrashChildren != null) {
-      _json['canTrashChildren'] = canTrashChildren;
-    }
-    if (canUntrash != null) {
-      _json['canUntrash'] = canUntrash;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canAddChildren != null) 'canAddChildren': canAddChildren,
+        if (canAddFolderFromAnotherDrive != null)
+          'canAddFolderFromAnotherDrive': canAddFolderFromAnotherDrive,
+        if (canAddMyDriveParent != null)
+          'canAddMyDriveParent': canAddMyDriveParent,
+        if (canChangeCopyRequiresWriterPermission != null)
+          'canChangeCopyRequiresWriterPermission':
+              canChangeCopyRequiresWriterPermission,
+        if (canChangeRestrictedDownload != null)
+          'canChangeRestrictedDownload': canChangeRestrictedDownload,
+        if (canComment != null) 'canComment': canComment,
+        if (canCopy != null) 'canCopy': canCopy,
+        if (canDelete != null) 'canDelete': canDelete,
+        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren,
+        if (canDownload != null) 'canDownload': canDownload,
+        if (canEdit != null) 'canEdit': canEdit,
+        if (canListChildren != null) 'canListChildren': canListChildren,
+        if (canModifyContent != null) 'canModifyContent': canModifyContent,
+        if (canModifyContentRestriction != null)
+          'canModifyContentRestriction': canModifyContentRestriction,
+        if (canMoveChildrenOutOfDrive != null)
+          'canMoveChildrenOutOfDrive': canMoveChildrenOutOfDrive,
+        if (canMoveChildrenOutOfTeamDrive != null)
+          'canMoveChildrenOutOfTeamDrive': canMoveChildrenOutOfTeamDrive,
+        if (canMoveChildrenWithinDrive != null)
+          'canMoveChildrenWithinDrive': canMoveChildrenWithinDrive,
+        if (canMoveChildrenWithinTeamDrive != null)
+          'canMoveChildrenWithinTeamDrive': canMoveChildrenWithinTeamDrive,
+        if (canMoveItemIntoTeamDrive != null)
+          'canMoveItemIntoTeamDrive': canMoveItemIntoTeamDrive,
+        if (canMoveItemOutOfDrive != null)
+          'canMoveItemOutOfDrive': canMoveItemOutOfDrive,
+        if (canMoveItemOutOfTeamDrive != null)
+          'canMoveItemOutOfTeamDrive': canMoveItemOutOfTeamDrive,
+        if (canMoveItemWithinDrive != null)
+          'canMoveItemWithinDrive': canMoveItemWithinDrive,
+        if (canMoveItemWithinTeamDrive != null)
+          'canMoveItemWithinTeamDrive': canMoveItemWithinTeamDrive,
+        if (canMoveTeamDriveItem != null)
+          'canMoveTeamDriveItem': canMoveTeamDriveItem,
+        if (canReadDrive != null) 'canReadDrive': canReadDrive,
+        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions,
+        if (canReadTeamDrive != null) 'canReadTeamDrive': canReadTeamDrive,
+        if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren,
+        if (canRemoveMyDriveParent != null)
+          'canRemoveMyDriveParent': canRemoveMyDriveParent,
+        if (canRename != null) 'canRename': canRename,
+        if (canShare != null) 'canShare': canShare,
+        if (canTrash != null) 'canTrash': canTrash,
+        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren,
+        if (canUntrash != null) 'canUntrash': canUntrash,
+      };
 }
 
 /// Geographic location information stored in the image.
@@ -7903,19 +7430,11 @@ class FileImageMediaMetadataLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (altitude != null) {
-      _json['altitude'] = altitude;
-    }
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (altitude != null) 'altitude': altitude,
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }
 
 /// Metadata about image media.
@@ -8057,73 +7576,29 @@ class FileImageMediaMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aperture != null) {
-      _json['aperture'] = aperture;
-    }
-    if (cameraMake != null) {
-      _json['cameraMake'] = cameraMake;
-    }
-    if (cameraModel != null) {
-      _json['cameraModel'] = cameraModel;
-    }
-    if (colorSpace != null) {
-      _json['colorSpace'] = colorSpace;
-    }
-    if (date != null) {
-      _json['date'] = date;
-    }
-    if (exposureBias != null) {
-      _json['exposureBias'] = exposureBias;
-    }
-    if (exposureMode != null) {
-      _json['exposureMode'] = exposureMode;
-    }
-    if (exposureTime != null) {
-      _json['exposureTime'] = exposureTime;
-    }
-    if (flashUsed != null) {
-      _json['flashUsed'] = flashUsed;
-    }
-    if (focalLength != null) {
-      _json['focalLength'] = focalLength;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (isoSpeed != null) {
-      _json['isoSpeed'] = isoSpeed;
-    }
-    if (lens != null) {
-      _json['lens'] = lens;
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (maxApertureValue != null) {
-      _json['maxApertureValue'] = maxApertureValue;
-    }
-    if (meteringMode != null) {
-      _json['meteringMode'] = meteringMode;
-    }
-    if (rotation != null) {
-      _json['rotation'] = rotation;
-    }
-    if (sensor != null) {
-      _json['sensor'] = sensor;
-    }
-    if (subjectDistance != null) {
-      _json['subjectDistance'] = subjectDistance;
-    }
-    if (whiteBalance != null) {
-      _json['whiteBalance'] = whiteBalance;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aperture != null) 'aperture': aperture,
+        if (cameraMake != null) 'cameraMake': cameraMake,
+        if (cameraModel != null) 'cameraModel': cameraModel,
+        if (colorSpace != null) 'colorSpace': colorSpace,
+        if (date != null) 'date': date,
+        if (exposureBias != null) 'exposureBias': exposureBias,
+        if (exposureMode != null) 'exposureMode': exposureMode,
+        if (exposureTime != null) 'exposureTime': exposureTime,
+        if (flashUsed != null) 'flashUsed': flashUsed,
+        if (focalLength != null) 'focalLength': focalLength,
+        if (height != null) 'height': height,
+        if (isoSpeed != null) 'isoSpeed': isoSpeed,
+        if (lens != null) 'lens': lens,
+        if (location != null) 'location': location.toJson(),
+        if (maxApertureValue != null) 'maxApertureValue': maxApertureValue,
+        if (meteringMode != null) 'meteringMode': meteringMode,
+        if (rotation != null) 'rotation': rotation,
+        if (sensor != null) 'sensor': sensor,
+        if (subjectDistance != null) 'subjectDistance': subjectDistance,
+        if (whiteBalance != null) 'whiteBalance': whiteBalance,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Indexable text attributes for the file (can only be written)
@@ -8139,13 +7614,9 @@ class FileIndexableText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (text != null) 'text': text,
+      };
 }
 
 /// A group of labels for the file.
@@ -8198,28 +7669,14 @@ class FileLabels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hidden != null) {
-      _json['hidden'] = hidden;
-    }
-    if (modified != null) {
-      _json['modified'] = modified;
-    }
-    if (restricted != null) {
-      _json['restricted'] = restricted;
-    }
-    if (starred != null) {
-      _json['starred'] = starred;
-    }
-    if (trashed != null) {
-      _json['trashed'] = trashed;
-    }
-    if (viewed != null) {
-      _json['viewed'] = viewed;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hidden != null) 'hidden': hidden,
+        if (modified != null) 'modified': modified,
+        if (restricted != null) 'restricted': restricted,
+        if (starred != null) 'starred': starred,
+        if (trashed != null) 'trashed': trashed,
+        if (viewed != null) 'viewed': viewed,
+      };
 }
 
 /// Shortcut file details.
@@ -8247,16 +7704,10 @@ class FileShortcutDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (targetId != null) {
-      _json['targetId'] = targetId;
-    }
-    if (targetMimeType != null) {
-      _json['targetMimeType'] = targetMimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (targetId != null) 'targetId': targetId,
+        if (targetMimeType != null) 'targetMimeType': targetMimeType,
+      };
 }
 
 /// A thumbnail for the file.
@@ -8290,16 +7741,10 @@ class FileThumbnail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (image != null) 'image': image,
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Metadata about video media.
@@ -8329,19 +7774,11 @@ class FileVideoMediaMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (durationMillis != null) {
-      _json['durationMillis'] = durationMillis;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (durationMillis != null) 'durationMillis': durationMillis,
+        if (height != null) 'height': height,
+        if (width != null) 'width': width,
+      };
 }
 
 /// The metadata for a file.
@@ -8935,222 +8372,97 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternateLink != null) {
-      _json['alternateLink'] = alternateLink;
-    }
-    if (appDataContents != null) {
-      _json['appDataContents'] = appDataContents;
-    }
-    if (canComment != null) {
-      _json['canComment'] = canComment;
-    }
-    if (canReadRevisions != null) {
-      _json['canReadRevisions'] = canReadRevisions;
-    }
-    if (capabilities != null) {
-      _json['capabilities'] = capabilities.toJson();
-    }
-    if (contentRestrictions != null) {
-      _json['contentRestrictions'] =
-          contentRestrictions.map((value) => value.toJson()).toList();
-    }
-    if (copyRequiresWriterPermission != null) {
-      _json['copyRequiresWriterPermission'] = copyRequiresWriterPermission;
-    }
-    if (copyable != null) {
-      _json['copyable'] = copyable;
-    }
-    if (createdDate != null) {
-      _json['createdDate'] = (createdDate).toIso8601String();
-    }
-    if (defaultOpenWithLink != null) {
-      _json['defaultOpenWithLink'] = defaultOpenWithLink;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (downloadUrl != null) {
-      _json['downloadUrl'] = downloadUrl;
-    }
-    if (driveId != null) {
-      _json['driveId'] = driveId;
-    }
-    if (editable != null) {
-      _json['editable'] = editable;
-    }
-    if (embedLink != null) {
-      _json['embedLink'] = embedLink;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (explicitlyTrashed != null) {
-      _json['explicitlyTrashed'] = explicitlyTrashed;
-    }
-    if (exportLinks != null) {
-      _json['exportLinks'] = exportLinks;
-    }
-    if (fileExtension != null) {
-      _json['fileExtension'] = fileExtension;
-    }
-    if (fileSize != null) {
-      _json['fileSize'] = fileSize;
-    }
-    if (folderColorRgb != null) {
-      _json['folderColorRgb'] = folderColorRgb;
-    }
-    if (fullFileExtension != null) {
-      _json['fullFileExtension'] = fullFileExtension;
-    }
-    if (hasAugmentedPermissions != null) {
-      _json['hasAugmentedPermissions'] = hasAugmentedPermissions;
-    }
-    if (hasThumbnail != null) {
-      _json['hasThumbnail'] = hasThumbnail;
-    }
-    if (headRevisionId != null) {
-      _json['headRevisionId'] = headRevisionId;
-    }
-    if (iconLink != null) {
-      _json['iconLink'] = iconLink;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (imageMediaMetadata != null) {
-      _json['imageMediaMetadata'] = imageMediaMetadata.toJson();
-    }
-    if (indexableText != null) {
-      _json['indexableText'] = indexableText.toJson();
-    }
-    if (isAppAuthorized != null) {
-      _json['isAppAuthorized'] = isAppAuthorized;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels.toJson();
-    }
-    if (lastModifyingUser != null) {
-      _json['lastModifyingUser'] = lastModifyingUser.toJson();
-    }
-    if (lastModifyingUserName != null) {
-      _json['lastModifyingUserName'] = lastModifyingUserName;
-    }
-    if (lastViewedByMeDate != null) {
-      _json['lastViewedByMeDate'] = (lastViewedByMeDate).toIso8601String();
-    }
-    if (markedViewedByMeDate != null) {
-      _json['markedViewedByMeDate'] = (markedViewedByMeDate).toIso8601String();
-    }
-    if (md5Checksum != null) {
-      _json['md5Checksum'] = md5Checksum;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (modifiedByMeDate != null) {
-      _json['modifiedByMeDate'] = (modifiedByMeDate).toIso8601String();
-    }
-    if (modifiedDate != null) {
-      _json['modifiedDate'] = (modifiedDate).toIso8601String();
-    }
-    if (openWithLinks != null) {
-      _json['openWithLinks'] = openWithLinks;
-    }
-    if (originalFilename != null) {
-      _json['originalFilename'] = originalFilename;
-    }
-    if (ownedByMe != null) {
-      _json['ownedByMe'] = ownedByMe;
-    }
-    if (ownerNames != null) {
-      _json['ownerNames'] = ownerNames;
-    }
-    if (owners != null) {
-      _json['owners'] = owners.map((value) => value.toJson()).toList();
-    }
-    if (parents != null) {
-      _json['parents'] = parents.map((value) => value.toJson()).toList();
-    }
-    if (permissionIds != null) {
-      _json['permissionIds'] = permissionIds;
-    }
-    if (permissions != null) {
-      _json['permissions'] =
-          permissions.map((value) => value.toJson()).toList();
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (quotaBytesUsed != null) {
-      _json['quotaBytesUsed'] = quotaBytesUsed;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (shareable != null) {
-      _json['shareable'] = shareable;
-    }
-    if (shared != null) {
-      _json['shared'] = shared;
-    }
-    if (sharedWithMeDate != null) {
-      _json['sharedWithMeDate'] = (sharedWithMeDate).toIso8601String();
-    }
-    if (sharingUser != null) {
-      _json['sharingUser'] = sharingUser.toJson();
-    }
-    if (shortcutDetails != null) {
-      _json['shortcutDetails'] = shortcutDetails.toJson();
-    }
-    if (spaces != null) {
-      _json['spaces'] = spaces;
-    }
-    if (teamDriveId != null) {
-      _json['teamDriveId'] = teamDriveId;
-    }
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail.toJson();
-    }
-    if (thumbnailLink != null) {
-      _json['thumbnailLink'] = thumbnailLink;
-    }
-    if (thumbnailVersion != null) {
-      _json['thumbnailVersion'] = thumbnailVersion;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (trashedDate != null) {
-      _json['trashedDate'] = (trashedDate).toIso8601String();
-    }
-    if (trashingUser != null) {
-      _json['trashingUser'] = trashingUser.toJson();
-    }
-    if (userPermission != null) {
-      _json['userPermission'] = userPermission.toJson();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    if (videoMediaMetadata != null) {
-      _json['videoMediaMetadata'] = videoMediaMetadata.toJson();
-    }
-    if (webContentLink != null) {
-      _json['webContentLink'] = webContentLink;
-    }
-    if (webViewLink != null) {
-      _json['webViewLink'] = webViewLink;
-    }
-    if (writersCanShare != null) {
-      _json['writersCanShare'] = writersCanShare;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink,
+        if (appDataContents != null) 'appDataContents': appDataContents,
+        if (canComment != null) 'canComment': canComment,
+        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions,
+        if (capabilities != null) 'capabilities': capabilities.toJson(),
+        if (contentRestrictions != null)
+          'contentRestrictions':
+              contentRestrictions.map((value) => value.toJson()).toList(),
+        if (copyRequiresWriterPermission != null)
+          'copyRequiresWriterPermission': copyRequiresWriterPermission,
+        if (copyable != null) 'copyable': copyable,
+        if (createdDate != null) 'createdDate': (createdDate).toIso8601String(),
+        if (defaultOpenWithLink != null)
+          'defaultOpenWithLink': defaultOpenWithLink,
+        if (description != null) 'description': description,
+        if (downloadUrl != null) 'downloadUrl': downloadUrl,
+        if (driveId != null) 'driveId': driveId,
+        if (editable != null) 'editable': editable,
+        if (embedLink != null) 'embedLink': embedLink,
+        if (etag != null) 'etag': etag,
+        if (explicitlyTrashed != null) 'explicitlyTrashed': explicitlyTrashed,
+        if (exportLinks != null) 'exportLinks': exportLinks,
+        if (fileExtension != null) 'fileExtension': fileExtension,
+        if (fileSize != null) 'fileSize': fileSize,
+        if (folderColorRgb != null) 'folderColorRgb': folderColorRgb,
+        if (fullFileExtension != null) 'fullFileExtension': fullFileExtension,
+        if (hasAugmentedPermissions != null)
+          'hasAugmentedPermissions': hasAugmentedPermissions,
+        if (hasThumbnail != null) 'hasThumbnail': hasThumbnail,
+        if (headRevisionId != null) 'headRevisionId': headRevisionId,
+        if (iconLink != null) 'iconLink': iconLink,
+        if (id != null) 'id': id,
+        if (imageMediaMetadata != null)
+          'imageMediaMetadata': imageMediaMetadata.toJson(),
+        if (indexableText != null) 'indexableText': indexableText.toJson(),
+        if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized,
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels.toJson(),
+        if (lastModifyingUser != null)
+          'lastModifyingUser': lastModifyingUser.toJson(),
+        if (lastModifyingUserName != null)
+          'lastModifyingUserName': lastModifyingUserName,
+        if (lastViewedByMeDate != null)
+          'lastViewedByMeDate': (lastViewedByMeDate).toIso8601String(),
+        if (markedViewedByMeDate != null)
+          'markedViewedByMeDate': (markedViewedByMeDate).toIso8601String(),
+        if (md5Checksum != null) 'md5Checksum': md5Checksum,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (modifiedByMeDate != null)
+          'modifiedByMeDate': (modifiedByMeDate).toIso8601String(),
+        if (modifiedDate != null)
+          'modifiedDate': (modifiedDate).toIso8601String(),
+        if (openWithLinks != null) 'openWithLinks': openWithLinks,
+        if (originalFilename != null) 'originalFilename': originalFilename,
+        if (ownedByMe != null) 'ownedByMe': ownedByMe,
+        if (ownerNames != null) 'ownerNames': ownerNames,
+        if (owners != null)
+          'owners': owners.map((value) => value.toJson()).toList(),
+        if (parents != null)
+          'parents': parents.map((value) => value.toJson()).toList(),
+        if (permissionIds != null) 'permissionIds': permissionIds,
+        if (permissions != null)
+          'permissions': permissions.map((value) => value.toJson()).toList(),
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (shareable != null) 'shareable': shareable,
+        if (shared != null) 'shared': shared,
+        if (sharedWithMeDate != null)
+          'sharedWithMeDate': (sharedWithMeDate).toIso8601String(),
+        if (sharingUser != null) 'sharingUser': sharingUser.toJson(),
+        if (shortcutDetails != null)
+          'shortcutDetails': shortcutDetails.toJson(),
+        if (spaces != null) 'spaces': spaces,
+        if (teamDriveId != null) 'teamDriveId': teamDriveId,
+        if (thumbnail != null) 'thumbnail': thumbnail.toJson(),
+        if (thumbnailLink != null) 'thumbnailLink': thumbnailLink,
+        if (thumbnailVersion != null) 'thumbnailVersion': thumbnailVersion,
+        if (title != null) 'title': title,
+        if (trashedDate != null) 'trashedDate': (trashedDate).toIso8601String(),
+        if (trashingUser != null) 'trashingUser': trashingUser.toJson(),
+        if (userPermission != null) 'userPermission': userPermission.toJson(),
+        if (version != null) 'version': version,
+        if (videoMediaMetadata != null)
+          'videoMediaMetadata': videoMediaMetadata.toJson(),
+        if (webContentLink != null) 'webContentLink': webContentLink,
+        if (webViewLink != null) 'webViewLink': webViewLink,
+        if (writersCanShare != null) 'writersCanShare': writersCanShare,
+      };
 }
 
 /// A list of files.
@@ -9218,31 +8530,16 @@ class FileList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (incompleteSearch != null) {
-      _json['incompleteSearch'] = incompleteSearch;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextLink != null) {
-      _json['nextLink'] = nextLink;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (incompleteSearch != null) 'incompleteSearch': incompleteSearch,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextLink != null) 'nextLink': nextLink,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A list of generated IDs which can be provided in insert requests
@@ -9272,19 +8569,11 @@ class GeneratedIds {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ids != null) {
-      _json['ids'] = ids;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (space != null) {
-      _json['space'] = space;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ids != null) 'ids': ids,
+        if (kind != null) 'kind': kind,
+        if (space != null) 'space': space,
+      };
 }
 
 /// A list of a file's parents.
@@ -9321,22 +8610,13 @@ class ParentList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A reference to a file's parent.
@@ -9376,25 +8656,13 @@ class ParentReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (isRoot != null) {
-      _json['isRoot'] = isRoot;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (parentLink != null) {
-      _json['parentLink'] = parentLink;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (isRoot != null) 'isRoot': isRoot,
+        if (kind != null) 'kind': kind,
+        if (parentLink != null) 'parentLink': parentLink,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 class PermissionPermissionDetails {
@@ -9454,25 +8722,13 @@ class PermissionPermissionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalRoles != null) {
-      _json['additionalRoles'] = additionalRoles;
-    }
-    if (inherited != null) {
-      _json['inherited'] = inherited;
-    }
-    if (inheritedFrom != null) {
-      _json['inheritedFrom'] = inheritedFrom;
-    }
-    if (permissionType != null) {
-      _json['permissionType'] = permissionType;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalRoles != null) 'additionalRoles': additionalRoles,
+        if (inherited != null) 'inherited': inherited,
+        if (inheritedFrom != null) 'inheritedFrom': inheritedFrom,
+        if (permissionType != null) 'permissionType': permissionType,
+        if (role != null) 'role': role,
+      };
 }
 
 class PermissionTeamDrivePermissionDetails {
@@ -9513,25 +8769,14 @@ class PermissionTeamDrivePermissionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalRoles != null) {
-      _json['additionalRoles'] = additionalRoles;
-    }
-    if (inherited != null) {
-      _json['inherited'] = inherited;
-    }
-    if (inheritedFrom != null) {
-      _json['inheritedFrom'] = inheritedFrom;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (teamDrivePermissionType != null) {
-      _json['teamDrivePermissionType'] = teamDrivePermissionType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalRoles != null) 'additionalRoles': additionalRoles,
+        if (inherited != null) 'inherited': inherited,
+        if (inheritedFrom != null) 'inheritedFrom': inheritedFrom,
+        if (role != null) 'role': role,
+        if (teamDrivePermissionType != null)
+          'teamDrivePermissionType': teamDrivePermissionType,
+      };
 }
 
 /// A permission for a file.
@@ -9716,69 +8961,33 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalRoles != null) {
-      _json['additionalRoles'] = additionalRoles;
-    }
-    if (authKey != null) {
-      _json['authKey'] = authKey;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (domain != null) {
-      _json['domain'] = domain;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (expirationDate != null) {
-      _json['expirationDate'] = (expirationDate).toIso8601String();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permissionDetails != null) {
-      _json['permissionDetails'] =
-          permissionDetails.map((value) => value.toJson()).toList();
-    }
-    if (photoLink != null) {
-      _json['photoLink'] = photoLink;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (teamDrivePermissionDetails != null) {
-      _json['teamDrivePermissionDetails'] =
-          teamDrivePermissionDetails.map((value) => value.toJson()).toList();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    if (view != null) {
-      _json['view'] = view;
-    }
-    if (withLink != null) {
-      _json['withLink'] = withLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalRoles != null) 'additionalRoles': additionalRoles,
+        if (authKey != null) 'authKey': authKey,
+        if (deleted != null) 'deleted': deleted,
+        if (domain != null) 'domain': domain,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (etag != null) 'etag': etag,
+        if (expirationDate != null)
+          'expirationDate': (expirationDate).toIso8601String(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (permissionDetails != null)
+          'permissionDetails':
+              permissionDetails.map((value) => value.toJson()).toList(),
+        if (photoLink != null) 'photoLink': photoLink,
+        if (role != null) 'role': role,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (teamDrivePermissionDetails != null)
+          'teamDrivePermissionDetails': teamDrivePermissionDetails
+              .map((value) => value.toJson())
+              .toList(),
+        if (type != null) 'type': type,
+        if (value != null) 'value': value,
+        if (view != null) 'view': view,
+        if (withLink != null) 'withLink': withLink,
+      };
 }
 
 /// An ID for a user or group as seen in Permission items.
@@ -9800,16 +9009,10 @@ class PermissionId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// A list of permissions associated with a file.
@@ -9856,25 +9059,14 @@ class PermissionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A key-value pair attached to a file that is either public or private to an
@@ -9932,28 +9124,14 @@ class Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    if (visibility != null) {
-      _json['visibility'] = visibility;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (key != null) 'key': key,
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (value != null) 'value': value,
+        if (visibility != null) 'visibility': visibility,
+      };
 }
 
 /// A collection of properties, key-value pairs that are either public or
@@ -9991,22 +9169,13 @@ class PropertyList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A revision of a file.
@@ -10151,64 +9320,30 @@ class Revision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (downloadUrl != null) {
-      _json['downloadUrl'] = downloadUrl;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (exportLinks != null) {
-      _json['exportLinks'] = exportLinks;
-    }
-    if (fileSize != null) {
-      _json['fileSize'] = fileSize;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (lastModifyingUser != null) {
-      _json['lastModifyingUser'] = lastModifyingUser.toJson();
-    }
-    if (lastModifyingUserName != null) {
-      _json['lastModifyingUserName'] = lastModifyingUserName;
-    }
-    if (md5Checksum != null) {
-      _json['md5Checksum'] = md5Checksum;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (modifiedDate != null) {
-      _json['modifiedDate'] = (modifiedDate).toIso8601String();
-    }
-    if (originalFilename != null) {
-      _json['originalFilename'] = originalFilename;
-    }
-    if (pinned != null) {
-      _json['pinned'] = pinned;
-    }
-    if (publishAuto != null) {
-      _json['publishAuto'] = publishAuto;
-    }
-    if (published != null) {
-      _json['published'] = published;
-    }
-    if (publishedLink != null) {
-      _json['publishedLink'] = publishedLink;
-    }
-    if (publishedOutsideDomain != null) {
-      _json['publishedOutsideDomain'] = publishedOutsideDomain;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (downloadUrl != null) 'downloadUrl': downloadUrl,
+        if (etag != null) 'etag': etag,
+        if (exportLinks != null) 'exportLinks': exportLinks,
+        if (fileSize != null) 'fileSize': fileSize,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (lastModifyingUser != null)
+          'lastModifyingUser': lastModifyingUser.toJson(),
+        if (lastModifyingUserName != null)
+          'lastModifyingUserName': lastModifyingUserName,
+        if (md5Checksum != null) 'md5Checksum': md5Checksum,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (modifiedDate != null)
+          'modifiedDate': (modifiedDate).toIso8601String(),
+        if (originalFilename != null) 'originalFilename': originalFilename,
+        if (pinned != null) 'pinned': pinned,
+        if (publishAuto != null) 'publishAuto': publishAuto,
+        if (published != null) 'published': published,
+        if (publishedLink != null) 'publishedLink': publishedLink,
+        if (publishedOutsideDomain != null)
+          'publishedOutsideDomain': publishedOutsideDomain,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// A list of revisions of a file.
@@ -10258,25 +9393,14 @@ class RevisionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 class StartPageToken {
@@ -10299,16 +9423,10 @@ class StartPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (startPageToken != null) {
-      _json['startPageToken'] = startPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (startPageToken != null) 'startPageToken': startPageToken,
+      };
 }
 
 /// An image file and cropping parameters from which a background image for this
@@ -10362,22 +9480,12 @@ class TeamDriveBackgroundImageFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    if (xCoordinate != null) {
-      _json['xCoordinate'] = xCoordinate;
-    }
-    if (yCoordinate != null) {
-      _json['yCoordinate'] = yCoordinate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (width != null) 'width': width,
+        if (xCoordinate != null) 'xCoordinate': xCoordinate,
+        if (yCoordinate != null) 'yCoordinate': yCoordinate,
+      };
 }
 
 /// Capabilities the current user has on this Team Drive.
@@ -10517,70 +9625,36 @@ class TeamDriveCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canAddChildren != null) {
-      _json['canAddChildren'] = canAddChildren;
-    }
-    if (canChangeCopyRequiresWriterPermissionRestriction != null) {
-      _json['canChangeCopyRequiresWriterPermissionRestriction'] =
-          canChangeCopyRequiresWriterPermissionRestriction;
-    }
-    if (canChangeDomainUsersOnlyRestriction != null) {
-      _json['canChangeDomainUsersOnlyRestriction'] =
-          canChangeDomainUsersOnlyRestriction;
-    }
-    if (canChangeTeamDriveBackground != null) {
-      _json['canChangeTeamDriveBackground'] = canChangeTeamDriveBackground;
-    }
-    if (canChangeTeamMembersOnlyRestriction != null) {
-      _json['canChangeTeamMembersOnlyRestriction'] =
-          canChangeTeamMembersOnlyRestriction;
-    }
-    if (canComment != null) {
-      _json['canComment'] = canComment;
-    }
-    if (canCopy != null) {
-      _json['canCopy'] = canCopy;
-    }
-    if (canDeleteChildren != null) {
-      _json['canDeleteChildren'] = canDeleteChildren;
-    }
-    if (canDeleteTeamDrive != null) {
-      _json['canDeleteTeamDrive'] = canDeleteTeamDrive;
-    }
-    if (canDownload != null) {
-      _json['canDownload'] = canDownload;
-    }
-    if (canEdit != null) {
-      _json['canEdit'] = canEdit;
-    }
-    if (canListChildren != null) {
-      _json['canListChildren'] = canListChildren;
-    }
-    if (canManageMembers != null) {
-      _json['canManageMembers'] = canManageMembers;
-    }
-    if (canReadRevisions != null) {
-      _json['canReadRevisions'] = canReadRevisions;
-    }
-    if (canRemoveChildren != null) {
-      _json['canRemoveChildren'] = canRemoveChildren;
-    }
-    if (canRename != null) {
-      _json['canRename'] = canRename;
-    }
-    if (canRenameTeamDrive != null) {
-      _json['canRenameTeamDrive'] = canRenameTeamDrive;
-    }
-    if (canShare != null) {
-      _json['canShare'] = canShare;
-    }
-    if (canTrashChildren != null) {
-      _json['canTrashChildren'] = canTrashChildren;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canAddChildren != null) 'canAddChildren': canAddChildren,
+        if (canChangeCopyRequiresWriterPermissionRestriction != null)
+          'canChangeCopyRequiresWriterPermissionRestriction':
+              canChangeCopyRequiresWriterPermissionRestriction,
+        if (canChangeDomainUsersOnlyRestriction != null)
+          'canChangeDomainUsersOnlyRestriction':
+              canChangeDomainUsersOnlyRestriction,
+        if (canChangeTeamDriveBackground != null)
+          'canChangeTeamDriveBackground': canChangeTeamDriveBackground,
+        if (canChangeTeamMembersOnlyRestriction != null)
+          'canChangeTeamMembersOnlyRestriction':
+              canChangeTeamMembersOnlyRestriction,
+        if (canComment != null) 'canComment': canComment,
+        if (canCopy != null) 'canCopy': canCopy,
+        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren,
+        if (canDeleteTeamDrive != null)
+          'canDeleteTeamDrive': canDeleteTeamDrive,
+        if (canDownload != null) 'canDownload': canDownload,
+        if (canEdit != null) 'canEdit': canEdit,
+        if (canListChildren != null) 'canListChildren': canListChildren,
+        if (canManageMembers != null) 'canManageMembers': canManageMembers,
+        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions,
+        if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren,
+        if (canRename != null) 'canRename': canRename,
+        if (canRenameTeamDrive != null)
+          'canRenameTeamDrive': canRenameTeamDrive,
+        if (canShare != null) 'canShare': canShare,
+        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren,
+      };
 }
 
 /// A set of restrictions that apply to this Team Drive or items inside this
@@ -10626,22 +9700,14 @@ class TeamDriveRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adminManagedRestrictions != null) {
-      _json['adminManagedRestrictions'] = adminManagedRestrictions;
-    }
-    if (copyRequiresWriterPermission != null) {
-      _json['copyRequiresWriterPermission'] = copyRequiresWriterPermission;
-    }
-    if (domainUsersOnly != null) {
-      _json['domainUsersOnly'] = domainUsersOnly;
-    }
-    if (teamMembersOnly != null) {
-      _json['teamMembersOnly'] = teamMembersOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adminManagedRestrictions != null)
+          'adminManagedRestrictions': adminManagedRestrictions,
+        if (copyRequiresWriterPermission != null)
+          'copyRequiresWriterPermission': copyRequiresWriterPermission,
+        if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly,
+        if (teamMembersOnly != null) 'teamMembersOnly': teamMembersOnly,
+      };
 }
 
 /// Deprecated: use the drive collection instead.
@@ -10730,40 +9796,20 @@ class TeamDrive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (backgroundImageFile != null) {
-      _json['backgroundImageFile'] = backgroundImageFile.toJson();
-    }
-    if (backgroundImageLink != null) {
-      _json['backgroundImageLink'] = backgroundImageLink;
-    }
-    if (capabilities != null) {
-      _json['capabilities'] = capabilities.toJson();
-    }
-    if (colorRgb != null) {
-      _json['colorRgb'] = colorRgb;
-    }
-    if (createdDate != null) {
-      _json['createdDate'] = (createdDate).toIso8601String();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (restrictions != null) {
-      _json['restrictions'] = restrictions.toJson();
-    }
-    if (themeId != null) {
-      _json['themeId'] = themeId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (backgroundImageFile != null)
+          'backgroundImageFile': backgroundImageFile.toJson(),
+        if (backgroundImageLink != null)
+          'backgroundImageLink': backgroundImageLink,
+        if (capabilities != null) 'capabilities': capabilities.toJson(),
+        if (colorRgb != null) 'colorRgb': colorRgb,
+        if (createdDate != null) 'createdDate': (createdDate).toIso8601String(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+        if (restrictions != null) 'restrictions': restrictions.toJson(),
+        if (themeId != null) 'themeId': themeId,
+      };
 }
 
 /// A list of Team Drives.
@@ -10794,19 +9840,12 @@ class TeamDriveList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The user's profile picture.
@@ -10822,13 +9861,9 @@ class UserPicture {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 /// Information about a Drive user.
@@ -10876,26 +9911,13 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (emailAddress != null) {
-      _json['emailAddress'] = emailAddress;
-    }
-    if (isAuthenticatedUser != null) {
-      _json['isAuthenticatedUser'] = isAuthenticatedUser;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (permissionId != null) {
-      _json['permissionId'] = permissionId;
-    }
-    if (picture != null) {
-      _json['picture'] = picture.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (emailAddress != null) 'emailAddress': emailAddress,
+        if (isAuthenticatedUser != null)
+          'isAuthenticatedUser': isAuthenticatedUser,
+        if (kind != null) 'kind': kind,
+        if (permissionId != null) 'permissionId': permissionId,
+        if (picture != null) 'picture': picture.toJson(),
+      };
 }

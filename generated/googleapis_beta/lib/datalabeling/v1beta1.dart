@@ -2732,20 +2732,13 @@ class GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (instruction != null) 'instruction': instruction,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata of an ExportData operation.
@@ -2797,23 +2790,14 @@ class GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ExportDataset longrunning operation.
@@ -2875,28 +2859,14 @@ class GoogleCloudDatalabelingV1alpha1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (exportCount != null) {
-      _json['exportCount'] = exportCount;
-    }
-    if (labelStats != null) {
-      _json['labelStats'] = labelStats.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (dataset != null) 'dataset': dataset,
+        if (exportCount != null) 'exportCount': exportCount,
+        if (labelStats != null) 'labelStats': labelStats.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
@@ -2924,16 +2894,10 @@ class GoogleCloudDatalabelingV1alpha1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (outputUri != null) {
-      _json['outputUri'] = outputUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType,
+        if (outputUri != null) 'outputUri': outputUri,
+      };
 }
 
 /// Export folder destination of the data.
@@ -2951,13 +2915,9 @@ class GoogleCloudDatalabelingV1alpha1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputFolderUri != null) {
-      _json['outputFolderUri'] = outputFolderUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri,
+      };
 }
 
 /// Configuration for how human labeling task should be done.
@@ -3066,37 +3026,19 @@ class GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDatasetDescription != null) {
-      _json['annotatedDatasetDescription'] = annotatedDatasetDescription;
-    }
-    if (annotatedDatasetDisplayName != null) {
-      _json['annotatedDatasetDisplayName'] = annotatedDatasetDisplayName;
-    }
-    if (contributorEmails != null) {
-      _json['contributorEmails'] = contributorEmails;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (labelGroup != null) {
-      _json['labelGroup'] = labelGroup;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (questionDuration != null) {
-      _json['questionDuration'] = questionDuration;
-    }
-    if (replicaCount != null) {
-      _json['replicaCount'] = replicaCount;
-    }
-    if (userEmailAddress != null) {
-      _json['userEmailAddress'] = userEmailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDatasetDescription != null)
+          'annotatedDatasetDescription': annotatedDatasetDescription,
+        if (annotatedDatasetDisplayName != null)
+          'annotatedDatasetDisplayName': annotatedDatasetDisplayName,
+        if (contributorEmails != null) 'contributorEmails': contributorEmails,
+        if (instruction != null) 'instruction': instruction,
+        if (labelGroup != null) 'labelGroup': labelGroup,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (questionDuration != null) 'questionDuration': questionDuration,
+        if (replicaCount != null) 'replicaCount': replicaCount,
+        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress,
+      };
 }
 
 /// Metadata of an ImportData operation.
@@ -3139,20 +3081,13 @@ class GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ImportData longrunning operation.
@@ -3187,19 +3122,11 @@ class GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (importCount != null) {
-      _json['importCount'] = importCount;
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset,
+        if (importCount != null) 'importCount': importCount,
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Details of a LabelImageBoundingBox operation metadata.
@@ -3218,13 +3145,9 @@ class GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImageBoundingPoly operation metadata.
@@ -3243,13 +3166,9 @@ class GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a LabelImageClassification operation.
@@ -3268,13 +3187,9 @@ class GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageOrientedBoundingBox operation metadata.
@@ -3293,13 +3208,9 @@ class GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetad
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImagePolyline operation metadata.
@@ -3318,13 +3229,9 @@ class GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageSegmentation operation metadata.
@@ -3343,13 +3250,9 @@ class GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a labeling operation, such as LabelImage or LabelVideo.
@@ -3533,65 +3436,40 @@ class GoogleCloudDatalabelingV1alpha1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (imageBoundingBoxDetails != null) {
-      _json['imageBoundingBoxDetails'] = imageBoundingBoxDetails.toJson();
-    }
-    if (imageBoundingPolyDetails != null) {
-      _json['imageBoundingPolyDetails'] = imageBoundingPolyDetails.toJson();
-    }
-    if (imageClassificationDetails != null) {
-      _json['imageClassificationDetails'] = imageClassificationDetails.toJson();
-    }
-    if (imageOrientedBoundingBoxDetails != null) {
-      _json['imageOrientedBoundingBoxDetails'] =
-          imageOrientedBoundingBoxDetails.toJson();
-    }
-    if (imagePolylineDetails != null) {
-      _json['imagePolylineDetails'] = imagePolylineDetails.toJson();
-    }
-    if (imageSegmentationDetails != null) {
-      _json['imageSegmentationDetails'] = imageSegmentationDetails.toJson();
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (textClassificationDetails != null) {
-      _json['textClassificationDetails'] = textClassificationDetails.toJson();
-    }
-    if (textEntityExtractionDetails != null) {
-      _json['textEntityExtractionDetails'] =
-          textEntityExtractionDetails.toJson();
-    }
-    if (videoClassificationDetails != null) {
-      _json['videoClassificationDetails'] = videoClassificationDetails.toJson();
-    }
-    if (videoEventDetails != null) {
-      _json['videoEventDetails'] = videoEventDetails.toJson();
-    }
-    if (videoObjectDetectionDetails != null) {
-      _json['videoObjectDetectionDetails'] =
-          videoObjectDetectionDetails.toJson();
-    }
-    if (videoObjectTrackingDetails != null) {
-      _json['videoObjectTrackingDetails'] = videoObjectTrackingDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (imageBoundingBoxDetails != null)
+          'imageBoundingBoxDetails': imageBoundingBoxDetails.toJson(),
+        if (imageBoundingPolyDetails != null)
+          'imageBoundingPolyDetails': imageBoundingPolyDetails.toJson(),
+        if (imageClassificationDetails != null)
+          'imageClassificationDetails': imageClassificationDetails.toJson(),
+        if (imageOrientedBoundingBoxDetails != null)
+          'imageOrientedBoundingBoxDetails':
+              imageOrientedBoundingBoxDetails.toJson(),
+        if (imagePolylineDetails != null)
+          'imagePolylineDetails': imagePolylineDetails.toJson(),
+        if (imageSegmentationDetails != null)
+          'imageSegmentationDetails': imageSegmentationDetails.toJson(),
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (textClassificationDetails != null)
+          'textClassificationDetails': textClassificationDetails.toJson(),
+        if (textEntityExtractionDetails != null)
+          'textEntityExtractionDetails': textEntityExtractionDetails.toJson(),
+        if (videoClassificationDetails != null)
+          'videoClassificationDetails': videoClassificationDetails.toJson(),
+        if (videoEventDetails != null)
+          'videoEventDetails': videoEventDetails.toJson(),
+        if (videoObjectDetectionDetails != null)
+          'videoObjectDetectionDetails': videoObjectDetectionDetails.toJson(),
+        if (videoObjectTrackingDetails != null)
+          'videoObjectTrackingDetails': videoObjectTrackingDetails.toJson(),
+      };
 }
 
 /// Statistics about annotation specs.
@@ -3619,13 +3497,9 @@ class GoogleCloudDatalabelingV1alpha1LabelStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exampleCount != null) {
-      _json['exampleCount'] = exampleCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exampleCount != null) 'exampleCount': exampleCount,
+      };
 }
 
 /// Details of a LabelTextClassification operation metadata.
@@ -3644,13 +3518,9 @@ class GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelTextEntityExtraction operation metadata.
@@ -3669,13 +3539,9 @@ class GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoClassification operation metadata.
@@ -3694,13 +3560,9 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoEvent operation metadata.
@@ -3719,13 +3581,9 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectDetection operation metadata.
@@ -3744,13 +3602,9 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectTracking operation metadata.
@@ -3769,13 +3623,9 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// The configuration of output data.
@@ -3806,16 +3656,11 @@ class GoogleCloudDatalabelingV1alpha1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    if (gcsFolderDestination != null) {
-      _json['gcsFolderDestination'] = gcsFolderDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+        if (gcsFolderDestination != null)
+          'gcsFolderDestination': gcsFolderDestination.toJson(),
+      };
 }
 
 /// AnnotatedDataset is a set holding annotations for data in a Dataset.
@@ -3957,43 +3802,20 @@ class GoogleCloudDatalabelingV1beta1AnnotatedDataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSource != null) {
-      _json['annotationSource'] = annotationSource;
-    }
-    if (annotationType != null) {
-      _json['annotationType'] = annotationType;
-    }
-    if (blockingResources != null) {
-      _json['blockingResources'] = blockingResources;
-    }
-    if (completedExampleCount != null) {
-      _json['completedExampleCount'] = completedExampleCount;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (exampleCount != null) {
-      _json['exampleCount'] = exampleCount;
-    }
-    if (labelStats != null) {
-      _json['labelStats'] = labelStats.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSource != null) 'annotationSource': annotationSource,
+        if (annotationType != null) 'annotationType': annotationType,
+        if (blockingResources != null) 'blockingResources': blockingResources,
+        if (completedExampleCount != null)
+          'completedExampleCount': completedExampleCount,
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (exampleCount != null) 'exampleCount': exampleCount,
+        if (labelStats != null) 'labelStats': labelStats.toJson(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Metadata on AnnotatedDataset.
@@ -4104,43 +3926,28 @@ class GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPolyConfig != null) {
-      _json['boundingPolyConfig'] = boundingPolyConfig.toJson();
-    }
-    if (eventConfig != null) {
-      _json['eventConfig'] = eventConfig.toJson();
-    }
-    if (humanAnnotationConfig != null) {
-      _json['humanAnnotationConfig'] = humanAnnotationConfig.toJson();
-    }
-    if (imageClassificationConfig != null) {
-      _json['imageClassificationConfig'] = imageClassificationConfig.toJson();
-    }
-    if (objectDetectionConfig != null) {
-      _json['objectDetectionConfig'] = objectDetectionConfig.toJson();
-    }
-    if (objectTrackingConfig != null) {
-      _json['objectTrackingConfig'] = objectTrackingConfig.toJson();
-    }
-    if (polylineConfig != null) {
-      _json['polylineConfig'] = polylineConfig.toJson();
-    }
-    if (segmentationConfig != null) {
-      _json['segmentationConfig'] = segmentationConfig.toJson();
-    }
-    if (textClassificationConfig != null) {
-      _json['textClassificationConfig'] = textClassificationConfig.toJson();
-    }
-    if (textEntityExtractionConfig != null) {
-      _json['textEntityExtractionConfig'] = textEntityExtractionConfig.toJson();
-    }
-    if (videoClassificationConfig != null) {
-      _json['videoClassificationConfig'] = videoClassificationConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPolyConfig != null)
+          'boundingPolyConfig': boundingPolyConfig.toJson(),
+        if (eventConfig != null) 'eventConfig': eventConfig.toJson(),
+        if (humanAnnotationConfig != null)
+          'humanAnnotationConfig': humanAnnotationConfig.toJson(),
+        if (imageClassificationConfig != null)
+          'imageClassificationConfig': imageClassificationConfig.toJson(),
+        if (objectDetectionConfig != null)
+          'objectDetectionConfig': objectDetectionConfig.toJson(),
+        if (objectTrackingConfig != null)
+          'objectTrackingConfig': objectTrackingConfig.toJson(),
+        if (polylineConfig != null) 'polylineConfig': polylineConfig.toJson(),
+        if (segmentationConfig != null)
+          'segmentationConfig': segmentationConfig.toJson(),
+        if (textClassificationConfig != null)
+          'textClassificationConfig': textClassificationConfig.toJson(),
+        if (textEntityExtractionConfig != null)
+          'textEntityExtractionConfig': textEntityExtractionConfig.toJson(),
+        if (videoClassificationConfig != null)
+          'videoClassificationConfig': videoClassificationConfig.toJson(),
+      };
 }
 
 /// Annotation for Example.
@@ -4207,25 +4014,16 @@ class GoogleCloudDatalabelingV1beta1Annotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationMetadata != null) {
-      _json['annotationMetadata'] = annotationMetadata.toJson();
-    }
-    if (annotationSentiment != null) {
-      _json['annotationSentiment'] = annotationSentiment;
-    }
-    if (annotationSource != null) {
-      _json['annotationSource'] = annotationSource;
-    }
-    if (annotationValue != null) {
-      _json['annotationValue'] = annotationValue.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationMetadata != null)
+          'annotationMetadata': annotationMetadata.toJson(),
+        if (annotationSentiment != null)
+          'annotationSentiment': annotationSentiment,
+        if (annotationSource != null) 'annotationSource': annotationSource,
+        if (annotationValue != null)
+          'annotationValue': annotationValue.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Additional information associated with the annotation.
@@ -4243,13 +4041,10 @@ class GoogleCloudDatalabelingV1beta1AnnotationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operatorMetadata != null) {
-      _json['operatorMetadata'] = operatorMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operatorMetadata != null)
+          'operatorMetadata': operatorMetadata.toJson(),
+      };
 }
 
 /// Container of information related to one possible annotation that can be used
@@ -4299,19 +4094,11 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (index != null) {
-      _json['index'] = index;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (index != null) 'index': index,
+      };
 }
 
 /// An AnnotationSpecSet is a collection of label definitions.
@@ -4380,26 +4167,15 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecs != null) {
-      _json['annotationSpecs'] =
-          annotationSpecs.map((value) => value.toJson()).toList();
-    }
-    if (blockingResources != null) {
-      _json['blockingResources'] = blockingResources;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecs != null)
+          'annotationSpecs':
+              annotationSpecs.map((value) => value.toJson()).toList(),
+        if (blockingResources != null) 'blockingResources': blockingResources,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Annotation spec set with the setting of allowing multi labels or not.
@@ -4427,16 +4203,10 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowMultiLabel != null) {
-      _json['allowMultiLabel'] = allowMultiLabel;
-    }
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowMultiLabel != null) 'allowMultiLabel': allowMultiLabel,
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+      };
 }
 
 /// Annotation value for an example.
@@ -4539,44 +4309,30 @@ class GoogleCloudDatalabelingV1beta1AnnotationValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageBoundingPolyAnnotation != null) {
-      _json['imageBoundingPolyAnnotation'] =
-          imageBoundingPolyAnnotation.toJson();
-    }
-    if (imageClassificationAnnotation != null) {
-      _json['imageClassificationAnnotation'] =
-          imageClassificationAnnotation.toJson();
-    }
-    if (imagePolylineAnnotation != null) {
-      _json['imagePolylineAnnotation'] = imagePolylineAnnotation.toJson();
-    }
-    if (imageSegmentationAnnotation != null) {
-      _json['imageSegmentationAnnotation'] =
-          imageSegmentationAnnotation.toJson();
-    }
-    if (textClassificationAnnotation != null) {
-      _json['textClassificationAnnotation'] =
-          textClassificationAnnotation.toJson();
-    }
-    if (textEntityExtractionAnnotation != null) {
-      _json['textEntityExtractionAnnotation'] =
-          textEntityExtractionAnnotation.toJson();
-    }
-    if (videoClassificationAnnotation != null) {
-      _json['videoClassificationAnnotation'] =
-          videoClassificationAnnotation.toJson();
-    }
-    if (videoEventAnnotation != null) {
-      _json['videoEventAnnotation'] = videoEventAnnotation.toJson();
-    }
-    if (videoObjectTrackingAnnotation != null) {
-      _json['videoObjectTrackingAnnotation'] =
-          videoObjectTrackingAnnotation.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageBoundingPolyAnnotation != null)
+          'imageBoundingPolyAnnotation': imageBoundingPolyAnnotation.toJson(),
+        if (imageClassificationAnnotation != null)
+          'imageClassificationAnnotation':
+              imageClassificationAnnotation.toJson(),
+        if (imagePolylineAnnotation != null)
+          'imagePolylineAnnotation': imagePolylineAnnotation.toJson(),
+        if (imageSegmentationAnnotation != null)
+          'imageSegmentationAnnotation': imageSegmentationAnnotation.toJson(),
+        if (textClassificationAnnotation != null)
+          'textClassificationAnnotation': textClassificationAnnotation.toJson(),
+        if (textEntityExtractionAnnotation != null)
+          'textEntityExtractionAnnotation':
+              textEntityExtractionAnnotation.toJson(),
+        if (videoClassificationAnnotation != null)
+          'videoClassificationAnnotation':
+              videoClassificationAnnotation.toJson(),
+        if (videoEventAnnotation != null)
+          'videoEventAnnotation': videoEventAnnotation.toJson(),
+        if (videoObjectTrackingAnnotation != null)
+          'videoObjectTrackingAnnotation':
+              videoObjectTrackingAnnotation.toJson(),
+      };
 }
 
 /// Records a failed evaluation job run.
@@ -4600,17 +4356,12 @@ class GoogleCloudDatalabelingV1beta1Attempt {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attemptTime != null) {
-      _json['attemptTime'] = attemptTime;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attemptTime != null) 'attemptTime': attemptTime,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The BigQuery location for input data.
@@ -4640,13 +4391,9 @@ class GoogleCloudDatalabelingV1beta1BigQuerySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputUri != null) 'inputUri': inputUri,
+      };
 }
 
 /// Options regarding evaluation between bounding boxes.
@@ -4667,13 +4414,9 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iouThreshold != null) {
-      _json['iouThreshold'] = iouThreshold;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iouThreshold != null) 'iouThreshold': iouThreshold,
+      };
 }
 
 /// A bounding polygon in the image.
@@ -4693,13 +4436,10 @@ class GoogleCloudDatalabelingV1beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Config for image bounding poly (and bounding box) human labeling task.
@@ -4725,16 +4465,11 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (instructionMessage != null) {
-      _json['instructionMessage'] = instructionMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (instructionMessage != null)
+          'instructionMessage': instructionMessage,
+      };
 }
 
 /// Metadata for classification annotations.
@@ -4751,13 +4486,9 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isMultiLabel != null) {
-      _json['isMultiLabel'] = isMultiLabel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isMultiLabel != null) 'isMultiLabel': isMultiLabel,
+      };
 }
 
 /// Metrics calculated for a classification model.
@@ -4784,16 +4515,11 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confusionMatrix != null) {
-      _json['confusionMatrix'] = confusionMatrix.toJson();
-    }
-    if (prCurve != null) {
-      _json['prCurve'] = prCurve.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confusionMatrix != null)
+          'confusionMatrix': confusionMatrix.toJson(),
+        if (prCurve != null) 'prCurve': prCurve.toJson(),
+      };
 }
 
 class GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
@@ -4872,40 +4598,19 @@ class GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidenceThreshold != null) {
-      _json['confidenceThreshold'] = confidenceThreshold;
-    }
-    if (f1Score != null) {
-      _json['f1Score'] = f1Score;
-    }
-    if (f1ScoreAt1 != null) {
-      _json['f1ScoreAt1'] = f1ScoreAt1;
-    }
-    if (f1ScoreAt5 != null) {
-      _json['f1ScoreAt5'] = f1ScoreAt5;
-    }
-    if (precision != null) {
-      _json['precision'] = precision;
-    }
-    if (precisionAt1 != null) {
-      _json['precisionAt1'] = precisionAt1;
-    }
-    if (precisionAt5 != null) {
-      _json['precisionAt5'] = precisionAt5;
-    }
-    if (recall != null) {
-      _json['recall'] = recall;
-    }
-    if (recallAt1 != null) {
-      _json['recallAt1'] = recallAt1;
-    }
-    if (recallAt5 != null) {
-      _json['recallAt5'] = recallAt5;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidenceThreshold != null)
+          'confidenceThreshold': confidenceThreshold,
+        if (f1Score != null) 'f1Score': f1Score,
+        if (f1ScoreAt1 != null) 'f1ScoreAt1': f1ScoreAt1,
+        if (f1ScoreAt5 != null) 'f1ScoreAt5': f1ScoreAt5,
+        if (precision != null) 'precision': precision,
+        if (precisionAt1 != null) 'precisionAt1': precisionAt1,
+        if (precisionAt5 != null) 'precisionAt5': precisionAt5,
+        if (recall != null) 'recall': recall,
+        if (recallAt1 != null) 'recallAt1': recallAt1,
+        if (recallAt5 != null) 'recallAt5': recallAt5,
+      };
 }
 
 /// Confusion matrix of the model running the classification.
@@ -4927,13 +4632,9 @@ class GoogleCloudDatalabelingV1beta1ConfusionMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (row != null) {
-      _json['row'] = row.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (row != null) 'row': row.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry {
@@ -4958,16 +4659,10 @@ class GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (itemCount != null) {
-      _json['itemCount'] = itemCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (itemCount != null) 'itemCount': itemCount,
+      };
 }
 
 /// Request message for CreateAnnotationSpecSet.
@@ -4992,13 +4687,10 @@ class GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null)
+          'annotationSpecSet': annotationSpecSet.toJson(),
+      };
 }
 
 /// Request message for CreateDataset.
@@ -5017,13 +4709,9 @@ class GoogleCloudDatalabelingV1beta1CreateDatasetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset.toJson(),
+      };
 }
 
 /// Request message for CreateEvaluationJob.
@@ -5043,13 +4731,9 @@ class GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (job != null) {
-      _json['job'] = job.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (job != null) 'job': job.toJson(),
+      };
 }
 
 /// Metadata of a CreateInstruction operation.
@@ -5086,20 +4770,13 @@ class GoogleCloudDatalabelingV1beta1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (instruction != null) 'instruction': instruction,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for CreateInstruction.
@@ -5119,13 +4796,9 @@ class GoogleCloudDatalabelingV1beta1CreateInstructionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instruction != null) {
-      _json['instruction'] = instruction.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instruction != null) 'instruction': instruction.toJson(),
+      };
 }
 
 /// Deprecated: this instruction format is not supported any more.
@@ -5145,13 +4818,9 @@ class GoogleCloudDatalabelingV1beta1CsvInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsFileUri != null) {
-      _json['gcsFileUri'] = gcsFileUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsFileUri != null) 'gcsFileUri': gcsFileUri,
+      };
 }
 
 /// DataItem is a piece of data, without annotation.
@@ -5193,22 +4862,12 @@ class GoogleCloudDatalabelingV1beta1DataItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imagePayload != null) {
-      _json['imagePayload'] = imagePayload.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (textPayload != null) {
-      _json['textPayload'] = textPayload.toJson();
-    }
-    if (videoPayload != null) {
-      _json['videoPayload'] = videoPayload.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imagePayload != null) 'imagePayload': imagePayload.toJson(),
+        if (name != null) 'name': name,
+        if (textPayload != null) 'textPayload': textPayload.toJson(),
+        if (videoPayload != null) 'videoPayload': videoPayload.toJson(),
+      };
 }
 
 /// Dataset is the resource to hold your data.
@@ -5301,35 +4960,17 @@ class GoogleCloudDatalabelingV1beta1Dataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockingResources != null) {
-      _json['blockingResources'] = blockingResources;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataItemCount != null) {
-      _json['dataItemCount'] = dataItemCount;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (inputConfigs != null) {
-      _json['inputConfigs'] =
-          inputConfigs.map((value) => value.toJson()).toList();
-    }
-    if (lastMigrateTime != null) {
-      _json['lastMigrateTime'] = lastMigrateTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockingResources != null) 'blockingResources': blockingResources,
+        if (createTime != null) 'createTime': createTime,
+        if (dataItemCount != null) 'dataItemCount': dataItemCount,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (inputConfigs != null)
+          'inputConfigs': inputConfigs.map((value) => value.toJson()).toList(),
+        if (lastMigrateTime != null) 'lastMigrateTime': lastMigrateTime,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Describes an evaluation between a machine learning model's predictions and
@@ -5432,31 +5073,18 @@ class GoogleCloudDatalabelingV1beta1Evaluation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationType != null) {
-      _json['annotationType'] = annotationType;
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (evaluatedItemCount != null) {
-      _json['evaluatedItemCount'] = evaluatedItemCount;
-    }
-    if (evaluationJobRunTime != null) {
-      _json['evaluationJobRunTime'] = evaluationJobRunTime;
-    }
-    if (evaluationMetrics != null) {
-      _json['evaluationMetrics'] = evaluationMetrics.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationType != null) 'annotationType': annotationType,
+        if (config != null) 'config': config.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (evaluatedItemCount != null)
+          'evaluatedItemCount': evaluatedItemCount,
+        if (evaluationJobRunTime != null)
+          'evaluationJobRunTime': evaluationJobRunTime,
+        if (evaluationMetrics != null)
+          'evaluationMetrics': evaluationMetrics.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Configuration details used for calculating evaluation metrics and creating
@@ -5480,14 +5108,10 @@ class GoogleCloudDatalabelingV1beta1EvaluationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingBoxEvaluationOptions != null) {
-      _json['boundingBoxEvaluationOptions'] =
-          boundingBoxEvaluationOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingBoxEvaluationOptions != null)
+          'boundingBoxEvaluationOptions': boundingBoxEvaluationOptions.toJson(),
+      };
 }
 
 /// Defines an evaluation job that runs periodically to generate Evaluations.
@@ -5648,40 +5272,21 @@ class GoogleCloudDatalabelingV1beta1EvaluationJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (attempts != null) {
-      _json['attempts'] = attempts.map((value) => value.toJson()).toList();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (evaluationJobConfig != null) {
-      _json['evaluationJobConfig'] = evaluationJobConfig.toJson();
-    }
-    if (labelMissingGroundTruth != null) {
-      _json['labelMissingGroundTruth'] = labelMissingGroundTruth;
-    }
-    if (modelVersion != null) {
-      _json['modelVersion'] = modelVersion;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (schedule != null) {
-      _json['schedule'] = schedule;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (attempts != null)
+          'attempts': attempts.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (evaluationJobConfig != null)
+          'evaluationJobConfig': evaluationJobConfig.toJson(),
+        if (labelMissingGroundTruth != null)
+          'labelMissingGroundTruth': labelMissingGroundTruth,
+        if (modelVersion != null) 'modelVersion': modelVersion,
+        if (name != null) 'name': name,
+        if (schedule != null) 'schedule': schedule,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Provides details for how an evaluation job sends email alerts based on the
@@ -5715,17 +5320,12 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (minAcceptableMeanAveragePrecision != null) {
-      _json['minAcceptableMeanAveragePrecision'] =
-          minAcceptableMeanAveragePrecision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (minAcceptableMeanAveragePrecision != null)
+          'minAcceptableMeanAveragePrecision':
+              minAcceptableMeanAveragePrecision,
+      };
 }
 
 /// Configures specific details of how a continuous evaluation job works.
@@ -5899,40 +5499,26 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bigqueryImportKeys != null) {
-      _json['bigqueryImportKeys'] = bigqueryImportKeys;
-    }
-    if (boundingPolyConfig != null) {
-      _json['boundingPolyConfig'] = boundingPolyConfig.toJson();
-    }
-    if (evaluationConfig != null) {
-      _json['evaluationConfig'] = evaluationConfig.toJson();
-    }
-    if (evaluationJobAlertConfig != null) {
-      _json['evaluationJobAlertConfig'] = evaluationJobAlertConfig.toJson();
-    }
-    if (exampleCount != null) {
-      _json['exampleCount'] = exampleCount;
-    }
-    if (exampleSamplePercentage != null) {
-      _json['exampleSamplePercentage'] = exampleSamplePercentage;
-    }
-    if (humanAnnotationConfig != null) {
-      _json['humanAnnotationConfig'] = humanAnnotationConfig.toJson();
-    }
-    if (imageClassificationConfig != null) {
-      _json['imageClassificationConfig'] = imageClassificationConfig.toJson();
-    }
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (textClassificationConfig != null) {
-      _json['textClassificationConfig'] = textClassificationConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bigqueryImportKeys != null)
+          'bigqueryImportKeys': bigqueryImportKeys,
+        if (boundingPolyConfig != null)
+          'boundingPolyConfig': boundingPolyConfig.toJson(),
+        if (evaluationConfig != null)
+          'evaluationConfig': evaluationConfig.toJson(),
+        if (evaluationJobAlertConfig != null)
+          'evaluationJobAlertConfig': evaluationJobAlertConfig.toJson(),
+        if (exampleCount != null) 'exampleCount': exampleCount,
+        if (exampleSamplePercentage != null)
+          'exampleSamplePercentage': exampleSamplePercentage,
+        if (humanAnnotationConfig != null)
+          'humanAnnotationConfig': humanAnnotationConfig.toJson(),
+        if (imageClassificationConfig != null)
+          'imageClassificationConfig': imageClassificationConfig.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (textClassificationConfig != null)
+          'textClassificationConfig': textClassificationConfig.toJson(),
+      };
 }
 
 class GoogleCloudDatalabelingV1beta1EvaluationMetrics {
@@ -5956,16 +5542,12 @@ class GoogleCloudDatalabelingV1beta1EvaluationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (classificationMetrics != null) {
-      _json['classificationMetrics'] = classificationMetrics.toJson();
-    }
-    if (objectDetectionMetrics != null) {
-      _json['objectDetectionMetrics'] = objectDetectionMetrics.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (classificationMetrics != null)
+          'classificationMetrics': classificationMetrics.toJson(),
+        if (objectDetectionMetrics != null)
+          'objectDetectionMetrics': objectDetectionMetrics.toJson(),
+      };
 }
 
 /// Config for video event human labeling task.
@@ -6005,19 +5587,12 @@ class GoogleCloudDatalabelingV1beta1EventConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSets != null) {
-      _json['annotationSpecSets'] = annotationSpecSets;
-    }
-    if (clipLength != null) {
-      _json['clipLength'] = clipLength;
-    }
-    if (overlapLength != null) {
-      _json['overlapLength'] = overlapLength;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSets != null)
+          'annotationSpecSets': annotationSpecSets,
+        if (clipLength != null) 'clipLength': clipLength,
+        if (overlapLength != null) 'overlapLength': overlapLength,
+      };
 }
 
 /// An Example is a piece of data and its annotation.
@@ -6074,26 +5649,14 @@ class GoogleCloudDatalabelingV1beta1Example {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotations != null) {
-      _json['annotations'] =
-          annotations.map((value) => value.toJson()).toList();
-    }
-    if (imagePayload != null) {
-      _json['imagePayload'] = imagePayload.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (textPayload != null) {
-      _json['textPayload'] = textPayload.toJson();
-    }
-    if (videoPayload != null) {
-      _json['videoPayload'] = videoPayload.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotations != null)
+          'annotations': annotations.map((value) => value.toJson()).toList(),
+        if (imagePayload != null) 'imagePayload': imagePayload.toJson(),
+        if (name != null) 'name': name,
+        if (textPayload != null) 'textPayload': textPayload.toJson(),
+        if (videoPayload != null) 'videoPayload': videoPayload.toJson(),
+      };
 }
 
 /// Example comparisons comparing ground truth output and predictions for a
@@ -6121,17 +5684,13 @@ class GoogleCloudDatalabelingV1beta1ExampleComparison {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (groundTruthExample != null) {
-      _json['groundTruthExample'] = groundTruthExample.toJson();
-    }
-    if (modelCreatedExamples != null) {
-      _json['modelCreatedExamples'] =
-          modelCreatedExamples.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (groundTruthExample != null)
+          'groundTruthExample': groundTruthExample.toJson(),
+        if (modelCreatedExamples != null)
+          'modelCreatedExamples':
+              modelCreatedExamples.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata of an ExportData operation.
@@ -6183,23 +5742,14 @@ class GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ExportDataset longrunning operation.
@@ -6261,28 +5811,14 @@ class GoogleCloudDatalabelingV1beta1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (exportCount != null) {
-      _json['exportCount'] = exportCount;
-    }
-    if (labelStats != null) {
-      _json['labelStats'] = labelStats.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (dataset != null) 'dataset': dataset,
+        if (exportCount != null) 'exportCount': exportCount,
+        if (labelStats != null) 'labelStats': labelStats.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Request message for ExportData API.
@@ -6331,22 +5867,12 @@ class GoogleCloudDatalabelingV1beta1ExportDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (userEmailAddress != null) {
-      _json['userEmailAddress'] = userEmailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (filter != null) 'filter': filter,
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress,
+      };
 }
 
 /// A feedback message inside a feedback thread.
@@ -6408,28 +5934,16 @@ class GoogleCloudDatalabelingV1beta1FeedbackMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (body != null) {
-      _json['body'] = body;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (image != null) {
-      _json['image'] = image;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operatorFeedbackMetadata != null) {
-      _json['operatorFeedbackMetadata'] = operatorFeedbackMetadata.toJson();
-    }
-    if (requesterFeedbackMetadata != null) {
-      _json['requesterFeedbackMetadata'] = requesterFeedbackMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (body != null) 'body': body,
+        if (createTime != null) 'createTime': createTime,
+        if (image != null) 'image': image,
+        if (name != null) 'name': name,
+        if (operatorFeedbackMetadata != null)
+          'operatorFeedbackMetadata': operatorFeedbackMetadata.toJson(),
+        if (requesterFeedbackMetadata != null)
+          'requesterFeedbackMetadata': requesterFeedbackMetadata.toJson(),
+      };
 }
 
 /// A feedback thread of a certain labeling task on a certain annotated dataset.
@@ -6457,16 +5971,11 @@ class GoogleCloudDatalabelingV1beta1FeedbackThread {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feedbackThreadMetadata != null) {
-      _json['feedbackThreadMetadata'] = feedbackThreadMetadata.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feedbackThreadMetadata != null)
+          'feedbackThreadMetadata': feedbackThreadMetadata.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 class GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
@@ -6510,22 +6019,12 @@ class GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (lastUpdateTime != null) {
-      _json['lastUpdateTime'] = lastUpdateTime;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
+        if (status != null) 'status': status,
+        if (thumbnail != null) 'thumbnail': thumbnail,
+      };
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
@@ -6553,16 +6052,10 @@ class GoogleCloudDatalabelingV1beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (outputUri != null) {
-      _json['outputUri'] = outputUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType,
+        if (outputUri != null) 'outputUri': outputUri,
+      };
 }
 
 /// Export folder destination of the data.
@@ -6580,13 +6073,9 @@ class GoogleCloudDatalabelingV1beta1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputFolderUri != null) {
-      _json['outputFolderUri'] = outputFolderUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri,
+      };
 }
 
 /// Source of the Cloud Storage file to be imported.
@@ -6616,16 +6105,10 @@ class GoogleCloudDatalabelingV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputUri != null) {
-      _json['inputUri'] = inputUri;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputUri != null) 'inputUri': inputUri,
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Configuration for how human labeling task should be done.
@@ -6733,37 +6216,19 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDatasetDescription != null) {
-      _json['annotatedDatasetDescription'] = annotatedDatasetDescription;
-    }
-    if (annotatedDatasetDisplayName != null) {
-      _json['annotatedDatasetDisplayName'] = annotatedDatasetDisplayName;
-    }
-    if (contributorEmails != null) {
-      _json['contributorEmails'] = contributorEmails;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (labelGroup != null) {
-      _json['labelGroup'] = labelGroup;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (questionDuration != null) {
-      _json['questionDuration'] = questionDuration;
-    }
-    if (replicaCount != null) {
-      _json['replicaCount'] = replicaCount;
-    }
-    if (userEmailAddress != null) {
-      _json['userEmailAddress'] = userEmailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDatasetDescription != null)
+          'annotatedDatasetDescription': annotatedDatasetDescription,
+        if (annotatedDatasetDisplayName != null)
+          'annotatedDatasetDisplayName': annotatedDatasetDisplayName,
+        if (contributorEmails != null) 'contributorEmails': contributorEmails,
+        if (instruction != null) 'instruction': instruction,
+        if (labelGroup != null) 'labelGroup': labelGroup,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (questionDuration != null) 'questionDuration': questionDuration,
+        if (replicaCount != null) 'replicaCount': replicaCount,
+        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress,
+      };
 }
 
 /// Image bounding poly annotation.
@@ -6795,19 +6260,12 @@ class GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (normalizedBoundingPoly != null) {
-      _json['normalizedBoundingPoly'] = normalizedBoundingPoly.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (normalizedBoundingPoly != null)
+          'normalizedBoundingPoly': normalizedBoundingPoly.toJson(),
+      };
 }
 
 /// Image classification annotation definition.
@@ -6825,13 +6283,9 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+      };
 }
 
 /// Config for image classification human labeling task.
@@ -6872,19 +6326,12 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowMultiLabel != null) {
-      _json['allowMultiLabel'] = allowMultiLabel;
-    }
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (answerAggregationType != null) {
-      _json['answerAggregationType'] = answerAggregationType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowMultiLabel != null) 'allowMultiLabel': allowMultiLabel,
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (answerAggregationType != null)
+          'answerAggregationType': answerAggregationType,
+      };
 }
 
 /// Container of information about an image.
@@ -6925,22 +6372,12 @@ class GoogleCloudDatalabelingV1beta1ImagePayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageThumbnail != null) {
-      _json['imageThumbnail'] = imageThumbnail;
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (signedUri != null) {
-      _json['signedUri'] = signedUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageThumbnail != null) 'imageThumbnail': imageThumbnail,
+        if (imageUri != null) 'imageUri': imageUri,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (signedUri != null) 'signedUri': signedUri,
+      };
 }
 
 /// A polyline for the image annotation.
@@ -6970,19 +6407,12 @@ class GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (normalizedPolyline != null) {
-      _json['normalizedPolyline'] = normalizedPolyline.toJson();
-    }
-    if (polyline != null) {
-      _json['polyline'] = polyline.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (normalizedPolyline != null)
+          'normalizedPolyline': normalizedPolyline.toJson(),
+        if (polyline != null) 'polyline': polyline.toJson(),
+      };
 }
 
 /// Image segmentation annotation.
@@ -7030,20 +6460,13 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationColors != null) {
-      _json['annotationColors'] = annotationColors
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (imageBytes != null) {
-      _json['imageBytes'] = imageBytes;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationColors != null)
+          'annotationColors': annotationColors
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (imageBytes != null) 'imageBytes': imageBytes,
+        if (mimeType != null) 'mimeType': mimeType,
+      };
 }
 
 /// Metadata of an ImportData operation.
@@ -7086,20 +6509,13 @@ class GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ImportData longrunning operation.
@@ -7134,19 +6550,11 @@ class GoogleCloudDatalabelingV1beta1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (importCount != null) {
-      _json['importCount'] = importCount;
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset,
+        if (importCount != null) 'importCount': importCount,
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Request message for ImportData API.
@@ -7174,16 +6582,10 @@ class GoogleCloudDatalabelingV1beta1ImportDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (inputConfig != null) {
-      _json['inputConfig'] = inputConfig.toJson();
-    }
-    if (userEmailAddress != null) {
-      _json['userEmailAddress'] = userEmailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress,
+      };
 }
 
 /// The configuration of input data, including data type, location, etc.
@@ -7278,28 +6680,15 @@ class GoogleCloudDatalabelingV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationType != null) {
-      _json['annotationType'] = annotationType;
-    }
-    if (bigquerySource != null) {
-      _json['bigquerySource'] = bigquerySource.toJson();
-    }
-    if (classificationMetadata != null) {
-      _json['classificationMetadata'] = classificationMetadata.toJson();
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType;
-    }
-    if (gcsSource != null) {
-      _json['gcsSource'] = gcsSource.toJson();
-    }
-    if (textMetadata != null) {
-      _json['textMetadata'] = textMetadata.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationType != null) 'annotationType': annotationType,
+        if (bigquerySource != null) 'bigquerySource': bigquerySource.toJson(),
+        if (classificationMetadata != null)
+          'classificationMetadata': classificationMetadata.toJson(),
+        if (dataType != null) 'dataType': dataType,
+        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+        if (textMetadata != null) 'textMetadata': textMetadata.toJson(),
+      };
 }
 
 /// Instruction of how to perform the labeling task for human operators.
@@ -7402,37 +6791,17 @@ class GoogleCloudDatalabelingV1beta1Instruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockingResources != null) {
-      _json['blockingResources'] = blockingResources;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (csvInstruction != null) {
-      _json['csvInstruction'] = csvInstruction.toJson();
-    }
-    if (dataType != null) {
-      _json['dataType'] = dataType;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pdfInstruction != null) {
-      _json['pdfInstruction'] = pdfInstruction.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockingResources != null) 'blockingResources': blockingResources,
+        if (createTime != null) 'createTime': createTime,
+        if (csvInstruction != null) 'csvInstruction': csvInstruction.toJson(),
+        if (dataType != null) 'dataType': dataType,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (pdfInstruction != null) 'pdfInstruction': pdfInstruction.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Details of a LabelImageBoundingBox operation metadata.
@@ -7451,13 +6820,9 @@ class GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImageBoundingPoly operation metadata.
@@ -7476,13 +6841,9 @@ class GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a LabelImageClassification operation.
@@ -7501,13 +6862,9 @@ class GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageOrientedBoundingBox operation metadata.
@@ -7526,13 +6883,9 @@ class GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetada
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImagePolyline operation metadata.
@@ -7551,13 +6904,9 @@ class GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Request message for starting an image labeling task.
@@ -7646,28 +6995,17 @@ class GoogleCloudDatalabelingV1beta1LabelImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    if (boundingPolyConfig != null) {
-      _json['boundingPolyConfig'] = boundingPolyConfig.toJson();
-    }
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (imageClassificationConfig != null) {
-      _json['imageClassificationConfig'] = imageClassificationConfig.toJson();
-    }
-    if (polylineConfig != null) {
-      _json['polylineConfig'] = polylineConfig.toJson();
-    }
-    if (segmentationConfig != null) {
-      _json['segmentationConfig'] = segmentationConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+        if (boundingPolyConfig != null)
+          'boundingPolyConfig': boundingPolyConfig.toJson(),
+        if (feature != null) 'feature': feature,
+        if (imageClassificationConfig != null)
+          'imageClassificationConfig': imageClassificationConfig.toJson(),
+        if (polylineConfig != null) 'polylineConfig': polylineConfig.toJson(),
+        if (segmentationConfig != null)
+          'segmentationConfig': segmentationConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageSegmentation operation metadata.
@@ -7686,13 +7024,9 @@ class GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a labeling operation, such as LabelImage or LabelVideo.
@@ -7876,65 +7210,40 @@ class GoogleCloudDatalabelingV1beta1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (imageBoundingBoxDetails != null) {
-      _json['imageBoundingBoxDetails'] = imageBoundingBoxDetails.toJson();
-    }
-    if (imageBoundingPolyDetails != null) {
-      _json['imageBoundingPolyDetails'] = imageBoundingPolyDetails.toJson();
-    }
-    if (imageClassificationDetails != null) {
-      _json['imageClassificationDetails'] = imageClassificationDetails.toJson();
-    }
-    if (imageOrientedBoundingBoxDetails != null) {
-      _json['imageOrientedBoundingBoxDetails'] =
-          imageOrientedBoundingBoxDetails.toJson();
-    }
-    if (imagePolylineDetails != null) {
-      _json['imagePolylineDetails'] = imagePolylineDetails.toJson();
-    }
-    if (imageSegmentationDetails != null) {
-      _json['imageSegmentationDetails'] = imageSegmentationDetails.toJson();
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (textClassificationDetails != null) {
-      _json['textClassificationDetails'] = textClassificationDetails.toJson();
-    }
-    if (textEntityExtractionDetails != null) {
-      _json['textEntityExtractionDetails'] =
-          textEntityExtractionDetails.toJson();
-    }
-    if (videoClassificationDetails != null) {
-      _json['videoClassificationDetails'] = videoClassificationDetails.toJson();
-    }
-    if (videoEventDetails != null) {
-      _json['videoEventDetails'] = videoEventDetails.toJson();
-    }
-    if (videoObjectDetectionDetails != null) {
-      _json['videoObjectDetectionDetails'] =
-          videoObjectDetectionDetails.toJson();
-    }
-    if (videoObjectTrackingDetails != null) {
-      _json['videoObjectTrackingDetails'] = videoObjectTrackingDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (imageBoundingBoxDetails != null)
+          'imageBoundingBoxDetails': imageBoundingBoxDetails.toJson(),
+        if (imageBoundingPolyDetails != null)
+          'imageBoundingPolyDetails': imageBoundingPolyDetails.toJson(),
+        if (imageClassificationDetails != null)
+          'imageClassificationDetails': imageClassificationDetails.toJson(),
+        if (imageOrientedBoundingBoxDetails != null)
+          'imageOrientedBoundingBoxDetails':
+              imageOrientedBoundingBoxDetails.toJson(),
+        if (imagePolylineDetails != null)
+          'imagePolylineDetails': imagePolylineDetails.toJson(),
+        if (imageSegmentationDetails != null)
+          'imageSegmentationDetails': imageSegmentationDetails.toJson(),
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (textClassificationDetails != null)
+          'textClassificationDetails': textClassificationDetails.toJson(),
+        if (textEntityExtractionDetails != null)
+          'textEntityExtractionDetails': textEntityExtractionDetails.toJson(),
+        if (videoClassificationDetails != null)
+          'videoClassificationDetails': videoClassificationDetails.toJson(),
+        if (videoEventDetails != null)
+          'videoEventDetails': videoEventDetails.toJson(),
+        if (videoObjectDetectionDetails != null)
+          'videoObjectDetectionDetails': videoObjectDetectionDetails.toJson(),
+        if (videoObjectTrackingDetails != null)
+          'videoObjectTrackingDetails': videoObjectTrackingDetails.toJson(),
+      };
 }
 
 /// Statistics about annotation specs.
@@ -7962,13 +7271,9 @@ class GoogleCloudDatalabelingV1beta1LabelStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exampleCount != null) {
-      _json['exampleCount'] = exampleCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exampleCount != null) 'exampleCount': exampleCount,
+      };
 }
 
 /// Details of a LabelTextClassification operation metadata.
@@ -7987,13 +7292,9 @@ class GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelTextEntityExtraction operation metadata.
@@ -8012,13 +7313,9 @@ class GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Request message for LabelText.
@@ -8076,22 +7373,14 @@ class GoogleCloudDatalabelingV1beta1LabelTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (textClassificationConfig != null) {
-      _json['textClassificationConfig'] = textClassificationConfig.toJson();
-    }
-    if (textEntityExtractionConfig != null) {
-      _json['textEntityExtractionConfig'] = textEntityExtractionConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+        if (feature != null) 'feature': feature,
+        if (textClassificationConfig != null)
+          'textClassificationConfig': textClassificationConfig.toJson(),
+        if (textEntityExtractionConfig != null)
+          'textEntityExtractionConfig': textEntityExtractionConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoClassification operation metadata.
@@ -8110,13 +7399,9 @@ class GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoEvent operation metadata.
@@ -8135,13 +7420,9 @@ class GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectDetection operation metadata.
@@ -8160,13 +7441,9 @@ class GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectTracking operation metadata.
@@ -8185,13 +7462,9 @@ class GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Request message for LabelVideo.
@@ -8274,28 +7547,17 @@ class GoogleCloudDatalabelingV1beta1LabelVideoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    if (eventConfig != null) {
-      _json['eventConfig'] = eventConfig.toJson();
-    }
-    if (feature != null) {
-      _json['feature'] = feature;
-    }
-    if (objectDetectionConfig != null) {
-      _json['objectDetectionConfig'] = objectDetectionConfig.toJson();
-    }
-    if (objectTrackingConfig != null) {
-      _json['objectTrackingConfig'] = objectTrackingConfig.toJson();
-    }
-    if (videoClassificationConfig != null) {
-      _json['videoClassificationConfig'] = videoClassificationConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+        if (eventConfig != null) 'eventConfig': eventConfig.toJson(),
+        if (feature != null) 'feature': feature,
+        if (objectDetectionConfig != null)
+          'objectDetectionConfig': objectDetectionConfig.toJson(),
+        if (objectTrackingConfig != null)
+          'objectTrackingConfig': objectTrackingConfig.toJson(),
+        if (videoClassificationConfig != null)
+          'videoClassificationConfig': videoClassificationConfig.toJson(),
+      };
 }
 
 /// Results of listing annotated datasets for a dataset.
@@ -8322,17 +7584,12 @@ class GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDatasets != null) {
-      _json['annotatedDatasets'] =
-          annotatedDatasets.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDatasets != null)
+          'annotatedDatasets':
+              annotatedDatasets.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results of listing annotation spec set under a project.
@@ -8359,17 +7616,12 @@ class GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSets != null) {
-      _json['annotationSpecSets'] =
-          annotationSpecSets.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSets != null)
+          'annotationSpecSets':
+              annotationSpecSets.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results of listing data items in a dataset.
@@ -8395,16 +7647,11 @@ class GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataItems != null) {
-      _json['dataItems'] = dataItems.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataItems != null)
+          'dataItems': dataItems.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results of listing datasets within a project.
@@ -8430,16 +7677,11 @@ class GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (datasets != null) {
-      _json['datasets'] = datasets.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (datasets != null)
+          'datasets': datasets.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results for listing evaluation jobs.
@@ -8466,17 +7708,12 @@ class GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (evaluationJobs != null) {
-      _json['evaluationJobs'] =
-          evaluationJobs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (evaluationJobs != null)
+          'evaluationJobs':
+              evaluationJobs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results of listing Examples in and annotated dataset.
@@ -8502,16 +7739,11 @@ class GoogleCloudDatalabelingV1beta1ListExamplesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (examples != null) {
-      _json['examples'] = examples.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (examples != null)
+          'examples': examples.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results for listing FeedbackMessages.
@@ -8538,17 +7770,12 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feedbackMessages != null) {
-      _json['feedbackMessages'] =
-          feedbackMessages.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feedbackMessages != null)
+          'feedbackMessages':
+              feedbackMessages.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results for listing FeedbackThreads.
@@ -8575,17 +7802,12 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (feedbackThreads != null) {
-      _json['feedbackThreads'] =
-          feedbackThreads.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (feedbackThreads != null)
+          'feedbackThreads':
+              feedbackThreads.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Results of listing instructions under a project.
@@ -8612,17 +7834,11 @@ class GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instructions != null) {
-      _json['instructions'] =
-          instructions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instructions != null)
+          'instructions': instructions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Normalized bounding polygon.
@@ -8643,14 +7859,11 @@ class GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Normalized polyline.
@@ -8670,14 +7883,11 @@ class GoogleCloudDatalabelingV1beta1NormalizedPolyline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (normalizedVertices != null) {
-      _json['normalizedVertices'] =
-          normalizedVertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (normalizedVertices != null)
+          'normalizedVertices':
+              normalizedVertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -8702,16 +7912,10 @@ class GoogleCloudDatalabelingV1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Config for video object detection human labeling task.
@@ -8743,16 +7947,11 @@ class GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (extractionFrameRate != null) {
-      _json['extractionFrameRate'] = extractionFrameRate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (extractionFrameRate != null)
+          'extractionFrameRate': extractionFrameRate,
+      };
 }
 
 /// Metrics calculated for an image object detection (bounding box) model.
@@ -8770,13 +7969,9 @@ class GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (prCurve != null) {
-      _json['prCurve'] = prCurve.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (prCurve != null) 'prCurve': prCurve.toJson(),
+      };
 }
 
 /// Config for video object tracking human labeling task.
@@ -8812,19 +8007,11 @@ class GoogleCloudDatalabelingV1beta1ObjectTrackingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (clipLength != null) {
-      _json['clipLength'] = clipLength;
-    }
-    if (overlapLength != null) {
-      _json['overlapLength'] = overlapLength;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (clipLength != null) 'clipLength': clipLength,
+        if (overlapLength != null) 'overlapLength': overlapLength,
+      };
 }
 
 /// Video frame level annotation for object detection and tracking.
@@ -8853,19 +8040,12 @@ class GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boundingPoly != null) {
-      _json['boundingPoly'] = boundingPoly.toJson();
-    }
-    if (normalizedBoundingPoly != null) {
-      _json['normalizedBoundingPoly'] = normalizedBoundingPoly.toJson();
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
+        if (normalizedBoundingPoly != null)
+          'normalizedBoundingPoly': normalizedBoundingPoly.toJson(),
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Metadata describing the feedback from the operator.
@@ -8876,10 +8056,7 @@ class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// General information useful for labels coming from contributors.
@@ -8918,22 +8095,12 @@ class GoogleCloudDatalabelingV1beta1OperatorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (comments != null) {
-      _json['comments'] = comments;
-    }
-    if (labelVotes != null) {
-      _json['labelVotes'] = labelVotes;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    if (totalVotes != null) {
-      _json['totalVotes'] = totalVotes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (comments != null) 'comments': comments,
+        if (labelVotes != null) 'labelVotes': labelVotes,
+        if (score != null) 'score': score,
+        if (totalVotes != null) 'totalVotes': totalVotes,
+      };
 }
 
 /// The configuration of output data.
@@ -8964,16 +8131,11 @@ class GoogleCloudDatalabelingV1beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    if (gcsFolderDestination != null) {
-      _json['gcsFolderDestination'] = gcsFolderDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+        if (gcsFolderDestination != null)
+          'gcsFolderDestination': gcsFolderDestination.toJson(),
+      };
 }
 
 /// Request message for PauseEvaluationJob.
@@ -8984,10 +8146,7 @@ class GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Instruction from a PDF file.
@@ -9005,13 +8164,9 @@ class GoogleCloudDatalabelingV1beta1PdfInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsFileUri != null) {
-      _json['gcsFileUri'] = gcsFileUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsFileUri != null) 'gcsFileUri': gcsFileUri,
+      };
 }
 
 /// A line with multiple line segments.
@@ -9031,13 +8186,10 @@ class GoogleCloudDatalabelingV1beta1Polyline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (vertices != null) {
-      _json['vertices'] = vertices.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (vertices != null)
+          'vertices': vertices.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Config for image polyline human labeling task.
@@ -9063,16 +8215,11 @@ class GoogleCloudDatalabelingV1beta1PolylineConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (instructionMessage != null) {
-      _json['instructionMessage'] = instructionMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (instructionMessage != null)
+          'instructionMessage': instructionMessage,
+      };
 }
 
 class GoogleCloudDatalabelingV1beta1PrCurve {
@@ -9123,23 +8270,15 @@ class GoogleCloudDatalabelingV1beta1PrCurve {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (areaUnderCurve != null) {
-      _json['areaUnderCurve'] = areaUnderCurve;
-    }
-    if (confidenceMetricsEntries != null) {
-      _json['confidenceMetricsEntries'] =
-          confidenceMetricsEntries.map((value) => value.toJson()).toList();
-    }
-    if (meanAveragePrecision != null) {
-      _json['meanAveragePrecision'] = meanAveragePrecision;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (areaUnderCurve != null) 'areaUnderCurve': areaUnderCurve,
+        if (confidenceMetricsEntries != null)
+          'confidenceMetricsEntries':
+              confidenceMetricsEntries.map((value) => value.toJson()).toList(),
+        if (meanAveragePrecision != null)
+          'meanAveragePrecision': meanAveragePrecision,
+      };
 }
 
 /// Metadata describing the feedback from the labeling task requester.
@@ -9150,10 +8289,7 @@ class GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Request message ResumeEvaluationJob.
@@ -9164,10 +8300,7 @@ class GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A row in the confusion matrix.
@@ -9198,16 +8331,11 @@ class GoogleCloudDatalabelingV1beta1Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Results of searching evaluations.
@@ -9234,17 +8362,11 @@ class GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (evaluations != null) {
-      _json['evaluations'] =
-          evaluations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (evaluations != null)
+          'evaluations': evaluations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Request message of SearchExampleComparisons.
@@ -9277,16 +8399,10 @@ class GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// Results of searching example comparisons.
@@ -9313,17 +8429,12 @@ class GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exampleComparisons != null) {
-      _json['exampleComparisons'] =
-          exampleComparisons.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exampleComparisons != null)
+          'exampleComparisons':
+              exampleComparisons.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Config for image segmentation
@@ -9349,16 +8460,11 @@ class GoogleCloudDatalabelingV1beta1SegmentationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (instructionMessage != null) {
-      _json['instructionMessage'] = instructionMessage;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (instructionMessage != null)
+          'instructionMessage': instructionMessage,
+      };
 }
 
 /// Config for setting up sentiments.
@@ -9378,13 +8484,10 @@ class GoogleCloudDatalabelingV1beta1SentimentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableLabelSentimentSelection != null) {
-      _json['enableLabelSentimentSelection'] = enableLabelSentimentSelection;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableLabelSentimentSelection != null)
+          'enableLabelSentimentSelection': enableLabelSentimentSelection,
+      };
 }
 
 /// Start and end position in a sequence (e.g. text segment).
@@ -9406,16 +8509,10 @@ class GoogleCloudDatalabelingV1beta1SequentialSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (end != null) {
-      _json['end'] = end;
-    }
-    if (start != null) {
-      _json['start'] = start;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (end != null) 'end': end,
+        if (start != null) 'start': start,
+      };
 }
 
 /// Text classification annotation.
@@ -9433,13 +8530,9 @@ class GoogleCloudDatalabelingV1beta1TextClassificationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+      };
 }
 
 /// Config for text classification human labeling task.
@@ -9479,19 +8572,12 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowMultiLabel != null) {
-      _json['allowMultiLabel'] = allowMultiLabel;
-    }
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    if (sentimentConfig != null) {
-      _json['sentimentConfig'] = sentimentConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowMultiLabel != null) 'allowMultiLabel': allowMultiLabel,
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+        if (sentimentConfig != null)
+          'sentimentConfig': sentimentConfig.toJson(),
+      };
 }
 
 /// Text entity extraction annotation.
@@ -9518,16 +8604,11 @@ class GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (sequentialSegment != null) {
-      _json['sequentialSegment'] = sequentialSegment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (sequentialSegment != null)
+          'sequentialSegment': sequentialSegment.toJson(),
+      };
 }
 
 /// Config for text entity extraction human labeling task.
@@ -9546,13 +8627,9 @@ class GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSet != null) {
-      _json['annotationSpecSet'] = annotationSpecSet;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet,
+      };
 }
 
 /// Metadata for the text.
@@ -9571,13 +8648,9 @@ class GoogleCloudDatalabelingV1beta1TextMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+      };
 }
 
 /// Container of information about a piece of text.
@@ -9593,13 +8666,9 @@ class GoogleCloudDatalabelingV1beta1TextPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (textContent != null) {
-      _json['textContent'] = textContent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (textContent != null) 'textContent': textContent,
+      };
 }
 
 /// A time period inside of an example that has a time dimension (e.g. video).
@@ -9623,16 +8692,10 @@ class GoogleCloudDatalabelingV1beta1TimeSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTimeOffset != null) {
-      _json['endTimeOffset'] = endTimeOffset;
-    }
-    if (startTimeOffset != null) {
-      _json['startTimeOffset'] = startTimeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+      };
 }
 
 /// A vertex represents a 2D point in the image.
@@ -9656,16 +8719,10 @@ class GoogleCloudDatalabelingV1beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (x != null) {
-      _json['x'] = x;
-    }
-    if (y != null) {
-      _json['y'] = y;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (x != null) 'x': x,
+        if (y != null) 'y': y,
+      };
 }
 
 /// Video classification annotation.
@@ -9690,16 +8747,10 @@ class GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (timeSegment != null) {
-      _json['timeSegment'] = timeSegment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (timeSegment != null) 'timeSegment': timeSegment.toJson(),
+      };
 }
 
 /// Config for video classification human labeling task.
@@ -9742,17 +8793,13 @@ class GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpecSetConfigs != null) {
-      _json['annotationSpecSetConfigs'] =
-          annotationSpecSetConfigs.map((value) => value.toJson()).toList();
-    }
-    if (applyShotDetection != null) {
-      _json['applyShotDetection'] = applyShotDetection;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpecSetConfigs != null)
+          'annotationSpecSetConfigs':
+              annotationSpecSetConfigs.map((value) => value.toJson()).toList(),
+        if (applyShotDetection != null)
+          'applyShotDetection': applyShotDetection,
+      };
 }
 
 /// Video event annotation.
@@ -9776,16 +8823,10 @@ class GoogleCloudDatalabelingV1beta1VideoEventAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (timeSegment != null) {
-      _json['timeSegment'] = timeSegment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (timeSegment != null) 'timeSegment': timeSegment.toJson(),
+      };
 }
 
 /// Video object tracking annotation.
@@ -9821,20 +8862,13 @@ class GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotationSpec != null) {
-      _json['annotationSpec'] = annotationSpec.toJson();
-    }
-    if (objectTrackingFrames != null) {
-      _json['objectTrackingFrames'] =
-          objectTrackingFrames.map((value) => value.toJson()).toList();
-    }
-    if (timeSegment != null) {
-      _json['timeSegment'] = timeSegment.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotationSpec != null) 'annotationSpec': annotationSpec.toJson(),
+        if (objectTrackingFrames != null)
+          'objectTrackingFrames':
+              objectTrackingFrames.map((value) => value.toJson()).toList(),
+        if (timeSegment != null) 'timeSegment': timeSegment.toJson(),
+      };
 }
 
 /// Container of information of a video.
@@ -9878,26 +8912,15 @@ class GoogleCloudDatalabelingV1beta1VideoPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (frameRate != null) {
-      _json['frameRate'] = frameRate;
-    }
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (signedUri != null) {
-      _json['signedUri'] = signedUri;
-    }
-    if (videoThumbnails != null) {
-      _json['videoThumbnails'] =
-          videoThumbnails.map((value) => value.toJson()).toList();
-    }
-    if (videoUri != null) {
-      _json['videoUri'] = videoUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (frameRate != null) 'frameRate': frameRate,
+        if (mimeType != null) 'mimeType': mimeType,
+        if (signedUri != null) 'signedUri': signedUri,
+        if (videoThumbnails != null)
+          'videoThumbnails':
+              videoThumbnails.map((value) => value.toJson()).toList(),
+        if (videoUri != null) 'videoUri': videoUri,
+      };
 }
 
 /// Container of information of a video thumbnail.
@@ -9926,16 +8949,10 @@ class GoogleCloudDatalabelingV1beta1VideoThumbnail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (thumbnail != null) {
-      _json['thumbnail'] = thumbnail;
-    }
-    if (timeOffset != null) {
-      _json['timeOffset'] = timeOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (thumbnail != null) 'thumbnail': thumbnail,
+        if (timeOffset != null) 'timeOffset': timeOffset,
+      };
 }
 
 /// Metadata of a CreateInstruction operation.
@@ -9972,20 +8989,13 @@ class GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (instruction != null) 'instruction': instruction,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata of an ExportData operation.
@@ -10037,23 +9047,14 @@ class GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ExportDataset longrunning operation.
@@ -10115,28 +9116,14 @@ class GoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (exportCount != null) {
-      _json['exportCount'] = exportCount;
-    }
-    if (labelStats != null) {
-      _json['labelStats'] = labelStats.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (dataset != null) 'dataset': dataset,
+        if (exportCount != null) 'exportCount': exportCount,
+        if (labelStats != null) 'labelStats': labelStats.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
@@ -10164,16 +9151,10 @@ class GoogleCloudDatalabelingV1p1alpha1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (outputUri != null) {
-      _json['outputUri'] = outputUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType,
+        if (outputUri != null) 'outputUri': outputUri,
+      };
 }
 
 /// Export folder destination of the data.
@@ -10192,13 +9173,9 @@ class GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputFolderUri != null) {
-      _json['outputFolderUri'] = outputFolderUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri,
+      };
 }
 
 /// Metadata of an GenerateAnalysisReport operation.
@@ -10223,16 +9200,10 @@ class GoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+      };
 }
 
 /// Configuration for how human labeling task should be done.
@@ -10341,37 +9312,19 @@ class GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDatasetDescription != null) {
-      _json['annotatedDatasetDescription'] = annotatedDatasetDescription;
-    }
-    if (annotatedDatasetDisplayName != null) {
-      _json['annotatedDatasetDisplayName'] = annotatedDatasetDisplayName;
-    }
-    if (contributorEmails != null) {
-      _json['contributorEmails'] = contributorEmails;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (labelGroup != null) {
-      _json['labelGroup'] = labelGroup;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (questionDuration != null) {
-      _json['questionDuration'] = questionDuration;
-    }
-    if (replicaCount != null) {
-      _json['replicaCount'] = replicaCount;
-    }
-    if (userEmailAddress != null) {
-      _json['userEmailAddress'] = userEmailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDatasetDescription != null)
+          'annotatedDatasetDescription': annotatedDatasetDescription,
+        if (annotatedDatasetDisplayName != null)
+          'annotatedDatasetDisplayName': annotatedDatasetDisplayName,
+        if (contributorEmails != null) 'contributorEmails': contributorEmails,
+        if (instruction != null) 'instruction': instruction,
+        if (labelGroup != null) 'labelGroup': labelGroup,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (questionDuration != null) 'questionDuration': questionDuration,
+        if (replicaCount != null) 'replicaCount': replicaCount,
+        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress,
+      };
 }
 
 /// Metadata of an ImportData operation.
@@ -10414,20 +9367,13 @@ class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ImportData longrunning operation.
@@ -10462,19 +9408,11 @@ class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (importCount != null) {
-      _json['importCount'] = importCount;
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset,
+        if (importCount != null) 'importCount': importCount,
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Details of a LabelImageBoundingBox operation metadata.
@@ -10493,13 +9431,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImageBoundingPoly operation metadata.
@@ -10518,13 +9452,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a LabelImageClassification operation.
@@ -10543,13 +9473,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageOrientedBoundingBox operation metadata.
@@ -10568,13 +9494,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMet
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImagePolyline operation metadata.
@@ -10593,13 +9515,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageSegmentation operation metadata.
@@ -10618,13 +9536,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a labeling operation, such as LabelImage or LabelVideo.
@@ -10808,65 +9722,40 @@ class GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (imageBoundingBoxDetails != null) {
-      _json['imageBoundingBoxDetails'] = imageBoundingBoxDetails.toJson();
-    }
-    if (imageBoundingPolyDetails != null) {
-      _json['imageBoundingPolyDetails'] = imageBoundingPolyDetails.toJson();
-    }
-    if (imageClassificationDetails != null) {
-      _json['imageClassificationDetails'] = imageClassificationDetails.toJson();
-    }
-    if (imageOrientedBoundingBoxDetails != null) {
-      _json['imageOrientedBoundingBoxDetails'] =
-          imageOrientedBoundingBoxDetails.toJson();
-    }
-    if (imagePolylineDetails != null) {
-      _json['imagePolylineDetails'] = imagePolylineDetails.toJson();
-    }
-    if (imageSegmentationDetails != null) {
-      _json['imageSegmentationDetails'] = imageSegmentationDetails.toJson();
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (textClassificationDetails != null) {
-      _json['textClassificationDetails'] = textClassificationDetails.toJson();
-    }
-    if (textEntityExtractionDetails != null) {
-      _json['textEntityExtractionDetails'] =
-          textEntityExtractionDetails.toJson();
-    }
-    if (videoClassificationDetails != null) {
-      _json['videoClassificationDetails'] = videoClassificationDetails.toJson();
-    }
-    if (videoEventDetails != null) {
-      _json['videoEventDetails'] = videoEventDetails.toJson();
-    }
-    if (videoObjectDetectionDetails != null) {
-      _json['videoObjectDetectionDetails'] =
-          videoObjectDetectionDetails.toJson();
-    }
-    if (videoObjectTrackingDetails != null) {
-      _json['videoObjectTrackingDetails'] = videoObjectTrackingDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (imageBoundingBoxDetails != null)
+          'imageBoundingBoxDetails': imageBoundingBoxDetails.toJson(),
+        if (imageBoundingPolyDetails != null)
+          'imageBoundingPolyDetails': imageBoundingPolyDetails.toJson(),
+        if (imageClassificationDetails != null)
+          'imageClassificationDetails': imageClassificationDetails.toJson(),
+        if (imageOrientedBoundingBoxDetails != null)
+          'imageOrientedBoundingBoxDetails':
+              imageOrientedBoundingBoxDetails.toJson(),
+        if (imagePolylineDetails != null)
+          'imagePolylineDetails': imagePolylineDetails.toJson(),
+        if (imageSegmentationDetails != null)
+          'imageSegmentationDetails': imageSegmentationDetails.toJson(),
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (textClassificationDetails != null)
+          'textClassificationDetails': textClassificationDetails.toJson(),
+        if (textEntityExtractionDetails != null)
+          'textEntityExtractionDetails': textEntityExtractionDetails.toJson(),
+        if (videoClassificationDetails != null)
+          'videoClassificationDetails': videoClassificationDetails.toJson(),
+        if (videoEventDetails != null)
+          'videoEventDetails': videoEventDetails.toJson(),
+        if (videoObjectDetectionDetails != null)
+          'videoObjectDetectionDetails': videoObjectDetectionDetails.toJson(),
+        if (videoObjectTrackingDetails != null)
+          'videoObjectTrackingDetails': videoObjectTrackingDetails.toJson(),
+      };
 }
 
 /// Statistics about annotation specs.
@@ -10894,13 +9783,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exampleCount != null) {
-      _json['exampleCount'] = exampleCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exampleCount != null) 'exampleCount': exampleCount,
+      };
 }
 
 /// Details of a LabelTextClassification operation metadata.
@@ -10919,13 +9804,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelTextEntityExtraction operation metadata.
@@ -10944,13 +9825,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoClassification operation metadata.
@@ -10969,13 +9846,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoEvent operation metadata.
@@ -10994,13 +9867,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectDetection operation metadata.
@@ -11019,13 +9888,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectTracking operation metadata.
@@ -11044,13 +9909,9 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// The configuration of output data.
@@ -11081,16 +9942,11 @@ class GoogleCloudDatalabelingV1p1alpha1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    if (gcsFolderDestination != null) {
-      _json['gcsFolderDestination'] = gcsFolderDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+        if (gcsFolderDestination != null)
+          'gcsFolderDestination': gcsFolderDestination.toJson(),
+      };
 }
 
 /// Metadata of a CreateInstruction operation.
@@ -11127,20 +9983,13 @@ class GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (instruction != null) 'instruction': instruction,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata of an ExportData operation.
@@ -11192,23 +10041,14 @@ class GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ExportDataset longrunning operation.
@@ -11270,28 +10110,14 @@ class GoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (exportCount != null) {
-      _json['exportCount'] = exportCount;
-    }
-    if (labelStats != null) {
-      _json['labelStats'] = labelStats.toJson();
-    }
-    if (outputConfig != null) {
-      _json['outputConfig'] = outputConfig.toJson();
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (dataset != null) 'dataset': dataset,
+        if (exportCount != null) 'exportCount': exportCount,
+        if (labelStats != null) 'labelStats': labelStats.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Export destination of the data.Only gcs path is allowed in output_uri.
@@ -11319,16 +10145,10 @@ class GoogleCloudDatalabelingV1p2alpha1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mimeType != null) {
-      _json['mimeType'] = mimeType;
-    }
-    if (outputUri != null) {
-      _json['outputUri'] = outputUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType,
+        if (outputUri != null) 'outputUri': outputUri,
+      };
 }
 
 /// Export folder destination of the data.
@@ -11347,13 +10167,9 @@ class GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputFolderUri != null) {
-      _json['outputFolderUri'] = outputFolderUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputFolderUri != null) 'outputFolderUri': outputFolderUri,
+      };
 }
 
 /// Configuration for how human labeling task should be done.
@@ -11462,37 +10278,19 @@ class GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDatasetDescription != null) {
-      _json['annotatedDatasetDescription'] = annotatedDatasetDescription;
-    }
-    if (annotatedDatasetDisplayName != null) {
-      _json['annotatedDatasetDisplayName'] = annotatedDatasetDisplayName;
-    }
-    if (contributorEmails != null) {
-      _json['contributorEmails'] = contributorEmails;
-    }
-    if (instruction != null) {
-      _json['instruction'] = instruction;
-    }
-    if (labelGroup != null) {
-      _json['labelGroup'] = labelGroup;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (questionDuration != null) {
-      _json['questionDuration'] = questionDuration;
-    }
-    if (replicaCount != null) {
-      _json['replicaCount'] = replicaCount;
-    }
-    if (userEmailAddress != null) {
-      _json['userEmailAddress'] = userEmailAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDatasetDescription != null)
+          'annotatedDatasetDescription': annotatedDatasetDescription,
+        if (annotatedDatasetDisplayName != null)
+          'annotatedDatasetDisplayName': annotatedDatasetDisplayName,
+        if (contributorEmails != null) 'contributorEmails': contributorEmails,
+        if (instruction != null) 'instruction': instruction,
+        if (labelGroup != null) 'labelGroup': labelGroup,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (questionDuration != null) 'questionDuration': questionDuration,
+        if (replicaCount != null) 'replicaCount': replicaCount,
+        if (userEmailAddress != null) 'userEmailAddress': userEmailAddress,
+      };
 }
 
 /// Metadata of an ImportData operation.
@@ -11535,20 +10333,13 @@ class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response used for ImportData longrunning operation.
@@ -11583,19 +10374,11 @@ class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (importCount != null) {
-      _json['importCount'] = importCount;
-    }
-    if (totalCount != null) {
-      _json['totalCount'] = totalCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataset != null) 'dataset': dataset,
+        if (importCount != null) 'importCount': importCount,
+        if (totalCount != null) 'totalCount': totalCount,
+      };
 }
 
 /// Details of a LabelImageBoundingBox operation metadata.
@@ -11614,13 +10397,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImageBoundingPoly operation metadata.
@@ -11639,13 +10418,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a LabelImageClassification operation.
@@ -11664,13 +10439,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageOrientedBoundingBox operation metadata.
@@ -11689,13 +10460,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMet
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of LabelImagePolyline operation metadata.
@@ -11714,13 +10481,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelImageSegmentation operation metadata.
@@ -11739,13 +10502,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Metadata of a labeling operation, such as LabelImage or LabelVideo.
@@ -11929,65 +10688,40 @@ class GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (annotatedDataset != null) {
-      _json['annotatedDataset'] = annotatedDataset;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (dataset != null) {
-      _json['dataset'] = dataset;
-    }
-    if (imageBoundingBoxDetails != null) {
-      _json['imageBoundingBoxDetails'] = imageBoundingBoxDetails.toJson();
-    }
-    if (imageBoundingPolyDetails != null) {
-      _json['imageBoundingPolyDetails'] = imageBoundingPolyDetails.toJson();
-    }
-    if (imageClassificationDetails != null) {
-      _json['imageClassificationDetails'] = imageClassificationDetails.toJson();
-    }
-    if (imageOrientedBoundingBoxDetails != null) {
-      _json['imageOrientedBoundingBoxDetails'] =
-          imageOrientedBoundingBoxDetails.toJson();
-    }
-    if (imagePolylineDetails != null) {
-      _json['imagePolylineDetails'] = imagePolylineDetails.toJson();
-    }
-    if (imageSegmentationDetails != null) {
-      _json['imageSegmentationDetails'] = imageSegmentationDetails.toJson();
-    }
-    if (partialFailures != null) {
-      _json['partialFailures'] =
-          partialFailures.map((value) => value.toJson()).toList();
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (textClassificationDetails != null) {
-      _json['textClassificationDetails'] = textClassificationDetails.toJson();
-    }
-    if (textEntityExtractionDetails != null) {
-      _json['textEntityExtractionDetails'] =
-          textEntityExtractionDetails.toJson();
-    }
-    if (videoClassificationDetails != null) {
-      _json['videoClassificationDetails'] = videoClassificationDetails.toJson();
-    }
-    if (videoEventDetails != null) {
-      _json['videoEventDetails'] = videoEventDetails.toJson();
-    }
-    if (videoObjectDetectionDetails != null) {
-      _json['videoObjectDetectionDetails'] =
-          videoObjectDetectionDetails.toJson();
-    }
-    if (videoObjectTrackingDetails != null) {
-      _json['videoObjectTrackingDetails'] = videoObjectTrackingDetails.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (annotatedDataset != null) 'annotatedDataset': annotatedDataset,
+        if (createTime != null) 'createTime': createTime,
+        if (dataset != null) 'dataset': dataset,
+        if (imageBoundingBoxDetails != null)
+          'imageBoundingBoxDetails': imageBoundingBoxDetails.toJson(),
+        if (imageBoundingPolyDetails != null)
+          'imageBoundingPolyDetails': imageBoundingPolyDetails.toJson(),
+        if (imageClassificationDetails != null)
+          'imageClassificationDetails': imageClassificationDetails.toJson(),
+        if (imageOrientedBoundingBoxDetails != null)
+          'imageOrientedBoundingBoxDetails':
+              imageOrientedBoundingBoxDetails.toJson(),
+        if (imagePolylineDetails != null)
+          'imagePolylineDetails': imagePolylineDetails.toJson(),
+        if (imageSegmentationDetails != null)
+          'imageSegmentationDetails': imageSegmentationDetails.toJson(),
+        if (partialFailures != null)
+          'partialFailures':
+              partialFailures.map((value) => value.toJson()).toList(),
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (textClassificationDetails != null)
+          'textClassificationDetails': textClassificationDetails.toJson(),
+        if (textEntityExtractionDetails != null)
+          'textEntityExtractionDetails': textEntityExtractionDetails.toJson(),
+        if (videoClassificationDetails != null)
+          'videoClassificationDetails': videoClassificationDetails.toJson(),
+        if (videoEventDetails != null)
+          'videoEventDetails': videoEventDetails.toJson(),
+        if (videoObjectDetectionDetails != null)
+          'videoObjectDetectionDetails': videoObjectDetectionDetails.toJson(),
+        if (videoObjectTrackingDetails != null)
+          'videoObjectTrackingDetails': videoObjectTrackingDetails.toJson(),
+      };
 }
 
 /// Statistics about annotation specs.
@@ -12015,13 +10749,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exampleCount != null) {
-      _json['exampleCount'] = exampleCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exampleCount != null) 'exampleCount': exampleCount,
+      };
 }
 
 /// Details of a LabelTextClassification operation metadata.
@@ -12040,13 +10770,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelTextEntityExtraction operation metadata.
@@ -12065,13 +10791,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoClassification operation metadata.
@@ -12090,13 +10812,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoEvent operation metadata.
@@ -12115,13 +10833,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectDetection operation metadata.
@@ -12140,13 +10854,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// Details of a LabelVideoObjectTracking operation metadata.
@@ -12165,13 +10875,9 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (basicConfig != null) {
-      _json['basicConfig'] = basicConfig.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (basicConfig != null) 'basicConfig': basicConfig.toJson(),
+      };
 }
 
 /// The configuration of output data.
@@ -12202,16 +10908,11 @@ class GoogleCloudDatalabelingV1p2alpha1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gcsDestination != null) {
-      _json['gcsDestination'] = gcsDestination.toJson();
-    }
-    if (gcsFolderDestination != null) {
-      _json['gcsFolderDestination'] = gcsFolderDestination.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+        if (gcsFolderDestination != null)
+          'gcsFolderDestination': gcsFolderDestination.toJson(),
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -12237,16 +10938,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -12325,25 +11021,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -12360,10 +11044,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -12413,17 +11094,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }

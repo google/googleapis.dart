@@ -210,31 +210,15 @@ class SiteSummaryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (abusiveStatus != null) {
-      _json['abusiveStatus'] = abusiveStatus;
-    }
-    if (enforcementTime != null) {
-      _json['enforcementTime'] = enforcementTime;
-    }
-    if (filterStatus != null) {
-      _json['filterStatus'] = filterStatus;
-    }
-    if (lastChangeTime != null) {
-      _json['lastChangeTime'] = lastChangeTime;
-    }
-    if (reportUrl != null) {
-      _json['reportUrl'] = reportUrl;
-    }
-    if (reviewedSite != null) {
-      _json['reviewedSite'] = reviewedSite;
-    }
-    if (underReview != null) {
-      _json['underReview'] = underReview;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (abusiveStatus != null) 'abusiveStatus': abusiveStatus,
+        if (enforcementTime != null) 'enforcementTime': enforcementTime,
+        if (filterStatus != null) 'filterStatus': filterStatus,
+        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime,
+        if (reportUrl != null) 'reportUrl': reportUrl,
+        if (reviewedSite != null) 'reviewedSite': reviewedSite,
+        if (underReview != null) 'underReview': underReview,
+      };
 }
 
 /// Response message for ListViolatingSites.
@@ -253,12 +237,9 @@ class ViolatingSitesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (violatingSites != null) {
-      _json['violatingSites'] =
-          violatingSites.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (violatingSites != null)
+          'violatingSites':
+              violatingSites.map((value) => value.toJson()).toList(),
+      };
 }

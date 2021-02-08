@@ -175,17 +175,9 @@ class CustomApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode,
+        if (packageName != null) 'packageName': packageName,
+        if (title != null) 'title': title,
+      };
 }

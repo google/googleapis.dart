@@ -424,16 +424,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Describes the progress of a long-running `LongRunningRecognize` call.
@@ -477,22 +472,12 @@ class LongRunningRecognizeMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lastUpdateTime != null) {
-      _json['lastUpdateTime'] = lastUpdateTime;
-    }
-    if (progressPercent != null) {
-      _json['progressPercent'] = progressPercent;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
+        if (progressPercent != null) 'progressPercent': progressPercent,
+        if (startTime != null) 'startTime': startTime,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// The top-level message sent by the client for the `LongRunningRecognize`
@@ -522,16 +507,10 @@ class LongRunningRecognizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audio != null) {
-      _json['audio'] = audio.toJson();
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audio != null) 'audio': audio.toJson(),
+        if (config != null) 'config': config.toJson(),
+      };
 }
 
 /// The only message returned to the client by the `LongRunningRecognize`
@@ -558,13 +537,10 @@ class LongRunningRecognizeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -643,25 +619,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Contains audio data in the encoding specified in the `RecognitionConfig`.
@@ -703,16 +667,10 @@ class RecognitionAudio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (uri != null) {
-      _json['uri'] = uri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (uri != null) 'uri': uri,
+      };
 }
 
 /// Provides information to the recognizer that specifies how to process the
@@ -924,54 +882,29 @@ class RecognitionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioChannelCount != null) {
-      _json['audioChannelCount'] = audioChannelCount;
-    }
-    if (diarizationConfig != null) {
-      _json['diarizationConfig'] = diarizationConfig.toJson();
-    }
-    if (enableAutomaticPunctuation != null) {
-      _json['enableAutomaticPunctuation'] = enableAutomaticPunctuation;
-    }
-    if (enableSeparateRecognitionPerChannel != null) {
-      _json['enableSeparateRecognitionPerChannel'] =
-          enableSeparateRecognitionPerChannel;
-    }
-    if (enableWordTimeOffsets != null) {
-      _json['enableWordTimeOffsets'] = enableWordTimeOffsets;
-    }
-    if (encoding != null) {
-      _json['encoding'] = encoding;
-    }
-    if (languageCode != null) {
-      _json['languageCode'] = languageCode;
-    }
-    if (maxAlternatives != null) {
-      _json['maxAlternatives'] = maxAlternatives;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (profanityFilter != null) {
-      _json['profanityFilter'] = profanityFilter;
-    }
-    if (sampleRateHertz != null) {
-      _json['sampleRateHertz'] = sampleRateHertz;
-    }
-    if (speechContexts != null) {
-      _json['speechContexts'] =
-          speechContexts.map((value) => value.toJson()).toList();
-    }
-    if (useEnhanced != null) {
-      _json['useEnhanced'] = useEnhanced;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioChannelCount != null) 'audioChannelCount': audioChannelCount,
+        if (diarizationConfig != null)
+          'diarizationConfig': diarizationConfig.toJson(),
+        if (enableAutomaticPunctuation != null)
+          'enableAutomaticPunctuation': enableAutomaticPunctuation,
+        if (enableSeparateRecognitionPerChannel != null)
+          'enableSeparateRecognitionPerChannel':
+              enableSeparateRecognitionPerChannel,
+        if (enableWordTimeOffsets != null)
+          'enableWordTimeOffsets': enableWordTimeOffsets,
+        if (encoding != null) 'encoding': encoding,
+        if (languageCode != null) 'languageCode': languageCode,
+        if (maxAlternatives != null) 'maxAlternatives': maxAlternatives,
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (model != null) 'model': model,
+        if (profanityFilter != null) 'profanityFilter': profanityFilter,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+        if (speechContexts != null)
+          'speechContexts':
+              speechContexts.map((value) => value.toJson()).toList(),
+        if (useEnhanced != null) 'useEnhanced': useEnhanced,
+      };
 }
 
 /// Description of audio data to be recognized.
@@ -1082,34 +1015,20 @@ class RecognitionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audioTopic != null) {
-      _json['audioTopic'] = audioTopic;
-    }
-    if (industryNaicsCodeOfAudio != null) {
-      _json['industryNaicsCodeOfAudio'] = industryNaicsCodeOfAudio;
-    }
-    if (interactionType != null) {
-      _json['interactionType'] = interactionType;
-    }
-    if (microphoneDistance != null) {
-      _json['microphoneDistance'] = microphoneDistance;
-    }
-    if (originalMediaType != null) {
-      _json['originalMediaType'] = originalMediaType;
-    }
-    if (originalMimeType != null) {
-      _json['originalMimeType'] = originalMimeType;
-    }
-    if (recordingDeviceName != null) {
-      _json['recordingDeviceName'] = recordingDeviceName;
-    }
-    if (recordingDeviceType != null) {
-      _json['recordingDeviceType'] = recordingDeviceType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audioTopic != null) 'audioTopic': audioTopic,
+        if (industryNaicsCodeOfAudio != null)
+          'industryNaicsCodeOfAudio': industryNaicsCodeOfAudio,
+        if (interactionType != null) 'interactionType': interactionType,
+        if (microphoneDistance != null)
+          'microphoneDistance': microphoneDistance,
+        if (originalMediaType != null) 'originalMediaType': originalMediaType,
+        if (originalMimeType != null) 'originalMimeType': originalMimeType,
+        if (recordingDeviceName != null)
+          'recordingDeviceName': recordingDeviceName,
+        if (recordingDeviceType != null)
+          'recordingDeviceType': recordingDeviceType,
+      };
 }
 
 /// The top-level message sent by the client for the `Recognize` method.
@@ -1138,16 +1057,10 @@ class RecognizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (audio != null) {
-      _json['audio'] = audio.toJson();
-    }
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (audio != null) 'audio': audio.toJson(),
+        if (config != null) 'config': config.toJson(),
+      };
 }
 
 /// The only message returned to the client by the `Recognize` method.
@@ -1171,13 +1084,10 @@ class RecognizeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Config to enable speaker diarization.
@@ -1223,22 +1133,13 @@ class SpeakerDiarizationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enableSpeakerDiarization != null) {
-      _json['enableSpeakerDiarization'] = enableSpeakerDiarization;
-    }
-    if (maxSpeakerCount != null) {
-      _json['maxSpeakerCount'] = maxSpeakerCount;
-    }
-    if (minSpeakerCount != null) {
-      _json['minSpeakerCount'] = minSpeakerCount;
-    }
-    if (speakerTag != null) {
-      _json['speakerTag'] = speakerTag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enableSpeakerDiarization != null)
+          'enableSpeakerDiarization': enableSpeakerDiarization,
+        if (maxSpeakerCount != null) 'maxSpeakerCount': maxSpeakerCount,
+        if (minSpeakerCount != null) 'minSpeakerCount': minSpeakerCount,
+        if (speakerTag != null) 'speakerTag': speakerTag,
+      };
 }
 
 /// Provides "hints" to the speech recognizer to favor specific words and
@@ -1269,13 +1170,9 @@ class SpeechContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (phrases != null) {
-      _json['phrases'] = phrases;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (phrases != null) 'phrases': phrases,
+      };
 }
 
 /// Alternative hypotheses (a.k.a. n-best list).
@@ -1316,19 +1213,12 @@ class SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (transcript != null) {
-      _json['transcript'] = transcript;
-    }
-    if (words != null) {
-      _json['words'] = words.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (transcript != null) 'transcript': transcript,
+        if (words != null)
+          'words': words.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A speech recognition result corresponding to a portion of the audio.
@@ -1361,17 +1251,11 @@ class SpeechRecognitionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternatives != null) {
-      _json['alternatives'] =
-          alternatives.map((value) => value.toJson()).toList();
-    }
-    if (channelTag != null) {
-      _json['channelTag'] = channelTag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternatives != null)
+          'alternatives': alternatives.map((value) => value.toJson()).toList(),
+        if (channelTag != null) 'channelTag': channelTag,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1421,19 +1305,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Word-specific information for recognized words.
@@ -1484,20 +1360,10 @@ class WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (speakerTag != null) {
-      _json['speakerTag'] = speakerTag;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (word != null) {
-      _json['word'] = word;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (speakerTag != null) 'speakerTag': speakerTag,
+        if (startTime != null) 'startTime': startTime,
+        if (word != null) 'word': word,
+      };
 }

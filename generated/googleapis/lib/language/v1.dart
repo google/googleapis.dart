@@ -342,16 +342,10 @@ class AnalyzeEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (encodingType != null) {
-      _json['encodingType'] = encodingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (encodingType != null) 'encodingType': encodingType,
+      };
 }
 
 /// The entity analysis response message.
@@ -379,16 +373,11 @@ class AnalyzeEntitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (language != null) 'language': language,
+      };
 }
 
 /// The entity-level sentiment analysis request message.
@@ -425,16 +414,10 @@ class AnalyzeEntitySentimentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (encodingType != null) {
-      _json['encodingType'] = encodingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (encodingType != null) 'encodingType': encodingType,
+      };
 }
 
 /// The entity-level sentiment analysis response message.
@@ -462,16 +445,11 @@ class AnalyzeEntitySentimentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (language != null) 'language': language,
+      };
 }
 
 /// The sentiment analysis request message.
@@ -508,16 +486,10 @@ class AnalyzeSentimentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (encodingType != null) {
-      _json['encodingType'] = encodingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (encodingType != null) 'encodingType': encodingType,
+      };
 }
 
 /// The sentiment analysis response message.
@@ -552,19 +524,13 @@ class AnalyzeSentimentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (documentSentiment != null) {
-      _json['documentSentiment'] = documentSentiment.toJson();
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (sentences != null) {
-      _json['sentences'] = sentences.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (documentSentiment != null)
+          'documentSentiment': documentSentiment.toJson(),
+        if (language != null) 'language': language,
+        if (sentences != null)
+          'sentences': sentences.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The syntax analysis request message.
@@ -601,16 +567,10 @@ class AnalyzeSyntaxRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (encodingType != null) {
-      _json['encodingType'] = encodingType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (encodingType != null) 'encodingType': encodingType,
+      };
 }
 
 /// The syntax analysis response message.
@@ -647,19 +607,13 @@ class AnalyzeSyntaxResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (sentences != null) {
-      _json['sentences'] = sentences.map((value) => value.toJson()).toList();
-    }
-    if (tokens != null) {
-      _json['tokens'] = tokens.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (language != null) 'language': language,
+        if (sentences != null)
+          'sentences': sentences.map((value) => value.toJson()).toList(),
+        if (tokens != null)
+          'tokens': tokens.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request message for the text annotation API, which can perform multiple
@@ -706,19 +660,11 @@ class AnnotateTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    if (encodingType != null) {
-      _json['encodingType'] = encodingType;
-    }
-    if (features != null) {
-      _json['features'] = features.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+        if (encodingType != null) 'encodingType': encodingType,
+        if (features != null) 'features': features.toJson(),
+      };
 }
 
 /// The text annotations response message.
@@ -791,28 +737,19 @@ class AnnotateTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categories != null) {
-      _json['categories'] = categories.map((value) => value.toJson()).toList();
-    }
-    if (documentSentiment != null) {
-      _json['documentSentiment'] = documentSentiment.toJson();
-    }
-    if (entities != null) {
-      _json['entities'] = entities.map((value) => value.toJson()).toList();
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (sentences != null) {
-      _json['sentences'] = sentences.map((value) => value.toJson()).toList();
-    }
-    if (tokens != null) {
-      _json['tokens'] = tokens.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categories != null)
+          'categories': categories.map((value) => value.toJson()).toList(),
+        if (documentSentiment != null)
+          'documentSentiment': documentSentiment.toJson(),
+        if (entities != null)
+          'entities': entities.map((value) => value.toJson()).toList(),
+        if (language != null) 'language': language,
+        if (sentences != null)
+          'sentences': sentences.map((value) => value.toJson()).toList(),
+        if (tokens != null)
+          'tokens': tokens.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents a category returned from the text classifier.
@@ -838,16 +775,10 @@ class ClassificationCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (confidence != null) {
-      _json['confidence'] = confidence;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (confidence != null) 'confidence': confidence,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The document classification request message.
@@ -866,13 +797,9 @@ class ClassifyTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (document != null) {
-      _json['document'] = document.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (document != null) 'document': document.toJson(),
+      };
 }
 
 /// The document classification response message.
@@ -892,13 +819,10 @@ class ClassifyTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (categories != null) {
-      _json['categories'] = categories.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (categories != null)
+          'categories': categories.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents dependency parse tree information for a token.
@@ -1013,16 +937,10 @@ class DependencyEdge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headTokenIndex != null) {
-      _json['headTokenIndex'] = headTokenIndex;
-    }
-    if (label != null) {
-      _json['label'] = label;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headTokenIndex != null) 'headTokenIndex': headTokenIndex,
+        if (label != null) 'label': label,
+      };
 }
 
 /// ################################################################ #
@@ -1078,22 +996,12 @@ class Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (gcsContentUri != null) {
-      _json['gcsContentUri'] = gcsContentUri;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content,
+        if (gcsContentUri != null) 'gcsContentUri': gcsContentUri,
+        if (language != null) 'language': language,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents a phrase in the text that is a known entity, such as a person, an
@@ -1194,28 +1102,15 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mentions != null) {
-      _json['mentions'] = mentions.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (salience != null) {
-      _json['salience'] = salience;
-    }
-    if (sentiment != null) {
-      _json['sentiment'] = sentiment.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mentions != null)
+          'mentions': mentions.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (salience != null) 'salience': salience,
+        if (sentiment != null) 'sentiment': sentiment.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// Represents a mention for an entity in the text.
@@ -1254,19 +1149,11 @@ class EntityMention {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sentiment != null) {
-      _json['sentiment'] = sentiment.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sentiment != null) 'sentiment': sentiment.toJson(),
+        if (text != null) 'text': text.toJson(),
+        if (type != null) 'type': type,
+      };
 }
 
 /// All available features for sentiment, syntax, and semantic analysis.
@@ -1308,25 +1195,15 @@ class Features {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (classifyText != null) {
-      _json['classifyText'] = classifyText;
-    }
-    if (extractDocumentSentiment != null) {
-      _json['extractDocumentSentiment'] = extractDocumentSentiment;
-    }
-    if (extractEntities != null) {
-      _json['extractEntities'] = extractEntities;
-    }
-    if (extractEntitySentiment != null) {
-      _json['extractEntitySentiment'] = extractEntitySentiment;
-    }
-    if (extractSyntax != null) {
-      _json['extractSyntax'] = extractSyntax;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (classifyText != null) 'classifyText': classifyText,
+        if (extractDocumentSentiment != null)
+          'extractDocumentSentiment': extractDocumentSentiment,
+        if (extractEntities != null) 'extractEntities': extractEntities,
+        if (extractEntitySentiment != null)
+          'extractEntitySentiment': extractEntitySentiment,
+        if (extractSyntax != null) 'extractSyntax': extractSyntax,
+      };
 }
 
 /// Represents part of speech information for a token.
@@ -1516,46 +1393,20 @@ class PartOfSpeech {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aspect != null) {
-      _json['aspect'] = aspect;
-    }
-    if (case_ != null) {
-      _json['case'] = case_;
-    }
-    if (form != null) {
-      _json['form'] = form;
-    }
-    if (gender != null) {
-      _json['gender'] = gender;
-    }
-    if (mood != null) {
-      _json['mood'] = mood;
-    }
-    if (number != null) {
-      _json['number'] = number;
-    }
-    if (person != null) {
-      _json['person'] = person;
-    }
-    if (proper != null) {
-      _json['proper'] = proper;
-    }
-    if (reciprocity != null) {
-      _json['reciprocity'] = reciprocity;
-    }
-    if (tag != null) {
-      _json['tag'] = tag;
-    }
-    if (tense != null) {
-      _json['tense'] = tense;
-    }
-    if (voice != null) {
-      _json['voice'] = voice;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aspect != null) 'aspect': aspect,
+        if (case_ != null) 'case': case_,
+        if (form != null) 'form': form,
+        if (gender != null) 'gender': gender,
+        if (mood != null) 'mood': mood,
+        if (number != null) 'number': number,
+        if (person != null) 'person': person,
+        if (proper != null) 'proper': proper,
+        if (reciprocity != null) 'reciprocity': reciprocity,
+        if (tag != null) 'tag': tag,
+        if (tense != null) 'tense': tense,
+        if (voice != null) 'voice': voice,
+      };
 }
 
 /// Represents a sentence in the input document.
@@ -1581,16 +1432,10 @@ class Sentence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sentiment != null) {
-      _json['sentiment'] = sentiment.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sentiment != null) 'sentiment': sentiment.toJson(),
+        if (text != null) 'text': text.toJson(),
+      };
 }
 
 /// Represents the feeling associated with the entire text or entities in the
@@ -1616,16 +1461,10 @@ class Sentiment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (magnitude != null) {
-      _json['magnitude'] = magnitude;
-    }
-    if (score != null) {
-      _json['score'] = score;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude,
+        if (score != null) 'score': score,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1675,19 +1514,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Represents an output piece of text.
@@ -1710,16 +1541,10 @@ class TextSpan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (beginOffset != null) {
-      _json['beginOffset'] = beginOffset;
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (beginOffset != null) 'beginOffset': beginOffset,
+        if (content != null) 'content': content,
+      };
 }
 
 /// Represents the smallest syntactic building block of the text.
@@ -1757,20 +1582,10 @@ class Token {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dependencyEdge != null) {
-      _json['dependencyEdge'] = dependencyEdge.toJson();
-    }
-    if (lemma != null) {
-      _json['lemma'] = lemma;
-    }
-    if (partOfSpeech != null) {
-      _json['partOfSpeech'] = partOfSpeech.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dependencyEdge != null) 'dependencyEdge': dependencyEdge.toJson(),
+        if (lemma != null) 'lemma': lemma,
+        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech.toJson(),
+        if (text != null) 'text': text.toJson(),
+      };
 }

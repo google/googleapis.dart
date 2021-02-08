@@ -655,16 +655,10 @@ class AllowedIpRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (value != null) 'value': value,
+      };
 }
 
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
@@ -686,13 +680,9 @@ class DatabaseConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (machineType != null) 'machineType': machineType,
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -735,19 +725,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -764,10 +746,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The encryption options for the Cloud Composer environment and its
@@ -789,13 +768,9 @@ class EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kmsKeyName != null) {
-      _json['kmsKeyName'] = kmsKeyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
 }
 
 /// An environment for running orchestration tasks.
@@ -882,31 +857,15 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (config != null) {
-      _json['config'] = config.toJson();
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (uuid != null) {
-      _json['uuid'] = uuid;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (config != null) 'config': config.toJson(),
+        if (createTime != null) 'createTime': createTime,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (uuid != null) 'uuid': uuid,
+      };
 }
 
 /// Configuration information for an environment.
@@ -1019,44 +978,24 @@ class EnvironmentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (airflowUri != null) {
-      _json['airflowUri'] = airflowUri;
-    }
-    if (dagGcsPrefix != null) {
-      _json['dagGcsPrefix'] = dagGcsPrefix;
-    }
-    if (databaseConfig != null) {
-      _json['databaseConfig'] = databaseConfig.toJson();
-    }
-    if (encryptionConfig != null) {
-      _json['encryptionConfig'] = encryptionConfig.toJson();
-    }
-    if (gkeCluster != null) {
-      _json['gkeCluster'] = gkeCluster;
-    }
-    if (nodeConfig != null) {
-      _json['nodeConfig'] = nodeConfig.toJson();
-    }
-    if (nodeCount != null) {
-      _json['nodeCount'] = nodeCount;
-    }
-    if (privateEnvironmentConfig != null) {
-      _json['privateEnvironmentConfig'] = privateEnvironmentConfig.toJson();
-    }
-    if (softwareConfig != null) {
-      _json['softwareConfig'] = softwareConfig.toJson();
-    }
-    if (webServerConfig != null) {
-      _json['webServerConfig'] = webServerConfig.toJson();
-    }
-    if (webServerNetworkAccessControl != null) {
-      _json['webServerNetworkAccessControl'] =
-          webServerNetworkAccessControl.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (airflowUri != null) 'airflowUri': airflowUri,
+        if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix,
+        if (databaseConfig != null) 'databaseConfig': databaseConfig.toJson(),
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig.toJson(),
+        if (gkeCluster != null) 'gkeCluster': gkeCluster,
+        if (nodeConfig != null) 'nodeConfig': nodeConfig.toJson(),
+        if (nodeCount != null) 'nodeCount': nodeCount,
+        if (privateEnvironmentConfig != null)
+          'privateEnvironmentConfig': privateEnvironmentConfig.toJson(),
+        if (softwareConfig != null) 'softwareConfig': softwareConfig.toJson(),
+        if (webServerConfig != null)
+          'webServerConfig': webServerConfig.toJson(),
+        if (webServerNetworkAccessControl != null)
+          'webServerNetworkAccessControl':
+              webServerNetworkAccessControl.toJson(),
+      };
 }
 
 /// Configuration for controlling how IPs are allocated in the GKE cluster
@@ -1134,25 +1073,17 @@ class IPAllocationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clusterIpv4CidrBlock != null) {
-      _json['clusterIpv4CidrBlock'] = clusterIpv4CidrBlock;
-    }
-    if (clusterSecondaryRangeName != null) {
-      _json['clusterSecondaryRangeName'] = clusterSecondaryRangeName;
-    }
-    if (servicesIpv4CidrBlock != null) {
-      _json['servicesIpv4CidrBlock'] = servicesIpv4CidrBlock;
-    }
-    if (servicesSecondaryRangeName != null) {
-      _json['servicesSecondaryRangeName'] = servicesSecondaryRangeName;
-    }
-    if (useIpAliases != null) {
-      _json['useIpAliases'] = useIpAliases;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clusterIpv4CidrBlock != null)
+          'clusterIpv4CidrBlock': clusterIpv4CidrBlock,
+        if (clusterSecondaryRangeName != null)
+          'clusterSecondaryRangeName': clusterSecondaryRangeName,
+        if (servicesIpv4CidrBlock != null)
+          'servicesIpv4CidrBlock': servicesIpv4CidrBlock,
+        if (servicesSecondaryRangeName != null)
+          'servicesSecondaryRangeName': servicesSecondaryRangeName,
+        if (useIpAliases != null) 'useIpAliases': useIpAliases,
+      };
 }
 
 /// ImageVersion information
@@ -1204,28 +1135,15 @@ class ImageVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationDisabled != null) {
-      _json['creationDisabled'] = creationDisabled;
-    }
-    if (imageVersionId != null) {
-      _json['imageVersionId'] = imageVersionId;
-    }
-    if (isDefault != null) {
-      _json['isDefault'] = isDefault;
-    }
-    if (releaseDate != null) {
-      _json['releaseDate'] = releaseDate.toJson();
-    }
-    if (supportedPythonVersions != null) {
-      _json['supportedPythonVersions'] = supportedPythonVersions;
-    }
-    if (upgradeDisabled != null) {
-      _json['upgradeDisabled'] = upgradeDisabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationDisabled != null) 'creationDisabled': creationDisabled,
+        if (imageVersionId != null) 'imageVersionId': imageVersionId,
+        if (isDefault != null) 'isDefault': isDefault,
+        if (releaseDate != null) 'releaseDate': releaseDate.toJson(),
+        if (supportedPythonVersions != null)
+          'supportedPythonVersions': supportedPythonVersions,
+        if (upgradeDisabled != null) 'upgradeDisabled': upgradeDisabled,
+      };
 }
 
 /// The environments in a project and location.
@@ -1250,17 +1168,11 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (environments != null) {
-      _json['environments'] =
-          environments.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (environments != null)
+          'environments': environments.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The ImageVersions in a project and location.
@@ -1285,17 +1197,12 @@ class ListImageVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageVersions != null) {
-      _json['imageVersions'] =
-          imageVersions.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageVersions != null)
+          'imageVersions':
+              imageVersions.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1320,16 +1227,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The configuration information for the Kubernetes Engine nodes running the
@@ -1478,37 +1380,18 @@ class NodeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (diskSizeGb != null) {
-      _json['diskSizeGb'] = diskSizeGb;
-    }
-    if (ipAllocationPolicy != null) {
-      _json['ipAllocationPolicy'] = ipAllocationPolicy.toJson();
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (oauthScopes != null) {
-      _json['oauthScopes'] = oauthScopes;
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount;
-    }
-    if (subnetwork != null) {
-      _json['subnetwork'] = subnetwork;
-    }
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+        if (ipAllocationPolicy != null)
+          'ipAllocationPolicy': ipAllocationPolicy.toJson(),
+        if (location != null) 'location': location,
+        if (machineType != null) 'machineType': machineType,
+        if (network != null) 'network': network,
+        if (oauthScopes != null) 'oauthScopes': oauthScopes,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+        if (subnetwork != null) 'subnetwork': subnetwork,
+        if (tags != null) 'tags': tags,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1587,25 +1470,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Metadata describing an operation.
@@ -1678,28 +1549,14 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (resource != null) {
-      _json['resource'] = resource;
-    }
-    if (resourceUuid != null) {
-      _json['resourceUuid'] = resourceUuid;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (operationType != null) 'operationType': operationType,
+        if (resource != null) 'resource': resource,
+        if (resourceUuid != null) 'resourceUuid': resourceUuid,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Configuration options for the private GKE cluster in a Cloud Composer
@@ -1741,19 +1598,14 @@ class PrivateClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enablePrivateEndpoint != null) {
-      _json['enablePrivateEndpoint'] = enablePrivateEndpoint;
-    }
-    if (masterIpv4CidrBlock != null) {
-      _json['masterIpv4CidrBlock'] = masterIpv4CidrBlock;
-    }
-    if (masterIpv4ReservedRange != null) {
-      _json['masterIpv4ReservedRange'] = masterIpv4ReservedRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enablePrivateEndpoint != null)
+          'enablePrivateEndpoint': enablePrivateEndpoint,
+        if (masterIpv4CidrBlock != null)
+          'masterIpv4CidrBlock': masterIpv4CidrBlock,
+        if (masterIpv4ReservedRange != null)
+          'masterIpv4ReservedRange': masterIpv4ReservedRange,
+      };
 }
 
 /// The configuration information for configuring a Private IP Cloud Composer
@@ -1816,25 +1668,18 @@ class PrivateEnvironmentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudSqlIpv4CidrBlock != null) {
-      _json['cloudSqlIpv4CidrBlock'] = cloudSqlIpv4CidrBlock;
-    }
-    if (enablePrivateEnvironment != null) {
-      _json['enablePrivateEnvironment'] = enablePrivateEnvironment;
-    }
-    if (privateClusterConfig != null) {
-      _json['privateClusterConfig'] = privateClusterConfig.toJson();
-    }
-    if (webServerIpv4CidrBlock != null) {
-      _json['webServerIpv4CidrBlock'] = webServerIpv4CidrBlock;
-    }
-    if (webServerIpv4ReservedRange != null) {
-      _json['webServerIpv4ReservedRange'] = webServerIpv4ReservedRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cloudSqlIpv4CidrBlock != null)
+          'cloudSqlIpv4CidrBlock': cloudSqlIpv4CidrBlock,
+        if (enablePrivateEnvironment != null)
+          'enablePrivateEnvironment': enablePrivateEnvironment,
+        if (privateClusterConfig != null)
+          'privateClusterConfig': privateClusterConfig.toJson(),
+        if (webServerIpv4CidrBlock != null)
+          'webServerIpv4CidrBlock': webServerIpv4CidrBlock,
+        if (webServerIpv4ReservedRange != null)
+          'webServerIpv4ReservedRange': webServerIpv4ReservedRange,
+      };
 }
 
 /// Specifies the selection and configuration of software inside the
@@ -1954,25 +1799,14 @@ class SoftwareConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (airflowConfigOverrides != null) {
-      _json['airflowConfigOverrides'] = airflowConfigOverrides;
-    }
-    if (envVariables != null) {
-      _json['envVariables'] = envVariables;
-    }
-    if (imageVersion != null) {
-      _json['imageVersion'] = imageVersion;
-    }
-    if (pypiPackages != null) {
-      _json['pypiPackages'] = pypiPackages;
-    }
-    if (pythonVersion != null) {
-      _json['pythonVersion'] = pythonVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (airflowConfigOverrides != null)
+          'airflowConfigOverrides': airflowConfigOverrides,
+        if (envVariables != null) 'envVariables': envVariables,
+        if (imageVersion != null) 'imageVersion': imageVersion,
+        if (pypiPackages != null) 'pypiPackages': pypiPackages,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2022,19 +1856,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// The configuration settings for the Airflow web server App Engine instance.
@@ -2057,13 +1883,9 @@ class WebServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (machineType != null) 'machineType': machineType,
+      };
 }
 
 /// Network-level access control policy for the Airflow web server.
@@ -2082,12 +1904,9 @@ class WebServerNetworkAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowedIpRanges != null) {
-      _json['allowedIpRanges'] =
-          allowedIpRanges.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowedIpRanges != null)
+          'allowedIpRanges':
+              allowedIpRanges.map((value) => value.toJson()).toList(),
+      };
 }

@@ -977,13 +977,9 @@ class AllocateIdsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keys != null) {
-      _json['keys'] = keys.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response for Datastore.AllocateIds.
@@ -1003,13 +999,9 @@ class AllocateIdsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keys != null) {
-      _json['keys'] = keys.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An array value.
@@ -1031,13 +1023,10 @@ class ArrayValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (values != null) {
-      _json['values'] = values.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (values != null)
+          'values': values.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request for Datastore.BeginTransaction.
@@ -1054,13 +1043,10 @@ class BeginTransactionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (transactionOptions != null) {
-      _json['transactionOptions'] = transactionOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (transactionOptions != null)
+          'transactionOptions': transactionOptions.toJson(),
+      };
 }
 
 /// The response for Datastore.BeginTransaction.
@@ -1083,13 +1069,9 @@ class BeginTransactionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (transaction != null) {
-      _json['transaction'] = transaction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (transaction != null) 'transaction': transaction,
+      };
 }
 
 /// The request for Datastore.Commit.
@@ -1146,19 +1128,12 @@ class CommitRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (mode != null) {
-      _json['mode'] = mode;
-    }
-    if (mutations != null) {
-      _json['mutations'] = mutations.map((value) => value.toJson()).toList();
-    }
-    if (transaction != null) {
-      _json['transaction'] = transaction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (mode != null) 'mode': mode,
+        if (mutations != null)
+          'mutations': mutations.map((value) => value.toJson()).toList(),
+        if (transaction != null) 'transaction': transaction,
+      };
 }
 
 /// The response for Datastore.Commit.
@@ -1186,17 +1161,12 @@ class CommitResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexUpdates != null) {
-      _json['indexUpdates'] = indexUpdates;
-    }
-    if (mutationResults != null) {
-      _json['mutationResults'] =
-          mutationResults.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexUpdates != null) 'indexUpdates': indexUpdates,
+        if (mutationResults != null)
+          'mutationResults':
+              mutationResults.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A filter that merges multiple other filters using the given operator.
@@ -1227,16 +1197,11 @@ class CompositeFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filters != null) {
-      _json['filters'] = filters.map((value) => value.toJson()).toList();
-    }
-    if (op != null) {
-      _json['op'] = op;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filters != null)
+          'filters': filters.map((value) => value.toJson()).toList(),
+        if (op != null) 'op': op,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1253,10 +1218,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A Datastore data object.
@@ -1296,17 +1258,12 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key.toJson();
-    }
-    if (properties != null) {
-      _json['properties'] =
-          properties.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key.toJson(),
+        if (properties != null)
+          'properties':
+              properties.map((key, item) => core.MapEntry(key, item.toJson())),
+      };
 }
 
 /// The result of fetching an entity from Datastore.
@@ -1349,19 +1306,11 @@ class EntityResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cursor != null) {
-      _json['cursor'] = cursor;
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cursor != null) 'cursor': cursor,
+        if (entity != null) 'entity': entity.toJson(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// A holder for any type of filter.
@@ -1385,16 +1334,11 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compositeFilter != null) {
-      _json['compositeFilter'] = compositeFilter.toJson();
-    }
-    if (propertyFilter != null) {
-      _json['propertyFilter'] = propertyFilter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compositeFilter != null)
+          'compositeFilter': compositeFilter.toJson(),
+        if (propertyFilter != null) 'propertyFilter': propertyFilter.toJson(),
+      };
 }
 
 /// Metadata common to all Datastore Admin operations.
@@ -1464,25 +1408,13 @@ class GoogleDatastoreAdminV1CommonMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (labels != null) 'labels': labels,
+        if (operationType != null) 'operationType': operationType,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Identifies a subset of entities in a project.
@@ -1522,16 +1454,10 @@ class GoogleDatastoreAdminV1EntityFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kinds != null) {
-      _json['kinds'] = kinds;
-    }
-    if (namespaceIds != null) {
-      _json['namespaceIds'] = namespaceIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kinds != null) 'kinds': kinds,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds,
+      };
 }
 
 /// Metadata for ExportEntities operations.
@@ -1580,25 +1506,14 @@ class GoogleDatastoreAdminV1ExportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (common != null) {
-      _json['common'] = common.toJson();
-    }
-    if (entityFilter != null) {
-      _json['entityFilter'] = entityFilter.toJson();
-    }
-    if (outputUrlPrefix != null) {
-      _json['outputUrlPrefix'] = outputUrlPrefix;
-    }
-    if (progressBytes != null) {
-      _json['progressBytes'] = progressBytes.toJson();
-    }
-    if (progressEntities != null) {
-      _json['progressEntities'] = progressEntities.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (common != null) 'common': common.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
+        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix,
+        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+        if (progressEntities != null)
+          'progressEntities': progressEntities.toJson(),
+      };
 }
 
 /// The request for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
@@ -1649,19 +1564,11 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityFilter != null) {
-      _json['entityFilter'] = entityFilter.toJson();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (outputUrlPrefix != null) {
-      _json['outputUrlPrefix'] = outputUrlPrefix;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
+        if (labels != null) 'labels': labels,
+        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix,
+      };
 }
 
 /// The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
@@ -1682,13 +1589,9 @@ class GoogleDatastoreAdminV1ExportEntitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputUrl != null) {
-      _json['outputUrl'] = outputUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputUrl != null) 'outputUrl': outputUrl,
+      };
 }
 
 /// Metadata for ImportEntities operations.
@@ -1735,25 +1638,14 @@ class GoogleDatastoreAdminV1ImportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (common != null) {
-      _json['common'] = common.toJson();
-    }
-    if (entityFilter != null) {
-      _json['entityFilter'] = entityFilter.toJson();
-    }
-    if (inputUrl != null) {
-      _json['inputUrl'] = inputUrl;
-    }
-    if (progressBytes != null) {
-      _json['progressBytes'] = progressBytes.toJson();
-    }
-    if (progressEntities != null) {
-      _json['progressEntities'] = progressEntities.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (common != null) 'common': common.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
+        if (inputUrl != null) 'inputUrl': inputUrl,
+        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+        if (progressEntities != null)
+          'progressEntities': progressEntities.toJson(),
+      };
 }
 
 /// The request for google.datastore.admin.v1.DatastoreAdmin.ImportEntities.
@@ -1807,19 +1699,11 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entityFilter != null) {
-      _json['entityFilter'] = entityFilter.toJson();
-    }
-    if (inputUrl != null) {
-      _json['inputUrl'] = inputUrl;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
+        if (inputUrl != null) 'inputUrl': inputUrl,
+        if (labels != null) 'labels': labels,
+      };
 }
 
 /// Datastore composite index definition.
@@ -1903,28 +1787,15 @@ class GoogleDatastoreAdminV1Index {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ancestor != null) {
-      _json['ancestor'] = ancestor;
-    }
-    if (indexId != null) {
-      _json['indexId'] = indexId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (properties != null) {
-      _json['properties'] = properties.map((value) => value.toJson()).toList();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ancestor != null) 'ancestor': ancestor,
+        if (indexId != null) 'indexId': indexId,
+        if (kind != null) 'kind': kind,
+        if (projectId != null) 'projectId': projectId,
+        if (properties != null)
+          'properties': properties.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// Metadata for Index operations.
@@ -1954,19 +1825,12 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (common != null) {
-      _json['common'] = common.toJson();
-    }
-    if (indexId != null) {
-      _json['indexId'] = indexId;
-    }
-    if (progressEntities != null) {
-      _json['progressEntities'] = progressEntities.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (common != null) 'common': common.toJson(),
+        if (indexId != null) 'indexId': indexId,
+        if (progressEntities != null)
+          'progressEntities': progressEntities.toJson(),
+      };
 }
 
 /// A property of an index.
@@ -2000,16 +1864,10 @@ class GoogleDatastoreAdminV1IndexedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (direction != null) {
-      _json['direction'] = direction;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (direction != null) 'direction': direction,
+        if (name != null) 'name': name,
+      };
 }
 
 /// The response for google.datastore.admin.v1.DatastoreAdmin.ListIndexes.
@@ -2035,16 +1893,11 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indexes != null) {
-      _json['indexes'] = indexes.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indexes != null)
+          'indexes': indexes.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Measures the progress of a particular metric.
@@ -2070,16 +1923,10 @@ class GoogleDatastoreAdminV1Progress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (workCompleted != null) {
-      _json['workCompleted'] = workCompleted;
-    }
-    if (workEstimated != null) {
-      _json['workEstimated'] = workEstimated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (workCompleted != null) 'workCompleted': workCompleted,
+        if (workEstimated != null) 'workEstimated': workEstimated,
+      };
 }
 
 /// Metadata common to all Datastore Admin operations.
@@ -2147,25 +1994,13 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (labels != null) 'labels': labels,
+        if (operationType != null) 'operationType': operationType,
+        if (startTime != null) 'startTime': startTime,
+        if (state != null) 'state': state,
+      };
 }
 
 /// Identifies a subset of entities in a project.
@@ -2205,16 +2040,10 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kinds != null) {
-      _json['kinds'] = kinds;
-    }
-    if (namespaceIds != null) {
-      _json['namespaceIds'] = namespaceIds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kinds != null) 'kinds': kinds,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds,
+      };
 }
 
 /// Metadata for ExportEntities operations.
@@ -2263,25 +2092,14 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (common != null) {
-      _json['common'] = common.toJson();
-    }
-    if (entityFilter != null) {
-      _json['entityFilter'] = entityFilter.toJson();
-    }
-    if (outputUrlPrefix != null) {
-      _json['outputUrlPrefix'] = outputUrlPrefix;
-    }
-    if (progressBytes != null) {
-      _json['progressBytes'] = progressBytes.toJson();
-    }
-    if (progressEntities != null) {
-      _json['progressEntities'] = progressEntities.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (common != null) 'common': common.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
+        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix,
+        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+        if (progressEntities != null)
+          'progressEntities': progressEntities.toJson(),
+      };
 }
 
 /// The response for
@@ -2303,13 +2121,9 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (outputUrl != null) {
-      _json['outputUrl'] = outputUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (outputUrl != null) 'outputUrl': outputUrl,
+      };
 }
 
 /// Metadata for ImportEntities operations.
@@ -2356,25 +2170,14 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (common != null) {
-      _json['common'] = common.toJson();
-    }
-    if (entityFilter != null) {
-      _json['entityFilter'] = entityFilter.toJson();
-    }
-    if (inputUrl != null) {
-      _json['inputUrl'] = inputUrl;
-    }
-    if (progressBytes != null) {
-      _json['progressBytes'] = progressBytes.toJson();
-    }
-    if (progressEntities != null) {
-      _json['progressEntities'] = progressEntities.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (common != null) 'common': common.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
+        if (inputUrl != null) 'inputUrl': inputUrl,
+        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+        if (progressEntities != null)
+          'progressEntities': progressEntities.toJson(),
+      };
 }
 
 /// Measures the progress of a particular metric.
@@ -2400,16 +2203,10 @@ class GoogleDatastoreAdminV1beta1Progress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (workCompleted != null) {
-      _json['workCompleted'] = workCompleted;
-    }
-    if (workEstimated != null) {
-      _json['workEstimated'] = workEstimated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (workCompleted != null) 'workCompleted': workCompleted,
+        if (workEstimated != null) 'workEstimated': workEstimated,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2435,16 +2232,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2523,25 +2315,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A
@@ -2600,24 +2380,16 @@ class GqlQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowLiterals != null) {
-      _json['allowLiterals'] = allowLiterals;
-    }
-    if (namedBindings != null) {
-      _json['namedBindings'] =
-          namedBindings.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (positionalBindings != null) {
-      _json['positionalBindings'] =
-          positionalBindings.map((value) => value.toJson()).toList();
-    }
-    if (queryString != null) {
-      _json['queryString'] = queryString;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowLiterals != null) 'allowLiterals': allowLiterals,
+        if (namedBindings != null)
+          'namedBindings': namedBindings
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (positionalBindings != null)
+          'positionalBindings':
+              positionalBindings.map((value) => value.toJson()).toList(),
+        if (queryString != null) 'queryString': queryString,
+      };
 }
 
 /// A binding parameter for a GQL query.
@@ -2648,16 +2420,10 @@ class GqlQueryParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cursor != null) {
-      _json['cursor'] = cursor;
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cursor != null) 'cursor': cursor,
+        if (value != null) 'value': value.toJson(),
+      };
 }
 
 /// A unique identifier for an entity.
@@ -2703,16 +2469,10 @@ class Key {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (partitionId != null) {
-      _json['partitionId'] = partitionId.toJson();
-    }
-    if (path != null) {
-      _json['path'] = path.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (partitionId != null) 'partitionId': partitionId.toJson(),
+        if (path != null) 'path': path.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A representation of a kind.
@@ -2728,13 +2488,9 @@ class KindExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// An object representing a latitude/longitude pair.
@@ -2764,16 +2520,10 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (latitude != null) {
-      _json['latitude'] = latitude;
-    }
-    if (longitude != null) {
-      _json['longitude'] = longitude;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (latitude != null) 'latitude': latitude,
+        if (longitude != null) 'longitude': longitude,
+      };
 }
 
 /// The request for Datastore.Lookup.
@@ -2801,16 +2551,10 @@ class LookupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (keys != null) {
-      _json['keys'] = keys.map((value) => value.toJson()).toList();
-    }
-    if (readOptions != null) {
-      _json['readOptions'] = readOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+        if (readOptions != null) 'readOptions': readOptions.toJson(),
+      };
 }
 
 /// The response for Datastore.Lookup.
@@ -2856,19 +2600,14 @@ class LookupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deferred != null) {
-      _json['deferred'] = deferred.map((value) => value.toJson()).toList();
-    }
-    if (found != null) {
-      _json['found'] = found.map((value) => value.toJson()).toList();
-    }
-    if (missing != null) {
-      _json['missing'] = missing.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deferred != null)
+          'deferred': deferred.map((value) => value.toJson()).toList(),
+        if (found != null)
+          'found': found.map((value) => value.toJson()).toList(),
+        if (missing != null)
+          'missing': missing.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A mutation to apply to an entity.
@@ -2926,25 +2665,13 @@ class Mutation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (baseVersion != null) {
-      _json['baseVersion'] = baseVersion;
-    }
-    if (delete != null) {
-      _json['delete'] = delete.toJson();
-    }
-    if (insert != null) {
-      _json['insert'] = insert.toJson();
-    }
-    if (update != null) {
-      _json['update'] = update.toJson();
-    }
-    if (upsert != null) {
-      _json['upsert'] = upsert.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (baseVersion != null) 'baseVersion': baseVersion,
+        if (delete != null) 'delete': delete.toJson(),
+        if (insert != null) 'insert': insert.toJson(),
+        if (update != null) 'update': update.toJson(),
+        if (upsert != null) 'upsert': upsert.toJson(),
+      };
 }
 
 /// The result of applying a mutation.
@@ -2982,19 +2709,11 @@ class MutationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (conflictDetected != null) {
-      _json['conflictDetected'] = conflictDetected;
-    }
-    if (key != null) {
-      _json['key'] = key.toJson();
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (conflictDetected != null) 'conflictDetected': conflictDetected,
+        if (key != null) 'key': key.toJson(),
+        if (version != null) 'version': version,
+      };
 }
 
 /// A partition ID identifies a grouping of entities.
@@ -3026,16 +2745,10 @@ class PartitionId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namespaceId != null) {
-      _json['namespaceId'] = namespaceId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namespaceId != null) 'namespaceId': namespaceId,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// A (kind, ID/name) pair used to construct a key path.
@@ -3075,19 +2788,11 @@ class PathElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name,
+      };
 }
 
 /// A representation of a property in a projection.
@@ -3104,13 +2809,9 @@ class Projection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// A filter on a specific property.
@@ -3148,19 +2849,11 @@ class PropertyFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (op != null) {
-      _json['op'] = op;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (op != null) 'op': op,
+        if (property != null) 'property': property.toJson(),
+        if (value != null) 'value': value.toJson(),
+      };
 }
 
 /// The desired order for a specific property.
@@ -3189,16 +2882,10 @@ class PropertyOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (direction != null) {
-      _json['direction'] = direction;
-    }
-    if (property != null) {
-      _json['property'] = property.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (direction != null) 'direction': direction,
+        if (property != null) 'property': property.toJson(),
+      };
 }
 
 /// A reference to a property relative to the kind expressions.
@@ -3216,13 +2903,9 @@ class PropertyReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// A query for entities.
@@ -3332,37 +3015,20 @@ class Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (distinctOn != null) {
-      _json['distinctOn'] = distinctOn.map((value) => value.toJson()).toList();
-    }
-    if (endCursor != null) {
-      _json['endCursor'] = endCursor;
-    }
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind.map((value) => value.toJson()).toList();
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (order != null) {
-      _json['order'] = order.map((value) => value.toJson()).toList();
-    }
-    if (projection != null) {
-      _json['projection'] = projection.map((value) => value.toJson()).toList();
-    }
-    if (startCursor != null) {
-      _json['startCursor'] = startCursor;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (distinctOn != null)
+          'distinctOn': distinctOn.map((value) => value.toJson()).toList(),
+        if (endCursor != null) 'endCursor': endCursor,
+        if (filter != null) 'filter': filter.toJson(),
+        if (kind != null) 'kind': kind.map((value) => value.toJson()).toList(),
+        if (limit != null) 'limit': limit,
+        if (offset != null) 'offset': offset,
+        if (order != null)
+          'order': order.map((value) => value.toJson()).toList(),
+        if (projection != null)
+          'projection': projection.map((value) => value.toJson()).toList(),
+        if (startCursor != null) 'startCursor': startCursor,
+      };
 }
 
 /// A batch of results produced by a query.
@@ -3456,32 +3122,17 @@ class QueryResultBatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endCursor != null) {
-      _json['endCursor'] = endCursor;
-    }
-    if (entityResultType != null) {
-      _json['entityResultType'] = entityResultType;
-    }
-    if (entityResults != null) {
-      _json['entityResults'] =
-          entityResults.map((value) => value.toJson()).toList();
-    }
-    if (moreResults != null) {
-      _json['moreResults'] = moreResults;
-    }
-    if (skippedCursor != null) {
-      _json['skippedCursor'] = skippedCursor;
-    }
-    if (skippedResults != null) {
-      _json['skippedResults'] = skippedResults;
-    }
-    if (snapshotVersion != null) {
-      _json['snapshotVersion'] = snapshotVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endCursor != null) 'endCursor': endCursor,
+        if (entityResultType != null) 'entityResultType': entityResultType,
+        if (entityResults != null)
+          'entityResults':
+              entityResults.map((value) => value.toJson()).toList(),
+        if (moreResults != null) 'moreResults': moreResults,
+        if (skippedCursor != null) 'skippedCursor': skippedCursor,
+        if (skippedResults != null) 'skippedResults': skippedResults,
+        if (snapshotVersion != null) 'snapshotVersion': snapshotVersion,
+      };
 }
 
 /// Options specific to read-only transactions.
@@ -3492,10 +3143,7 @@ class ReadOnly {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The options shared by read requests.
@@ -3534,16 +3182,10 @@ class ReadOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (readConsistency != null) {
-      _json['readConsistency'] = readConsistency;
-    }
-    if (transaction != null) {
-      _json['transaction'] = transaction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (readConsistency != null) 'readConsistency': readConsistency,
+        if (transaction != null) 'transaction': transaction,
+      };
 }
 
 /// Options specific to read / write transactions.
@@ -3566,13 +3208,10 @@ class ReadWrite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (previousTransaction != null) {
-      _json['previousTransaction'] = previousTransaction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (previousTransaction != null)
+          'previousTransaction': previousTransaction,
+      };
 }
 
 /// The request for Datastore.ReserveIds.
@@ -3600,16 +3239,10 @@ class ReserveIdsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (databaseId != null) {
-      _json['databaseId'] = databaseId;
-    }
-    if (keys != null) {
-      _json['keys'] = keys.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId,
+        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The response for Datastore.ReserveIds.
@@ -3620,10 +3253,7 @@ class ReserveIdsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request for Datastore.Rollback.
@@ -3649,13 +3279,9 @@ class RollbackRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (transaction != null) {
-      _json['transaction'] = transaction;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (transaction != null) 'transaction': transaction,
+      };
 }
 
 /// The response for Datastore.Rollback.
@@ -3668,10 +3294,7 @@ class RollbackResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request for Datastore.RunQuery.
@@ -3712,22 +3335,12 @@ class RunQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (gqlQuery != null) {
-      _json['gqlQuery'] = gqlQuery.toJson();
-    }
-    if (partitionId != null) {
-      _json['partitionId'] = partitionId.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    if (readOptions != null) {
-      _json['readOptions'] = readOptions.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (gqlQuery != null) 'gqlQuery': gqlQuery.toJson(),
+        if (partitionId != null) 'partitionId': partitionId.toJson(),
+        if (query != null) 'query': query.toJson(),
+        if (readOptions != null) 'readOptions': readOptions.toJson(),
+      };
 }
 
 /// The response for Datastore.RunQuery.
@@ -3751,16 +3364,10 @@ class RunQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batch != null) {
-      _json['batch'] = batch.toJson();
-    }
-    if (query != null) {
-      _json['query'] = query.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batch != null) 'batch': batch.toJson(),
+        if (query != null) 'query': query.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3810,19 +3417,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Options for beginning a new transaction.
@@ -3850,16 +3449,10 @@ class TransactionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (readOnly != null) {
-      _json['readOnly'] = readOnly.toJson();
-    }
-    if (readWrite != null) {
-      _json['readWrite'] = readWrite.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (readOnly != null) 'readOnly': readOnly.toJson(),
+        if (readWrite != null) 'readWrite': readWrite.toJson(),
+      };
 }
 
 /// A message that can hold any of the supported value types and associated
@@ -3976,47 +3569,20 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (arrayValue != null) {
-      _json['arrayValue'] = arrayValue.toJson();
-    }
-    if (blobValue != null) {
-      _json['blobValue'] = blobValue;
-    }
-    if (booleanValue != null) {
-      _json['booleanValue'] = booleanValue;
-    }
-    if (doubleValue != null) {
-      _json['doubleValue'] = doubleValue;
-    }
-    if (entityValue != null) {
-      _json['entityValue'] = entityValue.toJson();
-    }
-    if (excludeFromIndexes != null) {
-      _json['excludeFromIndexes'] = excludeFromIndexes;
-    }
-    if (geoPointValue != null) {
-      _json['geoPointValue'] = geoPointValue.toJson();
-    }
-    if (integerValue != null) {
-      _json['integerValue'] = integerValue;
-    }
-    if (keyValue != null) {
-      _json['keyValue'] = keyValue.toJson();
-    }
-    if (meaning != null) {
-      _json['meaning'] = meaning;
-    }
-    if (nullValue != null) {
-      _json['nullValue'] = nullValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    if (timestampValue != null) {
-      _json['timestampValue'] = timestampValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (arrayValue != null) 'arrayValue': arrayValue.toJson(),
+        if (blobValue != null) 'blobValue': blobValue,
+        if (booleanValue != null) 'booleanValue': booleanValue,
+        if (doubleValue != null) 'doubleValue': doubleValue,
+        if (entityValue != null) 'entityValue': entityValue.toJson(),
+        if (excludeFromIndexes != null)
+          'excludeFromIndexes': excludeFromIndexes,
+        if (geoPointValue != null) 'geoPointValue': geoPointValue.toJson(),
+        if (integerValue != null) 'integerValue': integerValue,
+        if (keyValue != null) 'keyValue': keyValue.toJson(),
+        if (meaning != null) 'meaning': meaning,
+        if (nullValue != null) 'nullValue': nullValue,
+        if (stringValue != null) 'stringValue': stringValue,
+        if (timestampValue != null) 'timestampValue': timestampValue,
+      };
 }

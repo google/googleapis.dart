@@ -2236,19 +2236,11 @@ class BlogLocale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (country != null) {
-      _json['country'] = country;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (variant != null) {
-      _json['variant'] = variant;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (country != null) 'country': country,
+        if (language != null) 'language': language,
+        if (variant != null) 'variant': variant,
+      };
 }
 
 /// The container of pages in this blog.
@@ -2270,16 +2262,10 @@ class BlogPages {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (totalItems != null) {
-      _json['totalItems'] = totalItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (selfLink != null) 'selfLink': selfLink,
+        if (totalItems != null) 'totalItems': totalItems,
+      };
 }
 
 /// The container of posts in this blog.
@@ -2310,19 +2296,12 @@ class BlogPosts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (totalItems != null) {
-      _json['totalItems'] = totalItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (totalItems != null) 'totalItems': totalItems,
+      };
 }
 
 class Blog {
@@ -2421,49 +2400,21 @@ class Blog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customMetaData != null) {
-      _json['customMetaData'] = customMetaData;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (locale != null) {
-      _json['locale'] = locale.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (pages != null) {
-      _json['pages'] = pages.toJson();
-    }
-    if (posts != null) {
-      _json['posts'] = posts.toJson();
-    }
-    if (published != null) {
-      _json['published'] = published;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (customMetaData != null) 'customMetaData': customMetaData,
+        if (description != null) 'description': description,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (locale != null) 'locale': locale.toJson(),
+        if (name != null) 'name': name,
+        if (pages != null) 'pages': pages.toJson(),
+        if (posts != null) 'posts': posts.toJson(),
+        if (published != null) 'published': published,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (status != null) 'status': status,
+        if (updated != null) 'updated': updated,
+        if (url != null) 'url': url,
+      };
 }
 
 class BlogList {
@@ -2498,20 +2449,14 @@ class BlogList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blogUserInfos != null) {
-      _json['blogUserInfos'] =
-          blogUserInfos.map((value) => value.toJson()).toList();
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blogUserInfos != null)
+          'blogUserInfos':
+              blogUserInfos.map((value) => value.toJson()).toList(),
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 class BlogPerUserInfo {
@@ -2564,28 +2509,14 @@ class BlogPerUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blogId != null) {
-      _json['blogId'] = blogId;
-    }
-    if (hasAdminAccess != null) {
-      _json['hasAdminAccess'] = hasAdminAccess;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (photosAlbumKey != null) {
-      _json['photosAlbumKey'] = photosAlbumKey;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blogId != null) 'blogId': blogId,
+        if (hasAdminAccess != null) 'hasAdminAccess': hasAdminAccess,
+        if (kind != null) 'kind': kind,
+        if (photosAlbumKey != null) 'photosAlbumKey': photosAlbumKey,
+        if (role != null) 'role': role,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 class BlogUserInfo {
@@ -2616,19 +2547,11 @@ class BlogUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blog != null) {
-      _json['blog'] = blog.toJson();
-    }
-    if (blogUserInfo != null) {
-      _json['blog_user_info'] = blogUserInfo.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blog != null) 'blog': blog.toJson(),
+        if (blogUserInfo != null) 'blog_user_info': blogUserInfo.toJson(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// The creator's avatar.
@@ -2644,13 +2567,9 @@ class CommentAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 /// The author of this Comment.
@@ -2685,22 +2604,12 @@ class CommentAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (id != null) 'id': id,
+        if (image != null) 'image': image.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Data about the blog containing this comment.
@@ -2716,13 +2625,9 @@ class CommentBlog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 /// Data about the comment this is in reply to.
@@ -2738,13 +2643,9 @@ class CommentInReplyTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 /// Data about the post containing this comment.
@@ -2760,13 +2661,9 @@ class CommentPost {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 class Comment {
@@ -2854,43 +2751,19 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (author != null) {
-      _json['author'] = author.toJson();
-    }
-    if (blog != null) {
-      _json['blog'] = blog.toJson();
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (inReplyTo != null) {
-      _json['inReplyTo'] = inReplyTo.toJson();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (post != null) {
-      _json['post'] = post.toJson();
-    }
-    if (published != null) {
-      _json['published'] = published;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (author != null) 'author': author.toJson(),
+        if (blog != null) 'blog': blog.toJson(),
+        if (content != null) 'content': content,
+        if (id != null) 'id': id,
+        if (inReplyTo != null) 'inReplyTo': inReplyTo.toJson(),
+        if (kind != null) 'kind': kind,
+        if (post != null) 'post': post.toJson(),
+        if (published != null) 'published': published,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (status != null) 'status': status,
+        if (updated != null) 'updated': updated,
+      };
 }
 
 class CommentList {
@@ -2934,25 +2807,14 @@ class CommentList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+      };
 }
 
 /// The creator's avatar.
@@ -2968,13 +2830,9 @@ class PageAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 /// The author of this Page.
@@ -3009,22 +2867,12 @@ class PageAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (id != null) 'id': id,
+        if (image != null) 'image': image.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Data about the blog containing this Page.
@@ -3040,13 +2888,9 @@ class PageBlog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 class Page {
@@ -3136,46 +2980,20 @@ class Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (author != null) {
-      _json['author'] = author.toJson();
-    }
-    if (blog != null) {
-      _json['blog'] = blog.toJson();
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (published != null) {
-      _json['published'] = published;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (author != null) 'author': author.toJson(),
+        if (blog != null) 'blog': blog.toJson(),
+        if (content != null) 'content': content,
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (published != null) 'published': published,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (status != null) 'status': status,
+        if (title != null) 'title': title,
+        if (updated != null) 'updated': updated,
+        if (url != null) 'url': url,
+      };
 }
 
 class PageList {
@@ -3213,22 +3031,13 @@ class PageList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class PageviewsCounts {
@@ -3253,16 +3062,10 @@ class PageviewsCounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (timeRange != null) {
-      _json['timeRange'] = timeRange;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (timeRange != null) 'timeRange': timeRange,
+      };
 }
 
 class Pageviews {
@@ -3294,19 +3097,12 @@ class Pageviews {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blogId != null) {
-      _json['blogId'] = blogId;
-    }
-    if (counts != null) {
-      _json['counts'] = counts.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blogId != null) 'blogId': blogId,
+        if (counts != null)
+          'counts': counts.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+      };
 }
 
 /// The creator's avatar.
@@ -3322,13 +3118,9 @@ class PostAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 /// The author of this Post.
@@ -3363,22 +3155,12 @@ class PostAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (id != null) 'id': id,
+        if (image != null) 'image': image.toJson(),
+        if (url != null) 'url': url,
+      };
 }
 
 /// Data about the blog containing this Post.
@@ -3394,13 +3176,9 @@ class PostBlog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+      };
 }
 
 class PostImages {
@@ -3414,13 +3192,9 @@ class PostImages {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (url != null) 'url': url,
+      };
 }
 
 /// The location for geotagged posts.
@@ -3456,22 +3230,12 @@ class PostLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lat != null) {
-      _json['lat'] = lat;
-    }
-    if (lng != null) {
-      _json['lng'] = lng;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (span != null) {
-      _json['span'] = span;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lat != null) 'lat': lat,
+        if (lng != null) 'lng': lng,
+        if (name != null) 'name': name,
+        if (span != null) 'span': span,
+      };
 }
 
 /// The container of comments on this Post.
@@ -3502,19 +3266,12 @@ class PostReplies {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (totalItems != null) {
-      _json['totalItems'] = totalItems;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (totalItems != null) 'totalItems': totalItems,
+      };
 }
 
 class Post {
@@ -3660,67 +3417,28 @@ class Post {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (author != null) {
-      _json['author'] = author.toJson();
-    }
-    if (blog != null) {
-      _json['blog'] = blog.toJson();
-    }
-    if (content != null) {
-      _json['content'] = content;
-    }
-    if (customMetaData != null) {
-      _json['customMetaData'] = customMetaData;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (images != null) {
-      _json['images'] = images.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (location != null) {
-      _json['location'] = location.toJson();
-    }
-    if (published != null) {
-      _json['published'] = published;
-    }
-    if (readerComments != null) {
-      _json['readerComments'] = readerComments;
-    }
-    if (replies != null) {
-      _json['replies'] = replies.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (titleLink != null) {
-      _json['titleLink'] = titleLink;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (author != null) 'author': author.toJson(),
+        if (blog != null) 'blog': blog.toJson(),
+        if (content != null) 'content': content,
+        if (customMetaData != null) 'customMetaData': customMetaData,
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (images != null)
+          'images': images.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (labels != null) 'labels': labels,
+        if (location != null) 'location': location.toJson(),
+        if (published != null) 'published': published,
+        if (readerComments != null) 'readerComments': readerComments,
+        if (replies != null) 'replies': replies.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (status != null) 'status': status,
+        if (title != null) 'title': title,
+        if (titleLink != null) 'titleLink': titleLink,
+        if (updated != null) 'updated': updated,
+        if (url != null) 'url': url,
+      };
 }
 
 class PostList {
@@ -3764,25 +3482,14 @@ class PostList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (prevPageToken != null) {
-      _json['prevPageToken'] = prevPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+      };
 }
 
 class PostPerUserInfo {
@@ -3823,25 +3530,13 @@ class PostPerUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blogId != null) {
-      _json['blogId'] = blogId;
-    }
-    if (hasEditAccess != null) {
-      _json['hasEditAccess'] = hasEditAccess;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (postId != null) {
-      _json['postId'] = postId;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blogId != null) 'blogId': blogId,
+        if (hasEditAccess != null) 'hasEditAccess': hasEditAccess,
+        if (kind != null) 'kind': kind,
+        if (postId != null) 'postId': postId,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 class PostUserInfo {
@@ -3872,19 +3567,11 @@ class PostUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (post != null) {
-      _json['post'] = post.toJson();
-    }
-    if (postUserInfo != null) {
-      _json['post_user_info'] = postUserInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (post != null) 'post': post.toJson(),
+        if (postUserInfo != null) 'post_user_info': postUserInfo.toJson(),
+      };
 }
 
 class PostUserInfosList {
@@ -3916,19 +3603,12 @@ class PostUserInfosList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The container of blogs for this user.
@@ -3944,13 +3624,9 @@ class UserBlogs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (selfLink != null) 'selfLink': selfLink,
+      };
 }
 
 /// This user's locale
@@ -3978,19 +3654,11 @@ class UserLocale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (country != null) {
-      _json['country'] = country;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (variant != null) {
-      _json['variant'] = variant;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (country != null) 'country': country,
+        if (language != null) 'language': language,
+        if (variant != null) 'variant': variant,
+      };
 }
 
 class User {
@@ -4057,35 +3725,15 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (about != null) {
-      _json['about'] = about;
-    }
-    if (blogs != null) {
-      _json['blogs'] = blogs.toJson();
-    }
-    if (created != null) {
-      _json['created'] = created;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (locale != null) {
-      _json['locale'] = locale.toJson();
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (about != null) 'about': about,
+        if (blogs != null) 'blogs': blogs.toJson(),
+        if (created != null) 'created': created,
+        if (displayName != null) 'displayName': displayName,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (locale != null) 'locale': locale.toJson(),
+        if (selfLink != null) 'selfLink': selfLink,
+        if (url != null) 'url': url,
+      };
 }

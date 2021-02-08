@@ -2062,13 +2062,9 @@ class Ancestor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId.toJson(),
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2112,17 +2108,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2159,16 +2150,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -2237,19 +2222,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A `Constraint` that is either enforced or not.
@@ -2264,10 +2241,7 @@ class BooleanConstraint {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
@@ -2309,13 +2283,9 @@ class BooleanPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enforced != null) {
-      _json['enforced'] = enforced;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enforced != null) 'enforced': enforced,
+      };
 }
 
 /// The request sent to the ClearOrgPolicy method.
@@ -2345,16 +2315,10 @@ class ClearOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (constraint != null) {
-      _json['constraint'] = constraint;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (constraint != null) 'constraint': constraint,
+        if (etag != null) 'etag': etag,
+      };
 }
 
 /// Metadata describing a long running folder operation
@@ -2396,22 +2360,12 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationParent != null) {
-      _json['destinationParent'] = destinationParent;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (sourceParent != null) {
-      _json['sourceParent'] = sourceParent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent,
+        if (displayName != null) 'displayName': displayName,
+        if (operationType != null) 'operationType': operationType,
+        if (sourceParent != null) 'sourceParent': sourceParent,
+      };
 }
 
 /// Metadata describing a long running folder operation
@@ -2453,22 +2407,12 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationParent != null) {
-      _json['destinationParent'] = destinationParent;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (sourceParent != null) {
-      _json['sourceParent'] = sourceParent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent,
+        if (displayName != null) 'displayName': displayName,
+        if (operationType != null) 'operationType': operationType,
+        if (sourceParent != null) 'sourceParent': sourceParent,
+      };
 }
 
 /// A `Constraint` describes a way in which a resource's configuration can be
@@ -2552,31 +2496,16 @@ class Constraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (booleanConstraint != null) {
-      _json['booleanConstraint'] = booleanConstraint.toJson();
-    }
-    if (constraintDefault != null) {
-      _json['constraintDefault'] = constraintDefault;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (listConstraint != null) {
-      _json['listConstraint'] = listConstraint.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (booleanConstraint != null)
+          'booleanConstraint': booleanConstraint.toJson(),
+        if (constraintDefault != null) 'constraintDefault': constraintDefault,
+        if (description != null) 'description': description,
+        if (displayName != null) 'displayName': displayName,
+        if (listConstraint != null) 'listConstraint': listConstraint.toJson(),
+        if (name != null) 'name': name,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Metadata pertaining to the Folder creation process.
@@ -2599,16 +2528,10 @@ class CreateFolderMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -2643,19 +2566,11 @@ class CreateProjectMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (gettable != null) {
-      _json['gettable'] = gettable;
-    }
-    if (ready != null) {
-      _json['ready'] = ready;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (gettable != null) 'gettable': gettable,
+        if (ready != null) 'ready': ready,
+      };
 }
 
 /// Runtime operation information for creating a TagKey.
@@ -2666,10 +2581,7 @@ class CreateTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Runtime operation information for creating a TagValue.
@@ -2680,10 +2592,7 @@ class CreateTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -2695,10 +2604,7 @@ class DeleteFolderMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -2710,10 +2616,7 @@ class DeleteOrganizationMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -2725,10 +2628,7 @@ class DeleteProjectMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Runtime operation information for deleting a TagKey.
@@ -2739,10 +2639,7 @@ class DeleteTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Runtime operation information for deleting a TagValue.
@@ -2753,10 +2650,7 @@ class DeleteTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2773,10 +2667,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2840,22 +2731,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Metadata describing a long running folder operation
@@ -2896,22 +2777,12 @@ class FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationParent != null) {
-      _json['destinationParent'] = destinationParent;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (operationType != null) {
-      _json['operationType'] = operationType;
-    }
-    if (sourceParent != null) {
-      _json['sourceParent'] = sourceParent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent,
+        if (displayName != null) 'displayName': displayName,
+        if (operationType != null) 'operationType': operationType,
+        if (sourceParent != null) 'sourceParent': sourceParent,
+      };
 }
 
 /// A classification of the Folder Operation error.
@@ -2948,13 +2819,9 @@ class FolderOperationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (errorMessageId != null) {
-      _json['errorMessageId'] = errorMessageId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (errorMessageId != null) 'errorMessageId': errorMessageId,
+      };
 }
 
 /// The request sent to the GetAncestry method.
@@ -2965,10 +2832,7 @@ class GetAncestryRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Response from the projects.getAncestry method.
@@ -2990,13 +2854,10 @@ class GetAncestryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ancestor != null) {
-      _json['ancestor'] = ancestor.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ancestor != null)
+          'ancestor': ancestor.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request sent to the GetEffectiveOrgPolicy method.
@@ -3012,13 +2873,9 @@ class GetEffectiveOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (constraint != null) {
-      _json['constraint'] = constraint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (constraint != null) 'constraint': constraint,
+      };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -3036,13 +2893,9 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (options != null) {
-      _json['options'] = options.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (options != null) 'options': options.toJson(),
+      };
 }
 
 /// The request sent to the GetOrgPolicy method.
@@ -3058,13 +2911,9 @@ class GetOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (constraint != null) {
-      _json['constraint'] = constraint;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (constraint != null) 'constraint': constraint,
+      };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -3089,13 +2938,10 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (requestedPolicyVersion != null) {
-      _json['requestedPolicyVersion'] = requestedPolicyVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion,
+      };
 }
 
 /// A Lien represents an encumbrance on the actions that can be performed on a
@@ -3160,28 +3006,14 @@ class Lien {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (origin != null) {
-      _json['origin'] = origin;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (reason != null) {
-      _json['reason'] = reason;
-    }
-    if (restrictions != null) {
-      _json['restrictions'] = restrictions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (name != null) 'name': name,
+        if (origin != null) 'origin': origin,
+        if (parent != null) 'parent': parent,
+        if (reason != null) 'reason': reason,
+        if (restrictions != null) 'restrictions': restrictions,
+      };
 }
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
@@ -3210,16 +3042,10 @@ class ListAvailableOrgPolicyConstraintsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
@@ -3250,17 +3076,11 @@ class ListAvailableOrgPolicyConstraintsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (constraints != null) {
-      _json['constraints'] =
-          constraints.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (constraints != null)
+          'constraints': constraints.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A `Constraint` that allows or disallows a list of string values, which are
@@ -3290,16 +3110,10 @@ class ListConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (suggestedValue != null) {
-      _json['suggestedValue'] = suggestedValue;
-    }
-    if (supportsUnder != null) {
-      _json['supportsUnder'] = supportsUnder;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (suggestedValue != null) 'suggestedValue': suggestedValue,
+        if (supportsUnder != null) 'supportsUnder': supportsUnder,
+      };
 }
 
 /// The response message for Liens.ListLiens.
@@ -3325,16 +3139,11 @@ class ListLiensResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (liens != null) {
-      _json['liens'] = liens.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (liens != null)
+          'liens': liens.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The request sent to the ListOrgPolicies method.
@@ -3362,16 +3171,10 @@ class ListOrgPoliciesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// The response returned from the `ListOrgPolicies` method.
@@ -3403,16 +3206,11 @@ class ListOrgPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (policies != null) {
-      _json['policies'] = policies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (policies != null)
+          'policies': policies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Used in `policy_type` to specify how `list_policy` behaves at this resource.
@@ -3548,25 +3346,13 @@ class ListPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allValues != null) {
-      _json['allValues'] = allValues;
-    }
-    if (allowedValues != null) {
-      _json['allowedValues'] = allowedValues;
-    }
-    if (deniedValues != null) {
-      _json['deniedValues'] = deniedValues;
-    }
-    if (inheritFromParent != null) {
-      _json['inheritFromParent'] = inheritFromParent;
-    }
-    if (suggestedValue != null) {
-      _json['suggestedValue'] = suggestedValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allValues != null) 'allValues': allValues,
+        if (allowedValues != null) 'allowedValues': allowedValues,
+        if (deniedValues != null) 'deniedValues': deniedValues,
+        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent,
+        if (suggestedValue != null) 'suggestedValue': suggestedValue,
+      };
 }
 
 /// A page of the response received from the ListProjects method.
@@ -3604,16 +3390,11 @@ class ListProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (projects != null) {
-      _json['projects'] = projects.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (projects != null)
+          'projects': projects.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Metadata pertaining to the Folder move process.
@@ -3641,19 +3422,11 @@ class MoveFolderMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destinationParent != null) {
-      _json['destinationParent'] = destinationParent;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (sourceParent != null) {
-      _json['sourceParent'] = sourceParent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent,
+        if (displayName != null) 'displayName': displayName,
+        if (sourceParent != null) 'sourceParent': sourceParent,
+      };
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -3665,10 +3438,7 @@ class MoveProjectMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3747,25 +3517,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Defines a Cloud Organization `Policy` which is used to specify `Constraints`
@@ -3850,31 +3608,15 @@ class OrgPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (booleanPolicy != null) {
-      _json['booleanPolicy'] = booleanPolicy.toJson();
-    }
-    if (constraint != null) {
-      _json['constraint'] = constraint;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (listPolicy != null) {
-      _json['listPolicy'] = listPolicy.toJson();
-    }
-    if (restoreDefault != null) {
-      _json['restoreDefault'] = restoreDefault.toJson();
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy.toJson(),
+        if (constraint != null) 'constraint': constraint,
+        if (etag != null) 'etag': etag,
+        if (listPolicy != null) 'listPolicy': listPolicy.toJson(),
+        if (restoreDefault != null) 'restoreDefault': restoreDefault.toJson(),
+        if (updateTime != null) 'updateTime': updateTime,
+        if (version != null) 'version': version,
+      };
 }
 
 /// The root node in the resource hierarchy to which a particular entity's
@@ -3939,25 +3681,13 @@ class Organization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (lifecycleState != null) {
-      _json['lifecycleState'] = lifecycleState;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (owner != null) {
-      _json['owner'] = owner.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime,
+        if (displayName != null) 'displayName': displayName,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState,
+        if (name != null) 'name': name,
+        if (owner != null) 'owner': owner.toJson(),
+      };
 }
 
 /// The entity that owns an Organization.
@@ -3977,13 +3707,10 @@ class OrganizationOwner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (directoryCustomerId != null) {
-      _json['directoryCustomerId'] = directoryCustomerId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (directoryCustomerId != null)
+          'directoryCustomerId': directoryCustomerId,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4090,23 +3817,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// A Project is a high-level Google Cloud Platform entity.
@@ -4205,31 +3923,15 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (lifecycleState != null) {
-      _json['lifecycleState'] = lifecycleState;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent.toJson();
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (projectNumber != null) {
-      _json['projectNumber'] = projectNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (labels != null) 'labels': labels,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState,
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent.toJson(),
+        if (projectId != null) 'projectId': projectId,
+        if (projectNumber != null) 'projectNumber': projectNumber,
+      };
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -4264,19 +3966,11 @@ class ProjectCreationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (gettable != null) {
-      _json['gettable'] = gettable;
-    }
-    if (ready != null) {
-      _json['ready'] = ready;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (gettable != null) 'gettable': gettable,
+        if (ready != null) 'ready': ready,
+      };
 }
 
 /// A container to reference an id for any resource type.
@@ -4307,16 +4001,10 @@ class ResourceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (id != null) 'id': id,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Ignores policies set above this resource and restores the
@@ -4338,10 +4026,7 @@ class RestoreDefault {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request sent to the `SearchOrganizations` method.
@@ -4382,19 +4067,11 @@ class SearchOrganizationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (filter != null) {
-      _json['filter'] = filter;
-    }
-    if (pageSize != null) {
-      _json['pageSize'] = pageSize;
-    }
-    if (pageToken != null) {
-      _json['pageToken'] = pageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (filter != null) 'filter': filter,
+        if (pageSize != null) 'pageSize': pageSize,
+        if (pageToken != null) 'pageToken': pageToken,
+      };
 }
 
 /// The response returned from the `SearchOrganizations` method.
@@ -4425,17 +4102,12 @@ class SearchOrganizationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (organizations != null) {
-      _json['organizations'] =
-          organizations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (organizations != null)
+          'organizations':
+              organizations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4465,16 +4137,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// The request sent to the SetOrgPolicyRequest method.
@@ -4491,13 +4157,9 @@ class SetOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4547,19 +4209,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4581,13 +4235,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -4606,13 +4256,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -4624,10 +4270,7 @@ class UndeleteFolderMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -4639,10 +4282,7 @@ class UndeleteOrganizationMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -4654,10 +4294,7 @@ class UndeleteProjectMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The request sent to the UndeleteProject method.
@@ -4668,10 +4305,7 @@ class UndeleteProjectRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -4683,10 +4317,7 @@ class UpdateFolderMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A status object which is used as the `metadata` field for the Operation
@@ -4698,10 +4329,7 @@ class UpdateProjectMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Runtime operation information for updating a TagKey.
@@ -4712,10 +4340,7 @@ class UpdateTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Runtime operation information for updating a TagValue.
@@ -4726,8 +4351,5 @@ class UpdateTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }

@@ -382,16 +382,11 @@ class BatchRunPivotReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The batch response containing multiple pivot reports.
@@ -413,14 +408,10 @@ class BatchRunPivotReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pivotReports != null) {
-      _json['pivotReports'] =
-          pivotReports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pivotReports != null)
+          'pivotReports': pivotReports.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The batch request containing multiple report requests.
@@ -452,16 +443,11 @@ class BatchRunReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (requests != null) {
-      _json['requests'] = requests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entity != null) 'entity': entity.toJson(),
+        if (requests != null)
+          'requests': requests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The batch response containing multiple reports.
@@ -482,13 +468,10 @@ class BatchRunReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reports != null) {
-      _json['reports'] = reports.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reports != null)
+          'reports': reports.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// To express that the result needs to be between two numbers (inclusive).
@@ -512,16 +495,10 @@ class BetweenFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fromValue != null) {
-      _json['fromValue'] = fromValue.toJson();
-    }
-    if (toValue != null) {
-      _json['toValue'] = toValue.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fromValue != null) 'fromValue': fromValue.toJson(),
+        if (toValue != null) 'toValue': toValue.toJson(),
+      };
 }
 
 /// Used to convert a dimension value to a single case.
@@ -539,13 +516,9 @@ class CaseExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionName != null) {
-      _json['dimensionName'] = dimensionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName,
+      };
 }
 
 /// Defines a cohort selection criteria.
@@ -598,19 +571,11 @@ class Cohort {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dateRange != null) {
-      _json['dateRange'] = dateRange.toJson();
-    }
-    if (dimension != null) {
-      _json['dimension'] = dimension;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange.toJson(),
+        if (dimension != null) 'dimension': dimension,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Optional settings of a cohort report.
@@ -628,13 +593,9 @@ class CohortReportSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accumulate != null) {
-      _json['accumulate'] = accumulate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accumulate != null) 'accumulate': accumulate,
+      };
 }
 
 /// The specification of cohorts for a cohort report.
@@ -685,19 +646,13 @@ class CohortSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cohortReportSettings != null) {
-      _json['cohortReportSettings'] = cohortReportSettings.toJson();
-    }
-    if (cohorts != null) {
-      _json['cohorts'] = cohorts.map((value) => value.toJson()).toList();
-    }
-    if (cohortsRange != null) {
-      _json['cohortsRange'] = cohortsRange.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cohortReportSettings != null)
+          'cohortReportSettings': cohortReportSettings.toJson(),
+        if (cohorts != null)
+          'cohorts': cohorts.map((value) => value.toJson()).toList(),
+        if (cohortsRange != null) 'cohortsRange': cohortsRange.toJson(),
+      };
 }
 
 /// Configures the extended reporting date range for a cohort report.
@@ -762,19 +717,11 @@ class CohortsRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endOffset != null) {
-      _json['endOffset'] = endOffset;
-    }
-    if (granularity != null) {
-      _json['granularity'] = granularity;
-    }
-    if (startOffset != null) {
-      _json['startOffset'] = startOffset;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endOffset != null) 'endOffset': endOffset,
+        if (granularity != null) 'granularity': granularity,
+        if (startOffset != null) 'startOffset': startOffset,
+      };
 }
 
 /// Used to combine dimension values to a single dimension.
@@ -806,16 +753,10 @@ class ConcatenateExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delimiter != null) {
-      _json['delimiter'] = delimiter;
-    }
-    if (dimensionNames != null) {
-      _json['dimensionNames'] = dimensionNames;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delimiter != null) 'delimiter': delimiter,
+        if (dimensionNames != null) 'dimensionNames': dimensionNames,
+      };
 }
 
 /// A contiguous set of days: startDate, startDate + 1, ..., endDate.
@@ -858,19 +799,11 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate,
+        if (name != null) 'name': name,
+        if (startDate != null) 'startDate': startDate,
+      };
 }
 
 /// Dimensions are attributes of your data.
@@ -908,16 +841,11 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionExpression != null) {
-      _json['dimensionExpression'] = dimensionExpression.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionExpression != null)
+          'dimensionExpression': dimensionExpression.toJson(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// Used to express a dimension which is the result of a formula of multiple
@@ -954,19 +882,11 @@ class DimensionExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (concatenate != null) {
-      _json['concatenate'] = concatenate.toJson();
-    }
-    if (lowerCase != null) {
-      _json['lowerCase'] = lowerCase.toJson();
-    }
-    if (upperCase != null) {
-      _json['upperCase'] = upperCase.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (concatenate != null) 'concatenate': concatenate.toJson(),
+        if (lowerCase != null) 'lowerCase': lowerCase.toJson(),
+        if (upperCase != null) 'upperCase': upperCase.toJson(),
+      };
 }
 
 /// Describes a dimension column in the report.
@@ -987,13 +907,9 @@ class DimensionHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+      };
 }
 
 /// Explains a dimension.
@@ -1043,25 +959,14 @@ class DimensionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiName != null) {
-      _json['apiName'] = apiName;
-    }
-    if (customDefinition != null) {
-      _json['customDefinition'] = customDefinition;
-    }
-    if (deprecatedApiNames != null) {
-      _json['deprecatedApiNames'] = deprecatedApiNames;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (uiName != null) {
-      _json['uiName'] = uiName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiName != null) 'apiName': apiName,
+        if (customDefinition != null) 'customDefinition': customDefinition,
+        if (deprecatedApiNames != null)
+          'deprecatedApiNames': deprecatedApiNames,
+        if (description != null) 'description': description,
+        if (uiName != null) 'uiName': uiName,
+      };
 }
 
 /// Sorts by dimension values.
@@ -1093,16 +998,10 @@ class DimensionOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionName != null) {
-      _json['dimensionName'] = dimensionName;
-    }
-    if (orderType != null) {
-      _json['orderType'] = orderType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName,
+        if (orderType != null) 'orderType': orderType,
+      };
 }
 
 /// The value of a dimension.
@@ -1118,13 +1017,9 @@ class DimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+      };
 }
 
 /// The unique identifier of the property whose events are tracked.
@@ -1143,13 +1038,9 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (propertyId != null) {
-      _json['propertyId'] = propertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (propertyId != null) 'propertyId': propertyId,
+      };
 }
 
 /// An expression to filter dimension or metric values.
@@ -1205,28 +1096,14 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (betweenFilter != null) {
-      _json['betweenFilter'] = betweenFilter.toJson();
-    }
-    if (fieldName != null) {
-      _json['fieldName'] = fieldName;
-    }
-    if (inListFilter != null) {
-      _json['inListFilter'] = inListFilter.toJson();
-    }
-    if (nullFilter != null) {
-      _json['nullFilter'] = nullFilter;
-    }
-    if (numericFilter != null) {
-      _json['numericFilter'] = numericFilter.toJson();
-    }
-    if (stringFilter != null) {
-      _json['stringFilter'] = stringFilter.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (betweenFilter != null) 'betweenFilter': betweenFilter.toJson(),
+        if (fieldName != null) 'fieldName': fieldName,
+        if (inListFilter != null) 'inListFilter': inListFilter.toJson(),
+        if (nullFilter != null) 'nullFilter': nullFilter,
+        if (numericFilter != null) 'numericFilter': numericFilter.toJson(),
+        if (stringFilter != null) 'stringFilter': stringFilter.toJson(),
+      };
 }
 
 /// To express dimension or metric filters.
@@ -1270,22 +1147,12 @@ class FilterExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (andGroup != null) {
-      _json['andGroup'] = andGroup.toJson();
-    }
-    if (filter != null) {
-      _json['filter'] = filter.toJson();
-    }
-    if (notExpression != null) {
-      _json['notExpression'] = notExpression.toJson();
-    }
-    if (orGroup != null) {
-      _json['orGroup'] = orGroup.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (andGroup != null) 'andGroup': andGroup.toJson(),
+        if (filter != null) 'filter': filter.toJson(),
+        if (notExpression != null) 'notExpression': notExpression.toJson(),
+        if (orGroup != null) 'orGroup': orGroup.toJson(),
+      };
 }
 
 /// A list of filter expressions.
@@ -1304,14 +1171,10 @@ class FilterExpressionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expressions != null) {
-      _json['expressions'] =
-          expressions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expressions != null)
+          'expressions': expressions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The result needs to be in a list of string values.
@@ -1337,16 +1200,10 @@ class InListFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (values != null) 'values': values,
+      };
 }
 
 /// The dimensions and metrics currently accepted in reporting methods.
@@ -1380,19 +1237,13 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+      };
 }
 
 /// The quantitative measurements of a report.
@@ -1437,19 +1288,11 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (invisible != null) {
-      _json['invisible'] = invisible;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (expression != null) 'expression': expression,
+        if (invisible != null) 'invisible': invisible,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Describes a metric column in the report.
@@ -1493,16 +1336,10 @@ class MetricHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Explains a metric.
@@ -1585,31 +1422,16 @@ class MetricMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiName != null) {
-      _json['apiName'] = apiName;
-    }
-    if (customDefinition != null) {
-      _json['customDefinition'] = customDefinition;
-    }
-    if (deprecatedApiNames != null) {
-      _json['deprecatedApiNames'] = deprecatedApiNames;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (uiName != null) {
-      _json['uiName'] = uiName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiName != null) 'apiName': apiName,
+        if (customDefinition != null) 'customDefinition': customDefinition,
+        if (deprecatedApiNames != null)
+          'deprecatedApiNames': deprecatedApiNames,
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (type != null) 'type': type,
+        if (uiName != null) 'uiName': uiName,
+      };
 }
 
 /// Sorts by metric values.
@@ -1625,13 +1447,9 @@ class MetricOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metricName != null) {
-      _json['metricName'] = metricName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metricName != null) 'metricName': metricName,
+      };
 }
 
 /// The value of a metric.
@@ -1649,13 +1467,9 @@ class MetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (value != null) 'value': value,
+      };
 }
 
 /// Filters for numeric or date values.
@@ -1685,16 +1499,10 @@ class NumericFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operation != null) {
-      _json['operation'] = operation;
-    }
-    if (value != null) {
-      _json['value'] = value.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operation != null) 'operation': operation,
+        if (value != null) 'value': value.toJson(),
+      };
 }
 
 /// To represent a number.
@@ -1716,16 +1524,10 @@ class NumericValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (doubleValue != null) {
-      _json['doubleValue'] = doubleValue;
-    }
-    if (int64Value != null) {
-      _json['int64Value'] = int64Value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue,
+        if (int64Value != null) 'int64Value': int64Value,
+      };
 }
 
 /// The sort options.
@@ -1762,22 +1564,12 @@ class OrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (desc != null) {
-      _json['desc'] = desc;
-    }
-    if (dimension != null) {
-      _json['dimension'] = dimension.toJson();
-    }
-    if (metric != null) {
-      _json['metric'] = metric.toJson();
-    }
-    if (pivot != null) {
-      _json['pivot'] = pivot.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (desc != null) 'desc': desc,
+        if (dimension != null) 'dimension': dimension.toJson(),
+        if (metric != null) 'metric': metric.toJson(),
+        if (pivot != null) 'pivot': pivot.toJson(),
+      };
 }
 
 /// Describes the visible dimension columns and rows in the report response.
@@ -1840,25 +1632,15 @@ class Pivot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (fieldNames != null) {
-      _json['fieldNames'] = fieldNames;
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (metricAggregations != null) {
-      _json['metricAggregations'] = metricAggregations;
-    }
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (orderBys != null) {
-      _json['orderBys'] = orderBys.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (fieldNames != null) 'fieldNames': fieldNames,
+        if (limit != null) 'limit': limit,
+        if (metricAggregations != null)
+          'metricAggregations': metricAggregations,
+        if (offset != null) 'offset': offset,
+        if (orderBys != null)
+          'orderBys': orderBys.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Summarizes dimension values from a row for this pivot.
@@ -1877,14 +1659,11 @@ class PivotDimensionHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionValues != null) {
-      _json['dimensionValues'] =
-          dimensionValues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionValues != null)
+          'dimensionValues':
+              dimensionValues.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Dimensions' values in a single pivot.
@@ -1913,17 +1692,12 @@ class PivotHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (pivotDimensionHeaders != null) {
-      _json['pivotDimensionHeaders'] =
-          pivotDimensionHeaders.map((value) => value.toJson()).toList();
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (pivotDimensionHeaders != null)
+          'pivotDimensionHeaders':
+              pivotDimensionHeaders.map((value) => value.toJson()).toList(),
+        if (rowCount != null) 'rowCount': rowCount,
+      };
 }
 
 /// Sorts by a pivot column group.
@@ -1954,17 +1728,12 @@ class PivotOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metricName != null) {
-      _json['metricName'] = metricName;
-    }
-    if (pivotSelections != null) {
-      _json['pivotSelections'] =
-          pivotSelections.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metricName != null) 'metricName': metricName,
+        if (pivotSelections != null)
+          'pivotSelections':
+              pivotSelections.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A pair of dimension names and values.
@@ -1998,16 +1767,10 @@ class PivotSelection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionName != null) {
-      _json['dimensionName'] = dimensionName;
-    }
-    if (dimensionValue != null) {
-      _json['dimensionValue'] = dimensionValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName,
+        if (dimensionValue != null) 'dimensionValue': dimensionValue,
+      };
 }
 
 /// Current state of all quotas for this Analytics Property.
@@ -2059,23 +1822,15 @@ class PropertyQuota {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (concurrentRequests != null) {
-      _json['concurrentRequests'] = concurrentRequests.toJson();
-    }
-    if (serverErrorsPerProjectPerHour != null) {
-      _json['serverErrorsPerProjectPerHour'] =
-          serverErrorsPerProjectPerHour.toJson();
-    }
-    if (tokensPerDay != null) {
-      _json['tokensPerDay'] = tokensPerDay.toJson();
-    }
-    if (tokensPerHour != null) {
-      _json['tokensPerHour'] = tokensPerHour.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (concurrentRequests != null)
+          'concurrentRequests': concurrentRequests.toJson(),
+        if (serverErrorsPerProjectPerHour != null)
+          'serverErrorsPerProjectPerHour':
+              serverErrorsPerProjectPerHour.toJson(),
+        if (tokensPerDay != null) 'tokensPerDay': tokensPerDay.toJson(),
+        if (tokensPerHour != null) 'tokensPerHour': tokensPerHour.toJson(),
+      };
 }
 
 /// Current state for a particular quota group.
@@ -2097,16 +1852,10 @@ class QuotaStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consumed != null) {
-      _json['consumed'] = consumed;
-    }
-    if (remaining != null) {
-      _json['remaining'] = remaining;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consumed != null) 'consumed': consumed,
+        if (remaining != null) 'remaining': remaining,
+      };
 }
 
 /// Response's metadata carrying additional information about the report
@@ -2126,13 +1875,10 @@ class ResponseMetaData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dataLossFromOtherRow != null) {
-      _json['dataLossFromOtherRow'] = dataLossFromOtherRow;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dataLossFromOtherRow != null)
+          'dataLossFromOtherRow': dataLossFromOtherRow,
+      };
 }
 
 /// Report data for each row.
@@ -2170,18 +1916,13 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionValues != null) {
-      _json['dimensionValues'] =
-          dimensionValues.map((value) => value.toJson()).toList();
-    }
-    if (metricValues != null) {
-      _json['metricValues'] =
-          metricValues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionValues != null)
+          'dimensionValues':
+              dimensionValues.map((value) => value.toJson()).toList(),
+        if (metricValues != null)
+          'metricValues': metricValues.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request to generate a pivot report.
@@ -2311,43 +2052,25 @@ class RunPivotReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cohortSpec != null) {
-      _json['cohortSpec'] = cohortSpec.toJson();
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (dateRanges != null) {
-      _json['dateRanges'] = dateRanges.map((value) => value.toJson()).toList();
-    }
-    if (dimensionFilter != null) {
-      _json['dimensionFilter'] = dimensionFilter.toJson();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (keepEmptyRows != null) {
-      _json['keepEmptyRows'] = keepEmptyRows;
-    }
-    if (metricFilter != null) {
-      _json['metricFilter'] = metricFilter.toJson();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (pivots != null) {
-      _json['pivots'] = pivots.map((value) => value.toJson()).toList();
-    }
-    if (returnPropertyQuota != null) {
-      _json['returnPropertyQuota'] = returnPropertyQuota;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cohortSpec != null) 'cohortSpec': cohortSpec.toJson(),
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (dateRanges != null)
+          'dateRanges': dateRanges.map((value) => value.toJson()).toList(),
+        if (dimensionFilter != null)
+          'dimensionFilter': dimensionFilter.toJson(),
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (keepEmptyRows != null) 'keepEmptyRows': keepEmptyRows,
+        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (pivots != null)
+          'pivots': pivots.map((value) => value.toJson()).toList(),
+        if (returnPropertyQuota != null)
+          'returnPropertyQuota': returnPropertyQuota,
+      };
 }
 
 /// The response pivot report table corresponding to a pivot request.
@@ -2437,34 +2160,21 @@ class RunPivotReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (aggregates != null) {
-      _json['aggregates'] = aggregates.map((value) => value.toJson()).toList();
-    }
-    if (dimensionHeaders != null) {
-      _json['dimensionHeaders'] =
-          dimensionHeaders.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (metricHeaders != null) {
-      _json['metricHeaders'] =
-          metricHeaders.map((value) => value.toJson()).toList();
-    }
-    if (pivotHeaders != null) {
-      _json['pivotHeaders'] =
-          pivotHeaders.map((value) => value.toJson()).toList();
-    }
-    if (propertyQuota != null) {
-      _json['propertyQuota'] = propertyQuota.toJson();
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (aggregates != null)
+          'aggregates': aggregates.map((value) => value.toJson()).toList(),
+        if (dimensionHeaders != null)
+          'dimensionHeaders':
+              dimensionHeaders.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (metricHeaders != null)
+          'metricHeaders':
+              metricHeaders.map((value) => value.toJson()).toList(),
+        if (pivotHeaders != null)
+          'pivotHeaders': pivotHeaders.map((value) => value.toJson()).toList(),
+        if (propertyQuota != null) 'propertyQuota': propertyQuota.toJson(),
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request to generate a realtime report.
@@ -2552,34 +2262,22 @@ class RunRealtimeReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionFilter != null) {
-      _json['dimensionFilter'] = dimensionFilter.toJson();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (metricAggregations != null) {
-      _json['metricAggregations'] = metricAggregations;
-    }
-    if (metricFilter != null) {
-      _json['metricFilter'] = metricFilter.toJson();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (orderBys != null) {
-      _json['orderBys'] = orderBys.map((value) => value.toJson()).toList();
-    }
-    if (returnPropertyQuota != null) {
-      _json['returnPropertyQuota'] = returnPropertyQuota;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionFilter != null)
+          'dimensionFilter': dimensionFilter.toJson(),
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (limit != null) 'limit': limit,
+        if (metricAggregations != null)
+          'metricAggregations': metricAggregations,
+        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (orderBys != null)
+          'orderBys': orderBys.map((value) => value.toJson()).toList(),
+        if (returnPropertyQuota != null)
+          'returnPropertyQuota': returnPropertyQuota,
+      };
 }
 
 /// The response realtime report table corresponding to a request.
@@ -2666,36 +2364,23 @@ class RunRealtimeReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionHeaders != null) {
-      _json['dimensionHeaders'] =
-          dimensionHeaders.map((value) => value.toJson()).toList();
-    }
-    if (maximums != null) {
-      _json['maximums'] = maximums.map((value) => value.toJson()).toList();
-    }
-    if (metricHeaders != null) {
-      _json['metricHeaders'] =
-          metricHeaders.map((value) => value.toJson()).toList();
-    }
-    if (minimums != null) {
-      _json['minimums'] = minimums.map((value) => value.toJson()).toList();
-    }
-    if (propertyQuota != null) {
-      _json['propertyQuota'] = propertyQuota.toJson();
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (totals != null) {
-      _json['totals'] = totals.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionHeaders != null)
+          'dimensionHeaders':
+              dimensionHeaders.map((value) => value.toJson()).toList(),
+        if (maximums != null)
+          'maximums': maximums.map((value) => value.toJson()).toList(),
+        if (metricHeaders != null)
+          'metricHeaders':
+              metricHeaders.map((value) => value.toJson()).toList(),
+        if (minimums != null)
+          'minimums': minimums.map((value) => value.toJson()).toList(),
+        if (propertyQuota != null) 'propertyQuota': propertyQuota.toJson(),
+        if (rowCount != null) 'rowCount': rowCount,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (totals != null)
+          'totals': totals.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The request to generate a report.
@@ -2843,52 +2528,29 @@ class RunReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cohortSpec != null) {
-      _json['cohortSpec'] = cohortSpec.toJson();
-    }
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (dateRanges != null) {
-      _json['dateRanges'] = dateRanges.map((value) => value.toJson()).toList();
-    }
-    if (dimensionFilter != null) {
-      _json['dimensionFilter'] = dimensionFilter.toJson();
-    }
-    if (dimensions != null) {
-      _json['dimensions'] = dimensions.map((value) => value.toJson()).toList();
-    }
-    if (entity != null) {
-      _json['entity'] = entity.toJson();
-    }
-    if (keepEmptyRows != null) {
-      _json['keepEmptyRows'] = keepEmptyRows;
-    }
-    if (limit != null) {
-      _json['limit'] = limit;
-    }
-    if (metricAggregations != null) {
-      _json['metricAggregations'] = metricAggregations;
-    }
-    if (metricFilter != null) {
-      _json['metricFilter'] = metricFilter.toJson();
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
-    }
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (orderBys != null) {
-      _json['orderBys'] = orderBys.map((value) => value.toJson()).toList();
-    }
-    if (returnPropertyQuota != null) {
-      _json['returnPropertyQuota'] = returnPropertyQuota;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cohortSpec != null) 'cohortSpec': cohortSpec.toJson(),
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (dateRanges != null)
+          'dateRanges': dateRanges.map((value) => value.toJson()).toList(),
+        if (dimensionFilter != null)
+          'dimensionFilter': dimensionFilter.toJson(),
+        if (dimensions != null)
+          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity.toJson(),
+        if (keepEmptyRows != null) 'keepEmptyRows': keepEmptyRows,
+        if (limit != null) 'limit': limit,
+        if (metricAggregations != null)
+          'metricAggregations': metricAggregations,
+        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
+        if (metrics != null)
+          'metrics': metrics.map((value) => value.toJson()).toList(),
+        if (offset != null) 'offset': offset,
+        if (orderBys != null)
+          'orderBys': orderBys.map((value) => value.toJson()).toList(),
+        if (returnPropertyQuota != null)
+          'returnPropertyQuota': returnPropertyQuota,
+      };
 }
 
 /// The response report table corresponding to a request.
@@ -2984,39 +2646,24 @@ class RunReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dimensionHeaders != null) {
-      _json['dimensionHeaders'] =
-          dimensionHeaders.map((value) => value.toJson()).toList();
-    }
-    if (maximums != null) {
-      _json['maximums'] = maximums.map((value) => value.toJson()).toList();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata.toJson();
-    }
-    if (metricHeaders != null) {
-      _json['metricHeaders'] =
-          metricHeaders.map((value) => value.toJson()).toList();
-    }
-    if (minimums != null) {
-      _json['minimums'] = minimums.map((value) => value.toJson()).toList();
-    }
-    if (propertyQuota != null) {
-      _json['propertyQuota'] = propertyQuota.toJson();
-    }
-    if (rowCount != null) {
-      _json['rowCount'] = rowCount;
-    }
-    if (rows != null) {
-      _json['rows'] = rows.map((value) => value.toJson()).toList();
-    }
-    if (totals != null) {
-      _json['totals'] = totals.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dimensionHeaders != null)
+          'dimensionHeaders':
+              dimensionHeaders.map((value) => value.toJson()).toList(),
+        if (maximums != null)
+          'maximums': maximums.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata.toJson(),
+        if (metricHeaders != null)
+          'metricHeaders':
+              metricHeaders.map((value) => value.toJson()).toList(),
+        if (minimums != null)
+          'minimums': minimums.map((value) => value.toJson()).toList(),
+        if (propertyQuota != null) 'propertyQuota': propertyQuota.toJson(),
+        if (rowCount != null) 'rowCount': rowCount,
+        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+        if (totals != null)
+          'totals': totals.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The filter for string
@@ -3053,17 +2700,9 @@ class StringFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (caseSensitive != null) {
-      _json['caseSensitive'] = caseSensitive;
-    }
-    if (matchType != null) {
-      _json['matchType'] = matchType;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive,
+        if (matchType != null) 'matchType': matchType,
+        if (value != null) 'value': value,
+      };
 }

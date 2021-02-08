@@ -681,34 +681,16 @@ class AchievementConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (achievementType != null) {
-      _json['achievementType'] = achievementType;
-    }
-    if (draft != null) {
-      _json['draft'] = draft.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (initialState != null) {
-      _json['initialState'] = initialState;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (published != null) {
-      _json['published'] = published.toJson();
-    }
-    if (stepsToUnlock != null) {
-      _json['stepsToUnlock'] = stepsToUnlock;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (achievementType != null) 'achievementType': achievementType,
+        if (draft != null) 'draft': draft.toJson(),
+        if (id != null) 'id': id,
+        if (initialState != null) 'initialState': initialState,
+        if (kind != null) 'kind': kind,
+        if (published != null) 'published': published.toJson(),
+        if (stepsToUnlock != null) 'stepsToUnlock': stepsToUnlock,
+        if (token != null) 'token': token,
+      };
 }
 
 /// An achievement configuration detail.
@@ -763,28 +745,14 @@ class AchievementConfigurationDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description.toJson();
-    }
-    if (iconUrl != null) {
-      _json['iconUrl'] = iconUrl;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name.toJson();
-    }
-    if (pointValue != null) {
-      _json['pointValue'] = pointValue;
-    }
-    if (sortRank != null) {
-      _json['sortRank'] = sortRank;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description.toJson(),
+        if (iconUrl != null) 'iconUrl': iconUrl,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name.toJson(),
+        if (pointValue != null) 'pointValue': pointValue,
+        if (sortRank != null) 'sortRank': sortRank,
+      };
 }
 
 /// A ListConfigurations response.
@@ -819,19 +787,12 @@ class AchievementConfigurationListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A number affix resource.
@@ -891,28 +852,14 @@ class GamesNumberAffixConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (few != null) {
-      _json['few'] = few.toJson();
-    }
-    if (many != null) {
-      _json['many'] = many.toJson();
-    }
-    if (one != null) {
-      _json['one'] = one.toJson();
-    }
-    if (other != null) {
-      _json['other'] = other.toJson();
-    }
-    if (two != null) {
-      _json['two'] = two.toJson();
-    }
-    if (zero != null) {
-      _json['zero'] = zero.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (few != null) 'few': few.toJson(),
+        if (many != null) 'many': many.toJson(),
+        if (one != null) 'one': one.toJson(),
+        if (other != null) 'other': other.toJson(),
+        if (two != null) 'two': two.toJson(),
+        if (zero != null) 'zero': zero.toJson(),
+      };
 }
 
 /// A number format resource.
@@ -961,22 +908,12 @@ class GamesNumberFormatConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (numDecimalPlaces != null) {
-      _json['numDecimalPlaces'] = numDecimalPlaces;
-    }
-    if (numberFormatType != null) {
-      _json['numberFormatType'] = numberFormatType;
-    }
-    if (suffix != null) {
-      _json['suffix'] = suffix.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (numDecimalPlaces != null) 'numDecimalPlaces': numDecimalPlaces,
+        if (numberFormatType != null) 'numberFormatType': numberFormatType,
+        if (suffix != null) 'suffix': suffix.toJson(),
+      };
 }
 
 /// An image configuration resource.
@@ -1016,22 +953,12 @@ class ImageConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageType != null) {
-      _json['imageType'] = imageType;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (resourceId != null) {
-      _json['resourceId'] = resourceId;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageType != null) 'imageType': imageType,
+        if (kind != null) 'kind': kind,
+        if (resourceId != null) 'resourceId': resourceId,
+        if (url != null) 'url': url,
+      };
 }
 
 /// An leaderboard configuration resource.
@@ -1098,34 +1025,16 @@ class LeaderboardConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (draft != null) {
-      _json['draft'] = draft.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (published != null) {
-      _json['published'] = published.toJson();
-    }
-    if (scoreMax != null) {
-      _json['scoreMax'] = scoreMax;
-    }
-    if (scoreMin != null) {
-      _json['scoreMin'] = scoreMin;
-    }
-    if (scoreOrder != null) {
-      _json['scoreOrder'] = scoreOrder;
-    }
-    if (token != null) {
-      _json['token'] = token;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (draft != null) 'draft': draft.toJson(),
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (published != null) 'published': published.toJson(),
+        if (scoreMax != null) 'scoreMax': scoreMax,
+        if (scoreMin != null) 'scoreMin': scoreMin,
+        if (scoreOrder != null) 'scoreOrder': scoreOrder,
+        if (token != null) 'token': token,
+      };
 }
 
 /// A leaderboard configuration detail.
@@ -1174,25 +1083,13 @@ class LeaderboardConfigurationDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iconUrl != null) {
-      _json['iconUrl'] = iconUrl;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (name != null) {
-      _json['name'] = name.toJson();
-    }
-    if (scoreFormat != null) {
-      _json['scoreFormat'] = scoreFormat.toJson();
-    }
-    if (sortRank != null) {
-      _json['sortRank'] = sortRank;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (iconUrl != null) 'iconUrl': iconUrl,
+        if (kind != null) 'kind': kind,
+        if (name != null) 'name': name.toJson(),
+        if (scoreFormat != null) 'scoreFormat': scoreFormat.toJson(),
+        if (sortRank != null) 'sortRank': sortRank,
+      };
 }
 
 /// A ListConfigurations response.
@@ -1227,19 +1124,12 @@ class LeaderboardConfigurationListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A localized string resource.
@@ -1269,19 +1159,11 @@ class LocalizedString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (locale != null) {
-      _json['locale'] = locale;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (locale != null) 'locale': locale,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A localized string bundle resource.
@@ -1309,15 +1191,9 @@ class LocalizedStringBundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (translations != null) {
-      _json['translations'] =
-          translations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (translations != null)
+          'translations': translations.map((value) => value.toJson()).toList(),
+      };
 }

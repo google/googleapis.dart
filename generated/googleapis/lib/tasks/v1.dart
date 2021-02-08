@@ -831,19 +831,11 @@ class TaskLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (link != null) {
-      _json['link'] = link;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (link != null) 'link': link,
+        if (type != null) 'type': type,
+      };
 }
 
 class Task {
@@ -977,55 +969,24 @@ class Task {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (completed != null) {
-      _json['completed'] = completed;
-    }
-    if (deleted != null) {
-      _json['deleted'] = deleted;
-    }
-    if (due != null) {
-      _json['due'] = due;
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (hidden != null) {
-      _json['hidden'] = hidden;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (links != null) {
-      _json['links'] = links.map((value) => value.toJson()).toList();
-    }
-    if (notes != null) {
-      _json['notes'] = notes;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (position != null) {
-      _json['position'] = position;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (completed != null) 'completed': completed,
+        if (deleted != null) 'deleted': deleted,
+        if (due != null) 'due': due,
+        if (etag != null) 'etag': etag,
+        if (hidden != null) 'hidden': hidden,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (links != null)
+          'links': links.map((value) => value.toJson()).toList(),
+        if (notes != null) 'notes': notes,
+        if (parent != null) 'parent': parent,
+        if (position != null) 'position': position,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (status != null) 'status': status,
+        if (title != null) 'title': title,
+        if (updated != null) 'updated': updated,
+      };
 }
 
 class TaskList {
@@ -1074,28 +1035,14 @@ class TaskList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (selfLink != null) {
-      _json['selfLink'] = selfLink;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (updated != null) {
-      _json['updated'] = updated;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (id != null) 'id': id,
+        if (kind != null) 'kind': kind,
+        if (selfLink != null) 'selfLink': selfLink,
+        if (title != null) 'title': title,
+        if (updated != null) 'updated': updated,
+      };
 }
 
 class TaskLists {
@@ -1133,22 +1080,13 @@ class TaskLists {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class Tasks {
@@ -1186,20 +1124,11 @@ class Tasks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (etag != null) 'etag': etag,
+        if (items != null)
+          'items': items.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }

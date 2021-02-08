@@ -1591,16 +1591,12 @@ class AdvancedSecurityOverrides {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonCriteriaMode != null) {
-      _json['commonCriteriaMode'] = commonCriteriaMode;
-    }
-    if (untrustedAppsPolicy != null) {
-      _json['untrustedAppsPolicy'] = untrustedAppsPolicy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonCriteriaMode != null)
+          'commonCriteriaMode': commonCriteriaMode,
+        if (untrustedAppsPolicy != null)
+          'untrustedAppsPolicy': untrustedAppsPolicy,
+      };
 }
 
 /// Configuration for an always-on VPN connection.
@@ -1622,16 +1618,10 @@ class AlwaysOnVpnPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (lockdownEnabled != null) {
-      _json['lockdownEnabled'] = lockdownEnabled;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (lockdownEnabled != null) 'lockdownEnabled': lockdownEnabled,
+        if (packageName != null) 'packageName': packageName,
+      };
 }
 
 /// A compliance rule condition which is satisfied if the Android Framework API
@@ -1653,13 +1643,9 @@ class ApiLevelCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minApiLevel != null) {
-      _json['minApiLevel'] = minApiLevel;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minApiLevel != null) 'minApiLevel': minApiLevel,
+      };
 }
 
 /// Id to name association of a app track.
@@ -1685,16 +1671,10 @@ class AppTrackInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (trackAlias != null) {
-      _json['trackAlias'] = trackAlias;
-    }
-    if (trackId != null) {
-      _json['trackId'] = trackId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (trackAlias != null) 'trackAlias': trackAlias,
+        if (trackId != null) 'trackId': trackId,
+      };
 }
 
 /// Information about an app.
@@ -1746,27 +1726,17 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appTracks != null) {
-      _json['appTracks'] = appTracks.map((value) => value.toJson()).toList();
-    }
-    if (managedProperties != null) {
-      _json['managedProperties'] =
-          managedProperties.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permissions != null) {
-      _json['permissions'] =
-          permissions.map((value) => value.toJson()).toList();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appTracks != null)
+          'appTracks': appTracks.map((value) => value.toJson()).toList(),
+        if (managedProperties != null)
+          'managedProperties':
+              managedProperties.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (permissions != null)
+          'permissions': permissions.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title,
+      };
 }
 
 /// An app-related event.
@@ -1800,16 +1770,10 @@ class ApplicationEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (eventType != null) {
-      _json['eventType'] = eventType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (eventType != null) 'eventType': eventType,
+      };
 }
 
 /// A permission required by the app.
@@ -1844,19 +1808,11 @@ class ApplicationPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (permissionId != null) {
-      _json['permissionId'] = permissionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (permissionId != null) 'permissionId': permissionId,
+      };
 }
 
 /// Policy for an individual app.
@@ -2041,51 +1997,29 @@ class ApplicationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accessibleTrackIds != null) {
-      _json['accessibleTrackIds'] = accessibleTrackIds;
-    }
-    if (autoUpdateMode != null) {
-      _json['autoUpdateMode'] = autoUpdateMode;
-    }
-    if (connectedWorkAndPersonalApp != null) {
-      _json['connectedWorkAndPersonalApp'] = connectedWorkAndPersonalApp;
-    }
-    if (defaultPermissionPolicy != null) {
-      _json['defaultPermissionPolicy'] = defaultPermissionPolicy;
-    }
-    if (delegatedScopes != null) {
-      _json['delegatedScopes'] = delegatedScopes;
-    }
-    if (disabled != null) {
-      _json['disabled'] = disabled;
-    }
-    if (installType != null) {
-      _json['installType'] = installType;
-    }
-    if (lockTaskAllowed != null) {
-      _json['lockTaskAllowed'] = lockTaskAllowed;
-    }
-    if (managedConfiguration != null) {
-      _json['managedConfiguration'] = managedConfiguration;
-    }
-    if (managedConfigurationTemplate != null) {
-      _json['managedConfigurationTemplate'] =
-          managedConfigurationTemplate.toJson();
-    }
-    if (minimumVersionCode != null) {
-      _json['minimumVersionCode'] = minimumVersionCode;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (permissionGrants != null) {
-      _json['permissionGrants'] =
-          permissionGrants.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accessibleTrackIds != null)
+          'accessibleTrackIds': accessibleTrackIds,
+        if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode,
+        if (connectedWorkAndPersonalApp != null)
+          'connectedWorkAndPersonalApp': connectedWorkAndPersonalApp,
+        if (defaultPermissionPolicy != null)
+          'defaultPermissionPolicy': defaultPermissionPolicy,
+        if (delegatedScopes != null) 'delegatedScopes': delegatedScopes,
+        if (disabled != null) 'disabled': disabled,
+        if (installType != null) 'installType': installType,
+        if (lockTaskAllowed != null) 'lockTaskAllowed': lockTaskAllowed,
+        if (managedConfiguration != null)
+          'managedConfiguration': managedConfiguration,
+        if (managedConfigurationTemplate != null)
+          'managedConfigurationTemplate': managedConfigurationTemplate.toJson(),
+        if (minimumVersionCode != null)
+          'minimumVersionCode': minimumVersionCode,
+        if (packageName != null) 'packageName': packageName,
+        if (permissionGrants != null)
+          'permissionGrants':
+              permissionGrants.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Information reported about an installed app.
@@ -2194,44 +2128,24 @@ class ApplicationReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationSource != null) {
-      _json['applicationSource'] = applicationSource;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (events != null) {
-      _json['events'] = events.map((value) => value.toJson()).toList();
-    }
-    if (installerPackageName != null) {
-      _json['installerPackageName'] = installerPackageName;
-    }
-    if (keyedAppStates != null) {
-      _json['keyedAppStates'] =
-          keyedAppStates.map((value) => value.toJson()).toList();
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (packageSha256Hash != null) {
-      _json['packageSha256Hash'] = packageSha256Hash;
-    }
-    if (signingKeyCertFingerprints != null) {
-      _json['signingKeyCertFingerprints'] = signingKeyCertFingerprints;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    if (versionName != null) {
-      _json['versionName'] = versionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationSource != null) 'applicationSource': applicationSource,
+        if (displayName != null) 'displayName': displayName,
+        if (events != null)
+          'events': events.map((value) => value.toJson()).toList(),
+        if (installerPackageName != null)
+          'installerPackageName': installerPackageName,
+        if (keyedAppStates != null)
+          'keyedAppStates':
+              keyedAppStates.map((value) => value.toJson()).toList(),
+        if (packageName != null) 'packageName': packageName,
+        if (packageSha256Hash != null) 'packageSha256Hash': packageSha256Hash,
+        if (signingKeyCertFingerprints != null)
+          'signingKeyCertFingerprints': signingKeyCertFingerprints,
+        if (state != null) 'state': state,
+        if (versionCode != null) 'versionCode': versionCode,
+        if (versionName != null) 'versionName': versionName,
+      };
 }
 
 /// Settings controlling the behavior of application reports.
@@ -2247,13 +2161,10 @@ class ApplicationReportingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (includeRemovedApps != null) {
-      _json['includeRemovedApps'] = includeRemovedApps;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (includeRemovedApps != null)
+          'includeRemovedApps': includeRemovedApps,
+      };
 }
 
 /// An action to block access to apps and data on a fully managed device or in a
@@ -2293,16 +2204,10 @@ class BlockAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockAfterDays != null) {
-      _json['blockAfterDays'] = blockAfterDays;
-    }
-    if (blockScope != null) {
-      _json['blockScope'] = blockScope;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockAfterDays != null) 'blockAfterDays': blockAfterDays,
+        if (blockScope != null) 'blockScope': blockScope,
+      };
 }
 
 /// A rule for automatically choosing a private key and certificate to
@@ -2342,19 +2247,11 @@ class ChoosePrivateKeyRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (packageNames != null) {
-      _json['packageNames'] = packageNames;
-    }
-    if (privateKeyAlias != null) {
-      _json['privateKeyAlias'] = privateKeyAlias;
-    }
-    if (urlPattern != null) {
-      _json['urlPattern'] = urlPattern;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (packageNames != null) 'packageNames': packageNames,
+        if (privateKeyAlias != null) 'privateKeyAlias': privateKeyAlias,
+        if (urlPattern != null) 'urlPattern': urlPattern,
+      };
 }
 
 /// A command.
@@ -2441,31 +2338,16 @@ class Command {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (errorCode != null) {
-      _json['errorCode'] = errorCode;
-    }
-    if (newPassword != null) {
-      _json['newPassword'] = newPassword;
-    }
-    if (resetPasswordFlags != null) {
-      _json['resetPasswordFlags'] = resetPasswordFlags;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (userName != null) {
-      _json['userName'] = userName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (duration != null) 'duration': duration,
+        if (errorCode != null) 'errorCode': errorCode,
+        if (newPassword != null) 'newPassword': newPassword,
+        if (resetPasswordFlags != null)
+          'resetPasswordFlags': resetPasswordFlags,
+        if (type != null) 'type': type,
+        if (userName != null) 'userName': userName,
+      };
 }
 
 /// Information about Common Criteria Mode—security standards defined in the
@@ -2492,13 +2374,10 @@ class CommonCriteriaModeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commonCriteriaModeStatus != null) {
-      _json['commonCriteriaModeStatus'] = commonCriteriaModeStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commonCriteriaModeStatus != null)
+          'commonCriteriaModeStatus': commonCriteriaModeStatus,
+      };
 }
 
 /// A rule declaring which mitigating actions to take when a device is not
@@ -2551,23 +2430,15 @@ class ComplianceRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiLevelCondition != null) {
-      _json['apiLevelCondition'] = apiLevelCondition.toJson();
-    }
-    if (disableApps != null) {
-      _json['disableApps'] = disableApps;
-    }
-    if (nonComplianceDetailCondition != null) {
-      _json['nonComplianceDetailCondition'] =
-          nonComplianceDetailCondition.toJson();
-    }
-    if (packageNamesToDisable != null) {
-      _json['packageNamesToDisable'] = packageNamesToDisable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiLevelCondition != null)
+          'apiLevelCondition': apiLevelCondition.toJson(),
+        if (disableApps != null) 'disableApps': disableApps,
+        if (nonComplianceDetailCondition != null)
+          'nonComplianceDetailCondition': nonComplianceDetailCondition.toJson(),
+        if (packageNamesToDisable != null)
+          'packageNamesToDisable': packageNamesToDisable,
+      };
 }
 
 /// Contact details for LaForge enterprises.
@@ -2630,31 +2501,21 @@ class ContactInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (contactEmail != null) {
-      _json['contactEmail'] = contactEmail;
-    }
-    if (dataProtectionOfficerEmail != null) {
-      _json['dataProtectionOfficerEmail'] = dataProtectionOfficerEmail;
-    }
-    if (dataProtectionOfficerName != null) {
-      _json['dataProtectionOfficerName'] = dataProtectionOfficerName;
-    }
-    if (dataProtectionOfficerPhone != null) {
-      _json['dataProtectionOfficerPhone'] = dataProtectionOfficerPhone;
-    }
-    if (euRepresentativeEmail != null) {
-      _json['euRepresentativeEmail'] = euRepresentativeEmail;
-    }
-    if (euRepresentativeName != null) {
-      _json['euRepresentativeName'] = euRepresentativeName;
-    }
-    if (euRepresentativePhone != null) {
-      _json['euRepresentativePhone'] = euRepresentativePhone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (contactEmail != null) 'contactEmail': contactEmail,
+        if (dataProtectionOfficerEmail != null)
+          'dataProtectionOfficerEmail': dataProtectionOfficerEmail,
+        if (dataProtectionOfficerName != null)
+          'dataProtectionOfficerName': dataProtectionOfficerName,
+        if (dataProtectionOfficerPhone != null)
+          'dataProtectionOfficerPhone': dataProtectionOfficerPhone,
+        if (euRepresentativeEmail != null)
+          'euRepresentativeEmail': euRepresentativeEmail,
+        if (euRepresentativeName != null)
+          'euRepresentativeName': euRepresentativeName,
+        if (euRepresentativePhone != null)
+          'euRepresentativePhone': euRepresentativePhone,
+      };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -2697,19 +2558,11 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (day != null) {
-      _json['day'] = day;
-    }
-    if (month != null) {
-      _json['month'] = month;
-    }
-    if (year != null) {
-      _json['year'] = year;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (day != null) 'day': day,
+        if (month != null) 'month': month,
+        if (year != null) 'year': year,
+      };
 }
 
 /// A device owned by an enterprise.
@@ -3051,117 +2904,61 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiLevel != null) {
-      _json['apiLevel'] = apiLevel;
-    }
-    if (applicationReports != null) {
-      _json['applicationReports'] =
-          applicationReports.map((value) => value.toJson()).toList();
-    }
-    if (appliedPolicyName != null) {
-      _json['appliedPolicyName'] = appliedPolicyName;
-    }
-    if (appliedPolicyVersion != null) {
-      _json['appliedPolicyVersion'] = appliedPolicyVersion;
-    }
-    if (appliedState != null) {
-      _json['appliedState'] = appliedState;
-    }
-    if (commonCriteriaModeInfo != null) {
-      _json['commonCriteriaModeInfo'] = commonCriteriaModeInfo.toJson();
-    }
-    if (deviceSettings != null) {
-      _json['deviceSettings'] = deviceSettings.toJson();
-    }
-    if (disabledReason != null) {
-      _json['disabledReason'] = disabledReason.toJson();
-    }
-    if (displays != null) {
-      _json['displays'] = displays.map((value) => value.toJson()).toList();
-    }
-    if (enrollmentTime != null) {
-      _json['enrollmentTime'] = enrollmentTime;
-    }
-    if (enrollmentTokenData != null) {
-      _json['enrollmentTokenData'] = enrollmentTokenData;
-    }
-    if (enrollmentTokenName != null) {
-      _json['enrollmentTokenName'] = enrollmentTokenName;
-    }
-    if (hardwareInfo != null) {
-      _json['hardwareInfo'] = hardwareInfo.toJson();
-    }
-    if (hardwareStatusSamples != null) {
-      _json['hardwareStatusSamples'] =
-          hardwareStatusSamples.map((value) => value.toJson()).toList();
-    }
-    if (lastPolicyComplianceReportTime != null) {
-      _json['lastPolicyComplianceReportTime'] = lastPolicyComplianceReportTime;
-    }
-    if (lastPolicySyncTime != null) {
-      _json['lastPolicySyncTime'] = lastPolicySyncTime;
-    }
-    if (lastStatusReportTime != null) {
-      _json['lastStatusReportTime'] = lastStatusReportTime;
-    }
-    if (managementMode != null) {
-      _json['managementMode'] = managementMode;
-    }
-    if (memoryEvents != null) {
-      _json['memoryEvents'] =
-          memoryEvents.map((value) => value.toJson()).toList();
-    }
-    if (memoryInfo != null) {
-      _json['memoryInfo'] = memoryInfo.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (networkInfo != null) {
-      _json['networkInfo'] = networkInfo.toJson();
-    }
-    if (nonComplianceDetails != null) {
-      _json['nonComplianceDetails'] =
-          nonComplianceDetails.map((value) => value.toJson()).toList();
-    }
-    if (ownership != null) {
-      _json['ownership'] = ownership;
-    }
-    if (policyCompliant != null) {
-      _json['policyCompliant'] = policyCompliant;
-    }
-    if (policyName != null) {
-      _json['policyName'] = policyName;
-    }
-    if (powerManagementEvents != null) {
-      _json['powerManagementEvents'] =
-          powerManagementEvents.map((value) => value.toJson()).toList();
-    }
-    if (previousDeviceNames != null) {
-      _json['previousDeviceNames'] = previousDeviceNames;
-    }
-    if (securityPosture != null) {
-      _json['securityPosture'] = securityPosture.toJson();
-    }
-    if (softwareInfo != null) {
-      _json['softwareInfo'] = softwareInfo.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (systemProperties != null) {
-      _json['systemProperties'] = systemProperties;
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    if (userName != null) {
-      _json['userName'] = userName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiLevel != null) 'apiLevel': apiLevel,
+        if (applicationReports != null)
+          'applicationReports':
+              applicationReports.map((value) => value.toJson()).toList(),
+        if (appliedPolicyName != null) 'appliedPolicyName': appliedPolicyName,
+        if (appliedPolicyVersion != null)
+          'appliedPolicyVersion': appliedPolicyVersion,
+        if (appliedState != null) 'appliedState': appliedState,
+        if (commonCriteriaModeInfo != null)
+          'commonCriteriaModeInfo': commonCriteriaModeInfo.toJson(),
+        if (deviceSettings != null) 'deviceSettings': deviceSettings.toJson(),
+        if (disabledReason != null) 'disabledReason': disabledReason.toJson(),
+        if (displays != null)
+          'displays': displays.map((value) => value.toJson()).toList(),
+        if (enrollmentTime != null) 'enrollmentTime': enrollmentTime,
+        if (enrollmentTokenData != null)
+          'enrollmentTokenData': enrollmentTokenData,
+        if (enrollmentTokenName != null)
+          'enrollmentTokenName': enrollmentTokenName,
+        if (hardwareInfo != null) 'hardwareInfo': hardwareInfo.toJson(),
+        if (hardwareStatusSamples != null)
+          'hardwareStatusSamples':
+              hardwareStatusSamples.map((value) => value.toJson()).toList(),
+        if (lastPolicyComplianceReportTime != null)
+          'lastPolicyComplianceReportTime': lastPolicyComplianceReportTime,
+        if (lastPolicySyncTime != null)
+          'lastPolicySyncTime': lastPolicySyncTime,
+        if (lastStatusReportTime != null)
+          'lastStatusReportTime': lastStatusReportTime,
+        if (managementMode != null) 'managementMode': managementMode,
+        if (memoryEvents != null)
+          'memoryEvents': memoryEvents.map((value) => value.toJson()).toList(),
+        if (memoryInfo != null) 'memoryInfo': memoryInfo.toJson(),
+        if (name != null) 'name': name,
+        if (networkInfo != null) 'networkInfo': networkInfo.toJson(),
+        if (nonComplianceDetails != null)
+          'nonComplianceDetails':
+              nonComplianceDetails.map((value) => value.toJson()).toList(),
+        if (ownership != null) 'ownership': ownership,
+        if (policyCompliant != null) 'policyCompliant': policyCompliant,
+        if (policyName != null) 'policyName': policyName,
+        if (powerManagementEvents != null)
+          'powerManagementEvents':
+              powerManagementEvents.map((value) => value.toJson()).toList(),
+        if (previousDeviceNames != null)
+          'previousDeviceNames': previousDeviceNames,
+        if (securityPosture != null)
+          'securityPosture': securityPosture.toJson(),
+        if (softwareInfo != null) 'softwareInfo': softwareInfo.toJson(),
+        if (state != null) 'state': state,
+        if (systemProperties != null) 'systemProperties': systemProperties,
+        if (user != null) 'user': user.toJson(),
+        if (userName != null) 'userName': userName,
+      };
 }
 
 /// Information about security related device settings on device.
@@ -3230,31 +3027,17 @@ class DeviceSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (adbEnabled != null) {
-      _json['adbEnabled'] = adbEnabled;
-    }
-    if (developmentSettingsEnabled != null) {
-      _json['developmentSettingsEnabled'] = developmentSettingsEnabled;
-    }
-    if (encryptionStatus != null) {
-      _json['encryptionStatus'] = encryptionStatus;
-    }
-    if (isDeviceSecure != null) {
-      _json['isDeviceSecure'] = isDeviceSecure;
-    }
-    if (isEncrypted != null) {
-      _json['isEncrypted'] = isEncrypted;
-    }
-    if (unknownSourcesEnabled != null) {
-      _json['unknownSourcesEnabled'] = unknownSourcesEnabled;
-    }
-    if (verifyAppsEnabled != null) {
-      _json['verifyAppsEnabled'] = verifyAppsEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (adbEnabled != null) 'adbEnabled': adbEnabled,
+        if (developmentSettingsEnabled != null)
+          'developmentSettingsEnabled': developmentSettingsEnabled,
+        if (encryptionStatus != null) 'encryptionStatus': encryptionStatus,
+        if (isDeviceSecure != null) 'isDeviceSecure': isDeviceSecure,
+        if (isEncrypted != null) 'isEncrypted': isEncrypted,
+        if (unknownSourcesEnabled != null)
+          'unknownSourcesEnabled': unknownSourcesEnabled,
+        if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled,
+      };
 }
 
 /// Device display information.
@@ -3312,31 +3095,15 @@ class Display {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (density != null) {
-      _json['density'] = density;
-    }
-    if (displayId != null) {
-      _json['displayId'] = displayId;
-    }
-    if (height != null) {
-      _json['height'] = height;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (refreshRate != null) {
-      _json['refreshRate'] = refreshRate;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (density != null) 'density': density,
+        if (displayId != null) 'displayId': displayId,
+        if (height != null) 'height': height,
+        if (name != null) 'name': name,
+        if (refreshRate != null) 'refreshRate': refreshRate,
+        if (state != null) 'state': state,
+        if (width != null) 'width': width,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3353,10 +3120,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An enrollment token.
@@ -3475,40 +3239,20 @@ class EnrollmentToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalData != null) {
-      _json['additionalData'] = additionalData;
-    }
-    if (allowPersonalUsage != null) {
-      _json['allowPersonalUsage'] = allowPersonalUsage;
-    }
-    if (duration != null) {
-      _json['duration'] = duration;
-    }
-    if (expirationTimestamp != null) {
-      _json['expirationTimestamp'] = expirationTimestamp;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (oneTimeOnly != null) {
-      _json['oneTimeOnly'] = oneTimeOnly;
-    }
-    if (policyName != null) {
-      _json['policyName'] = policyName;
-    }
-    if (qrCode != null) {
-      _json['qrCode'] = qrCode;
-    }
-    if (user != null) {
-      _json['user'] = user.toJson();
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalData != null) 'additionalData': additionalData,
+        if (allowPersonalUsage != null)
+          'allowPersonalUsage': allowPersonalUsage,
+        if (duration != null) 'duration': duration,
+        if (expirationTimestamp != null)
+          'expirationTimestamp': expirationTimestamp,
+        if (name != null) 'name': name,
+        if (oneTimeOnly != null) 'oneTimeOnly': oneTimeOnly,
+        if (policyName != null) 'policyName': policyName,
+        if (qrCode != null) 'qrCode': qrCode,
+        if (user != null) 'user': user.toJson(),
+        if (value != null) 'value': value,
+      };
 }
 
 /// The configuration applied to an enterprise.
@@ -3605,42 +3349,25 @@ class Enterprise {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appAutoApprovalEnabled != null) {
-      _json['appAutoApprovalEnabled'] = appAutoApprovalEnabled;
-    }
-    if (contactInfo != null) {
-      _json['contactInfo'] = contactInfo.toJson();
-    }
-    if (enabledNotificationTypes != null) {
-      _json['enabledNotificationTypes'] = enabledNotificationTypes;
-    }
-    if (enterpriseDisplayName != null) {
-      _json['enterpriseDisplayName'] = enterpriseDisplayName;
-    }
-    if (logo != null) {
-      _json['logo'] = logo.toJson();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (primaryColor != null) {
-      _json['primaryColor'] = primaryColor;
-    }
-    if (pubsubTopic != null) {
-      _json['pubsubTopic'] = pubsubTopic;
-    }
-    if (signinDetails != null) {
-      _json['signinDetails'] =
-          signinDetails.map((value) => value.toJson()).toList();
-    }
-    if (termsAndConditions != null) {
-      _json['termsAndConditions'] =
-          termsAndConditions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appAutoApprovalEnabled != null)
+          'appAutoApprovalEnabled': appAutoApprovalEnabled,
+        if (contactInfo != null) 'contactInfo': contactInfo.toJson(),
+        if (enabledNotificationTypes != null)
+          'enabledNotificationTypes': enabledNotificationTypes,
+        if (enterpriseDisplayName != null)
+          'enterpriseDisplayName': enterpriseDisplayName,
+        if (logo != null) 'logo': logo.toJson(),
+        if (name != null) 'name': name,
+        if (primaryColor != null) 'primaryColor': primaryColor,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+        if (signinDetails != null)
+          'signinDetails':
+              signinDetails.map((value) => value.toJson()).toList(),
+        if (termsAndConditions != null)
+          'termsAndConditions':
+              termsAndConditions.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Data hosted at an external location.
@@ -3673,16 +3400,10 @@ class ExternalData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sha256Hash != null) {
-      _json['sha256Hash'] = sha256Hash;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sha256Hash != null) 'sha256Hash': sha256Hash,
+        if (url != null) 'url': url,
+      };
 }
 
 /// A system freeze period.
@@ -3723,16 +3444,10 @@ class FreezePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endDate != null) {
-      _json['endDate'] = endDate.toJson();
-    }
-    if (startDate != null) {
-      _json['startDate'] = startDate.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endDate != null) 'endDate': endDate.toJson(),
+        if (startDate != null) 'startDate': startDate.toJson(),
+      };
 }
 
 /// Information about device hardware.
@@ -3865,52 +3580,31 @@ class HardwareInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batteryShutdownTemperatures != null) {
-      _json['batteryShutdownTemperatures'] = batteryShutdownTemperatures;
-    }
-    if (batteryThrottlingTemperatures != null) {
-      _json['batteryThrottlingTemperatures'] = batteryThrottlingTemperatures;
-    }
-    if (brand != null) {
-      _json['brand'] = brand;
-    }
-    if (cpuShutdownTemperatures != null) {
-      _json['cpuShutdownTemperatures'] = cpuShutdownTemperatures;
-    }
-    if (cpuThrottlingTemperatures != null) {
-      _json['cpuThrottlingTemperatures'] = cpuThrottlingTemperatures;
-    }
-    if (deviceBasebandVersion != null) {
-      _json['deviceBasebandVersion'] = deviceBasebandVersion;
-    }
-    if (gpuShutdownTemperatures != null) {
-      _json['gpuShutdownTemperatures'] = gpuShutdownTemperatures;
-    }
-    if (gpuThrottlingTemperatures != null) {
-      _json['gpuThrottlingTemperatures'] = gpuThrottlingTemperatures;
-    }
-    if (hardware != null) {
-      _json['hardware'] = hardware;
-    }
-    if (manufacturer != null) {
-      _json['manufacturer'] = manufacturer;
-    }
-    if (model != null) {
-      _json['model'] = model;
-    }
-    if (serialNumber != null) {
-      _json['serialNumber'] = serialNumber;
-    }
-    if (skinShutdownTemperatures != null) {
-      _json['skinShutdownTemperatures'] = skinShutdownTemperatures;
-    }
-    if (skinThrottlingTemperatures != null) {
-      _json['skinThrottlingTemperatures'] = skinThrottlingTemperatures;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batteryShutdownTemperatures != null)
+          'batteryShutdownTemperatures': batteryShutdownTemperatures,
+        if (batteryThrottlingTemperatures != null)
+          'batteryThrottlingTemperatures': batteryThrottlingTemperatures,
+        if (brand != null) 'brand': brand,
+        if (cpuShutdownTemperatures != null)
+          'cpuShutdownTemperatures': cpuShutdownTemperatures,
+        if (cpuThrottlingTemperatures != null)
+          'cpuThrottlingTemperatures': cpuThrottlingTemperatures,
+        if (deviceBasebandVersion != null)
+          'deviceBasebandVersion': deviceBasebandVersion,
+        if (gpuShutdownTemperatures != null)
+          'gpuShutdownTemperatures': gpuShutdownTemperatures,
+        if (gpuThrottlingTemperatures != null)
+          'gpuThrottlingTemperatures': gpuThrottlingTemperatures,
+        if (hardware != null) 'hardware': hardware,
+        if (manufacturer != null) 'manufacturer': manufacturer,
+        if (model != null) 'model': model,
+        if (serialNumber != null) 'serialNumber': serialNumber,
+        if (skinShutdownTemperatures != null)
+          'skinShutdownTemperatures': skinShutdownTemperatures,
+        if (skinThrottlingTemperatures != null)
+          'skinThrottlingTemperatures': skinThrottlingTemperatures,
+      };
 }
 
 /// Hardware status.
@@ -3983,31 +3677,16 @@ class HardwareStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batteryTemperatures != null) {
-      _json['batteryTemperatures'] = batteryTemperatures;
-    }
-    if (cpuTemperatures != null) {
-      _json['cpuTemperatures'] = cpuTemperatures;
-    }
-    if (cpuUsages != null) {
-      _json['cpuUsages'] = cpuUsages;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (fanSpeeds != null) {
-      _json['fanSpeeds'] = fanSpeeds;
-    }
-    if (gpuTemperatures != null) {
-      _json['gpuTemperatures'] = gpuTemperatures;
-    }
-    if (skinTemperatures != null) {
-      _json['skinTemperatures'] = skinTemperatures;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batteryTemperatures != null)
+          'batteryTemperatures': batteryTemperatures,
+        if (cpuTemperatures != null) 'cpuTemperatures': cpuTemperatures,
+        if (cpuUsages != null) 'cpuUsages': cpuUsages,
+        if (createTime != null) 'createTime': createTime,
+        if (fanSpeeds != null) 'fanSpeeds': fanSpeeds,
+        if (gpuTemperatures != null) 'gpuTemperatures': gpuTemperatures,
+        if (skinTemperatures != null) 'skinTemperatures': skinTemperatures,
+      };
 }
 
 /// Keyed app state reported by the app.
@@ -4069,28 +3748,14 @@ class KeyedAppState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (lastUpdateTime != null) {
-      _json['lastUpdateTime'] = lastUpdateTime;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (data != null) 'data': data,
+        if (key != null) 'key': key,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
+        if (message != null) 'message': message,
+        if (severity != null) 'severity': severity,
+      };
 }
 
 /// Settings controlling the behavior of a device in kiosk mode.
@@ -4180,25 +3845,15 @@ class KioskCustomization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceSettings != null) {
-      _json['deviceSettings'] = deviceSettings;
-    }
-    if (powerButtonActions != null) {
-      _json['powerButtonActions'] = powerButtonActions;
-    }
-    if (statusBar != null) {
-      _json['statusBar'] = statusBar;
-    }
-    if (systemErrorWarnings != null) {
-      _json['systemErrorWarnings'] = systemErrorWarnings;
-    }
-    if (systemNavigation != null) {
-      _json['systemNavigation'] = systemNavigation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceSettings != null) 'deviceSettings': deviceSettings,
+        if (powerButtonActions != null)
+          'powerButtonActions': powerButtonActions,
+        if (statusBar != null) 'statusBar': statusBar,
+        if (systemErrorWarnings != null)
+          'systemErrorWarnings': systemErrorWarnings,
+        if (systemNavigation != null) 'systemNavigation': systemNavigation,
+      };
 }
 
 /// An action to launch an app.
@@ -4214,13 +3869,9 @@ class LaunchAppAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (packageName != null) 'packageName': packageName,
+      };
 }
 
 /// Response to a request to list devices for a given enterprise.
@@ -4245,16 +3896,11 @@ class ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// This feature is not generally available yet.
@@ -4285,17 +3931,11 @@ class ListEnterprisesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enterprises != null) {
-      _json['enterprises'] =
-          enterprises.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enterprises != null)
+          'enterprises': enterprises.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -4320,16 +3960,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to a request to list policies for a given enterprise.
@@ -4354,16 +3989,11 @@ class ListPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (policies != null) {
-      _json['policies'] = policies.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (policies != null)
+          'policies': policies.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response to a request to list web apps for a given enterprise.
@@ -4388,16 +4018,11 @@ class ListWebAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (webApps != null) {
-      _json['webApps'] = webApps.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (webApps != null)
+          'webApps': webApps.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The managed configurations template for the app, saved from the managed
@@ -4428,16 +4053,11 @@ class ManagedConfigurationTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configurationVariables != null) {
-      _json['configurationVariables'] = configurationVariables;
-    }
-    if (templateId != null) {
-      _json['templateId'] = templateId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configurationVariables != null)
+          'configurationVariables': configurationVariables,
+        if (templateId != null) 'templateId': templateId,
+      };
 }
 
 /// Managed property.
@@ -4520,32 +4140,18 @@ class ManagedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultValue != null) {
-      _json['defaultValue'] = defaultValue;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (nestedProperties != null) {
-      _json['nestedProperties'] =
-          nestedProperties.map((value) => value.toJson()).toList();
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue,
+        if (description != null) 'description': description,
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+        if (key != null) 'key': key,
+        if (nestedProperties != null)
+          'nestedProperties':
+              nestedProperties.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+      };
 }
 
 /// An entry of a managed property.
@@ -4572,16 +4178,10 @@ class ManagedPropertyEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (value != null) 'value': value,
+      };
 }
 
 /// An event related to memory and storage measurements.
@@ -4622,19 +4222,11 @@ class MemoryEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (byteCount != null) {
-      _json['byteCount'] = byteCount;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (eventType != null) {
-      _json['eventType'] = eventType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (byteCount != null) 'byteCount': byteCount,
+        if (createTime != null) 'createTime': createTime,
+        if (eventType != null) 'eventType': eventType,
+      };
 }
 
 /// Information about device memory and storage.
@@ -4656,16 +4248,11 @@ class MemoryInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (totalInternalStorage != null) {
-      _json['totalInternalStorage'] = totalInternalStorage;
-    }
-    if (totalRam != null) {
-      _json['totalRam'] = totalRam;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (totalInternalStorage != null)
+          'totalInternalStorage': totalInternalStorage,
+        if (totalRam != null) 'totalRam': totalRam,
+      };
 }
 
 /// Device network info.
@@ -4720,26 +4307,16 @@ class NetworkInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imei != null) {
-      _json['imei'] = imei;
-    }
-    if (meid != null) {
-      _json['meid'] = meid;
-    }
-    if (networkOperatorName != null) {
-      _json['networkOperatorName'] = networkOperatorName;
-    }
-    if (telephonyInfos != null) {
-      _json['telephonyInfos'] =
-          telephonyInfos.map((value) => value.toJson()).toList();
-    }
-    if (wifiMacAddress != null) {
-      _json['wifiMacAddress'] = wifiMacAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imei != null) 'imei': imei,
+        if (meid != null) 'meid': meid,
+        if (networkOperatorName != null)
+          'networkOperatorName': networkOperatorName,
+        if (telephonyInfos != null)
+          'telephonyInfos':
+              telephonyInfos.map((value) => value.toJson()).toList(),
+        if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress,
+      };
 }
 
 /// Provides detail about non-compliance with a policy setting.
@@ -4846,28 +4423,16 @@ class NonComplianceDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currentValue != null) {
-      _json['currentValue'] = currentValue;
-    }
-    if (fieldPath != null) {
-      _json['fieldPath'] = fieldPath;
-    }
-    if (installationFailureReason != null) {
-      _json['installationFailureReason'] = installationFailureReason;
-    }
-    if (nonComplianceReason != null) {
-      _json['nonComplianceReason'] = nonComplianceReason;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (settingName != null) {
-      _json['settingName'] = settingName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currentValue != null) 'currentValue': currentValue,
+        if (fieldPath != null) 'fieldPath': fieldPath,
+        if (installationFailureReason != null)
+          'installationFailureReason': installationFailureReason,
+        if (nonComplianceReason != null)
+          'nonComplianceReason': nonComplianceReason,
+        if (packageName != null) 'packageName': packageName,
+        if (settingName != null) 'settingName': settingName,
+      };
 }
 
 /// A compliance rule condition which is satisfied if there exists any matching
@@ -4928,19 +4493,12 @@ class NonComplianceDetailCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nonComplianceReason != null) {
-      _json['nonComplianceReason'] = nonComplianceReason;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (settingName != null) {
-      _json['settingName'] = settingName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nonComplianceReason != null)
+          'nonComplianceReason': nonComplianceReason,
+        if (packageName != null) 'packageName': packageName,
+        if (settingName != null) 'settingName': settingName,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5019,25 +4577,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A list of package names.
@@ -5055,13 +4601,9 @@ class PackageNameList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (packageNames != null) {
-      _json['packageNames'] = packageNames;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (packageNames != null) 'packageNames': packageNames,
+      };
 }
 
 /// Requirements for the password used to unlock a device.
@@ -5214,49 +4756,32 @@ class PasswordRequirements {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (maximumFailedPasswordsForWipe != null) {
-      _json['maximumFailedPasswordsForWipe'] = maximumFailedPasswordsForWipe;
-    }
-    if (passwordExpirationTimeout != null) {
-      _json['passwordExpirationTimeout'] = passwordExpirationTimeout;
-    }
-    if (passwordHistoryLength != null) {
-      _json['passwordHistoryLength'] = passwordHistoryLength;
-    }
-    if (passwordMinimumLength != null) {
-      _json['passwordMinimumLength'] = passwordMinimumLength;
-    }
-    if (passwordMinimumLetters != null) {
-      _json['passwordMinimumLetters'] = passwordMinimumLetters;
-    }
-    if (passwordMinimumLowerCase != null) {
-      _json['passwordMinimumLowerCase'] = passwordMinimumLowerCase;
-    }
-    if (passwordMinimumNonLetter != null) {
-      _json['passwordMinimumNonLetter'] = passwordMinimumNonLetter;
-    }
-    if (passwordMinimumNumeric != null) {
-      _json['passwordMinimumNumeric'] = passwordMinimumNumeric;
-    }
-    if (passwordMinimumSymbols != null) {
-      _json['passwordMinimumSymbols'] = passwordMinimumSymbols;
-    }
-    if (passwordMinimumUpperCase != null) {
-      _json['passwordMinimumUpperCase'] = passwordMinimumUpperCase;
-    }
-    if (passwordQuality != null) {
-      _json['passwordQuality'] = passwordQuality;
-    }
-    if (passwordScope != null) {
-      _json['passwordScope'] = passwordScope;
-    }
-    if (requirePasswordUnlock != null) {
-      _json['requirePasswordUnlock'] = requirePasswordUnlock;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (maximumFailedPasswordsForWipe != null)
+          'maximumFailedPasswordsForWipe': maximumFailedPasswordsForWipe,
+        if (passwordExpirationTimeout != null)
+          'passwordExpirationTimeout': passwordExpirationTimeout,
+        if (passwordHistoryLength != null)
+          'passwordHistoryLength': passwordHistoryLength,
+        if (passwordMinimumLength != null)
+          'passwordMinimumLength': passwordMinimumLength,
+        if (passwordMinimumLetters != null)
+          'passwordMinimumLetters': passwordMinimumLetters,
+        if (passwordMinimumLowerCase != null)
+          'passwordMinimumLowerCase': passwordMinimumLowerCase,
+        if (passwordMinimumNonLetter != null)
+          'passwordMinimumNonLetter': passwordMinimumNonLetter,
+        if (passwordMinimumNumeric != null)
+          'passwordMinimumNumeric': passwordMinimumNumeric,
+        if (passwordMinimumSymbols != null)
+          'passwordMinimumSymbols': passwordMinimumSymbols,
+        if (passwordMinimumUpperCase != null)
+          'passwordMinimumUpperCase': passwordMinimumUpperCase,
+        if (passwordQuality != null) 'passwordQuality': passwordQuality,
+        if (passwordScope != null) 'passwordScope': passwordScope,
+        if (requirePasswordUnlock != null)
+          'requirePasswordUnlock': requirePasswordUnlock,
+      };
 }
 
 /// Configuration for an Android permission and its grant state.
@@ -5286,16 +4811,10 @@ class PermissionGrant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permission != null) {
-      _json['permission'] = permission;
-    }
-    if (policy != null) {
-      _json['policy'] = policy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permission != null) 'permission': permission,
+        if (policy != null) 'policy': policy,
+      };
 }
 
 /// A default activity for handling intents that match a particular intent
@@ -5345,19 +4864,11 @@ class PersistentPreferredActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actions != null) {
-      _json['actions'] = actions;
-    }
-    if (categories != null) {
-      _json['categories'] = categories;
-    }
-    if (receiverActivity != null) {
-      _json['receiverActivity'] = receiverActivity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actions != null) 'actions': actions,
+        if (categories != null) 'categories': categories,
+        if (receiverActivity != null) 'receiverActivity': receiverActivity,
+      };
 }
 
 /// Policies for apps in the personal profile of a company-owned device with a
@@ -5385,16 +4896,10 @@ class PersonalApplicationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (installType != null) {
-      _json['installType'] = installType;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (installType != null) 'installType': installType,
+        if (packageName != null) 'packageName': packageName,
+      };
 }
 
 /// Policies controlling personal usage on a company-owned device with a work
@@ -5460,30 +4965,21 @@ class PersonalUsagePolicies {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountTypesWithManagementDisabled != null) {
-      _json['accountTypesWithManagementDisabled'] =
-          accountTypesWithManagementDisabled;
-    }
-    if (cameraDisabled != null) {
-      _json['cameraDisabled'] = cameraDisabled;
-    }
-    if (maxDaysWithWorkOff != null) {
-      _json['maxDaysWithWorkOff'] = maxDaysWithWorkOff;
-    }
-    if (personalApplications != null) {
-      _json['personalApplications'] =
-          personalApplications.map((value) => value.toJson()).toList();
-    }
-    if (personalPlayStoreMode != null) {
-      _json['personalPlayStoreMode'] = personalPlayStoreMode;
-    }
-    if (screenCaptureDisabled != null) {
-      _json['screenCaptureDisabled'] = screenCaptureDisabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountTypesWithManagementDisabled != null)
+          'accountTypesWithManagementDisabled':
+              accountTypesWithManagementDisabled,
+        if (cameraDisabled != null) 'cameraDisabled': cameraDisabled,
+        if (maxDaysWithWorkOff != null)
+          'maxDaysWithWorkOff': maxDaysWithWorkOff,
+        if (personalApplications != null)
+          'personalApplications':
+              personalApplications.map((value) => value.toJson()).toList(),
+        if (personalPlayStoreMode != null)
+          'personalPlayStoreMode': personalPlayStoreMode,
+        if (screenCaptureDisabled != null)
+          'screenCaptureDisabled': screenCaptureDisabled,
+      };
 }
 
 /// A policy resource represents a group of settings that govern the behavior of
@@ -6231,267 +5727,162 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountTypesWithManagementDisabled != null) {
-      _json['accountTypesWithManagementDisabled'] =
-          accountTypesWithManagementDisabled;
-    }
-    if (addUserDisabled != null) {
-      _json['addUserDisabled'] = addUserDisabled;
-    }
-    if (adjustVolumeDisabled != null) {
-      _json['adjustVolumeDisabled'] = adjustVolumeDisabled;
-    }
-    if (advancedSecurityOverrides != null) {
-      _json['advancedSecurityOverrides'] = advancedSecurityOverrides.toJson();
-    }
-    if (alwaysOnVpnPackage != null) {
-      _json['alwaysOnVpnPackage'] = alwaysOnVpnPackage.toJson();
-    }
-    if (androidDevicePolicyTracks != null) {
-      _json['androidDevicePolicyTracks'] = androidDevicePolicyTracks;
-    }
-    if (appAutoUpdatePolicy != null) {
-      _json['appAutoUpdatePolicy'] = appAutoUpdatePolicy;
-    }
-    if (applications != null) {
-      _json['applications'] =
-          applications.map((value) => value.toJson()).toList();
-    }
-    if (autoDateAndTimeZone != null) {
-      _json['autoDateAndTimeZone'] = autoDateAndTimeZone;
-    }
-    if (autoTimeRequired != null) {
-      _json['autoTimeRequired'] = autoTimeRequired;
-    }
-    if (blockApplicationsEnabled != null) {
-      _json['blockApplicationsEnabled'] = blockApplicationsEnabled;
-    }
-    if (bluetoothConfigDisabled != null) {
-      _json['bluetoothConfigDisabled'] = bluetoothConfigDisabled;
-    }
-    if (bluetoothContactSharingDisabled != null) {
-      _json['bluetoothContactSharingDisabled'] =
-          bluetoothContactSharingDisabled;
-    }
-    if (bluetoothDisabled != null) {
-      _json['bluetoothDisabled'] = bluetoothDisabled;
-    }
-    if (cameraDisabled != null) {
-      _json['cameraDisabled'] = cameraDisabled;
-    }
-    if (cellBroadcastsConfigDisabled != null) {
-      _json['cellBroadcastsConfigDisabled'] = cellBroadcastsConfigDisabled;
-    }
-    if (choosePrivateKeyRules != null) {
-      _json['choosePrivateKeyRules'] =
-          choosePrivateKeyRules.map((value) => value.toJson()).toList();
-    }
-    if (complianceRules != null) {
-      _json['complianceRules'] =
-          complianceRules.map((value) => value.toJson()).toList();
-    }
-    if (createWindowsDisabled != null) {
-      _json['createWindowsDisabled'] = createWindowsDisabled;
-    }
-    if (credentialsConfigDisabled != null) {
-      _json['credentialsConfigDisabled'] = credentialsConfigDisabled;
-    }
-    if (dataRoamingDisabled != null) {
-      _json['dataRoamingDisabled'] = dataRoamingDisabled;
-    }
-    if (debuggingFeaturesAllowed != null) {
-      _json['debuggingFeaturesAllowed'] = debuggingFeaturesAllowed;
-    }
-    if (defaultPermissionPolicy != null) {
-      _json['defaultPermissionPolicy'] = defaultPermissionPolicy;
-    }
-    if (deviceOwnerLockScreenInfo != null) {
-      _json['deviceOwnerLockScreenInfo'] = deviceOwnerLockScreenInfo.toJson();
-    }
-    if (encryptionPolicy != null) {
-      _json['encryptionPolicy'] = encryptionPolicy;
-    }
-    if (ensureVerifyAppsEnabled != null) {
-      _json['ensureVerifyAppsEnabled'] = ensureVerifyAppsEnabled;
-    }
-    if (factoryResetDisabled != null) {
-      _json['factoryResetDisabled'] = factoryResetDisabled;
-    }
-    if (frpAdminEmails != null) {
-      _json['frpAdminEmails'] = frpAdminEmails;
-    }
-    if (funDisabled != null) {
-      _json['funDisabled'] = funDisabled;
-    }
-    if (installAppsDisabled != null) {
-      _json['installAppsDisabled'] = installAppsDisabled;
-    }
-    if (installUnknownSourcesAllowed != null) {
-      _json['installUnknownSourcesAllowed'] = installUnknownSourcesAllowed;
-    }
-    if (keyguardDisabled != null) {
-      _json['keyguardDisabled'] = keyguardDisabled;
-    }
-    if (keyguardDisabledFeatures != null) {
-      _json['keyguardDisabledFeatures'] = keyguardDisabledFeatures;
-    }
-    if (kioskCustomLauncherEnabled != null) {
-      _json['kioskCustomLauncherEnabled'] = kioskCustomLauncherEnabled;
-    }
-    if (kioskCustomization != null) {
-      _json['kioskCustomization'] = kioskCustomization.toJson();
-    }
-    if (locationMode != null) {
-      _json['locationMode'] = locationMode;
-    }
-    if (longSupportMessage != null) {
-      _json['longSupportMessage'] = longSupportMessage.toJson();
-    }
-    if (maximumTimeToLock != null) {
-      _json['maximumTimeToLock'] = maximumTimeToLock;
-    }
-    if (minimumApiLevel != null) {
-      _json['minimumApiLevel'] = minimumApiLevel;
-    }
-    if (mobileNetworksConfigDisabled != null) {
-      _json['mobileNetworksConfigDisabled'] = mobileNetworksConfigDisabled;
-    }
-    if (modifyAccountsDisabled != null) {
-      _json['modifyAccountsDisabled'] = modifyAccountsDisabled;
-    }
-    if (mountPhysicalMediaDisabled != null) {
-      _json['mountPhysicalMediaDisabled'] = mountPhysicalMediaDisabled;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (networkEscapeHatchEnabled != null) {
-      _json['networkEscapeHatchEnabled'] = networkEscapeHatchEnabled;
-    }
-    if (networkResetDisabled != null) {
-      _json['networkResetDisabled'] = networkResetDisabled;
-    }
-    if (openNetworkConfiguration != null) {
-      _json['openNetworkConfiguration'] = openNetworkConfiguration;
-    }
-    if (outgoingBeamDisabled != null) {
-      _json['outgoingBeamDisabled'] = outgoingBeamDisabled;
-    }
-    if (outgoingCallsDisabled != null) {
-      _json['outgoingCallsDisabled'] = outgoingCallsDisabled;
-    }
-    if (passwordPolicies != null) {
-      _json['passwordPolicies'] =
-          passwordPolicies.map((value) => value.toJson()).toList();
-    }
-    if (passwordRequirements != null) {
-      _json['passwordRequirements'] = passwordRequirements.toJson();
-    }
-    if (permissionGrants != null) {
-      _json['permissionGrants'] =
-          permissionGrants.map((value) => value.toJson()).toList();
-    }
-    if (permittedAccessibilityServices != null) {
-      _json['permittedAccessibilityServices'] =
-          permittedAccessibilityServices.toJson();
-    }
-    if (permittedInputMethods != null) {
-      _json['permittedInputMethods'] = permittedInputMethods.toJson();
-    }
-    if (persistentPreferredActivities != null) {
-      _json['persistentPreferredActivities'] =
-          persistentPreferredActivities.map((value) => value.toJson()).toList();
-    }
-    if (personalUsagePolicies != null) {
-      _json['personalUsagePolicies'] = personalUsagePolicies.toJson();
-    }
-    if (playStoreMode != null) {
-      _json['playStoreMode'] = playStoreMode;
-    }
-    if (policyEnforcementRules != null) {
-      _json['policyEnforcementRules'] =
-          policyEnforcementRules.map((value) => value.toJson()).toList();
-    }
-    if (privateKeySelectionEnabled != null) {
-      _json['privateKeySelectionEnabled'] = privateKeySelectionEnabled;
-    }
-    if (recommendedGlobalProxy != null) {
-      _json['recommendedGlobalProxy'] = recommendedGlobalProxy.toJson();
-    }
-    if (removeUserDisabled != null) {
-      _json['removeUserDisabled'] = removeUserDisabled;
-    }
-    if (safeBootDisabled != null) {
-      _json['safeBootDisabled'] = safeBootDisabled;
-    }
-    if (screenCaptureDisabled != null) {
-      _json['screenCaptureDisabled'] = screenCaptureDisabled;
-    }
-    if (setUserIconDisabled != null) {
-      _json['setUserIconDisabled'] = setUserIconDisabled;
-    }
-    if (setWallpaperDisabled != null) {
-      _json['setWallpaperDisabled'] = setWallpaperDisabled;
-    }
-    if (setupActions != null) {
-      _json['setupActions'] =
-          setupActions.map((value) => value.toJson()).toList();
-    }
-    if (shareLocationDisabled != null) {
-      _json['shareLocationDisabled'] = shareLocationDisabled;
-    }
-    if (shortSupportMessage != null) {
-      _json['shortSupportMessage'] = shortSupportMessage.toJson();
-    }
-    if (skipFirstUseHintsEnabled != null) {
-      _json['skipFirstUseHintsEnabled'] = skipFirstUseHintsEnabled;
-    }
-    if (smsDisabled != null) {
-      _json['smsDisabled'] = smsDisabled;
-    }
-    if (statusBarDisabled != null) {
-      _json['statusBarDisabled'] = statusBarDisabled;
-    }
-    if (statusReportingSettings != null) {
-      _json['statusReportingSettings'] = statusReportingSettings.toJson();
-    }
-    if (stayOnPluggedModes != null) {
-      _json['stayOnPluggedModes'] = stayOnPluggedModes;
-    }
-    if (systemUpdate != null) {
-      _json['systemUpdate'] = systemUpdate.toJson();
-    }
-    if (tetheringConfigDisabled != null) {
-      _json['tetheringConfigDisabled'] = tetheringConfigDisabled;
-    }
-    if (uninstallAppsDisabled != null) {
-      _json['uninstallAppsDisabled'] = uninstallAppsDisabled;
-    }
-    if (unmuteMicrophoneDisabled != null) {
-      _json['unmuteMicrophoneDisabled'] = unmuteMicrophoneDisabled;
-    }
-    if (usbFileTransferDisabled != null) {
-      _json['usbFileTransferDisabled'] = usbFileTransferDisabled;
-    }
-    if (usbMassStorageEnabled != null) {
-      _json['usbMassStorageEnabled'] = usbMassStorageEnabled;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    if (vpnConfigDisabled != null) {
-      _json['vpnConfigDisabled'] = vpnConfigDisabled;
-    }
-    if (wifiConfigDisabled != null) {
-      _json['wifiConfigDisabled'] = wifiConfigDisabled;
-    }
-    if (wifiConfigsLockdownEnabled != null) {
-      _json['wifiConfigsLockdownEnabled'] = wifiConfigsLockdownEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountTypesWithManagementDisabled != null)
+          'accountTypesWithManagementDisabled':
+              accountTypesWithManagementDisabled,
+        if (addUserDisabled != null) 'addUserDisabled': addUserDisabled,
+        if (adjustVolumeDisabled != null)
+          'adjustVolumeDisabled': adjustVolumeDisabled,
+        if (advancedSecurityOverrides != null)
+          'advancedSecurityOverrides': advancedSecurityOverrides.toJson(),
+        if (alwaysOnVpnPackage != null)
+          'alwaysOnVpnPackage': alwaysOnVpnPackage.toJson(),
+        if (androidDevicePolicyTracks != null)
+          'androidDevicePolicyTracks': androidDevicePolicyTracks,
+        if (appAutoUpdatePolicy != null)
+          'appAutoUpdatePolicy': appAutoUpdatePolicy,
+        if (applications != null)
+          'applications': applications.map((value) => value.toJson()).toList(),
+        if (autoDateAndTimeZone != null)
+          'autoDateAndTimeZone': autoDateAndTimeZone,
+        if (autoTimeRequired != null) 'autoTimeRequired': autoTimeRequired,
+        if (blockApplicationsEnabled != null)
+          'blockApplicationsEnabled': blockApplicationsEnabled,
+        if (bluetoothConfigDisabled != null)
+          'bluetoothConfigDisabled': bluetoothConfigDisabled,
+        if (bluetoothContactSharingDisabled != null)
+          'bluetoothContactSharingDisabled': bluetoothContactSharingDisabled,
+        if (bluetoothDisabled != null) 'bluetoothDisabled': bluetoothDisabled,
+        if (cameraDisabled != null) 'cameraDisabled': cameraDisabled,
+        if (cellBroadcastsConfigDisabled != null)
+          'cellBroadcastsConfigDisabled': cellBroadcastsConfigDisabled,
+        if (choosePrivateKeyRules != null)
+          'choosePrivateKeyRules':
+              choosePrivateKeyRules.map((value) => value.toJson()).toList(),
+        if (complianceRules != null)
+          'complianceRules':
+              complianceRules.map((value) => value.toJson()).toList(),
+        if (createWindowsDisabled != null)
+          'createWindowsDisabled': createWindowsDisabled,
+        if (credentialsConfigDisabled != null)
+          'credentialsConfigDisabled': credentialsConfigDisabled,
+        if (dataRoamingDisabled != null)
+          'dataRoamingDisabled': dataRoamingDisabled,
+        if (debuggingFeaturesAllowed != null)
+          'debuggingFeaturesAllowed': debuggingFeaturesAllowed,
+        if (defaultPermissionPolicy != null)
+          'defaultPermissionPolicy': defaultPermissionPolicy,
+        if (deviceOwnerLockScreenInfo != null)
+          'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo.toJson(),
+        if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy,
+        if (ensureVerifyAppsEnabled != null)
+          'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled,
+        if (factoryResetDisabled != null)
+          'factoryResetDisabled': factoryResetDisabled,
+        if (frpAdminEmails != null) 'frpAdminEmails': frpAdminEmails,
+        if (funDisabled != null) 'funDisabled': funDisabled,
+        if (installAppsDisabled != null)
+          'installAppsDisabled': installAppsDisabled,
+        if (installUnknownSourcesAllowed != null)
+          'installUnknownSourcesAllowed': installUnknownSourcesAllowed,
+        if (keyguardDisabled != null) 'keyguardDisabled': keyguardDisabled,
+        if (keyguardDisabledFeatures != null)
+          'keyguardDisabledFeatures': keyguardDisabledFeatures,
+        if (kioskCustomLauncherEnabled != null)
+          'kioskCustomLauncherEnabled': kioskCustomLauncherEnabled,
+        if (kioskCustomization != null)
+          'kioskCustomization': kioskCustomization.toJson(),
+        if (locationMode != null) 'locationMode': locationMode,
+        if (longSupportMessage != null)
+          'longSupportMessage': longSupportMessage.toJson(),
+        if (maximumTimeToLock != null) 'maximumTimeToLock': maximumTimeToLock,
+        if (minimumApiLevel != null) 'minimumApiLevel': minimumApiLevel,
+        if (mobileNetworksConfigDisabled != null)
+          'mobileNetworksConfigDisabled': mobileNetworksConfigDisabled,
+        if (modifyAccountsDisabled != null)
+          'modifyAccountsDisabled': modifyAccountsDisabled,
+        if (mountPhysicalMediaDisabled != null)
+          'mountPhysicalMediaDisabled': mountPhysicalMediaDisabled,
+        if (name != null) 'name': name,
+        if (networkEscapeHatchEnabled != null)
+          'networkEscapeHatchEnabled': networkEscapeHatchEnabled,
+        if (networkResetDisabled != null)
+          'networkResetDisabled': networkResetDisabled,
+        if (openNetworkConfiguration != null)
+          'openNetworkConfiguration': openNetworkConfiguration,
+        if (outgoingBeamDisabled != null)
+          'outgoingBeamDisabled': outgoingBeamDisabled,
+        if (outgoingCallsDisabled != null)
+          'outgoingCallsDisabled': outgoingCallsDisabled,
+        if (passwordPolicies != null)
+          'passwordPolicies':
+              passwordPolicies.map((value) => value.toJson()).toList(),
+        if (passwordRequirements != null)
+          'passwordRequirements': passwordRequirements.toJson(),
+        if (permissionGrants != null)
+          'permissionGrants':
+              permissionGrants.map((value) => value.toJson()).toList(),
+        if (permittedAccessibilityServices != null)
+          'permittedAccessibilityServices':
+              permittedAccessibilityServices.toJson(),
+        if (permittedInputMethods != null)
+          'permittedInputMethods': permittedInputMethods.toJson(),
+        if (persistentPreferredActivities != null)
+          'persistentPreferredActivities': persistentPreferredActivities
+              .map((value) => value.toJson())
+              .toList(),
+        if (personalUsagePolicies != null)
+          'personalUsagePolicies': personalUsagePolicies.toJson(),
+        if (playStoreMode != null) 'playStoreMode': playStoreMode,
+        if (policyEnforcementRules != null)
+          'policyEnforcementRules':
+              policyEnforcementRules.map((value) => value.toJson()).toList(),
+        if (privateKeySelectionEnabled != null)
+          'privateKeySelectionEnabled': privateKeySelectionEnabled,
+        if (recommendedGlobalProxy != null)
+          'recommendedGlobalProxy': recommendedGlobalProxy.toJson(),
+        if (removeUserDisabled != null)
+          'removeUserDisabled': removeUserDisabled,
+        if (safeBootDisabled != null) 'safeBootDisabled': safeBootDisabled,
+        if (screenCaptureDisabled != null)
+          'screenCaptureDisabled': screenCaptureDisabled,
+        if (setUserIconDisabled != null)
+          'setUserIconDisabled': setUserIconDisabled,
+        if (setWallpaperDisabled != null)
+          'setWallpaperDisabled': setWallpaperDisabled,
+        if (setupActions != null)
+          'setupActions': setupActions.map((value) => value.toJson()).toList(),
+        if (shareLocationDisabled != null)
+          'shareLocationDisabled': shareLocationDisabled,
+        if (shortSupportMessage != null)
+          'shortSupportMessage': shortSupportMessage.toJson(),
+        if (skipFirstUseHintsEnabled != null)
+          'skipFirstUseHintsEnabled': skipFirstUseHintsEnabled,
+        if (smsDisabled != null) 'smsDisabled': smsDisabled,
+        if (statusBarDisabled != null) 'statusBarDisabled': statusBarDisabled,
+        if (statusReportingSettings != null)
+          'statusReportingSettings': statusReportingSettings.toJson(),
+        if (stayOnPluggedModes != null)
+          'stayOnPluggedModes': stayOnPluggedModes,
+        if (systemUpdate != null) 'systemUpdate': systemUpdate.toJson(),
+        if (tetheringConfigDisabled != null)
+          'tetheringConfigDisabled': tetheringConfigDisabled,
+        if (uninstallAppsDisabled != null)
+          'uninstallAppsDisabled': uninstallAppsDisabled,
+        if (unmuteMicrophoneDisabled != null)
+          'unmuteMicrophoneDisabled': unmuteMicrophoneDisabled,
+        if (usbFileTransferDisabled != null)
+          'usbFileTransferDisabled': usbFileTransferDisabled,
+        if (usbMassStorageEnabled != null)
+          'usbMassStorageEnabled': usbMassStorageEnabled,
+        if (version != null) 'version': version,
+        if (vpnConfigDisabled != null) 'vpnConfigDisabled': vpnConfigDisabled,
+        if (wifiConfigDisabled != null)
+          'wifiConfigDisabled': wifiConfigDisabled,
+        if (wifiConfigsLockdownEnabled != null)
+          'wifiConfigsLockdownEnabled': wifiConfigsLockdownEnabled,
+      };
 }
 
 /// A rule that defines the actions to take if a device or work profile is not
@@ -6531,19 +5922,11 @@ class PolicyEnforcementRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (blockAction != null) {
-      _json['blockAction'] = blockAction.toJson();
-    }
-    if (settingName != null) {
-      _json['settingName'] = settingName;
-    }
-    if (wipeAction != null) {
-      _json['wipeAction'] = wipeAction.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (blockAction != null) 'blockAction': blockAction.toJson(),
+        if (settingName != null) 'settingName': settingName,
+        if (wipeAction != null) 'wipeAction': wipeAction.toJson(),
+      };
 }
 
 /// Additional details regarding the security posture of the device.
@@ -6576,16 +5959,11 @@ class PostureDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (advice != null) {
-      _json['advice'] = advice.map((value) => value.toJson()).toList();
-    }
-    if (securityRisk != null) {
-      _json['securityRisk'] = securityRisk;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (advice != null)
+          'advice': advice.map((value) => value.toJson()).toList(),
+        if (securityRisk != null) 'securityRisk': securityRisk,
+      };
 }
 
 /// A power management event.
@@ -6623,19 +6001,11 @@ class PowerManagementEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (batteryLevel != null) {
-      _json['batteryLevel'] = batteryLevel;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (eventType != null) {
-      _json['eventType'] = eventType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (batteryLevel != null) 'batteryLevel': batteryLevel,
+        if (createTime != null) 'createTime': createTime,
+        if (eventType != null) 'eventType': eventType,
+      };
 }
 
 /// Configuration info for an HTTP proxy.
@@ -6676,22 +6046,12 @@ class ProxyInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (excludedHosts != null) {
-      _json['excludedHosts'] = excludedHosts;
-    }
-    if (host != null) {
-      _json['host'] = host;
-    }
-    if (pacUri != null) {
-      _json['pacUri'] = pacUri;
-    }
-    if (port != null) {
-      _json['port'] = port;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (excludedHosts != null) 'excludedHosts': excludedHosts,
+        if (host != null) 'host': host,
+        if (pacUri != null) 'pacUri': pacUri,
+        if (port != null) 'port': port,
+      };
 }
 
 /// The security posture of the device, as determined by the current device
@@ -6725,17 +6085,12 @@ class SecurityPosture {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devicePosture != null) {
-      _json['devicePosture'] = devicePosture;
-    }
-    if (postureDetails != null) {
-      _json['postureDetails'] =
-          postureDetails.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devicePosture != null) 'devicePosture': devicePosture,
+        if (postureDetails != null)
+          'postureDetails':
+              postureDetails.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An action executed during setup.
@@ -6766,19 +6121,11 @@ class SetupAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description.toJson();
-    }
-    if (launchApp != null) {
-      _json['launchApp'] = launchApp.toJson();
-    }
-    if (title != null) {
-      _json['title'] = title.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description.toJson(),
+        if (launchApp != null) 'launchApp': launchApp.toJson(),
+        if (title != null) 'title': title.toJson(),
+      };
 }
 
 /// A resource containing sign in details for an enterprise.
@@ -6838,22 +6185,14 @@ class SigninDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (allowPersonalUsage != null) {
-      _json['allowPersonalUsage'] = allowPersonalUsage;
-    }
-    if (qrCode != null) {
-      _json['qrCode'] = qrCode;
-    }
-    if (signinEnrollmentToken != null) {
-      _json['signinEnrollmentToken'] = signinEnrollmentToken;
-    }
-    if (signinUrl != null) {
-      _json['signinUrl'] = signinUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (allowPersonalUsage != null)
+          'allowPersonalUsage': allowPersonalUsage,
+        if (qrCode != null) 'qrCode': qrCode,
+        if (signinEnrollmentToken != null)
+          'signinEnrollmentToken': signinEnrollmentToken,
+        if (signinUrl != null) 'signinUrl': signinUrl,
+      };
 }
 
 /// An enterprise signup URL.
@@ -6880,16 +6219,10 @@ class SignupUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Information about device software.
@@ -6975,43 +6308,27 @@ class SoftwareInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (androidBuildNumber != null) {
-      _json['androidBuildNumber'] = androidBuildNumber;
-    }
-    if (androidBuildTime != null) {
-      _json['androidBuildTime'] = androidBuildTime;
-    }
-    if (androidDevicePolicyVersionCode != null) {
-      _json['androidDevicePolicyVersionCode'] = androidDevicePolicyVersionCode;
-    }
-    if (androidDevicePolicyVersionName != null) {
-      _json['androidDevicePolicyVersionName'] = androidDevicePolicyVersionName;
-    }
-    if (androidVersion != null) {
-      _json['androidVersion'] = androidVersion;
-    }
-    if (bootloaderVersion != null) {
-      _json['bootloaderVersion'] = bootloaderVersion;
-    }
-    if (deviceBuildSignature != null) {
-      _json['deviceBuildSignature'] = deviceBuildSignature;
-    }
-    if (deviceKernelVersion != null) {
-      _json['deviceKernelVersion'] = deviceKernelVersion;
-    }
-    if (primaryLanguageCode != null) {
-      _json['primaryLanguageCode'] = primaryLanguageCode;
-    }
-    if (securityPatchLevel != null) {
-      _json['securityPatchLevel'] = securityPatchLevel;
-    }
-    if (systemUpdateInfo != null) {
-      _json['systemUpdateInfo'] = systemUpdateInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (androidBuildNumber != null)
+          'androidBuildNumber': androidBuildNumber,
+        if (androidBuildTime != null) 'androidBuildTime': androidBuildTime,
+        if (androidDevicePolicyVersionCode != null)
+          'androidDevicePolicyVersionCode': androidDevicePolicyVersionCode,
+        if (androidDevicePolicyVersionName != null)
+          'androidDevicePolicyVersionName': androidDevicePolicyVersionName,
+        if (androidVersion != null) 'androidVersion': androidVersion,
+        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion,
+        if (deviceBuildSignature != null)
+          'deviceBuildSignature': deviceBuildSignature,
+        if (deviceKernelVersion != null)
+          'deviceKernelVersion': deviceKernelVersion,
+        if (primaryLanguageCode != null)
+          'primaryLanguageCode': primaryLanguageCode,
+        if (securityPatchLevel != null)
+          'securityPatchLevel': securityPatchLevel,
+        if (systemUpdateInfo != null)
+          'systemUpdateInfo': systemUpdateInfo.toJson(),
+      };
 }
 
 /// The Status type defines a logical error model that is suitable for different
@@ -7061,19 +6378,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Settings controlling the behavior of status reports.
@@ -7165,44 +6474,29 @@ class StatusReportingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (applicationReportingSettings != null) {
-      _json['applicationReportingSettings'] =
-          applicationReportingSettings.toJson();
-    }
-    if (applicationReportsEnabled != null) {
-      _json['applicationReportsEnabled'] = applicationReportsEnabled;
-    }
-    if (commonCriteriaModeEnabled != null) {
-      _json['commonCriteriaModeEnabled'] = commonCriteriaModeEnabled;
-    }
-    if (deviceSettingsEnabled != null) {
-      _json['deviceSettingsEnabled'] = deviceSettingsEnabled;
-    }
-    if (displayInfoEnabled != null) {
-      _json['displayInfoEnabled'] = displayInfoEnabled;
-    }
-    if (hardwareStatusEnabled != null) {
-      _json['hardwareStatusEnabled'] = hardwareStatusEnabled;
-    }
-    if (memoryInfoEnabled != null) {
-      _json['memoryInfoEnabled'] = memoryInfoEnabled;
-    }
-    if (networkInfoEnabled != null) {
-      _json['networkInfoEnabled'] = networkInfoEnabled;
-    }
-    if (powerManagementEventsEnabled != null) {
-      _json['powerManagementEventsEnabled'] = powerManagementEventsEnabled;
-    }
-    if (softwareInfoEnabled != null) {
-      _json['softwareInfoEnabled'] = softwareInfoEnabled;
-    }
-    if (systemPropertiesEnabled != null) {
-      _json['systemPropertiesEnabled'] = systemPropertiesEnabled;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (applicationReportingSettings != null)
+          'applicationReportingSettings': applicationReportingSettings.toJson(),
+        if (applicationReportsEnabled != null)
+          'applicationReportsEnabled': applicationReportsEnabled,
+        if (commonCriteriaModeEnabled != null)
+          'commonCriteriaModeEnabled': commonCriteriaModeEnabled,
+        if (deviceSettingsEnabled != null)
+          'deviceSettingsEnabled': deviceSettingsEnabled,
+        if (displayInfoEnabled != null)
+          'displayInfoEnabled': displayInfoEnabled,
+        if (hardwareStatusEnabled != null)
+          'hardwareStatusEnabled': hardwareStatusEnabled,
+        if (memoryInfoEnabled != null) 'memoryInfoEnabled': memoryInfoEnabled,
+        if (networkInfoEnabled != null)
+          'networkInfoEnabled': networkInfoEnabled,
+        if (powerManagementEventsEnabled != null)
+          'powerManagementEventsEnabled': powerManagementEventsEnabled,
+        if (softwareInfoEnabled != null)
+          'softwareInfoEnabled': softwareInfoEnabled,
+        if (systemPropertiesEnabled != null)
+          'systemPropertiesEnabled': systemPropertiesEnabled,
+      };
 }
 
 /// Configuration for managing system updates
@@ -7262,23 +6556,14 @@ class SystemUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endMinutes != null) {
-      _json['endMinutes'] = endMinutes;
-    }
-    if (freezePeriods != null) {
-      _json['freezePeriods'] =
-          freezePeriods.map((value) => value.toJson()).toList();
-    }
-    if (startMinutes != null) {
-      _json['startMinutes'] = startMinutes;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endMinutes != null) 'endMinutes': endMinutes,
+        if (freezePeriods != null)
+          'freezePeriods':
+              freezePeriods.map((value) => value.toJson()).toList(),
+        if (startMinutes != null) 'startMinutes': startMinutes,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Information about a potential pending system update.
@@ -7315,16 +6600,11 @@ class SystemUpdateInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (updateReceivedTime != null) {
-      _json['updateReceivedTime'] = updateReceivedTime;
-    }
-    if (updateStatus != null) {
-      _json['updateStatus'] = updateStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (updateReceivedTime != null)
+          'updateReceivedTime': updateReceivedTime,
+        if (updateStatus != null) 'updateStatus': updateStatus,
+      };
 }
 
 /// Telephony information associated with a given SIM card on the device.
@@ -7349,16 +6629,10 @@ class TelephonyInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (carrierName != null) {
-      _json['carrierName'] = carrierName;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (carrierName != null) 'carrierName': carrierName,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+      };
 }
 
 /// A terms and conditions page to be accepted during provisioning.
@@ -7384,16 +6658,10 @@ class TermsAndConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (content != null) {
-      _json['content'] = content.toJson();
-    }
-    if (header != null) {
-      _json['header'] = header.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (content != null) 'content': content.toJson(),
+        if (header != null) 'header': header.toJson(),
+      };
 }
 
 /// A user belonging to an enterprise.
@@ -7415,13 +6683,9 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accountIdentifier != null) {
-      _json['accountIdentifier'] = accountIdentifier;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accountIdentifier != null) 'accountIdentifier': accountIdentifier,
+      };
 }
 
 /// Provides a user-facing message with locale info.
@@ -7457,16 +6721,10 @@ class UserFacingMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (defaultMessage != null) {
-      _json['defaultMessage'] = defaultMessage;
-    }
-    if (localizedMessages != null) {
-      _json['localizedMessages'] = localizedMessages;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (defaultMessage != null) 'defaultMessage': defaultMessage,
+        if (localizedMessages != null) 'localizedMessages': localizedMessages,
+      };
 }
 
 /// A web app.
@@ -7533,28 +6791,15 @@ class WebApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayMode != null) {
-      _json['displayMode'] = displayMode;
-    }
-    if (icons != null) {
-      _json['icons'] = icons.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (startUrl != null) {
-      _json['startUrl'] = startUrl;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (versionCode != null) {
-      _json['versionCode'] = versionCode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayMode != null) 'displayMode': displayMode,
+        if (icons != null)
+          'icons': icons.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (startUrl != null) 'startUrl': startUrl,
+        if (title != null) 'title': title,
+        if (versionCode != null) 'versionCode': versionCode,
+      };
 }
 
 /// An icon for a web app.
@@ -7576,13 +6821,9 @@ class WebAppIcon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageData != null) {
-      _json['imageData'] = imageData;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageData != null) 'imageData': imageData,
+      };
 }
 
 /// A web token used to access the managed Google Play iframe.
@@ -7643,25 +6884,13 @@ class WebToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enabledFeatures != null) {
-      _json['enabledFeatures'] = enabledFeatures;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentFrameUrl != null) {
-      _json['parentFrameUrl'] = parentFrameUrl;
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enabledFeatures != null) 'enabledFeatures': enabledFeatures,
+        if (name != null) 'name': name,
+        if (parentFrameUrl != null) 'parentFrameUrl': parentFrameUrl,
+        if (permissions != null) 'permissions': permissions,
+        if (value != null) 'value': value,
+      };
 }
 
 /// An action to reset a fully managed device or delete a work profile.
@@ -7690,14 +6919,8 @@ class WipeAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (preserveFrp != null) {
-      _json['preserveFrp'] = preserveFrp;
-    }
-    if (wipeAfterDays != null) {
-      _json['wipeAfterDays'] = wipeAfterDays;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (preserveFrp != null) 'preserveFrp': preserveFrp,
+        if (wipeAfterDays != null) 'wipeAfterDays': wipeAfterDays,
+      };
 }

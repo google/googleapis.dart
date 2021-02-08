@@ -2001,19 +2001,11 @@ class AddFirebaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (timeZone != null) {
-      _json['timeZone'] = timeZone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locationId != null) 'locationId': locationId,
+        if (regionCode != null) 'regionCode': regionCode,
+        if (timeZone != null) 'timeZone': timeZone,
+      };
 }
 
 class AddGoogleAnalyticsRequest {
@@ -2041,16 +2033,12 @@ class AddGoogleAnalyticsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsAccountId != null) {
-      _json['analyticsAccountId'] = analyticsAccountId;
-    }
-    if (analyticsPropertyId != null) {
-      _json['analyticsPropertyId'] = analyticsPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsAccountId != null)
+          'analyticsAccountId': analyticsAccountId,
+        if (analyticsPropertyId != null)
+          'analyticsPropertyId': analyticsPropertyId,
+      };
 }
 
 class AdminSdkConfig {
@@ -2096,22 +2084,12 @@ class AdminSdkConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (databaseURL != null) {
-      _json['databaseURL'] = databaseURL;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (storageBucket != null) {
-      _json['storageBucket'] = storageBucket;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (databaseURL != null) 'databaseURL': databaseURL,
+        if (locationId != null) 'locationId': locationId,
+        if (projectId != null) 'projectId': projectId,
+        if (storageBucket != null) 'storageBucket': storageBucket,
+      };
 }
 
 class AnalyticsDetails {
@@ -2146,17 +2124,13 @@ class AnalyticsDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsProperty != null) {
-      _json['analyticsProperty'] = analyticsProperty.toJson();
-    }
-    if (streamMappings != null) {
-      _json['streamMappings'] =
-          streamMappings.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsProperty != null)
+          'analyticsProperty': analyticsProperty.toJson(),
+        if (streamMappings != null)
+          'streamMappings':
+              streamMappings.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Details of a Google Analytics property
@@ -2186,16 +2160,10 @@ class AnalyticsProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (id != null) 'id': id,
+      };
 }
 
 /// Details of a Firebase App for Android.
@@ -2257,25 +2225,13 @@ class AndroidApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (packageName != null) {
-      _json['packageName'] = packageName;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appId != null) 'appId': appId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (packageName != null) 'packageName': packageName,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Configuration metadata of a single Firebase App for Android.
@@ -2307,16 +2263,11 @@ class AndroidAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configFileContents != null) {
-      _json['configFileContents'] = configFileContents;
-    }
-    if (configFilename != null) {
-      _json['configFilename'] = configFilename;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configFileContents != null)
+          'configFileContents': configFileContents,
+        if (configFilename != null) 'configFilename': configFilename,
+      };
 }
 
 /// The default resources associated with the Project.
@@ -2376,22 +2327,13 @@ class DefaultResources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hostingSite != null) {
-      _json['hostingSite'] = hostingSite;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (realtimeDatabaseInstance != null) {
-      _json['realtimeDatabaseInstance'] = realtimeDatabaseInstance;
-    }
-    if (storageBucket != null) {
-      _json['storageBucket'] = storageBucket;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hostingSite != null) 'hostingSite': hostingSite,
+        if (locationId != null) 'locationId': locationId,
+        if (realtimeDatabaseInstance != null)
+          'realtimeDatabaseInstance': realtimeDatabaseInstance,
+        if (storageBucket != null) 'storageBucket': storageBucket,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2408,10 +2350,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 class FinalizeDefaultLocationRequest {
@@ -2429,13 +2368,9 @@ class FinalizeDefaultLocationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locationId != null) 'locationId': locationId,
+      };
 }
 
 /// A high-level summary of an App.
@@ -2498,25 +2433,13 @@ class FirebaseAppInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (namespace != null) {
-      _json['namespace'] = namespace;
-    }
-    if (platform != null) {
-      _json['platform'] = platform;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appId != null) 'appId': appId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (namespace != null) 'namespace': namespace,
+        if (platform != null) 'platform': platform,
+      };
 }
 
 /// A `FirebaseProject` is the top-level Firebase entity.
@@ -2603,28 +2526,14 @@ class FirebaseProject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (projectNumber != null) {
-      _json['projectNumber'] = projectNumber;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.toJson();
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (projectNumber != null) 'projectNumber': projectNumber,
+        if (resources != null) 'resources': resources.toJson(),
+        if (state != null) 'state': state,
+      };
 }
 
 /// Details of a Firebase App for iOS.
@@ -2693,28 +2602,14 @@ class IosApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (appStoreId != null) {
-      _json['appStoreId'] = appStoreId;
-    }
-    if (bundleId != null) {
-      _json['bundleId'] = bundleId;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appId != null) 'appId': appId,
+        if (appStoreId != null) 'appStoreId': appStoreId,
+        if (bundleId != null) 'bundleId': bundleId,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+      };
 }
 
 /// Configuration metadata of a single Firebase App for iOS.
@@ -2746,16 +2641,11 @@ class IosAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (configFileContents != null) {
-      _json['configFileContents'] = configFileContents;
-    }
-    if (configFilename != null) {
-      _json['configFilename'] = configFilename;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (configFileContents != null)
+          'configFileContents': configFileContents,
+        if (configFilename != null) 'configFilename': configFilename,
+      };
 }
 
 class ListAndroidAppsResponse {
@@ -2785,16 +2675,10 @@ class ListAndroidAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apps != null) {
-      _json['apps'] = apps.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListAvailableLocationsResponse {
@@ -2824,16 +2708,11 @@ class ListAvailableLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListAvailableProjectsResponse {
@@ -2864,17 +2743,11 @@ class ListAvailableProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (projectInfo != null) {
-      _json['projectInfo'] =
-          projectInfo.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (projectInfo != null)
+          'projectInfo': projectInfo.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListFirebaseProjectsResponse {
@@ -2904,16 +2777,11 @@ class ListFirebaseProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (results != null) {
-      _json['results'] = results.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListIosAppsResponse {
@@ -2943,16 +2811,10 @@ class ListIosAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apps != null) {
-      _json['apps'] = apps.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 class ListShaCertificatesResponse {
@@ -2970,14 +2832,10 @@ class ListShaCertificatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certificates != null) {
-      _json['certificates'] =
-          certificates.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certificates != null)
+          'certificates': certificates.map((value) => value.toJson()).toList(),
+      };
 }
 
 class ListWebAppsResponse {
@@ -3007,16 +2865,10 @@ class ListWebAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apps != null) {
-      _json['apps'] = apps.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A GCP resource location that can be selected for a FirebaseProject.
@@ -3060,19 +2912,11 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (features != null) {
-      _json['features'] = features;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (features != null) 'features': features,
+        if (locationId != null) 'locationId': locationId,
+        if (type != null) 'type': type,
+      };
 }
 
 /// This is proto2's version of MessageSet.
@@ -3083,10 +2927,7 @@ class MessageSet {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3165,25 +3006,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// A reference to a Google Cloud Platform (GCP) `Project`.
@@ -3222,19 +3051,11 @@ class ProjectInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (project != null) {
-      _json['project'] = project;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (locationId != null) 'locationId': locationId,
+        if (project != null) 'project': project,
+      };
 }
 
 class RemoveAnalyticsRequest {
@@ -3258,13 +3079,10 @@ class RemoveAnalyticsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (analyticsPropertyId != null) {
-      _json['analyticsPropertyId'] = analyticsPropertyId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (analyticsPropertyId != null)
+          'analyticsPropertyId': analyticsPropertyId,
+      };
 }
 
 class SearchFirebaseAppsResponse {
@@ -3293,16 +3111,10 @@ class SearchFirebaseAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apps != null) {
-      _json['apps'] = apps.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A SHA-1 or SHA-256 certificate associated with the AndroidApp.
@@ -3348,19 +3160,11 @@ class ShaCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (certType != null) {
-      _json['certType'] = certType;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (shaHash != null) {
-      _json['shaHash'] = shaHash;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (certType != null) 'certType': certType,
+        if (name != null) 'name': name,
+        if (shaHash != null) 'shaHash': shaHash,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3410,19 +3214,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// Wire-format for a Status object
@@ -3470,25 +3266,13 @@ class StatusProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (canonicalCode != null) {
-      _json['canonicalCode'] = canonicalCode;
-    }
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    if (messageSet != null) {
-      _json['messageSet'] = messageSet.toJson();
-    }
-    if (space != null) {
-      _json['space'] = space;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (canonicalCode != null) 'canonicalCode': canonicalCode,
+        if (code != null) 'code': code,
+        if (message != null) 'message': message,
+        if (messageSet != null) 'messageSet': messageSet.toJson(),
+        if (space != null) 'space': space,
+      };
 }
 
 /// A mapping of a Firebase App to a Google Analytics data stream
@@ -3531,19 +3315,11 @@ class StreamMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (app != null) {
-      _json['app'] = app;
-    }
-    if (measurementId != null) {
-      _json['measurementId'] = measurementId;
-    }
-    if (streamId != null) {
-      _json['streamId'] = streamId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (app != null) 'app': app,
+        if (measurementId != null) 'measurementId': measurementId,
+        if (streamId != null) 'streamId': streamId,
+      };
 }
 
 /// Details of a Firebase App for the web.
@@ -3617,28 +3393,14 @@ class WebApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (appUrls != null) {
-      _json['appUrls'] = appUrls;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (webId != null) {
-      _json['webId'] = webId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (appId != null) 'appId': appId,
+        if (appUrls != null) 'appUrls': appUrls,
+        if (displayName != null) 'displayName': displayName,
+        if (name != null) 'name': name,
+        if (projectId != null) 'projectId': projectId,
+        if (webId != null) 'webId': webId,
+      };
 }
 
 /// Configuration metadata of a single Firebase App for the web.
@@ -3728,35 +3490,15 @@ class WebAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiKey != null) {
-      _json['apiKey'] = apiKey;
-    }
-    if (appId != null) {
-      _json['appId'] = appId;
-    }
-    if (authDomain != null) {
-      _json['authDomain'] = authDomain;
-    }
-    if (databaseURL != null) {
-      _json['databaseURL'] = databaseURL;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (measurementId != null) {
-      _json['measurementId'] = measurementId;
-    }
-    if (messagingSenderId != null) {
-      _json['messagingSenderId'] = messagingSenderId;
-    }
-    if (projectId != null) {
-      _json['projectId'] = projectId;
-    }
-    if (storageBucket != null) {
-      _json['storageBucket'] = storageBucket;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiKey != null) 'apiKey': apiKey,
+        if (appId != null) 'appId': appId,
+        if (authDomain != null) 'authDomain': authDomain,
+        if (databaseURL != null) 'databaseURL': databaseURL,
+        if (locationId != null) 'locationId': locationId,
+        if (measurementId != null) 'measurementId': measurementId,
+        if (messagingSenderId != null) 'messagingSenderId': messagingSenderId,
+        if (projectId != null) 'projectId': projectId,
+        if (storageBucket != null) 'storageBucket': storageBucket,
+      };
 }

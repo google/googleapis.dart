@@ -162,16 +162,11 @@ class Challenge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternativeChallenge != null) {
-      _json['alternativeChallenge'] = alternativeChallenge.toJson();
-    }
-    if (challenge != null) {
-      _json['challenge'] = challenge.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternativeChallenge != null)
+          'alternativeChallenge': alternativeChallenge.toJson(),
+        if (challenge != null) 'challenge': challenge.toJson(),
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -188,10 +183,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The wrapper message of any data and its signature.
@@ -225,16 +217,10 @@ class SignedData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (data != null) {
-      _json['data'] = data;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (data != null) 'data': data,
+        if (signature != null) 'signature': signature,
+      };
 }
 
 /// signed ChallengeResponse
@@ -262,16 +248,11 @@ class VerifyChallengeResponseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (challengeResponse != null) {
-      _json['challengeResponse'] = challengeResponse.toJson();
-    }
-    if (expectedIdentity != null) {
-      _json['expectedIdentity'] = expectedIdentity;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (challengeResponse != null)
+          'challengeResponse': challengeResponse.toJson(),
+        if (expectedIdentity != null) 'expectedIdentity': expectedIdentity,
+      };
 }
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
@@ -318,20 +299,13 @@ class VerifyChallengeResponseResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceEnrollmentId != null) {
-      _json['deviceEnrollmentId'] = deviceEnrollmentId;
-    }
-    if (devicePermanentId != null) {
-      _json['devicePermanentId'] = devicePermanentId;
-    }
-    if (signedPublicKeyAndChallenge != null) {
-      _json['signedPublicKeyAndChallenge'] = signedPublicKeyAndChallenge;
-    }
-    if (verificationOutput != null) {
-      _json['verificationOutput'] = verificationOutput;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceEnrollmentId != null)
+          'deviceEnrollmentId': deviceEnrollmentId,
+        if (devicePermanentId != null) 'devicePermanentId': devicePermanentId,
+        if (signedPublicKeyAndChallenge != null)
+          'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge,
+        if (verificationOutput != null)
+          'verificationOutput': verificationOutput,
+      };
 }

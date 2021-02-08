@@ -694,124 +694,55 @@ class Attributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additionalImageLink != null) {
-      _json['additionalImageLink'] =
-          additionalImageLink.map((value) => value.toJson()).toList();
-    }
-    if (ageGroup != null) {
-      _json['ageGroup'] = ageGroup;
-    }
-    if (brand != null) {
-      _json['brand'] = brand;
-    }
-    if (capacity != null) {
-      _json['capacity'] = capacity.toJson();
-    }
-    if (color != null) {
-      _json['color'] = color;
-    }
-    if (count != null) {
-      _json['count'] = count.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (disclosureDate != null) {
-      _json['disclosureDate'] = disclosureDate;
-    }
-    if (excludedDestination != null) {
-      _json['excludedDestination'] = excludedDestination;
-    }
-    if (featureDescription != null) {
-      _json['featureDescription'] =
-          featureDescription.map((value) => value.toJson()).toList();
-    }
-    if (flavor != null) {
-      _json['flavor'] = flavor;
-    }
-    if (format != null) {
-      _json['format'] = format;
-    }
-    if (gender != null) {
-      _json['gender'] = gender;
-    }
-    if (gtin != null) {
-      _json['gtin'] = gtin;
-    }
-    if (imageLink != null) {
-      _json['imageLink'] = imageLink.toJson();
-    }
-    if (includedDestination != null) {
-      _json['includedDestination'] = includedDestination;
-    }
-    if (itemGroupId != null) {
-      _json['itemGroupId'] = itemGroupId;
-    }
-    if (material != null) {
-      _json['material'] = material;
-    }
-    if (mpn != null) {
-      _json['mpn'] = mpn;
-    }
-    if (pattern != null) {
-      _json['pattern'] = pattern;
-    }
-    if (productDetail != null) {
-      _json['productDetail'] =
-          productDetail.map((value) => value.toJson()).toList();
-    }
-    if (productHighlight != null) {
-      _json['productHighlight'] = productHighlight;
-    }
-    if (productLine != null) {
-      _json['productLine'] = productLine;
-    }
-    if (productName != null) {
-      _json['productName'] = productName;
-    }
-    if (productPageUrl != null) {
-      _json['productPageUrl'] = productPageUrl;
-    }
-    if (productType != null) {
-      _json['productType'] = productType;
-    }
-    if (releaseDate != null) {
-      _json['releaseDate'] = releaseDate;
-    }
-    if (richProductContent != null) {
-      _json['richProductContent'] = richProductContent;
-    }
-    if (scent != null) {
-      _json['scent'] = scent;
-    }
-    if (size != null) {
-      _json['size'] = size;
-    }
-    if (sizeSystem != null) {
-      _json['sizeSystem'] = sizeSystem;
-    }
-    if (sizeType != null) {
-      _json['sizeType'] = sizeType;
-    }
-    if (suggestedRetailPrice != null) {
-      _json['suggestedRetailPrice'] = suggestedRetailPrice.toJson();
-    }
-    if (targetClientId != null) {
-      _json['targetClientId'] = targetClientId;
-    }
-    if (theme != null) {
-      _json['theme'] = theme;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (videoLink != null) {
-      _json['videoLink'] = videoLink;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additionalImageLink != null)
+          'additionalImageLink':
+              additionalImageLink.map((value) => value.toJson()).toList(),
+        if (ageGroup != null) 'ageGroup': ageGroup,
+        if (brand != null) 'brand': brand,
+        if (capacity != null) 'capacity': capacity.toJson(),
+        if (color != null) 'color': color,
+        if (count != null) 'count': count.toJson(),
+        if (description != null) 'description': description,
+        if (disclosureDate != null) 'disclosureDate': disclosureDate,
+        if (excludedDestination != null)
+          'excludedDestination': excludedDestination,
+        if (featureDescription != null)
+          'featureDescription':
+              featureDescription.map((value) => value.toJson()).toList(),
+        if (flavor != null) 'flavor': flavor,
+        if (format != null) 'format': format,
+        if (gender != null) 'gender': gender,
+        if (gtin != null) 'gtin': gtin,
+        if (imageLink != null) 'imageLink': imageLink.toJson(),
+        if (includedDestination != null)
+          'includedDestination': includedDestination,
+        if (itemGroupId != null) 'itemGroupId': itemGroupId,
+        if (material != null) 'material': material,
+        if (mpn != null) 'mpn': mpn,
+        if (pattern != null) 'pattern': pattern,
+        if (productDetail != null)
+          'productDetail':
+              productDetail.map((value) => value.toJson()).toList(),
+        if (productHighlight != null) 'productHighlight': productHighlight,
+        if (productLine != null) 'productLine': productLine,
+        if (productName != null) 'productName': productName,
+        if (productPageUrl != null) 'productPageUrl': productPageUrl,
+        if (productType != null) 'productType': productType,
+        if (releaseDate != null) 'releaseDate': releaseDate,
+        if (richProductContent != null)
+          'richProductContent': richProductContent,
+        if (scent != null) 'scent': scent,
+        if (size != null) 'size': size,
+        if (sizeSystem != null) 'sizeSystem': sizeSystem,
+        if (sizeType != null) 'sizeType': sizeType,
+        if (suggestedRetailPrice != null)
+          'suggestedRetailPrice': suggestedRetailPrice.toJson(),
+        if (targetClientId != null) 'targetClientId': targetClientId,
+        if (theme != null) 'theme': theme,
+        if (title != null) 'title': title,
+        if (videoLink != null) 'videoLink': videoLink,
+      };
 }
 
 /// The capacity of a product.
@@ -836,16 +767,10 @@ class Capacity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (unit != null) 'unit': unit,
+        if (value != null) 'value': value,
+      };
 }
 
 /// The number of products in a single package.
@@ -870,16 +795,10 @@ class Count {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (unit != null) {
-      _json['unit'] = unit;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (unit != null) 'unit': unit,
+        if (value != null) 'value': value,
+      };
 }
 
 /// The destination status.
@@ -906,16 +825,10 @@ class DestinationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (destination != null) {
-      _json['destination'] = destination;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (destination != null) 'destination': destination,
+        if (status != null) 'status': status,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -932,10 +845,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// A feature description of the product.
@@ -967,19 +877,11 @@ class FeatureDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (headline != null) {
-      _json['headline'] = headline;
-    }
-    if (image != null) {
-      _json['image'] = image.toJson();
-    }
-    if (text != null) {
-      _json['text'] = text;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (headline != null) 'headline': headline,
+        if (image != null) 'image': image.toJson(),
+        if (text != null) 'text': text,
+      };
 }
 
 /// An image.
@@ -1037,19 +939,11 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUrl != null) {
-      _json['imageUrl'] = imageUrl;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUrl != null) 'imageUrl': imageUrl,
+        if (status != null) 'status': status,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Product issue.
@@ -1128,34 +1022,16 @@ class Issue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attribute != null) {
-      _json['attribute'] = attribute;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (destination != null) {
-      _json['destination'] = destination;
-    }
-    if (resolution != null) {
-      _json['resolution'] = resolution;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attribute != null) 'attribute': attribute,
+        if (description != null) 'description': description,
+        if (destination != null) 'destination': destination,
+        if (resolution != null) 'resolution': resolution,
+        if (severity != null) 'severity': severity,
+        if (timestamp != null) 'timestamp': timestamp,
+        if (title != null) 'title': title,
+        if (type != null) 'type': type,
+      };
 }
 
 class ListProductsResponse {
@@ -1179,16 +1055,11 @@ class ListProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (products != null) {
-      _json['products'] = products.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (products != null)
+          'products': products.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A price.
@@ -1210,16 +1081,10 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (amount != null) {
-      _json['amount'] = amount;
-    }
-    if (currency != null) {
-      _json['currency'] = currency;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (amount != null) 'amount': amount,
+        if (currency != null) 'currency': currency,
+      };
 }
 
 /// Product data.
@@ -1299,35 +1164,19 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.toJson();
-    }
-    if (contentLanguage != null) {
-      _json['contentLanguage'] = contentLanguage;
-    }
-    if (destinationStatuses != null) {
-      _json['destinationStatuses'] =
-          destinationStatuses.map((value) => value.toJson()).toList();
-    }
-    if (issues != null) {
-      _json['issues'] = issues.map((value) => value.toJson()).toList();
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    if (productId != null) {
-      _json['productId'] = productId;
-    }
-    if (targetCountry != null) {
-      _json['targetCountry'] = targetCountry;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes.toJson(),
+        if (contentLanguage != null) 'contentLanguage': contentLanguage,
+        if (destinationStatuses != null)
+          'destinationStatuses':
+              destinationStatuses.map((value) => value.toJson()).toList(),
+        if (issues != null)
+          'issues': issues.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name,
+        if (parent != null) 'parent': parent,
+        if (productId != null) 'productId': productId,
+        if (targetCountry != null) 'targetCountry': targetCountry,
+      };
 }
 
 /// A product detail of the product.
@@ -1358,17 +1207,9 @@ class ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributeName != null) {
-      _json['attributeName'] = attributeName;
-    }
-    if (attributeValue != null) {
-      _json['attributeValue'] = attributeValue;
-    }
-    if (sectionName != null) {
-      _json['sectionName'] = sectionName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributeName != null) 'attributeName': attributeName,
+        if (attributeValue != null) 'attributeValue': attributeValue,
+        if (sectionName != null) 'sectionName': sectionName,
+      };
 }

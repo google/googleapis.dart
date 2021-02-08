@@ -451,16 +451,10 @@ class Accelerator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (count != null) 'count': count,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Specifies a single action that runs a Docker container.
@@ -707,67 +701,32 @@ class Action {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alwaysRun != null) {
-      _json['alwaysRun'] = alwaysRun;
-    }
-    if (blockExternalNetwork != null) {
-      _json['blockExternalNetwork'] = blockExternalNetwork;
-    }
-    if (commands != null) {
-      _json['commands'] = commands;
-    }
-    if (containerName != null) {
-      _json['containerName'] = containerName;
-    }
-    if (credentials != null) {
-      _json['credentials'] = credentials.toJson();
-    }
-    if (disableImagePrefetch != null) {
-      _json['disableImagePrefetch'] = disableImagePrefetch;
-    }
-    if (disableStandardErrorCapture != null) {
-      _json['disableStandardErrorCapture'] = disableStandardErrorCapture;
-    }
-    if (enableFuse != null) {
-      _json['enableFuse'] = enableFuse;
-    }
-    if (entrypoint != null) {
-      _json['entrypoint'] = entrypoint;
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (ignoreExitStatus != null) {
-      _json['ignoreExitStatus'] = ignoreExitStatus;
-    }
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (mounts != null) {
-      _json['mounts'] = mounts.map((value) => value.toJson()).toList();
-    }
-    if (pidNamespace != null) {
-      _json['pidNamespace'] = pidNamespace;
-    }
-    if (portMappings != null) {
-      _json['portMappings'] = portMappings;
-    }
-    if (publishExposedPorts != null) {
-      _json['publishExposedPorts'] = publishExposedPorts;
-    }
-    if (runInBackground != null) {
-      _json['runInBackground'] = runInBackground;
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alwaysRun != null) 'alwaysRun': alwaysRun,
+        if (blockExternalNetwork != null)
+          'blockExternalNetwork': blockExternalNetwork,
+        if (commands != null) 'commands': commands,
+        if (containerName != null) 'containerName': containerName,
+        if (credentials != null) 'credentials': credentials.toJson(),
+        if (disableImagePrefetch != null)
+          'disableImagePrefetch': disableImagePrefetch,
+        if (disableStandardErrorCapture != null)
+          'disableStandardErrorCapture': disableStandardErrorCapture,
+        if (enableFuse != null) 'enableFuse': enableFuse,
+        if (entrypoint != null) 'entrypoint': entrypoint,
+        if (environment != null) 'environment': environment,
+        if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus,
+        if (imageUri != null) 'imageUri': imageUri,
+        if (labels != null) 'labels': labels,
+        if (mounts != null)
+          'mounts': mounts.map((value) => value.toJson()).toList(),
+        if (pidNamespace != null) 'pidNamespace': pidNamespace,
+        if (portMappings != null) 'portMappings': portMappings,
+        if (publishExposedPorts != null)
+          'publishExposedPorts': publishExposedPorts,
+        if (runInBackground != null) 'runInBackground': runInBackground,
+        if (timeout != null) 'timeout': timeout,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -778,10 +737,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// An event generated when a container is forcibly terminated by the worker.
@@ -800,13 +756,9 @@ class ContainerKilledEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+      };
 }
 
 /// An event generated when a container starts.
@@ -847,19 +799,11 @@ class ContainerStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (portMappings != null) {
-      _json['portMappings'] = portMappings;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (portMappings != null) 'portMappings': portMappings,
+      };
 }
 
 /// An event generated when a container exits.
@@ -894,19 +838,11 @@ class ContainerStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    if (exitStatus != null) {
-      _json['exitStatus'] = exitStatus;
-    }
-    if (stderr != null) {
-      _json['stderr'] = stderr;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+        if (exitStatus != null) 'exitStatus': exitStatus,
+        if (stderr != null) 'stderr': stderr,
+      };
 }
 
 /// An event generated whenever a resource limitation or transient error delays
@@ -939,16 +875,10 @@ class DelayedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cause != null) {
-      _json['cause'] = cause;
-    }
-    if (metrics != null) {
-      _json['metrics'] = metrics;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cause != null) 'cause': cause,
+        if (metrics != null) 'metrics': metrics,
+      };
 }
 
 /// Carries information about a disk that can be attached to a VM.
@@ -998,22 +928,12 @@ class Disk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (sizeGb != null) {
-      _json['sizeGb'] = sizeGb;
-    }
-    if (sourceImage != null) {
-      _json['sourceImage'] = sourceImage;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (sizeGb != null) 'sizeGb': sizeGb,
+        if (sourceImage != null) 'sourceImage': sourceImage,
+        if (type != null) 'type': type,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1030,10 +950,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Carries information about events that occur during pipeline execution.
@@ -1128,46 +1045,24 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (containerKilled != null) {
-      _json['containerKilled'] = containerKilled.toJson();
-    }
-    if (containerStarted != null) {
-      _json['containerStarted'] = containerStarted.toJson();
-    }
-    if (containerStopped != null) {
-      _json['containerStopped'] = containerStopped.toJson();
-    }
-    if (delayed != null) {
-      _json['delayed'] = delayed.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (failed != null) {
-      _json['failed'] = failed.toJson();
-    }
-    if (pullStarted != null) {
-      _json['pullStarted'] = pullStarted.toJson();
-    }
-    if (pullStopped != null) {
-      _json['pullStopped'] = pullStopped.toJson();
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (unexpectedExitStatus != null) {
-      _json['unexpectedExitStatus'] = unexpectedExitStatus.toJson();
-    }
-    if (workerAssigned != null) {
-      _json['workerAssigned'] = workerAssigned.toJson();
-    }
-    if (workerReleased != null) {
-      _json['workerReleased'] = workerReleased.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (containerKilled != null)
+          'containerKilled': containerKilled.toJson(),
+        if (containerStarted != null)
+          'containerStarted': containerStarted.toJson(),
+        if (containerStopped != null)
+          'containerStopped': containerStopped.toJson(),
+        if (delayed != null) 'delayed': delayed.toJson(),
+        if (description != null) 'description': description,
+        if (failed != null) 'failed': failed.toJson(),
+        if (pullStarted != null) 'pullStarted': pullStarted.toJson(),
+        if (pullStopped != null) 'pullStopped': pullStopped.toJson(),
+        if (timestamp != null) 'timestamp': timestamp,
+        if (unexpectedExitStatus != null)
+          'unexpectedExitStatus': unexpectedExitStatus.toJson(),
+        if (workerAssigned != null) 'workerAssigned': workerAssigned.toJson(),
+        if (workerReleased != null) 'workerReleased': workerReleased.toJson(),
+      };
 }
 
 /// Configuration for an existing disk to be attached to the VM.
@@ -1192,13 +1087,9 @@ class ExistingDisk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disk != null) {
-      _json['disk'] = disk;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disk != null) 'disk': disk,
+      };
 }
 
 /// An event generated when the execution of a pipeline has failed.
@@ -1302,16 +1193,10 @@ class FailedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cause != null) {
-      _json['cause'] = cause;
-    }
-    if (code != null) {
-      _json['code'] = code;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cause != null) 'cause': cause,
+        if (code != null) 'code': code,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1336,16 +1221,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1370,16 +1250,11 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -1444,25 +1319,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// Carries information about the pipeline execution that is returned in the
@@ -1520,28 +1383,15 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (events != null) {
-      _json['events'] = events.map((value) => value.toJson()).toList();
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (pipeline != null) {
-      _json['pipeline'] = pipeline.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (events != null)
+          'events': events.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels,
+        if (pipeline != null) 'pipeline': pipeline.toJson(),
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// Carries information about a particular disk mount inside a container.
@@ -1569,19 +1419,11 @@ class Mount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (disk != null) {
-      _json['disk'] = disk;
-    }
-    if (path != null) {
-      _json['path'] = path;
-    }
-    if (readOnly != null) {
-      _json['readOnly'] = readOnly;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (disk != null) 'disk': disk,
+        if (path != null) 'path': path,
+        if (readOnly != null) 'readOnly': readOnly,
+      };
 }
 
 /// Configuration for an `NFSMount` to be attached to the VM.
@@ -1599,13 +1441,9 @@ class NFSMount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (target != null) {
-      _json['target'] = target;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (target != null) 'target': target,
+      };
 }
 
 /// VM networking options.
@@ -1648,19 +1486,11 @@ class Network {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (network != null) {
-      _json['network'] = network;
-    }
-    if (subnetwork != null) {
-      _json['subnetwork'] = subnetwork;
-    }
-    if (usePrivateAddress != null) {
-      _json['usePrivateAddress'] = usePrivateAddress;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (network != null) 'network': network,
+        if (subnetwork != null) 'subnetwork': subnetwork,
+        if (usePrivateAddress != null) 'usePrivateAddress': usePrivateAddress,
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1728,25 +1558,13 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// Configuration for a persistent disk to be attached to the VM.
@@ -1785,19 +1603,11 @@ class PersistentDisk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sizeGb != null) {
-      _json['sizeGb'] = sizeGb;
-    }
-    if (sourceImage != null) {
-      _json['sourceImage'] = sourceImage;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sizeGb != null) 'sizeGb': sizeGb,
+        if (sourceImage != null) 'sourceImage': sourceImage,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Specifies a series of actions to execute, expressed as Docker containers.
@@ -1851,22 +1661,13 @@ class Pipeline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actions != null) {
-      _json['actions'] = actions.map((value) => value.toJson()).toList();
-    }
-    if (environment != null) {
-      _json['environment'] = environment;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.toJson();
-    }
-    if (timeout != null) {
-      _json['timeout'] = timeout;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actions != null)
+          'actions': actions.map((value) => value.toJson()).toList(),
+        if (environment != null) 'environment': environment,
+        if (resources != null) 'resources': resources.toJson(),
+        if (timeout != null) 'timeout': timeout,
+      };
 }
 
 /// An event generated when the worker starts pulling an image.
@@ -1882,13 +1683,9 @@ class PullStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri,
+      };
 }
 
 /// An event generated when the worker stops pulling an image.
@@ -1904,13 +1701,9 @@ class PullStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (imageUri != null) {
-      _json['imageUri'] = imageUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri,
+      };
 }
 
 /// The system resources for the pipeline run.
@@ -1949,19 +1742,11 @@ class Resources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (regions != null) {
-      _json['regions'] = regions;
-    }
-    if (virtualMachine != null) {
-      _json['virtualMachine'] = virtualMachine.toJson();
-    }
-    if (zones != null) {
-      _json['zones'] = zones;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (regions != null) 'regions': regions,
+        if (virtualMachine != null) 'virtualMachine': virtualMachine.toJson(),
+        if (zones != null) 'zones': zones,
+      };
 }
 
 /// The arguments to the `RunPipeline` method.
@@ -2000,16 +1785,10 @@ class RunPipelineRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (pipeline != null) {
-      _json['pipeline'] = pipeline.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (labels != null) 'labels': labels,
+        if (pipeline != null) 'pipeline': pipeline.toJson(),
+      };
 }
 
 /// The response to the RunPipeline method, returned in the operation's result
@@ -2021,10 +1800,7 @@ class RunPipelineResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Holds encrypted information that is only decrypted and stored in RAM by the
@@ -2053,16 +1829,10 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cipherText != null) {
-      _json['cipherText'] = cipherText;
-    }
-    if (keyName != null) {
-      _json['keyName'] = keyName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cipherText != null) 'cipherText': cipherText,
+        if (keyName != null) 'keyName': keyName,
+      };
 }
 
 /// Carries information about a Google Cloud service account.
@@ -2090,16 +1860,10 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (scopes != null) {
-      _json['scopes'] = scopes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (email != null) 'email': email,
+        if (scopes != null) 'scopes': scopes,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2149,19 +1913,11 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// An event generated when the execution of a container results in a non-zero
@@ -2187,16 +1943,10 @@ class UnexpectedExitStatusEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (actionId != null) {
-      _json['actionId'] = actionId;
-    }
-    if (exitStatus != null) {
-      _json['exitStatus'] = exitStatus;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (actionId != null) 'actionId': actionId,
+        if (exitStatus != null) 'exitStatus': exitStatus,
+      };
 }
 
 /// Carries information about a Compute Engine VM resource.
@@ -2367,53 +2117,27 @@ class VirtualMachine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (accelerators != null) {
-      _json['accelerators'] =
-          accelerators.map((value) => value.toJson()).toList();
-    }
-    if (bootDiskSizeGb != null) {
-      _json['bootDiskSizeGb'] = bootDiskSizeGb;
-    }
-    if (bootImage != null) {
-      _json['bootImage'] = bootImage;
-    }
-    if (cpuPlatform != null) {
-      _json['cpuPlatform'] = cpuPlatform;
-    }
-    if (disks != null) {
-      _json['disks'] = disks.map((value) => value.toJson()).toList();
-    }
-    if (dockerCacheImages != null) {
-      _json['dockerCacheImages'] = dockerCacheImages;
-    }
-    if (enableStackdriverMonitoring != null) {
-      _json['enableStackdriverMonitoring'] = enableStackdriverMonitoring;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (network != null) {
-      _json['network'] = network.toJson();
-    }
-    if (nvidiaDriverVersion != null) {
-      _json['nvidiaDriverVersion'] = nvidiaDriverVersion;
-    }
-    if (preemptible != null) {
-      _json['preemptible'] = preemptible;
-    }
-    if (serviceAccount != null) {
-      _json['serviceAccount'] = serviceAccount.toJson();
-    }
-    if (volumes != null) {
-      _json['volumes'] = volumes.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (accelerators != null)
+          'accelerators': accelerators.map((value) => value.toJson()).toList(),
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
+        if (bootImage != null) 'bootImage': bootImage,
+        if (cpuPlatform != null) 'cpuPlatform': cpuPlatform,
+        if (disks != null)
+          'disks': disks.map((value) => value.toJson()).toList(),
+        if (dockerCacheImages != null) 'dockerCacheImages': dockerCacheImages,
+        if (enableStackdriverMonitoring != null)
+          'enableStackdriverMonitoring': enableStackdriverMonitoring,
+        if (labels != null) 'labels': labels,
+        if (machineType != null) 'machineType': machineType,
+        if (network != null) 'network': network.toJson(),
+        if (nvidiaDriverVersion != null)
+          'nvidiaDriverVersion': nvidiaDriverVersion,
+        if (preemptible != null) 'preemptible': preemptible,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount.toJson(),
+        if (volumes != null)
+          'volumes': volumes.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Carries information about storage that can be attached to a VM.
@@ -2456,22 +2180,12 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (existingDisk != null) {
-      _json['existingDisk'] = existingDisk.toJson();
-    }
-    if (nfsMount != null) {
-      _json['nfsMount'] = nfsMount.toJson();
-    }
-    if (persistentDisk != null) {
-      _json['persistentDisk'] = persistentDisk.toJson();
-    }
-    if (volume != null) {
-      _json['volume'] = volume;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (existingDisk != null) 'existingDisk': existingDisk.toJson(),
+        if (nfsMount != null) 'nfsMount': nfsMount.toJson(),
+        if (persistentDisk != null) 'persistentDisk': persistentDisk.toJson(),
+        if (volume != null) 'volume': volume,
+      };
 }
 
 /// An event generated after a worker VM has been assigned to run the pipeline.
@@ -2499,19 +2213,11 @@ class WorkerAssignedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (machineType != null) {
-      _json['machineType'] = machineType;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instance != null) 'instance': instance,
+        if (machineType != null) 'machineType': machineType,
+        if (zone != null) 'zone': zone,
+      };
 }
 
 /// An event generated when the worker VM that was assigned to the pipeline has
@@ -2534,14 +2240,8 @@ class WorkerReleasedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (instance != null) {
-      _json['instance'] = instance;
-    }
-    if (zone != null) {
-      _json['zone'] = zone;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (instance != null) 'instance': instance,
+        if (zone != null) 'zone': zone,
+      };
 }

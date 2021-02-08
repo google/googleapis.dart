@@ -502,23 +502,14 @@ class GoogleHomeEnterpriseSdmV1Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentRelations != null) {
-      _json['parentRelations'] =
-          parentRelations.map((value) => value.toJson()).toList();
-    }
-    if (traits != null) {
-      _json['traits'] = traits;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (parentRelations != null)
+          'parentRelations':
+              parentRelations.map((value) => value.toJson()).toList(),
+        if (traits != null) 'traits': traits,
+        if (type != null) 'type': type,
+      };
 }
 
 /// Request message for SmartDeviceManagementService.ExecuteDeviceCommand
@@ -551,16 +542,10 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (command != null) {
-      _json['command'] = command;
-    }
-    if (params != null) {
-      _json['params'] = params;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (command != null) 'command': command,
+        if (params != null) 'params': params,
+      };
 }
 
 /// Response message for SmartDeviceManagementService.ExecuteDeviceCommand
@@ -586,13 +571,9 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (results != null) {
-      _json['results'] = results;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null) 'results': results,
+      };
 }
 
 /// Response message for SmartDeviceManagementService.ListDevices
@@ -618,16 +599,11 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (devices != null) {
-      _json['devices'] = devices.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (devices != null)
+          'devices': devices.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for SmartDeviceManagementService.ListRooms
@@ -655,16 +631,11 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (rooms != null) {
-      _json['rooms'] = rooms.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (rooms != null)
+          'rooms': rooms.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Response message for SmartDeviceManagementService.ListStructures
@@ -692,16 +663,11 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (structures != null) {
-      _json['structures'] = structures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (structures != null)
+          'structures': structures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents device relationships, for instance, structure/room to which the
@@ -735,16 +701,10 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (parent != null) {
-      _json['parent'] = parent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (parent != null) 'parent': parent,
+      };
 }
 
 /// Room resource represents an instance of sub-space within a structure such as
@@ -780,16 +740,10 @@ class GoogleHomeEnterpriseSdmV1Room {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (traits != null) {
-      _json['traits'] = traits;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (traits != null) 'traits': traits,
+      };
 }
 
 /// Structure resource represents an instance of enterprise managed home or
@@ -825,14 +779,8 @@ class GoogleHomeEnterpriseSdmV1Structure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (traits != null) {
-      _json['traits'] = traits;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (traits != null) 'traits': traits,
+      };
 }

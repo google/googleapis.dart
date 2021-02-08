@@ -1770,19 +1770,11 @@ class AttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (intValue != null) {
-      _json['intValue'] = intValue;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (intValue != null) 'intValue': intValue,
+        if (stringValue != null) 'stringValue': stringValue.toJson(),
+      };
 }
 
 /// A set of attributes, each in the format `[KEY]:[VALUE]`.
@@ -1821,17 +1813,13 @@ class Attributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributeMap != null) {
-      _json['attributeMap'] =
-          attributeMap.map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (droppedAttributesCount != null) {
-      _json['droppedAttributesCount'] = droppedAttributesCount;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributeMap != null)
+          'attributeMap': attributeMap
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (droppedAttributesCount != null)
+          'droppedAttributesCount': droppedAttributesCount,
+      };
 }
 
 /// Specifies the audit configuration for a service.
@@ -1875,17 +1863,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditLogConfigs != null) {
-      _json['auditLogConfigs'] =
-          auditLogConfigs.map((value) => value.toJson()).toList();
-    }
-    if (service != null) {
-      _json['service'] = service;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditLogConfigs != null)
+          'auditLogConfigs':
+              auditLogConfigs.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service,
+      };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -1922,16 +1905,10 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json['logType'] = logType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+        if (logType != null) 'logType': logType,
+      };
 }
 
 /// Message for reporting billing requests through Eventstream.
@@ -1955,14 +1932,11 @@ class BillingView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (reportRequests != null) {
-      _json['reportRequests'] =
-          reportRequests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (reportRequests != null)
+          'reportRequests':
+              reportRequests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -2031,19 +2005,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// Distribution represents a frequency distribution of double-valued sample
@@ -2151,40 +2117,22 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bucketCounts != null) {
-      _json['bucketCounts'] = bucketCounts;
-    }
-    if (count != null) {
-      _json['count'] = count;
-    }
-    if (exemplars != null) {
-      _json['exemplars'] = exemplars.map((value) => value.toJson()).toList();
-    }
-    if (explicitBuckets != null) {
-      _json['explicitBuckets'] = explicitBuckets.toJson();
-    }
-    if (exponentialBuckets != null) {
-      _json['exponentialBuckets'] = exponentialBuckets.toJson();
-    }
-    if (linearBuckets != null) {
-      _json['linearBuckets'] = linearBuckets.toJson();
-    }
-    if (maximum != null) {
-      _json['maximum'] = maximum;
-    }
-    if (mean != null) {
-      _json['mean'] = mean;
-    }
-    if (minimum != null) {
-      _json['minimum'] = minimum;
-    }
-    if (sumOfSquaredDeviation != null) {
-      _json['sumOfSquaredDeviation'] = sumOfSquaredDeviation;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bucketCounts != null) 'bucketCounts': bucketCounts,
+        if (count != null) 'count': count,
+        if (exemplars != null)
+          'exemplars': exemplars.map((value) => value.toJson()).toList(),
+        if (explicitBuckets != null)
+          'explicitBuckets': explicitBuckets.toJson(),
+        if (exponentialBuckets != null)
+          'exponentialBuckets': exponentialBuckets.toJson(),
+        if (linearBuckets != null) 'linearBuckets': linearBuckets.toJson(),
+        if (maximum != null) 'maximum': maximum,
+        if (mean != null) 'mean': mean,
+        if (minimum != null) 'minimum': minimum,
+        if (sumOfSquaredDeviation != null)
+          'sumOfSquaredDeviation': sumOfSquaredDeviation,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2201,10 +2149,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Exemplars are example points that may be used to annotate aggregated
@@ -2258,19 +2203,11 @@ class Exemplar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attachments != null) {
-      _json['attachments'] = attachments;
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attachments != null) 'attachments': attachments,
+        if (timestamp != null) 'timestamp': timestamp,
+        if (value != null) 'value': value,
+      };
 }
 
 /// Describing buckets with arbitrary user-provided width.
@@ -2298,13 +2235,9 @@ class ExplicitBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bounds != null) {
-      _json['bounds'] = bounds;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bounds != null) 'bounds': bounds,
+      };
 }
 
 /// Describing buckets with exponentially growing width.
@@ -2343,19 +2276,11 @@ class ExponentialBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (growthFactor != null) {
-      _json['growthFactor'] = growthFactor;
-    }
-    if (numFiniteBuckets != null) {
-      _json['numFiniteBuckets'] = numFiniteBuckets;
-    }
-    if (scale != null) {
-      _json['scale'] = scale;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (growthFactor != null) 'growthFactor': growthFactor,
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
+        if (scale != null) 'scale': scale,
+      };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2419,22 +2344,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2445,10 +2360,7 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
@@ -2474,16 +2386,11 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2562,25 +2469,13 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (done != null) {
-      _json['done'] = done;
-    }
-    if (error != null) {
-      _json['error'] = error.toJson();
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (response != null) {
-      _json['response'] = response;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (done != null) 'done': done,
+        if (error != null) 'error': error.toJson(),
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+        if (response != null) 'response': response,
+      };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2630,19 +2525,11 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (code != null) {
-      _json['code'] = code;
-    }
-    if (details != null) {
-      _json['details'] = details;
-    }
-    if (message != null) {
-      _json['message'] = message;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (code != null) 'code': code,
+        if (details != null) 'details': details,
+        if (message != null) 'message': message,
+      };
 }
 
 /// A common proto for logging HTTP requests.
@@ -2771,55 +2658,24 @@ class HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheFillBytes != null) {
-      _json['cacheFillBytes'] = cacheFillBytes;
-    }
-    if (cacheHit != null) {
-      _json['cacheHit'] = cacheHit;
-    }
-    if (cacheLookup != null) {
-      _json['cacheLookup'] = cacheLookup;
-    }
-    if (cacheValidatedWithOriginServer != null) {
-      _json['cacheValidatedWithOriginServer'] = cacheValidatedWithOriginServer;
-    }
-    if (latency != null) {
-      _json['latency'] = latency;
-    }
-    if (protocol != null) {
-      _json['protocol'] = protocol;
-    }
-    if (referer != null) {
-      _json['referer'] = referer;
-    }
-    if (remoteIp != null) {
-      _json['remoteIp'] = remoteIp;
-    }
-    if (requestMethod != null) {
-      _json['requestMethod'] = requestMethod;
-    }
-    if (requestSize != null) {
-      _json['requestSize'] = requestSize;
-    }
-    if (requestUrl != null) {
-      _json['requestUrl'] = requestUrl;
-    }
-    if (responseSize != null) {
-      _json['responseSize'] = responseSize;
-    }
-    if (serverIp != null) {
-      _json['serverIp'] = serverIp;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (userAgent != null) {
-      _json['userAgent'] = userAgent;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes,
+        if (cacheHit != null) 'cacheHit': cacheHit,
+        if (cacheLookup != null) 'cacheLookup': cacheLookup,
+        if (cacheValidatedWithOriginServer != null)
+          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer,
+        if (latency != null) 'latency': latency,
+        if (protocol != null) 'protocol': protocol,
+        if (referer != null) 'referer': referer,
+        if (remoteIp != null) 'remoteIp': remoteIp,
+        if (requestMethod != null) 'requestMethod': requestMethod,
+        if (requestSize != null) 'requestSize': requestSize,
+        if (requestUrl != null) 'requestUrl': requestUrl,
+        if (responseSize != null) 'responseSize': responseSize,
+        if (serverIp != null) 'serverIp': serverIp,
+        if (status != null) 'status': status,
+        if (userAgent != null) 'userAgent': userAgent,
+      };
 }
 
 /// Network Connectivity Center is a hub-and-spoke abstraction for network
@@ -2905,34 +2761,16 @@ class Hub {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (spokes != null) {
-      _json['spokes'] = spokes;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (uniqueId != null) {
-      _json['uniqueId'] = uniqueId;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (spokes != null) 'spokes': spokes,
+        if (state != null) 'state': state,
+        if (uniqueId != null) 'uniqueId': uniqueId,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Describing buckets with constant width.
@@ -2969,19 +2807,11 @@ class LinearBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (numFiniteBuckets != null) {
-      _json['numFiniteBuckets'] = numFiniteBuckets;
-    }
-    if (offset != null) {
-      _json['offset'] = offset;
-    }
-    if (width != null) {
-      _json['width'] = width;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
+        if (offset != null) 'offset': offset,
+        if (width != null) 'width': width,
+      };
 }
 
 /// Response for HubService.ListHubs method.
@@ -3017,19 +2847,11 @@ class ListHubsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (hubs != null) {
-      _json['hubs'] = hubs.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (hubs != null) 'hubs': hubs.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// The response message for Locations.ListLocations.
@@ -3054,16 +2876,11 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (locations != null) {
-      _json['locations'] = locations.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (locations != null)
+          'locations': locations.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// The response for HubService.ListSpokes.
@@ -3099,19 +2916,12 @@ class ListSpokesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (spokes != null) {
-      _json['spokes'] = spokes.map((value) => value.toJson()).toList();
-    }
-    if (unreachable != null) {
-      _json['unreachable'] = unreachable;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (spokes != null)
+          'spokes': spokes.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable,
+      };
 }
 
 /// A resource that represents Google Cloud Platform location.
@@ -3176,25 +2986,13 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (displayName != null) {
-      _json['displayName'] = displayName;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (locationId != null) {
-      _json['locationId'] = locationId;
-    }
-    if (metadata != null) {
-      _json['metadata'] = metadata;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (displayName != null) 'displayName': displayName,
+        if (labels != null) 'labels': labels,
+        if (locationId != null) 'locationId': locationId,
+        if (metadata != null) 'metadata': metadata,
+        if (name != null) 'name': name,
+      };
 }
 
 /// An individual log entry.
@@ -3347,46 +3145,20 @@ class LogEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (httpRequest != null) {
-      _json['httpRequest'] = httpRequest.toJson();
-    }
-    if (insertId != null) {
-      _json['insertId'] = insertId;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (operation != null) {
-      _json['operation'] = operation.toJson();
-    }
-    if (protoPayload != null) {
-      _json['protoPayload'] = protoPayload;
-    }
-    if (severity != null) {
-      _json['severity'] = severity;
-    }
-    if (sourceLocation != null) {
-      _json['sourceLocation'] = sourceLocation.toJson();
-    }
-    if (structPayload != null) {
-      _json['structPayload'] = structPayload;
-    }
-    if (textPayload != null) {
-      _json['textPayload'] = textPayload;
-    }
-    if (timestamp != null) {
-      _json['timestamp'] = timestamp;
-    }
-    if (trace != null) {
-      _json['trace'] = trace;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
+        if (insertId != null) 'insertId': insertId,
+        if (labels != null) 'labels': labels,
+        if (name != null) 'name': name,
+        if (operation != null) 'operation': operation.toJson(),
+        if (protoPayload != null) 'protoPayload': protoPayload,
+        if (severity != null) 'severity': severity,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation.toJson(),
+        if (structPayload != null) 'structPayload': structPayload,
+        if (textPayload != null) 'textPayload': textPayload,
+        if (timestamp != null) 'timestamp': timestamp,
+        if (trace != null) 'trace': trace,
+      };
 }
 
 /// Additional information about a potentially long-running operation with which
@@ -3436,22 +3208,12 @@ class LogEntryOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (first != null) {
-      _json['first'] = first;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (last != null) {
-      _json['last'] = last;
-    }
-    if (producer != null) {
-      _json['producer'] = producer;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (first != null) 'first': first,
+        if (id != null) 'id': id,
+        if (last != null) 'last': last,
+        if (producer != null) 'producer': producer,
+      };
 }
 
 /// Additional information about the source code location that produced the log
@@ -3497,19 +3259,11 @@ class LogEntrySourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (file != null) {
-      _json['file'] = file;
-    }
-    if (function != null) {
-      _json['function'] = function;
-    }
-    if (line != null) {
-      _json['line'] = line;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (file != null) 'file': file,
+        if (function != null) 'function': function,
+        if (line != null) 'line': line,
+      };
 }
 
 /// Represents a single metric value.
@@ -3595,37 +3349,18 @@ class MetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (boolValue != null) {
-      _json['boolValue'] = boolValue;
-    }
-    if (distributionValue != null) {
-      _json['distributionValue'] = distributionValue.toJson();
-    }
-    if (doubleValue != null) {
-      _json['doubleValue'] = doubleValue;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (int64Value != null) {
-      _json['int64Value'] = int64Value;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (moneyValue != null) {
-      _json['moneyValue'] = moneyValue.toJson();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (stringValue != null) {
-      _json['stringValue'] = stringValue;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue,
+        if (distributionValue != null)
+          'distributionValue': distributionValue.toJson(),
+        if (doubleValue != null) 'doubleValue': doubleValue,
+        if (endTime != null) 'endTime': endTime,
+        if (int64Value != null) 'int64Value': int64Value,
+        if (labels != null) 'labels': labels,
+        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
+        if (startTime != null) 'startTime': startTime,
+        if (stringValue != null) 'stringValue': stringValue,
+      };
 }
 
 /// Represents a set of metric values in the same metric.
@@ -3653,17 +3388,11 @@ class MetricValueSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (metricName != null) {
-      _json['metricName'] = metricName;
-    }
-    if (metricValues != null) {
-      _json['metricValues'] =
-          metricValues.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (metricName != null) 'metricName': metricName,
+        if (metricValues != null)
+          'metricValues': metricValues.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Represents an amount of money with its currency type.
@@ -3699,19 +3428,11 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (currencyCode != null) {
-      _json['currencyCode'] = currencyCode;
-    }
-    if (nanos != null) {
-      _json['nanos'] = nanos;
-    }
-    if (units != null) {
-      _json['units'] = units;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode,
+        if (nanos != null) 'nanos': nanos,
+        if (units != null) 'units': units,
+      };
 }
 
 /// Represents information regarding an operation.
@@ -3910,53 +3631,28 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (consumerId != null) {
-      _json['consumerId'] = consumerId;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (extensions != null) {
-      _json['extensions'] = extensions;
-    }
-    if (importance != null) {
-      _json['importance'] = importance;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (logEntries != null) {
-      _json['logEntries'] = logEntries.map((value) => value.toJson()).toList();
-    }
-    if (metricValueSets != null) {
-      _json['metricValueSets'] =
-          metricValueSets.map((value) => value.toJson()).toList();
-    }
-    if (operationId != null) {
-      _json['operationId'] = operationId;
-    }
-    if (operationName != null) {
-      _json['operationName'] = operationName;
-    }
-    if (quotaProperties != null) {
-      _json['quotaProperties'] = quotaProperties.toJson();
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (traceSpans != null) {
-      _json['traceSpans'] = traceSpans.map((value) => value.toJson()).toList();
-    }
-    if (userLabels != null) {
-      _json['userLabels'] = userLabels;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (consumerId != null) 'consumerId': consumerId,
+        if (endTime != null) 'endTime': endTime,
+        if (extensions != null) 'extensions': extensions,
+        if (importance != null) 'importance': importance,
+        if (labels != null) 'labels': labels,
+        if (logEntries != null)
+          'logEntries': logEntries.map((value) => value.toJson()).toList(),
+        if (metricValueSets != null)
+          'metricValueSets':
+              metricValueSets.map((value) => value.toJson()).toList(),
+        if (operationId != null) 'operationId': operationId,
+        if (operationName != null) 'operationName': operationName,
+        if (quotaProperties != null)
+          'quotaProperties': quotaProperties.toJson(),
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime,
+        if (traceSpans != null)
+          'traceSpans': traceSpans.map((value) => value.toJson()).toList(),
+        if (userLabels != null) 'userLabels': userLabels,
+      };
 }
 
 /// Represents the metadata of the long-running operation.
@@ -4026,31 +3722,16 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiVersion != null) {
-      _json['apiVersion'] = apiVersion;
-    }
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (requestedCancellation != null) {
-      _json['requestedCancellation'] = requestedCancellation;
-    }
-    if (statusMessage != null) {
-      _json['statusMessage'] = statusMessage;
-    }
-    if (target != null) {
-      _json['target'] = target;
-    }
-    if (verb != null) {
-      _json['verb'] = verb;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion,
+        if (createTime != null) 'createTime': createTime,
+        if (endTime != null) 'endTime': endTime,
+        if (requestedCancellation != null)
+          'requestedCancellation': requestedCancellation,
+        if (statusMessage != null) 'statusMessage': statusMessage,
+        if (target != null) 'target': target,
+        if (verb != null) 'verb': verb,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -4157,23 +3838,14 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (auditConfigs != null) {
-      _json['auditConfigs'] =
-          auditConfigs.map((value) => value.toJson()).toList();
-    }
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (auditConfigs != null)
+          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 /// Represents the properties needed for quota operations.
@@ -4200,13 +3872,9 @@ class QuotaProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (quotaMode != null) {
-      _json['quotaMode'] = quotaMode;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (quotaMode != null) 'quotaMode': quotaMode,
+      };
 }
 
 /// Request message for the Report method.
@@ -4252,19 +3920,12 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operations != null) {
-      _json['operations'] = operations.map((value) => value.toJson()).toList();
-    }
-    if (serviceConfigId != null) {
-      _json['serviceConfigId'] = serviceConfigId;
-    }
-    if (serviceName != null) {
-      _json['serviceName'] = serviceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (operations != null)
+          'operations': operations.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
+        if (serviceName != null) 'serviceName': serviceName,
+      };
 }
 
 /// Describes a resource associated with this operation.
@@ -4301,19 +3962,11 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (resourceContainer != null) {
-      _json['resourceContainer'] = resourceContainer;
-    }
-    if (resourceLocation != null) {
-      _json['resourceLocation'] = resourceLocation;
-    }
-    if (resourceName != null) {
-      _json['resourceName'] = resourceName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (resourceContainer != null) 'resourceContainer': resourceContainer,
+        if (resourceLocation != null) 'resourceLocation': resourceLocation,
+        if (resourceName != null) 'resourceName': resourceName,
+      };
 }
 
 /// RouterAppliance represents a Router appliance which is specified by a VM URI
@@ -4340,19 +3993,11 @@ class RouterApplianceInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (ipAddress != null) {
-      _json['ipAddress'] = ipAddress;
-    }
-    if (networkInterface != null) {
-      _json['networkInterface'] = networkInterface;
-    }
-    if (virtualMachine != null) {
-      _json['virtualMachine'] = virtualMachine;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress,
+        if (networkInterface != null) 'networkInterface': networkInterface,
+        if (virtualMachine != null) 'virtualMachine': virtualMachine,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4382,16 +4027,10 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    if (updateMask != null) {
-      _json['updateMask'] = updateMask;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+        if (updateMask != null) 'updateMask': updateMask,
+      };
 }
 
 /// A Spoke is an abstraction of a network attachment being attached to a Hub.
@@ -4500,45 +4139,23 @@ class Spoke {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (createTime != null) {
-      _json['createTime'] = createTime;
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (hub != null) {
-      _json['hub'] = hub;
-    }
-    if (labels != null) {
-      _json['labels'] = labels;
-    }
-    if (linkedInterconnectAttachments != null) {
-      _json['linkedInterconnectAttachments'] = linkedInterconnectAttachments;
-    }
-    if (linkedRouterApplianceInstances != null) {
-      _json['linkedRouterApplianceInstances'] = linkedRouterApplianceInstances
-          .map((value) => value.toJson())
-          .toList();
-    }
-    if (linkedVpnTunnels != null) {
-      _json['linkedVpnTunnels'] = linkedVpnTunnels;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (uniqueId != null) {
-      _json['uniqueId'] = uniqueId;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (createTime != null) 'createTime': createTime,
+        if (description != null) 'description': description,
+        if (hub != null) 'hub': hub,
+        if (labels != null) 'labels': labels,
+        if (linkedInterconnectAttachments != null)
+          'linkedInterconnectAttachments': linkedInterconnectAttachments,
+        if (linkedRouterApplianceInstances != null)
+          'linkedRouterApplianceInstances': linkedRouterApplianceInstances
+              .map((value) => value.toJson())
+              .toList(),
+        if (linkedVpnTunnels != null) 'linkedVpnTunnels': linkedVpnTunnels,
+        if (name != null) 'name': name,
+        if (state != null) 'state': state,
+        if (uniqueId != null) 'uniqueId': uniqueId,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4560,13 +4177,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -4585,13 +4198,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// A span represents a single operation within a trace.
@@ -4726,43 +4335,20 @@ class TraceSpan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attributes != null) {
-      _json['attributes'] = attributes.toJson();
-    }
-    if (childSpanCount != null) {
-      _json['childSpanCount'] = childSpanCount;
-    }
-    if (displayName != null) {
-      _json['displayName'] = displayName.toJson();
-    }
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (parentSpanId != null) {
-      _json['parentSpanId'] = parentSpanId;
-    }
-    if (sameProcessAsParentSpan != null) {
-      _json['sameProcessAsParentSpan'] = sameProcessAsParentSpan;
-    }
-    if (spanId != null) {
-      _json['spanId'] = spanId;
-    }
-    if (spanKind != null) {
-      _json['spanKind'] = spanKind;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    if (status != null) {
-      _json['status'] = status.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attributes != null) 'attributes': attributes.toJson(),
+        if (childSpanCount != null) 'childSpanCount': childSpanCount,
+        if (displayName != null) 'displayName': displayName.toJson(),
+        if (endTime != null) 'endTime': endTime,
+        if (name != null) 'name': name,
+        if (parentSpanId != null) 'parentSpanId': parentSpanId,
+        if (sameProcessAsParentSpan != null)
+          'sameProcessAsParentSpan': sameProcessAsParentSpan,
+        if (spanId != null) 'spanId': spanId,
+        if (spanKind != null) 'spanKind': spanKind,
+        if (startTime != null) 'startTime': startTime,
+        if (status != null) 'status': status.toJson(),
+      };
 }
 
 /// Represents a string that might be shortened to a specified length.
@@ -4792,14 +4378,9 @@ class TruncatableString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (truncatedByteCount != null) {
-      _json['truncatedByteCount'] = truncatedByteCount;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (truncatedByteCount != null)
+          'truncatedByteCount': truncatedByteCount,
+        if (value != null) 'value': value,
+      };
 }

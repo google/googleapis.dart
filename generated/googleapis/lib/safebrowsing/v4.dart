@@ -428,10 +428,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// The expected state of a client's local database.
@@ -454,13 +451,9 @@ class GoogleSecuritySafebrowsingV4Checksum {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (sha256 != null) {
-      _json['sha256'] = sha256;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (sha256 != null) 'sha256': sha256,
+      };
 }
 
 /// The client metadata associated with Safe Browsing API requests.
@@ -483,16 +476,10 @@ class GoogleSecuritySafebrowsingV4ClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
-    if (clientVersion != null) {
-      _json['clientVersion'] = clientVersion;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientId != null) 'clientId': clientId,
+        if (clientVersion != null) 'clientVersion': clientVersion,
+      };
 }
 
 /// Describes a Safe Browsing API update request.
@@ -527,17 +514,12 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (client != null) {
-      _json['client'] = client.toJson();
-    }
-    if (listUpdateRequests != null) {
-      _json['listUpdateRequests'] =
-          listUpdateRequests.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (client != null) 'client': client.toJson(),
+        if (listUpdateRequests != null)
+          'listUpdateRequests':
+              listUpdateRequests.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single list update request.
@@ -633,25 +615,13 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (constraints != null) {
-      _json['constraints'] = constraints.toJson();
-    }
-    if (platformType != null) {
-      _json['platformType'] = platformType;
-    }
-    if (state != null) {
-      _json['state'] = state;
-    }
-    if (threatEntryType != null) {
-      _json['threatEntryType'] = threatEntryType;
-    }
-    if (threatType != null) {
-      _json['threatType'] = threatType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (constraints != null) 'constraints': constraints.toJson(),
+        if (platformType != null) 'platformType': platformType,
+        if (state != null) 'state': state,
+        if (threatEntryType != null) 'threatEntryType': threatEntryType,
+        if (threatType != null) 'threatType': threatType,
+      };
 }
 
 /// The constraints for this update.
@@ -713,28 +683,16 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (deviceLocation != null) {
-      _json['deviceLocation'] = deviceLocation;
-    }
-    if (language != null) {
-      _json['language'] = language;
-    }
-    if (maxDatabaseEntries != null) {
-      _json['maxDatabaseEntries'] = maxDatabaseEntries;
-    }
-    if (maxUpdateEntries != null) {
-      _json['maxUpdateEntries'] = maxUpdateEntries;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    if (supportedCompressions != null) {
-      _json['supportedCompressions'] = supportedCompressions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (deviceLocation != null) 'deviceLocation': deviceLocation,
+        if (language != null) 'language': language,
+        if (maxDatabaseEntries != null)
+          'maxDatabaseEntries': maxDatabaseEntries,
+        if (maxUpdateEntries != null) 'maxUpdateEntries': maxUpdateEntries,
+        if (region != null) 'region': region,
+        if (supportedCompressions != null)
+          'supportedCompressions': supportedCompressions,
+      };
 }
 
 class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
@@ -770,17 +728,13 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (listUpdateResponses != null) {
-      _json['listUpdateResponses'] =
-          listUpdateResponses.map((value) => value.toJson()).toList();
-    }
-    if (minimumWaitDuration != null) {
-      _json['minimumWaitDuration'] = minimumWaitDuration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (listUpdateResponses != null)
+          'listUpdateResponses':
+              listUpdateResponses.map((value) => value.toJson()).toList(),
+        if (minimumWaitDuration != null)
+          'minimumWaitDuration': minimumWaitDuration,
+      };
 }
 
 /// An update to an individual list.
@@ -920,34 +874,18 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (additions != null) {
-      _json['additions'] = additions.map((value) => value.toJson()).toList();
-    }
-    if (checksum != null) {
-      _json['checksum'] = checksum.toJson();
-    }
-    if (newClientState != null) {
-      _json['newClientState'] = newClientState;
-    }
-    if (platformType != null) {
-      _json['platformType'] = platformType;
-    }
-    if (removals != null) {
-      _json['removals'] = removals.map((value) => value.toJson()).toList();
-    }
-    if (responseType != null) {
-      _json['responseType'] = responseType;
-    }
-    if (threatEntryType != null) {
-      _json['threatEntryType'] = threatEntryType;
-    }
-    if (threatType != null) {
-      _json['threatType'] = threatType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (additions != null)
+          'additions': additions.map((value) => value.toJson()).toList(),
+        if (checksum != null) 'checksum': checksum.toJson(),
+        if (newClientState != null) 'newClientState': newClientState,
+        if (platformType != null) 'platformType': platformType,
+        if (removals != null)
+          'removals': removals.map((value) => value.toJson()).toList(),
+        if (responseType != null) 'responseType': responseType,
+        if (threatEntryType != null) 'threatEntryType': threatEntryType,
+        if (threatType != null) 'threatType': threatType,
+      };
 }
 
 /// Request to return full hashes matched by the provided hash prefixes.
@@ -987,22 +925,12 @@ class GoogleSecuritySafebrowsingV4FindFullHashesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (apiClient != null) {
-      _json['apiClient'] = apiClient.toJson();
-    }
-    if (client != null) {
-      _json['client'] = client.toJson();
-    }
-    if (clientStates != null) {
-      _json['clientStates'] = clientStates;
-    }
-    if (threatInfo != null) {
-      _json['threatInfo'] = threatInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (apiClient != null) 'apiClient': apiClient.toJson(),
+        if (client != null) 'client': client.toJson(),
+        if (clientStates != null) 'clientStates': clientStates,
+        if (threatInfo != null) 'threatInfo': threatInfo.toJson(),
+      };
 }
 
 class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
@@ -1038,19 +966,14 @@ class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matches != null) {
-      _json['matches'] = matches.map((value) => value.toJson()).toList();
-    }
-    if (minimumWaitDuration != null) {
-      _json['minimumWaitDuration'] = minimumWaitDuration;
-    }
-    if (negativeCacheDuration != null) {
-      _json['negativeCacheDuration'] = negativeCacheDuration;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matches != null)
+          'matches': matches.map((value) => value.toJson()).toList(),
+        if (minimumWaitDuration != null)
+          'minimumWaitDuration': minimumWaitDuration,
+        if (negativeCacheDuration != null)
+          'negativeCacheDuration': negativeCacheDuration,
+      };
 }
 
 /// Request to check entries against lists.
@@ -1075,16 +998,10 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (client != null) {
-      _json['client'] = client.toJson();
-    }
-    if (threatInfo != null) {
-      _json['threatInfo'] = threatInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (client != null) 'client': client.toJson(),
+        if (threatInfo != null) 'threatInfo': threatInfo.toJson(),
+      };
 }
 
 class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
@@ -1104,13 +1021,10 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (matches != null) {
-      _json['matches'] = matches.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (matches != null)
+          'matches': matches.map((value) => value.toJson()).toList(),
+      };
 }
 
 class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
@@ -1129,14 +1043,10 @@ class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (threatLists != null) {
-      _json['threatLists'] =
-          threatLists.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (threatLists != null)
+          'threatLists': threatLists.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// The uncompressed threat entries in hash format of a particular prefix
@@ -1177,16 +1087,10 @@ class GoogleSecuritySafebrowsingV4RawHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (prefixSize != null) {
-      _json['prefixSize'] = prefixSize;
-    }
-    if (rawHashes != null) {
-      _json['rawHashes'] = rawHashes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (prefixSize != null) 'prefixSize': prefixSize,
+        if (rawHashes != null) 'rawHashes': rawHashes,
+      };
 }
 
 /// A set of raw indices to remove from a local list.
@@ -1204,13 +1108,9 @@ class GoogleSecuritySafebrowsingV4RawIndices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (indices != null) {
-      _json['indices'] = indices;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (indices != null) 'indices': indices,
+      };
 }
 
 /// The Rice-Golomb encoded data.
@@ -1261,22 +1161,12 @@ class GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (encodedData != null) {
-      _json['encodedData'] = encodedData;
-    }
-    if (firstValue != null) {
-      _json['firstValue'] = firstValue;
-    }
-    if (numEntries != null) {
-      _json['numEntries'] = numEntries;
-    }
-    if (riceParameter != null) {
-      _json['riceParameter'] = riceParameter;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (encodedData != null) 'encodedData': encodedData,
+        if (firstValue != null) 'firstValue': firstValue,
+        if (numEntries != null) 'numEntries': numEntries,
+        if (riceParameter != null) 'riceParameter': riceParameter,
+      };
 }
 
 /// An individual threat; for example, a malicious URL or its hash
@@ -1326,19 +1216,11 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (digest != null) {
-      _json['digest'] = digest;
-    }
-    if (hash != null) {
-      _json['hash'] = hash;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (digest != null) 'digest': digest,
+        if (hash != null) 'hash': hash,
+        if (url != null) 'url': url,
+      };
 }
 
 /// The metadata associated with a specific threat entry.
@@ -1363,13 +1245,10 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (entries != null) {
-      _json['entries'] = entries.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (entries != null)
+          'entries': entries.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A single metadata entry.
@@ -1408,16 +1287,10 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (key != null) {
-      _json['key'] = key;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (key != null) 'key': key,
+        if (value != null) 'value': value,
+      };
 }
 
 /// A set of threats that should be added or removed from a client's local
@@ -1475,25 +1348,13 @@ class GoogleSecuritySafebrowsingV4ThreatEntrySet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compressionType != null) {
-      _json['compressionType'] = compressionType;
-    }
-    if (rawHashes != null) {
-      _json['rawHashes'] = rawHashes.toJson();
-    }
-    if (rawIndices != null) {
-      _json['rawIndices'] = rawIndices.toJson();
-    }
-    if (riceHashes != null) {
-      _json['riceHashes'] = riceHashes.toJson();
-    }
-    if (riceIndices != null) {
-      _json['riceIndices'] = riceIndices.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compressionType != null) 'compressionType': compressionType,
+        if (rawHashes != null) 'rawHashes': rawHashes.toJson(),
+        if (rawIndices != null) 'rawIndices': rawIndices.toJson(),
+        if (riceHashes != null) 'riceHashes': riceHashes.toJson(),
+        if (riceIndices != null) 'riceIndices': riceIndices.toJson(),
+      };
 }
 
 class GoogleSecuritySafebrowsingV4ThreatHit {
@@ -1583,28 +1444,15 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (clientInfo != null) {
-      _json['clientInfo'] = clientInfo.toJson();
-    }
-    if (entry != null) {
-      _json['entry'] = entry.toJson();
-    }
-    if (platformType != null) {
-      _json['platformType'] = platformType;
-    }
-    if (resources != null) {
-      _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    if (threatType != null) {
-      _json['threatType'] = threatType;
-    }
-    if (userInfo != null) {
-      _json['userInfo'] = userInfo.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
+        if (entry != null) 'entry': entry.toJson(),
+        if (platformType != null) 'platformType': platformType,
+        if (resources != null)
+          'resources': resources.map((value) => value.toJson()).toList(),
+        if (threatType != null) 'threatType': threatType,
+        if (userInfo != null) 'userInfo': userInfo.toJson(),
+      };
 }
 
 /// A single resource related to a threat hit.
@@ -1651,22 +1499,12 @@ class GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (referrer != null) {
-      _json['referrer'] = referrer;
-    }
-    if (remoteIp != null) {
-      _json['remoteIp'] = remoteIp;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    if (url != null) {
-      _json['url'] = url;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (referrer != null) 'referrer': referrer,
+        if (remoteIp != null) 'remoteIp': remoteIp,
+        if (type != null) 'type': type,
+        if (url != null) 'url': url,
+      };
 }
 
 /// Details about the user that encountered the threat.
@@ -1694,16 +1532,10 @@ class GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (regionCode != null) {
-      _json['regionCode'] = regionCode;
-    }
-    if (userId != null) {
-      _json['userId'] = userId;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode,
+        if (userId != null) 'userId': userId,
+      };
 }
 
 /// The information regarding one or more threats that a client submits when
@@ -1748,23 +1580,14 @@ class GoogleSecuritySafebrowsingV4ThreatInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (platformTypes != null) {
-      _json['platformTypes'] = platformTypes;
-    }
-    if (threatEntries != null) {
-      _json['threatEntries'] =
-          threatEntries.map((value) => value.toJson()).toList();
-    }
-    if (threatEntryTypes != null) {
-      _json['threatEntryTypes'] = threatEntryTypes;
-    }
-    if (threatTypes != null) {
-      _json['threatTypes'] = threatTypes;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (platformTypes != null) 'platformTypes': platformTypes,
+        if (threatEntries != null)
+          'threatEntries':
+              threatEntries.map((value) => value.toJson()).toList(),
+        if (threatEntryTypes != null) 'threatEntryTypes': threatEntryTypes,
+        if (threatTypes != null) 'threatTypes': threatTypes,
+      };
 }
 
 /// Describes an individual threat list.
@@ -1839,19 +1662,11 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (platformType != null) {
-      _json['platformType'] = platformType;
-    }
-    if (threatEntryType != null) {
-      _json['threatEntryType'] = threatEntryType;
-    }
-    if (threatType != null) {
-      _json['threatType'] = threatType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (platformType != null) 'platformType': platformType,
+        if (threatEntryType != null) 'threatEntryType': threatEntryType,
+        if (threatType != null) 'threatType': threatType,
+      };
 }
 
 /// A match when checking a threat entry in the Safe Browsing threat lists.
@@ -1948,26 +1763,13 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cacheDuration != null) {
-      _json['cacheDuration'] = cacheDuration;
-    }
-    if (platformType != null) {
-      _json['platformType'] = platformType;
-    }
-    if (threat != null) {
-      _json['threat'] = threat.toJson();
-    }
-    if (threatEntryMetadata != null) {
-      _json['threatEntryMetadata'] = threatEntryMetadata.toJson();
-    }
-    if (threatEntryType != null) {
-      _json['threatEntryType'] = threatEntryType;
-    }
-    if (threatType != null) {
-      _json['threatType'] = threatType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (cacheDuration != null) 'cacheDuration': cacheDuration,
+        if (platformType != null) 'platformType': platformType,
+        if (threat != null) 'threat': threat.toJson(),
+        if (threatEntryMetadata != null)
+          'threatEntryMetadata': threatEntryMetadata.toJson(),
+        if (threatEntryType != null) 'threatEntryType': threatEntryType,
+        if (threatType != null) 'threatType': threatType,
+      };
 }

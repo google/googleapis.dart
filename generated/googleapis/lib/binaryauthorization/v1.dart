@@ -916,19 +916,12 @@ class AdmissionRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (enforcementMode != null) {
-      _json['enforcementMode'] = enforcementMode;
-    }
-    if (evaluationMode != null) {
-      _json['evaluationMode'] = evaluationMode;
-    }
-    if (requireAttestationsBy != null) {
-      _json['requireAttestationsBy'] = requireAttestationsBy;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (enforcementMode != null) 'enforcementMode': enforcementMode,
+        if (evaluationMode != null) 'evaluationMode': evaluationMode,
+        if (requireAttestationsBy != null)
+          'requireAttestationsBy': requireAttestationsBy,
+      };
 }
 
 /// An admission whitelist pattern exempts images from checks by admission
@@ -948,13 +941,9 @@ class AdmissionWhitelistPattern {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (namePattern != null) {
-      _json['namePattern'] = namePattern;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (namePattern != null) 'namePattern': namePattern,
+      };
 }
 
 /// Occurrence that represents a single "attestation".
@@ -1017,19 +1006,12 @@ class AttestationOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (jwts != null) {
-      _json['jwts'] = jwts.map((value) => value.toJson()).toList();
-    }
-    if (serializedPayload != null) {
-      _json['serializedPayload'] = serializedPayload;
-    }
-    if (signatures != null) {
-      _json['signatures'] = signatures.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (jwts != null) 'jwts': jwts.map((value) => value.toJson()).toList(),
+        if (serializedPayload != null) 'serializedPayload': serializedPayload,
+        if (signatures != null)
+          'signatures': signatures.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// An attestor that attests to container image artifacts.
@@ -1077,22 +1059,13 @@ class Attestor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    if (userOwnedGrafeasNote != null) {
-      _json['userOwnedGrafeasNote'] = userOwnedGrafeasNote.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+        if (userOwnedGrafeasNote != null)
+          'userOwnedGrafeasNote': userOwnedGrafeasNote.toJson(),
+      };
 }
 
 /// An attestor public key that will be used to verify attestations signed by
@@ -1152,22 +1125,13 @@ class AttestorPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (asciiArmoredPgpPublicKey != null) {
-      _json['asciiArmoredPgpPublicKey'] = asciiArmoredPgpPublicKey;
-    }
-    if (comment != null) {
-      _json['comment'] = comment;
-    }
-    if (id != null) {
-      _json['id'] = id;
-    }
-    if (pkixPublicKey != null) {
-      _json['pkixPublicKey'] = pkixPublicKey.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (asciiArmoredPgpPublicKey != null)
+          'asciiArmoredPgpPublicKey': asciiArmoredPgpPublicKey,
+        if (comment != null) 'comment': comment,
+        if (id != null) 'id': id,
+        if (pkixPublicKey != null) 'pkixPublicKey': pkixPublicKey.toJson(),
+      };
 }
 
 /// Associates `members` with a `role`.
@@ -1236,19 +1200,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (condition != null) {
-      _json['condition'] = condition.toJson();
-    }
-    if (members != null) {
-      _json['members'] = members;
-    }
-    if (role != null) {
-      _json['role'] = role;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (condition != null) 'condition': condition.toJson(),
+        if (members != null) 'members': members,
+        if (role != null) 'role': role,
+      };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1265,10 +1221,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1332,22 +1285,12 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (expression != null) {
-      _json['expression'] = expression;
-    }
-    if (location != null) {
-      _json['location'] = location;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (description != null) 'description': description,
+        if (expression != null) 'expression': expression,
+        if (location != null) 'location': location,
+        if (title != null) 'title': title,
+      };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1445,19 +1388,12 @@ class IamPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (bindings != null) {
-      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
-    }
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (version != null) {
-      _json['version'] = version;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (bindings != null)
+          'bindings': bindings.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag,
+        if (version != null) 'version': version,
+      };
 }
 
 class Jwt {
@@ -1475,13 +1411,9 @@ class Jwt {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (compactJwt != null) {
-      _json['compactJwt'] = compactJwt;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (compactJwt != null) 'compactJwt': compactJwt,
+      };
 }
 
 /// Response message for BinauthzManagementService.ListAttestors.
@@ -1510,16 +1442,11 @@ class ListAttestorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attestors != null) {
-      _json['attestors'] = attestors.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attestors != null)
+          'attestors': attestors.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// A public key in the PkixPublicKey format (see
@@ -1577,16 +1504,11 @@ class PkixPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publicKeyPem != null) {
-      _json['publicKeyPem'] = publicKeyPem;
-    }
-    if (signatureAlgorithm != null) {
-      _json['signatureAlgorithm'] = signatureAlgorithm;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publicKeyPem != null) 'publicKeyPem': publicKeyPem,
+        if (signatureAlgorithm != null)
+          'signatureAlgorithm': signatureAlgorithm,
+      };
 }
 
 /// A policy for container image binary authorization.
@@ -1749,48 +1671,33 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (admissionWhitelistPatterns != null) {
-      _json['admissionWhitelistPatterns'] =
-          admissionWhitelistPatterns.map((value) => value.toJson()).toList();
-    }
-    if (clusterAdmissionRules != null) {
-      _json['clusterAdmissionRules'] = clusterAdmissionRules
-          .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (defaultAdmissionRule != null) {
-      _json['defaultAdmissionRule'] = defaultAdmissionRule.toJson();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (globalPolicyEvaluationMode != null) {
-      _json['globalPolicyEvaluationMode'] = globalPolicyEvaluationMode;
-    }
-    if (istioServiceIdentityAdmissionRules != null) {
-      _json['istioServiceIdentityAdmissionRules'] =
-          istioServiceIdentityAdmissionRules
-              .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (kubernetesNamespaceAdmissionRules != null) {
-      _json['kubernetesNamespaceAdmissionRules'] =
-          kubernetesNamespaceAdmissionRules
-              .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (kubernetesServiceAccountAdmissionRules != null) {
-      _json['kubernetesServiceAccountAdmissionRules'] =
-          kubernetesServiceAccountAdmissionRules
-              .map((key, item) => core.MapEntry(key, item.toJson()));
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (updateTime != null) {
-      _json['updateTime'] = updateTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (admissionWhitelistPatterns != null)
+          'admissionWhitelistPatterns': admissionWhitelistPatterns
+              .map((value) => value.toJson())
+              .toList(),
+        if (clusterAdmissionRules != null)
+          'clusterAdmissionRules': clusterAdmissionRules
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (defaultAdmissionRule != null)
+          'defaultAdmissionRule': defaultAdmissionRule.toJson(),
+        if (description != null) 'description': description,
+        if (globalPolicyEvaluationMode != null)
+          'globalPolicyEvaluationMode': globalPolicyEvaluationMode,
+        if (istioServiceIdentityAdmissionRules != null)
+          'istioServiceIdentityAdmissionRules':
+              istioServiceIdentityAdmissionRules
+                  .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kubernetesNamespaceAdmissionRules != null)
+          'kubernetesNamespaceAdmissionRules': kubernetesNamespaceAdmissionRules
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kubernetesServiceAccountAdmissionRules != null)
+          'kubernetesServiceAccountAdmissionRules':
+              kubernetesServiceAccountAdmissionRules
+                  .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name,
+        if (updateTime != null) 'updateTime': updateTime,
+      };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1811,13 +1718,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (policy != null) {
-      _json['policy'] = policy.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (policy != null) 'policy': policy.toJson(),
+      };
 }
 
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
@@ -1880,16 +1783,10 @@ class Signature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (publicKeyId != null) {
-      _json['publicKeyId'] = publicKeyId;
-    }
-    if (signature != null) {
-      _json['signature'] = signature;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (publicKeyId != null) 'publicKeyId': publicKeyId,
+        if (signature != null) 'signature': signature,
+      };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -1911,13 +1808,9 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// Response message for `TestIamPermissions` method.
@@ -1936,13 +1829,9 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissions != null) {
-      _json['permissions'] = permissions;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (permissions != null) 'permissions': permissions,
+      };
 }
 
 /// An user owned Grafeas note references a Grafeas Attestation.Authority Note
@@ -1999,19 +1888,13 @@ class UserOwnedGrafeasNote {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (delegationServiceAccountEmail != null) {
-      _json['delegationServiceAccountEmail'] = delegationServiceAccountEmail;
-    }
-    if (noteReference != null) {
-      _json['noteReference'] = noteReference;
-    }
-    if (publicKeys != null) {
-      _json['publicKeys'] = publicKeys.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (delegationServiceAccountEmail != null)
+          'delegationServiceAccountEmail': delegationServiceAccountEmail,
+        if (noteReference != null) 'noteReference': noteReference,
+        if (publicKeys != null)
+          'publicKeys': publicKeys.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// Request message for ValidationHelperV1.ValidateAttestationOccurrence.
@@ -2052,19 +1935,12 @@ class ValidateAttestationOccurrenceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (attestation != null) {
-      _json['attestation'] = attestation.toJson();
-    }
-    if (occurrenceNote != null) {
-      _json['occurrenceNote'] = occurrenceNote;
-    }
-    if (occurrenceResourceUri != null) {
-      _json['occurrenceResourceUri'] = occurrenceResourceUri;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (attestation != null) 'attestation': attestation.toJson(),
+        if (occurrenceNote != null) 'occurrenceNote': occurrenceNote,
+        if (occurrenceResourceUri != null)
+          'occurrenceResourceUri': occurrenceResourceUri,
+      };
 }
 
 /// Response message for ValidationHelperV1.ValidateAttestationOccurrence.
@@ -2091,14 +1967,8 @@ class ValidateAttestationOccurrenceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (denialReason != null) {
-      _json['denialReason'] = denialReason;
-    }
-    if (result != null) {
-      _json['result'] = result;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (denialReason != null) 'denialReason': denialReason,
+        if (result != null) 'result': result,
+      };
 }

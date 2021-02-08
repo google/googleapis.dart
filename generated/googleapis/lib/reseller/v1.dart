@@ -1092,40 +1092,18 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (addressLine1 != null) {
-      _json['addressLine1'] = addressLine1;
-    }
-    if (addressLine2 != null) {
-      _json['addressLine2'] = addressLine2;
-    }
-    if (addressLine3 != null) {
-      _json['addressLine3'] = addressLine3;
-    }
-    if (contactName != null) {
-      _json['contactName'] = contactName;
-    }
-    if (countryCode != null) {
-      _json['countryCode'] = countryCode;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (locality != null) {
-      _json['locality'] = locality;
-    }
-    if (organizationName != null) {
-      _json['organizationName'] = organizationName;
-    }
-    if (postalCode != null) {
-      _json['postalCode'] = postalCode;
-    }
-    if (region != null) {
-      _json['region'] = region;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (addressLine1 != null) 'addressLine1': addressLine1,
+        if (addressLine2 != null) 'addressLine2': addressLine2,
+        if (addressLine3 != null) 'addressLine3': addressLine3,
+        if (contactName != null) 'contactName': contactName,
+        if (countryCode != null) 'countryCode': countryCode,
+        if (kind != null) 'kind': kind,
+        if (locality != null) 'locality': locality,
+        if (organizationName != null) 'organizationName': organizationName,
+        if (postalCode != null) 'postalCode': postalCode,
+        if (region != null) 'region': region,
+      };
 }
 
 /// JSON template for the ChangePlan rpc request.
@@ -1191,25 +1169,13 @@ class ChangePlanRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (dealCode != null) {
-      _json['dealCode'] = dealCode;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (planName != null) {
-      _json['planName'] = planName;
-    }
-    if (purchaseOrderId != null) {
-      _json['purchaseOrderId'] = purchaseOrderId;
-    }
-    if (seats != null) {
-      _json['seats'] = seats.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (dealCode != null) 'dealCode': dealCode,
+        if (kind != null) 'kind': kind,
+        if (planName != null) 'planName': planName,
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
+        if (seats != null) 'seats': seats.toJson(),
+      };
 }
 
 /// JSON template for a customer.
@@ -1293,34 +1259,17 @@ class Customer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (alternateEmail != null) {
-      _json['alternateEmail'] = alternateEmail;
-    }
-    if (customerDomain != null) {
-      _json['customerDomain'] = customerDomain;
-    }
-    if (customerDomainVerified != null) {
-      _json['customerDomainVerified'] = customerDomainVerified;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (phoneNumber != null) {
-      _json['phoneNumber'] = phoneNumber;
-    }
-    if (postalAddress != null) {
-      _json['postalAddress'] = postalAddress.toJson();
-    }
-    if (resourceUiUrl != null) {
-      _json['resourceUiUrl'] = resourceUiUrl;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (alternateEmail != null) 'alternateEmail': alternateEmail,
+        if (customerDomain != null) 'customerDomain': customerDomain,
+        if (customerDomainVerified != null)
+          'customerDomainVerified': customerDomainVerified,
+        if (customerId != null) 'customerId': customerId,
+        if (kind != null) 'kind': kind,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (postalAddress != null) 'postalAddress': postalAddress.toJson(),
+        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl,
+      };
 }
 
 /// JSON template for a subscription renewal settings.
@@ -1348,16 +1297,10 @@ class RenewalSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (renewalType != null) {
-      _json['renewalType'] = renewalType;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (renewalType != null) 'renewalType': renewalType,
+      };
 }
 
 /// JSON template for resellernotify getwatchdetails response.
@@ -1382,16 +1325,11 @@ class ResellernotifyGetwatchdetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (serviceAccountEmailAddresses != null) {
-      _json['serviceAccountEmailAddresses'] = serviceAccountEmailAddresses;
-    }
-    if (topicName != null) {
-      _json['topicName'] = topicName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (serviceAccountEmailAddresses != null)
+          'serviceAccountEmailAddresses': serviceAccountEmailAddresses,
+        if (topicName != null) 'topicName': topicName,
+      };
 }
 
 /// JSON template for resellernotify response.
@@ -1407,13 +1345,9 @@ class ResellernotifyResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (topicName != null) {
-      _json['topicName'] = topicName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (topicName != null) 'topicName': topicName,
+      };
 }
 
 /// JSON template for subscription seats.
@@ -1468,22 +1402,14 @@ class Seats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (licensedNumberOfSeats != null) {
-      _json['licensedNumberOfSeats'] = licensedNumberOfSeats;
-    }
-    if (maximumNumberOfSeats != null) {
-      _json['maximumNumberOfSeats'] = maximumNumberOfSeats;
-    }
-    if (numberOfSeats != null) {
-      _json['numberOfSeats'] = numberOfSeats;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (licensedNumberOfSeats != null)
+          'licensedNumberOfSeats': licensedNumberOfSeats,
+        if (maximumNumberOfSeats != null)
+          'maximumNumberOfSeats': maximumNumberOfSeats,
+        if (numberOfSeats != null) 'numberOfSeats': numberOfSeats,
+      };
 }
 
 /// In this version of the API, annual commitment plan's interval is one year.
@@ -1514,16 +1440,10 @@ class SubscriptionPlanCommitmentInterval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (endTime != null) {
-      _json['endTime'] = endTime;
-    }
-    if (startTime != null) {
-      _json['startTime'] = startTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (endTime != null) 'endTime': endTime,
+        if (startTime != null) 'startTime': startTime,
+      };
 }
 
 /// The plan property is required.
@@ -1576,19 +1496,12 @@ class SubscriptionPlan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (commitmentInterval != null) {
-      _json['commitmentInterval'] = commitmentInterval.toJson();
-    }
-    if (isCommitmentPlan != null) {
-      _json['isCommitmentPlan'] = isCommitmentPlan;
-    }
-    if (planName != null) {
-      _json['planName'] = planName;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (commitmentInterval != null)
+          'commitmentInterval': commitmentInterval.toJson(),
+        if (isCommitmentPlan != null) 'isCommitmentPlan': isCommitmentPlan,
+        if (planName != null) 'planName': planName,
+      };
 }
 
 /// Read-only transfer related information for the subscription.
@@ -1620,16 +1533,12 @@ class SubscriptionTransferInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (minimumTransferableSeats != null) {
-      _json['minimumTransferableSeats'] = minimumTransferableSeats;
-    }
-    if (transferabilityExpirationTime != null) {
-      _json['transferabilityExpirationTime'] = transferabilityExpirationTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (minimumTransferableSeats != null)
+          'minimumTransferableSeats': minimumTransferableSeats,
+        if (transferabilityExpirationTime != null)
+          'transferabilityExpirationTime': transferabilityExpirationTime,
+      };
 }
 
 /// The G Suite annual commitment and flexible payment plans can be in a 30-day
@@ -1660,16 +1569,10 @@ class SubscriptionTrialSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (isInTrial != null) {
-      _json['isInTrial'] = isInTrial;
-    }
-    if (trialEndTime != null) {
-      _json['trialEndTime'] = trialEndTime;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (isInTrial != null) 'isInTrial': isInTrial,
+        if (trialEndTime != null) 'trialEndTime': trialEndTime,
+      };
 }
 
 /// JSON template for a subscription.
@@ -1859,64 +1762,27 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (billingMethod != null) {
-      _json['billingMethod'] = billingMethod;
-    }
-    if (creationTime != null) {
-      _json['creationTime'] = creationTime;
-    }
-    if (customerDomain != null) {
-      _json['customerDomain'] = customerDomain;
-    }
-    if (customerId != null) {
-      _json['customerId'] = customerId;
-    }
-    if (dealCode != null) {
-      _json['dealCode'] = dealCode;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (plan != null) {
-      _json['plan'] = plan.toJson();
-    }
-    if (purchaseOrderId != null) {
-      _json['purchaseOrderId'] = purchaseOrderId;
-    }
-    if (renewalSettings != null) {
-      _json['renewalSettings'] = renewalSettings.toJson();
-    }
-    if (resourceUiUrl != null) {
-      _json['resourceUiUrl'] = resourceUiUrl;
-    }
-    if (seats != null) {
-      _json['seats'] = seats.toJson();
-    }
-    if (skuId != null) {
-      _json['skuId'] = skuId;
-    }
-    if (skuName != null) {
-      _json['skuName'] = skuName;
-    }
-    if (status != null) {
-      _json['status'] = status;
-    }
-    if (subscriptionId != null) {
-      _json['subscriptionId'] = subscriptionId;
-    }
-    if (suspensionReasons != null) {
-      _json['suspensionReasons'] = suspensionReasons;
-    }
-    if (transferInfo != null) {
-      _json['transferInfo'] = transferInfo.toJson();
-    }
-    if (trialSettings != null) {
-      _json['trialSettings'] = trialSettings.toJson();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (billingMethod != null) 'billingMethod': billingMethod,
+        if (creationTime != null) 'creationTime': creationTime,
+        if (customerDomain != null) 'customerDomain': customerDomain,
+        if (customerId != null) 'customerId': customerId,
+        if (dealCode != null) 'dealCode': dealCode,
+        if (kind != null) 'kind': kind,
+        if (plan != null) 'plan': plan.toJson(),
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
+        if (renewalSettings != null)
+          'renewalSettings': renewalSettings.toJson(),
+        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl,
+        if (seats != null) 'seats': seats.toJson(),
+        if (skuId != null) 'skuId': skuId,
+        if (skuName != null) 'skuName': skuName,
+        if (status != null) 'status': status,
+        if (subscriptionId != null) 'subscriptionId': subscriptionId,
+        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons,
+        if (transferInfo != null) 'transferInfo': transferInfo.toJson(),
+        if (trialSettings != null) 'trialSettings': trialSettings.toJson(),
+      };
 }
 
 /// JSON template for a subscription list.
@@ -1952,18 +1818,11 @@ class Subscriptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (subscriptions != null) {
-      _json['subscriptions'] =
-          subscriptions.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (kind != null) 'kind': kind,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (subscriptions != null)
+          'subscriptions':
+              subscriptions.map((value) => value.toJson()).toList(),
+      };
 }

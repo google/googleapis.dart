@@ -388,22 +388,12 @@ class GoogleExampleLibraryagentV1Book {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (author != null) {
-      _json['author'] = author;
-    }
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (read != null) {
-      _json['read'] = read;
-    }
-    if (title != null) {
-      _json['title'] = title;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (author != null) 'author': author,
+        if (name != null) 'name': name,
+        if (read != null) 'read': read,
+        if (title != null) 'title': title,
+      };
 }
 
 /// Response message for LibraryAgent.ListBooks.
@@ -432,16 +422,11 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (books != null) {
-      _json['books'] = books.map((value) => value.toJson()).toList();
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (books != null)
+          'books': books.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+      };
 }
 
 /// Response message for LibraryAgent.ListShelves.
@@ -471,16 +456,11 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (shelves != null) {
-      _json['shelves'] = shelves.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (shelves != null)
+          'shelves': shelves.map((value) => value.toJson()).toList(),
+      };
 }
 
 /// A Shelf contains a collection of books with a theme.
@@ -507,14 +487,8 @@ class GoogleExampleLibraryagentV1Shelf {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (theme != null) {
-      _json['theme'] = theme;
-    }
-    return _json;
-  }
+  core.Map<core.String, core.Object> toJson() => {
+        if (name != null) 'name': name,
+        if (theme != null) 'theme': theme,
+      };
 }
