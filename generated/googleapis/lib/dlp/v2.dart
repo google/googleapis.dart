@@ -7444,7 +7444,8 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   ///
   /// If a scanned file's size is bigger than this value then the rest of the
   /// bytes are omitted. Only one of bytes_limit_per_file and
-  /// bytes_limit_per_file_percent can be specified.
+  /// bytes_limit_per_file_percent can be specified. Cannot be set if
+  /// de-identification is requested.
   core.String bytesLimitPerFile;
 
   /// Max percentage of bytes to scan from a file.
@@ -7452,7 +7453,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// The rest are omitted. The number of bytes scanned is rounded down. Must be
   /// between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to
   /// 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can
-  /// be specified.
+  /// be specified. Cannot be set if de-identification is requested.
   core.int bytesLimitPerFilePercent;
 
   /// The set of one or more files to scan.
@@ -10096,6 +10097,8 @@ class GooglePrivacyDlpV2Finding {
 }
 
 /// Configuration to control the number of findings returned.
+///
+/// Cannot be set if de-identification is requested.
 class GooglePrivacyDlpV2FindingLimits {
   /// Configuration of findings limit given for specified infoTypes.
   core.List<GooglePrivacyDlpV2InfoTypeLimit> maxFindingsPerInfoType;
@@ -14230,7 +14233,7 @@ class GooglePrivacyDlpV2SaveFindings {
   }
 }
 
-/// Schedule for triggeredJobs.
+/// Schedule for inspect job triggers.
 class GooglePrivacyDlpV2Schedule {
   /// With this option a job is started a regular periodic basis.
   ///

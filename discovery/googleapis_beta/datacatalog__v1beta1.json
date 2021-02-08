@@ -1751,7 +1751,7 @@
             }
         }
     },
-    "revision": "20210123",
+    "revision": "20210129",
     "rootUrl": "https://datacatalog.googleapis.com/",
     "schemas": {
         "Binding": {

@@ -8125,7 +8125,8 @@ class ParserConfig {
 
   /// Byte(s) to use as the segment terminator.
   ///
-  /// If this is unset, '\r' is used as segment terminator.
+  /// If this is unset, '\r' is used as segment terminator, matching the HL7
+  /// version 2 specification.
   core.String segmentTerminator;
   core.List<core.int> get segmentTerminatorAsBytes =>
       convert.base64.decode(segmentTerminator);

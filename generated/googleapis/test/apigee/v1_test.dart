@@ -2418,6 +2418,7 @@ api.GoogleCloudApigeeV1Environment buildGoogleCloudApigeeV1Environment() {
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
     o.properties = buildGoogleCloudApigeeV1Properties();
+    o.state = 'foo';
   }
   buildCounterGoogleCloudApigeeV1Environment--;
   return o;
@@ -2433,6 +2434,7 @@ void checkGoogleCloudApigeeV1Environment(api.GoogleCloudApigeeV1Environment o) {
     unittest.expect(o.name, unittest.equals('foo'));
     checkGoogleCloudApigeeV1Properties(
         o.properties as api.GoogleCloudApigeeV1Properties);
+    unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterGoogleCloudApigeeV1Environment--;
 }
@@ -2633,6 +2635,7 @@ api.GoogleCloudApigeeV1EnvironmentGroup
     o.hostnames = buildUnnamed5468();
     o.lastModifiedAt = 'foo';
     o.name = 'foo';
+    o.state = 'foo';
   }
   buildCounterGoogleCloudApigeeV1EnvironmentGroup--;
   return o;
@@ -2646,6 +2649,7 @@ void checkGoogleCloudApigeeV1EnvironmentGroup(
     checkUnnamed5468(o.hostnames);
     unittest.expect(o.lastModifiedAt, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterGoogleCloudApigeeV1EnvironmentGroup--;
 }
@@ -4415,6 +4419,7 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
     o.analyticsRegion = 'foo';
     o.attributes = buildUnnamed5507();
     o.authorizedNetwork = 'foo';
+    o.billingType = 'foo';
     o.caCertificate = 'foo';
     o.createdAt = 'foo';
     o.customerName = 'foo';
@@ -4427,6 +4432,7 @@ api.GoogleCloudApigeeV1Organization buildGoogleCloudApigeeV1Organization() {
     o.properties = buildGoogleCloudApigeeV1Properties();
     o.runtimeDatabaseEncryptionKeyName = 'foo';
     o.runtimeType_ = 'foo';
+    o.state = 'foo';
     o.subscriptionType = 'foo';
     o.type = 'foo';
   }
@@ -4441,6 +4447,7 @@ void checkGoogleCloudApigeeV1Organization(
     unittest.expect(o.analyticsRegion, unittest.equals('foo'));
     checkUnnamed5507(o.attributes);
     unittest.expect(o.authorizedNetwork, unittest.equals('foo'));
+    unittest.expect(o.billingType, unittest.equals('foo'));
     unittest.expect(o.caCertificate, unittest.equals('foo'));
     unittest.expect(o.createdAt, unittest.equals('foo'));
     unittest.expect(o.customerName, unittest.equals('foo'));
@@ -4454,6 +4461,7 @@ void checkGoogleCloudApigeeV1Organization(
         o.properties as api.GoogleCloudApigeeV1Properties);
     unittest.expect(o.runtimeDatabaseEncryptionKeyName, unittest.equals('foo'));
     unittest.expect(o.runtimeType_, unittest.equals('foo'));
+    unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.subscriptionType, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }

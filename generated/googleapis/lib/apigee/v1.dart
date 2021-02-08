@@ -15304,6 +15304,18 @@ class GoogleCloudApigeeV1Environment {
   /// Optional.
   GoogleCloudApigeeV1Properties properties;
 
+  /// State of the environment.
+  ///
+  /// Values other than ACTIVE means the resource is not ready to use.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Resource is in an unspecified state.
+  /// - "CREATING" : Resource is being created.
+  /// - "ACTIVE" : Resource is provisioned and ready to use.
+  /// - "DELETING" : The resource is being deleted.
+  core.String state;
+
   GoogleCloudApigeeV1Environment();
 
   GoogleCloudApigeeV1Environment.fromJson(core.Map _json) {
@@ -15326,6 +15338,9 @@ class GoogleCloudApigeeV1Environment {
       properties = GoogleCloudApigeeV1Properties.fromJson(
           _json['properties'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -15347,6 +15362,9 @@ class GoogleCloudApigeeV1Environment {
     }
     if (properties != null) {
       _json['properties'] = properties.toJson();
+    }
+    if (state != null) {
+      _json['state'] = state;
     }
     return _json;
   }
@@ -15593,6 +15611,18 @@ class GoogleCloudApigeeV1EnvironmentGroup {
   /// ID of the environment group.
   core.String name;
 
+  /// State of the environment group.
+  ///
+  /// Values other than ACTIVE means the resource is not ready to use.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Resource is in an unspecified state.
+  /// - "CREATING" : Resource is being created.
+  /// - "ACTIVE" : Resource is provisioned and ready to use.
+  /// - "DELETING" : The resource is being deleted.
+  core.String state;
+
   GoogleCloudApigeeV1EnvironmentGroup();
 
   GoogleCloudApigeeV1EnvironmentGroup.fromJson(core.Map _json) {
@@ -15610,6 +15640,9 @@ class GoogleCloudApigeeV1EnvironmentGroup {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -15625,6 +15658,9 @@ class GoogleCloudApigeeV1EnvironmentGroup {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (state != null) {
+      _json['state'] = state;
     }
     return _json;
   }
@@ -17780,6 +17816,18 @@ class GoogleCloudApigeeV1Organization {
   /// **Note:** Not supported for Apigee hybrid.
   core.String authorizedNetwork;
 
+  /// Billing type of the Apigee organization.
+  ///
+  /// See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BILLING_TYPE_UNSPECIFIED" : Billing type not specified.
+  /// - "SUBSCRIPTION" : A pre-paid subscription to Apigee.
+  /// - "EVALUATION" : Free and limited access to Apigee for evaluation purposes
+  /// only. only.
+  core.String billingType;
+
   /// Base64-encoded public certificate for the root CA of the Apigee
   /// organization.
   ///
@@ -17849,10 +17897,23 @@ class GoogleCloudApigeeV1Organization {
   /// - "HYBRID" : User-managed Apigee hybrid runtime.
   core.String runtimeType_;
 
-  /// Subscription type of the Apigee organization.
+  /// State of the organization.
   ///
-  /// Valid values include trial (free, limited, and for evaluation purposes
-  /// only) or paid (full subscription has been purchased). See
+  /// Values other than ACTIVE means the resource is not ready to use.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Resource is in an unspecified state.
+  /// - "CREATING" : Resource is being created.
+  /// - "ACTIVE" : Resource is provisioned and ready to use.
+  /// - "DELETING" : The resource is being deleted.
+  core.String state;
+
+  /// DEPRECATED: This will eventually be replaced by BillingType.
+  ///
+  /// Subscription type of the Apigee organization. Valid values include trial
+  /// (free, limited, and for evaluation purposes only) or paid (full
+  /// subscription has been purchased). See
   /// [Apigee pricing](https://cloud.google.com/apigee/pricing/).
   ///
   /// Output only.
@@ -17886,6 +17947,9 @@ class GoogleCloudApigeeV1Organization {
     }
     if (_json.containsKey('authorizedNetwork')) {
       authorizedNetwork = _json['authorizedNetwork'] as core.String;
+    }
+    if (_json.containsKey('billingType')) {
+      billingType = _json['billingType'] as core.String;
     }
     if (_json.containsKey('caCertificate')) {
       caCertificate = _json['caCertificate'] as core.String;
@@ -17927,6 +17991,9 @@ class GoogleCloudApigeeV1Organization {
     if (_json.containsKey('runtimeType')) {
       runtimeType_ = _json['runtimeType'] as core.String;
     }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
     if (_json.containsKey('subscriptionType')) {
       subscriptionType = _json['subscriptionType'] as core.String;
     }
@@ -17945,6 +18012,9 @@ class GoogleCloudApigeeV1Organization {
     }
     if (authorizedNetwork != null) {
       _json['authorizedNetwork'] = authorizedNetwork;
+    }
+    if (billingType != null) {
+      _json['billingType'] = billingType;
     }
     if (caCertificate != null) {
       _json['caCertificate'] = caCertificate;
@@ -17982,6 +18052,9 @@ class GoogleCloudApigeeV1Organization {
     }
     if (runtimeType_ != null) {
       _json['runtimeType'] = runtimeType_;
+    }
+    if (state != null) {
+      _json['state'] = state;
     }
     if (subscriptionType != null) {
       _json['subscriptionType'] = subscriptionType;

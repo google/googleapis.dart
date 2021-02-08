@@ -3602,10 +3602,11 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
 
   /// Required for `category-page-view` events.
   ///
-  /// Other event types should not set this field. The categories associated
-  /// with a category page. Category pages include special pages such as sales
-  /// or promotions. For instance, a special sale page may have the category
-  /// hierarchy: categories : \["Sales", "2017 Black Friday Deals"\].
+  /// At least one of search_query or page_categories is required for `search`
+  /// events. Other event types should not set this field. The categories
+  /// associated with a category page. Category pages include special pages such
+  /// as sales or promotions. For instance, a special sale page may have the
+  /// category hierarchy: categories : \["Sales", "2017 Black Friday Deals"\].
   core.List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
       pageCategories;
 
@@ -3634,7 +3635,8 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   /// Optional.
   GoogleCloudRecommendationengineV1beta1PurchaseTransaction purchaseTransaction;
 
-  /// Required for `search` events.
+  /// At least one of search_query or page_categories is required for `search`
+  /// events.
   ///
   /// Other event types should not set this field. The user's search query as
   /// UTF-8 encoded text with a length limit of 5 KiB.

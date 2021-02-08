@@ -9844,6 +9844,7 @@ api.ReturnPolicy buildReturnPolicy() {
     o.nonFreeReturnReasons = buildUnnamed4263();
     o.policy = buildReturnPolicyPolicy();
     o.returnPolicyId = 'foo';
+    o.returnShippingFee = buildPrice();
     o.seasonalOverrides = buildUnnamed4264();
   }
   buildCounterReturnPolicy--;
@@ -9860,6 +9861,7 @@ void checkReturnPolicy(api.ReturnPolicy o) {
     checkUnnamed4263(o.nonFreeReturnReasons);
     checkReturnPolicyPolicy(o.policy as api.ReturnPolicyPolicy);
     unittest.expect(o.returnPolicyId, unittest.equals('foo'));
+    checkPrice(o.returnShippingFee as api.Price);
     checkUnnamed4264(o.seasonalOverrides);
   }
   buildCounterReturnPolicy--;

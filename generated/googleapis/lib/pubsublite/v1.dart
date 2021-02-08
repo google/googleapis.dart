@@ -868,6 +868,60 @@ class TopicStatsProjectsLocationsTopicsResource {
   TopicStatsProjectsLocationsTopicsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Compute the head cursor for the partition.
+  ///
+  /// The head cursor’s offset is guaranteed to be before or equal to all
+  /// messages which have not yet been acknowledged to be published, and greater
+  /// than the offset of any message whose publish has already been
+  /// acknowledged. It is 0 if there have never been messages on the partition.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [topic] - Required. The topic for which we should compute the head cursor.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/topics/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ComputeHeadCursorResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ComputeHeadCursorResponse> computeHeadCursor(
+    ComputeHeadCursorRequest request,
+    core.String topic, {
+    core.String $fields,
+  }) async {
+    final _body =
+        request == null ? null : convert.json.encode(request.toJson());
+    if (topic == null) {
+      throw core.ArgumentError('Parameter topic is required.');
+    }
+    final _queryParams = <core.String, core.List<core.String>>{};
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    final _url = 'v1/topicStats/' +
+        commons.Escaper.ecapeVariableReserved('$topic') +
+        ':computeHeadCursor';
+
+    final _response = await _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+    );
+    return ComputeHeadCursorResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
   /// Compute statistics about a range of messages in a given topic and
   /// partition.
   ///
@@ -949,6 +1003,53 @@ class Capacity {
     }
     if (subscribeMibPerSec != null) {
       _json['subscribeMibPerSec'] = subscribeMibPerSec;
+    }
+    return _json;
+  }
+}
+
+/// Compute the current head cursor for a partition.
+class ComputeHeadCursorRequest {
+  /// The partition for which we should compute the head cursor.
+  ///
+  /// Required.
+  core.String partition;
+
+  ComputeHeadCursorRequest();
+
+  ComputeHeadCursorRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('partition')) {
+      partition = _json['partition'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (partition != null) {
+      _json['partition'] = partition;
+    }
+    return _json;
+  }
+}
+
+/// Response containing the head cursor for the requested topic and partition.
+class ComputeHeadCursorResponse {
+  /// The head cursor.
+  Cursor headCursor;
+
+  ComputeHeadCursorResponse();
+
+  ComputeHeadCursorResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('headCursor')) {
+      headCursor = Cursor.fromJson(
+          _json['headCursor'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (headCursor != null) {
+      _json['headCursor'] = headCursor.toJson();
     }
     return _json;
   }

@@ -48,6 +48,44 @@ void checkCapacity(api.Capacity o) {
   buildCounterCapacity--;
 }
 
+core.int buildCounterComputeHeadCursorRequest = 0;
+api.ComputeHeadCursorRequest buildComputeHeadCursorRequest() {
+  var o = api.ComputeHeadCursorRequest();
+  buildCounterComputeHeadCursorRequest++;
+  if (buildCounterComputeHeadCursorRequest < 3) {
+    o.partition = 'foo';
+  }
+  buildCounterComputeHeadCursorRequest--;
+  return o;
+}
+
+void checkComputeHeadCursorRequest(api.ComputeHeadCursorRequest o) {
+  buildCounterComputeHeadCursorRequest++;
+  if (buildCounterComputeHeadCursorRequest < 3) {
+    unittest.expect(o.partition, unittest.equals('foo'));
+  }
+  buildCounterComputeHeadCursorRequest--;
+}
+
+core.int buildCounterComputeHeadCursorResponse = 0;
+api.ComputeHeadCursorResponse buildComputeHeadCursorResponse() {
+  var o = api.ComputeHeadCursorResponse();
+  buildCounterComputeHeadCursorResponse++;
+  if (buildCounterComputeHeadCursorResponse < 3) {
+    o.headCursor = buildCursor();
+  }
+  buildCounterComputeHeadCursorResponse--;
+  return o;
+}
+
+void checkComputeHeadCursorResponse(api.ComputeHeadCursorResponse o) {
+  buildCounterComputeHeadCursorResponse++;
+  if (buildCounterComputeHeadCursorResponse < 3) {
+    checkCursor(o.headCursor as api.Cursor);
+  }
+  buildCounterComputeHeadCursorResponse--;
+}
+
 core.int buildCounterComputeMessageStatsRequest = 0;
 api.ComputeMessageStatsRequest buildComputeMessageStatsRequest() {
   var o = api.ComputeMessageStatsRequest();
@@ -421,6 +459,22 @@ void main() {
       var o = buildCapacity();
       var od = api.Capacity.fromJson(o.toJson());
       checkCapacity(od as api.Capacity);
+    });
+  });
+
+  unittest.group('obj-schema-ComputeHeadCursorRequest', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildComputeHeadCursorRequest();
+      var od = api.ComputeHeadCursorRequest.fromJson(o.toJson());
+      checkComputeHeadCursorRequest(od as api.ComputeHeadCursorRequest);
+    });
+  });
+
+  unittest.group('obj-schema-ComputeHeadCursorResponse', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildComputeHeadCursorResponse();
+      var od = api.ComputeHeadCursorResponse.fromJson(o.toJson());
+      checkComputeHeadCursorResponse(od as api.ComputeHeadCursorResponse);
     });
   });
 
@@ -1261,6 +1315,60 @@ void main() {
   });
 
   unittest.group('resource-TopicStatsProjectsLocationsTopicsResource', () {
+    unittest.test('method--computeHeadCursor', () {
+      var mock = HttpServerMock();
+      var res = api.PubsubLiteApi(mock).topicStats.projects.locations.topics;
+      var arg_request = buildComputeHeadCursorRequest();
+      var arg_topic = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = api.ComputeHeadCursorRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkComputeHeadCursorRequest(obj as api.ComputeHeadCursorRequest);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("v1/topicStats/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildComputeHeadCursorResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .computeHeadCursor(arg_request, arg_topic, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkComputeHeadCursorResponse(
+            response as api.ComputeHeadCursorResponse);
+      })));
+    });
+
     unittest.test('method--computeMessageStats', () {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).topicStats.projects.locations.topics;

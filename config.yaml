@@ -248,6 +248,7 @@ skipped_apis:
 - cloudasset:v1p1beta1 # v1 included
 - cloudasset:v1p4beta1 # v1 included
 - cloudasset:v1p5beta1 # v1 included
+- cloudasset:v1p7beta1 # v1 included
 - cloudbuild:v1alpha1 # v1 included
 - cloudbuild:v1alpha2 # v1 included
 - cloudidentity:v1beta1 # v1 included

@@ -180,7 +180,7 @@ Official API documentation: https://cloud.google.com/dataproc-metastore/docs
 
 The Network Connectivity API will be home to various services which provide information pertaining to network connectivity.
 
-Official API documentation: https://cloud.google.com/
+Official API documentation: https://cloud.google.com/network-connectivity/docs
 
 #### Certificate Authority API - privateca v1beta1
 
